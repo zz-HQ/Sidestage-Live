@@ -1,0 +1,8 @@
+<ul>
+    <% collection.each do |user| %>
+        <li>
+            <h4><%= user.name %></h4>
+            <%= link_to "View Profile", artist_path(user) %>
+        </li>    
+    <% end %>
+</ul>    

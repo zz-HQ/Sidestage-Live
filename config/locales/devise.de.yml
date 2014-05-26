@@ -1,0 +1,48 @@
+de:
+  devise:
+    confirmations:
+      user:
+        confirmed: Ihr Konto wurde erfolgreich aktiviert.
+    failure:
+      user:
+        invalid: "Wir konnten keinen Nutzer mit diesen Daten finden. Bitte versuchen Sie es erneut."
+        already_authenticated: "Sie sind bereits eingeloggt."
+        inactive: "Ihr Account ist nicht aktiviert."
+        locked: "Ihr Account ist gesperrt."
+        last_attempt: "You have one more attempt before your account will be locked."
+        not_found_in_database: "Passwort oder E-Mail stimmt nicht."
+        timeout: "Sitzung abgelaufen. Bitte erneut einloggen."
+        unauthenticated: "Bitte einloggen, um fortzufahren."
+        unconfirmed: "Bitte E-Mail bestätigen, bevor Sie fortfahren."
+    mailer:
+      confirmation_instructions:
+        subject: "E-Mail zur Bestätigung Ihrer Anmeldung"
+      reset_password_instructions:
+        subject: "Passwort neu erstellen"
+      unlock_instructions:
+        subject: "Unlock Instructions"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    passwords:
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "In wenigen Minuten erhalten Sie eine E-Mail mit Anleitung zum zurücksetzen Ihres Passwortes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      updated: "Passwort erfolgreich geändert. Sie sind nun eingeloggt."
+      updated_not_active: "Passwort erfolgreich geändert."
+    registrations:
+      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      signed_up: "Willkommen, Sie sind nun angemeldet."
+      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
+      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+      signed_up_but_unconfirmed: "In wenigen Minuten erhalten Sie eine E-Mail mit einem Link zur Bestätigung Ihres Accounts."
+      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
+      updated: "Ihr Konto wurde erfolgreich aktualisiert."
+    sessions:
+      user:
+        signed_in: "Anmeldung erfolgreich."
+        signed_out: "Abmeldung erfolgreich."
+    unlocks:
+      send_instructions: "In wenigen Minuten erhalten Sie eine E-Mail mit Anleitung zur Entsperrung Ihres Accounts."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      unlocked: "Your account has been unlocked successfully. Please sign in to continue."

@@ -1,0 +1,32 @@
+<h1><%= resource.name %></h1>
+<p>
+    <%= link_to "Book now", "#" %>
+</p>
+<p>
+    <%= link_to "Contact Me", "#" %>    
+</p>
+<p>
+<strong>Genre</strong>
+</p>
+<p>
+    <%= resource.profile.genres.map(&:name).join(", ") %>
+</p>    
+<p>
+<strong>Price</strong>
+</p>
+<p>
+    <%= resource.profile.price %>
+</p>    
+
+<p>
+<strong>About</strong>
+</p>
+<p>
+    <%= resource.profile.about %>
+</p>    
+<p>
+<strong>Style</strong>
+</p>
+<p>
+    <%= resource.profile.style %>
+</p>

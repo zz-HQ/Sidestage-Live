@@ -1,0 +1,28 @@
+<h1><%= resource.tagline %></h1>
+<p>
+	<%= link_to "Edit", edit_resource_url %>
+</p>	
+<p>
+	<%= resource.genres.map(&:name).join(", ") %>
+</p>	
+
+<p>
+	<%= resource.price %>
+</p>	
+
+<p>
+	<%= resource.description %>
+</p>	
+<p>
+	<%= resource.about %>
+</p>	
+<p>
+	<%= resource.style %>
+</p>	
+<p>
+	<%= resource.youtube %>
+</p>	
+<p>
+	<%= resource.soundcloud %>
+</p>	
+
