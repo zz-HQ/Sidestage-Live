@@ -4,16 +4,12 @@ describe User, :type => :model do
   
   describe "Validations" do
     
+    it { should validate_presence_of(:email) }
+    
     it "has a valid Factory" do
-      FactoryGirl.create(:user)
-      FactoryGirl.create(:quentin)
       expect(FactoryGirl.create(:user)).to be_valid
     end
   
-    it "is not valid without email" do
-      expect(FactoryGirl.build(:user, email: nil)).to be_invalid
-    end
-
   end
   
   describe "Associations" do

@@ -9,7 +9,7 @@ class Message < ActiveRecord::Base
   #
   
   validates :sender_id, :receiver_id, :subject, :body, presence: true
-  validate :validate_receiver #, :validate_thread
+  validate :validate_receiver, :validate_thread
 
   #
   # Associations
