@@ -17,6 +17,14 @@ FactoryGirl.define do
     factory :bob do
       email "bob@example.com"
     end
+    
+    factory :artist do
+      email "artist@example.com"
+    end
+    
+    factory :customer do
+      email "customer@example.com"
+    end
 
   end
   

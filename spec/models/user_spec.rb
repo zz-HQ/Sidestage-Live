@@ -14,6 +14,11 @@ describe User, :type => :model do
   
   describe "Associations" do
 
+    # it { should have_many(:received_booking_requests) }
+    # it { should have_many(:sent_booking_requests) }
+    # it { should have_many(:received_booking_offers) }
+    # it { should have_many(:sent_booking_offers) }
+
     it "has many sent messages" do
       message = FactoryGirl.create(:user_quentin)
       expect(message.sender.sent_messages).to eq([message])

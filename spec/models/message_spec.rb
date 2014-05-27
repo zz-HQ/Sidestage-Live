@@ -5,11 +5,8 @@ describe Message, :type => :model do
   describe "Validations" do
 
     it { should validate_presence_of(:sender_id) }
-
     it { should validate_presence_of(:receiver_id) }
-     
     it { should validate_presence_of(:subject) }
-
     it { should validate_presence_of(:body) }
 
     it "has valid Factory" do

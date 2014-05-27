@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525110901) do
+ActiveRecord::Schema.define(version: 20140527143451) do
+
+  create_table "booking_offers", force: true do |t|
+    t.integer  "booking_request_id"
+    t.integer  "requestor_id"
+    t.integer  "artist_id"
+    t.integer  "price"
+    t.boolean  "accepted"
+    t.datetime "start_at"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "booking_offers", ["artist_id", "requestor_id"], name: "index_booking_offers_on_artist_id_and_requestor_id", using: :btree
+  add_index "booking_offers", ["requestor_id", "artist_id"], name: "index_booking_offers_on_requestor_id_and_artist_id", using: :btree
+
+  create_table "booking_requests", force: true do |t|
+    t.integer  "requestor_id"
+    t.integer  "artist_id"
+    t.integer  "price"
+    t.boolean  "accepted"
+    t.datetime "start_at"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "booking_requests", ["artist_id", "requestor_id"], name: "index_booking_requests_on_artist_id_and_requestor_id", using: :btree
+  add_index "booking_requests", ["requestor_id", "artist_id"], name: "index_booking_requests_on_requestor_id_and_artist_id", using: :btree
 
   create_table "genre_translations", force: true do |t|
     t.integer  "genre_id",   null: false
