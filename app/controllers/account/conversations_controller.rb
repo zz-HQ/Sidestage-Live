@@ -1,12 +1,13 @@
-class Account::ProfilesController < AuthenticatedController
-
+class Account::ConversationsController < AuthenticatedController
   #
   # Settings
   # ---------------------------------------------------------------------------------------
   #
   #
   #
-  # 
+  #
+  
+  actions :index, :show
   
   #
   # Actions
@@ -16,15 +17,12 @@ class Account::ProfilesController < AuthenticatedController
   #
   #
   
-  def index
-    redirect_to new_resource_path
+  def show
+    @message = Message.new
+    @message.receiver_id = resource.negotiator_for(current_user).id
+    show!
   end
-  
-  def new
-    redirect_to account_profile_path(begin_of_association_chain.profiles.first) and return if begin_of_association_chain.profiles.first.present?
-    new!
-  end
-  
+
   #
   # Protected
   # ---------------------------------------------------------------------------------------
@@ -35,10 +33,7 @@ class Account::ProfilesController < AuthenticatedController
     
   protected
   
-  def permitted_params
-    params.permit(profile: [:tagline, :price, :description, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
-  end 
-  
+
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -49,5 +44,5 @@ class Account::ProfilesController < AuthenticatedController
   
   private
   
-  
+
 end

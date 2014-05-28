@@ -6,6 +6,10 @@ class AddDeviseToUsers < ActiveRecord::Migration
       t.string :salutation
       t.string :mobile
       t.text :social_media
+      t.string :airmusic_name
+      t.string :avatar
+      t.string :city
+      
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

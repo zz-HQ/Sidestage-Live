@@ -11,36 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527143451) do
+ActiveRecord::Schema.define(version: 20140528130735) do
 
-  create_table "booking_offers", force: true do |t|
-    t.integer  "booking_request_id"
-    t.integer  "requestor_id"
-    t.integer  "artist_id"
-    t.integer  "price"
-    t.boolean  "accepted"
-    t.datetime "start_at"
-    t.text     "note"
+  create_table "conversations", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "last_message_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "booking_offers", ["artist_id", "requestor_id"], name: "index_booking_offers_on_artist_id_and_requestor_id", using: :btree
-  add_index "booking_offers", ["requestor_id", "artist_id"], name: "index_booking_offers_on_requestor_id_and_artist_id", using: :btree
-
-  create_table "booking_requests", force: true do |t|
-    t.integer  "requestor_id"
-    t.integer  "artist_id"
-    t.integer  "price"
-    t.boolean  "accepted"
-    t.datetime "start_at"
-    t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "booking_requests", ["artist_id", "requestor_id"], name: "index_booking_requests_on_artist_id_and_requestor_id", using: :btree
-  add_index "booking_requests", ["requestor_id", "artist_id"], name: "index_booking_requests_on_requestor_id_and_artist_id", using: :btree
+  add_index "conversations", ["receiver_id"], name: "index_conversations_on_receiver_id", using: :btree
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "genre_translations", force: true do |t|
     t.integer  "genre_id",   null: false
@@ -72,14 +56,14 @@ ActiveRecord::Schema.define(version: 20140527143451) do
     t.string   "subject"
     t.text     "body"
     t.datetime "read_at"
-    t.integer  "thread_id"
+    t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
   add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
-  add_index "messages", ["thread_id"], name: "index_messages_on_thread_id", using: :btree
 
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
@@ -88,10 +72,10 @@ ActiveRecord::Schema.define(version: 20140527143451) do
     t.text     "description"
     t.text     "about"
     t.string   "youtube"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "soundcloud"
     t.text     "style"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -100,12 +84,15 @@ ActiveRecord::Schema.define(version: 20140527143451) do
     t.string   "salutation"
     t.string   "mobile"
     t.text     "social_media"
-    t.string   "email",                     default: "", null: false
-    t.string   "encrypted_password",        default: "", null: false
+    t.string   "airmusic_name"
+    t.string   "avatar"
+    t.string   "city"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",             default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -114,16 +101,12 @@ ActiveRecord::Schema.define(version: 20140527143451) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",           default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "airmusic_name"
-    t.string   "avatar"
-    t.string   "city"
-    t.integer  "unread_messages_counter"
-    t.integer  "received_messages_counter"
+    t.integer  "unread_message_counter"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

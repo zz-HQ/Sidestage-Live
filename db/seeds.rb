@@ -2,7 +2,6 @@ User.all.map(&:destroy)
 user_attributes = {
   first_name: "Artist FN",
   last_name: "Artist LN",
-  email: "artist@example.com",
   city: "Berlin", 
   mobile: "013456789" 
 }
@@ -18,7 +17,7 @@ profile_attributes = {
 10.times do |t|
   user = User.new
   user_attributes.each do |key, val|
-    user.send("#{key}=", "#{t}#{val}")
+    user.send("#{key}=", "#{val}#{t}")
   end
   profile = Profile.new
   profile_attributes.each do |key, val|
@@ -26,6 +25,7 @@ profile_attributes = {
   end  
   user.confirmed_at = Time.now
   user.password = user.password_confirmation = "12345678"
+  user.email = "artist#{t}@example.com"
   user.skip_confirmation!
   user.save
   user.profiles << profile  

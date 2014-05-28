@@ -30,7 +30,7 @@ group :development do
   gem 'letter_opener'
 end
 
-group :test do
+group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'  

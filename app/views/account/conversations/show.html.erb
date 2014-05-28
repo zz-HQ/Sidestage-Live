@@ -1,0 +1,11 @@
+<% resource.messages.each do |message| %>
+	<h1><%= message.sender.name %></h1>
+	<p>
+		<%= message.body %>
+	</p>
+<% end %>
+
+Reply
+<%= simple_form_for @message, url: account_outgoing_messages_path do |f| %>
+	<%= render "/account/outgoing_messages/form", f: f %>
+<% end %>	

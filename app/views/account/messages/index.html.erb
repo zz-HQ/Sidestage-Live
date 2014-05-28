@@ -1,0 +1,8 @@
+<h1>Conversations</h1>
+
+<% current_user.conversations.each do |message| %>
+<h4><%= message.subject %></h4>
+<p>
+	<%= message.body %>
+</p>
+<% end %>

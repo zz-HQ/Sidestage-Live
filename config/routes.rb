@@ -8,9 +8,8 @@ Airmusic::Application.routes.draw do
   
   namespace :account do
     resources :profiles
-    resources :messages
-    
-    resources :booking_requests
+    resources :outgoing_messages    
+    resources :conversations
     
   end
 
