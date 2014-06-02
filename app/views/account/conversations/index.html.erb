@@ -1,7 +1,7 @@
 <h1>Conversations</h1>
 
 <% current_user.conversations.each do |conversation| %>
-<h4><%= link_to conversation.subject, account_conversation_path(conversation) %></h4>
+<h4><%= link_to conversation.negotiator_for(current_user).name, account_conversation_path(conversation) %></h4>
 <p>
 	<%= conversation.body %>
 </p>

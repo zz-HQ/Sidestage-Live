@@ -8,7 +8,6 @@ class Message < ActiveRecord::Base
   #
   #
   
-  attr_accessor :attach_to_new_conversation
   validates :sender_id, :receiver_id, :subject, :body, presence: true
   validate :validate_conversation
   validate :validate_receiver
@@ -70,11 +69,7 @@ class Message < ActiveRecord::Base
   end
   
   def attach_to_conversation
-    if attach_to_new_conversation
-      self.conversation ||= create_conversation
-    else
-      self.conversation ||= self.sender.conversations.where('receiver_id = :id OR sender_id = :id', id: self.receiver_id).first || create_conversation
-    end
+    self.conversation ||= self.sender.conversations.where('receiver_id = :id OR sender_id = :id', id: self.receiver_id).first || create_conversation
   end
   
   def create_conversation
