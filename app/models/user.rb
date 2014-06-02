@@ -34,6 +34,9 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id, dependent: :nullify
   has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id, dependent: :nullify
   
+  has_many :booking_requests, class_name: 'Deal', foreign_key: :customer_id
+  has_many :offers, -> { offers }, class_name: 'Deal', foreign_key: :artist_id  
+  
   #
   # Instance Methods
   # ---------------------------------------------------------------------------------------
@@ -41,6 +44,10 @@ class User < ActiveRecord::Base
   #
   #
   #
+  
+  def deals
+    Deal.by_user(self.id)
+  end
 
   def conversations
     Conversation.by_user(self.id).ordered_by_last_message

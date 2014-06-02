@@ -1,0 +1,6 @@
+<%= simple_form_for resource, url: account_booking_requests_path do |f| %>
+    <%= f.input :start_at, as: :date, order: [:day, :month, :year] %>
+    <%= f.input :note %>
+    <%= f.input :profile_id, as: :hidden %>
+    <%= f.button :submit %>
+<% end %>

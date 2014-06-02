@@ -1,32 +1,32 @@
-<h1><%= resource.name %></h1>
+<h1><%= resource.user.name %></h1>
 <p>
-    <%= link_to "Book now", "#" %>
+    <%= link_to "Book now", new_account_booking_request_path(profile_id: resource.id) %>
 </p>
 <p>
-<%= link_to "Contact Me", new_account_outgoing_message_path(receiver_id: resource.id) %>
+<%= link_to "Contact Me", new_account_outgoing_message_path(receiver_id: resource.user.id) %>
 </p>
 <p>
 <strong>Genre</strong>
 </p>
 <p>
-    <%= resource.profile.genres.map(&:name).join(", ") %>
+    <%= resource.genres.map(&:name).join(", ") %>
 </p>    
 <p>
 <strong>Price</strong>
 </p>
 <p>
-    <%= resource.profile.price %>
+    <%= resource.price %>
 </p>    
 
 <p>
 <strong>About</strong>
 </p>
 <p>
-    <%= resource.profile.about %>
+    <%= resource.about %>
 </p>    
 <p>
 <strong>Style</strong>
 </p>
 <p>
-    <%= resource.profile.style %>
+    <%= resource.style %>
 </p>

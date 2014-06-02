@@ -1,8 +1,8 @@
 <ul>
-    <% collection.each do |user| %>
+    <% collection.each do |profile| %>
         <li>
-            <h4><%= user.name %></h4>
-            <%= link_to "View Profile", artist_path(user) %>
+            <h4><%= profile.user.name %></h4>
+            <%= link_to "View Profile", artist_path(profile) %>
         </li>    
     <% end %>
 </ul>    

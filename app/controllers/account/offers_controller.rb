@@ -1,13 +1,14 @@
-class Account::ConversationsController < AuthenticatedController
+class Account::OffersController < AuthenticatedController
+
   #
   # Settings
   # ---------------------------------------------------------------------------------------
   #
   #
   #
-  #
-  
-  actions :index, :show
+  # 
+
+  defaults resource_class: Deal, instance_name: 'deal'
   
   #
   # Actions
@@ -17,13 +18,13 @@ class Account::ConversationsController < AuthenticatedController
   #
   #
   
-  def show
-    @message = Message.new
-    @message.receiver_id = resource.negotiator_for(current_user).id
-    @message.conversation = resource
-    show!
+  def create
+    create! do |success, failure|
+      success.html { redirect_to account_conversation_path(resource.conversation) }
+      failure.html { render :new }
+    end
   end
-
+  
   #
   # Protected
   # ---------------------------------------------------------------------------------------
@@ -34,7 +35,10 @@ class Account::ConversationsController < AuthenticatedController
     
   protected
   
-
+  def permitted_params
+    params.permit(deal: [:customer_id, :profile_id, :start_at, :price, :note])
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -45,5 +49,10 @@ class Account::ConversationsController < AuthenticatedController
   
   private
   
-
+  def build_resource
+    super.tap do |deal|
+      deal.offer = true
+    end
+  end
+  
 end

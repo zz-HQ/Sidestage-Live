@@ -9,3 +9,40 @@ Reply
 <%= simple_form_for @message, url: account_outgoing_messages_path do |f| %>
 	<%= render "/account/outgoing_messages/form", f: f %>
 <% end %>	
+<hr>
+
+<% if (deal = resource.deals.last).present? %>
+    <p>
+        <b>Price: </b><%= deal.price %>
+    </p>
+    <p>    
+        <b>start: </b><%= deal.start_at %>
+    </p>
+    
+    <% if deal.is_customer?(current_user) %>
+        <% if deal.accepted? %>
+            You accepted!
+        <% elsif deal.confirmed? %>
+            Artist Confirmed!
+        <% elsif deal.offer? %>
+            <%= link_to "Accept", accept_account_deal_path(deal), method: :put %>
+        <% else %>
+            Warten auf Antwort....
+        <% end %>
+    <% else %>
+        <% if deal.accepted? %>
+            Customer accepted!
+        <% elsif deal.confirmed? %>
+            You Confirmed!
+        <% else %>
+            <% if !deal.offer? %>
+                <p>
+                    <%= link_to "Confirm", confirm_account_deal_path(deal), method: :put %>
+                </p>
+            <% end %>
+            <p>
+                <%= render "/account/offers/form", deal: deal %>
+            </p>
+            <% end %>
+    <% end %>
+<% end %>

@@ -22,6 +22,7 @@ class Conversation < ActiveRecord::Base
   belongs_to :receiver, foreign_key: :receiver_id, class_name: 'User'  
   
   has_many :messages
+  has_many :deals
 
   #
   # Scopes

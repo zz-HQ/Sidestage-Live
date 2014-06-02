@@ -18,7 +18,7 @@ class ArtistsController < ApplicationController
   #
   
   inherit_resources
-  defaults :resource_class => User, :instance_name => 'user'
+  defaults :resource_class => Profile, :instance_name => 'profile'
   actions :index, :show
 
   #
@@ -28,15 +28,7 @@ class ArtistsController < ApplicationController
   #
   #
   #
-  
-  def show
-    @profile = resource.profiles.first
-    redirect_to collection_path and return if @profile.nil?
-    show!
     
-  end
-  
-  
   #
   # Private
   # ---------------------------------------------------------------------------------------

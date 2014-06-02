@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528130735) do
+ActiveRecord::Schema.define(version: 20140530090046) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id"
@@ -25,6 +25,26 @@ ActiveRecord::Schema.define(version: 20140528130735) do
 
   add_index "conversations", ["receiver_id"], name: "index_conversations_on_receiver_id", using: :btree
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
+
+  create_table "deals", force: true do |t|
+    t.integer  "conversation_id"
+    t.integer  "message_id"
+    t.integer  "profile_id"
+    t.integer  "artist_id"
+    t.integer  "customer_id"
+    t.datetime "artist_accepted_at"
+    t.datetime "customer_accepted_at"
+    t.integer  "price"
+    t.datetime "start_at"
+    t.boolean  "offer"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "deals", ["artist_id"], name: "index_deals_on_artist_id", using: :btree
+  add_index "deals", ["conversation_id"], name: "index_deals_on_conversation_id", using: :btree
+  add_index "deals", ["customer_id"], name: "index_deals_on_customer_id", using: :btree
 
   create_table "genre_translations", force: true do |t|
     t.integer  "genre_id",   null: false
@@ -77,6 +97,8 @@ ActiveRecord::Schema.define(version: 20140528130735) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

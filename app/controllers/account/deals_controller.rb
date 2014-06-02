@@ -1,13 +1,14 @@
-class Account::ConversationsController < AuthenticatedController
+class Account::DealsController < AuthenticatedController
+
   #
   # Settings
   # ---------------------------------------------------------------------------------------
   #
   #
   #
-  #
+  # 
   
-  actions :index, :show
+  actions :all, :except => [:create, :new]
   
   #
   # Actions
@@ -17,13 +18,22 @@ class Account::ConversationsController < AuthenticatedController
   #
   #
   
-  def show
-    @message = Message.new
-    @message.receiver_id = resource.negotiator_for(current_user).id
-    @message.conversation = resource
-    show!
+  def accept
+    if resource.is_customer?(current_user)
+      resource.accept!
+      flash[:notice] = "accepted!"
+    end
+    redirect_to account_conversation_path(resource.conversation)
   end
-
+  
+  def confirm
+    if resource.is_artist?(current_user)
+      resource.confirm!
+      flash[:notice] = "confirmed!"
+    end
+    redirect_to account_conversation_path(resource.conversation)        
+  end
+  
   #
   # Protected
   # ---------------------------------------------------------------------------------------
@@ -34,7 +44,7 @@ class Account::ConversationsController < AuthenticatedController
     
   protected
   
-
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -44,6 +54,6 @@ class Account::ConversationsController < AuthenticatedController
   #
   
   private
-  
 
+  
 end

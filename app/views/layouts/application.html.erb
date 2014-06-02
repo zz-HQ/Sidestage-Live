@@ -8,6 +8,7 @@
 			<%= link_to "Musicians", artists_path %>
 			|
 			<% if current_user %>
+			    Eingeloggt Als: <%= current_user.name %> |
 				<%= link_to "logout", destroy_user_session_path, method: :delete %>
 				|
 				<%= link_to "Profile", current_user.profiles.count>0 ? account_profile_path(current_user.profiles.first) : new_account_profile_path %>

@@ -7,7 +7,7 @@ class Account::OutgoingMessagesController < AuthenticatedController
   #
   #
   
-  defaults :resource_class => Message, :instance_name => 'message'
+  defaults resource_class: Message, instance_name: 'message'
   actions :new, :create  
   
   #
@@ -33,7 +33,7 @@ class Account::OutgoingMessagesController < AuthenticatedController
   protected
   
   def permitted_params
-    params.permit(message: [:subject, :body, :receiver_id, :thread_id])
+    params.permit(message: [:subject, :body, :receiver_id, :conversation_id])
   end 
   
   #

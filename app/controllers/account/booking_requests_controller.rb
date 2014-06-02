@@ -7,6 +7,8 @@ class Account::BookingRequestsController < AuthenticatedController
   #
   #
   # 
+
+  defaults resource_class: Deal, instance_name: 'deal'
   
   #
   # Actions
@@ -16,6 +18,12 @@ class Account::BookingRequestsController < AuthenticatedController
   #
   #
   
+  def create
+    create! do |success, failure|
+      success.html { redirect_to account_conversation_path(resource.conversation) }
+      failure.html { render :new }
+    end
+  end
   
   #
   # Protected
@@ -28,7 +36,7 @@ class Account::BookingRequestsController < AuthenticatedController
   protected
   
   def permitted_params
-    params.permit(booking_request: [:artist_id, :note, :start_at])
+    params.permit(deal: [:profile_id, :note, :start_at])
   end 
   
   #
@@ -40,5 +48,12 @@ class Account::BookingRequestsController < AuthenticatedController
   #
   
   private
+
+  def build_resource
+    super.tap do |resource|
+      resource.profile_id ||= params[:profile_id]
+    end
+  end
+
   
 end

@@ -8,7 +8,7 @@ class Profile < ActiveRecord::Base
   #
   #  
 
-  validates :user_id, :tagline, presence: true
+  validates :user_id, :tagline, :price, presence: true
 
   #
   # Associations

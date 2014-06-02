@@ -1,0 +1,8 @@
+<%= simple_form_for deal, url: account_offers_path, method: :post do |f| %>
+    <%= f.input :price %>
+    <%= f.input :note %>
+    <%= f.input :customer_id, as: :hidden %>
+    <%= f.input :profile_id, as: :hidden %>
+    <%= f.input :start_at, as: :hidden %>
+    <%= f.button :submit %>        	
+<% end %>
