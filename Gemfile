@@ -12,6 +12,8 @@ gem "rmagick"
 gem 'jbuilder', '~> 1.2'
 gem 'globalize', '~> 4.0.1'
 
+gem 'gibbon' # Handles Mailchimp integration
+
 gem 'turbolinks'
 gem 'jquery-rails', '3.1.0'
 gem 'sass-rails'
@@ -20,6 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 gem 'simple_form'
+gem 'figaro'
 
 
 group :production do
