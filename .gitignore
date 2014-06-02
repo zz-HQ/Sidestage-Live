@@ -12,8 +12,10 @@
 # Ignore all logfiles and tempfiles.
 /log
 /tmp
-config/database.yml
 .powrc
 .ruby-gemset
 .ruby-version
 public/assets
+
+# Ignore application configuration
+/config/application.yml
