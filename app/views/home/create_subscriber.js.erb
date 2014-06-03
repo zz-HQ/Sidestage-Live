@@ -1,0 +1,12 @@
+<%- if @res['add_count'] > 0 -%>
+
+$('#subscriber_email').val("");
+$('.form-success').slideDown();
+$('.form-error').slideUp();
+
+<%- else -%>
+
+$('.form-success').slideUp();
+$('.form-error').slideDown();
+
+<%- end -%>
