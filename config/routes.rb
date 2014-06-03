@@ -1,6 +1,7 @@
 Airmusic::Application.routes.draw do
   
   root to: "home#index"
+  post 'create_subscriber', to: "home#create_subscriber", as: "create_subscriber"
 
   devise_for :users
   
