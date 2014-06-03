@@ -37,24 +37,26 @@
       </div>
 
       <div class="row">
-        <%= simple_form_for :subscriber, url: create_subscriber_path, remote: true do |f| %>
-          <%= f.text_field :email, placeholder: "Email Address" %>
-          <%= f.submit :submit %>
-        <%- end -%>
-        
-        <div class="response">
-          <p class="form-success" style="display:none">
-            You're on Sidestage's guest list now. We'll be sure you get a heads up before we roll out the red carpet.
-          </p>
-          <p class="form-error" style="display:none">
-            That email is already registered.
-          </p>
-        </div>
-        
-        
+        <div id="animation-container">
+          <div id="email-form">
+            <%= simple_form_for :subscriber, url: create_subscriber_path, remote: true do |f| %>
+              <%= f.text_field :email, placeholder: "Email Address" %>
+              <%= f.submit :submit %>
+            <%- end -%>
+          </div><!-- email-form -->
 
+          <div id="email-response">
+            <p id="email-response-success" class="text-shadow" style="display:none">
+              <strong>You're on Sidestage's guest list now.</strong><br>
+              We'll be sure you get a heads up before we roll out the red carpet.
+            </p>
+            <p id="email-response-error" class="text-shadow" style="display:none">
+              That email is already registered.
+            </p>
+          </div>
 
-      </div>
+        </div><!-- animation-container -->
+      </div><!-- .row -->
 
 
     </div>

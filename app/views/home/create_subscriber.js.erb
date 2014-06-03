@@ -1,12 +1,15 @@
-<%- if @res['add_count'] > 0 -%>
+<%- if @success -%>
 
-$('#subscriber_email').val("");
-$('.form-success').slideDown();
-$('.form-error').slideUp();
+  showSuccess();
 
 <%- else -%>
 
-$('.form-success').slideUp();
-$('.form-error').slideDown();
+  <%- if @already_exists -%>
+    $('#email-response-error').text("That email is already registered.")
+  <%- else -%>
+    $('#email-response-error').text("Hm. That email ain't right.")
+  <%- end -%>
+
+  showError();
 
 <%- end -%>

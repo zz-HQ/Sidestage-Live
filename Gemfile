@@ -19,13 +19,15 @@ gem "rmagick"
 
 
 # Frontend
+gem 'simple_form'
 gem 'turbolinks'
-gem 'jquery-rails', '3.1.0'
 gem 'sass-rails'
 gem 'compass-rails'
+gem 'compass-rails'
+gem 'ceaser-easing'
+gem 'jquery-rails', '3.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'simple_form'
 
 
 
