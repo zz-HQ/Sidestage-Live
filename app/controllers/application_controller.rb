@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
   #
   #
   #  
+
+  before_action :detect_device_format
   
   #
   # Protected
@@ -49,5 +51,18 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
-  
+  def detect_device_format
+    case request.user_agent
+    when /iPad/i
+      request.variant = :tablet
+    when /iPhone/i
+      request.variant = :phone
+    when /Android/i && /mobile/i
+      request.variant = :phone
+    when /Android/i
+      request.variant = :tablet
+    when /Windows Phone/i
+      request.variant = :phone
+    end
+  end  
 end
