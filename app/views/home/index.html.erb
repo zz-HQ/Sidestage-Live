@@ -22,29 +22,28 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <div class="row">
+      <h1 id="logo">Sidestage</h1>  
+    </div>
+    
 
     <div id="splash">
-
-      <div class="row">
-        <h1 id="logo">Sidestage</h1>  
-      </div>
-      
-      <div class="row text-center">
+      <div id="splash-content">
+        
         <div id="text">
           <h2 class="text-shadow">Life's your stage.</h2>
           <p class="text-shadow">
-            We're currently invite-only, but you can Sign Up for untethered access below.<br>
             We're opening our doors soon. Submit your email below to find out when.
           </p>
         </div>
-      </div>
 
-      <div class="row">
+
         <div id="animation-container">
+
           <div id="email-form">
             <%= simple_form_for :subscriber, url: create_subscriber_path, remote: true do |f| %>
               <%= f.text_field :email, placeholder: "Email Address" %>
-              <%= f.submit :submit %>
+              <%= f.submit :submit, data: {disable_with: "wait."} %>
             <%- end -%>
           </div><!-- email-form -->
 
@@ -58,16 +57,17 @@
             </p>
           </div>
 
-        </div><!-- animation-container -->
-      </div><!-- .row -->
+        </div><!-- #animation-container -->
+
+        <div class="footer text-center">
+          <p class="text-shadow">Sidestage © <%= Time.now.year %></p>  
+        </div>
+        
+      </div><!-- #splash-content -->
 
     </div>
 
-    <footer>
-      <div class="row">
-        <p>Sidestage © <%= Time.now.year %></p>  
-      </div>
-    </footer>
+
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 

@@ -1,25 +1,40 @@
-#splash
-  +background-size(cover)
-  background: #fff image-url('splash/background.jpg') center center no-repeat
-  color: #fff
+html,
+body
   height: 100%
-  left: 0
-  position: absolute
-  top: 0
   width: 100%
 
-  #logo
-    font-size: 32px
-    +retina-sprite(sidestage-logo, $sprite, $sprite2x)
-    text-indent: -5000px
-    margin-top: 42px
-  
+body
+  background: #fff image-url('splash/background.jpg') center center no-repeat
+  +background-size(cover)
+
+#logo
+  font-size: 32px
+  +retina-sprite(sidestage-logo, $sprite, $sprite2x)
+  text-indent: -5000px
+  margin-top: 42px
+
+
+#splash
+  color: #fff
+  height: 100%
+  width: 100%
+  position: relative
+
+  #splash-content
+    height: 270px
+    left: 50%
+    margin: -160px 0 0 -400px
+    position: absolute
+    top: 50%
+    width: 800px
+
   #text
+    text-align: center
+
     h2
       color: #fff
       font-size: 70px
-      margin-bottom: 0px
-      margin-top: 230px
+      margin: 0px
 
     p
       font-size: 22px
@@ -27,14 +42,14 @@
       margin-top: 13px
   
   .text-shadow
-    +text-shadow(0px 2px 13px rgba(0,0,0,0.33))
+    +text-shadow(0px 2px 13px rgba(0,0,0,1))
   
   #animation-container
     +perspective(1000px)
-    height: 200px
+    height: 130px
     margin: 0 auto
     position: relative
-    width: 640px
+    width: 520px
     
     #email-form,
     #email-response
@@ -63,7 +78,7 @@
         background-color: #fff
         color: #999DA2
         font-weight: 300
-        width: 462px
+        width: 342px
 
       [type="submit"]
         +transition(background-color 500ms ceaser($easeOutExpo))
@@ -105,18 +120,6 @@
 
     &.success #email-response
       background-color: rgba(56, 187, 45, 0.8)
-
-footer
-  background-color: #fff
-  bottom: 0
-  height: 53px
-  left: 0
-  position: fixed
-  width: 100%
-
-
-
-
 
 
 
