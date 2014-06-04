@@ -5,9 +5,10 @@ button
   font-family: $font-family
 
 a
-  color: $text-color
   +transition(color 400ms ceaser($easeOutExpo))
+  color: $text-color
+  text-decoration: none
   
   &:hover
-    color: lighten($text-color, 50%)
     +transition(color 400ms ceaser($easeOutExpo))
+    color: lighten($text-color, 50%)

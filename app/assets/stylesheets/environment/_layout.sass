@@ -1,2 +1,77 @@
 .wrap
   +outer-container
+
+body
+  background-color: #eee
+
+body > header
+  background-color: #fff
+  margin-bottom: 35px
+  overflow: hidden
+  padding: 22px 0
+
+  #logo,
+  #city-switch
+    float: left
+  
+  #logo
+    margin: 0 20px 0 0
+    position: relative
+    top: 7px
+
+    a
+      +retina-sprite(sidestage-logo, $sprite, $sprite2x)
+      display: block
+      text-indent: -5000px
+
+  #city-switch
+    width: 120px
+
+  #main-nav
+    float: right
+
+    a
+      font-size: 14px
+      margin-left: 20px
+      position: relative
+      text-decoration: none
+      text-transform: uppercase
+      top: 8px
+
+
+body > footer
+  background-color: #fff
+  margin-top: 75px
+  overflow: hidden
+  padding: 22px 0
+
+  .left
+    +span-columns(4)
+    position: relative
+    top: 10px
+
+    a
+      font-size: 18px
+      font-weight: 300
+      margin-right: 45px
+
+  .right
+    +span-columns(4)
+    position: relative
+    text-align: right
+    top: 6px
+    
+    .select-locale,
+    .select-currency
+      display: inline-block
+      width: 120px
+
+    .nice-select
+      border: none
+      
+      select
+        left: 0
+
+
+
+

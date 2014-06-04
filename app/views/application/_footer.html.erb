@@ -1,5 +1,22 @@
 <footer>
-  
+  <div class="wrap">
+    
+    <nav class="left">
+      <%= link_to "About", nil %>
+      <%= link_to "Contact", nil %>
+      <%= link_to "AGB", nil %>
+    </nav>
+
+    <nav class="right">
+      <div class="select-locale">
+        <%= nice_select(select_tag 'current_locale', options_for_select(["English", "German"], "Berlin"), include_blank: false) %>  
+      </div>
+      <div class="select-currency">
+        <%= nice_select(select_tag 'current_currency', options_for_select(["Euro", "Pound"], "Berlin"), include_blank: false) %>
+      </div>
+    </nav>
+
+  </div>  
 </footer>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
