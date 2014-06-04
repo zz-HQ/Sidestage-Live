@@ -4,8 +4,15 @@ body.desktop
   width: 100%
 
 body.desktop
-  background: #fff image-url('splash/background.jpg') center center no-repeat
-  +background-size(cover)
+  
+  #background
+    background: #fff image-url('splash/background.jpg') center center no-repeat
+    +background-size(cover)
+    position: fixed
+    width: 100%
+    left: 0
+    top: 0
+    height: 100%
 
   #logo
     +retina-sprite(sidestage-logo, $sprite, $sprite2x)
