@@ -14,4 +14,14 @@
 #= require jquery_ujs
 #= require boilerplate
 #= require turbolinks
+#= require_tree ./modules
 #= require_tree .
+
+window.App = {} if window.App == undefined
+App = window.App
+
+App.init = ->
+  $('.nice-select').niceSelect()
+
+$(document).on 'page:update', App.init
+$ -> App.init()

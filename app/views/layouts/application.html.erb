@@ -1,30 +1,99 @@
 <!DOCTYPE html>
-<html>
-	<%= render "head" %>
-	<body>
-		<div>
-			<%= link_to "Home", root_path %>
-			|
-			<%= link_to "Musicians", artists_path %>
-			|
-			<% if current_user %>
-			    Eingeloggt Als: <%= current_user.name %> |
-				<%= link_to "logout", destroy_user_session_path, method: :delete %>
-				|
-				<%= link_to "Profile", current_user.profiles.count>0 ? account_profile_path(current_user.profiles.first) : new_account_profile_path %>
-				|
-				<%= link_to "Conversations", account_conversations_path %>
-			<% else %>	
-				<%= link_to "Login", new_user_session_path %>
-				|
-				<%= link_to "Sign up", new_user_registration_path %>
-			<% end %>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <%= render 'head' %>
+  <body>
 
-		</div>	
+    <%= render 'header' %>
+    
+    <%= render 'flash' %>
 
-		<%= render 'flash' %>
+    <%= yield %>
+    
+    <%= render 'footer' %>
 
-		<%= yield %>
-
-	</body>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- if false -%>
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <div>
+      <%= link_to "Home", root_path %>
+      |
+      <%= link_to "Musicians", artists_path %>
+      |
+      <% if current_user %>
+          Eingeloggt Als: <%= current_user.name %> |
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        |
+        <%= link_to "Profile", current_user.profiles.count>0 ? account_profile_path(current_user.profiles.first) : new_account_profile_path %>
+        |
+        <%= link_to "Conversations", account_conversations_path %>
+      <% else %>  
+        <%= link_to "Login", new_user_session_path %>
+        |
+        <%= link_to "Sign up", new_user_registration_path %>
+      <% end %>
+
+    </div>  
+
+    <%= render 'flash' %>
+
+    <%= yield %>
+
+  </body>
+</html>
+
+<%- end -%>

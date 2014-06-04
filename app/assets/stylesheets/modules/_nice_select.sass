@@ -1,0 +1,27 @@
+.nice-select
+  border: 1px solid $border-color
+  +border-radius($border-radius)
+  height: 40px
+  position: relative
+
+  .select-label
+    color: #6F777B
+    font-weight: 300
+    left: 15px
+    position: absolute
+    top: 9px
+
+  select
+    background-color: #fff
+    border: none
+    font-size: 14px
+    position: absolute
+    top: 6px
+    +opacity(0)
+    width: 100%
+
+  .select-arrow
+    position: absolute
+    +retina-sprite(select-arrow, $sprite, $sprite2x)
+    right: 10px
+    top: 15px
