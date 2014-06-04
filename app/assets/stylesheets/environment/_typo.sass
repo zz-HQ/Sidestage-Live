@@ -3,3 +3,11 @@ input,
 select,
 button
   font-family: $font-family
+
+a
+  color: $text-color
+  +transition(color 400ms ceaser($easeOutExpo))
+  
+  &:hover
+    color: lighten($text-color, 50%)
+    +transition(color 400ms ceaser($easeOutExpo))
