@@ -25,6 +25,10 @@
 		<%= render 'flash' %>
 
 		<%= yield %>
-
+		<%= form_tag change_currency_path do |f| %>
+			<%= select_tag :currency, options_from_collection_for_select(Currency.all, :name, :name, @current_currency.name) %>
+			<input type="submit" value="Change">
+		<% end %>
+		
 	</body>
 </html>

@@ -8,7 +8,7 @@ class Message < ActiveRecord::Base
   #
   #
   
-  validates :sender_id, :receiver_id, :subject, :body, presence: true
+  validates :sender_id, :receiver_id, :body, presence: true
   validate :validate_conversation
   validate :validate_receiver
 
@@ -76,7 +76,6 @@ class Message < ActiveRecord::Base
     conversation = Conversation.new
     conversation.sender_id = self.sender_id
     conversation.receiver_id = self.receiver_id
-    conversation.subject = self.subject
     conversation.body = self.body
     conversation.last_message_at = Time.now    
     conversation.save
@@ -84,6 +83,7 @@ class Message < ActiveRecord::Base
   end
   
   def update_conversation_order
+    conversation.body = self.body
     conversation.last_message_at = self.created_at
     conversation.save
   end

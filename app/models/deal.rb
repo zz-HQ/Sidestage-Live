@@ -118,7 +118,6 @@ class Deal < ActiveRecord::Base
     message = Message.new
     message.sender_id = offer? ? self.artist_id : self.customer_id
     message.receiver_id = offer? ? self.customer_id : self.artist_id
-    message.subject = "Deal Subject"
     message.body =  note || "Deal..."
     message.save
     message

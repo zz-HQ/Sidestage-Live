@@ -15,8 +15,8 @@
 <strong>Price</strong>
 </p>
 <p>
-    <%= resource.price %>
-</p>    
+    <%= number_to_currency(price_in_current_currency(resource.price, resource.user.currency), unit: current_currency.name) %>
+</p>
 
 <p>
 <strong>About</strong>

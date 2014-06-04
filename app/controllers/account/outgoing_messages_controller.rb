@@ -33,7 +33,7 @@ class Account::OutgoingMessagesController < AuthenticatedController
   protected
   
   def permitted_params
-    params.permit(message: [:subject, :body, :receiver_id, :conversation_id])
+    params.permit(message: [:body, :receiver_id, :conversation_id])
   end 
   
   #

@@ -36,6 +36,16 @@ class User < ActiveRecord::Base
   
   has_many :booking_requests, class_name: 'Deal', foreign_key: :customer_id
   has_many :offers, -> { offers }, class_name: 'Deal', foreign_key: :artist_id  
+
+  #
+  # Callbacks
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  before_save :set_default_currency
   
   #
   # Instance Methods
@@ -63,6 +73,20 @@ class User < ActiveRecord::Base
   
   def name
     [first_name, last_name].join(" ")
+  end
+  
+  #
+  # Private
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  private
+  
+  def set_default_currency
+    self.currency ||= Rails.configuration.default_currency
   end
   
 end

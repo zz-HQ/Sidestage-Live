@@ -21,7 +21,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'simple_form'
 
-
 group :production do
 end
 
@@ -33,5 +32,4 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'  
 end

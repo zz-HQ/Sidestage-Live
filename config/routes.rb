@@ -1,7 +1,8 @@
 Airmusic::Application.routes.draw do
   
-  root to: "home#index"
-
+  root to: 'home#index'
+  post 'change_currency', to: 'home#change_currency', as: :change_currency
+  
   devise_for :users
   
   resources :artists

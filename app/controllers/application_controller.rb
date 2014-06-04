@@ -19,6 +19,18 @@ class ApplicationController < ActionController::Base
   #
   #  
   
+  before_filter :load_currency
+
+  #
+  # Helpers
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
+  helper_method :current_currency
+  
   #
   # Protected
   # ---------------------------------------------------------------------------------------
@@ -29,7 +41,9 @@ class ApplicationController < ActionController::Base
   
   protected
   
-  
+  def current_currency
+    @current_currency
+  end
 
   #
   # Private
@@ -49,5 +63,8 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  def load_currency
+    @current_currency ||= Currency.where(name: session[:currency] || Rails.configuration.default_currency).first
+  end
   
 end
