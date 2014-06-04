@@ -51,18 +51,14 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  def old_browser?
+    browser.ie? && browser.version.to_i <= 9
+  end
+  helper_method :old_browser?
+
   def detect_device_format
-    case request.user_agent
-    when /iPad/i
-      request.variant = :tablet
-    when /iPhone/i
-      request.variant = :phone
-    when /Android/i && /mobile/i
-      request.variant = :phone
-    when /Android/i
-      request.variant = :tablet
-    when /Windows Phone/i
-      request.variant = :phone
-    end
+    request.variant = :mobile if browser.mobile?
+    request.variant = :tablet if browser.tablet?
+    request.variant = :old_browser if old_browser?
   end  
 end

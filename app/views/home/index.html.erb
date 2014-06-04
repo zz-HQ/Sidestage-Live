@@ -17,11 +17,11 @@
 
     <%= csrf_meta_tags %>
   </head>
-  <body class="desktop">
+  <body class="desktop <%= "old-browser" if old_browser? %>">
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+    
     <div class="row">
       <h1 id="logo">Sidestage</h1>  
     </div>
@@ -65,9 +65,7 @@
         
       </div><!-- #splash-content -->
 
-    </div>
-
-
+    </div><!-- #splash -->
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 

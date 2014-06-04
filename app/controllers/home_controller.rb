@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     respond_to do |wants|
       wants.html
-      wants.html.phone
+      wants.html.mobile
     end
   end
 
@@ -16,11 +16,12 @@ class HomeController < ApplicationController
     # @success = res['add_count'] > 0
     # @already_exists = res['errors'].first['code'] == 214 unless @success
 
-    @success = true
+    @success = false
 
     respond_to do |wants|
       wants.js
       wants.js.mobile
+      wants.js.old_browser
     end
   end
 
