@@ -1,29 +1,80 @@
 User.all.map(&:destroy)
-user_attributes = {
-  first_name: "Artist FN",
-  last_name: "Artist LN",
-  city: "Berlin", 
-  mobile: "013456789" 
-}
+Genre.all.map(&:destroy)
+
+
+["Electro", "Jazz", "Classic", "Pop", "Rock", "Techno"].each do |g|
+  Genre.create(name: g)
+end
+
+
+artist_attributes = [
+  {
+    first_name: "Taylor",
+    last_name: "Swift",
+    city: "Berlin", 
+    mobile: "013456789",
+    avatar: File.open("#{Rails.root.to_s}/public/seed/taylor-swift.jpg")
+  },
+  {
+    first_name: "Justin",
+    last_name: "Timberlake",
+    city: "Berlin", 
+    mobile: "013456789",
+    avatar: File.open("#{Rails.root.to_s}/public/seed/justin-timberlake.jpg")
+  },
+  {
+    first_name: "Bon",
+    last_name: "Jovi",
+    city: "London", 
+    mobile: "013456789",
+    avatar: File.open("#{Rails.root.to_s}/public/seed/bon-jovi.jpg")
+  },
+  {
+    first_name: "The",
+    last_name: "Rolling Stones",
+    city: "Berlin", 
+    mobile: "013456789",
+    avatar: File.open("#{Rails.root.to_s}/public/seed/the-rolling-stones.jpg") 
+  },
+  {
+    first_name: "Beyoncé",
+    last_name: "",
+    city: "Berlin", 
+    mobile: "013456789",
+    avatar: File.open("#{Rails.root.to_s}/public/seed/beyonce.jpg") 
+  },
+  {
+    first_name: "P!nk",
+    last_name: "",
+    city: "Berlin", 
+    mobile: "013456789",
+    avatar: File.open("#{Rails.root.to_s}/public/seed/pink.jpg") 
+  }
+]
+  
 
 profile_attributes = {
-  price: 123,
-  genre_ids: Genre.all.map(&:id),
   tagline: "Here is my tagline.",
-  about: "My father is a Jazz Drummer so i learned the drums",
+  about: "My father is a Jazz Drummer so i learned the drums. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, et, assumenda non exercitationem vitae nulla minima consectetur ex! Neque, itaque voluptate consectetur dignissimos non voluptatibus nisi cumque quis nulla ipsa!",
   style: "When it comes to genres i'm a jack of all trades Techno, Minimal...",
 }
 
 
-10.times do |t|
+6.times do |t|
+
   user = User.new
-  user_attributes.each do |key, val|
-    user.send("#{key}=", "#{val}#{t+1}")
-  end
+  user.first_name = artist_attributes[t][:first_name]
+  user.last_name = artist_attributes[t][:last_name]
+  user.city = artist_attributes[t][:city]
+  user.mobile = artist_attributes[t][:mobile]
+  user.avatar = artist_attributes[t][:avatar]
+
   profile = Profile.new
   profile_attributes.each do |key, val|
-    profile.send("#{key}=", val)
-  end  
+   profile.send("#{key}=", val)
+  end
+  profile.price = rand(500)
+  profile.genre_ids = Genre.all.map(&:id).sample
   user.confirmed_at = Time.now
   user.password = user.password_confirmation = "12345678"
   user.email = "artist#{t+1}@example.com"
