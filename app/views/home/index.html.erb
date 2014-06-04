@@ -1,2 +1,82 @@
-<h3>Home</h3>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sidestage</title>
+    <meta name="description" content="Sidestage is a marketplace for hiring musicians.">
+    <meta name="keywords" content="Sidestage">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="desktop <%= "old-browser" if old_browser? %>">
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <div class="row">
+      <h1 id="logo">Sidestage</h1>  
+    </div>
+    
+
+    <div id="splash">
+      <div id="splash-content">
+        
+        <div id="text">
+          <h2 class="text-shadow">Life's your stage.</h2>
+          <p class="text-shadow">
+            We're opening our doors soon. Submit your email below to find out when.
+          </p>
+        </div>
+
+
+        <div id="animation-container">
+
+          <div id="email-form">
+            <%= simple_form_for :subscriber, url: create_subscriber_path, remote: true do |f| %>
+              <%= f.text_field :email, placeholder: "Email Address" %>
+              <%= f.submit :submit, data: {disable_with: "wait."} %>
+            <%- end -%>
+          </div><!-- email-form -->
+
+          <div id="email-response">
+            <p id="email-response-success" class="text-shadow" style="display:none">
+              <strong>Your email was submitted!</strong><br>
+              We'll let you know when we launch.
+            </p>
+            <p id="email-response-error" class="text-shadow" style="display:none">
+              That email is already registered.
+            </p>
+          </div>
+
+        </div><!-- #animation-container -->
+
+        <div class="footer text-center">
+          <p class="text-shadow">Sidestage © <%= Time.now.year %></p>  
+        </div>
+        
+      </div><!-- #splash-content -->
+
+    </div><!-- #splash -->
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create', 'UA-51563182-1');ga('send','pageview');
+    </script>
+
+  </body>
+</html>

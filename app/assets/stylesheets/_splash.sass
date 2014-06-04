@@ -1,0 +1,200 @@
+html,
+body.desktop
+  height: 100%
+  width: 100%
+
+body.desktop
+  background: #fff image-url('splash/background.jpg') center center no-repeat
+  +background-size(cover)
+
+  #logo
+    +retina-sprite(sidestage-logo, $sprite, $sprite2x)
+    font-size: 32px
+    margin-top: 42px
+    text-indent: -5000px
+    position: absolute
+
+  #splash
+    color: #fff
+    height: 100%
+    position: relative
+    width: 100%
+
+    #splash-content
+      height: 270px
+      left: 50%
+      margin: -84px 0 0 -400px
+      position: absolute
+      top: 50%
+      width: 800px
+
+    #text
+      text-align: center
+
+      h2
+        color: #fff
+        font-size: 70px
+        margin: 0px
+
+      p
+        font-size: 22px
+        line-height: 1.4em
+        margin-top: 13px
+    
+    .text-shadow
+      +text-shadow(0px 2px 13px rgba(#000, 1))
+    
+    #animation-container
+      +perspective(1000px)
+      height: 130px
+      margin: 0 auto
+      position: relative
+      width: 530px
+      
+      #email-form,
+      #email-response
+        +backface-visibility(hidden)
+        +border-radius($border-radius)
+        +transform-style(preserve-3d)
+        +transition(transform 600ms ceaser($easeOutQuint))
+        +rgba-background(rgba(#000, 0.3))
+        height: 50px
+        padding: 10px
+        position: absolute
+        top: 0
+
+      #email-form
+        +transform(rotateX(0deg))
+
+        [type="text"],
+        [type="submit"]
+          +border-radius($border-radius)
+          border: none
+          font-size: 18px
+          outline: none
+          padding: 14px
+
+        [type="text"]
+          background-color: #fff
+          color: #999DA2
+          font-weight: 300
+          width: 342px
+
+        [type="submit"]
+          +transition(background-color 500ms ceaser($easeOutExpo))
+          background-color: #7bf
+          color: #fff
+          margin-left: 7px
+          text-transform: uppercase
+          width: 120px
+
+          &:hover
+            background-color: darken(#7bf, 10%)
+            +transition(background-color 500ms ceaser($easeOutExpo))
+
+      #email-response
+        +transform(rotateX(180deg))
+        width: 100%
+
+      #email-response-success,
+      #email-response-error
+        text-align: center
+        font-size: 18px
+      
+      #email-response-success
+        margin-top: -1px
+    
+      #email-response-error
+        margin-top: 10px
+
+      &.success,
+      &.error
+        #email-form
+          +transform(rotateX(180deg))
+
+        #email-response
+          +transform(rotateX(360deg))
+
+      &.error #email-response
+        +rgba-background(rgba(184, 42, 23, 0.8))
+
+      &.success #email-response
+        +rgba-background(rgba(56, 187, 45, 0.8))
+
+  .footer
+    +opacity(0.5)
+    position: relative
+    top: 230px
+
+body.phone
+  color: #000
+  margin-top: 0
+  padding-top: 0
+  text-align: center
+
+  #girl
+    height: 200px
+    position: relative
+    top: -20px
+    
+    img
+      left: 0
+      max-width: 100%
+      position: absolute
+      top: 0
+
+    #logo
+      +retina-sprite(sidestage-logo-iphone, $sprite, $sprite2x)
+      margin: 0 auto
+      position: relative
+      text-indent: -5000px
+      top: 100px
+      z-index: 10
+
+
+body.old-browser
+
+  #splash
+
+    #animation-container
+      
+      #email-form,
+      #email-response
+        position: relative
+      
+      #email-form
+        [type="submit"]
+          width: 129px
+
+      #email-response
+        background: none
+        width: 520px
+
+        #email-response-success,
+        #email-response-error
+          padding: 20px 0
+          margin-left: -10px
+          margin-top: -7px
+
+        #email-response-success
+          +rgba-background(rgba(56, 187, 45, 0.8))
+
+        #email-response-error
+          +rgba-background(rgba(184, 42, 23, 0.8))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
