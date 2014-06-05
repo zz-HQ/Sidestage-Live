@@ -4,9 +4,11 @@
 
 <%= content_tag :a, href: artist_path(artist), class: "artist" do %>
   <div class="photo">
-    <h3><%= artist.user.name %></h3>
     <%= image_tag artist.user.avatar_url(:thumb) %>
-    <div class="city">Berlin</div>
+    <div class="text">
+      <h3><%= artist.user.name %></h3>
+      <div class="city">Berlin</div>
+    </div>
   </div>
   <div class="label">
     <div class="genres"><%= artist.genres.map(&:name).join(", ") %></div>

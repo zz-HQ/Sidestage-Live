@@ -20,10 +20,43 @@
       .artist
         +span-columns(2 of 6)
         +omega(3n)
-
+        margin-bottom: 20px
+        
         .photo
-    
+          height: 230px
+          position: relative
+
           img
+            position: absolute
+            top: 0
             width: 100%
 
+          .text
+            bottom: 20px
+            color: #fff
+            padding-left: 20px
+            position: absolute
+            
+            h3
+              margin: 0
+
+            .city
+              font-weight: 300
+
+        .label
+          +span-columns(8)
+          background-color: #fff
+          padding: 10px
+
+          .genres
+            +span-columns(4)
+            color: $text-color
+
+          .price
+            +span-columns(4)
+            text-align: right
+            color: $blue
+
+          
+          
 
