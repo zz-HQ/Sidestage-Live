@@ -1,6 +1,6 @@
 .nice-select
-  border: 1px solid $border-color
   +border-radius($border-radius)
+  border: 1px solid $border-color
   height: 36px
   position: relative
 
@@ -12,16 +12,17 @@
     top: 6px
 
   select
+    +opacity(0)
     background-color: #fff
     border: none
+    cursor: pointer
     font-size: 14px
     position: absolute
     top: 6px
-    +opacity(0)
     width: 100%
 
   .select-arrow
-    position: absolute
     +retina-sprite(select-arrow, $sprite, $sprite2x)
+    position: absolute
     right: 10px
     top: 15px
