@@ -5,12 +5,18 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <%= render 'head' %>
   <body>
-
-    <%= render 'header' %>
     
-    <%= render 'flash' %>
+    <div id="wrap">
+      <div id="main" class="clearfix">
 
-    <%= yield %>
+        <%= render 'header' %>
+        
+        <%= render 'flash' %>
+        
+        <%= yield %>
+
+      </div>
+    </div>    
     
     <%= render 'footer' %>
 
