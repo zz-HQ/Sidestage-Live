@@ -29,6 +29,8 @@
 			<%= select_tag :currency, options_from_collection_for_select(Currency.all, :name, :name, @current_currency.name) %>
 			<input type="submit" value="Change">
 		<% end %>
-		
+		<% available_locales.each do |sym, name| %>
+			<%= link_to name, params.merge(:locale => sym) %> |
+		<% end %>
 	</body>
 </html>
