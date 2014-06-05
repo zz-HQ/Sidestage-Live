@@ -1,28 +1,28 @@
 <head>
-	<title>Airmusic</title>
+	<title>Sidestage</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<meta name="title" content="Airmusic" />
-	<meta name="description" content="Airmusic" />
+	<meta name="title" content="Sidestage" />
+	<meta name="description" content="Sidestage" />
 	<meta name="keywords" content="" />
 
 	<meta name="author" content="" />
 	<meta name="copyright" content="" />
-	<meta name="application-name" content="Airmusic" />
+	<meta name="application-name" content="Sidestage" />
 
 	<!-- for Facebook -->
-	<meta property="og:title" content="Airmusic" />
+	<meta property="og:title" content="Sidestage" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="http://airmusic.herokuapp.com" />
+	<meta property="og:image" content="http://sidestage.herokuapp.com" />
 	<meta property="og:url" content="<%= request.url %>" />
-	<meta property="og:description" content="Airmusic" />
+	<meta property="og:description" content="Sidestage" />
 
 	<!-- for Twitter -->
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="Airmusic" />
-	<meta name="twitter:description" content="Airmusic" />
-	<meta name="twitter:image" content="http://airmusic.herokuapp.com/assets/logo.png" />
+	<meta name="twitter:title" content="Sidestage" />
+	<meta name="twitter:description" content="Sidestage" />
+	<meta name="twitter:image" content="http://sidestage.herokuapp.com/assets/logo.png" />
 
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -31,4 +31,7 @@
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
+	
+	<%= yield :html_head %>
+	
 </head>

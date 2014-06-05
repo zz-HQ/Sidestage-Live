@@ -11,6 +11,7 @@ gem 'inherited_resources'
 gem "rmagick"
 gem 'jbuilder', '~> 1.2'
 gem 'globalize', '~> 4.0.1'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem 'turbolinks'
 gem 'jquery-rails', '3.1.0'
@@ -20,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 gem 'simple_form'
+
 
 group :production do
 end
