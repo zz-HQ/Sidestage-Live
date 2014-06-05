@@ -38,10 +38,38 @@
         +span-columns(2 of 6)
         +omega(3n)
         margin-bottom: 20px
-        
+
         .photo
           height: 230px
           position: relative
+          
+          .overlay
+            +opacity(0)
+            +rgba-background(rgba(#55B1FF, 0.7))
+            +transition(opacity 800ms ceaser($easeOutExpo))
+            height: 100%
+            position: relative
+            width: 100%
+            z-index: 1
+
+            .view-profile
+              +border-radius($border-radius)
+              background-color: #fff
+              border-radius: 4px
+              color: $blue
+              font-weight: 300
+              margin: 0 auto
+              padding: 10px 20px
+              position: relative
+              text-align: center
+              text-transform: uppercase
+              top: 90px
+              width: 170px
+
+          &:hover
+            .overlay
+              +opacity(1)
+              +transition(opacity 200ms ceaser($easeOutCirc))
 
           img
             position: absolute
@@ -53,6 +81,7 @@
             color: #fff
             padding-left: 20px
             position: absolute
+            z-index: 2
             
             h3
               margin: 0
@@ -73,6 +102,7 @@
             +span-columns(4)
             color: $blue
             text-align: right
+      
 
           
           
