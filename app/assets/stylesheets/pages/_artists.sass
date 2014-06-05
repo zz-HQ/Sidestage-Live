@@ -4,15 +4,32 @@
   aside
     +span-columns(2)
 
+    header
+      +bigger-font
+      font-weight: 300
+
   .content
     +span-columns(6)
     
-    .results-count
-      +span-columns(3 of 6)
+    header
+      height: 50px
 
-    .results-order
-      +span-columns(3 of 6)
-      text-align: right
+      .results-count
+        +span-columns(3 of 6)
+        +bigger-font
+        font-weight: 700
+
+      .results-order
+        +span-columns(3 of 6)
+        text-align: right
+        margin-top: 6px
+
+        a
+          margin-left: 10px
+
+          + a
+            border-left: 1px solid $text-color-light
+            padding-left: 10px
     
     .results
       +span-columns(8)
