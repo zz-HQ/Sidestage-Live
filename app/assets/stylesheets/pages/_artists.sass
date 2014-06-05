@@ -6,9 +6,24 @@
 
   .content
     +span-columns(6)
+    
+    .results-count
+      +span-columns(3 of 6)
 
-    .artist
-      +span-columns(2 of 6)
-      // TODO: Find a proper solution to fix this hack
-      margin-right: 13px
+    .results-order
+      +span-columns(3 of 6)
+      text-align: right
+    
+    .results
+      +span-columns(8)
+
+      .artist
+        +span-columns(2 of 6)
+        +omega(3n)
+
+        .photo
+    
+          img
+            width: 100%
+
 
