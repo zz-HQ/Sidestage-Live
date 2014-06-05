@@ -5,11 +5,12 @@
 <div class="artist">
   <div class="photo">
     <h3><%= artist.user.name %></h3>
+    <%= image_tag artist.user.avatar_url(:thumb) %>
     <div class="city">Berlin</div>
   </div>
   <div class="label">
-    <div class="genres">Jazz my ass</div>
-    <div class="price">from <strong><%= number_to_currency 326 %></strong></div>
+    <div class="genres"><%= artist.genres.map(&:name).join(", ") %></div>
+    <div class="price">from <strong><%= number_to_currency artist.price %></strong></div>
   </div>
   
   <%= link_to "View Profile", artist_path(artist) %>

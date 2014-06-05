@@ -16,7 +16,7 @@ gem "browser"
 
 # Image Processing
 gem 'carrierwave'
-gem "rmagick"
+gem "mini_magick"
 
 
 # Frontend
