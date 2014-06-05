@@ -1,9 +1,10 @@
 <div id="artists">
+
   <aside>
     Filter Artists
   </aside>  
+
   <div class="content">
-    
     <header>
       <div class="artists-count">315 Artists found</div>
       <div class="artists-order">
@@ -12,10 +13,10 @@
         <%= link_to "Price", nil %>
       </div>
     </header>
-
+    
     <div class="results">
       <%= render partial: 'artists/artist', collection: collection %>  
     </div>
-    
   </div>
+
 </div>

@@ -2,7 +2,7 @@
 <%# TODO: Set real image %>
 <%# TODO: Set real city %>
 
-<div class="artist">
+<%= content_tag :a, href: artist_path(artist), class: "artist" do %>
   <div class="photo">
     <h3><%= artist.user.name %></h3>
     <%= image_tag artist.user.avatar_url(:thumb) %>
@@ -13,5 +13,6 @@
     <div class="price">from <strong><%= number_to_currency artist.price %></strong></div>
   </div>
   
-  <%= link_to "View Profile", artist_path(artist) %>
-</div>
+  <%#= link_to "View Profile", artist_path(artist) %>
+<%- end -%>
+
