@@ -22,6 +22,7 @@ App = window.App
 
 App.init = ->
   $('.nice-select').niceSelect()
+  $('nav.tabs').tabs()
 
 $(document).on 'page:update', App.init
 $ -> App.init()
