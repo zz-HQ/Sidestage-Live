@@ -18,7 +18,6 @@
       <li class="thumb"></li>
       <li class="thumb"></li>
     </ul>
-    
 
     <%# TODO: About | Details | Reviews %>
     <nav class="tabs" data-id="artist">
@@ -45,8 +44,23 @@
   </div>
 
   <aside>
-    
-  </aside>  
+    <%- if false -%>
+    <%# TODO Finish Aside %>
+
+    <div class="booking-teaser">
+      <div class="label">from</div>
+      
+      <div class="price">
+        <%= number_to_currency resource.price %>
+      </div>
+      
+      <div class="date">
+        <%= text_field_tag :date, 'tt/mm/yyyy' %>
+      </div>
+
+      <%= link_to "Book it", nil, class: "btn btn-submit" %>
+    </div>
+  <aside>  
 
 </div>
 
