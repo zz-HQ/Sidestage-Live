@@ -1,0 +1,24 @@
+# Add account credentials and API keys here.
+# See http://railsapps.github.io/rails-environment-variables.html
+# This file should be listed in .gitignore to keep your settings secret!
+# Each entry sets a local environment variable.
+# For example, setting:
+# GMAIL_USERNAME: Your_Gmail_Username
+# makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
+
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+
+MAILCHIMP_API_KEY: b0b9df2b00309d67f7839a3c9571bafc-us8
+MAILCHIMP_LIST_ID: 0cf41131bb
+DEVISE_SECRET_KEY: 2369c5e33d4bff40382bacb283d6d713e9b73450c5acfcb2455a710edbe31309b803c7aeb0edee64c4697c3161b45bd5ef6dc0c828c93b7f09101de11934aded
