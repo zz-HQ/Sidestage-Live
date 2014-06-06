@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
   #
   #
   #  
+
+  before_action :detect_device_format
   
   before_filter :load_currency
 
@@ -31,6 +33,7 @@ class ApplicationController < ActionController::Base
   #  
   
   helper_method :current_currency
+  helper_method :old_browser?
   
   #
   # Protected
@@ -64,6 +67,16 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  def old_browser?
+    browser.ie? && browser.version.to_i <= 9
+  end
+  
+  def detect_device_format
+    request.variant = :mobile if browser.mobile?
+    request.variant = :tablet if browser.tablet?
+    request.variant = :old_browser if old_browser?
+  end  
+
   def load_currency
     @current_currency ||= Currency.where(name: session[:currency] || Rails.configuration.default_currency).first
   end

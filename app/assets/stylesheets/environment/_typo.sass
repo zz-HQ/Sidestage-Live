@@ -1,0 +1,21 @@
+body,
+input,
+select,
+button
+  font-family: $font-family
+
+body
+  color: #000
+  font-weight: 300
+
+a
+  +transition(color 400ms ceaser($easeOutExpo))
+  color: $text-color
+  text-decoration: none
+  
+  &:hover
+    +transition(color 400ms ceaser($easeOutExpo))
+    color: lighten($text-color, 50%)
+
+=bigger-font
+  font-size: 22px

@@ -1,8 +1,25 @@
-<ul>
-    <% collection.each do |profile| %>
-        <li>
-            <h4><%= profile.user.name %></h4>
-            <%= link_to "View Profile", artist_path(profile) %>
-        </li>    
-    <% end %>
-</ul>    
+<div id="artists">
+
+  <aside>
+    <header>
+      Filter Artists
+    </header>
+    
+  </aside>  
+
+  <div class="content">
+    <header>
+      <div class="results-count">315 Artists found</div>
+      <div class="results-order">
+        <%= link_to "Popularity", nil %>
+        <%= link_to "Name", nil %>
+        <%= link_to "Price", nil %>
+      </div>
+    </header>
+    
+    <div class="results">
+      <%= render partial: 'artists/artist', collection: collection %>  
+    </div>
+  </div>
+
+</div>

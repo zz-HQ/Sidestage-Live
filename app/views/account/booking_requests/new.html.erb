@@ -14,23 +14,25 @@
 
 <% end %>
 <script>
-	$("#payment-form").on("submit", function(){
-		$(".payment-status").show();
-		Stripe.card.createToken($("#payment-form"), stripeResponseHandler);	
-		return false;
-	});
+	jQuery(document).ready(function($){
+		$("#payment-form").on("submit", function(){
+			$(".payment-status").show();
+			//Stripe.card.createToken($("#payment-form"), stripeResponseHandler);	
+			//return false;
+		});
 	
-	function stripeResponseHandler(status, response) {
-	    if (response.error) {
-	        $(".payment-errors").text(response.error.message).show();
-			$(".payment-status").hide();	
-	    } else {
-	        var form = $("#payment-form");
-	        var token = response['id'];
-	        form.append("<input type='hidden' name='stripe_token' value='" + token + "'/>");
-	        form.get(0).submit();
-	    }
-	}
+		function stripeResponseHandler(status, response) {
+		    if (response.error) {
+		        $(".payment-errors").text(response.error.message).show();
+				$(".payment-status").hide();	
+		    } else {
+		        var form = $("#payment-form");
+		        var token = response['id'];
+		        form.append("<input type='hidden' name='stripe_token' value='" + token + "'/>");
+		        form.get(0).submit();
+		    }
+		}
+	});
 </script>
 
 

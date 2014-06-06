@@ -1,4 +1,32 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <%= render 'head' %>
+  <body>
+    
+    <div id="wrap">
+      <div id="main" class="clearfix">
+
+        <%= render 'header' %>
+        
+        <%= render 'flash' %>
+        
+        <%= yield %>
+
+      </div>
+    </div>    
+    
+    <%= render 'footer' %>
+
+  </body>
+</html>
+
+
+
+<%- if false -%>
+<!DOCTYPE html>
 <html>
 	<%= render "head" %>
 	<body>
@@ -26,7 +54,7 @@
 
 		<%= yield %>
 		<%= form_tag change_currency_path do |f| %>
-			<%= select_tag :currency, options_from_collection_for_select(Currency.all, :name, :name, @current_currency.name) %>
+			<%= select_tag :currency, options_for_select(Currency.all.map(&:name), @current_currency.name) %>
 			<input type="submit" value="Change">
 		<% end %>
 		<% available_locales.each do |sym, name| %>
@@ -34,3 +62,5 @@
 		<% end %>
 	</body>
 </html>
+
+<%- end -%>

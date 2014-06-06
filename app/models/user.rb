@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
   has_many :booking_requests, class_name: 'Deal', foreign_key: :customer_id
   has_many :offers, -> { offers }, class_name: 'Deal', foreign_key: :artist_id  
 
+  mount_uploader :avatar, AvatarUploader
+  
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------

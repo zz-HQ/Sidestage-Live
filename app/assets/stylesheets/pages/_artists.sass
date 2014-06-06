@@ -1,0 +1,110 @@
+#artists
+  +outer-container
+
+  aside
+    +span-columns(2)
+
+    header
+      +bigger-font
+      font-weight: 300
+
+  .content
+    +span-columns(6)
+    
+    header
+      height: 50px
+
+      .results-count
+        +span-columns(3 of 6)
+        +bigger-font
+        font-weight: 700
+
+      .results-order
+        +span-columns(3 of 6)
+        margin-top: 6px
+        text-align: right
+
+        a
+          margin-left: 10px
+
+          + a
+            border-left: 1px solid $text-color-light
+            padding-left: 10px
+    
+    .results
+      +span-columns(8)
+
+      .artist
+        +span-columns(2 of 6)
+        +omega(3n)
+        margin-bottom: 20px
+
+        .photo
+          height: 230px
+          position: relative
+          
+          .overlay
+            +opacity(0)
+            +rgba-background(rgba(#55B1FF, 0.7))
+            +transition(opacity 800ms ceaser($easeOutExpo))
+            height: 100%
+            position: relative
+            width: 100%
+            z-index: 1
+
+            .view-profile
+              +border-radius($border-radius)
+              background-color: #fff
+              border-radius: 4px
+              color: $blue
+              font-weight: 300
+              margin: 0 auto
+              padding: 10px 20px
+              position: relative
+              text-align: center
+              text-transform: uppercase
+              top: 90px
+              width: 170px
+
+          &:hover
+            .overlay
+              +opacity(1)
+              +transition(opacity 200ms ceaser($easeOutCirc))
+
+          img
+            position: absolute
+            top: 0
+            width: 100%
+
+          .text
+            bottom: 20px
+            color: #fff
+            padding-left: 20px
+            position: absolute
+            z-index: 2
+            
+            h3
+              margin: 0
+
+            .city
+              font-weight: 300
+
+        .label
+          +span-columns(8)
+          background-color: #fff
+          border: 1px solid #DDE5E5
+          padding: 10px
+
+          .genres
+            +span-columns(4)
+            color: $text-color
+
+          .price
+            +span-columns(4)
+            color: $blue
+            text-align: right
+      
+
+          
+          
+

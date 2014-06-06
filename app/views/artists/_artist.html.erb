@@ -1,0 +1,23 @@
+<%# TODO: Set placeholder image %>
+<%# TODO: Set real image %>
+<%# TODO: Set real city %>
+
+<%= content_tag :a, href: artist_path(artist), class: "artist" do %>
+  <div class="photo">
+    <%= image_tag artist.user.avatar_url(:thumb) %>
+    <div class="text">
+      <h3><%= artist.user.name %></h3>
+      <div class="city">Berlin</div>
+    </div>
+    <div class="overlay">
+      <div class="view-profile">View Profile</div>
+    </div>
+  </div>
+  <div class="label">
+    <div class="genres"><%= artist.genres.map(&:name).join(", ") %></div>
+    <div class="price">from <strong><%= localized_price(artist.price, artist.user.currency) %></strong></div>
+  </div>
+  
+  <%#= link_to "View Profile", artist_path(artist) %>
+<%- end -%>
+
