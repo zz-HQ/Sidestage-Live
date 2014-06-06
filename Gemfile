@@ -11,12 +11,13 @@ gem 'inherited_resources'
 gem 'jbuilder', '~> 1.2'
 gem 'globalize', '~> 4.0.1'
 gem 'gibbon' # Handles Mailchimp integration
-gem "browser"
+gem 'browser'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 
 # Image Processing
 gem 'carrierwave'
-gem "mini_magick"
+gem 'mini_magick'
 
 
 # Frontend
@@ -32,12 +33,12 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'neat'
 
+
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
   gem 'newrelic_rpm'
 end
-
 
 group :development do
   gem 'figaro'
@@ -48,9 +49,7 @@ group :development do
   gem 'better_errors'
 end
 
-
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'  
 end

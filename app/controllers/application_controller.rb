@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   
   # Prevent CSRF attacks by raising an exception. For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  include Localizable
   
   #
   # Filters
@@ -21,6 +22,19 @@ class ApplicationController < ActionController::Base
 
   before_action :detect_device_format
   
+  before_filter :load_currency
+
+  #
+  # Helpers
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
+  helper_method :current_currency
+  helper_method :old_browser?
+  
   #
   # Protected
   # ---------------------------------------------------------------------------------------
@@ -31,7 +45,9 @@ class ApplicationController < ActionController::Base
   
   protected
   
-  
+  def current_currency
+    @current_currency
+  end
 
   #
   # Private
@@ -54,11 +70,15 @@ class ApplicationController < ActionController::Base
   def old_browser?
     browser.ie? && browser.version.to_i <= 9
   end
-  helper_method :old_browser?
-
+  
   def detect_device_format
     request.variant = :mobile if browser.mobile?
     request.variant = :tablet if browser.tablet?
     request.variant = :old_browser if old_browser?
   end  
+
+  def load_currency
+    @current_currency ||= Currency.where(name: session[:currency] || Rails.configuration.default_currency).first
+  end
+  
 end

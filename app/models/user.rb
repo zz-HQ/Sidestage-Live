@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
 
-
   #
   # Plugins
   # ---------------------------------------------------------------------------------------
@@ -41,6 +40,16 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   
   #
+  # Callbacks
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  before_save :set_default_currency
+  
+  #
   # Instance Methods
   # ---------------------------------------------------------------------------------------
   #
@@ -66,6 +75,20 @@ class User < ActiveRecord::Base
   
   def name
     [first_name, last_name].join(" ")
+  end
+  
+  #
+  # Private
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  private
+  
+  def set_default_currency
+    self.currency ||= Rails.configuration.default_currency
   end
   
 end

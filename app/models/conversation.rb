@@ -52,7 +52,7 @@ class Conversation < ActiveRecord::Base
   #
   
   def negotiator_for(user)
-    self.sender_id = user.id ? self.receiver : self.sender
+    self.receiver_id == user.id ? self.sender : self.receiver
   end
   
   #

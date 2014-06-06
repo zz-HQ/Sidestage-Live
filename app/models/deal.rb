@@ -8,7 +8,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  validates :artist_id, :profile_id, :customer_id, :price, :start_at, presence: true
+  validates :artist_id, :profile_id, :customer_id, :conversation_id, :price, :start_at, presence: true
   validates :price, numericality: true, allow_blank: true 
   validate :validate_artist, :validate_customer
 
@@ -118,8 +118,7 @@ class Deal < ActiveRecord::Base
     message = Message.new
     message.sender_id = offer? ? self.artist_id : self.customer_id
     message.receiver_id = offer? ? self.customer_id : self.artist_id
-    message.subject = "Deal Subject"
-    message.body =  note || "Deal..."
+    message.body =  note.blank? ? "Deal..." : note
     message.save
     message
   end

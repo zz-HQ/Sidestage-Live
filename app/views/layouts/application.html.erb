@@ -25,81 +25,42 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <%- if false -%>
 <!DOCTYPE html>
 <html>
-  
-  <body>
-    <div>
-      <%= link_to "Home", root_path %>
-      |
-      <%= link_to "Musicians", artists_path %>
-      |
-      <% if current_user %>
-          Eingeloggt Als: <%= current_user.name %> |
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-        |
-        <%= link_to "Profile", current_user.profiles.count>0 ? account_profile_path(current_user.profiles.first) : new_account_profile_path %>
-        |
-        <%= link_to "Conversations", account_conversations_path %>
-      <% else %>  
-        <%= link_to "Login", new_user_session_path %>
-        |
-        <%= link_to "Sign up", new_user_registration_path %>
-      <% end %>
+	<%= render "head" %>
+	<body>
+		<div>
+			<%= link_to "Home", root_path %>
+			|
+			<%= link_to "Musicians", artists_path %>
+			|
+			<% if current_user %>
+			    Eingeloggt Als: <%= current_user.name %> |
+				<%= link_to "logout", destroy_user_session_path, method: :delete %>
+				|
+				<%= link_to "Profile", current_user.profiles.count>0 ? account_profile_path(current_user.profiles.first) : new_account_profile_path %>
+				|
+				<%= link_to "Conversations", account_conversations_path %>
+			<% else %>	
+				<%= link_to "Login", new_user_session_path %>
+				|
+				<%= link_to "Sign up", new_user_registration_path %>
+			<% end %>
 
-    </div>  
+		</div>	
 
-    <%= render 'flash' %>
+		<%= render 'flash' %>
 
-    <%= yield %>
-
-  </body>
+		<%= yield %>
+		<%= form_tag change_currency_path do |f| %>
+			<%= select_tag :currency, options_from_collection_for_select(Currency.all, :name, :name, @current_currency.name) %>
+			<input type="submit" value="Change">
+		<% end %>
+		<% available_locales.each do |sym, name| %>
+			<%= link_to name, params.merge(:locale => sym) %> |
+		<% end %>
+	</body>
 </html>
 
 <%- end -%>

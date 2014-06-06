@@ -11,6 +11,18 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
+  
+  def price_in_current_currency(price, price_currency)
+    return price if @current_currency.nil?
+    CurrencyConverterService.convert(price, price_currency, @current_currency.name)
+  end
+  
+  def available_locales
+    {
+      de: "Deutsch",
+      en: "English"
+    }
+  end
 
 
 end

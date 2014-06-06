@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: c6987ce09b204ed054c82a3e763b4494dee7aa01
+  specs:
+    stripe (1.13.0)
+      json (~> 1.8.1)
+      mime-types (~> 1.25)
+      rest-client (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -161,6 +170,8 @@ GEM
     rake (10.3.2)
     responders (1.0.0)
       railties (>= 3.2, < 5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec-core (3.0.0.rc1)
       rspec-support (= 3.0.0.rc1)
     rspec-expectations (3.0.0.rc1)
@@ -183,8 +194,6 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    shoulda-matchers (2.6.1)
-      activesupport (>= 3.0.0)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -251,9 +260,9 @@ DEPENDENCIES
   rails_12factor
   rspec-rails
   sass-rails
-  shoulda-matchers
   simple_form
   spring
+  stripe!
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
