@@ -19,6 +19,8 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # Image Processing
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog'
+gem 'unf' # resolves fog errors
 
 
 # Frontend
@@ -33,6 +35,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'neat'
+gem 'asset_sync'
 
 
 group :production do
