@@ -44,23 +44,24 @@
   </div>
 
   <aside>
-    <%- if false -%>
-    <%# TODO Finish Aside %>
+    <%# TODO: Finish Aside %>
 
     <div class="booking-teaser">
       <div class="label">from</div>
       
       <div class="price">
-        <%= number_to_currency resource.price %>
+        <%# TODO: Provide Helper to render price & currency properly %>
+        €<%= resource.price %>
       </div>
       
       <div class="date">
+        <%# TODO: Implement DatePicker %>
         <%= text_field_tag :date, 'tt/mm/yyyy' %>
       </div>
 
       <%= link_to "Book it", nil, class: "btn btn-submit" %>
     </div>
-    <%- end -%>
+
   <aside>  
 
 </div>
