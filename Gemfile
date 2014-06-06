@@ -44,6 +44,8 @@ group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
   gem 'spring'
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
 
 
