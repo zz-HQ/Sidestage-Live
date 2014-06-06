@@ -1,8 +1,8 @@
 Airmusic::Application.routes.draw do
   
-  post 'change_currency', to: 'home#change_currency', as: :change_currency
   
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
+    post 'change_currency', to: 'home#change_currency', as: :change_currency
   
     devise_for :users  
     

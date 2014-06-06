@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   #
   #
   #
-  
+
+  attr_accessor :stripe_customer_id
   store :social_media, accessors: [ :facebook, :twitter, :soundcloud, :blog ]
 
   #
@@ -73,6 +74,12 @@ class User < ActiveRecord::Base
   
   def name
     [first_name, last_name].join(" ")
+  end
+  
+  def save_stripe_customer_id(customer_id)
+    Rails.logger.info "###########################"
+    Rails.logger.info "saving stripe customer id #{customer_id}"
+    Rails.logger.info "###########################"
   end
   
   #
