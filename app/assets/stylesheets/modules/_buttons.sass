@@ -31,6 +31,15 @@ $btn-hover-darken-percentage: 10%
     &:hover
       +linear-gradient(to bottom, darken($btn-important-top-color, $btn-hover-darken-percentage), darken($btn-important-bottom-color, $btn-hover-darken-percentage))
 
-
+.flat-btn
+  +box
+  +transition(color 400ms ceaser($easeOutExpo), border-color 400ms ceaser($easeOutExpo))
+  color: $text-color
+  padding: 3px 13px 4px
+  cursor: pointer
+  display: block
   
-
+  &:hover
+    +transition(color 400ms ceaser($easeOutExpo), border-color 400ms ceaser($easeOutExpo))
+    border-color: $blue
+    color: $blue
