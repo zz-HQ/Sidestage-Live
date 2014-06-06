@@ -13,42 +13,48 @@ artist_attributes = [
     last_name: "Swift",
     city: "Berlin", 
     mobile: "013456789",
-    avatar: File.open("#{Rails.root.to_s}/public/seed/taylor-swift.jpg")
+    avatar: File.open("#{Rails.root.to_s}/public/seed/taylor-swift.jpg"),
+    currency: "EUR"
   },
   {
     first_name: "Justin",
     last_name: "Timberlake",
     city: "Berlin", 
     mobile: "013456789",
-    avatar: File.open("#{Rails.root.to_s}/public/seed/justin-timberlake.jpg")
+    avatar: File.open("#{Rails.root.to_s}/public/seed/justin-timberlake.jpg"),
+    currency: "EUR"
   },
   {
     first_name: "Bon",
     last_name: "Jovi",
     city: "London", 
     mobile: "013456789",
-    avatar: File.open("#{Rails.root.to_s}/public/seed/bon-jovi.jpg")
+    avatar: File.open("#{Rails.root.to_s}/public/seed/bon-jovi.jpg"),
+    currency: "EUR"    
   },
   {
     first_name: "The",
     last_name: "Rolling Stones",
     city: "Berlin", 
     mobile: "013456789",
-    avatar: File.open("#{Rails.root.to_s}/public/seed/the-rolling-stones.jpg") 
+    avatar: File.open("#{Rails.root.to_s}/public/seed/the-rolling-stones.jpg") ,
+    currency: "EUR"    
   },
   {
     first_name: "Beyoncé",
     last_name: "",
     city: "Berlin", 
     mobile: "013456789",
-    avatar: File.open("#{Rails.root.to_s}/public/seed/beyonce.jpg") 
+    avatar: File.open("#{Rails.root.to_s}/public/seed/beyonce.jpg"),
+    currency: "EUR"    
   },
   {
     first_name: "P!nk",
     last_name: "",
     city: "Berlin", 
     mobile: "013456789",
-    avatar: File.open("#{Rails.root.to_s}/public/seed/pink.jpg") 
+    avatar: File.open("#{Rails.root.to_s}/public/seed/pink.jpg"),
+    currency: "EUR"
   }
 ]
   

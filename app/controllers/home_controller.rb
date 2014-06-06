@@ -29,6 +29,12 @@ class HomeController < ApplicationController
     redirect_to :back
   end
 
+  def change_locale
+    locale = params[:lang]
+    session[:locale] = locale
+    redirect_to request.referer.present? ? request.referer : root_path(locale: locale)
+  end
+
 
   def index
     respond_to do |wants|

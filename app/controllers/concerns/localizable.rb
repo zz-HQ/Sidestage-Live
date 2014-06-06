@@ -7,14 +7,24 @@ module Localizable
   
   def set_locale
     parsed_locale = param_locale || cookie_locale || domain_locale || accept_locale || I18n.default_locale
-    locale_params = { :locale => parsed_locale }
-
     I18n.locale = parsed_locale
+
+    if session_locale.present?
+      if I18n.locale != session_locale 
+        redirect_to request.params.merge(locale: session_locale)
+      end
+      session[:locale] = nil
+    end
     cookies[:locale] = { :value => I18n.locale.to_s, :expires => 1.year.from_now }
+
   end
 
   def locale_available?(locale)
     I18n.available_locales.include?(locale.try(:to_sym))
+  end
+  
+  def session_locale
+    locale_available?(session[:locale]) ? session[:locale].try(:to_sym) : nil
   end
 
   def param_locale

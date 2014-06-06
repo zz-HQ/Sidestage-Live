@@ -54,7 +54,7 @@
 
 		<%= yield %>
 		<%= form_tag change_currency_path do |f| %>
-			<%= select_tag :currency, options_from_collection_for_select(Currency.all, :name, :name, @current_currency.name) %>
+			<%= select_tag :currency, options_for_select(Currency.all.map(&:name), @current_currency.name) %>
 			<input type="submit" value="Change">
 		<% end %>
 		<% available_locales.each do |sym, name| %>

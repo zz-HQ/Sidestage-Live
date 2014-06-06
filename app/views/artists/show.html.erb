@@ -54,7 +54,7 @@
       
       <%# TODO: Provide Helper to render price & currency properly %>
       <div class="price">
-        €<%= resource.price %>
+        <%= localized_price(resource.price, resource.user.currency) %>
       </div>
       
       <%# TODO: Implement DatePicker %>
@@ -64,7 +64,7 @@
       
       <%# TODO: Submit Solution %>
       <div class="button">
-        <%= link_to "Book it", nil, class: "btn btn-submit" %>  
+        <%= link_to "Book it", new_account_booking_request_path(profile_id: resource.id), class: "btn btn-submit" %>  
       </div>
     </div>
     

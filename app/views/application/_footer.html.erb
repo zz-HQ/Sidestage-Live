@@ -9,10 +9,17 @@
 
     <nav class="right">
       <div class="select-locale">
-        <%= nice_select(select_tag 'current_locale', options_for_select(["English", "German"], "Berlin"), include_blank: false) %>  
+		<%= form_tag change_locale_path do |f| %>
+      		<%= nice_select(select_tag 'lang', options_from_collection_for_select(available_locales, :first, :last, I18n.locale), include_blank: false) %>  
+      		<input type="submit">
+		<% end %>
+
       </div>
       <div class="select-currency">
-        <%= nice_select(select_tag 'current_currency', options_for_select(["Euro", "Pound"], "Berlin"), include_blank: false) %>
+		<%= form_tag change_currency_path do |f| %>
+	        <%= nice_select(select_tag 'currency', options_for_select(Currency.all.map(&:name), @current_currency.name), include_blank: false) %>
+      		<input type="submit">
+		<% end %>
       </div>
     </nav>
 
