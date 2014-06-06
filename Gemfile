@@ -32,7 +32,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'neat'
 
-
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
@@ -44,6 +43,7 @@ group :development do
   gem 'figaro'
   gem 'quiet_assets'
   gem 'letter_opener'
+  gem 'spring'
 end
 
 
