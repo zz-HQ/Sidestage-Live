@@ -1,13 +1,36 @@
+$btn-submit-top-color: #7bf
+$btn-submit-bottom-color: #5af
+
+$btn-important-top-color: #fb5
+$btn-important-bottom-color: #fa2
+
+$btn-hover-darken-percentage: 10%
+
 .btn
   +border-radius($border-radius)
-  +linear-gradient(to bottom, #7bf, #5af)
+  +linear-gradient(to bottom, $btn-submit-top-color, $btn-submit-bottom-color)
   color: #fff
+  cursor: pointer
   display: block
   margin: 10px 0
   padding: 5px 13px 7px
   text-transform: uppercase
   text-align: center
+  
+  &:hover
+    +linear-gradient(to bottom, darken($btn-submit-top-color, $btn-hover-darken-percentage), darken($btn-submit-bottom-color, $btn-hover-darken-percentage))
+    color: #fff
 
   &.btn-inline
     display: inline-block
+    margin: 0 0 10px 0
+
+  &.btn-important
+    +linear-gradient(to bottom, $btn-important-top-color, $btn-important-bottom-color)
+
+    &:hover
+      +linear-gradient(to bottom, darken($btn-important-top-color, $btn-hover-darken-percentage), darken($btn-important-bottom-color, $btn-hover-darken-percentage))
+
+
+  
 
