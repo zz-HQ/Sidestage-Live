@@ -1,40 +1,21 @@
-<%= simple_form_for resource, url: account_booking_requests_path, html: { id: "payment-form" } do |f| %>
+<%= simple_form_for resource, url: account_booking_requests_path, data: { form: current_user.already_stripe_customer? ? nil : :payment } do |f| %>
     <%= f.input :start_at, as: :date, order: [:day, :month, :year] %>
     <%= f.input :note %>
     <%= f.input :profile_id, as: :hidden %>
 <hr>
+<% unless current_user.already_stripe_customer?  %>
 	<div class="payment-status" style="display:none;">Verifying payment ...</div>
 	<div class="payment-errors" style="display:none;"></div>
+	<%= hidden_field_tag :stripe_token, params[:stripe_token] %>
 	Card Number: <%= text_field_tag :number, nil, data: { stripe: :number } %><br/>
 	CVC: <%= text_field_tag :cvc, nil, data: { stripe: :cvc } %><br/>
 	Exp Month: <%= select_tag :exp_month, options_for_select(1..12), data: { stripe: :exp_month } %><br/>
 	Exp year: <%= select_tag :exp_year, options_for_select(Time.now.year..10.years.from_now.year), data: { stripe: :exp_year } %>
+<% end %>
 <br/>
     <%= f.button :submit %>
 
 <% end %>
-<script>
-	jQuery(document).ready(function($){
-		$("#payment-form").on("submit", function(){
-			$(".payment-status").show();
-			//Stripe.card.createToken($("#payment-form"), stripeResponseHandler);	
-			//return false;
-		});
-	
-		function stripeResponseHandler(status, response) {
-		    if (response.error) {
-		        $(".payment-errors").text(response.error.message).show();
-				$(".payment-status").hide();	
-		    } else {
-		        var form = $("#payment-form");
-		        var token = response['id'];
-		        form.append("<input type='hidden' name='stripe_token' value='" + token + "'/>");
-		        form.get(0).submit();
-		    }
-		}
-	});
-</script>
-
 
 <%= content_for :html_head do %>
 	<%= render 'stripe_head' %>

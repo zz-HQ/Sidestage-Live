@@ -14,7 +14,7 @@ gem 'globalize', '~> 4.0.1'
 gem 'gibbon' # Handles Mailchimp integration
 gem 'browser'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-
+gem 'will_paginate'
 
 # Image Processing
 gem 'carrierwave'

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604105513) do
+ActiveRecord::Schema.define(version: 20140607135833) do
 
   create_table "conversations", force: true do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
+    t.integer  "sender_id",       null: false
+    t.integer  "receiver_id",     null: false
     t.text     "body"
     t.datetime "last_message_at"
     t.datetime "created_at"
@@ -51,17 +51,20 @@ ActiveRecord::Schema.define(version: 20140604105513) do
   create_table "deals", force: true do |t|
     t.integer  "conversation_id"
     t.integer  "message_id"
-    t.integer  "profile_id"
-    t.integer  "artist_id"
-    t.integer  "customer_id"
+    t.integer  "profile_id",           null: false
+    t.integer  "artist_id",            null: false
+    t.integer  "customer_id",          null: false
     t.datetime "artist_accepted_at"
     t.datetime "customer_accepted_at"
-    t.integer  "price"
+    t.integer  "price",                null: false
     t.datetime "start_at"
     t.boolean  "offer"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "stripe_charge_id"
+    t.integer  "charged_price"
+    t.string   "currency"
   end
 
   add_index "deals", ["artist_id"], name: "index_deals_on_artist_id", using: :btree
@@ -93,11 +96,11 @@ ActiveRecord::Schema.define(version: 20140604105513) do
   add_index "genres_profiles", ["genre_id", "profile_id"], name: "index_genres_profiles_on_genre_id_and_profile_id", using: :btree
 
   create_table "messages", force: true do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
+    t.integer  "sender_id",       null: false
+    t.integer  "receiver_id",     null: false
     t.text     "body"
     t.datetime "read_at"
-    t.integer  "conversation_id"
+    t.integer  "conversation_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -151,6 +154,7 @@ ActiveRecord::Schema.define(version: 20140604105513) do
     t.datetime "updated_at"
     t.integer  "unread_message_counter"
     t.string   "currency"
+    t.string   "stripe_customer_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

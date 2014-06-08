@@ -50,8 +50,9 @@ class Account::OffersController < AuthenticatedController
   private
   
   def build_resource
-    super.tap do |deal|
-      deal.offer = true
+    super.tap do |resource|
+      resource.currency = current_currency.name
+      resource.offer = true
     end
   end
   

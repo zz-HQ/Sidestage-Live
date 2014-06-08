@@ -1,14 +1,24 @@
 class Deal < ActiveRecord::Base
 
   #
+  # Settings
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
+  include Priceable
+  
+  #
   # Attributes
   # ---------------------------------------------------------------------------------------
   #
   #
   #
   #
-  
-  validates :artist_id, :profile_id, :customer_id, :conversation_id, :price, :start_at, presence: true
+
+  validates :artist_id, :profile_id, :customer_id, :conversation_id, :price, :start_at, :currency, presence: true
   validates :price, numericality: true, allow_blank: true 
   validate :validate_artist, :validate_customer
 
@@ -72,11 +82,15 @@ class Deal < ActiveRecord::Base
   end
   
   def accept!
-    update_attribute :customer_accepted_at, Time.now
+    charge_customer
+    self.customer_accepted_at = Time.now
+    return save
   end
 
   def confirm!
-    update_attribute :artist_accepted_at, Time.now
+    charge_customer
+    self.artist_accepted_at = Time.now
+    return save
   end
   
   
@@ -121,6 +135,27 @@ class Deal < ActiveRecord::Base
     message.body =  note.blank? ? "Deal..." : note
     message.save
     message
+  end
+  
+  def charge_customer
+    return if stripe_charge_id.present?
+    begin
+      charge = Stripe::Charge.create(
+        :amount => price_in_cents,
+        :currency => currency,
+        :customer => customer.stripe_customer_id,
+        :description => "Deal #{customer.name}"
+      )
+      self.charged_price = price_in_cents
+      self.stripe_charge_id = charge.id
+      return save(validate: false)
+    rescue Stripe::CardError => e
+      # TODO: Stripe Charge CardError
+      Rails.logger.info e.inspect
+    rescue Error => e
+      Rails.logger.info e.inspect
+    end
+    
   end
   
 

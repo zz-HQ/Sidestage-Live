@@ -14,7 +14,7 @@ Reply
 
 <% if (deal = resource.deals.last).present? %>
     <p>
-        <b>Price: </b><%= number_to_currency(price_in_current_currency(deal.price, deal.artist.currency), unit: current_currency.name) %>
+        <b>Price: </b><%= number_to_currency(price_in_current_currency(deal.price, deal.currency), unit: current_currency.name) %>
     </p>
     <p>    
         <b>start: </b><%= deal.start_at %>

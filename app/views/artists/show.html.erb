@@ -7,7 +7,7 @@
     
     <%# TODO: Excerpt from DB %>    
     <p class="excerpt">
-      Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.
+      <%= resource.tagline %>
     </p>
     
     <%# TODO: Load Soundcloud async if possible %>
@@ -32,11 +32,11 @@
     <div class="tabs" data-id="artist">
       <div class="tab">
         <h4>About</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eius iusto corporis asperiores quaerat in consequuntur ratione sit totam officia. Tempore accusamus ducimus minus temporibus sunt aspernatur autem enim voluptas!</p>
+        <p><%= resource.about %></p>
       </div>
       <div class="tab">
         <h4>Details</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eius iusto corporis asperiores quaerat in consequuntur ratione sit totam officia. Tempore accusamus ducimus minus temporibus sunt aspernatur autem enim voluptas!</p>
+        <p><%= resource.description %></p>
       </div>
       <div class="tab">
         <h4>Reviews</h4>

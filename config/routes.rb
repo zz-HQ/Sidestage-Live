@@ -1,13 +1,11 @@
 Airmusic::Application.routes.draw do
-  
-  ## Splash page
-
-  root to: "home#index"
-  post 'create_subscriber', to: "home#create_subscriber", as: "create_subscriber"
-
 
   ## App
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
+    root to: "home#index"
+
+    post 'create_subscriber', to: "home#create_subscriber", as: "create_subscriber"
+
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
   

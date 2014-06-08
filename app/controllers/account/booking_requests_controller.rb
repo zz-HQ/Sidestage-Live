@@ -21,17 +21,24 @@ class Account::BookingRequestsController < AuthenticatedController
   def create
     build_resource
     
-    if current_user.stripe_customer_id.nil?
+    unless current_user.already_stripe_customer?
       token = params[:stripe_token]
       if token.blank?
         flash[:error] = "Bitte Kreditkartendaten eingeben."
         render :new and return
       end
-      customer = Stripe::Customer.create(
-        :card => token,
-        :description => current_user.email
-      )
-      current_user.save_stripe_customer_id(customer.id)
+      begin
+        customer = Stripe::Customer.create(
+          :card => token,
+          :description => current_user.email
+        )
+        current_user.save_stripe_customer_id!(customer.id)
+      rescue Stripe::StripeError => e
+        # TODO: Stripe Customer Create Error
+        params[:stripe_token] = nil
+        flash[:error] = e.json_body[:error][:message] + ". Bitte versuchen Sie es noch einmal."
+        render :new and return
+      end
     end
 
     create! do |success, failure|
@@ -66,6 +73,7 @@ class Account::BookingRequestsController < AuthenticatedController
 
   def build_resource
     super.tap do |resource|
+      resource.currency = current_currency.name
       resource.profile_id ||= params[:profile_id]
     end
   end

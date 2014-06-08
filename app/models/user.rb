@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
   #
   #
 
-  attr_accessor :stripe_customer_id
   store :social_media, accessors: [ :facebook, :twitter, :soundcloud, :blog ]
 
   #
@@ -35,7 +34,7 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id, dependent: :nullify
   has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id, dependent: :nullify
   
-  has_many :booking_requests, class_name: 'Deal', foreign_key: :customer_id
+  has_many :booking_requests, class_name: 'Deal', foreign_key: :customer_id, autosave: false
   has_many :offers, -> { offers }, class_name: 'Deal', foreign_key: :artist_id  
 
   mount_uploader :avatar, AvatarUploader
@@ -78,10 +77,12 @@ class User < ActiveRecord::Base
     [first_name, last_name].join(" ")
   end
   
-  def save_stripe_customer_id(customer_id)
-    Rails.logger.info "###########################"
-    Rails.logger.info "saving stripe customer id #{customer_id}"
-    Rails.logger.info "###########################"
+  def save_stripe_customer_id!(customer_id)
+    update_attribute :stripe_customer_id, customer_id
+  end
+  
+  def already_stripe_customer?
+    stripe_customer_id.present?
   end
   
   #

@@ -32,8 +32,7 @@ class ApplicationController < ActionController::Base
   #
   #  
   
-  helper_method :current_currency
-  helper_method :old_browser?
+  helper_method :current_currency, :old_browser?
   
   #
   # Protected
@@ -60,7 +59,7 @@ class ApplicationController < ActionController::Base
   private
   
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || root_path
+    stored_location_for(resource) || account_root_path
   end
 
   def after_sign_out_path_for(resource)
