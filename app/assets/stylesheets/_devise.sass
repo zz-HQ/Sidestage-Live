@@ -4,6 +4,8 @@
   +span-columns(4)
   background-color: #fff
   padding: 30px
+  overflow: hidden
+  width: 460px
   
   h2
     margin-top: 0
@@ -11,26 +13,71 @@
     font-weight: 300
     
   .facebook
-    margin-bottom: 25px
+    font-weight: 400
+    margin-bottom: 22px
+
+    a
+      color: #fff
+      text-decoration: none
+
+    p
+      text-align: center
+      font-weight: 300
     
   .or
     text-align: center
     margin-bottom: 30px
+
+    .line
+      border-bottom: 1px solid #CBD1D4
+      height: 1px
+      width: 100px
+      display: inline-block
+      position: relative
+      top: -4px
+
+    span 
+      margin: 0 18px
   
   form
     margin-bottom: 25px  
     .form-inputs
-      margin: 10px 0
+      margin: 10px 0 30px
 
       input[type="text"],
       input[type="email"],
       input[type="password"]
         font-size: 18px
         font-weight: 300
-        padding: 10px
+        padding: 14px 12px
         margin-bottom: 20px
+
+      .user_remember_me
+        display: inline
+
+      a 
+        float: right
       
   .btn
+    font-size: 18px
     width: 100%
-    padding: 14px 0 16px
+    padding: 12px 0 13px
+
+  a
+    color: #55B1FF
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none
+
+  .bottom-link
+    width: 460px
+    border-top: 1px solid #dddddd
+    padding: 20px 0
+    text-align: center
+    background-color: #F7F7F7
+    margin: 0 -30px -30px
+
+    a
+      margin-left: 5px
     

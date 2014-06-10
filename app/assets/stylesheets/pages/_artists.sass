@@ -12,7 +12,7 @@
     +span-columns(6)
     
     header
-      height: 50px
+      height: 62px
 
       .results-count
         +span-columns(3 of 6)
@@ -25,11 +25,17 @@
         text-align: right
 
         a
-          margin-left: 10px
+          margin-left: 5px
+          color: $text-color-light
+          padding-bottom: 2px
+
+          &.active
+            font-weight: 400
+            color: #484D4F
 
           + a
             border-left: 1px solid $text-color-light
-            padding-left: 10px
+            padding-left: 7px
     
     .results
       +span-columns(8)
@@ -37,7 +43,7 @@
       .artist
         +span-columns(2 of 6)
         +omega(3n)
-        margin-bottom: 20px
+        margin-bottom: 30px
 
         .photo
           height: 230px

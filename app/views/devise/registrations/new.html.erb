@@ -4,10 +4,14 @@
     
     <div class="facebook">
       <%= link_to "Log in with facebook", nil, class: "btn btn-facebook" %>
+
+      <p>We post nothing without your permission!</p>
     </div>
 
     <div class="or">
-      or      
+      <div class="line"></div>
+        <span>or</span>
+      <div class="line"></div>      
     </div>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -22,10 +26,13 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Sign up", class: "btn" %>
+        <%= f.button :submit, "Sign me up!", class: "btn" %>
       </div>
     <% end %>
-      
-    <%= render "devise/shared/links" %>
+    
+    <div class="bottom-link">
+      <span>Have an Account? <%= link_to "Log In", new_session_path(resource_name) %> </span>
+    </div>
+
   </div>
 </div>
