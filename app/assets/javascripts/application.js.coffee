@@ -14,6 +14,7 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require boilerplate
+#= require jquery.datetimepicker
 #= require_tree ./modules
 #= require_tree .
 
@@ -23,6 +24,9 @@ App = window.App
 App.init = ->
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
+  $('.date-picker').datetimepicker
+    timepicker:false
+    format:'Y-m-d'
 
 $(document).on 'page:update', App.init
 $ -> App.init()
