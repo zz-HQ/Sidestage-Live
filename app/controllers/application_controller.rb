@@ -20,8 +20,7 @@ class ApplicationController < ActionController::Base
   #
   #  
 
-  before_action :detect_device_format
-  
+  before_action :detect_device_format, :auth_production
   before_filter :load_currency
 
   #
@@ -57,7 +56,15 @@ class ApplicationController < ActionController::Base
   #  
   
   private
-  
+
+  def auth_production
+    if controller_name != "home" && Rails.env.production?
+      authenticate_or_request_with_http_basic do |username, password|
+        username == ENV['HTTP_AUTH_NAME'] && password == ENV['HTTP_AUTH_PASSWORD']
+      end 
+    end
+  end
+
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || account_root_path
   end
