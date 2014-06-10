@@ -26,3 +26,5 @@ App.init = ->
 
 $(document).on 'page:update', App.init
 $ -> App.init()
+
+$(document).on 'change', '.submit-on-change', (e) -> $(@).closest('form').trigger 'submit'
