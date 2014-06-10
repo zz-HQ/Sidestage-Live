@@ -1,0 +1,84 @@
+#new-profile
+	width: 764px
+	position: relative
+	margin: 0 auto
+	text-align: center
+
+	hr
+		border-top: 1px solid #CAD5D5
+
+	header
+		+span-columns(8)
+		border-bottom: 1px solid #CAD5D5
+		padding-bottom: 25px
+
+		h1
+			font-size: 36px
+			color: #484D4F
+
+		p
+			font-size: 18px
+			font-weight: 300
+			color: #000
+
+	.input
+		+span-columns(8)
+		border-bottom: 1px solid #CAD5D5
+		padding-bottom: 50px
+
+		h2
+			color: #484D4F
+			font-size: 22px
+			font-weight: bold
+			margin: 22px 0 30px
+
+		.act
+			+span-columns(3 of 6)
+
+			.photo
+				width: 360px
+				height: 130px
+				overflow: hidden
+
+				img
+					width: 360px
+
+		label
+			font-size: 22px
+			position: relative
+			top: 20px
+			cursor: pointer
+			color: #484D4F
+
+			&:hover
+				color: #55B1FF
+				text-decoration: underline
+
+			&.active
+				+border-radius($border-radius)
+				background-color: #eee
+				border: 1px solid #CBD1D4
+				padding: 10px 40px
+				color: #000
+				text-decoration: none
+
+		.genre
+
+			span
+				+span-columns(1 of 6)
+				+omega(6n)
+
+		.nice-select
+			width: 260px
+			height: 50px
+			font-size: 22px
+			text-align: center
+			display: inline-block
+			background-color: #EAEDED
+
+			.select-label
+				top: 9px
+
+			.select-arrow
+				top: 20px
+

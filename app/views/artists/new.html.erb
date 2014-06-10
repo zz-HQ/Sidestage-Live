@@ -1,13 +1,60 @@
-<h1>Profile</h1>
-<%= resource.errors.full_messages.inspect %>
-<%= simple_form_for resource, url: artists_path do |f| %>
-	<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
-	<%= f.input :price %>
-	<%= f.input :tagline %>
-	<%= f.input :description %>
-	<%= f.input :about %>	
-	<%= f.input :style %>
-	<%= f.input :youtube %>
-	<%= f.input :soundcloud %>	
-	<%= f.button :submit %>
-<% end %>
+<div class="wrap">
+
+	<div id="new-profile">
+
+		<!-- # resource.errors.full_messages.inspect -->
+		<%= simple_form_for resource, url: artists_path do |f| %>
+
+			<header>
+				<h1>List your Music!</h1>
+				<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+			</header>
+			
+			<div class="input">
+				<h2>How big is your Act?</h2>
+
+				<div class="act">
+					<div class="photo">
+						<%= image_tag("splash/background.jpg") %>
+					</div>
+					<label class="active">Solo Artist</label>
+				</div>
+				<div class="act">
+					<div class="photo">
+						<%= image_tag("splash/background.jpg") %>
+					</div>
+					<label>Band</label>
+				</div>
+			</div>
+
+			<div class="input genre">
+				<h2>What describes your Genre best?</h2>
+				
+				<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name, class: "genre" %>
+			</div>
+
+			<div class="input city">
+				<h2>Where do you live?</h2>
+
+				<div id="city-switch">
+		      <%= nice_select(select_tag 'current_city', options_for_select(["Berlin", "Toronto"], "Berlin"), include_blank: false) %>
+		    </div>
+			</div>
+
+		
+			<%= f.input :price %>
+			<%= f.input :tagline %>
+			<%= f.input :description %>
+			<%= f.input :about %>	
+			<%= f.input :style %>
+			<%= f.input :youtube %>
+			<%= f.input :soundcloud %>	
+			<%= f.button :submit %>
+
+
+		<% end %>
+
+
+	</div>
+
+</div>
