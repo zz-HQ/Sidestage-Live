@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   #
   #
   #
-  
+
   store :social_media, accessors: [ :facebook, :twitter, :soundcloud, :blog ]
 
   #
@@ -34,8 +34,20 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id, dependent: :nullify
   has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id, dependent: :nullify
   
-  has_many :booking_requests, class_name: 'Deal', foreign_key: :customer_id
+  has_many :booking_requests, class_name: 'Deal', foreign_key: :customer_id, autosave: false
   has_many :offers, -> { offers }, class_name: 'Deal', foreign_key: :artist_id  
+
+  mount_uploader :avatar, AvatarUploader
+  
+  #
+  # Callbacks
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  before_save :set_default_currency
   
   #
   # Instance Methods
@@ -63,6 +75,28 @@ class User < ActiveRecord::Base
   
   def name
     [first_name, last_name].join(" ")
+  end
+  
+  def save_stripe_customer_id!(customer_id)
+    update_attribute :stripe_customer_id, customer_id
+  end
+  
+  def already_stripe_customer?
+    stripe_customer_id.present?
+  end
+  
+  #
+  # Private
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  private
+  
+  def set_default_currency
+    self.currency ||= Rails.configuration.default_currency
   end
   
 end

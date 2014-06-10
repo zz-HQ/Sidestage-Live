@@ -15,7 +15,7 @@ body.desktop
     height: 100%
 
   #logo
-    +retina-sprite(sidestage-logo, $sprite, $sprite2x)
+    +retina-sprite(sidestage-logo-splash, $sprite, $sprite2x)
     font-size: 32px
     margin-top: 42px
     text-indent: -5000px
@@ -65,7 +65,7 @@ body.desktop
         +transform-style(preserve-3d)
         +transition(transform 600ms ceaser($easeOutQuint))
         +rgba-background(rgba(#000, 0.3))
-        height: 50px
+        height: 70px
         padding: 10px
         position: absolute
         top: 0
@@ -131,6 +131,7 @@ body.desktop
   .footer
     +opacity(0.5)
     position: relative
+    text-align: center
     top: 230px
 
 body.phone
@@ -151,7 +152,7 @@ body.phone
       top: 0
 
     #logo
-      +retina-sprite(sidestage-logo-iphone, $sprite, $sprite2x)
+      +retina-sprite(sidestage-logo-splash-iphone, $sprite, $sprite2x)
       margin: 0 auto
       position: relative
       text-indent: -5000px

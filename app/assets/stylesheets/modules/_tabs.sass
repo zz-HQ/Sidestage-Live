@@ -1,0 +1,27 @@
+nav.tabs
+  margin-top: 40px
+
+  .tab-switch
+    color: $text-color-light
+    cursor: pointer
+    display: inline-block
+    margin-right: 10px
+
+    + .tab-switch
+      border-left: 1px solid $text-color-light
+      padding-left: 10px
+
+    &.active
+      color: #000
+
+div.tabs
+  margin-top: 30px
+
+  .tab
+    +box
+    background-color: #fff
+    display: none
+    padding: 17px 20px 8px 20px
+
+    h1, h2, h3, h4, h5, h6
+      margin-top: 0

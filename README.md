@@ -34,3 +34,9 @@ Sidestage is a community for musicians and artists.
 ## How to deploy to Heroku?
 
 _No clue yet_
+
+## Yahoo Currency Exchange API
+
+    http://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote
+    https://query.yahooapis.com/v1/public/yql?format=json&env=store://datatables.org/alltableswithkeys&q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20%28%27USDEUR%27%29
+    

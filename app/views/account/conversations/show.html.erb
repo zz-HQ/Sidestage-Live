@@ -1,3 +1,4 @@
+<h2>Conversation with: <%= resource.negotiator_for(current_user).name %>
 <% resource.messages.each do |message| %>
 	<h1><%= message.sender.name %></h1>
 	<p>
@@ -13,7 +14,7 @@ Reply
 
 <% if (deal = resource.deals.last).present? %>
     <p>
-        <b>Price: </b><%= deal.price %>
+        <b>Price: </b><%= number_to_currency(price_in_current_currency(deal.price, deal.currency), unit: current_currency.name) %>
     </p>
     <p>    
         <b>start: </b><%= deal.start_at %>

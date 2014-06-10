@@ -1,6 +1,22 @@
-<%= simple_form_for resource, url: account_booking_requests_path do |f| %>
+<%= simple_form_for resource, url: account_booking_requests_path, data: { form: current_user.already_stripe_customer? ? nil : :payment } do |f| %>
     <%= f.input :start_at, as: :date, order: [:day, :month, :year] %>
     <%= f.input :note %>
     <%= f.input :profile_id, as: :hidden %>
+<hr>
+<% unless current_user.already_stripe_customer?  %>
+	<div class="payment-status" style="display:none;">Verifying payment ...</div>
+	<div class="payment-errors" style="display:none;"></div>
+	<%= hidden_field_tag :stripe_token, params[:stripe_token] %>
+	Card Number: <%= text_field_tag :number, nil, data: { stripe: :number } %><br/>
+	CVC: <%= text_field_tag :cvc, nil, data: { stripe: :cvc } %><br/>
+	Exp Month: <%= select_tag :exp_month, options_for_select(1..12), data: { stripe: :exp_month } %><br/>
+	Exp year: <%= select_tag :exp_year, options_for_select(Time.now.year..10.years.from_now.year), data: { stripe: :exp_year } %>
+<% end %>
+<br/>
     <%= f.button :submit %>
+
+<% end %>
+
+<%= content_for :html_head do %>
+	<%= render 'stripe_head' %>
 <% end %>

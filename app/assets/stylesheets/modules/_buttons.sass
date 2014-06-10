@@ -1,0 +1,57 @@
+$btn-submit-top-color: #7bf
+$btn-submit-bottom-color: #5af
+
+$btn-important-top-color: #fb5
+$btn-important-bottom-color: #fa2
+
+$btn-facebook-top-color: #67a
+$btn-facebook-bottom-color: #358
+
+
+$btn-hover-darken-percentage: 10%
+
+.btn
+  +border-radius($border-radius)
+  +linear-gradient(to bottom, $btn-submit-top-color, $btn-submit-bottom-color)
+  border: 0
+  color: #fff
+  cursor: pointer
+  display: block
+  margin: 10px 0
+  padding: 5px 13px 7px
+  text-align: center
+  text-transform: uppercase
+  
+  &:hover
+    +linear-gradient(to bottom, darken($btn-submit-top-color, $btn-hover-darken-percentage), darken($btn-submit-bottom-color, $btn-hover-darken-percentage))
+    color: #fff
+
+  &.btn-inline
+    display: inline-block
+    margin: 0 0 10px 0
+
+  &.btn-important
+    +linear-gradient(to bottom, $btn-important-top-color, $btn-important-bottom-color)
+
+    &:hover
+      +linear-gradient(to bottom, darken($btn-important-top-color, $btn-hover-darken-percentage), darken($btn-important-bottom-color, $btn-hover-darken-percentage))
+
+  &.btn-facebook
+    +linear-gradient(to bottom, $btn-facebook-top-color, $btn-facebook-bottom-color)
+
+    &:hover
+      +linear-gradient(to bottom, darken($btn-facebook-top-color, $btn-hover-darken-percentage), darken($btn-facebook-bottom-color, $btn-hover-darken-percentage))
+
+
+.flat-btn
+  +box
+  +transition(color 400ms ceaser($easeOutExpo), border-color 400ms ceaser($easeOutExpo))
+  color: $text-color
+  padding: 3px 13px 4px
+  cursor: pointer
+  display: block
+  
+  &:hover
+    +transition(color 400ms ceaser($easeOutExpo), border-color 400ms ceaser($easeOutExpo))
+    border-color: $blue
+    color: $blue

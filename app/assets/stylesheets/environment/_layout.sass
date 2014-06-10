@@ -1,13 +1,117 @@
+// only for splash page
 .row
   width: 960px
-  overflow: hidden
   margin: 0 auto
 
-.text-left
-  text-align: left
+// for app
+.wrap
+  +outer-container
 
-.text-center
-  text-align: center
+#main > header
+  background-color: #fff
+  margin-bottom: 35px
+  overflow: hidden
+  padding: 22px 0
 
-.text-right
-  text-align: right
+  #logo,
+  #city-switch
+    float: left
+  
+  #logo
+    margin: 0 20px 0 0
+    position: relative
+    top: 7px
+
+    a
+      +retina-sprite(sidestage-logo, $sprite, $sprite2x)
+      display: block
+      text-indent: -5000px
+
+  #city-switch
+    width: 120px
+
+  #main-nav
+    float: right
+    margin-top: -5px
+
+    a
+      font-size: 14px
+      margin-left: 20px
+      position: relative
+      text-decoration: none
+      text-transform: uppercase
+      top: 8px
+
+body > footer
+  background-color: #fff
+  margin-top: 75px
+  overflow: hidden
+  padding: 22px 0
+
+  .left
+    +span-columns(4)
+    position: relative
+    top: 10px
+
+    a
+      font-size: 18px
+      font-weight: 300
+      margin-right: 45px
+
+  .right
+    +span-columns(4)
+    position: relative
+    text-align: right
+    top: 6px
+    
+    .select-locale,
+    .select-currency
+      display: inline-block
+      width: 120px
+
+    .nice-select
+      border: none
+      
+      select
+        left: 0
+
+// Sticky Footer
+
+html,
+body,
+#wrap
+  height: 100%
+
+body > #wrap
+  height: auto
+  min-height: 100%
+
+#main
+  /* Muss genau so hoch sein wie der Footer */
+  padding-bottom: 150px
+
+body > footer
+  clear:both
+  height: 90px
+  margin-top: -90px /* Negativer Wert der Footer-Höhe */
+  position: relative
+
+/* CLEAR FIX */
+.clearfix:after 
+  clear: both
+  content: "."
+  display: block
+  height: 0
+  visibility: hidden
+
+.clearfix
+  display: inline-block
+
+/* Bereich nicht für IE-mac Anfang \*/
+* html .clearfix
+  height: 1%
+
+.clearfix
+  display: block
+/* Bereich nicht für IE-mac Ende */
+

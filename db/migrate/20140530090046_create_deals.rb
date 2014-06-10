@@ -3,12 +3,12 @@ class CreateDeals < ActiveRecord::Migration
     create_table :deals do |t|
       t.integer :conversation_id
       t.integer :message_id
-      t.integer :profile_id
-      t.integer :artist_id
-      t.integer :customer_id
+      t.integer :profile_id, null: false
+      t.integer :artist_id, null: false
+      t.integer :customer_id, null: false
       t.datetime :artist_accepted_at
       t.datetime :customer_accepted_at
-      t.integer :price
+      t.integer :price, null: false
       t.datetime :start_at
       t.boolean :offer
       t.text :note

@@ -17,5 +17,4 @@ config/database.yml
 .ruby-gemset
 .ruby-version
 public/assets
-
-/config/application.yml
+public/uploads
