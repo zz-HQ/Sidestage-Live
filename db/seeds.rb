@@ -90,3 +90,5 @@ profile_attributes = {
   print "."; STDOUT.flush
 end
 puts ""
+
+%x[rake currency:update_rates]
