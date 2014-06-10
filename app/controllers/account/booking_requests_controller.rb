@@ -18,7 +18,7 @@ class Account::BookingRequestsController < AuthenticatedController
   #
   # 
   
-  before_filter :find_profile, :cannot_book_myself, on: :get
+  before_filter :cannot_book_myself
   
   #
   # Actions
@@ -87,13 +87,12 @@ class Account::BookingRequestsController < AuthenticatedController
       resource.profile_id ||= params[:profile_id]
     end
   end
-  
-  def find_profile
-    @profile ||= Profile.where(id: params[:profile_id]).first
-  end
 
   def cannot_book_myself
-    redirect_to artists_path if @profile.nil? || @profile.user_id == current_user.id
+    if request.get?
+      profile = Profile.where(id: params[:profile_id]).first    
+      redirect_to artists_path if profile.nil? || profile.user_id == current_user.id
+    end
   end
   
 end

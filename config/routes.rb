@@ -9,9 +9,9 @@ Airmusic::Application.routes.draw do
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
   
-    devise_for :users  
+    devise_for :users, controllers: { registrations: "registrations" }
     
-    resources :artists  
+    resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
       resources :profiles

@@ -1,0 +1,13 @@
+<h1>Profile</h1>
+<%= resource.errors.full_messages.inspect %>
+<%= simple_form_for resource, url: artists_path do |f| %>
+	<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+	<%= f.input :price %>
+	<%= f.input :tagline %>
+	<%= f.input :description %>
+	<%= f.input :about %>	
+	<%= f.input :style %>
+	<%= f.input :youtube %>
+	<%= f.input :soundcloud %>	
+	<%= f.button :submit %>
+<% end %>

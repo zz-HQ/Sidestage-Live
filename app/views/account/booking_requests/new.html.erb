@@ -1,5 +1,5 @@
 <%= simple_form_for resource, url: account_booking_requests_path, data: { form: current_user.already_stripe_customer? ? nil : :payment } do |f| %>
-    <%= f.input :start_at, as: :date, order: [:day, :month, :year] %>
+    <%= f.input :start_at, as: :string, placeholder: "pic date", input_html: { class: "date-picker" } %>
     <%= f.input :note %>
     <%= f.input :profile_id, as: :hidden %>
 <hr>
