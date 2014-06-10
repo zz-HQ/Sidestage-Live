@@ -12,8 +12,8 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require turbolinks
 #= require boilerplate
-
 #= require_tree ./modules
 #= require_tree .
 

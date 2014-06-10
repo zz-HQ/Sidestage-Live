@@ -1,19 +1,17 @@
-jQuery(document).ready ($) ->
+$(document).on 'submit', '[data-form=payment]', (e) ->
+  e.preventDefault()
 
-  stripeResponseHandler = (status, response) ->
-    if response.error
-      $(".payment-errors").text(response.error.message).show()
-      $(".payment-status").hide()
-    else
-      form = $("[data-form=payment]")
-      token = response["id"]
-      form.find("input[name=stripe_token]").val(token)
-      form.get(0).submit()
-    return
-
-  $("[data-form=payment]").submit (e) ->
-    return if $(this).find("input[name=stripe_token]").val() != ""
-    e.preventDefault()
+  if $(@).find("input[name=stripe_token]").val() == ""
     $(".payment-status").show()
-    Stripe.card.createToken $("[data-form=payment]"), stripeResponseHandler
-    false
+
+    Stripe.card.createToken $("[data-form=payment]"), (status, response) ->
+      if response.error
+        $(".payment-errors").text(response.error.message).show()
+        $(".payment-status").hide()
+      else
+        form = $("[data-form=payment]")
+        token = response["id"]
+        form.find("input[name=stripe_token]").val(token)
+        form.get(0).submit()
+      return
+
