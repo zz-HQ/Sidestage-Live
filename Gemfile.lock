@@ -156,7 +156,6 @@ GEM
     minitest (5.3.4)
     multi_json (1.10.0)
     multi_xml (0.5.5)
-    mysql (2.9.1)
     mysql2 (0.3.16)
     neat (1.5.1)
       bourbon (>= 3.1)
@@ -285,7 +284,6 @@ DEPENDENCIES
   jquery-rails (= 3.1.0)
   letter_opener
   mini_magick
-  mysql
   mysql2
   neat
   newrelic_rpm

@@ -6,7 +6,7 @@ ruby '2.1.0'
 gem 'rails', '4.1.1'
 gem 'devise'
 # TODO: Two MYSQL Gems ????
-gem 'mysql'
+#gem 'mysql'
 gem 'mysql2'
 gem 'inherited_resources'
 gem 'jbuilder', '~> 1.2'
