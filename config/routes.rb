@@ -27,6 +27,9 @@ Airmusic::Application.routes.draw do
       resources :conversations
       root 'conversations#index'
     end
+    
+    get 'terms-of-service', to: "pages#terms", as: "terms"
+    get 'privacy-policy', to: "pages#privacy", as: "privacy"
   end
   
   get '/:locale', :to => "home#index", :constraints => { :locale => /\w{2}/ }
