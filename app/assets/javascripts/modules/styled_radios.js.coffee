@@ -31,16 +31,20 @@ do ($ = jQuery, window, document) ->
       # Place initialization logic here
       # You already have access to the DOM element and the options via the instance,
       # e.g., @$element and @settings
-      self = @
+      @$wrappers = @$element.find('.radio')
       @$radios = @$element.find(':radio')
-      window.el = @$radios
       @$radios.on 'change', (e) => @render()
+      @$wrappers.on 'click', @didClickSelect
 
       @render()
       @_initialized = true
 
+    didClickSelect: (e) =>
+      $(e.target).find(':radio').trigger 'click'
+
+
     render: ->
-      @$radios.each -> $(@).closest('.radio').removeClass 'active'
+      @$wrappers.removeClass 'active'
       @$radios.filter(':checked').closest('.radio').addClass 'active'
       
 
