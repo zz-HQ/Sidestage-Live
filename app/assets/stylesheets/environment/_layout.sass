@@ -10,9 +10,13 @@
 #main > header
   background-color: #fff
   margin-bottom: 35px
-  overflow: hidden
+  overflow: visible // dropdown needs it
   padding: 22px 0
   box-shadow: 0 0px 1px #DDE6E6
+  height: 80px
+  
+  .wrap
+    overflow: visible
 
   #logo,
   #city-switch
@@ -34,6 +38,55 @@
   #main-nav
     float: right
     margin-top: -5px
+
+    .messages,
+    .user
+      display: inline-block
+
+    .messages
+      margin-right: 20px
+      position: relative
+
+      .indicator
+        +border-radius(100px)
+        background-color: #FBAB2C
+        border: 2px solid #fff
+        color: #fff
+        font-size: 11px
+        font-weight: 700
+        padding: 2px 7px 3px
+        position: absolute
+        right: -10px
+        top: -10px
+
+    .user
+      position: relative
+      
+      .avatar,
+      .username,
+      .arrow
+        display: inline-block
+
+      .avatar
+        +border-radius($border-radius)
+        height: 36px
+        width: 36px
+
+      .dropdown
+        display: none
+        left: 0
+        position: absolute
+        top: 0
+      
+      .username
+        margin: 0 10px
+
+      .arrow
+        +retina-sprite(dropdown-arrow, $sprite, $sprite2x)
+
+      &:hover
+        .dropdown
+          display: block
 
     a
       font-size: 14px

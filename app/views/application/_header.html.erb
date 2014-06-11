@@ -12,9 +12,23 @@
 
       <%- if user_signed_in? -%>
         
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-        <%= link_to "Profile", profile_path %>
-        <%= link_to "Conversations", account_conversations_path %>
+        <a href="<%= account_conversations_path %>" class="messages">
+          <%# TODO: Mail Icon %>
+          <div class="icon">mail</div>
+          <%# TODO: Real Mesage Count %>
+          <div class="indicator">3</div>
+        </a>
+
+        <div class="user">
+          <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+          <div class="dropdown">
+            <%= link_to "Profile", profile_path %>
+            <%= link_to "Activity", nil %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </div>
+          <div class="username"><%= current_user.name %></div>
+          <div class="arrow"></div>
+        </div>
 
       <%- else -%>
 
