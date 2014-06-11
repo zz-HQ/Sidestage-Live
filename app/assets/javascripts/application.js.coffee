@@ -24,6 +24,7 @@ App = window.App
 App.init = ->
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
+  $('.styled-radios').styledRadios()
   $('.date-picker').datetimepicker
     timepicker:false
     format:'Y-m-d'
