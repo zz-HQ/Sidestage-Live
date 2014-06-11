@@ -67,12 +67,17 @@ body > footer
     text-align: right
     top: 6px
 
-    .globe
-      +retina-sprite(icon-globe, $sprite, $sprite2x)
+    .icon
       float: left
       position: relative
       top: 10px
       right: 5px
+
+      &.globe
+        +retina-sprite(icon-globe, $sprite, $sprite2x)
+
+      &.currency
+        +retina-sprite(icon-currency, $sprite, $sprite2x)
     
     .select-locale,
     .select-currency
