@@ -44,8 +44,12 @@
       display: inline-block
 
     .messages
-      margin-right: 20px
+      margin-right: 35px
       position: relative
+      top: 12px
+
+      .icon
+        font-size: 20px
 
       .indicator
         +border-radius(100px)
@@ -54,10 +58,10 @@
         color: #fff
         font-size: 11px
         font-weight: 700
-        padding: 2px 7px 3px
+        padding: 1px 6px 2px
         position: absolute
-        right: -10px
-        top: -10px
+        right: -15px
+        top: -5px
 
     .user
       position: relative
@@ -66,6 +70,8 @@
       .username,
       .arrow
         display: inline-block
+        position: relative
+        top: 5px
 
       .avatar
         +border-radius($border-radius)
@@ -74,15 +80,30 @@
 
       .dropdown
         display: none
+        width: 160px
         left: 0
         position: absolute
-        top: 0
+        top: 60px
+        background-color: #FFF
+        border: 1px solid #CBD5D5
+        border-top: 4px solid #000
+        padding-bottom: 6px
+
+        a
+          color: #484D4F
+          font-size: 14px
+          text-transform: none
+          display: block
+          margin: 1px 0px 10px 12px
       
       .username
         margin: 0 10px
+        color: #999DA2
+        top: 10px
 
       .arrow
         +retina-sprite(dropdown-arrow, $sprite, $sprite2x)
+        top: 7px
 
       &:hover
         .dropdown
