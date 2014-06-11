@@ -6,12 +6,12 @@
 		<%= simple_form_for resource, url: artists_path do |f| %>
 
 			<header>
-				<h1>List your Music!</h1>
+				<h2>List your Music!</h2>
 				<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
 			</header>
 			
 			<div class="input">
-				<h2>How big is your Act?</h2>
+				<h3>How big is your Act?</h3>
 
 				<div class="act">
 					<div class="photo">
@@ -28,13 +28,13 @@
 			</div>
 
 			<div class="input genre">
-				<h2>What describes your Genre best?</h2>
+				<h3>What describes your Genre best?</h3>
 				
 				<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name, class: "genre" %>
 			</div>
 
 			<div class="input city">
-				<h2>Where do you live?</h2>
+				<h3>Where do you live?</h3>
 
 				<div id="city-switch">
 		      <%= nice_select(select_tag 'current_city', options_for_select(["Berlin", "Toronto"], "Berlin"), include_blank: false) %>
