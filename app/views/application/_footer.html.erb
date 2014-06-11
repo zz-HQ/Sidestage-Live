@@ -8,6 +8,7 @@
 
     <nav class="right">
       <div class="select-locale">
+        <div class="globe"></div>
     		<%= form_tag change_locale_path do |f| %>
       		<%= nice_select(select_tag( 'lang',
                                       options_from_collection_for_select(available_locales, :first, :last, I18n.locale),
