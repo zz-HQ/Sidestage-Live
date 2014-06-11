@@ -20,7 +20,6 @@ class Message < ActiveRecord::Base
   #
   #
   
-  
   belongs_to :sender, foreign_key: :sender_id, class_name: 'User'
   belongs_to :receiver, foreign_key: :receiver_id, class_name: 'User'  
   belongs_to :conversation
@@ -35,7 +34,8 @@ class Message < ActiveRecord::Base
   
   scope :by_user, ->(user_id) { where("sender_id = :user_id OR receiver_id = :user_id" , user_id: user_id) }
   scope :latest, -> { order("ID DESC") }
-
+  scope :unread, -> { where(read_at: nil) }
+  
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class Message < ActiveRecord::Base
   #
     
   before_create :attach_to_conversation
-  after_create :update_conversation_order
+  after_create :update_conversation_order, :update_receiver_counter
   
   
   #
@@ -86,6 +86,10 @@ class Message < ActiveRecord::Base
     conversation.body = self.body
     conversation.last_message_at = self.created_at
     conversation.save
+  end
+  
+  def update_receiver_counter
+    User.increment_counter :unread_message_counter, receiver_id
   end
   
 end

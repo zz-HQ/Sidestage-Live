@@ -9,7 +9,7 @@ describe Account::ProfilesController, :type => :controller do
   end
   
   
-  describe "GET new" do
+  context "new" do
     it "renders new" do
       sign_in(FactoryGirl.create(:user))
       get :new

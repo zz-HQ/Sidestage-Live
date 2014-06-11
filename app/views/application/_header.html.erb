@@ -16,7 +16,7 @@
           <%# TODO: Mail Icon %>
           <div class="icon">mail</div>
           <%# TODO: Real Mesage Count %>
-          <div class="indicator">3</div>
+          <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>
         </a>
 
         <div class="user">

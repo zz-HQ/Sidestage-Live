@@ -1,5 +1,5 @@
 <h2>Conversation with: <%= resource.negotiator_for(current_user).name %>
-<% resource.messages.each do |message| %>
+<% resource.messages.includes(:sender).each do |message| %>
 	<h1><%= message.sender.name %></h1>
 	<p>
 		<%= message.body %>
