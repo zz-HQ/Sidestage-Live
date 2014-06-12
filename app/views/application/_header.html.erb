@@ -22,6 +22,8 @@
         <div class="user">
           <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
           <div class="dropdown">
+            <i class="fa fa-caret-up"></i>
+            <hr>
             <%= link_to "Profile", profile_path %>
             <%= link_to "Activity", nil %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
