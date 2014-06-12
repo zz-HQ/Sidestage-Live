@@ -4,7 +4,6 @@ $(document).on 'click', '[data-vex="ajax"]', (e) ->
   e.preventDefault()
 
   ajaxURL = $(@).attr('href')
-  console.log ajaxURL
   $.ajax(
     method: "GET"
     url: ajaxURL
