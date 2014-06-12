@@ -1,16 +1,10 @@
-.devise
-  +box
-  +shift(2)
-  +span-columns(4)
-  background-color: #fff
-  padding: 30px
-  overflow: hidden
-  width: 460px
+.devise, .devise-lightbox
   
   h2
     margin-top: 0
     font-size: 36px
     font-weight: 300
+    text-align: center
     
   .facebook
     font-weight: 400
@@ -71,6 +65,26 @@
       text-decoration: none
 
   .bottom-link
+    border-top: 1px solid $border-color
+    padding: 20px 0
+    text-align: center
+
+    a
+      margin-left: 5px
+
+.devise
+  +box
+  +shift(2)
+  +span-columns(4)
+  background-color: #fff
+  padding: 30px
+  overflow: hidden
+  width: 460px
+  
+  h2
+    text-align: left
+
+  .bottom-link
     width: 460px
     border-top: 1px solid #dddddd
     padding: 20px 0
@@ -80,4 +94,3 @@
 
     a
       margin-left: 5px
-    
