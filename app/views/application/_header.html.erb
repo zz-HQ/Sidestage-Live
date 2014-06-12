@@ -24,8 +24,8 @@
           <div class="dropdown">
             <i class="fa fa-caret-up"></i>
             <hr>
-            <%= link_to "Profile", profile_path %>
-            <%= link_to "Activity", nil %>
+            <%= link_to "Profile", artist_path(current_user) %>
+            <%= link_to "Dashboard", nil %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           </div>
           <div class="username"><%= current_user.name %></div>
