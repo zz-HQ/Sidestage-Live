@@ -26,8 +26,12 @@
           <div class="dropdown">
             <i class="fa fa-caret-up"></i>
             <hr>
-            <%= link_to "Profile", artist_path(current_user) %>
-            <%= link_to "Dashboard", nil %>
+            <% if current_user.profile.present? && current_user.profile.persisted? %>
+                <%= link_to "Profile", preview_account_profile_path(current_user.profile) %>
+            <% else %>    
+                <%= link_to "Create Profile", new_account_profile_path %>
+            <% end %>
+            <%= link_to "Dashboard", account_dashboard_path %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           </div>
           <div class="username"><%= current_user.name %></div>

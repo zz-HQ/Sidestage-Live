@@ -1,4 +1,4 @@
-class Account::BookingRequestsController < AuthenticatedController
+class Account::BookingRequestsController < Account::ResourcesController
 
   #
   # Settings

@@ -1,4 +1,4 @@
-class Account::ProfilesController < AuthenticatedController
+class Account::ProfilesController < Account::ResourcesController
 
   #
   # Settings

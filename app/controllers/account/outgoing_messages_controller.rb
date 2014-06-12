@@ -1,4 +1,4 @@
-class Account::OutgoingMessagesController < AuthenticatedController
+class Account::OutgoingMessagesController < Account::ResourcesController
   #
   # Settings
   # ---------------------------------------------------------------------------------------

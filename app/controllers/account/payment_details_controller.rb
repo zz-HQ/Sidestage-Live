@@ -10,15 +10,5 @@ class Account::PaymentDetailsController < AuthenticatedController
   
   private
   
-  def build_resource    
-  end
-  
-  def end_of_association_chain  
-  end
-  
-  def collection
-    
-  end
-  
   
 end
