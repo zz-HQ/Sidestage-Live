@@ -39,7 +39,8 @@
   form
     margin-bottom: 30px
 
-    &#new_message
+    &#new_message, 
+    &#new_deal
       margin-bottom: 0
 
       .form-inputs
@@ -54,7 +55,8 @@
       input[type="text"],
       input[type="email"],
       input[type="password"],
-      textarea
+      textarea,
+      .nice-select
         font-size: 18px
         font-weight: 300
         padding: 14px 12px
@@ -62,6 +64,15 @@
 
       textarea
         height: 200px
+
+      .nice-select
+        height: 50px
+
+        .select-label-value
+          top: 12px
+
+        .select-arrow
+          top: 19px
 
       .user_remember_me
         display: inline
