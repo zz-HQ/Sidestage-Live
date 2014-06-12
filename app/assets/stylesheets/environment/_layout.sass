@@ -82,19 +82,41 @@
         display: none
         width: 160px
         left: 0
+        top: 34px
         position: absolute
-        top: 60px
-        background-color: #FFF
-        border: 1px solid #CBD5D5
-        border-top: 4px solid #000
-        padding-bottom: 6px
+
+        hr
+          height: 4px
+          background-color: #484D4F
+          margin: 0
+
+        i
+          color: #484D4F
+          font-size: 20px
+          display: block
+          text-align: center
+          position: relative
+          top: 7px
 
         a
           color: #484D4F
           font-size: 14px
+          font-weight: 300
           text-transform: none
           display: block
-          margin: 1px 0px 10px 12px
+          background-color: #FFF
+          margin: 0
+          top: 0
+          padding: 8px 0px 8px 12px
+          border-right: 1px solid #eee
+          border-left: 1px solid #eee
+
+          &:hover
+            background-color: #F1F1F1
+
+        a:last-child
+          border-bottom: 1px solid #eee
+          padding-bottom: 10px
       
       .username
         margin: 0 10px
@@ -160,6 +182,17 @@ body > footer
 
     .nice-select
       border: none
+
+      .select-label
+        position: absolute
+        display: inline-block
+
+        .select-label-value
+          position: static
+
+        .select-arrow
+          right: -14px
+          top: 8px
       
       select
         left: 0
