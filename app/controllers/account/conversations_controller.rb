@@ -1,4 +1,4 @@
-class Account::ConversationsController < AuthenticatedController
+class Account::ConversationsController < Account::ResourcesController
 
   #
   # Settings

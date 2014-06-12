@@ -1,4 +1,4 @@
-class Account::DealsController < AuthenticatedController
+class Account::DealsController < Account::ResourcesController
 
   #
   # Settings

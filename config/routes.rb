@@ -1,6 +1,5 @@
 Airmusic::Application.routes.draw do
 
-  ## App
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
     root to: "home#index"
 
@@ -19,7 +18,9 @@ Airmusic::Application.routes.draw do
           match 'complete', to: 'personal#complete', via: :all
         end
       end
-      resource :dashboard
+      resource :dashboard, controller: :dashboard do
+        match '', to: 'dashboard#index', via: :get
+      end
       resources :profiles do
         member do
           get :preview
@@ -38,12 +39,15 @@ Airmusic::Application.routes.draw do
       resources :booking_requests
       resources :conversations
       resources :payment_details
+      
       root 'dashboard#index'
     end
-    
+
     get 'terms-of-service', to: "pages#terms", as: "terms"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
+    
   end
+
   
   get '/:locale', :to => "home#index", :constraints => { :locale => /\w{2}/ }
   

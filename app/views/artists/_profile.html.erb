@@ -57,16 +57,19 @@
         <%= localized_price(resource.price, resource.user.currency) %>
       </div>
       
-      <%# TODO: Implement DatePicker %>
-      <div class="date">
-        <%= text_field_tag :date, '', placeholder: "pic date", class: "date-picker" %>
-        <i class="fa fa-calendar"></i>
-      </div>
+      <% unless current_user && (current_user.id == resource.user_id) %>
+          <%# TODO: Implement DatePicker %>
+          <div class="date">
+            <%= text_field_tag :date, '', placeholder: "pic date", class: "date-picker" %>
+            <i class="fa fa-calendar"></i>
+          </div>
       
-      <%# TODO: Submit Solution %>
-      <div class="button">
-        <%= link_to "Book it", link_or_login(new_account_booking_request_path(profile_id: resource.id)), class: "btn btn-submit", data: {lightbox: "ajax"} %>
-      </div>
+          <%# TODO: Submit Solution %>
+      
+          <div class="button">
+            <%= link_to "Book it", link_or_login(new_account_booking_request_path(profile_id: resource.id)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+          </div>
+      <% end %>
     </div>
     
     <%# TODO: Replace with database data %>    
@@ -82,9 +85,11 @@
       <div class="name">
         <%= resource.user.name %>
       </div>
-      <div class="button">
-        <%= link_to "Contact Artist", link_or_login(new_account_outgoing_message_path(receiver_id: resource.user.id)), class: "flat-btn", data: {lightbox: "ajax"} %>
-      </div>
+      <% unless current_user && (current_user.id == resource.user_id) %>
+          <div class="button">
+            <%= link_to "Contact Artist", link_or_login(new_account_outgoing_message_path(receiver_id: resource.user.id)), class: "flat-btn", data: { lightbox: "ajax" } %>
+          </div>
+      <% end %>
     </div>
 
   <aside>  

@@ -1,4 +1,4 @@
-class Account::OffersController < AuthenticatedController
+class Account::OffersController < Account::ResourcesController
 
   #
   # Settings
