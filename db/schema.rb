@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20140612082801) do
 
   create_table "conversations", force: true do |t|
-    t.integer  "sender_id",       null: false
-    t.integer  "receiver_id",     null: false
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
     t.text     "body"
     t.datetime "last_message_at"
     t.datetime "created_at"
@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 20140612082801) do
   create_table "deals", force: true do |t|
     t.integer  "conversation_id"
     t.integer  "message_id"
-    t.integer  "profile_id",           null: false
-    t.integer  "artist_id",            null: false
-    t.integer  "customer_id",          null: false
+    t.integer  "profile_id"
+    t.integer  "artist_id"
+    t.integer  "customer_id"
     t.datetime "artist_accepted_at"
     t.datetime "customer_accepted_at"
-    t.integer  "price",                null: false
+    t.integer  "price"
     t.datetime "start_at"
     t.boolean  "offer"
     t.text     "note"
@@ -96,11 +96,11 @@ ActiveRecord::Schema.define(version: 20140612082801) do
   add_index "genres_profiles", ["genre_id", "profile_id"], name: "index_genres_profiles_on_genre_id_and_profile_id", using: :btree
 
   create_table "messages", force: true do |t|
-    t.integer  "sender_id",       null: false
-    t.integer  "receiver_id",     null: false
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
     t.text     "body"
     t.datetime "read_at"
-    t.integer  "conversation_id", null: false
+    t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
