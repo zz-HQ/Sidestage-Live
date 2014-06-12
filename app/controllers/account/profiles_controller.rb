@@ -25,6 +25,14 @@ class Account::ProfilesController < AuthenticatedController
     new!
   end
   
+  def complete
+    if request.patch?
+      if resource.update_attributes(permitted_params[:profile])
+        redirect_to new_account_payment_detail_path
+      end
+    end
+  end
+  
   #
   # Protected
   # ---------------------------------------------------------------------------------------

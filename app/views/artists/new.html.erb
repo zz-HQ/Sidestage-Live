@@ -15,10 +15,10 @@
 				
 				<div class="styled-radios">
 					<div class="radio">
-						<%= radio_button_tag :act_size, "solo" %>
+						<%= f.radio_button :solo, true %>
 					</div>
 					<div class="radio">
-						<%= radio_button_tag :act_size, "band" %>
+						<%= f.radio_button :solo, false %>
 					</div>
 				</div>
 
@@ -38,23 +38,29 @@
 
 			<div class="input genre">
 				<h3>What describes your Genre best?</h3>
-				
-				<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name, class: "genre" %>
+                <% genre_rest = Genre.all[3, Genre.count+1]; genre_one = Genre.all[0]; genre_two = Genre.all[1]; genre_three = Genre.all[2]	%>
+				<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
+				<label><%= genre_one.name %></label>
+				<%= radio_button_tag 'profile[genre_ids][]', genre_two.id, f.object.genres.include?(genre_two) %>
+				<label><%= genre_two.name %></label>
+				<%= radio_button_tag 'profile[genre_ids][]', genre_three.id, f.object.genres.include?(genre_three) %>
+				<label><%= genre_three.name %></label>				
+				<%= select_tag 'profile[genre_ids][]', options_for_select(genre_rest.collect { |g| [g.name, g.id] }, (genre_rest & f.object.genres).first.try(:id))  %>
 			</div>
 
 			<div class="input city">
 				<h3>Where do you live?</h3>
 
 				<div id="city-switch">
-		      <%= nice_select(select_tag 'current_city', options_for_select(["Berlin", "Toronto"], "Berlin"), include_blank: false) %>
+		      <%= nice_select(f.select :location, available_locations, include_blank: false) %>
 		    </div>
 			</div>
 
-		<% end %>
-
 		<div class="input last">
-			<span class="btn button gross">Continue</span>
+		    <input type="submit" value="Continue" class="btn button gross">
+			<!--<span class="btn button gross">Continue</span>-->
 		</div>
+		<% end %>
 
 	</div>
 

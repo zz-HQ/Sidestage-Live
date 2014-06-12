@@ -21,6 +21,10 @@ module ApplicationHelper
     number_to_currency(price_in_current_currency(price, price_currency), unit: @current_currency.symbol)
   end
   
+  def available_locations
+    ["Berlin", "London"]
+  end
+  
   def available_locales
     {
       de: "Deutsch",

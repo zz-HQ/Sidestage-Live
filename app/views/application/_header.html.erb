@@ -5,7 +5,7 @@
     <h1 id="logo"><%= link_to "Sidestage", artists_path %></h1>
 
     <div id="city-switch">
-      <%= nice_select(select_tag 'current_city', options_for_select(["Berlin", "Toronto"], "Berlin"), include_blank: false) %>
+      <%= nice_select(select_tag 'current_city', options_for_select(available_locations, "Berlin"), include_blank: false) %>
     </div>
 
     <nav id="main-nav">

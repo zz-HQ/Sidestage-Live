@@ -61,7 +61,7 @@ class ArtistsController < ApplicationController
 
   
   def permitted_params
-    params.permit(profile: [:tagline, :price, :description, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
+    params.permit(profile: [:solo, :tagline, :location, :price, :description, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
   end
   
   def collection

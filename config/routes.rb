@@ -9,12 +9,16 @@ Airmusic::Application.routes.draw do
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
   
-    devise_for :users, controllers: { registrations: "registrations" }
+    devise_for :users, controllers: { registrations: "authentication/registrations", confirmations: "authentication/confirmations" }
     
     resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
-      resources :profiles
+      resources :profiles do
+        member do
+          match 'complete', to: 'profiles#complete', via: :all
+        end
+      end
       resources :outgoing_messages
       resources :deals do
         member do
@@ -25,6 +29,7 @@ Airmusic::Application.routes.draw do
       resources :offers
       resources :booking_requests
       resources :conversations
+      resources :payment_details
       root 'conversations#index'
     end
     
