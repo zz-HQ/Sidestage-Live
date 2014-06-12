@@ -32,5 +32,8 @@ module ApplicationHelper
     }
   end
 
+  def link_or_login(path)
+    user_signed_in? ? path : new_user_session_path
+  end
 
 end

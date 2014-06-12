@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   #
   #  
 
-  before_action :detect_device_format, :auth_production
+  before_action :detect_device_format, :auth_production, :set_ajax_layout
   before_filter :load_currency
 
   #
@@ -85,6 +85,14 @@ class ApplicationController < ActionController::Base
 
   def load_currency
     @current_currency ||= Currency.where(name: session[:currency] || Rails.configuration.default_currency).first
+  end
+
+  def set_ajax_layout
+    if request.headers['X-Lightbox'].present? || controller_name == 'home'
+      self.class.layout false
+    else
+      self.class.layout "application"
+    end
   end
   
 end

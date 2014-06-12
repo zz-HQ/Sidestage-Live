@@ -65,7 +65,7 @@
       
       <%# TODO: Submit Solution %>
       <div class="button">
-        <%= link_to "Book it", new_account_booking_request_path(profile_id: resource.id), class: "btn btn-submit" %>  
+        <%= link_to "Book it", link_or_login(new_account_booking_request_path(profile_id: resource.id)), class: "btn btn-submit", data: {lightbox: "ajax"} %>
       </div>
     </div>
     
@@ -83,7 +83,7 @@
         <%= resource.user.name %>
       </div>
       <div class="button">
-        <%= link_to "Contact Artist", nil, class: "flat-btn" %>
+        <%= link_to "Contact Artist", link_or_login(new_account_outgoing_message_path(receiver_id: resource.user.id)), class: "flat-btn", data: {lightbox: "ajax"} %>
       </div>
     </div>
 
