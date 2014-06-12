@@ -83,7 +83,7 @@
         <%= resource.user.name %>
       </div>
       <div class="button">
-        <%= link_to "Contact Artist", nil, class: "flat-btn" %>
+        <%= link_to "Contact Artist", new_account_outgoing_message_path(receiver_id: resource.user.id), class: "flat-btn", data: {vex: "ajax"} %>
       </div>
     </div>
 
