@@ -1,4 +1,13 @@
 class HomeController < ApplicationController
+
+  #
+  # Settings
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+
   layout false
 
 

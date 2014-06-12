@@ -16,14 +16,18 @@
           <%# TODO: Mail Icon %>
           <div class="icon"><i class="fa fa-envelope"></i></div>
           <%# TODO: Real Mesage Count %>
-          <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>
+          <% if current_user.unread_message_counter.to_i > 0 %>
+            <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>
+          <% end %>
         </a>
 
         <div class="user">
           <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
           <div class="dropdown">
-            <%= link_to "Profile", profile_path %>
-            <%= link_to "Activity", nil %>
+            <i class="fa fa-caret-up"></i>
+            <hr>
+            <%= link_to "Profile", artist_path(current_user) %>
+            <%= link_to "Dashboard", nil %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           </div>
           <div class="username"><%= current_user.name %></div>

@@ -1,4 +1,4 @@
-class Account::PaymentDetailsController < AuthenticatedController
+class Account::DashboardController < AuthenticatedController
 
   #
   # Private
@@ -10,15 +10,12 @@ class Account::PaymentDetailsController < AuthenticatedController
   
   private
   
-  def build_resource    
+  def end_of_association_chain
   end
-  
-  def end_of_association_chain  
-  end
-  
+
   def collection
-    
   end
+  
   
   
 end

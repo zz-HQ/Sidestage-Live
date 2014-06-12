@@ -60,6 +60,8 @@ artist_attributes = [
   
 
 profile_attributes = {
+  published: true,
+  location: "Berlin",
   tagline: "Here is my tagline.",
   about: "My father is a Jazz Drummer so i learned the drums. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, et, assumenda non exercitationem vitae nulla minima consectetur ex! Neque, itaque voluptate consectetur dignissimos non voluptatibus nisi cumque quis nulla ipsa!",
   style: "When it comes to genres i'm a jack of all trades Techno, Minimal...",

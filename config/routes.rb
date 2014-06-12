@@ -14,8 +14,16 @@ Airmusic::Application.routes.draw do
     resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
+      resource :personal do
+        collection do
+          match 'complete', to: 'personal#complete', via: :all
+        end
+      end
+      resource :dashboard
       resources :profiles do
         member do
+          get :preview
+          put :toggle
           match 'complete', to: 'profiles#complete', via: :all
         end
       end
@@ -30,7 +38,7 @@ Airmusic::Application.routes.draw do
       resources :booking_requests
       resources :conversations
       resources :payment_details
-      root 'conversations#index'
+      root 'dashboard#index'
     end
     
     get 'terms-of-service', to: "pages#terms", as: "terms"
