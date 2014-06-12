@@ -6,7 +6,7 @@ class CreateCurrencies < ActiveRecord::Migration
       t.timestamps
     end
     add_index :currencies, :name
-    { USD: "$", EUR: "€" }.each do |n, s|
+    { USD: "$", EUR: "€", GBP: "£" }.each do |n, s|
       Currency.create name: n, symbol: s
     end
   end
