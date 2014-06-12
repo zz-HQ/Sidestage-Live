@@ -2,6 +2,7 @@
 	margin: 0 auto
 	position: relative
 	text-align: center
+	width: 764px
 
 	hr
 		border-top: 1px solid $border-color
@@ -23,13 +24,36 @@
 	.input
 		+span-columns(8)
 		border-bottom: 1px solid $border-color
-		padding-bottom: 50px
+		padding-bottom: 30px
 
 		h3
 			color: #484D4F
 			font-size: 22px
 			font-weight: bold
-			margin: 22px 0 30px
+			margin: 30px 0
+
+		.radio
+			font-size: 22px
+			position: relative
+			top: 10px
+			cursor: pointer
+			color: #484D4F
+			padding: 8px 40px
+			display: inline-block
+
+			&:hover
+				color: #55B1FF
+				text-decoration: underline
+
+			&.active
+				+border-radius($border-radius)
+				background-color: #eee
+				border: 1px solid #CBD1D4
+				color: #000
+				text-decoration: none
+
+			input[type="radio"]
+				display: none
 
 		.act
 			+span-columns(3 of 6)
@@ -42,30 +66,31 @@
 				img
 					width: 360px
 
-		label
-			font-size: 22px
-			position: relative
-			top: 20px
-			cursor: pointer
-			color: #484D4F
+		&.genre
+			padding-bottom: 50px
 
-			&:hover
-				color: #55B1FF
-				text-decoration: underline
+			.act
+				+span-columns(1 of 4)
 
-			&.active
-				+border-radius($border-radius)
-				background-color: #eee
-				border: 1px solid #CBD1D4
-				padding: 10px 40px
-				color: #000
-				text-decoration: none
+				.radio
+					width: 180px
 
-		.genre
+					.nice-select
+						width: 180px
+						margin-left: -40px
+						margin-top: -10px
+						background-color: #FFF
 
-			span
-				+span-columns(1 of 6)
-				+omega(6n)
+			.photo
+				width: 180px
+				height: 130px
+				overflow: hidden
+
+				img
+					width: 180px
+					height: 130px
+
+		&.city
 
 		.nice-select
 			width: 260px
@@ -75,12 +100,16 @@
 			display: inline-block
 			background-color: #EAEDED
 
-			.select-label
+			.select-label-value
 				top: 9px
+				left: 14px
 
 			.select-arrow
 				top: 20px
 				right: 20px
+
+			#profile_location
+				left: 0
 
 		&.last
 			padding-bottom: 0
