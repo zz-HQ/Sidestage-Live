@@ -1,9 +1,11 @@
 <% { :notice => :success, :alert  => :warning, :error  => :error }.each do |flash_type, flash_class| %>
     <% if flash[flash_type] %>
-        <div class="flash-pane" id="flash-pane">
+        <div class="flash-pane btn" id="flash-pane">
         	<div class="alert alert-<%= flash_class %>">
-        	    <a class="close" href="#" data-dismiss="alert">×</a>
-        	    <%= flash[flash_type] %>
+	        	<div class="wrap">
+	        	    <a class="close" href="#" data-dismiss="alert"><i class="fa fa-times"></i></a>
+	        	    <%= flash[flash_type] %>
+	        	</div>
         	</div>
         </div>
     <% end %>
