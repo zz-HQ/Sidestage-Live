@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612082801) do
+ActiveRecord::Schema.define(version: 20140612132937) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140612082801) do
     t.datetime "updated_at"
     t.boolean  "solo",        default: true
     t.string   "location"
+    t.boolean  "published",   default: false
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -135,12 +136,12 @@ ActiveRecord::Schema.define(version: 20140612082801) do
     t.string   "airmusic_name"
     t.string   "avatar"
     t.string   "city"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -149,7 +150,7 @@ ActiveRecord::Schema.define(version: 20140612082801) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,    null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
@@ -158,6 +159,8 @@ ActiveRecord::Schema.define(version: 20140612082801) do
     t.string   "currency"
     t.string   "stripe_customer_id"
     t.string   "role"
+    t.text     "about"
+    t.boolean  "newsletter_subscribed",  default: true
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

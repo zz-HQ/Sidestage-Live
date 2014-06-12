@@ -1,0 +1,92 @@
+<div id="artist">
+
+  <div class="content">
+    <div class="social-share-dummy"></div>
+
+    <h2><%= resource.user.name %></h2>
+    
+    <%# TODO: Excerpt from DB %>    
+    <p class="excerpt">
+      <%= resource.tagline %>
+    </p>
+    
+    <%# TODO: Load Soundcloud async if possible %>
+    <iframe class="soundcloud-widget" width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/65199866&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+
+    <%# TODO: Load Youtube async if possible %>
+    <iframe class="youtube-widget" width="100%" height="350" src="//www.youtube.com/embed/qciVXUHTN10?rel=0" frameborder="0" allowfullscreen></iframe>
+
+    <ul class="thumbs">
+      <li class="thumb"></li>
+      <li class="thumb"></li>
+      <li class="thumb"></li>
+    </ul>
+
+    <%# TODO: About | Details | Reviews %>
+    <nav class="tabs" data-id="artist">
+      <div class="tab-switch">About</div>
+      <div class="tab-switch">Details</div>
+      <div class="tab-switch">Reviews</div>
+    </nav>
+    
+    <div class="tabs" data-id="artist">
+      <div class="tab">
+        <h4>About</h4>
+        <p><%= resource.about %></p>
+      </div>
+      <div class="tab">
+        <h4>Details</h4>
+        <p><%= resource.description %></p>
+      </div>
+      <div class="tab">
+        <h4>Reviews</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eius iusto corporis asperiores quaerat in consequuntur ratione sit totam officia. Tempore accusamus ducimus minus temporibus sunt aspernatur autem enim voluptas!</p>
+      </div>
+    </div>
+
+  </div>
+
+  <aside>
+
+    <%# TODO: Finish Aside %>
+    <div class="booking-teaser">
+      <div class="label">from</div>
+      
+      <%# TODO: Provide Helper to render price & currency properly %>
+      <div class="price">
+        <%= localized_price(resource.price, resource.user.currency) %>
+      </div>
+      
+      <%# TODO: Implement DatePicker %>
+      <div class="date">
+        <%= text_field_tag :date, '', placeholder: "pic date", class: "date-picker" %>
+        <i class="fa fa-calendar"></i>
+      </div>
+      
+      <%# TODO: Submit Solution %>
+      <div class="button">
+        <%= link_to "Book it", new_account_booking_request_path(profile_id: resource.id), class: "btn btn-submit" %>  
+      </div>
+    </div>
+    
+    <%# TODO: Replace with database data %>    
+    <div class="requirements">
+      <h3>Requirements</h3>
+      <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+    </div>
+    
+    <div class="artist-teaser">
+      <div class="photo">
+        <%= image_tag resource.user.avatar_url(:thumb) %>
+      </div>
+      <div class="name">
+        <%= resource.user.name %>
+      </div>
+      <div class="button">
+        <%= link_to "Contact Artist", nil, class: "flat-btn" %>
+      </div>
+    </div>
+
+  <aside>  
+
+</div>

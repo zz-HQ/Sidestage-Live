@@ -33,6 +33,12 @@ class Account::ProfilesController < AuthenticatedController
     end
   end
   
+  def toggle
+    resource.toggle!
+    flash[:notice] = "Profile #{resource.published? ? 'published' : 'unpublished'}!"
+    redirect_to account_root_path
+  end
+
   #
   # Protected
   # ---------------------------------------------------------------------------------------

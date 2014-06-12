@@ -20,7 +20,9 @@ class Authentication::ConfirmationsController < Devise::ConfirmationsController
   protected 
 
   def after_confirmation_path_for(resource_name, resource)
-    store_location_for(resource_name, complete_account_profile_path(resource.profiles.first)) if resource.profiles.first.present?
+    redirect_path = resource.profiles.first.present? ? complete_account_profile_path(resource.profiles.first) : complete_account_personal_path
+    store_location_for(resource_name, redirect_path) 
+    
     if signed_in?(resource_name)
       stored_location_for(resource_name) || signed_in_root_path(resource)
     else
