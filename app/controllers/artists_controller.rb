@@ -28,7 +28,7 @@ class ArtistsController < ApplicationController
   #
   #
   #
-    
+  
   def create
     build_resource
     if resource.valid?

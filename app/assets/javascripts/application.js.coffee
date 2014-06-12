@@ -15,6 +15,7 @@
 #= require turbolinks
 #= require boilerplate
 #= require jquery.datetimepicker
+#= require vex/vex.combined.min
 #= require_tree ./modules
 #= require_tree .
 
