@@ -16,7 +16,7 @@
     <% end %>
 
     <div class="bottom-link">
-      <span><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></span>
+      <span><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), data: {lightbox: "ajax"} %></span>
     </div>
   </div>
 </div>

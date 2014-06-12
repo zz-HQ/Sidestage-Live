@@ -3,6 +3,9 @@ vex.defaultOptions.className = "vex-theme-default"
 $(document).on 'click', '[data-lightbox="ajax"]', (e) ->
   e.preventDefault()
 
+  if $(".vex").length > 0
+    $(".vex-close").trigger "click"
+
   ajaxURL = $(@).attr('href')
   $.ajax(
     method: "GET"

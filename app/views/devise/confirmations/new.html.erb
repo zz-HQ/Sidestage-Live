@@ -18,7 +18,7 @@
     <% end %>
 
     <div class="bottom-link">
-      <span><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></span>
+      <span><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), data: {lightbox: "ajax"} %></span>
     </div>
 
   </div>
