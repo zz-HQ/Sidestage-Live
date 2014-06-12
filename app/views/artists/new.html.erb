@@ -90,8 +90,8 @@
 			</div>
 
 		<div class="input last">
-		    <input type="submit" value="Continue" class="btn button gross">
-				<!--<span class="btn button gross">Continue</span>-->
+		    <!-- <input type="submit" value="Continue" class="btn button gross"> -->
+		    <%= link_to "Continue", new_user_registration_path, data: {lightbox: "ajax"}, class: "btn button gross" %>
 		</div>
 
 		<% end %>
