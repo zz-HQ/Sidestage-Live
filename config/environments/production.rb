@@ -69,8 +69,8 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://www.sidestage.com' }
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.default_url_options = { :host => 'http://www.sidestage.com' }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
@@ -78,7 +78,7 @@ Rails.application.configure do
     port: ENV['MAILGUN_SMTP_PORT'],
     domain: "sidestage.com",
     authentication: "plain",
-    enable_starttls_auto: true,
+    # enable_starttls_auto: true,
     user_name: ENV['MAILGUN_SMTP_LOGIN'],
     password: ENV['MAILGUN_SMTP_PASSWORD']
   }
