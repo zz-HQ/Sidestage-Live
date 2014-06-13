@@ -1,4 +1,4 @@
-class Account::PersonalController < AuthenticatedController
+class Account::PersonalController < Account::ResourcesController
   
   #
   # Settings
@@ -41,7 +41,7 @@ class Account::PersonalController < AuthenticatedController
   protected
   
   def permitted_params
-    params.permit(user: [:bio, :avatar])
+    params.permit(user: [:about, :stripe_token, :avatar])
   end
   
   
