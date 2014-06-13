@@ -17,6 +17,7 @@
 #= require jquery.datetimepicker
 #= require vex/vex.combined.min
 #= require_tree ./modules
+#= require_tree ./pages
 #= require_tree .
 
 window.App = {} if window.App == undefined

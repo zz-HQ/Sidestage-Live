@@ -39,8 +39,10 @@ do ($ = jQuery, window, document) ->
       @render()
       @_initialized = true
 
-    didClickSelect: (e) =>
-      $(e.target).find(':radio').trigger 'click'
+    didClickSelect: (e) ->
+      unless $(e.target).is(':radio')
+        e.preventDefault()
+        $(@).find(':radio').trigger 'click'
 
 
     render: ->

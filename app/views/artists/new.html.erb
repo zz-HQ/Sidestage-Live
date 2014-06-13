@@ -15,22 +15,20 @@
 				
 				<div class="styled-radios">
 					<div class="act radio">
-						<div class="photo">
-							<%= f.radio_button :solo, true %>
-						</div>
+						
+						<div class="photo"></div>
 						<div class="label">
 							Solo Artist
-							<%= f.radio_button :solo, true %>
 						</div>
+						<%= f.radio_button :solo, true %>
 					</div>
 					<div class="act radio">
-						<div class="photo">
-							<%= f.radio_button :solo, true %>
-						</div>
+						
+						<div class="photo"></div>
 						<div class="label">
 							Band
-							<%= f.radio_button :solo, true %>
 						</div>
+						<%= f.radio_button :solo, false %>
 					</div>
 				</div>
 
@@ -48,7 +46,6 @@
 						</div>
 						<div class="label">
 							<%= genre_one.name %>
-							<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
 						</div>
 					</div>
 					<div class="act radio">
@@ -57,7 +54,7 @@
 						</div>
 						<div class="label">
 							<%= genre_two.name %>
-							<%= radio_button_tag 'profile[genre_ids][]', genre_two.id, f.object.genres.include?(genre_two) %>
+						
 						</div>
 					</div>
 					<div class="act radio">
@@ -66,7 +63,6 @@
 						</div>
 						<div class="label">
 							<%= genre_three.name %>
-							<%= radio_button_tag 'profile[genre_ids][]', genre_three.id, f.object.genres.include?(genre_three) %>
 						</div>
 					</div>
 					<div class="act radio">
