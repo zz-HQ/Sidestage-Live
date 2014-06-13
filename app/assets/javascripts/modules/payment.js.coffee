@@ -1,7 +1,8 @@
 window.App = {} if window.App == undefined
 App = window.App
 
-stripeListener = (e) ->
+stripeListener = (e, message) ->
+  return true if message?
   e.preventDefault()
 
   if $(@).find("input[name=stripe_token]").val() == ""
@@ -15,7 +16,7 @@ stripeListener = (e) ->
         form = $("[data-form=payment]")
         token = response["id"]
         form.find("input[name=stripe_token]").val(token)
-        form.get(0).submit()
+        form.trigger 'submit', ['do it']
       return
 
 App.setStripeListener = ->
