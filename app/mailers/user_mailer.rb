@@ -7,8 +7,8 @@ class UserMailer < Devise::Mailer
   #
   #
 
-  default :from => "airmusic.co <admin@airmusic.co>",
-          :reply_to => "airmusic.co <info@airmusic.co>",
-          :return_path => "airmusic.co <info@airmusic.co>"
+  default :from => "sidestage.com <admin@sidestage.com>",
+          :reply_to => "sidestage.com <info@sidestage.com>",
+          :return_path => "sidestage.com <info@sidestage.com>"
           
 end
