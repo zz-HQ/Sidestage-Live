@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :message do
-    subject "subject"
     body "body"
-    
+    association :sender, factory: :user
+    association :receiver, factory: :quentin
+        
     factory :user_quentin do
       association :sender, factory: :user
       association :receiver, factory: :quentin
@@ -18,5 +19,10 @@ FactoryGirl.define do
       association :receiver, factory: :user
     end
     
+    factory :quentin_bob do
+      association :sender, factory: :quentin
+      association :receiver, factory: :bob
+    end
+        
   end 
 end

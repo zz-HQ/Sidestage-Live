@@ -10,8 +10,13 @@
 #main > header
   background-color: #fff
   margin-bottom: 35px
-  overflow: hidden
+  overflow: visible // dropdown needs it
   padding: 22px 0
+  box-shadow: 0 0px 1px #DDE6E6
+  height: 80px
+  
+  .wrap
+    overflow: visible
 
   #logo,
   #city-switch
@@ -34,8 +39,102 @@
     float: right
     margin-top: -5px
 
+    .messages,
+    .user
+      display: inline-block
+
+    .messages
+      margin-right: 35px
+      position: relative
+      top: 12px
+
+      .icon
+        font-size: 20px
+
+      .indicator
+        +border-radius(100px)
+        background-color: #FBAB2C
+        border: 2px solid #fff
+        color: #fff
+        font-size: 11px
+        font-weight: 700
+        padding: 1px 6px 2px
+        position: absolute
+        right: -15px
+        top: -5px
+
+    .user
+      position: relative
+      
+      .avatar,
+      .username,
+      .arrow
+        display: inline-block
+        position: relative
+        top: 5px
+
+      .avatar
+        +border-radius($border-radius)
+        height: 36px
+        width: 36px
+
+      .dropdown
+        display: none
+        width: 160px
+        left: 0
+        top: 34px
+        position: absolute
+
+        hr
+          height: 4px
+          background-color: #484D4F
+          margin: 0
+
+        i
+          color: #484D4F
+          font-size: 20px
+          display: block
+          text-align: center
+          position: relative
+          top: 7px
+
+        a
+          color: #484D4F
+          font-size: 14px
+          font-weight: 300
+          text-transform: none
+          display: block
+          background-color: #FFF
+          margin: 0
+          top: 0
+          cursor: default
+          padding: 8px 0px 8px 12px
+          border-right: 1px solid #eee
+          border-left: 1px solid #eee
+
+          &:hover
+            background-color: #F1F1F1
+
+        a:last-child
+          border-bottom: 1px solid #eee
+          padding-bottom: 10px
+      
+      .username
+        margin: 0 10px
+        color: #999DA2
+        top: 10px
+
+      .arrow
+        +retina-sprite(dropdown-arrow, $sprite, $sprite2x)
+        top: 7px
+
+      &:hover
+        .dropdown
+          display: block
+
     a
       font-size: 14px
+      font-weight: 400
       margin-left: 20px
       position: relative
       text-decoration: none
@@ -47,6 +146,7 @@ body > footer
   margin-top: 75px
   overflow: hidden
   padding: 22px 0
+  box-shadow: 0 0px 1px #DDE6E6
 
   .left
     +span-columns(4)
@@ -63,6 +163,19 @@ body > footer
     position: relative
     text-align: right
     top: 6px
+
+    .icon
+      float: left
+      position: relative
+      top: 6px
+      right: 5px
+      color: #6f777b
+
+      &.globe
+        //+retina-sprite(icon-globe, $sprite, $sprite2x)
+
+      &.currency
+        right: 2px
     
     .select-locale,
     .select-currency
@@ -71,6 +184,17 @@ body > footer
 
     .nice-select
       border: none
+
+      .select-label
+        position: absolute
+        display: inline-block
+
+        .select-label-value
+          position: static
+
+        .select-arrow
+          right: -14px
+          top: 8px
       
       select
         left: 0

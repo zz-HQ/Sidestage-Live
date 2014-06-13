@@ -1,0 +1,124 @@
+#new-profile
+	margin: 0 auto
+	position: relative
+	text-align: center
+	width: 764px
+
+	hr
+		border-top: 1px solid $border-color
+
+	header
+		+span-columns(8)
+		border-bottom: 1px solid $border-color
+		padding-bottom: 25px
+
+		h2
+			font-size: 36px
+			color: #484D4F
+
+		p
+			font-size: 18px
+			font-weight: 300
+			color: #000
+
+	.input
+		+span-columns(8)
+		border-bottom: 1px solid $border-color
+		padding-bottom: 30px
+
+		h3
+			color: #484D4F
+			font-size: 22px
+			font-weight: bold
+			margin: 30px 0
+
+		.act
+			+span-columns(3 of 6)
+
+			.photo
+				background: url("splash/background.jpg") no-repeat center center
+				background-size: 370px
+				width: 370px
+				height: 130px
+				overflow: hidden
+				+transition(opacity 600ms ceaser($easeOutExpo))
+
+				&:hover
+					+opacity(0.8)
+
+		.radio
+
+			.label
+				font-size: 22px
+				position: relative
+				top: 10px
+				cursor: pointer
+				color: #484D4F
+				padding: 8px 40px
+				display: inline-block
+
+				&:hover
+					color: #55B1FF
+					text-decoration: underline
+
+			&.active
+
+				.label
+					+border-radius($border-radius)
+					background-color: #eee
+					border: 1px solid #CBD1D4
+					color: #000
+					text-decoration: none
+
+		&.genre
+			padding-bottom: 50px
+
+			.act
+				+span-columns(1 of 4)
+
+				&.radio
+					width: 167px
+
+					.nice-select
+						width: 167px
+						margin-left: -40px
+						margin-top: -10px
+						background-color: #FFF
+
+			.photo
+				background: url("splash/background.jpg") no-repeat center center
+				background-size: 167px
+				width: 167px
+				height: 130px
+				overflow: hidden
+
+		&.city
+
+		.nice-select
+			width: 260px
+			height: 50px
+			font-size: 22px
+			text-align: center
+			display: inline-block
+			background-color: #EAEDED
+
+			.select-label-value
+				top: 9px
+				left: 14px
+
+			.select-arrow
+				top: 20px
+				right: 20px
+
+			#profile_location
+				left: 0
+
+		&.last
+			padding-bottom: 0
+			margin-bottom: -5px
+			border-bottom: none
+
+		.gross
+			margin-top: 40px
+			display: inline-block
+

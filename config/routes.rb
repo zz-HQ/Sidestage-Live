@@ -1,6 +1,5 @@
 Airmusic::Application.routes.draw do
 
-  ## App
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
     root to: "home#index"
 
@@ -9,12 +8,26 @@ Airmusic::Application.routes.draw do
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
   
-    devise_for :users  
+    devise_for :users, controllers: { registrations: "authentication/registrations", confirmations: "authentication/confirmations" }
     
-    resources :artists  
+    resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
-      resources :profiles
+      resource :personal do
+        collection do
+          match 'complete', to: 'personal#complete', via: :all
+        end
+      end
+      resource :dashboard, controller: :dashboard do
+        match '', to: 'dashboard#index', via: :get
+      end
+      resources :profiles do
+        member do
+          get :preview
+          put :toggle
+          match 'complete', to: 'profiles#complete', via: :all
+        end
+      end
       resources :outgoing_messages
       resources :deals do
         member do
@@ -25,9 +38,16 @@ Airmusic::Application.routes.draw do
       resources :offers
       resources :booking_requests
       resources :conversations
-      root 'conversations#index'
+      resources :payment_details
+      
+      root 'dashboard#index'
     end
+
+    get 'terms-of-service', to: "pages#terms", as: "terms"
+    get 'privacy-policy', to: "pages#privacy", as: "privacy"
+    
   end
+
   
   get '/:locale', :to => "home#index", :constraints => { :locale => /\w{2}/ }
   

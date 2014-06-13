@@ -1,4 +1,5 @@
-class Account::ConversationsController < AuthenticatedController
+class Account::ConversationsController < Account::ResourcesController
+
   #
   # Settings
   # ---------------------------------------------------------------------------------------
@@ -8,6 +9,17 @@ class Account::ConversationsController < AuthenticatedController
   #
   
   actions :index, :show
+
+  #
+  # Filters
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  before_filter :update_unread_message_counter, only: :show
+  
   
   #
   # Actions
@@ -45,5 +57,13 @@ class Account::ConversationsController < AuthenticatedController
   
   private
   
-
+  def update_unread_message_counter
+    unread_msgs = resource.messages.select { |m| m.receiver_id == current_user.id && m.read_at.nil? }.count
+    if unread_msgs > 0
+      User.update_counters current_user.id, unread_message_counter: -unread_msgs
+      resource.messages.unread.where(receiver_id: current_user.id).update_all read_at: Time.now
+      current_user.unread_message_counter -= unread_msgs
+    end
+  end
+  
 end

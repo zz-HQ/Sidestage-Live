@@ -4,11 +4,15 @@
   height: 36px
   position: relative
 
+  .select-label-value
+    position: absolute
+    top: 6px
+    left: 10px
+
   .select-label
     color: #6F777B
     font-weight: 300
     left: 15px
-    position: absolute
     top: 6px
 
   select
@@ -17,6 +21,9 @@
     border: none
     cursor: pointer
     font-size: 14px
+    height: 100%
+    left: 0
+    outline: none
     position: absolute
     top: 6px
     width: 100%
@@ -25,4 +32,4 @@
     +retina-sprite(select-arrow, $sprite, $sprite2x)
     position: absolute
     right: 10px
-    top: 15px
+    top: 13px

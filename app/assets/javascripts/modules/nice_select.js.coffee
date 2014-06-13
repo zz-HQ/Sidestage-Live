@@ -31,13 +31,14 @@ do ($ = jQuery, window, document) ->
       # e.g., @$element and @settings
       @$select = @$element.find('select')
       @$label = @$element.find('.select-label')
+      @$label_value = @$element.find('.select-label-value')
 
       @$select.on 'change', => @render()
       @render()
 
     render: ->
       value_text = @$select.find('option:selected').text()
-      @$label.text(value_text)
+      @$label_value.text(value_text)
 
 
   # A really lightweight plugin wrapper around the constructor,

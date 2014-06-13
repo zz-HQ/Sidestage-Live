@@ -12,9 +12,12 @@
 #
 #= require jquery
 #= require jquery_ujs
-#= require boilerplate
 #= require turbolinks
+#= require boilerplate
+#= require jquery.datetimepicker
+#= require vex/vex.combined.min
 #= require_tree ./modules
+#= require_tree ./pages
 #= require_tree .
 
 window.App = {} if window.App == undefined
@@ -23,8 +26,19 @@ App = window.App
 App.init = ->
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
+  $('.styled-radios').styledRadios()
+  $('.date-picker').datetimepicker
+    timepicker:false
+    format:'Y-m-d'
+  App.setStripeListener()
 
 $(document).on 'page:update', App.init
 $ -> App.init()
 
 $(document).on 'change', '.submit-on-change', (e) -> $(@).closest('form').trigger 'submit'
+
+
+$.ajaxSetup
+  headers:
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+    'Accept': "text/javascript, application/javascript, text/html"

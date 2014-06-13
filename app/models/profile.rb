@@ -18,7 +18,17 @@ class Profile < ActiveRecord::Base
   #
   #  
 
-  validates :user_id, :tagline, :price, presence: true
+  validates :user_id, :genre_ids, presence: true
+
+  #
+  # Scopes
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
+  scope :published, -> { where(published: true) }
 
   #
   # Associations
@@ -39,6 +49,10 @@ class Profile < ActiveRecord::Base
   #
   #
   #  
+  
+  def toggle!
+    update_attribute :published, !published
+  end
   
   #
   # Private

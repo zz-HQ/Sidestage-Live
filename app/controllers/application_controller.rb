@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
   #
   #  
 
-  before_action :detect_device_format, :auth_production
-  before_filter :load_currency
+  before_action :detect_device_format, :auth_production, :set_ajax_layout
+  before_filter :store_location, :load_currency
 
   #
   # Helpers
@@ -73,6 +73,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  def store_location
+    store_location_for(:user, params[:return_to]) if params[:return_to].present?
+  end
+  
   def old_browser?
     browser.ie? && browser.version.to_i <= 9
   end
@@ -85,6 +89,14 @@ class ApplicationController < ActionController::Base
 
   def load_currency
     @current_currency ||= Currency.where(name: session[:currency] || Rails.configuration.default_currency).first
+  end
+
+  def set_ajax_layout
+    if request.headers['X-Lightbox'].present? || controller_name == 'home'
+      self.class.layout false
+    else
+      self.class.layout "application"
+    end
   end
   
 end

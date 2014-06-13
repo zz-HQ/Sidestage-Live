@@ -3,6 +3,7 @@ FactoryGirl.define do
   factory :user do
     first_name "user FN"
     last_name "user LN"
+    unread_message_counter 0
     sequence :email do |n|
       "user#{n}@example.com"
     end
@@ -11,19 +12,15 @@ FactoryGirl.define do
 
 
     factory :quentin do
-      email "quentin@example.com"
     end
 
     factory :bob do
-      email "bob@example.com"
     end
     
     factory :artist do
-      email "artist@example.com"
     end
     
     factory :customer do
-      email "customer@example.com"
     end
 
   end

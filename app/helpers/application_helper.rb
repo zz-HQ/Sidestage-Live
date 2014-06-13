@@ -21,6 +21,10 @@ module ApplicationHelper
     number_to_currency(price_in_current_currency(price, price_currency), unit: @current_currency.symbol)
   end
   
+  def available_locations
+    ["Berlin", "London"]
+  end
+  
   def available_locales
     {
       de: "Deutsch",
@@ -28,5 +32,12 @@ module ApplicationHelper
     }
   end
 
-
+  def link_or_login(path)
+    user_signed_in? ? path : new_user_session_path(return_to: request.url)
+  end
+  
+  def artist_contactable?(artist)
+    !current_user || (current_user.id != artist.id)
+  end
+  
 end

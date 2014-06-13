@@ -1,0 +1,15 @@
+<div class="devise-lightbox">
+	<h2>Book Artist</h2>
+
+	<%= simple_form_for resource, url: account_booking_requests_path, remote: true, data: { form: current_user.paymentable? ? nil : :payment }, html: { id: "deal-request" } do |f| %>
+		<div class="form-inputs">
+    	    <%= f.input :start_at, as: :string, placeholder: "Start at", input_html: { class: "date-picker" }, label: false %>
+    	    <%= f.input :profile_id, as: :hidden %>
+
+            <%= render "account/payment_details/payment_form" %>
+	
+	        <%= f.button :submit, class: "btn" %>
+        </div>
+	<% end %>
+	
+</div>

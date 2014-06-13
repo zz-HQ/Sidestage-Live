@@ -1,4 +1,4 @@
-class Account::ProfilesController < AuthenticatedController
+class Account::ProfilesController < Account::ResourcesController
 
   #
   # Settings
@@ -25,6 +25,20 @@ class Account::ProfilesController < AuthenticatedController
     new!
   end
   
+  def complete
+    if request.patch?
+      if resource.update_attributes(permitted_params[:profile])
+        redirect_to new_account_payment_detail_path
+      end
+    end
+  end
+  
+  def toggle
+    resource.toggle!
+    flash[:notice] = "Profile #{resource.published? ? 'published' : 'unpublished'}!"
+    redirect_to account_root_path
+  end
+
   #
   # Protected
   # ---------------------------------------------------------------------------------------

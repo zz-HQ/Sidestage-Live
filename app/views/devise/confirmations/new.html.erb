@@ -17,7 +17,10 @@
       </div>
     <% end %>
 
-    <%= render "devise/shared/links" %>
+    <div class="bottom-link">
+      <span><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), data: {lightbox: "ajax"} %></span>
+    </div>
+
   </div>
 </div>
 

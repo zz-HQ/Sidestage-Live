@@ -2,12 +2,13 @@
   <div class="wrap">
     
     <nav class="left">
-      <%= link_to "Terms", nil %>
-      <%= link_to "Privacy", nil %>
+      <%= link_to "Terms", terms_path %>
+      <%= link_to "Privacy", privacy_path %>
     </nav>
 
     <nav class="right">
       <div class="select-locale">
+        <div class="icon"><i class="fa fa-globe"></i></div>
     		<%= form_tag change_locale_path do |f| %>
       		<%= nice_select(select_tag( 'lang',
                                       options_from_collection_for_select(available_locales, :first, :last, I18n.locale),
@@ -18,6 +19,7 @@
 
       </div>
       <div class="select-currency">
+        <div class="icon currency"><i class="fa fa-<%= current_currency.name.downcase %>"></i></div>
 		    <%= form_tag change_currency_path do |f| %>
 	        <%= nice_select(select_tag( 'currency',
                                       options_for_select(Currency.all.map(&:name), @current_currency.name),
@@ -30,8 +32,6 @@
 
   </div>  
 </footer>
-
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 <%- if Rails.env.production? -%>
 <script>

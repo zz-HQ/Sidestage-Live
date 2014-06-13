@@ -1,36 +1,122 @@
-.devise
-  +box
-  +shift(2)
-  +span-columns(4)
-  background-color: #fff
-  padding: 30px
+.devise, .devise-lightbox
+  margin: 0 auto
+  position: relative
   
   h2
     margin-top: 0
     font-size: 36px
     font-weight: 300
+    line-height: 1.2em
+    text-align: center
     
   .facebook
-    margin-bottom: 25px
+    font-weight: 400
+    margin-bottom: 22px
+
+    a
+      color: #fff
+      text-decoration: none
+
+    p
+      text-align: center
+      font-weight: 300
     
   .or
     text-align: center
     margin-bottom: 30px
+
+    .line
+      border-bottom: 1px solid #CBD1D4
+      height: 1px
+      width: 100px
+      display: inline-block
+      position: relative
+      top: -4px
+
+    span 
+      margin: 0 18px
   
   form
-    margin-bottom: 25px  
+    margin-bottom: 30px
+
+    &#new_message, 
+    &#new_deal
+      margin-bottom: 0
+
+      .form-inputs
+        margin-bottom: 0
+
+        .btn
+          margin-bottom: 0
+
     .form-inputs
-      margin: 10px 0
+      margin: 10px 0 30px
 
       input[type="text"],
       input[type="email"],
-      input[type="password"]
+      input[type="password"],
+      textarea,
+      .nice-select
         font-size: 18px
         font-weight: 300
-        padding: 10px
+        padding: 14px 12px
         margin-bottom: 20px
+
+      textarea
+        height: 200px
+
+      .nice-select
+        height: 50px
+
+        .select-label-value
+          top: 12px
+
+        .select-arrow
+          top: 19px
+
+      .user_remember_me
+        display: inline
+
+      a 
+        float: right
       
   .btn
+    font-size: 18px
     width: 100%
-    padding: 14px 0 16px
-    
+    padding: 12px 0 13px
+
+  a
+    color: #55B1FF
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none
+
+  .bottom-link
+    border-top: 1px solid $border-color
+    padding: 20px 0
+    text-align: center
+
+    a
+      margin-left: 5px
+
+.devise, .devise-lightbox
+  +box
+  background-color: #fff
+  padding: 40px 30px 30px
+  overflow: hidden
+  width: 460px
+  
+  h2
+    text-align: left
+
+  .bottom-link
+    width: 460px
+    border-top: 1px solid #dddddd
+    padding: 20px 0
+    text-align: center
+    background-color: #F7F7F7
+    margin: 0 -30px -30px
+
+    a
+      margin-left: 5px

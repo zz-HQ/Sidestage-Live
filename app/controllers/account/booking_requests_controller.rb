@@ -1,4 +1,4 @@
-class Account::BookingRequestsController < AuthenticatedController
+class Account::BookingRequestsController < Account::ResourcesController
 
   #
   # Settings
@@ -9,6 +9,17 @@ class Account::BookingRequestsController < AuthenticatedController
   # 
 
   defaults resource_class: Deal, instance_name: 'deal'
+  respond_to :html, :js
+
+  #
+  # Filters
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  # 
+  
+  before_filter :cannot_book_myself
   
   #
   # Actions
@@ -21,7 +32,7 @@ class Account::BookingRequestsController < AuthenticatedController
   def create
     build_resource
     
-    unless current_user.already_stripe_customer?
+    unless current_user.paymentable?
       token = params[:stripe_token]
       if token.blank?
         flash[:error] = "Bitte Kreditkartendaten eingeben."
@@ -78,5 +89,11 @@ class Account::BookingRequestsController < AuthenticatedController
     end
   end
 
+  def cannot_book_myself
+    if request.get?
+      profile = Profile.where(id: params[:profile_id]).first    
+      redirect_to artists_path if profile.nil? || profile.user_id == current_user.id
+    end
+  end
   
 end

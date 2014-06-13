@@ -132,7 +132,7 @@ class Deal < ActiveRecord::Base
     message = Message.new
     message.sender_id = offer? ? self.artist_id : self.customer_id
     message.receiver_id = offer? ? self.customer_id : self.artist_id
-    message.body =  note.blank? ? "Deal..." : note
+    message.body =  "You can accept or deny this request or message the user. This request will automatically be cancelled in 48 hours if you don't reply."
     message.save
     message
   end
