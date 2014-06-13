@@ -14,8 +14,14 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-
     <%= csrf_meta_tags %>
+    <%- if Rails.env.development? -%>
+    <script>
+    setTimeout(function() {
+      window.location.href = "/artists";
+    }, 1500)
+    </script>
+    <%- end -%>
   </head>
   <body class="desktop <%= "old-browser" if old_browser? %>">
     <!--[if lt IE 7]>
