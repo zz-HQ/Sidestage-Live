@@ -14,22 +14,22 @@
 				<h3>How big is your Act?</h3>
 				
 				<div class="styled-radios">
-					<div class="act">
+					<div class="act radio">
 						<div class="photo">
-							<%= image_tag("splash/background.jpg") %>
+							<%= f.radio_button :solo, true %>
 						</div>
-						<div class="radio">
+						<div class="label">
 							Solo Artist
 							<%= f.radio_button :solo, true %>
 						</div>
 					</div>
-					<div class="act">
+					<div class="act radio">
 						<div class="photo">
-							<%= image_tag("splash/background.jpg") %>
+							<%= f.radio_button :solo, true %>
 						</div>
-						<div class="radio">
+						<div class="label">
 							Band
-							<%= f.radio_button :solo, false %>
+							<%= f.radio_button :solo, true %>
 						</div>
 					</div>
 				</div>
@@ -42,38 +42,37 @@
 				<% genre_rest = Genre.all[3, Genre.count+1]; genre_one = Genre.all[0]; genre_two = Genre.all[1]; genre_three = Genre.all[2]	%>
 
 				<div class="styled-radios">
-					<div class="act">
+					<div class="act radio">
 						<div class="photo">
-							<%= image_tag("splash/background.jpg") %>
+							<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
 						</div>
-						<div class="radio">
+						<div class="label">
 							<%= genre_one.name %>
 							<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
 						</div>
 					</div>
-					<div class="act">
+					<div class="act radio">
 						<div class="photo">
-							<%= image_tag("splash/background.jpg") %>
+							<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
 						</div>
-						<div class="radio">
+						<div class="label">
 							<%= genre_two.name %>
 							<%= radio_button_tag 'profile[genre_ids][]', genre_two.id, f.object.genres.include?(genre_two) %>
 						</div>
 					</div>
-					<div class="act">
+					<div class="act radio">
 						<div class="photo">
-							<%= image_tag("splash/background.jpg") %>
+							<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
 						</div>
-						<div class="radio">
+						<div class="label">
 							<%= genre_three.name %>
 							<%= radio_button_tag 'profile[genre_ids][]', genre_three.id, f.object.genres.include?(genre_three) %>
 						</div>
 					</div>
-					<div class="act">
+					<div class="act radio">
 						<div class="photo">
-							<%= image_tag("splash/background.jpg") %>
 						</div>
-						<div class="radio">
+						<div class="label">
 							<%= nice_select(select_tag 'profile[genre_ids][]', options_for_select(genre_rest.collect { |g| [g.name, g.id] }, (genre_rest & f.object.genres).first.try(:id)))  %>
 						</div>
 					</div>
