@@ -39,4 +39,5 @@ $(document).on 'change', '.submit-on-change', (e) -> $(@).closest('form').trigge
 
 $.ajaxSetup
   headers:
-    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+    'Accept': "text/javascript, application/javascript, text/html"

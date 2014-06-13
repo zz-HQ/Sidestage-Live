@@ -3,11 +3,12 @@ App = window.App
 
 stripeListener = (e, message) ->
   return true if message?
-  e.preventDefault()
 
-  if $(@).find("input[name=stripe_token]").val() == ""
+  stripeToken = $(@).find("input[name=stripe_token]")
+  if stripeToken.length > 0 && stripeToken.val() == ""
+    e.preventDefault()
+
     $(".payment-status").show()
-
     Stripe.card.createToken $("[data-form=payment]"), (status, response) ->
       if response.error
         $(".payment-errors").text(response.error.message).show()
@@ -16,9 +17,10 @@ stripeListener = (e, message) ->
         form = $("[data-form=payment]")
         token = response["id"]
         form.find("input[name=stripe_token]").val(token)
-        form.trigger 'submit', ['do it']
+        $.ajax(method: form.attr("method"), url: form.attr("action"), data: form.serialize())
+        #form.trigger 'submit', ['do it']
       return
 
 App.setStripeListener = ->
-  $('#new_deal').off 'submit', stripeListener
-  $('#new_deal').on 'submit', stripeListener
+  $('[data-form=payment]').off 'submit', stripeListener
+  $('[data-form=payment]').on 'submit', stripeListener
