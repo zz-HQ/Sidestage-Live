@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  include Payment
+
   #
   # Plugins
   # ---------------------------------------------------------------------------------------
@@ -7,7 +9,7 @@ class User < ActiveRecord::Base
   #
   #
   #
-
+  
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable
 
   #
@@ -17,7 +19,9 @@ class User < ActiveRecord::Base
   #
   #
   #
-
+  
+  # TODO: save token in database
+  attr_accessor :stripe_token
   store :social_media, accessors: [ :facebook, :twitter, :soundcloud, :blog ]
 
   #
@@ -58,7 +62,7 @@ class User < ActiveRecord::Base
   #
   #
   
-  before_save :set_default_currency
+  before_save :set_default_currency, :set_payment_info
   
   #
   # Instance Methods
@@ -92,7 +96,7 @@ class User < ActiveRecord::Base
     update_attribute :stripe_customer_id, customer_id
   end
   
-  def already_stripe_customer?
+  def paymentable?
     stripe_customer_id.present?
   end
   
@@ -108,6 +112,12 @@ class User < ActiveRecord::Base
   
   def set_default_currency
     self.currency ||= Rails.configuration.default_currency
+  end
+  
+  def set_payment_info    
+    #if changes.include?(:stripe_token)
+      self.stripe_customer_id ||= create_stripe_customer(stripe_token, email).try(:id) if stripe_token.present?
+    #end
   end
   
 end

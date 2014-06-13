@@ -32,7 +32,7 @@ class Account::BookingRequestsController < Account::ResourcesController
   def create
     build_resource
     
-    unless current_user.already_stripe_customer?
+    unless current_user.paymentable?
       token = params[:stripe_token]
       if token.blank?
         flash[:error] = "Bitte Kreditkartendaten eingeben."
