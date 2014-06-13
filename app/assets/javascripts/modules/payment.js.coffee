@@ -1,4 +1,7 @@
-$(document).on 'submit', '[data-form=payment]', (e) ->
+window.App = {} if window.App == undefined
+App = window.App
+
+stripeListener = (e) ->
   e.preventDefault()
 
   if $(@).find("input[name=stripe_token]").val() == ""
@@ -15,3 +18,6 @@ $(document).on 'submit', '[data-form=payment]', (e) ->
         form.get(0).submit()
       return
 
+App.setStripeListener = ->
+  $('#new_deal').off 'submit', stripeListener
+  $('#new_deal').on 'submit', stripeListener

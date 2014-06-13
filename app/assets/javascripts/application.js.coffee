@@ -29,6 +29,7 @@ App.init = ->
   $('.date-picker').datetimepicker
     timepicker:false
     format:'Y-m-d'
+  App.setStripeListener()
 
 $(document).on 'page:update', App.init
 $ -> App.init()
