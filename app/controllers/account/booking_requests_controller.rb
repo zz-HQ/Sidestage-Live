@@ -33,7 +33,7 @@ class Account::BookingRequestsController < Account::ResourcesController
     build_resource
     
     unless current_user.paymentable?
-      token = params[:stripe_token]
+      token = params[:user] && params[:user][:stripe_token]
       if token.blank?
         flash[:error] = "Bitte Kreditkartendaten eingeben."
         render :new and return

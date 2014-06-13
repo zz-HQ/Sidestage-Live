@@ -3,7 +3,7 @@
 	<div id="new-profile">
 
 		<!-- # resource.errors.full_messages.inspect -->
-		<%= simple_form_for resource, url: artists_path do |f| %>
+		<%= simple_form_for resource, url: artists_path, remote: true do |f| %>
 
 			<header>
 				<h2>List your Music!</h2>
@@ -85,8 +85,8 @@
 			</div>
 
 		<div class="input last">
-		    <!-- <input type="submit" value="Continue" class="btn button gross"> -->
-		    <%= link_to "Continue", new_user_registration_path, data: {lightbox: "ajax"}, class: "btn button gross" %>
+		    <input type="submit" value="Continue" class="btn button gross">
+		    <!-- <%= link_to "Continue", new_user_registration_path, data: {lightbox: "ajax"}, class: "btn button gross" %> -->
 		</div>
 
 		<% end %>

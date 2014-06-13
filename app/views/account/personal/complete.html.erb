@@ -1,9 +1,16 @@
 <h1>Complete your Profile</h1>
-<%= simple_form_for resource, url: complete_account_personal_path, data: { form: "payment" }, html: { multipart: true } do |f| %>
+<%= simple_form_for resource, url: complete_account_personal_path, data: { form: "payment", optional: true }, html: { multipart: true } do |f| %>
     <%= f.input :stripe_token, as: :hidden %>	
+    
+    <label>Profile Picture</label>
+    <%= f.file_field :avatar %>   
+
+    <p>
+        Mini bio<br>
+        Tell our community something about you
+    </p>
     <%= f.label :about %>
     <%= f.text_area :about %>
-    <%= f.file_field :avatar %>   
     <% unless current_user.paymentable? %>
         <h4>Add payment details</h4>
         <p>(Recommended but optional)</p>

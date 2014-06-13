@@ -20,6 +20,7 @@ class ArtistsController < ApplicationController
   inherit_resources
   defaults :resource_class => Profile, :instance_name => 'profile'
   actions :index, :show, :new, :create
+  respond_to :html, :js
 
   #
   # Actions
@@ -31,12 +32,12 @@ class ArtistsController < ApplicationController
   
   def create
     build_resource
-    if resource.valid?
-      session[:profile] = permitted_params[:profile]
-      redirect_to new_user_registration_path and return
-    else
-      render :new
+    session[:profile] = permitted_params[:profile]
+    respond_to do |format|
+      format.html{ redirect_to new_user_registration_path }
+      format.js{ }
     end
+    
   end  
     
   #
