@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   #  
 
   before_action :detect_device_format, :auth_production, :set_ajax_layout
-  before_filter :load_currency
+  before_filter :store_location, :load_currency
 
   #
   # Helpers
@@ -71,6 +71,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     root_path
+  end
+  
+  def store_location
+    store_location_for(:user, params[:return_to]) if params[:return_to].present?
   end
   
   def old_browser?

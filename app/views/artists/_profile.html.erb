@@ -57,18 +57,28 @@
         <%= localized_price(resource.price, resource.user.currency) %>
       </div>
       
-      <% unless current_user && (current_user.id == resource.user_id) %>
+      <% if artist_contactable?(resource.user) %>
+      	<%= content_for :html_head do %>
+            <%= render 'stripe_head' %>
+        <% end %>
           <%# TODO: Implement DatePicker %>
-          <div class="date">
-            <%= text_field_tag :date, '', placeholder: "pic date", class: "date-picker" %>
-            <i class="fa fa-calendar"></i>
-          </div>
+          <%= simple_form_for :deal, url: account_booking_requests_path, remote: true, html: { id: 'deal-request' } do |f| %>
+  	          <%= f.input :profile_id, as: :hidden, input_html: { value: resource.id } %>
+              <div class="date">
+	              <%= f.input :start_at, as: :string, placeholder: "pic date", input_html: { class: "date-picker" }, label: false %>                  
+                <i class="fa fa-calendar"></i>
+              </div>
       
-          <%# TODO: Submit Solution %>
+              <%# TODO: Submit Solution %>
       
-          <div class="button">
-            <%= link_to "Book it", link_or_login(new_account_booking_request_path(profile_id: resource.id)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
-          </div>
+              <div class="button">
+                <% if current_user %>
+                    <%= f.submit "Book it", class: "btn btn-submit" %>
+                <% else %>
+                    <%= link_to "Book it", new_user_session_path(return_to: request.url), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                <% end %>
+              </div>
+          <% end %>
       <% end %>
     </div>
     
@@ -85,7 +95,7 @@
       <div class="name">
         <%= resource.user.name %>
       </div>
-      <% unless current_user && (current_user.id == resource.user_id) %>
+      <% if artist_contactable?(resource.user)  %>
           <div class="button">
             <%= link_to "Contact Artist", link_or_login(new_account_outgoing_message_path(receiver_id: resource.user.id)), class: "flat-btn", data: { lightbox: "ajax" } %>
           </div>

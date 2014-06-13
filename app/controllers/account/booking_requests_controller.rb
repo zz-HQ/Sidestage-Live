@@ -9,6 +9,7 @@ class Account::BookingRequestsController < Account::ResourcesController
   # 
 
   defaults resource_class: Deal, instance_name: 'deal'
+  respond_to :html, :js
 
   #
   # Filters

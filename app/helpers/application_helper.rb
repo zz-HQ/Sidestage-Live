@@ -33,7 +33,11 @@ module ApplicationHelper
   end
 
   def link_or_login(path)
-    user_signed_in? ? path : new_user_session_path
+    user_signed_in? ? path : new_user_session_path(return_to: request.url)
   end
-
+  
+  def artist_contactable?(artist)
+    !current_user || (current_user.id != artist.id)
+  end
+  
 end

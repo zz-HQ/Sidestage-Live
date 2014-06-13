@@ -1,27 +1,4 @@
-<div class="devise-lightbox">
-	<h2>Contact Artist</h2>
-
-	<%= simple_form_for resource, url: account_booking_requests_path, data: { form: current_user.already_stripe_customer? ? nil : :payment } do |f| %>
-		<div class="form-inputs">
-	    <%= f.input :start_at, as: :string, placeholder: "Start at", input_html: { class: "date-picker" }, label: false %>
-	    <%= f.input :note, placeholder: "Leave a note...", label: false %>
-	    <%= f.input :profile_id, as: :hidden %>
-
-	<% unless current_user.already_stripe_customer?  %>
-		<div class="payment-status" style="display:none;">Verifying payment ...</div>
-		<div class="payment-errors" style="display:none;"></div>
-		<%= hidden_field_tag :stripe_token, params[:stripe_token] %>
-		<%= text_field_tag :number, nil, data: { stripe: :number }, placeholder: "Card Number", label: false %>
-		<%= text_field_tag :cvc, nil, data: { stripe: :cvc }, placeholder: "CVC", label: false %>
-		Exp Month: <%= nice_select(select_tag :exp_month, options_for_select(1..12), data: { stripe: :exp_month }) %>
-		Exp year: <%= nice_select(select_tag :exp_year, options_for_select(Time.now.year..10.years.from_now.year), data: { stripe: :exp_year }) %>
-	<% end %>
-	  <%= f.button :submit, class: "btn" %>
-
-	<% end %>
-
-	<%= content_for :html_head do %>
-		<%= render 'stripe_head' %>
-	<% end %>
-	</div>
-</div>
+<%= render "form" %>
+<%= content_for :html_head do %>
+    <%= render 'stripe_head' %>
+<% end %>
