@@ -1,14 +1,28 @@
-<h1>Profile</h1>
-<%= simple_form_for [:account, resource] do |f| %>
-	<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
-	<%= f.input :price %>
-	<%= f.input :tagline %>
-	Currency:
-	<%#= f.select :currency, options_for_select(Currency.all.map(&:name)), include_blank: false %>
-	<%= f.input :description %>
-	<%= f.input :about %>	
-	<%= f.input :style %>
-	<%= f.input :youtube %>
-	<%= f.input :soundcloud %>	
-	<%= f.button :submit %>
-<% end %>	
+<aside>
+  <header>
+    Sidebar
+  </header>
+  
+</aside>
+
+<div class="content">
+  <header>
+    Profile
+  </header>
+  
+  <div class="">
+    <%= simple_form_for [:account, resource] do |f| %>
+			<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+			<%= f.input :price %>
+			<%= f.input :tagline %>
+			Currency:
+			<%#= f.select :currency, options_for_select(Currency.all.map(&:name)), include_blank: false %>
+			<%= f.input :description %>
+			<%= f.input :about %>	
+			<%= f.input :style %>
+			<%= f.input :youtube %>
+			<%= f.input :soundcloud %>	
+			<%= f.button :submit, class: "btn" %>
+		<% end %>
+  </div>
+</div>
