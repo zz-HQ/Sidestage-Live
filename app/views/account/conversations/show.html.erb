@@ -12,7 +12,7 @@
                     <%= image_tag message.sender.avatar.url(:thumb), class: "avatar" %>
                 </div>
                 <div class="body">
-                    <h3><%= message.sender.name %> - <%= message.created_at.strftime("%H:%M") %></h3>
+                    <h3><%= message.sender.name %> - <span><%= message.created_at.strftime("%H:%M") %></span></h3>
                     <p>
                         <%= message.body %>
                     </p>

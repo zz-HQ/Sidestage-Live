@@ -1,4 +1,3 @@
-
 <div class="booking-teaser">
     <div class="label">Price</div>
     <div class="price">
@@ -6,18 +5,18 @@
     </div>
     <div class="label">
         start:<br>
-        <%= deal.start_at.strftime("%d. %m %Y") %>
+        <%= deal.start_at.strftime("%d. %m. %Y") %>
     </div>
-
+    <br>
     <% if deal.is_customer?(current_user) %>
         <% if deal.accepted? %>
             <div class="button">
-                You accepted!
+                <div class="btn btn-submit btn-submitted">You accepted!</div>
             </div>
         <% elsif deal.confirmed? %>
             Artist Confirmed!
         <% elsif deal.offer? %>
-            <%= link_to "Accept", accept_account_deal_path(deal), method: :put %>
+            <%= link_to "Accept", accept_account_deal_path(deal), method: :put, class: "btn btn-submit" %>
         <% else %>
             Warten auf Antwort....
         <% end %>
@@ -30,6 +29,11 @@
             <% if !deal.offer? %>
                 <div class="button">
                     <%= link_to "Confirm", confirm_account_deal_path(deal), method: :put, class: "btn btn-submit" %>
+                </div>
+                <div class="or">
+                  <div class="line"></div>
+                    <span>or</span>
+                  <div class="line"></div>
                 </div>
             <% end %>
             <%= link_to "Make new offer", "#", class: "btn btn-submit", data: { lightbox: :html, target: "#new-deal" } %>

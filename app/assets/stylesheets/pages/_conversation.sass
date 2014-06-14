@@ -1,4 +1,6 @@
-#conversation
+#conversation,
+#conversations
+  +outer-container
   
   header
     +bigger-font
@@ -9,6 +11,8 @@
 
     .message
       display: block
+      margin-bottom: 20px
+      min-height: 90px
 
       .photo
         +span-columns(1 of 7)
@@ -16,15 +20,22 @@
 
         img
           width: 100%
+          +border-radius(50%)
+          border: 1px solid $blue
+          +transition(opacity 800ms ceaser($easeOutExpo))
 
       .body
         +span-columns(6 of 7)
         margin-right: 0px
-        margin-bottom: 20px
-        min-height: 90px
+        cursor: default
 
         h3
           margin: 0 0 10px
+
+          span
+            font-size: 17px
+            font-weight: 300
+            color: #777
 
         p
           margin: 0
@@ -44,4 +55,22 @@
           float: right
           margin-top: 0px
 
+  aside
 
+    .price
+      color: rgb(0,200,0)
+
+    .or
+      text-align: center
+      margin: 15px 0 20px
+
+      .line
+        border-bottom: 1px solid #CBD1D4
+        height: 1px
+        width: 50px
+        display: inline-block
+        position: relative
+        top: -4px
+
+      span 
+        margin: 0 18px

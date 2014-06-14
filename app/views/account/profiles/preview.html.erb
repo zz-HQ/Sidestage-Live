@@ -1,3 +1,5 @@
-<%= link_to "Edit", edit_account_profile_path(resource), class: "btn gross" %>
-<%= link_to resource.published? ? "Unpublish" : "Publish", toggle_account_profile_path(resource), method: :put, class: "btn gross" %>
+<div style="min-height: 50px; text-align: right">
+	<%= link_to "Edit", edit_account_profile_path(resource), class: "btn btn-default" %>
+	<%= link_to resource.published? ? "Unpublish" : "Publish", toggle_account_profile_path(resource), method: :put, class: "btn btn-danger" %>
+</div>
 <%= render '/artists/profile' %>

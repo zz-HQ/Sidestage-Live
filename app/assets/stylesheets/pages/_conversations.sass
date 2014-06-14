@@ -1,0 +1,29 @@
+#conversations
+	+outer-container
+	
+	.content
+		+outer-container
+		+span-columns(8)
+
+		.message
+			+outer-container
+			+span-columns(8)
+			margin-bottom: 20px
+
+			&:hover
+
+				img
+					+opacity(0.6)
+
+			.photo
+				+span-columns(1 of 10)
+				overflow: hidden
+
+				img
+					width: 100%
+					+border-radius(50%)
+					border: 1px solid $blue
+
+			.body
+				+span-columns(9 of 10)
+				cursor: pointer

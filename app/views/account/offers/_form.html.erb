@@ -1,6 +1,8 @@
-<%= simple_form_for deal, url: account_offers_path, remote: true, method: :post do |f| %>
-    <%= f.input :price %>
-    <%= f.input :note %>
-    <%= f.input :parent_deal_id, as: :hidden, input_html: { value: f.object.id } %>
-    <%= f.button :submit, class: "btn btn-submit" %>
-<% end %>
+<div class="devise-lightbox">
+	<%= simple_form_for deal, url: account_offers_path, remote: true, method: :post do |f| %>
+	  <%= f.input :price %>
+	  <%= f.input :note, label: false, placeholder: "Note..." %>
+	  <%= f.input :parent_deal_id, as: :hidden, input_html: { value: f.object.id } %>
+	  <%= f.button :submit, class: "btn btn-submit" %>
+	<% end %>
+</div>

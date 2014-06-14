@@ -60,3 +60,27 @@ $btn-hover-darken-percentage: 10%
     +transition(color 400ms ceaser($easeOutExpo), border-color 400ms ceaser($easeOutExpo))
     border-color: $blue
     color: $blue
+
+.btn-submitted
+  cursor: default
+
+.btn-accept
+  +linear-gradient(to bottom, #7ae85a, #4ade22)
+  display: inline-block
+
+  &:hover
+    +linear-gradient(to bottom, #7ae85a, #4ade22)
+
+.btn-danger
+  +linear-gradient(to bottom, #f01e4a, #e50014)
+  display: inline-block
+
+  &:hover
+    +linear-gradient(to bottom, #f01e4a, #e50014)
+
+.btn-default
+  +linear-gradient(to bottom, #bbb, #999)
+  display: inline-block
+
+  &:hover
+    +linear-gradient(to bottom, #bbb, #999)
