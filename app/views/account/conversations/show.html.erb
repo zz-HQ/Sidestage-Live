@@ -1,49 +1,79 @@
-<h2>Conversation with: <%= resource.negotiator_for(current_user).name %>
-<% resource.messages.includes(:sender).each do |message| %>
-	<h1><%= message.sender.name %></h1>
-	<p>
-		<%= message.body %>
-	</p>
-<% end %>
+<div id="conversation">
 
-Reply
-<%= simple_form_for @message, url: account_outgoing_messages_path do |f| %>
-	<%= render "/account/outgoing_messages/form", f: f %>
-<% end %>	
-<hr>
+    <header>
+        Conversation with: <%= resource.negotiator_for(current_user).name %>
+    </header>
 
-<% if (deal = resource.deals.last).present? %>
-    <p>
-        <b>Price: </b><%= number_to_currency(price_in_current_currency(deal.price, deal.currency), unit: current_currency.name) %>
-    </p>
-    <p>    
-        <b>start: </b><%= deal.start_at %>
-    </p>
-    
-    <% if deal.is_customer?(current_user) %>
-        <% if deal.accepted? %>
-            You accepted!
-        <% elsif deal.confirmed? %>
-            Artist Confirmed!
-        <% elsif deal.offer? %>
-            <%= link_to "Accept", accept_account_deal_path(deal), method: :put %>
-        <% else %>
-            Warten auf Antwort....
+    <div class="content">
+        
+        <% resource.messages.includes(:sender).each do |message| %>
+            <div class="message">
+                <div class="photo">
+                    <%= image_tag message.sender.avatar.url(:thumb), class: "avatar" %>
+                </div>
+                <div class="body">
+                    <h3><%= message.sender.name %> - <%= message.created_at.strftime("%H:%M") %></h3>
+                    <p>
+                        <%= message.body %>
+                    </p>
+                </div>
+            </div>
         <% end %>
-    <% else %>
-        <% if deal.accepted? %>
-            Customer accepted!
-        <% elsif deal.confirmed? %>
-            You Confirmed!
-        <% else %>
-            <% if !deal.offer? %>
-                <p>
-                    <%= link_to "Confirm", confirm_account_deal_path(deal), method: :put %>
-                </p>
+        <div class="message new-message">
+            <div class="photo">
+                <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+            </div>
+            <div class="body">
+                <%= simple_form_for @message, url: account_outgoing_messages_path do |f| %>
+                    <%= render "/account/outgoing_messages/form", f: f %>
+                <% end %>
+            </div>
+        </div>
+
+    </div>
+
+    <% if (deal = resource.deals.last).present? %>
+    <aside>
+        <div class="booking-teaser">
+            <div class="label">Price</div>
+            <div class="price">
+                <%= number_to_currency(price_in_current_currency(deal.price, deal.currency), unit: current_currency.symbol) %>
+            </div>
+            <div class="label">
+                start:<br>
+                <%= deal.start_at.strftime("%d. %m %Y") %>
+            </div>
+
+            <% if deal.is_customer?(current_user) %>
+                <% if deal.accepted? %>
+                    <div class="button">
+                        You accepted!
+                    </div>
+                <% elsif deal.confirmed? %>
+                    Artist Confirmed!
+                <% elsif deal.offer? %>
+                    <%= link_to "Accept", accept_account_deal_path(deal), method: :put %>
+                <% else %>
+                    Warten auf Antwort....
+                <% end %>
+            <% else %>
+                <% if deal.accepted? %>
+                    Customer accepted!
+                <% elsif deal.confirmed? %>
+                    You Confirmed!
+                <% else %>
+                    <% if !deal.offer? %>
+                        <div class="button">
+                            <%= link_to "Confirm", confirm_account_deal_path(deal), method: :put, class: "btn btn-submit" %>
+                        </div>
+                    <% end %>
+                        <%= link_to "Make new offer", new_offer_path, class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                        <!-- <%= #render "/account/offers/form", deal: deal %>-->
+                    <% end %>
             <% end %>
-            <p>
-                <%= render "/account/offers/form", deal: deal %>
-            </p>
-            <% end %>
+        </div>
+
+    </aside>
     <% end %>
-<% end %>
+
+</div>
