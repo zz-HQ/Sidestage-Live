@@ -39,15 +39,15 @@ class Account::BookingRequestsController < Account::ResourcesController
         render :new and return
       end
       begin
-        customer = Stripe::Customer.create(
-          :card => token,
-          :description => current_user.email
-        )
+        customer = Stripe::Customer.create(card: token, description: current_user.email)
         current_user.save_stripe_customer_id!(customer.id)
       rescue Stripe::StripeError => e
         # TODO: Stripe Customer Create Error
-        params[:stripe_token] = nil
+        params[:user][:stripe_token] = nil
         flash[:error] = e.json_body[:error][:message] + ". Bitte versuchen Sie es noch einmal."
+        Rails.logger.info "##########################"
+        Rails.logger.info e.inspect
+        Rails.logger.info "##########################"
         render :new and return
       end
     end

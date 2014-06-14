@@ -17,7 +17,9 @@ class Deal < ActiveRecord::Base
   #
   #
   #
-
+  
+  attr_accessor :parent_deal_id
+  
   validates :artist_id, :profile_id, :customer_id, :conversation_id, :price, :start_at, :currency, presence: true
   validates :price, numericality: true, allow_blank: true 
   validate :validate_artist, :validate_customer
@@ -55,7 +57,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  before_validation :assign_artist, :set_price, :attach_message, :attach_conversation, on: :create
+  before_validation :initialize_offer, :assign_artist, :set_price, :attach_message, :attach_conversation, on: :create
   
   #
   # Instance Methods
@@ -112,6 +114,18 @@ class Deal < ActiveRecord::Base
     errors.add :customer_id unless customer.present?
   end
   
+  def initialize_offer
+    if parent_deal_id.present?
+      requested_deal = artist.deals.where(id: parent_deal_id).first
+      if requested_deal.present?
+        self.profile_id = requested_deal.profile_id
+        self.customer_id = requested_deal.customer_id
+        self.conversation_id = requested_deal.conversation_id
+        self.start_at = requested_deal.start_at
+      end
+    end
+  end
+  
   def assign_artist
     self.artist_id ||= profile.user_id
   end
@@ -132,7 +146,7 @@ class Deal < ActiveRecord::Base
     message = Message.new
     message.sender_id = offer? ? self.artist_id : self.customer_id
     message.receiver_id = offer? ? self.customer_id : self.artist_id
-    message.body =  "You can accept or deny this request or message the user. This request will automatically be cancelled in 48 hours if you don't reply."
+    message.body =  note || "You can accept or deny this request or message the user. This request will automatically be cancelled in 48 hours if you don't reply."
     message.save
     message
   end
@@ -151,9 +165,10 @@ class Deal < ActiveRecord::Base
       return save(validate: false)
     rescue Stripe::CardError => e
       # TODO: Stripe Charge CardError
+      User.where(id: customer.id).update_all(stripe_log: e.json_body.inspect) 
+      Rails.logger.info "##########################"
       Rails.logger.info e.inspect
-    rescue Error => e
-      Rails.logger.info e.inspect
+      Rails.logger.info "##########################"
     end
     
   end

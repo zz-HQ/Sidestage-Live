@@ -1,0 +1,6 @@
+vex.close()
+<% if resource.errors.present? %>
+  vex.dialog.open({ message: '', showCloseButton: true, buttons: [], input: "<%= escape_javascript(render("form", deal: resource)).strip.html_safe %>"});
+<% else %>
+  $("#deal-teaser").html("<%= escape_javascript(render("/account/conversations/deal_teaser", deal: resource)).strip.html_safe %>")
+<% end %>  

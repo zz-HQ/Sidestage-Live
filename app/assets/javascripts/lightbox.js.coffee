@@ -15,4 +15,10 @@ $(document).on 'click', '[data-lightbox="ajax"]', (e) ->
     vex.open
       content: data
 
+$(document).on 'click', '[data-lightbox="html"]', (e) ->
+  e.preventDefault()
+  vex.close()
+  vex.open
+    content: $($(this).attr("data-target")).html()
+
 

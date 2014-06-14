@@ -9,6 +9,7 @@ class Account::OffersController < Account::ResourcesController
   # 
 
   defaults resource_class: Deal, instance_name: 'deal'
+  respond_to :html, :js
   
   #
   # Actions
@@ -18,12 +19,6 @@ class Account::OffersController < Account::ResourcesController
   #
   #
   
-  def create
-    create! do |success, failure|
-      success.html { redirect_to account_conversation_path(resource.conversation) }
-      failure.html { render :new }
-    end
-  end
   
   #
   # Protected
@@ -36,7 +31,7 @@ class Account::OffersController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:customer_id, :profile_id, :start_at, :price, :note])
+    params.permit(deal: [:parent_deal_id, :price, :note])
   end
   
   #
