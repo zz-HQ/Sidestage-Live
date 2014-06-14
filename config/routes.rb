@@ -15,7 +15,7 @@ Airmusic::Application.routes.draw do
     namespace :account do
       resource :personal do
         collection do
-          match 'complete', to: 'personal#complete', via: :all
+          match 'complete', to: 'personals#complete', via: :all          
         end
       end
       resource :dashboard, controller: :dashboard do
@@ -26,6 +26,7 @@ Airmusic::Application.routes.draw do
           get :preview
           put :toggle
           match 'complete', to: 'profiles#complete', via: :all
+          match 'pricing', to: 'profiles#pricing', via: :all          
         end
       end
       resources :outgoing_messages

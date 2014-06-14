@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612132937) do
+ActiveRecord::Schema.define(version: 20140614075300) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -115,14 +115,15 @@ ActiveRecord::Schema.define(version: 20140612132937) do
     t.string   "tagline"
     t.text     "description"
     t.text     "about"
-    t.string   "youtube"
-    t.string   "soundcloud"
     t.text     "style"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "solo",        default: true
     t.string   "location"
     t.boolean  "published",   default: false
+    t.string   "currency"
+    t.text     "additionals"
+    t.string   "avatar"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -161,6 +162,8 @@ ActiveRecord::Schema.define(version: 20140612132937) do
     t.string   "role"
     t.text     "about"
     t.boolean  "newsletter_subscribed",  default: false
+    t.string   "stripe_token"
+    t.text     "stripe_log"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

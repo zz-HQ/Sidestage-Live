@@ -1,4 +1,4 @@
-class Account::PersonalController < Account::ResourcesController
+class Account::PersonalsController < Account::ResourcesController
   
   #
   # Settings

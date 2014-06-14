@@ -1,2 +1,22 @@
 de:
-    
+  activerecord:
+    attributes:
+      profile:
+        cancellation_policy:
+          flexible: "Flexible: full refund up to 1 day before event."
+        availability:
+          city: Only my city
+          state: In my state/region
+          world: Anywhere in the world
+        travel_costs:
+          myself: I'll pay my own way
+          shared: I'll share the costs with the customer
+          customer: The customer pays my travel costs
+            
+  #   errors:
+  #     models:
+  #       profile:
+  #         attributes:
+  #           price: 
+  #             not_a_number: "Bitte gültigen Preis angeben."
+          

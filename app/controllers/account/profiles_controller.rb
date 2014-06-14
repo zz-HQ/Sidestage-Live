@@ -28,10 +28,18 @@ class Account::ProfilesController < Account::ResourcesController
   def complete
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        redirect_to new_account_payment_detail_path
+        redirect_to pricing_account_profile_path(resource)
       end
     end
   end
+  
+  def pricing
+    if request.patch?
+      if resource.update_attributes(permitted_params[:profile])
+        redirect_to new_account_payment_detail_path
+      end
+    end
+  end  
   
   def toggle
     resource.toggle!
@@ -50,7 +58,7 @@ class Account::ProfilesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(profile: [:tagline, :price, :description, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
+    params.permit(profile: [:tagline, :currency, :price, :description, :about, :city, :youtube, :style, :soundcloud, :late_night_fee, :night_fee, :cancellation_policy, :availability, :travel_costs, genre_ids: []])
   end 
   
   #
