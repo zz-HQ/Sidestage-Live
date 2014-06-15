@@ -12,6 +12,8 @@
         <%= render 'header' %>
         
         <%= render 'flash' %>
+
+        <%= yield :outer_wrap %>
         
         <div class="wrap">
           <%= yield %>
