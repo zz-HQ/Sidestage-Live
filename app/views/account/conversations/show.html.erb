@@ -12,6 +12,7 @@
                     <%= image_tag message.sender.avatar.url(:thumb), class: "avatar" %>
                 </div>
                 <div class="body">
+                    <!-- TODO: Link auf das Profil des Artists setzen -->
                     <h3><%= message.sender.name %> - <span><%= message.created_at.strftime("%H:%M") %></span></h3>
                     <p>
                         <%= message.body %>
