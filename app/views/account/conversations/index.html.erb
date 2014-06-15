@@ -13,6 +13,8 @@
 					<div class="body">
 						<h3><%= conversation.negotiator_for(current_user).name %></h3>
 						<p>
+							<!-- TODO: Pfeil nur anzeigen wenn letzte Nachricht von mir ist -->
+							<i class="fa fa-reply"></i>
 							<%= conversation.body %>
 						</p>
 					</div>
