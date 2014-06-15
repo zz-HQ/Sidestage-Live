@@ -12,8 +12,11 @@ $(document).on 'click', '[data-lightbox="ajax"]', (e) ->
     headers:
       'X-Lightbox': true
   ).success (data, textStatus, jqXHR) ->
+    console.log(textStatus)
     vex.open
       content: data
+  .error (data, textStatus, jqXHR) ->    
+    alert(textStatus)
 
 $(document).on 'click', '[data-lightbox="html"]', (e) ->
   e.preventDefault()

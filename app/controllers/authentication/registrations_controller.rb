@@ -1,15 +1,25 @@
 class Authentication::RegistrationsController < Devise::RegistrationsController
 
   #
-  # Actions
+  # Settings
   # ---------------------------------------------------------------------------------------
   #
   #
   #
   #
   
-  before_action :configure_permitted_parameters  
   
+  before_action :configure_permitted_parameters
+
+  helper_method :after_sign_up_path_for
+  
+  #
+  # Actions
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
   
   #
   # Protected
