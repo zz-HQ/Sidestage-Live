@@ -41,7 +41,7 @@ class Account::PersonalsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(user: [:about, :stripe_token, :avatar])
+    params.permit(user: [:first_name, :last_name, :about, :stripe_token, :avatar])
   end
   
   

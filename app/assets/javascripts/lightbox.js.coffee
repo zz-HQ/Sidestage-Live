@@ -21,4 +21,11 @@ $(document).on 'click', '[data-lightbox="html"]', (e) ->
   vex.open
     content: $($(this).attr("data-target")).html()
 
+# $(document).on 'click', '[data-lightbox="html"]', (e) ->
+#   e.preventDefault()
+#   vex.close()
+#   vex.open
+#     content: $($(this).attr("data-target")).html()
+
+
 
