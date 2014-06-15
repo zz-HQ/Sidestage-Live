@@ -13,6 +13,8 @@ class Authentication::RegistrationsController < Devise::RegistrationsController
 
   helper_method :after_sign_up_path_for
   
+  respond_to :html, :js
+  
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -50,7 +52,7 @@ class Authentication::RegistrationsController < Devise::RegistrationsController
   end
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name]
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :newsletter_subscribed]
   end    
     
 end

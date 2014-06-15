@@ -33,12 +33,12 @@ class ArtistsController < ApplicationController
   def create
     build_resource
     session[:profile] = permitted_params[:profile]
+    render :new and return unless resource.valid?
     respond_to do |format|
       format.html{ redirect_to new_user_registration_path }
-      format.js{ }
+      format.js{}
     end
-    
-  end  
+  end 
     
   #
   # Protected

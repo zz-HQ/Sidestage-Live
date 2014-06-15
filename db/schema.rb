@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614075300) do
+ActiveRecord::Schema.define(version: 20140615160123) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -108,6 +108,15 @@ ActiveRecord::Schema.define(version: 20140614075300) do
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
   add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
+
+  create_table "pictures", force: true do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.string   "image"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "profiles", force: true do |t|
     t.integer  "user_id"

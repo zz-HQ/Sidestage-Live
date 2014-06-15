@@ -8,7 +8,7 @@ Airmusic::Application.routes.draw do
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
   
-    devise_for :users, controllers: { registrations: "authentication/registrations", confirmations: "authentication/confirmations" }
+    devise_for :users, controllers: { sessions: "authentication/sessions", registrations: "authentication/registrations", confirmations: "authentication/confirmations" }
     
     resources :artists, :only => [:new, :create, :index, :show]
     
