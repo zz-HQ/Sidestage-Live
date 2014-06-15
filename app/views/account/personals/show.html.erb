@@ -1,19 +1,33 @@
-<%= simple_form_for resource, url: account_personal_path do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
-    <%= f.input :about %>
-    <input type="submit">
-<% end %>
+<div id="personals">
+    <aside>
+        <header>
+          Filter
+        </header>
+        
+    </aside>
 
-<h2>Payments</h2>
+    <div class="content">
+        <header>
+            Personals
+        </header>
+        <%= simple_form_for resource, url: account_personal_path do |f| %>
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
+            <%= f.input :email %>
+            <%= f.input :about %>
+            <input type="submit" class="btn">
+        <% end %>
 
-<%= link_to resource.paymentable? ? "Update Credit card" : "+ Add Credit Card", "#", data: { toggle: "payment-form" }  %>
+        <h2>Payments</h2>
 
-<div style="display:none;" data-content="payment-form">
-    <%= simple_form_for resource, url: account_personal_path do |f| %>
-        <%= f.input :stripe_token, as: :hidden %>
-        <%= render "account/payment_details/payment_form" %>
-        <input type="submit">
-    <% end %>
+        <%= link_to resource.paymentable? ? "Update Credit card" : "+ Add Credit Card", "#", data: { toggle: "payment-form" }  %>
+
+        <div style="display:none;" data-content="payment-form">
+            <%= simple_form_for resource, url: account_personal_path do |f| %>
+                <%= f.input :stripe_token, as: :hidden %>
+                <%= render "account/payment_details/payment_form" %>
+                <input type="submit">
+            <% end %>
+        </div>
+    </div>
 </div>
