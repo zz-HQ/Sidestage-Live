@@ -1,6 +1,5 @@
-vex.close()
+vex.closeAll()
 <% if resource.errors.present? %>
-  vex.closeAll();
   vex.open({content: "<%=j render("new").strip.html_safe %>"});
 <% else %>
   window.location = "<%= after_sign_up_path_for(resource) %>"
