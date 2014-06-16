@@ -29,6 +29,7 @@ Airmusic::Application.routes.draw do
           match 'pricing', to: 'profiles#pricing', via: :all          
         end
       end
+      resources :pictures, only: [:index, :create, :destroy]
       resources :outgoing_messages
       resources :deals do
         member do

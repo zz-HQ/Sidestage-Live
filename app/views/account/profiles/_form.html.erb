@@ -1,8 +1,8 @@
 <aside>
   <header>
-    Sidebar
+    
   </header>
-  
+  <%= render 'account/shared/sidebar_links' %>
 </aside>
 
 <div class="content">
@@ -10,7 +10,7 @@
     Profile
   </header>
   
-  <div class="">
+  <div>
     <%= simple_form_for [:account, resource] do |f| %>
 			<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
 			<%= f.input :price %>
