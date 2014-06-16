@@ -51,7 +51,7 @@ class Account::BookingRequestsController < Account::ResourcesController
         render :new and return
       end
     end
-
+    
     create! do |success, failure|
       success.html { redirect_to account_conversation_path(resource.conversation) }
       failure.html { render :new }
