@@ -1,1 +1,2 @@
-vex.dialog.open({ message: '', showCloseButton: true, buttons: [], input: "<%= escape_javascript(render("/devise/registrations/new")).strip.html_safe %>"});
+vex.closeAll();
+vex.open({content: "<%=j render("/devise/registrations/new").strip.html_safe %>"});

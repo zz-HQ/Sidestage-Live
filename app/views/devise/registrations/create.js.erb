@@ -1,6 +1,7 @@
 vex.close()
 <% if resource.errors.present? %>
-  vex.dialog.open({ message: '', showCloseButton: true, buttons: [], input: "<%= escape_javascript(render("new")).strip.html_safe %>"});
+  vex.closeAll();
+  vex.open({content: "<%=j render("new").strip.html_safe %>"});
 <% else %>
   window.location = "<%= after_sign_up_path_for(resource) %>"
 <% end %>
