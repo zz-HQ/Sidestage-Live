@@ -27,19 +27,19 @@ App.init = ->
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
+  $('#flash-messages').flash()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'Y-m-d'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
   App.setStripeListener()
 
-$(document).on 'page:update', App.init
-$ -> App.init()
-
 $(document).on 'change', '.submit-on-change', (e) -> $(@).closest('form').trigger 'submit'
-
 
 $.ajaxSetup
   headers:
-    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     'Accept': "text/javascript, application/javascript, text/html"
+
+$(document).on 'page:update', App.init
+$ -> App.init()

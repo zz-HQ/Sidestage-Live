@@ -1,0 +1,30 @@
+#flash-messages
+  +transition(height 500ms ceaser($easeOutExpo))
+  height: 0
+  margin: 0 0 35px
+  overflow: hidden
+  padding: 0
+
+  .flash
+    color: #fff
+    padding: 15px 0
+
+    &.flash-notice
+      background: rgb(0, 200, 0)
+
+    &.alert-error
+      background: rgb(200, 0, 0)
+  
+    .flash-message
+      +span-columns(7)
+
+    .flash-close
+      +span-columns(1)
+      text-align: right
+
+      a
+        color: #fff
+
+  &.animation-in
+    +transition(height 500ms ceaser($easeOutExpo))
+    height: 55px
