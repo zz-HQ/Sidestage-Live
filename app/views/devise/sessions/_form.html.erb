@@ -30,7 +30,7 @@
     <% end %>
       
     <div class="bottom-link">
-      <span>You are new? <%= link_to "Sign Up", new_registration_path(resource_name) %> </span>
+      <span>You are new? <%= link_to "Sign Up", new_registration_path(resource_name, format: "html"), data: {lightbox: "ajax"} %> </span>
     </div>
 
   </div>
