@@ -28,8 +28,9 @@ App.init = ->
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
   $('.date-picker').datetimepicker
-    timepicker:false
-    format:'Y-m-d'
+    timepicker: false
+    format: 'Y-m-d'
+    onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
   App.setStripeListener()
 
 $(document).on 'page:update', App.init
