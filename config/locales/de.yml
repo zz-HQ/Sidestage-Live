@@ -1,2 +1,55 @@
 de:
-    
+  activerecord:
+    models:
+      profile:
+        one: Profil
+        other: Profile
+    attributes:
+      profile:
+        cancellation_policy:
+          flexible: "Flexible: full refund up to 1 day before event."
+        availability:
+          city: Only my city
+          state: In my state/region
+          world: Anywhere in the world
+        travel_costs:
+          myself: I'll pay my own way
+          shared: I'll share the costs with the customer
+          customer: The customer pays my travel costs
+  helpers:
+    label:
+      user:
+        first_name: "Vorname"
+        last_name: "Nachname"
+        
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} wurde erfolgreich angelegt."
+      update:
+        notice: "%{resource_name} wurde erfolgreich aktualisiert."
+      destroy:
+        notice: "%{resource_name} wurde erfolgreich gelöscht."
+        alert: "%{resource_name} konnte nicht gelöscht werden."
+  will_paginate:
+    previous_label: "<i class='fa fa-caret-left'></i>"
+    next_label: "<i class='fa fa-caret-right'></i>"
+    page_gap: "&hellip;"
+    page_entries_info:
+      single_page:
+        zero:  "No %{model} found"
+        one:   "Displaying 1 %{model}"
+        other: "Displaying all %{count} %{model}"
+      single_page_html:
+        zero:  "No %{model} found"
+        one:   "Displaying <b>1</b> %{model}"
+        other: "Displaying <b>all&nbsp;%{count}</b> %{model}"
+      multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
+      multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
+  #   errors:
+  #     models:
+  #       profile:
+  #         attributes:
+  #           price: 
+  #             not_a_number: "Bitte gültigen Preis angeben."
+          

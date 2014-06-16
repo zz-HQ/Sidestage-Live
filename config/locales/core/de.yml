@@ -195,10 +195,3 @@ de:
       short: ! '%d. %B, %H:%M Uhr'
       date:  ! '%d.%m.%Y'
     pm: nachmittags
-  #remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-  activemodel:
-    errors:
-      <<: *errors
-  activerecord:
-    errors:
-      <<: *errors

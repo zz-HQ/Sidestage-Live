@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612132937) do
+ActiveRecord::Schema.define(version: 20140615160123) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -109,20 +109,30 @@ ActiveRecord::Schema.define(version: 20140612132937) do
   add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
   add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
+  create_table "pictures", force: true do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.string   "image"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.integer  "price"
     t.string   "tagline"
     t.text     "description"
     t.text     "about"
-    t.string   "youtube"
-    t.string   "soundcloud"
     t.text     "style"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "solo",        default: true
     t.string   "location"
     t.boolean  "published",   default: false
+    t.string   "currency"
+    t.text     "additionals"
+    t.string   "avatar"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -136,12 +146,12 @@ ActiveRecord::Schema.define(version: 20140612132937) do
     t.string   "airmusic_name"
     t.string   "avatar"
     t.string   "city"
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -150,7 +160,7 @@ ActiveRecord::Schema.define(version: 20140612132937) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,     null: false
+    t.integer  "failed_attempts",        default: 0,    null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
@@ -160,7 +170,9 @@ ActiveRecord::Schema.define(version: 20140612132937) do
     t.string   "stripe_customer_id"
     t.string   "role"
     t.text     "about"
-    t.boolean  "newsletter_subscribed",  default: false
+    t.boolean  "newsletter_subscribed",  default: true
+    t.string   "stripe_token"
+    t.text     "stripe_log"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

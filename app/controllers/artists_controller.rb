@@ -20,6 +20,7 @@ class ArtistsController < ApplicationController
   inherit_resources
   defaults :resource_class => Profile, :instance_name => 'profile'
   actions :index, :show, :new, :create
+  respond_to :html, :js
 
   #
   # Actions
@@ -31,13 +32,13 @@ class ArtistsController < ApplicationController
   
   def create
     build_resource
-    if resource.valid?
-      session[:profile] = permitted_params[:profile]
-      redirect_to new_user_registration_path and return
-    else
-      render :new
+    session[:profile] = permitted_params[:profile]
+    render :new and return unless resource.valid?
+    respond_to do |format|
+      format.html{ redirect_to new_user_registration_path }
+      format.js{}
     end
-  end  
+  end 
     
   #
   # Protected
@@ -65,7 +66,7 @@ class ArtistsController < ApplicationController
   end
   
   def collection
-    get_collection_ivar || set_collection_ivar(end_of_association_chain.published.page(params[:page] || 1))
+    get_collection_ivar || set_collection_ivar(end_of_association_chain.sorty(params).published.page(params[:page] || 1))
   end  
   
   def build_resource

@@ -1,0 +1,91 @@
+#conversation,
+#conversations,
+#dashboard,
+#personals
+  +outer-container
+  
+  header
+    +bigger-font
+    font-weight: 700
+    margin-bottom: 30px
+
+  .content
+
+    .message
+      display: block
+      margin-bottom: 20px
+      min-height: 90px
+
+      .photo
+        +span-columns(1 of 7)
+        overflow: hidden
+
+        img
+          +border-radius(50%)
+          +transition(opacity 800ms ceaser($easeOutExpo))
+          border: 1px solid $blue
+          width: 100%
+
+      .body
+        +span-columns(6 of 7)
+        cursor: default
+        margin-right: 0px
+
+        h3
+          margin: 0 0 10px
+
+          span
+            color: #777
+            font-size: 17px
+            font-weight: 300
+
+        p
+          margin: 0
+
+      &.new-message
+        margin-top: 30px
+
+        h2
+          font-size: 15px
+          margin-top: 0px
+          text-transform: uppercase
+
+        img
+          margin-top: 34px
+
+        .btn
+          float: right
+          margin-top: 0px
+
+  aside
+
+    .price
+      color: rgb(0,200,0)
+
+    .or
+      margin: 15px 0 20px
+      text-align: center
+
+      .line
+        border-bottom: 1px solid #CBD1D4
+        display: inline-block
+        height: 1px
+        position: relative
+        top: -4px
+        width: 50px
+
+      span 
+        margin: 0 18px
+
+
+
+
+
+
+
+
+
+
+
+
+        

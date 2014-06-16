@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
   #
   #
   
-  # TODO: save token in database
-  attr_accessor :stripe_token
   store :social_media, accessors: [ :facebook, :twitter, :soundcloud, :blog ]
 
   #
@@ -115,9 +113,9 @@ class User < ActiveRecord::Base
   end
   
   def set_payment_info    
-    #if changes.include?(:stripe_token)
-      self.stripe_customer_id ||= create_stripe_customer(stripe_token, email).try(:id) if stripe_token.present?
-    #end
+    if changes.include?(:stripe_token)
+      self.stripe_customer_id ||= create_stripe_customer(self).try(:id) if stripe_token.present?
+    end
   end
   
 end

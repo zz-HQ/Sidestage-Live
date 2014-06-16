@@ -1,0 +1,6 @@
+vex.closeAll()
+<% if resource.errors.present? %>
+  vex.open({content: "<%=j render("form", deal: resource).strip.html_safe %>"});
+<% else %>
+  $("#deal-teaser").html("<%=j render("/account/conversations/deal_teaser", deal: resource).strip.html_safe %>")
+<% end %>  

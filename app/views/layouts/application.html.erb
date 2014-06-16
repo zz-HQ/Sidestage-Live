@@ -12,8 +12,12 @@
         <%= render 'header' %>
         
         <%= render 'flash' %>
+
+        <%= yield :outer_wrap %>
         
-        <%= yield %>
+        <div class="wrap">
+          <%= yield %>
+        </div>
 
       </div>
     </div>    

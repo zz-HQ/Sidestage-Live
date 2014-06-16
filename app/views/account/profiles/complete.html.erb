@@ -1,11 +1,11 @@
 <h1>Complete your Profile</h1>
 <%= simple_form_for resource, url: complete_account_profile_path(resource) do |f| %>
-	<%= f.input :price %>
 	<%= f.input :tagline %>
 	<%= f.input :description %>
 	<%= f.input :about %>	
 	<%= f.input :style %>
 	<%= f.input :youtube %>
 	<%= f.input :soundcloud %>	
+	<%= f.file_field :avatar %>
 	<%= f.button :submit %>
 <% end %>	

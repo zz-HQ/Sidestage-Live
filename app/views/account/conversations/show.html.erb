@@ -1,49 +1,42 @@
-<h2>Conversation with: <%= resource.negotiator_for(current_user).name %>
-<% resource.messages.includes(:sender).each do |message| %>
-	<h1><%= message.sender.name %></h1>
-	<p>
-		<%= message.body %>
-	</p>
-<% end %>
+<div id="conversation">
 
-Reply
-<%= simple_form_for @message, url: account_outgoing_messages_path do |f| %>
-	<%= render "/account/outgoing_messages/form", f: f %>
-<% end %>	
-<hr>
+    <header>
+        Conversation with: <%= resource.negotiator_for(current_user).name %>
+    </header>
 
-<% if (deal = resource.deals.last).present? %>
-    <p>
-        <b>Price: </b><%= number_to_currency(price_in_current_currency(deal.price, deal.currency), unit: current_currency.name) %>
-    </p>
-    <p>    
-        <b>start: </b><%= deal.start_at %>
-    </p>
-    
-    <% if deal.is_customer?(current_user) %>
-        <% if deal.accepted? %>
-            You accepted!
-        <% elsif deal.confirmed? %>
-            Artist Confirmed!
-        <% elsif deal.offer? %>
-            <%= link_to "Accept", accept_account_deal_path(deal), method: :put %>
-        <% else %>
-            Warten auf Antwort....
+    <div class="content">
+        
+        <% resource.messages.includes(:sender).each do |message| %>
+            <div class="message">
+                <div class="photo">
+                    <%= image_tag message.sender.avatar.url(:thumb), class: "avatar" %>
+                </div>
+                <div class="body">
+                    <!-- TODO: Link auf das Profil des Artists setzen -->
+                    <h3><%= message.sender.name %> - <span><%= message.created_at.strftime("%H:%M") %></span></h3>
+                    <p>
+                        <%= message.body %>
+                    </p>
+                </div>
+            </div>
         <% end %>
-    <% else %>
-        <% if deal.accepted? %>
-            Customer accepted!
-        <% elsif deal.confirmed? %>
-            You Confirmed!
-        <% else %>
-            <% if !deal.offer? %>
-                <p>
-                    <%= link_to "Confirm", confirm_account_deal_path(deal), method: :put %>
-                </p>
-            <% end %>
-            <p>
-                <%= render "/account/offers/form", deal: deal %>
-            </p>
-            <% end %>
+        <div class="message new-message">
+            <div class="photo">
+                <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+            </div>
+            <div class="body">
+                <%= simple_form_for @message, url: account_outgoing_messages_path do |f| %>
+                    <%= render "/account/outgoing_messages/form", f: f %>
+                <% end %>
+            </div>
+        </div>
+
+    </div>
+
+    <% if (deal = resource.deals.last).present? %>
+        <aside id="deal-teaser">
+            <%= render "deal_teaser", deal: deal %>
+        </aside>
     <% end %>
-<% end %>
+
+</div>
