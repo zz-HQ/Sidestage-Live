@@ -75,7 +75,7 @@
                 <% if current_user %>
                     <%= f.submit "Book it", class: "btn btn-submit" %>
                 <% else %>
-                    <%= link_to "Book it", new_user_session_path(return_to: request.url), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                    <%= link_to "Book it", link_or_login(new_user_session_path(return_to: request.url)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
                 <% end %>
               </div>
           <% end %>
