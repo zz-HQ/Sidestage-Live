@@ -13,7 +13,7 @@
     <div class="line"></div>      
   </div>
 
-  <%= simple_form_for :user, as: :user, url: registration_path(:user), remote: true, authenticity_token: true do |f| %>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), remote: true, authenticity_token: true) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
@@ -31,6 +31,6 @@
   <% end %>
 
   <div class="bottom-link">
-    <span>Have an Account? <%= link_to "Log In", new_session_path(:user), data: {lightbox: "ajax"} %> </span>
+    <span>Have an Account? <%= link_to "Log In", new_session_path(:user, format: "html"), data: {lightbox: "ajax"} %> </span>
   </div>
 </div>

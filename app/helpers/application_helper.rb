@@ -43,7 +43,7 @@ module ApplicationHelper
   end
 
   def link_or_login(path)
-    user_signed_in? ? path : new_user_session_path(return_to: request.url)
+    user_signed_in? ? path : new_user_session_path(return_to: request.url, format: "html")
   end
   
   def artist_contactable?(artist)
