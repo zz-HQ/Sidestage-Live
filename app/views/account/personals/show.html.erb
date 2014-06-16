@@ -1,7 +1,9 @@
 <div id="personals">
     <aside>
         <header>
-          Filter
+          <%= link_to "Account", "#" %><br>
+          <%= link_to "Password", "#" %><br>
+          <%= link_to "Payment", "#" %><br>          
         </header>
         
     </aside>
@@ -15,19 +17,30 @@
             <%= f.input :last_name %>
             <%= f.input :email %>
             <%= f.input :about %>
-            <input type="submit" class="btn">
+    		<%= f.button :submit, class: "btn" %>
+        <% end %>
+        <h1>Ich würde die unteren beide Blöcke zugeklappt rendern und nur beim Klick in sidebar entsprechendes Element aufklappen.</h1>
+
+
+        <hr>
+        <h2>Password</h2>
+        <%= simple_form_for resource, url: account_personal_path do |f| %>
+            <%= f.input :password %>
+            <%= f.input :password_confirmation %>
+    		<%= f.button :submit, class: "btn" %>
         <% end %>
 
+        <hr>
         <h2>Payments</h2>
 
-        <%= link_to resource.paymentable? ? "Update Credit card" : "+ Add Credit Card", "#", data: { toggle: "payment-form" }  %>
-
-        <div style="display:none;" data-content="payment-form">
+        <div data-content="payment-form">
             <%= simple_form_for resource, url: account_personal_path do |f| %>
                 <%= f.input :stripe_token, as: :hidden %>
                 <%= render "account/payment_details/payment_form" %>
-                <input type="submit">
+    		<%= f.button :submit, class: "btn" %>
             <% end %>
         </div>
+        
+        
     </div>
 </div>

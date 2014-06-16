@@ -57,10 +57,9 @@ class Profile < ActiveRecord::Base
   #
   #  
   
-  sortable :price, :desc
-  sortable :tagline, :desc
+  sortable :price, :tagline
   
-  filterable :price, :location
+  filterable :location, :price
   
   scope :published, -> { where(published: true) }
 

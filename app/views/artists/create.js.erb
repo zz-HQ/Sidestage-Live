@@ -1,2 +1,2 @@
 vex.closeAll();
-vex.open({content: "<%=j render("/devise/registrations/new").strip.html_safe %>"});
+vex.open({content: "<%= j render("/devise/registrations/form", resource: User.new, resource_name: :user).strip.html_safe %>"});

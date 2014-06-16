@@ -1,19 +1,4 @@
 <h1>Pricing</h1>
 <%= simple_form_for resource, url: pricing_account_profile_path(resource) do |f| %>
-	<%= f.input :price %>
-	<%= f.select :currency, Currency.all.map(&:name) %>
-	<h3>Terms</h3>
-	Cancellation Policy<br>
-	<%= f.select :cancellation_policy, resource.cancellation_policy_for_select %>
-	<%= f.input :late_night_fee, as: :boolean %>
-	<%= f.input :night_fee %>	
-	Where are you available?
-	<br/>
-	<%= f.select :availability, resource.availability_for_select %>
-	<br>
-	How do you want to cover travel costs?
-	<br>
-	<%= f.select :travel_costs, resource.travel_costs_for_select %>
-	<br>	
-	<%= f.button :submit %>
-<% end %>	
+    <%= render "pricing_form", f: f %>
+<% end %>    
