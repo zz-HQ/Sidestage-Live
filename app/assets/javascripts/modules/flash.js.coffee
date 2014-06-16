@@ -32,11 +32,12 @@ do ($ = jQuery, window, document) ->
       @$close_button = @$element.find('a')
       @$close_button.on 'click', => @close()
 
-      @$element.addClass 'animation-in'
+      if @$element.find('> *').length >= 1
+        @$element.addClass 'animation-in'
 
-      setTimeout =>
-        @close()
-      , 6000
+        setTimeout =>
+          @close()
+        , 6000
 
     close: ->
       @$element.removeClass 'animation-in'
