@@ -10,6 +10,8 @@ class Profile < ActiveRecord::Base
   
   include Priceable
   include Profile::Presentable
+  include Sortable
+  include Filter
 
   #
   # Attributes
@@ -54,6 +56,11 @@ class Profile < ActiveRecord::Base
   #
   #
   #  
+  
+  sortable :price, :desc
+  sortable :tagline, :desc
+  
+  filterable :price, :location
   
   scope :published, -> { where(published: true) }
 

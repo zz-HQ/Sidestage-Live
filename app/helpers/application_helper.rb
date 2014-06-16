@@ -12,6 +12,16 @@ module ApplicationHelper
     html.html_safe
   end
   
+  def sorty(column, options = {})
+    options = { label: column.to_s.humanize.titleize }.merge(options)
+    query = params.merge({
+      column: column,
+      order: (params[:order].eql?('asc') ? 'desc' : 'asc')
+    })
+    class_name = params[:column].eql?(column.to_s) ? query[:order] : 'asc'
+    link_to options[:label], query, class: class_name
+  end  
+  
   def price_in_current_currency(price, price_currency)
     return price if @current_currency.nil?
     CurrencyConverterService.convert(price, price_currency, @current_currency.name)

@@ -66,7 +66,7 @@ class ArtistsController < ApplicationController
   end
   
   def collection
-    get_collection_ivar || set_collection_ivar(end_of_association_chain.published.page(params[:page] || 1))
+    get_collection_ivar || set_collection_ivar(end_of_association_chain.sorty(params).published.page(params[:page] || 1))
   end  
   
   def build_resource
