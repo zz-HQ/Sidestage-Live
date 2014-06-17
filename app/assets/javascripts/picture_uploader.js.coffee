@@ -15,7 +15,6 @@ $(document).on 'ready page:load page:restore', ->
       if types.test(file.type) || types.test(file.name)
         filesCount += 1
         renderFilesCount()
-        console.log "New image"
         data.submit()
       else
         alert("#{file.name} is not a gif, jpeg, or png image file")

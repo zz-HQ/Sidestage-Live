@@ -28,6 +28,8 @@ class Account::PicturesController < ApplicationController
   end
 
   def destroy
+    picture = current_user.profile.pictures.find params[:id]
+    picture.destroy
     render "update"
   end
 

@@ -8,7 +8,7 @@
 
   <div class="content">
     <header>
-      Profile
+      Uploaded Pictures
     </header>
     
     <div id="pictures">
@@ -16,6 +16,7 @@
     </div>
 
     <div id="picture-upload">
+      <h3>Upload New Pictures</h3>
       <%= form_tag(account_pictures_path, multipart: true, id: "new_picture", method: :post) do %>
         <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true %>
         <a href="#" id="fileupload-button">Upload Pictures</a>
