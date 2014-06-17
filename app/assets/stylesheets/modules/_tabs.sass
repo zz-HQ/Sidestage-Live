@@ -5,23 +5,65 @@ nav.tabs
     color: $text-color-light
     cursor: pointer
     display: inline-block
+    padding: 8px 12px
     margin-right: 10px
 
     + .tab-switch
-      border-left: 1px solid $text-color-light
-      padding-left: 10px
 
     &.active
-      color: #000
+      color: #FFF
+      background-color: $blue
 
 div.tabs
   margin-top: 30px
 
   .tab
-    +box
-    background-color: #fff
     display: none
-    padding: 17px 20px 8px 20px
+
+    &.about
+      +box
+      background-color: #fff
+      padding: 17px 20px 8px 20px
 
     h1, h2, h3, h4, h5, h6
       margin-top: 0
+
+    &.reviews
+
+      .photo
+        width: 70px
+        height: 70px
+        display: inline-block
+
+      .body
+        +box
+        background-color: #fff
+        padding: 17px 20px 15px 20px
+        float: right
+        width: 530px
+
+        h5
+          font-size: 14px
+          margin-bottom: 10px
+
+          span
+            float: right
+            color: $text-color-light
+            font-weight: 300
+            font-size: 12px
+            position: relative
+            top: 3px
+
+        p
+          margin: 0
+
+        .rating
+          margin-top: 10px
+
+          i
+            color: #CCC
+            margin-right: 2px
+            font-size: 20px
+            
+            &.active
+              color: #ffbd00
