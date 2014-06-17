@@ -27,15 +27,15 @@
     </div>
 
     <div class="picture-viewer">
-      <div class="picture">
-        <img>
-      </div>
       <div class="thumbs">
         <%- resource.pictures.each do |pic| -%>
-          <div class="thumb" data-big-picture="<%= pic.picture.url %>">
+          <div class="thumb" data-big-picture="<%= pic.picture.url(:preview) %>">
             <%= image_tag pic.picture.url(:thumb) %>
           </div>
         <%- end -%>
+      </div>
+      <div class="picture">
+        <img>
       </div>
     </div>
 
