@@ -14,5 +14,14 @@
     <div id="pictures">
       <%= render 'pictures' %>
     </div>
+
+    <div id="picture-upload">
+      <%= form_tag(account_pictures_path, multipart: true, id: "new_picture", method: :post) do %>
+        <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true %>
+        <a href="#" id="fileupload-button">Upload Pictures</a>
+      <% end %>
+      <div id="file-upload-status">Upload still running. <span class="value">0</span> left …</div>
+    </div>
+
   </div>
 </div>

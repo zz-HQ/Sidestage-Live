@@ -16,6 +16,8 @@
 #= require boilerplate
 #= require jquery.datetimepicker
 #= require vex/vex.combined.min
+#= require jquery-fileupload/basic
+#= require jquery-fileupload/vendor/tmpl
 #= require_tree ./modules
 #= require_tree ./pages
 #= require_tree .
