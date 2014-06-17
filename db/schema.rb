@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617124959) do
+ActiveRecord::Schema.define(version: 20140617190849) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -71,17 +71,6 @@ ActiveRecord::Schema.define(version: 20140617124959) do
   add_index "deals", ["conversation_id"], name: "index_deals_on_conversation_id", using: :btree
   add_index "deals", ["customer_id"], name: "index_deals_on_customer_id", using: :btree
 
-  create_table "genre_translations", force: true do |t|
-    t.integer  "genre_id",   null: false
-    t.string   "locale",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
-
-  add_index "genre_translations", ["genre_id"], name: "index_genre_translations_on_genre_id", using: :btree
-  add_index "genre_translations", ["locale"], name: "index_genre_translations_on_locale", using: :btree
-
   create_table "genres", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -125,10 +114,9 @@ ActiveRecord::Schema.define(version: 20140617124959) do
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.integer  "price"
-    t.string   "tagline"
-    t.text     "description"
+    t.string   "name"
+    t.text     "title"
     t.text     "about"
-    t.text     "style"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "solo",        default: true

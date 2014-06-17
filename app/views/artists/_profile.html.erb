@@ -7,7 +7,7 @@
     
     <%# TODO: Excerpt from DB %>    
     <p class="excerpt">
-      <%= resource.tagline %>
+      <%= resource.title %>
     </p>
     
     <nav class="tabs" data-id="social">
@@ -54,7 +54,7 @@
       </div>
       <div class="tab">
         <h4>Details</h4>
-        <p><%= resource.description %></p>
+        <p><%= resource.about %></p>
       </div>
       <div class="tab">
         <h4>Reviews</h4>
@@ -111,7 +111,7 @@
         <%= image_tag resource.user.avatar_url(:thumb) %>
       </div>
       <div class="name">
-        <%= resource.user.name %>
+        <%= resource.name %>
       </div>
       <% if artist_contactable?(resource.user)  %>
           <div class="button">

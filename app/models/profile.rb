@@ -8,7 +8,6 @@ class Profile < ActiveRecord::Base
   #
   #  
   
-  include Priceable
   include Profile::Presentable
   include Sortable
   include Filter
@@ -22,21 +21,21 @@ class Profile < ActiveRecord::Base
   #
   
   CANCELLATION_POLICY = {
-    flexible: 'activerecord.attributes.profile.cancellation_policy.flexible'
+    flexible: 'activerecord.attributes.profile.cancellation_policy.flexible',
+    moderate: 'activerecord.attributes.profile.cancellation_policy.moderate',
+    strict: 'activerecord.attributes.profile.cancellation_policy.strict'
   }
+
   AVAILABILITY = {
     city: 'activerecord.attributes.profile.availability.city',
     state: 'activerecord.attributes.profile.availability.state',
     world: 'activerecord.attributes.profile.availability.world'
   }
-  TRAVEL_COSTS = {
-    myself: 'activerecord.attributes.profile.travel_costs.myself',
-    shared: 'activerecord.attributes.profile.travel_costs.shared',
-    customer: 'activerecord.attributes.profile.travel_costs.customer'
-  }
   
-  store :additionals, accessors: [ :youtube, :soundcloud, :late_night_fee, :night_fee, :cancellation_policy, :availability, :travel_costs ]
-
+  store :additionals, accessors: [ :youtube, :soundcloud, :twitter, :facebook, :late_night_fee, :night_fee, :cancellation_policy, :availability ]
+  
+  attr_accessor :wizard_step
+  
   #
   #
   # Validations
@@ -47,6 +46,7 @@ class Profile < ActiveRecord::Base
   #  
 
   validates :user_id, :genre_ids, presence: true
+  validates :price, presence: true, if: :price_step?
   validates :night_fee, :price, numericality: true, allow_blank: true
   
   #
@@ -57,7 +57,7 @@ class Profile < ActiveRecord::Base
   #
   #  
   
-  sortable :price, :tagline
+  sortable :price
   
   filterable :location, :price
   
@@ -99,5 +99,9 @@ class Profile < ActiveRecord::Base
   #  
   
   private
+  
+  def price_step?
+    wizard_step == :pricing
+  end
   
 end

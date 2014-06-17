@@ -8,8 +8,6 @@ class Deal < ActiveRecord::Base
   #
   #  
   
-  include Priceable
-  
   #
   # Attributes
   # ---------------------------------------------------------------------------------------
@@ -57,7 +55,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  before_validation :initialize_offer, :assign_artist, :set_price, :attach_message, :attach_conversation, on: :create
+  before_validation :initialize_offer, :assign_artist, :set_price, :set_currency, :attach_message, :attach_conversation, on: :create
   
   #
   # Instance Methods
@@ -121,6 +119,7 @@ class Deal < ActiveRecord::Base
         self.profile_id = requested_deal.profile_id
         self.customer_id = requested_deal.customer_id
         self.conversation_id = requested_deal.conversation_id
+        self.currency = requested_deal.currency
         self.start_at = requested_deal.start_at
       end
     end
@@ -132,6 +131,10 @@ class Deal < ActiveRecord::Base
   
   def set_price
     self.price ||= profile.price unless offer?
+  end
+
+  def set_currency
+    self.currency ||= profile.currency
   end
   
   def attach_conversation
@@ -149,6 +152,10 @@ class Deal < ActiveRecord::Base
     message.body =  note || "You can accept or deny this request or message the user. This request will automatically be cancelled in 48 hours if you don't reply."
     message.save
     message
+  end
+  
+  def price_in_cents
+    price * 100
   end
   
   def charge_customer

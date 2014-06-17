@@ -1,0 +1,23 @@
+<div class="styled-radios">
+	<div class="act radio">
+
+		<div class="photo"></div>
+		<div class="label">
+			Solo Artist
+		</div>
+		<%= f.radio_button :solo, true %>
+	</div>
+	<div class="act radio">
+
+		<div class="photo"></div>
+		<div class="label">
+			Band
+		</div>
+		<%= f.radio_button :solo, false %>
+	</div>
+</div>  
+
+	<%= render "genres", f: f %>
+	
+    <%= f.select :location, available_locations, include_blank: false %>
+	<%= f.button :submit, class: "btn" %>
