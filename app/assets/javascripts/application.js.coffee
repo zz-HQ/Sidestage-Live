@@ -30,6 +30,7 @@ App.init = ->
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
   $('#flash-messages').flash()
+  $('.picture-viewer').pictureViewer()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'Y-m-d'
