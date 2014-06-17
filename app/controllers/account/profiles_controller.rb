@@ -25,6 +25,10 @@ class Account::ProfilesController < Account::ResourcesController
     new!
   end
   
+  def update
+    update! { preview_account_profile_path(resource) }
+  end
+  
   def complete
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])

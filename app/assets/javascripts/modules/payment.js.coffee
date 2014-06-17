@@ -13,7 +13,6 @@ stripeListener = (e, message) ->
         return
 
     e.preventDefault()
-
     $(".payment-status").show()
     Stripe.card.createToken $("[data-form=payment]"), (status, response) ->
       if response.error
@@ -28,7 +27,8 @@ stripeListener = (e, message) ->
         else
           form.trigger 'submit', ['done']
       return
-
+    #somehow the following line is needed  
+    return false
 App.setStripeListener = ->
   $('[data-form=payment]').off 'submit', stripeListener
   $('[data-form=payment]').on 'submit', stripeListener
