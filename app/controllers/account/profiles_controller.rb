@@ -39,7 +39,7 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :description
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        redirect_to new_account_payment_detail_path
+        redirect_to payment_account_profile_path(resource)
       end
     end
   end
@@ -79,7 +79,7 @@ class Account::ProfilesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(profile: [:solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :late_night_fee, :night_fee, :cancellation_policy, :availability, :travel_costs, genre_ids: []])
+    params.permit(profile: [:solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :cancellation_policy, :availability, :travel_costs, genre_ids: []])
   end 
   
   #

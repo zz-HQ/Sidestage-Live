@@ -1,13 +1,7 @@
-<%- if false -%>
-<%= link_to "Create & Edit", "#" %><br>  
-<%= link_to "Pricing", "#" %><br>
-<%= link_to "Complete", "#" %> <br>   
-<%- end -%>
-
 <ul>
   <li><%= link_to "Basics", resource.new_record? ? "#" : basics_account_profile_path(resource) %></li>      
   <li><%= link_to "Pricing", resource.new_record? ? "#" : pricing_account_profile_path(current_user.profile) %></li>  
   <li><%= link_to "Desc Profile", resource.new_record? ? "#" : description_account_profile_path(current_user.profile) %></li>
-  <li><%= link_to "Payments", new_account_payment_detail_path %></li>
+  <li><%= link_to "Payments", payment_account_profile_path(current_user.profile) %></li>
   <li><%= link_to "Edit Photos", resource.new_record? ? "#" : account_pictures_path %></li>
 </ul>

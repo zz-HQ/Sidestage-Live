@@ -32,7 +32,7 @@ class Profile < ActiveRecord::Base
     world: 'activerecord.attributes.profile.availability.world'
   }
   
-  store :additionals, accessors: [ :youtube, :soundcloud, :twitter, :facebook, :late_night_fee, :night_fee, :cancellation_policy, :availability ]
+  store :additionals, accessors: [ :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
   
   attr_accessor :wizard_step
   
@@ -48,7 +48,7 @@ class Profile < ActiveRecord::Base
   validates :user_id, :genre_ids, presence: true
   validates :price, presence: true, if: :price_step?
   validates :title, :name, :about, presence: true, if: :description_step?
-  validates :night_fee, :price, numericality: true, allow_blank: true
+  validates :price, numericality: true, allow_blank: true
   
   #
   # Scopes
