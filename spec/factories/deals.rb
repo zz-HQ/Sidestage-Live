@@ -1,6 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
+  
   factory :deal do
+    start_at Time.now    
+    association :profile, factory: :profile
+    association :customer, factory: :quentin
   end
+  
 end

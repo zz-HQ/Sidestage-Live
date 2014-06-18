@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617190849) do
+ActiveRecord::Schema.define(version: 20140618152308) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -48,15 +48,23 @@ ActiveRecord::Schema.define(version: 20140617190849) do
   add_index "currency_rates", ["currency_id"], name: "index_currency_rates_on_currency_id", using: :btree
   add_index "currency_rates", ["rate_from", "rate_to"], name: "index_currency_rates_on_rate_from_and_rate_to", using: :btree
 
+  create_table "deal_versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "deal_versions", ["item_type", "item_id"], name: "index_deal_versions_on_item_type_and_item_id", using: :btree
+
   create_table "deals", force: true do |t|
     t.integer  "conversation_id"
-    t.integer  "message_id"
-    t.integer  "profile_id",           null: false
-    t.integer  "artist_id",            null: false
-    t.integer  "customer_id",          null: false
-    t.datetime "artist_accepted_at"
-    t.datetime "customer_accepted_at"
-    t.integer  "price",                null: false
+    t.integer  "profile_id",          null: false
+    t.integer  "artist_id",           null: false
+    t.integer  "customer_id",         null: false
+    t.integer  "price",               null: false
     t.datetime "start_at"
     t.boolean  "offer"
     t.text     "note"
@@ -65,11 +73,14 @@ ActiveRecord::Schema.define(version: 20140617190849) do
     t.string   "stripe_charge_id"
     t.integer  "charged_price"
     t.string   "currency"
+    t.string   "state"
+    t.datetime "state_transition_at"
   end
 
   add_index "deals", ["artist_id"], name: "index_deals_on_artist_id", using: :btree
   add_index "deals", ["conversation_id"], name: "index_deals_on_conversation_id", using: :btree
   add_index "deals", ["customer_id"], name: "index_deals_on_customer_id", using: :btree
+  add_index "deals", ["state"], name: "index_deals_on_state", using: :btree
 
   create_table "genres", force: true do |t|
     t.string   "name"

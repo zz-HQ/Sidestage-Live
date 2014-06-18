@@ -8,6 +8,12 @@ class Deal < ActiveRecord::Base
   #
   #  
   
+  include Deal::StateMachine
+  
+  has_paper_trail :meta => {},
+                  :only => [ :state ],
+                  :class_name => "Versions::#{self.name}"
+  
   #
   # Attributes
   # ---------------------------------------------------------------------------------------
@@ -16,11 +22,9 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  attr_accessor :parent_deal_id
-  
   validates :artist_id, :profile_id, :customer_id, :conversation_id, :price, :start_at, :currency, presence: true
   validates :price, numericality: true, allow_blank: true 
-  validate :validate_artist, :validate_customer
+  validate :artist_must_be_valid_user, :customer_must_be_valid_user
 
   #
   # Associations
@@ -44,9 +48,6 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  scope :offers, -> { where(offer: true) }
-  scope :by_user, ->(user_id) { where("artist_id = :user_id OR customer_id = :user_id" , user_id: user_id) }
-
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------
@@ -55,7 +56,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  before_validation :initialize_offer, :assign_artist, :set_price, :set_currency, :attach_message, :attach_conversation, on: :create
+  before_validation :assign_artist, :set_price, :set_currency, :attach_to_conversation, on: :create
   
   #
   # Instance Methods
@@ -72,34 +73,7 @@ class Deal < ActiveRecord::Base
   def is_artist?(user)
     artist_id == user.id
   end
-  
-  def accepted?
-    customer_accepted_at.present?
-  end
-
-  def confirmed?
-    artist_accepted_at.present?
-  end
-  
-  def accept!
-    if charge_customer
-      self.customer_accepted_at = Time.now
-      return save
-    else
-      return false
-    end
-  end
-
-  def confirm!
-    if charge_customer
-      self.artist_accepted_at = Time.now
-      return save
-    else
-      return false
-    end
-  end
-  
-  
+    
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -110,54 +84,39 @@ class Deal < ActiveRecord::Base
   
   private
   
-  def validate_artist
-    errors.add :artist_id unless artist.present?
+  def artist_must_be_valid_user
+    errors.add :artist_id, :blank unless artist.present?
   end
   
-  def validate_customer
-    errors.add :customer_id unless customer.present?
-  end
-  
-  def initialize_offer
-    if parent_deal_id.present?
-      requested_deal = artist.deals.where(id: parent_deal_id).first
-      if requested_deal.present?
-        self.profile_id = requested_deal.profile_id
-        self.customer_id = requested_deal.customer_id
-        self.conversation_id = requested_deal.conversation_id
-        self.currency = requested_deal.currency
-        self.start_at = requested_deal.start_at
-      end
-    end
+  def customer_must_be_valid_user
+    errors.add :customer_id, :blank unless customer.present?
   end
   
   def assign_artist
-    self.artist_id ||= profile.user_id
+    self.artist_id ||= profile.try(:user_id)
   end
   
   def set_price
-    self.price ||= profile.price unless offer?
+    self.price ||= profile.try(:price)
   end
 
   def set_currency
-    self.currency ||= profile.currency
+    self.currency ||= profile.try(:currency)
   end
   
-  def attach_conversation
-    self.conversation_id ||= message.conversation_id
-  end
-
-  def attach_message
-    self.message ||= create_message
+  def attach_to_conversation
+    return if artist.nil?
+    self.conversation ||= self.artist.conversations.where('receiver_id = :id OR sender_id = :id', id: self.customer_id).first || create_conversation
   end
   
-  def create_message
-    message = Message.new
-    message.sender_id = offer? ? self.artist_id : self.customer_id
-    message.receiver_id = offer? ? self.customer_id : self.artist_id
-    message.body =  note || "You can accept or deny this request or message the user. This request will automatically be cancelled in 48 hours if you don't reply."
-    message.save
-    message
+  def create_conversation
+    conversation = Conversation.new
+    conversation.sender_id = self.customer_id
+    conversation.receiver_id = self.artist_id
+    conversation.body = note
+    conversation.last_message_at = Time.now    
+    conversation.save
+    conversation
   end
   
   def price_in_cents

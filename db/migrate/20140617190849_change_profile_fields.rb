@@ -6,7 +6,6 @@ class ChangeProfileFields < ActiveRecord::Migration
 
     Profile.connection.execute("UPDATE profiles SET price = (price / 100)")
     
-    drop_table :genre_translations    
     genres = ["Classical", "Party DJ", "Alternative", "Acappella","Acid Jazz","Afro-Brazilian","Ambient","Americana","Avant-Garde","Ballroom Dance","Bar Band",
       "Baroque","Bluegrass","Blues","Brass Band","Cabaret","Celtic","Chamber Music","Chanukah","Children's",
       "Classical Guitar","Club/Dance","Conceptual Art","Country","Disco","Early Music","Eastern Europe",
@@ -27,8 +26,6 @@ class ChangeProfileFields < ActiveRecord::Migration
     add_column :profiles, :style, :text
     rename_column :profiles, :title, :description
     rename_column :profiles, :name, :tagline
-    create_table :genre_translations do |t|
-    end
   end
   
 end
