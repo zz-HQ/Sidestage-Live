@@ -133,7 +133,8 @@
 
 // DESCRIPTION ------------------
 // ------------------------------
-#description
+#description,
+#pricing
 	
 	.inputs
 		+outer-container
@@ -141,7 +142,23 @@
 		.input
 			+span-columns(5 of 8)
 
+		.nice-select
+			+span-columns(5 of 8)
+			height: 50px
+			margin-bottom: 20px
+
+			.select-label-value
+				width: auto
+				top: 13px
+
+			.select-arrow
+				top: 20px
+				right: -40px
+
 		.hint
 			+span-columns(3 of 8)
 			color: $text-color-light
 			margin-top: 25px
+
+			&.from-nice-select
+				margin-top: 0
