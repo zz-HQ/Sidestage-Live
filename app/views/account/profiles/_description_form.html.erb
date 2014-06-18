@@ -1,8 +1,26 @@
-<%= f.input :title%>
-<%= f.input :name %>
-<%= f.input :about %>	
-<%= f.input :youtube %>
-<%= f.input :soundcloud %>	
-<%= f.input :twitter %>	
-<%= f.input :facebook %>	
-<%= f.button :submit, class: "btn" %>
+<div class="inputs">
+	<%= f.input :title, placeholder: "Title" %>
+	<div class="hint">Your title should be unique and catchy. This will be at the top of your profile page.</div>
+</div>
+<div class="inputs">
+	<%= f.input :name, placeholder: "Artist name" %>
+</div>
+<div class="inputs">
+	<%= f.input :about, placeholder: "Tell us about yourself." %>
+</div>
+<div class="inputs">
+	<%= f.input :youtube, placeholder: "http://" %>
+	<div class="hint">
+		We'll embed your videos and sounds in your profile. Must be you playing so people can get a feel for your performance.
+	</div>
+</div>
+<div class="inputs">
+	<%= f.input :soundcloud, placeholder: "http://" %>	
+</div>
+<div class="inputs">
+	<%= f.input :twitter, placeholder: "e.g. @cristiano" %>	
+</div>
+<div class="inputs">
+	<%= f.input :facebook, placeholder: "e.g. http://facebook.com/cristiano" %>	
+</div>
+<%= f.button :submit, class: "btn gross" %>
