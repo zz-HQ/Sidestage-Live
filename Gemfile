@@ -37,7 +37,8 @@ gem 'bourbon'
 gem 'neat'
 gem 'asset_sync'
 gem 'jquery-fileupload-rails'
-
+gem 'paper_trail', '~> 3.0.2'
+gem 'state_machine'
 
 group :production do
   gem 'unicorn'
