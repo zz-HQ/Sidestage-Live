@@ -39,6 +39,10 @@ App.init = ->
 
 $(document).on 'change', '.submit-on-change', (e) -> $(@).closest('form').trigger 'submit'
 
+$(document).on 'click', '[data-toggle]', (e) -> 
+  $($(this).attr("data-toggle")).toggle()
+  return false
+
 $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

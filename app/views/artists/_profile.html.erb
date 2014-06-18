@@ -124,7 +124,7 @@
       </div>
       <% if artist_contactable?(resource.user)  %>
           <div class="button">
-            <%= link_to "Contact Artist", link_or_login(new_account_outgoing_message_path(receiver_id: resource.user.id)), class: "flat-btn", data: { lightbox: "ajax" } %>
+            <%= link_to "Contact Artist", link_or_login(new_account_outgoing_message_path(receiver_id: resource.user.id, format: :html)), class: "flat-btn", data: { lightbox: "ajax" } %>
           </div>
       <% end %>
     </div>

@@ -44,10 +44,3 @@ de:
         other: "Displaying <b>all&nbsp;%{count}</b> %{model}"
       multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
       multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
-  #   errors:
-  #     models:
-  #       profile:
-  #         attributes:
-  #           price: 
-  #             not_a_number: "Bitte gültigen Preis angeben."
-          

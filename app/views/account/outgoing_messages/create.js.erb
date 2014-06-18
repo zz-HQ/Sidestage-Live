@@ -1,6 +1,6 @@
-<%- if @message.persisted? -%>
-$('#messages').append('<%=j render partial: 'account/conversations/message', locals: {message: @message} %>');
-$('#message_body').val('').trigger('blur');
-<%- else -%>
-alert("Message couldn't be sent.");
-<%- end -%>
+<% if @message.persisted? %>
+    $('#messages').append('<%= j render('account/conversations/message', message: @message) %>');
+    $('#message_body').val('').trigger('blur');
+<% else %>
+    alert("Message couldn't be sent.");
+<% end %>
