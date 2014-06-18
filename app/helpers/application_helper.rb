@@ -28,7 +28,7 @@ module ApplicationHelper
   end
   
   def localized_price(price, price_currency)
-    number_to_currency(price_in_current_currency(price, price_currency), unit: @current_currency.symbol)
+    number_to_currency(price_in_current_currency(price, price_currency), unit: @current_currency.symbol, precision: 0)
   end
   
   def available_locations

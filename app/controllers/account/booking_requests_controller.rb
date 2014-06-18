@@ -55,6 +55,7 @@ class Account::BookingRequestsController < Account::ResourcesController
     create! do |success, failure|
       success.html { redirect_to account_conversation_path(resource.conversation) }
       failure.html { render :new }
+      failure.js { render :new }
     end    
   end
   
@@ -84,7 +85,6 @@ class Account::BookingRequestsController < Account::ResourcesController
 
   def build_resource
     super.tap do |resource|
-      resource.currency = current_currency.name
       resource.profile_id ||= params[:profile_id]
     end
   end

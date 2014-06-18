@@ -2,7 +2,7 @@
 					
 <div class="publish" style="width: 100%; background: #F8E71C; margin: -34px 0 30px; text-align: right">
 	<div class="wrap">
-		<%= link_to "Edit", edit_account_profile_path(resource), class: "btn btn-default" %>
+		<%= link_to "Edit", description_account_profile_path(resource), class: "btn btn-default" %>
 		<% if resource.published? %>
 			<%= link_to "Unpublish", toggle_account_profile_path(resource), method: :put, class: "btn btn-danger" %>
 		<% else  %>

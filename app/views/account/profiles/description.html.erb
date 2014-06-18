@@ -1,4 +1,5 @@
 <div id="profile">
+
     <aside>
       <%= render 'sidebar' %>
     </aside>
@@ -8,10 +9,14 @@
         Description
       </header>
       <div class="">
-        <%= simple_form_for [:account, resource] do |f| %>
-            <%= render "basics_form", f: f %>
-        <% end %>
-        </div>
+
+    <%= simple_form_for resource, url: description_account_profile_path(resource) do |f| %>
+        <%= render "description_form", f: f %>
+    <% end %>
+    </div>
+
+
+    </div>
     </div>
     
-</div>
+    

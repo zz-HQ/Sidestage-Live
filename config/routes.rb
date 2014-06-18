@@ -23,10 +23,13 @@ Airmusic::Application.routes.draw do
       end
       resources :profiles do
         member do
+          get :payment
           get :preview
           put :toggle
-          match 'complete', to: 'profiles#complete', via: :all
+          match 'description', to: 'profiles#description', via: :all
+          match 'basics', to: 'profiles#basics', via: :all          
           match 'pricing', to: 'profiles#pricing', via: :all          
+          match 'complete_pricing', to: 'profiles#complete_pricing', via: :all            
         end
       end
       resources :pictures, only: [:index, :create, :destroy]

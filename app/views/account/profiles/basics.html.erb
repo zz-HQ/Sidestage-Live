@@ -1,17 +1,18 @@
 <div id="profile">
+
     <aside>
       <%= render 'sidebar' %>
     </aside>
 
     <div class="content">
       <header>
-        Description
+        Profile
       </header>
+
       <div class="">
         <%= simple_form_for [:account, resource] do |f| %>
             <%= render "basics_form", f: f %>
-        <% end %>
-        </div>
-    </div>
-    
-</div>
+    	<% end %>
+      </div>
+  </div>
+</div>      
