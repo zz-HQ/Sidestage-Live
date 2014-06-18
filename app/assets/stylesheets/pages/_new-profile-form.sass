@@ -23,8 +23,14 @@
 				overflow: hidden
 				+transition(opacity 600ms ceaser($easeOutExpo))
 
-				&:hover
+			&:hover
+
+				.photo
 					+opacity(0.8)
+
+				.label
+					color: #55B1FF
+					text-decoration: underline
 
 		.radio
 
@@ -37,10 +43,6 @@
 				padding: 8px 0
 				width: 167px
 				display: inline-block
-
-				&:hover
-					color: #55B1FF
-					text-decoration: underline
 
 			&.active
 
