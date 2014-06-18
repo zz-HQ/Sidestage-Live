@@ -26,7 +26,9 @@ class Account::ProfilesController < Account::ResourcesController
   end
 
   def create
-    create! { pricing_account_profile_path(resource) }
+    create! do |success, failure|
+      success.html {redirect_to pricing_account_profile_path(resource) }
+    end
   end
   
   def update
@@ -34,9 +36,10 @@ class Account::ProfilesController < Account::ResourcesController
   end
   
   def description
+    resource.wizard_step = :description
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        redirect_to pricing_account_profile_path(resource)
+        redirect_to new_account_payment_detail_path
       end
     end
   end
@@ -76,7 +79,7 @@ class Account::ProfilesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(profile: [:title, :name, :currency, :price, :about, :city, :youtube, :facebook, :twitter, :soundcloud, :late_night_fee, :night_fee, :cancellation_policy, :availability, :travel_costs, genre_ids: []])
+    params.permit(profile: [:solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :late_night_fee, :night_fee, :cancellation_policy, :availability, :travel_costs, genre_ids: []])
   end 
   
   #

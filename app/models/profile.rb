@@ -47,6 +47,7 @@ class Profile < ActiveRecord::Base
 
   validates :user_id, :genre_ids, presence: true
   validates :price, presence: true, if: :price_step?
+  validates :title, :name, :about, presence: true, if: :description_step?
   validates :night_fee, :price, numericality: true, allow_blank: true
   
   #
@@ -102,6 +103,10 @@ class Profile < ActiveRecord::Base
   
   def price_step?
     wizard_step == :pricing
+  end
+  
+  def description_step?
+    wizard_step == :description
   end
   
 end
