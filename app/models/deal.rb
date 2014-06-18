@@ -82,15 +82,21 @@ class Deal < ActiveRecord::Base
   end
   
   def accept!
-    charge_customer
-    self.customer_accepted_at = Time.now
-    return save
+    if charge_customer
+      self.customer_accepted_at = Time.now
+      return save
+    else
+      return false
+    end
   end
 
   def confirm!
-    charge_customer
-    self.artist_accepted_at = Time.now
-    return save
+    if charge_customer
+      self.artist_accepted_at = Time.now
+      return save
+    else
+      return false
+    end
   end
   
   
@@ -159,7 +165,13 @@ class Deal < ActiveRecord::Base
   end
   
   def charge_customer
-    return if stripe_charge_id.present?
+    return false if stripe_charge_id.present?
+    
+    if customer.stripe_customer_id.blank?
+      errors.add :payment, "No payment info available."
+      return false
+    end
+    
     begin
       charge = Stripe::Charge.create(
         :amount => price_in_cents,

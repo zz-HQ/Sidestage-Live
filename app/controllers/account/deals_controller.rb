@@ -9,6 +9,7 @@ class Account::DealsController < Account::ResourcesController
   # 
   
   actions :all, :except => [:create, :new]
+  respond_to :html, :js
   
   #
   # Actions
@@ -20,16 +21,22 @@ class Account::DealsController < Account::ResourcesController
   
   def accept
     if resource.is_customer?(current_user)
-      resource.accept!
-      flash[:notice] = "accepted!"
+      if resource.accept!
+        flash[:notice] = "accepted!"
+      else
+        flash[:error] = resource.errors.full_messages.join("<br/>")
+      end
     end
     redirect_to account_conversation_path(resource.conversation)
   end
   
   def confirm
     if resource.is_artist?(current_user)
-      resource.confirm!
-      flash[:notice] = "confirmed!"
+      if resource.confirm!
+        flash[:notice] = "Confirmed!"
+      else
+        flash[:error] = resource.errors.full_messages.join("<br/>")
+      end
     end
     redirect_to account_conversation_path(resource.conversation)        
   end
@@ -44,7 +51,10 @@ class Account::DealsController < Account::ResourcesController
     
   protected
   
-  
+  def permitted_params
+    params.permit(deal: [:start_at])
+  end
+    
   #
   # Private
   # ---------------------------------------------------------------------------------------

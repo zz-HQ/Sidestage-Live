@@ -1,11 +1,17 @@
 <div class="booking-teaser">
     <div class="label">Price</div>
     <div class="price">
-        <%= number_to_currency(price_in_current_currency(deal.price, deal.currency), unit: current_currency.symbol) %>
+        <%= localized_price(deal.price, deal.currency) %>
     </div>
     <div class="label">
         start:<br>
-        <%= deal.start_at.strftime("%d. %m. %Y") %>
+        <span data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></span>
+        <%= link_to "Edit", "#", data: { toggle: "#edit-deal" } %>
+        <%= simple_form_for deal, url: account_deal_path(deal), html: { id: "edit-deal", style: "display:none;" }, remote: true do |f| %>
+            <%= f.input :start_at, as: :string, input_html: { value: l(deal.start_at, format: :deal_start_at), class: "date-picker" }, label: false %>
+	        <%= f.button :submit, class: "btn" %>
+        <% end %>
+        
     </div>
     <br>
     <% if deal.is_customer?(current_user) %>

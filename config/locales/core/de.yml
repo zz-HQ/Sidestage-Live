@@ -194,4 +194,5 @@ de:
       long: ! '%A, %d. %B %Y, %H:%M Uhr'
       short: ! '%d. %B, %H:%M Uhr'
       date:  ! '%d.%m.%Y'
+      deal_start_at: "%d. %m. %Y"      
     pm: nachmittags
