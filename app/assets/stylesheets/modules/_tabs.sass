@@ -41,6 +41,18 @@ div.tabs
         padding: 17px 20px 15px 20px
         float: right
         width: 530px
+        position: relative
+
+        .dreieck
+          width: 18px
+          height: 18px
+          background-color: #FFF
+          +transform(rotate(-45deg))
+          +box-shadow(inset 1px 1px 0 0px #DDD)
+          position: absolute
+          top: 18px
+          left: -10px
+
 
         h5
           font-size: 14px
