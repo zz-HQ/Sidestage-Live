@@ -78,7 +78,7 @@
 
     <%# TODO: Finish Aside %>
     <div class="booking-teaser" data-container="deal">
-        <% if (deal = current_user.deals.by_user(resource.user_id).first).present?%>
+        <% if current_user && (deal = current_user.deals.by_user(resource.user_id).first).present?%>
             <%= render "account/deals/#{deal.state}", deal: deal %>
         <% else %>
           <div class="label">from</div>

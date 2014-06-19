@@ -8,7 +8,19 @@ class Message < ActiveRecord::Base
   #
   #
   
-  validates :sender_id, :receiver_id, :body, presence: true
+  attr_accessor :current_user, :system_message
+  
+  #
+  # Validations
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+
+  validates :receiver_id, :body, presence: true
+  validates :sender_id, presence: true, unless: :system_message?
   validate :validate_conversation
   validate :validate_receiver
 
@@ -60,7 +72,7 @@ class Message < ActiveRecord::Base
 
   def validate_conversation
     if conversation.present?
-      errors.add :conversation_id unless conversation.sender_id.in?([sender_id, receiver_id]) || conversation.receiver_id.in?([sender_id, receiver_id]) 
+      errors.add :conversation_id unless conversation.sender_id.in?([current_user.id, receiver_id]) || conversation.receiver_id.in?([current_user.id, receiver_id]) 
     end
   end
 
@@ -74,10 +86,10 @@ class Message < ActiveRecord::Base
   
   def create_conversation
     conversation = Conversation.new
-    conversation.sender_id = self.sender_id
-    conversation.receiver_id = self.receiver_id
+    conversation.sender_id = current_user.id
+    conversation.receiver_id = current_user.id == sender_id ? sender_id : receiver_id
     conversation.body = self.body
-    conversation.last_message_at = Time.now    
+    conversation.last_message_at = Time.now
     conversation.save
     conversation
   end

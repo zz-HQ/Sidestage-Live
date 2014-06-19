@@ -3,6 +3,8 @@ Currency.create(name: "USD", symbol: "$")
 Currency.create(name: "EUR", symbol: "€")
 
 User.all.map(&:destroy)
+User.connection.execute("TRUNCATE users")
+User.connection.execute("TRUNCATE profiles")
 Genre.all.map(&:destroy)
 
 

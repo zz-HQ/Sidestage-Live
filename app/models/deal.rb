@@ -20,6 +20,16 @@ class Deal < ActiveRecord::Base
   #
   #
   
+  attr_accessor :current_user
+
+  #
+  # Validations
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
   validates :artist_id, :profile_id, :customer_id, :conversation_id, :price, :start_at, :currency, presence: true
   validates :price, numericality: true, allow_blank: true 
   validate :customer_must_be_chargeable, on: :create
@@ -104,13 +114,13 @@ class Deal < ActiveRecord::Base
   
   def attach_to_conversation
     return if artist.nil?
-    self.conversation ||= self.artist.conversations.where('receiver_id = :id OR sender_id = :id', id: self.customer_id).first || create_conversation
+    self.conversation ||= self.artist.conversations.by_user(self.customer_id).first || create_conversation
   end
   
   def create_conversation
     conversation = Conversation.new
-    conversation.sender_id = self.customer_id
-    conversation.receiver_id = self.artist_id
+    conversation.sender_id = current_user.id
+    conversation.receiver_id = current_user.id == artist_id ? customer_id : artist_id
     conversation.body = note
     conversation.last_message_at = Time.now    
     conversation.save

@@ -56,6 +56,7 @@ class Account::DealsController < Account::ResourcesController
   def build_resource
     super.tap do |deal|
       deal.customer_id = current_user.id
+      deal.current_user = current_user
     end
   end
   
