@@ -98,7 +98,8 @@ div.tabs
 
 // TABS IN #PERSONALS -------------
 // --------------------------------
-#personals
+#personals,
+#profile-complete
 
   nav.tabs
     margin: 0
@@ -113,6 +114,7 @@ div.tabs
       background-color: transparent
       border-left: 1px solid #FFF
       position: static
+      +transition(all 600ms ceaser($easeOutExpo))
 
       &:hover
         color: #222
