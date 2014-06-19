@@ -22,8 +22,10 @@ Airmusic::Application.routes.draw do
         match '', to: 'dashboard#index', via: :get
       end
       resources :profiles do
-        member do
+        collection do
           get :payment
+        end
+        member do          
           get :preview
           put :toggle
           match 'description', to: 'profiles#description', via: :all
@@ -36,8 +38,10 @@ Airmusic::Application.routes.draw do
       resources :outgoing_messages
       resources :deals do
         member do
-          put :accept
+          put :cancel
           put :confirm
+          put :decline
+          put :accept
         end
       end
       resources :offers

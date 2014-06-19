@@ -19,7 +19,7 @@ class CurrencyRate < ActiveRecord::Base
   #
   #
   
-  belongs_to :currency
+  belongs_to :currency, autosave: false
 
   #
   # Scopes

@@ -6,16 +6,16 @@ module Deal::StateMachine
 
     include AASM
 
-    aasm column: 'state' do
+    aasm column: 'state', whiny_transitions: false do
       
-     state :requested, initial: true
+      state :requested, initial: true
       state :offered
       state :confirmed
       state :accepted
       state :declined
       state :rejected
       state :cancelled
-
+      
       event :offer do
         transitions [:requested] => :offered
       end
@@ -25,7 +25,7 @@ module Deal::StateMachine
       end
       
       event :decline do
-        transitions [:requested] => :declined
+        transitions from: [:requested, :offered], to: :declined
       end
       
       event :accept do
@@ -33,7 +33,7 @@ module Deal::StateMachine
       end
       
       event :cancel do
-        transitions [:requested, :offered] => :cancelled
+        transitions from: [:requested, :offered], to: :cancelled
       end
 
     end

@@ -35,6 +35,7 @@ class CurrencyService
   
   def self.update_all_rates
     Currency.all.each do |from_currency|
+
       Currency.where("id != ?", from_currency.id).each do |to_currency|
         service = CurrencyService.new
         rate = service.get_yahoo_rate(from_currency.name, to_currency.name)

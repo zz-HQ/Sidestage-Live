@@ -10,9 +10,7 @@ class Deal < ActiveRecord::Base
   
   include Deal::StateMachine
   
-  has_paper_trail :meta => {},
-                  :only => [ :state ],
-                  :class_name => "Versions::#{self.name}"
+  has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
   #
   # Attributes
@@ -24,7 +22,7 @@ class Deal < ActiveRecord::Base
   
   validates :artist_id, :profile_id, :customer_id, :conversation_id, :price, :start_at, :currency, presence: true
   validates :price, numericality: true, allow_blank: true 
-  validate :artist_must_be_valid_user, :customer_must_be_valid_user
+  validate :customer_must_be_chargeable, on: :create
 
   #
   # Associations
@@ -48,6 +46,8 @@ class Deal < ActiveRecord::Base
   #
   #
   
+  scope :by_user, ->(user_id) { where('artist_id = :user_id OR customer_id = :user_id', user_id: user_id) }
+  
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------
@@ -57,6 +57,8 @@ class Deal < ActiveRecord::Base
   #
   
   before_validation :assign_artist, :set_price, :set_currency, :attach_to_conversation, on: :create
+  
+  before_save :set_state_transition_at
   
   #
   # Instance Methods
@@ -84,14 +86,6 @@ class Deal < ActiveRecord::Base
   
   private
   
-  def artist_must_be_valid_user
-    errors.add :artist_id, :blank unless artist.present?
-  end
-  
-  def customer_must_be_valid_user
-    errors.add :customer_id, :blank unless customer.present?
-  end
-  
   def assign_artist
     self.artist_id ||= profile.try(:user_id)
   end
@@ -102,6 +96,10 @@ class Deal < ActiveRecord::Base
 
   def set_currency
     self.currency ||= profile.try(:currency)
+  end
+  
+  def set_state_transition_at
+    self.state_transition_at = Time.now if changes.include?('state')
   end
   
   def attach_to_conversation
@@ -121,6 +119,10 @@ class Deal < ActiveRecord::Base
   
   def price_in_cents
     price * 100
+  end
+  
+  def customer_must_be_chargeable
+    errors.add :customer_id, :not_chargeable unless customer.paymentable?
   end
   
   def charge_customer

@@ -1,4 +1,4 @@
-class Versions::Deal < Version
+class Versions::Deal < PaperTrail::Version
   
   #
   # Settings
@@ -8,6 +8,6 @@ class Versions::Deal < Version
   #
   #  
 
-#  self.table_name = :deal_versions
+  self.table_name = :deal_versions
   
 end

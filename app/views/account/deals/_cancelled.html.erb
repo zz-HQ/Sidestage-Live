@@ -1,0 +1,11 @@
+<div class="booking-teaser">
+    <div class="label">Price</div>
+    <div class="price">
+        <%= localized_price(deal.price, deal.currency) %>
+    </div>
+    <div class="label">
+        start:<br>
+        <span data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></span>
+        <string><%= deal.aasm.human_state %>
+    </div>
+</div>

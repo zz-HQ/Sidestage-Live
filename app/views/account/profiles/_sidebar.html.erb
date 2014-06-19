@@ -4,6 +4,6 @@
 <h4>Description</h4>
 <%= link_to "Profile", resource.new_record? ? "#" : description_account_profile_path(current_user.profile) %>
 <h4>Payments</h4>
-<%= link_to "Add/Edit Payments", payment_account_profile_path(current_user.profile) %>
+<%= link_to "Add/Edit Payments", payment_account_profiles_path %>
 <h4>Photos</h4>
 <%= link_to "Edit Photos", resource.new_record? ? "#" : account_pictures_path %>

@@ -9,9 +9,11 @@ FactoryGirl.define do
     end
     password "12345678"
     confirmed_at Time.now
+    stripe_customer_id "123"
 
 
     factory :quentin do
+      first_name "quentin"
     end
 
     factory :bob do
@@ -21,6 +23,7 @@ FactoryGirl.define do
     end
     
     factory :customer do
+      stripe_customer_id nil
     end
 
   end

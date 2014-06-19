@@ -1,9 +1,10 @@
 require 'spec_helper'
+require 'before_each_helper'
 
 describe HomeController, :type => :controller do
   
-  before(:each) do
-  end
+  before_each
+  
   
   it "sets new currency in session" do
     FactoryGirl.create(:euro)

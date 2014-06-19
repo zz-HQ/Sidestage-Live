@@ -1,3 +1,7 @@
+Currency.connection.execute("TRUNCATE currencies")
+Currency.create(name: "USD", symbol: "$")
+Currency.create(name: "EUR", symbol: "€")
+
 User.all.map(&:destroy)
 Genre.all.map(&:destroy)
 
@@ -63,6 +67,7 @@ profile_attributes = {
   published: true,
   location: "Berlin",
   price: 22,
+  currency: "EUR",
   name: "Pro",
   title: "Here is my tagline.",
   about: "My father is a Jazz Drummer so i learned the drums. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, et, assumenda non exercitationem vitae nulla minima consectetur ex! Neque, itaque voluptate consectetur dignissimos non voluptatibus nisi cumque quis nulla ipsa!",

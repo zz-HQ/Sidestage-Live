@@ -8,7 +8,7 @@ class CreateVersions < ActiveRecord::Migration
       t.text     :object
       t.datetime :created_at
     end
-   add_index :deal_versions, [:item_type, :item_id]
+    add_index :deal_versions, [:item_type, :item_id]
     
     remove_column :deals, :message_id, :integer
     remove_column :deals, :artist_accepted_at, :datetime

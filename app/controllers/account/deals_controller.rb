@@ -8,7 +8,6 @@ class Account::DealsController < Account::ResourcesController
   #
   # 
   
-  actions :all, :except => [:create, :new]
   respond_to :html, :js
   
   #
@@ -18,28 +17,17 @@ class Account::DealsController < Account::ResourcesController
   #
   #
   #
-  
-  def accept
-    if resource.is_customer?(current_user)
-      if resource.accept!
-        flash[:notice] = "accepted!"
-      else
-        flash[:error] = resource.errors.full_messages.join("<br/>")
+
+  Deal.aasm.events.keys.each do |event|
+    define_method event do
+      resource.send("#{event.to_s}!")
+      respond_to do |format|
+        format.html { redirect_to account_conversation_path(resource.conversation) }
+        format.js { render :show }
       end
     end
-    redirect_to account_conversation_path(resource.conversation)
   end
-  
-  def confirm
-    if resource.is_artist?(current_user)
-      if resource.confirm!
-        flash[:notice] = "Confirmed!"
-      else
-        flash[:error] = resource.errors.full_messages.join("<br/>")
-      end
-    end
-    redirect_to account_conversation_path(resource.conversation)        
-  end
+
   
   #
   # Protected
@@ -52,7 +40,7 @@ class Account::DealsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:start_at])
+    params.permit(deal: [:start_at, :profile_id])
   end
     
   #
@@ -64,6 +52,12 @@ class Account::DealsController < Account::ResourcesController
   #
   
   private
-
+  
+  def build_resource
+    super.tap do |deal|
+      deal.customer_id = current_user.id
+    end
+  end
+  
   
 end

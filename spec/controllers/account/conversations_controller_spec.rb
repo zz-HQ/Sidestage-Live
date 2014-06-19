@@ -1,7 +1,10 @@
 require 'spec_helper'
+require 'before_each_helper'
 
 describe Account::ConversationsController, :type => :controller do
-
+  
+  before_each
+  
   it "renders index" do
     conversation = FactoryGirl.create(:message).conversation
     sign_in(conversation.sender)
