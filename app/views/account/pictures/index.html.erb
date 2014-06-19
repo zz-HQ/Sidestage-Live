@@ -1,6 +1,7 @@
 <div id="edit-pictures">
   <aside>
-    <%= render 'sidebar' %>
+    <header></header>
+    <%= render partial: 'account/profiles/sidebar', locals: {resource: current_user.profile} %>
   </aside>
 
   <div class="content">

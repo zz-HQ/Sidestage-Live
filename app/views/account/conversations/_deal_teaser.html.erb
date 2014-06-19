@@ -6,7 +6,7 @@
     <div class="label">
         start:<br>
         <span data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></span>
-        <%= link_to "Edit", "#", data: { toggle: "#edit-deal" } %>
+        <%= link_to "<i class='fa fa-pencil'></i>".html_safe, "#", data: { toggle: "#edit-deal" } %>
         <%= simple_form_for deal, url: account_deal_path(deal), html: { id: "edit-deal", style: "display:none;" }, remote: true do |f| %>
             <%= f.input :start_at, as: :string, input_html: { value: l(deal.start_at, format: :deal_start_at), class: "date-picker" }, label: false %>
 	        <%= f.button :submit, class: "btn" %>

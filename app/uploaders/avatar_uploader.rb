@@ -19,7 +19,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   
     # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
     # avatar.png, big_avatar.png, thumb_avatar.png
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "avatar.png"].compact.join('_'))
+    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "avatar.jpg"].compact.join('_'))
   end
 
   # Process files as they are uploaded:

@@ -1,5 +1,6 @@
 <div id="profile">
     <aside>
+      <header>Sidebar</header>
       <%= render 'sidebar' %>
     </aside>
 
@@ -11,7 +12,7 @@
         <%= simple_form_for [:account, resource] do |f| %>
             <%= render "basics_form", f: f %>
         <% end %>
-        </div>
+      </div>
     </div>
     
 </div>

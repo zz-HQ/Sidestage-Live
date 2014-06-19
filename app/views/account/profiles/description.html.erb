@@ -1,22 +1,21 @@
 <div id="profile">
 
-    <aside>
-      <%= render 'sidebar' %>
-    </aside>
+  <aside>
+    <header></header>
+    <%= render 'sidebar' %>
+  </aside>
 
-    <div class="content">
-      <header>
-        Description
-      </header>
-      <div class="">
-
-    <%= simple_form_for resource, url: description_account_profile_path(resource) do |f| %>
+  <div class="content">
+    <header>
+      Description
+    </header>
+    <div id="description" class="">
+      <%= simple_form_for resource, url: description_account_profile_path(resource) do |f| %>
         <%= render "description_form", f: f %>
-    <% end %>
+      <% end %>
     </div>
+  </div>
 
-
-    </div>
-    </div>
+</div>
     
     
