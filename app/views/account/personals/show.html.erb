@@ -1,46 +1,47 @@
 <div id="personals">
-    <aside>
-        <header>
-          <%= link_to "Account", "#" %><br>
-          <%= link_to "Password", "#" %><br>
-          <%= link_to "Payment", "#" %><br>          
-        </header>
-        
-    </aside>
+  <aside>
+    <header></header>
+    <nav class="tabs" data-id="personals">
+      <div class="tab-switch">Account</div>
+      <div class="tab-switch">Password</div>
+      <div class="tab-switch">Payment</div>
+    </nav>
+  </aside>
 
-    <div class="content">
-        <header>
-            Personals
-        </header>
+  <div class="content">
+
+    <div class="tabs" data-id="personals">
+
+      <div class="tab">
+        <header>Personals</header>
         <%= simple_form_for resource, url: account_personal_path do |f| %>
-            <%= f.input :first_name %>
-            <%= f.input :last_name %>
-            <%= f.input :email %>
-            <%= f.input :about %>
-    		<%= f.button :submit, class: "btn" %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :email %>
+          <%= f.input :about %>
+          <%= f.button :submit, value: "Update", class: "btn" %>
         <% end %>
-        <h1>Ich würde die unteren beide Blöcke zugeklappt rendern und nur beim Klick in sidebar entsprechendes Element aufklappen.</h1>
-
-
-        <hr>
-        <h2>Password</h2>
+      </div>
+      <div class="tab">
+        <header>Password</header>
         <%= simple_form_for resource, url: account_personal_path do |f| %>
             <%= f.input :password %>
             <%= f.input :password_confirmation %>
-    		<%= f.button :submit, class: "btn" %>
+        <%= f.button :submit, value: "Update", class: "btn" %>
         <% end %>
-
-        <hr>
-        <h2>Payments</h2>
-
+      </div>
+      <div class="tab">
+        <header>Payments</header>
         <div data-content="payment-form">
-            <%= simple_form_for resource, url: account_personal_path do |f| %>
-                <%= f.input :stripe_token, as: :hidden %>
-                <%= render "account/payment_details/payment_form" %>
-    		<%= f.button :submit, class: "btn" %>
-            <% end %>
+          <%= simple_form_for resource, url: account_personal_path do |f| %>
+            <%= f.input :stripe_token, as: :hidden %>
+            <%= render "account/payment_details/payment_form" %>
+            <%= f.button :submit, value: "Update", class: "btn" %>
+          <% end %>
         </div>
-        
-        
+      </div>
+
     </div>
+
+  </div>
 </div>

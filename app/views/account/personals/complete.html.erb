@@ -1,25 +1,27 @@
-<h1>Complete your Profile</h1>
-<%= simple_form_for resource, url: complete_account_personal_path, data: { form: "payment", optional: true }, html: { multipart: true } do |f| %>
-    <%= f.input :stripe_token, as: :hidden %>	
-    
+<div id="profile-complete">
+  <h1>Complete your Profile</h1>
+  <%= simple_form_for resource, url: complete_account_personal_path, data: { form: "payment", optional: true }, html: { multipart: true } do |f| %>
+
+    <%= f.input :stripe_token, as: :hidden %>
     <label>Profile Picture</label>
     <%= f.file_field :avatar %>   
-
     <p>
-        Mini bio<br>
-        Tell our community something about you
+      Mini bio<br>
+      Tell our community something about you
     </p>
     <%= f.label :about %>
     <%= f.text_area :about %>
     <% unless current_user.paymentable? %>
-        <h4>Add payment details</h4>
-        <p>(Recommended but optional)</p>
-        <%= render "account/payment_details/payment_form" %>
+      <h4>Add payment details</h4>
+      <p>(Recommended but optional)</p>
+      <%= render "account/payment_details/payment_form" %>
     <% end %>
-    <input type="submit" value="Confirm">
+    <input type="submit" value="Confirm" class="btn btn-submit">
     <%= link_to "Skip", account_root_path %>
-<% end %>
 
-<%= content_for :html_head do %>
+  <% end %>
+
+  <%= content_for :html_head do %>
     <%= render 'stripe_head' %>
-<% end %>
+  <% end %>
+</div>
