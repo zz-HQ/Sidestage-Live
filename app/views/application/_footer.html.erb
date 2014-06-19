@@ -7,17 +7,18 @@
     </nav>
 
     <nav class="right">
-      <div class="select-locale">
-        <div class="icon"><i class="fa fa-globe"></i></div>
-    		<%= form_tag change_locale_path do |f| %>
-      		<%= nice_select(select_tag( 'lang',
-                                      options_from_collection_for_select(available_locales, :first, :last, I18n.locale),
-                                      include_blank: false,
-                                      class: "submit-on-change")
-                          ) %>  
-		    <% end %>
-
-      </div>
+      <% if false %>
+        <div class="select-locale">
+          <div class="icon"><i class="fa fa-globe"></i></div>
+      		<%= form_tag change_locale_path do |f| %>
+        		<%= nice_select(select_tag( 'lang',
+                                        options_from_collection_for_select(available_locales, :first, :last, I18n.locale),
+                                        include_blank: false,
+                                        class: "submit-on-change")
+                            ) %>  
+  		    <% end %>
+        </div>
+      <% end %>
       <div class="select-currency">
         <div class="icon currency"><i class="fa fa-<%= current_currency.name.downcase %>"></i></div>
 		    <%= form_tag change_currency_path do |f| %>

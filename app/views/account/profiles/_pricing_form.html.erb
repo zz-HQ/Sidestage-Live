@@ -1,21 +1,33 @@
-<h4>Base price</h4>
-<div class="inputs">
-	<%= f.input :price %>
-	<div class="hint">Your base price is the minimum you want to make for a set, whether that's 45 minutes or 2 hours.</div>
+<div class="parts">
+	<div class="headline">
+		<h4>Base price</h4>
+	</div>
+	<div class="inputs profile_price">
+		<%= f.input :price %>
+		<div class="hint">Your base price is the minimum you want to make for a set, whether that's 45 minutes or 2 hours.</div>
+	</div>
+	<div class="inputs profile_currency">
+		<label for="profile_currency">Currency</label>
+		<%= nice_select(f.select :currency, Currency.all.map(&:name)) %>
+	</div>
 </div>
-<div class="inputs">
-	<label for="profile_currency">Currency</label>
-	<%= nice_select(f.select :currency, Currency.all.map(&:name)) %>
+<div class="parts">
+	<div class="headline">
+		<h4>Terms</h4>
+	</div>
+	<div class="inputs profile_cancellation_policy">
+		<label>Cancellation Policy</label>
+		<%= nice_select(f.select :cancellation_policy, resource.cancellation_policy_for_select) %>
+	</div>
+	<div class="inputs profile_availability">
+		<label>Where are you available?</label>
+		<%= nice_select(f.select :availability, resource.availability_for_select) %>
+		<div class="hint from-nice-select">This world is your stage. Live in one city, work in another.</div>
+	</div>
 </div>
-<hr>
-<h4>Terms</h4>
-<div class="inputs">
-	<label>Cancellation Policy</label>
-	<%= nice_select(f.select :cancellation_policy, resource.cancellation_policy_for_select) %>
+<div class="parts">
+	<div class="headline"></div>
+	<div class="inputs">
+		<%= f.button :submit, class: "btn gross" %>
+	</div>
 </div>
-<div class="inputs">
-	<label>Where are you available?</label>
-	<%= nice_select(f.select :availability, resource.availability_for_select) %>
-	<div class="hint from-nice-select">This world is your stage. Live in one city, work in another.</div>
-</div>
-<%= f.button :submit, class: "btn gross" %>

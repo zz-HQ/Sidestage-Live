@@ -1,10 +1,8 @@
 <div id="profile">
     <div class="content">
-      <header>
-        Pricing
-      </header>
+      <header>Pricing</header>
 
-      <div class="">
+      <div class="complete-pricing">
           <%= simple_form_for resource, url: complete_pricing_account_profile_path(resource) do |f| %>
               <%= render "pricing_form", f: f %>
           <% end %>
