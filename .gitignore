@@ -18,3 +18,5 @@ config/database.yml
 .ruby-version
 public/assets
 public/uploads
+
+/config/database.yml

@@ -5,6 +5,11 @@ de:
         one: Profil
         other: Profile
     attributes:
+      deal:
+        aasm_state:
+          requested: Requested
+          cancelled: Cancelled
+          accepted: Accepted
       profile:
         cancellation_policy:
           flexible: "full refund 1 day prior to event, except fees"

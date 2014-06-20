@@ -9,6 +9,7 @@ class Deal < ActiveRecord::Base
   #  
   
   include Deal::StateMachine
+  include Conversationable
   
   has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
@@ -20,7 +21,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  attr_accessor :current_user
+  attr_accessor :current_user, :stripe_token
 
   #
   # Validations
@@ -30,10 +31,27 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  validates :artist_id, :profile_id, :customer_id, :conversation_id, :price, :start_at, :currency, presence: true
+  validates :artist_id, :profile_id, :customer_id, :price, :start_at, :currency, :conversation_id, presence: true
   validates :price, numericality: true, allow_blank: true 
+  
   validate :customer_must_be_chargeable, on: :create
 
+  #
+  # Callbacks
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  before_validation :assign_artist, :assign_customer, :set_price, :set_currency, :attach_to_conversation, :make_customer_paymentable, on: :create
+  
+  before_save :set_state_transition_at
+
+  after_create :create_system_message
+  
+  after_update :create_offer_message, if: :offered?
+  
   #
   # Associations
   # ---------------------------------------------------------------------------------------
@@ -45,8 +63,6 @@ class Deal < ActiveRecord::Base
   belongs_to :profile
   belongs_to :artist, foreign_key: :artist_id, class_name: 'User'
   belongs_to :customer, foreign_key: :customer_id, class_name: 'User'
-  belongs_to :message
-  belongs_to :conversation
 
   #
   # Scopes
@@ -57,18 +73,7 @@ class Deal < ActiveRecord::Base
   #
   
   scope :by_user, ->(user_id) { where('artist_id = :user_id OR customer_id = :user_id', user_id: user_id) }
-  
-  #
-  # Callbacks
-  # ---------------------------------------------------------------------------------------
-  #
-  #
-  #
-  #
-  
-  before_validation :assign_artist, :set_price, :set_currency, :attach_to_conversation, on: :create
-  
-  before_save :set_state_transition_at
+  scope :between, ->(customer_id, artist_id) { where(artist_id: [artist_id, customer_id], customer_id: [artist_id, customer_id]) }
   
   #
   # Instance Methods
@@ -85,6 +90,15 @@ class Deal < ActiveRecord::Base
   def is_artist?(user)
     artist_id == user.id
   end
+  
+  
+  def price_in_cents
+    price * 100
+  end
+
+  def partner_id
+    current_user.id == artist_id ? customer_id : artist_id
+  end  
     
   #
   # Private
@@ -96,8 +110,20 @@ class Deal < ActiveRecord::Base
   
   private
   
+  #
+  # Initialization
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
   def assign_artist
     self.artist_id ||= profile.try(:user_id)
+  end
+  
+  def assign_customer
+    self.customer_id ||= current_user.id
   end
   
   def set_price
@@ -111,28 +137,47 @@ class Deal < ActiveRecord::Base
   def set_state_transition_at
     self.state_transition_at = Time.now if changes.include?('state')
   end
+
   
-  def attach_to_conversation
-    return if artist.nil?
-    self.conversation ||= self.artist.conversations.by_user(self.customer_id).first || create_conversation
-  end
-  
-  def create_conversation
-    conversation = Conversation.new
-    conversation.sender_id = current_user.id
-    conversation.receiver_id = current_user.id == artist_id ? customer_id : artist_id
-    conversation.body = note
-    conversation.last_message_at = Time.now    
-    conversation.save
-    conversation
-  end
-  
-  def price_in_cents
-    price * 100
-  end
+  #
+  # Custom Validations
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
   
   def customer_must_be_chargeable
     errors.add :customer_id, :not_chargeable unless customer.paymentable?
+  end
+  
+  #
+  # Background
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  def create_system_message
+    message = Message.new current_user: current_user, receiver_id: partner_id, conversation_id: conversation_id, system_message: true
+    message.body = { source: self.class.name, state: state, requester_id: current_user.id, price: price }.to_json
+    message.save
+  end
+
+  def create_offer_message
+    if changes.include?(:body) && body.present?
+      message = Message.new current_user: current_user, receiver_id: partner_id, conversation_id: conversation_id
+      message.body = body
+      message.save
+    end
+  end
+  
+  def make_customer_paymentable
+    if stripe_token.present?
+      customer.make_paymentable_by_token(stripe_token)
+      errors.add :stripe_token, customer.errors.full_messages.first if customer.errors.present?
+    end
   end
   
   def charge_customer

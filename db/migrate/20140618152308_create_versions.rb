@@ -10,9 +10,14 @@ class CreateVersions < ActiveRecord::Migration
     end
     add_index :deal_versions, [:item_type, :item_id]
     
+    add_column :messages, :system_message, :boolean
+
+    rename_column :deals, :note, :body
+
     remove_column :deals, :message_id, :integer
     remove_column :deals, :artist_accepted_at, :datetime
     remove_column :deals, :customer_accepted_at, :datetime
+    remove_column :deals, :offer, :boolean
     add_column :deals, :state, :string
     add_column :deals, :state_transition_at, :datetime
     add_index :deals, :state

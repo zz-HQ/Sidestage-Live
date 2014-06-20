@@ -98,6 +98,12 @@ class User < ActiveRecord::Base
     stripe_customer_id.present?
   end
   
+  def make_paymentable_by_token(token)
+    self.stripe_token = token
+    set_payment_info
+    return save
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------

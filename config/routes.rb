@@ -42,10 +42,9 @@ Airmusic::Application.routes.draw do
           put :confirm
           put :decline
           put :accept
+          patch :offer
         end
       end
-      resources :offers
-      resources :booking_requests
       resources :conversations
       resources :payment_details
       

@@ -9,6 +9,7 @@ module Payment
       Stripe::Customer.create(card: user.stripe_token, description: desc || user.email)
     rescue Stripe::StripeError => e
       # TODO: Stripe Customer Create Error
+      user.errors.add :stripe_customer_id, e.json_body[:error][:message]
       User.where(id: user.id).update_all(stripe_log: e.json_body.inspect)
       Rails.logger.info "###########################"
       Rails.logger.info e.inspect

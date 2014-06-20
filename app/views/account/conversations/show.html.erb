@@ -24,8 +24,8 @@
   </div>
 
   <% if (deal = resource.deals.last).present? %>
-    <aside id="deal-teaser">
-      <%= render "deal_teaser", deal: deal %>
+    <aside id="deal-teaser" data-container="deal">
+      <%= render "account/deals/#{deal.state}", deal: deal %>
     </aside>
   <% end %>
 

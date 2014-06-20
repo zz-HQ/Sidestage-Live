@@ -1,11 +1,6 @@
-<div class="booking-teaser">
-    <div class="label">Price</div>
-    <div class="price">
-        <%= localized_price(deal.price, deal.currency) %>
+<% if deal.is_customer?(current_user) %>
+    <div class="booking-teaser">
+        <p>To make a new booking visit the artist's profile page</p>
+        <%= link_to "View profile", artist_path(deal.artist), class: "btn" %>
     </div>
-    <div class="label">
-        start:<br>
-        <span data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></span>
-        <string><%= deal.aasm.human_state %>
-    </div>
-</div>
+<% end %>

@@ -66,8 +66,7 @@ ActiveRecord::Schema.define(version: 20140618152308) do
     t.integer  "customer_id",         null: false
     t.integer  "price",               null: false
     t.datetime "start_at"
-    t.boolean  "offer"
-    t.text     "note"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "stripe_charge_id"
@@ -103,6 +102,7 @@ ActiveRecord::Schema.define(version: 20140618152308) do
     t.integer  "conversation_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "system_message"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree

@@ -2,6 +2,10 @@ Currency.connection.execute("TRUNCATE currencies")
 Currency.create(name: "USD", symbol: "$")
 Currency.create(name: "EUR", symbol: "€")
 
+Deal.connection.execute("TRUNCATE conversations")
+Deal.connection.execute("TRUNCATE messages")
+Deal.connection.execute("TRUNCATE deals")
+
 User.all.map(&:destroy)
 User.connection.execute("TRUNCATE users")
 User.connection.execute("TRUNCATE profiles")

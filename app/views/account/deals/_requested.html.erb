@@ -14,7 +14,23 @@
         <% if deal.is_customer?(current_user) %>
             <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, remote: true, class: "btn" %>
         <% else %>    
+            <%= link_to "Accept", accept_account_deal_path(deal), method: :put, remote: true, class: "btn" unless deal.offered? %>
             <%= link_to "Decline", decline_account_deal_path(deal), method: :put, remote: true, class: "btn" %>
+            <div class="or">
+              <div class="line"></div>
+                <span>or</span>
+              <div class="line"></div>
+            </div>
+            <%= link_to "Make new offer", "#", class: "btn btn-submit", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
+            <div style="display:none;" data-container="new-offer">
+                <div class="devise-lightbox">
+                    <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
+                	  <%= f.input :price %>
+                	  <%= f.input :body, label: false, placeholder: "Note..." %>
+                	  <%= f.button :submit, class: "btn btn-submit" %>
+                	<% end %>
+                </div>
+            </div>
         <% end %>
         
     </div>

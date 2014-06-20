@@ -3,7 +3,8 @@ module Deal::StateMachine
 
 
   included do
-
+    
+    #There is a better Gem 'state_machine' available, but unfortunatley not maintained anymore
     include AASM
 
     aasm column: 'state', whiny_transitions: false do
@@ -17,14 +18,14 @@ module Deal::StateMachine
       state :cancelled
       
       event :offer do
-        transitions [:requested] => :offered
+        transitions from: [ :requested ], to: :offered
       end
       
-      event :confirm do
-        transitions [:requested] => :confirmed
+      event :cancel, after: :create_system_message do
+        transitions from: [:requested, :offered], to: :cancelled
       end
-      
-      event :decline do
+
+      event :decline, after: :create_system_message do
         transitions from: [:requested, :offered], to: :declined
       end
       
@@ -32,12 +33,13 @@ module Deal::StateMachine
         transitions [:offered] => :accepted
       end
       
-      event :cancel do
-        transitions from: [:requested, :offered], to: :cancelled
+      event :confirm do
+        transitions [ :requested ] => :confirmed
       end
-
+      
     end
 
   end
+  
   
 end
