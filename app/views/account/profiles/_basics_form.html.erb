@@ -1,0 +1,29 @@
+<div class="input">
+	<h3>You are..</h3>
+	<div class="styled-radios">
+		<div class="act radio">
+
+			<div class="photo"></div>
+			<div class="label">
+				Solo Artist
+			</div>
+			<%= f.radio_button :solo, true %>
+		</div>
+		<div class="act radio">
+
+			<div class="photo"></div>
+			<div class="label">
+				Band
+			</div>
+			<%= f.radio_button :solo, false %>
+		</div>
+	</div>
+</div>  
+
+<%= render "genres", f: f %>
+<div class="input city">
+	<h3>Where are you based?</h3>
+	<%= nice_select(f.select :location, available_locations, include_blank: false) %>
+</div>
+
+<%= f.button :submit, class: "btn gross" %>

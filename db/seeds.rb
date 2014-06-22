@@ -1,4 +1,14 @@
+Currency.connection.execute("TRUNCATE currencies")
+Currency.create(name: "USD", symbol: "$")
+Currency.create(name: "EUR", symbol: "€")
+
+Deal.connection.execute("TRUNCATE conversations")
+Deal.connection.execute("TRUNCATE messages")
+Deal.connection.execute("TRUNCATE deals")
+
 User.all.map(&:destroy)
+User.connection.execute("TRUNCATE users")
+User.connection.execute("TRUNCATE profiles")
 Genre.all.map(&:destroy)
 
 
@@ -62,9 +72,11 @@ artist_attributes = [
 profile_attributes = {
   published: true,
   location: "Berlin",
-  tagline: "Here is my tagline.",
+  price: 22,
+  currency: "EUR",
+  name: "Pro",
+  title: "Here is my tagline.",
   about: "My father is a Jazz Drummer so i learned the drums. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, et, assumenda non exercitationem vitae nulla minima consectetur ex! Neque, itaque voluptate consectetur dignissimos non voluptatibus nisi cumque quis nulla ipsa!",
-  style: "When it comes to genres i'm a jack of all trades Techno, Minimal...",
 }
 
 

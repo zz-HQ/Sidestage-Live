@@ -16,6 +16,8 @@
 #= require boilerplate
 #= require jquery.datetimepicker
 #= require vex/vex.combined.min
+#= require jquery-fileupload/basic
+#= require jquery-fileupload/vendor/tmpl
 #= require_tree ./modules
 #= require_tree ./pages
 #= require_tree .
@@ -27,19 +29,24 @@ App.init = ->
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
+  $('#flash-messages').flash()
+  $('.picture-viewer').pictureViewer()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'Y-m-d'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
   App.setStripeListener()
 
-$(document).on 'page:update', App.init
-$ -> App.init()
-
 $(document).on 'change', '.submit-on-change', (e) -> $(@).closest('form').trigger 'submit'
 
+$(document).on 'click', '[data-toggle]', (e) -> 
+  $($(this).attr("data-toggle")).toggle()
+  return false
 
 $.ajaxSetup
   headers:
-    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     'Accept': "text/javascript, application/javascript, text/html"
+
+$(document).on 'page:update', App.init
+$ -> App.init()

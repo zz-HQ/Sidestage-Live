@@ -7,40 +7,68 @@
     
     <%# TODO: Excerpt from DB %>    
     <p class="excerpt">
-      <%= resource.tagline %>
+      <%= resource.title %>
     </p>
     
-    <%# TODO: Load Soundcloud async if possible %>
-    <iframe class="soundcloud-widget" width="100%" height="160" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/65199866&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+    <nav class="tabs" data-id="social">
+      <div class="tab-switch">Soundcloud</div>
+      <div class="tab-switch">Youtube</div>
+      <div class="tab-switch">Images</div>
+    </nav>
 
-    <%# TODO: Load Youtube async if possible %>
-    <iframe class="youtube-widget" width="100%" height="350" src="//www.youtube.com/embed/qciVXUHTN10?rel=0" frameborder="0" allowfullscreen></iframe>
+    <div class="tabs" data-id="social">
+      <div class="tab">
+        <%# TODO: Load Soundcloud async if possible %>
+        <iframe class="soundcloud-widget" width="100%" height="350" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/65199866&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=true&amp;visual=true"></iframe>
+      </div>
+      <div class="tab">
+        <%# TODO: Load Youtube async if possible %>
+        <iframe class="youtube-widget" width="100%" height="350" src="//www.youtube.com/embed/qciVXUHTN10?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="tab">
+        <div class="picture-viewer">
+          <div class="thumbs">
+            <%- resource.pictures.each do |pic| -%>
+              <div class="thumb" data-big-picture="<%= pic.picture.url(:preview) %>">
+                <%= image_tag pic.picture.url(:thumb) %>
+              </div>
+            <%- end -%>
+          </div>
+          <div class="picture">
+            <img>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <ul class="thumbs">
-      <li class="thumb"></li>
-      <li class="thumb"></li>
-      <li class="thumb"></li>
-    </ul>
 
     <%# TODO: About | Details | Reviews %>
     <nav class="tabs" data-id="artist">
       <div class="tab-switch">About</div>
-      <div class="tab-switch">Details</div>
       <div class="tab-switch">Reviews</div>
     </nav>
     
     <div class="tabs" data-id="artist">
-      <div class="tab">
+      <div class="tab about">
         <h4>About</h4>
         <p><%= resource.about %></p>
       </div>
-      <div class="tab">
-        <h4>Details</h4>
-        <p><%= resource.description %></p>
-      </div>
-      <div class="tab">
-        <h4>Reviews</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eius iusto corporis asperiores quaerat in consequuntur ratione sit totam officia. Tempore accusamus ducimus minus temporibus sunt aspernatur autem enim voluptas!</p>
+      <div class="tab reviews">
+        <div class="photo">
+          <%= image_tag resource.user.avatar_url(:thumb) %>
+        </div>
+        <div class="body">
+          <div class="dreieck"></div>
+          <h5>Taylor Swift <span>20.05.14</span></h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+          <div class="rating">
+            <i class="fa fa-star active"></i>
+            <i class="fa fa-star active"></i>
+            <i class="fa fa-star active"></i>
+            <i class="fa fa-star active"></i>
+            <i class="fa fa-star"></i>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -49,35 +77,39 @@
   <aside>
 
     <%# TODO: Finish Aside %>
-    <div class="booking-teaser">
-      <div class="label">from</div>
+    <div class="booking-teaser" data-container="deal">
+        <% if current_user && (deal = Deal.between(current_user, resource.user_id).first).present?%>
+            <%= render "account/deals/#{deal.state}", deal: deal %>
+        <% else %>
+          <div class="label">from</div>
       
-      <%# TODO: Provide Helper to render price & currency properly %>
-      <div class="price">
-        <%= localized_price(resource.price, resource.user.currency) %>
-      </div>
+          <%# TODO: Provide Helper to render price & currency properly %>
+          <div class="price">
+            <%= localized_price(resource.price, resource.user.currency) %>
+          </div>
       
-      <% if artist_contactable?(resource.user) %>
-      	<%= content_for :html_head do %>
-            <%= render 'stripe_head' %>
-        <% end %>
-          <%# TODO: Implement DatePicker %>
-          <%= simple_form_for :deal, url: account_booking_requests_path, remote: true, html: { id: 'quick-deal-request' } do |f| %>
-  	          <%= f.input :profile_id, as: :hidden, input_html: { value: resource.id } %>
-              <div class="date">
-	              <%= f.input :start_at, as: :string, placeholder: "pic date", input_html: { class: "date-picker" }, label: false %>                  
-                <i class="fa fa-calendar"></i>
-              </div>
+          <% if artist_contactable?(resource.user) %>
+          	<%= content_for :html_head do %>
+                <%= render 'stripe_head' %>
+            <% end %>
+              <%# TODO: Implement DatePicker %>
+              <%= simple_form_for :deal, url: account_deals_path, remote: true, html: { id: 'quick-deal-request' } do |f| %>
+      	          <%= f.input :profile_id, as: :hidden, input_html: { value: resource.id } %>
+                  <div class="date">
+    	              <%= f.input :start_at, as: :string, placeholder: "pic date", input_html: { class: "date-picker" }, label: false %>                  
+                    <i class="fa fa-calendar"></i>
+                  </div>
       
-              <%# TODO: Submit Solution %>
+                  <%# TODO: Submit Solution %>
       
-              <div class="button">
-                <% if current_user %>
-                    <%= f.submit "Book it", class: "btn btn-submit" %>
-                <% else %>
-                    <%= link_to "Book it", link_or_login(new_user_session_path(return_to: request.url)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
-                <% end %>
-              </div>
+                  <div class="button">
+                    <% if current_user %>
+                        <%= f.submit "Book it", class: "btn btn-submit" %>
+                    <% else %>
+                        <%= link_to "Book it", link_or_login(new_user_session_path(return_to: request.url)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                    <% end %>
+                  </div>
+              <% end %>
           <% end %>
       <% end %>
     </div>
@@ -93,11 +125,11 @@
         <%= image_tag resource.user.avatar_url(:thumb) %>
       </div>
       <div class="name">
-        <%= resource.user.name %>
+        <%= resource.name %>
       </div>
       <% if artist_contactable?(resource.user)  %>
           <div class="button">
-            <%= link_to "Contact Artist", link_or_login(new_account_outgoing_message_path(receiver_id: resource.user.id)), class: "flat-btn", data: { lightbox: "ajax" } %>
+            <%= link_to "Contact Artist", link_or_login(new_account_message_path(receiver_id: resource.user.id, format: :html)), class: "flat-btn", data: { lightbox: "ajax" } %>
           </div>
       <% end %>
     </div>

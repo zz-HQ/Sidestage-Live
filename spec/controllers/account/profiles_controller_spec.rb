@@ -1,7 +1,10 @@
 require 'spec_helper'
+require 'before_each_helper'
 
 describe Account::ProfilesController, :type => :controller do
-
+  
+  before_each
+  
   it "redirects index to new" do
     sign_in(FactoryGirl.create(:user))
     get :index

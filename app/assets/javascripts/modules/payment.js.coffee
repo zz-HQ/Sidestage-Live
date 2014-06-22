@@ -4,7 +4,7 @@ App = window.App
 stripeListener = (e, message) ->
   return true if message?
   
-  stripeToken = $(@).find("input[name='user[stripe_token]']")
+  stripeToken = $(@).find("input[name*='stripe_token']")
   #if there is no token field at all, then no need to ask stripe for a token
   if stripeToken.length > 0 && stripeToken.val() == ""
     #return if optional and nothing entered
@@ -13,7 +13,6 @@ stripeListener = (e, message) ->
         return
 
     e.preventDefault()
-
     $(".payment-status").show()
     Stripe.card.createToken $("[data-form=payment]"), (status, response) ->
       if response.error
@@ -22,13 +21,14 @@ stripeListener = (e, message) ->
       else
         form = $("[data-form=payment]")
         token = response["id"]
-        form.find("input[name='user[stripe_token]']").val(token)
+        form.find("input[name*='stripe_token']").val(token)
         if(form.attr("data-remote") == "true")
           $.ajax(method: form.attr("method"), url: form.attr("action"), data: form.serialize())
         else
           form.trigger 'submit', ['done']
       return
-
+    #somehow the following line is needed  
+    return false
 App.setStripeListener = ->
   $('[data-form=payment]').off 'submit', stripeListener
   $('[data-form=payment]').on 'submit', stripeListener

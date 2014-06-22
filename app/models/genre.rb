@@ -8,6 +8,4 @@ class Genre < ActiveRecord::Base
   #
   #
 
-  translates :name
-
 end

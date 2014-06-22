@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615160123) do
+ActiveRecord::Schema.define(version: 20140618152308) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -48,39 +48,38 @@ ActiveRecord::Schema.define(version: 20140615160123) do
   add_index "currency_rates", ["currency_id"], name: "index_currency_rates_on_currency_id", using: :btree
   add_index "currency_rates", ["rate_from", "rate_to"], name: "index_currency_rates_on_rate_from_and_rate_to", using: :btree
 
+  create_table "deal_versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "deal_versions", ["item_type", "item_id"], name: "index_deal_versions_on_item_type_and_item_id", using: :btree
+
   create_table "deals", force: true do |t|
     t.integer  "conversation_id"
-    t.integer  "message_id"
-    t.integer  "profile_id",           null: false
-    t.integer  "artist_id",            null: false
-    t.integer  "customer_id",          null: false
-    t.datetime "artist_accepted_at"
-    t.datetime "customer_accepted_at"
-    t.integer  "price",                null: false
+    t.integer  "profile_id",          null: false
+    t.integer  "artist_id",           null: false
+    t.integer  "customer_id",         null: false
+    t.integer  "price",               null: false
     t.datetime "start_at"
-    t.boolean  "offer"
-    t.text     "note"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "stripe_charge_id"
     t.integer  "charged_price"
     t.string   "currency"
+    t.string   "state"
+    t.datetime "state_transition_at"
   end
 
   add_index "deals", ["artist_id"], name: "index_deals_on_artist_id", using: :btree
   add_index "deals", ["conversation_id"], name: "index_deals_on_conversation_id", using: :btree
   add_index "deals", ["customer_id"], name: "index_deals_on_customer_id", using: :btree
-
-  create_table "genre_translations", force: true do |t|
-    t.integer  "genre_id",   null: false
-    t.string   "locale",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
-
-  add_index "genre_translations", ["genre_id"], name: "index_genre_translations_on_genre_id", using: :btree
-  add_index "genre_translations", ["locale"], name: "index_genre_translations_on_locale", using: :btree
+  add_index "deals", ["state"], name: "index_deals_on_state", using: :btree
 
   create_table "genres", force: true do |t|
     t.string   "name"
@@ -103,6 +102,7 @@ ActiveRecord::Schema.define(version: 20140615160123) do
     t.integer  "conversation_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "system_message"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
@@ -116,15 +116,18 @@ ActiveRecord::Schema.define(version: 20140615160123) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
+    t.string   "picture"
   end
+
+  add_index "pictures", ["position"], name: "index_pictures_on_position", using: :btree
 
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.integer  "price"
-    t.string   "tagline"
-    t.text     "description"
+    t.string   "name"
+    t.text     "title"
     t.text     "about"
-    t.text     "style"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "solo",        default: true
@@ -146,12 +149,12 @@ ActiveRecord::Schema.define(version: 20140615160123) do
     t.string   "airmusic_name"
     t.string   "avatar"
     t.string   "city"
-    t.string   "email",                  default: "",   null: false
-    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -160,7 +163,7 @@ ActiveRecord::Schema.define(version: 20140615160123) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,    null: false
+    t.integer  "failed_attempts",        default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
@@ -170,7 +173,7 @@ ActiveRecord::Schema.define(version: 20140615160123) do
     t.string   "stripe_customer_id"
     t.string   "role"
     t.text     "about"
-    t.boolean  "newsletter_subscribed",  default: true
+    t.boolean  "newsletter_subscribed",  default: false
     t.string   "stripe_token"
     t.text     "stripe_log"
   end

@@ -36,7 +36,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'neat'
 gem 'asset_sync'
-
+gem 'jquery-fileupload-rails'
+gem 'paper_trail', '~> 3.0.2'
+gem 'aasm'
 
 group :production do
   gem 'unicorn'

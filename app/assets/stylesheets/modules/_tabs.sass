@@ -5,23 +5,129 @@ nav.tabs
     color: $text-color-light
     cursor: pointer
     display: inline-block
-    margin-right: 10px
+    font-size: 14px
+    padding: 12px 30px
+    border-left: 1px solid #EEE
+    border-top: 1px solid #EEE
+    border-bottom: 1px solid #EEE
+    position: relative
 
-    + .tab-switch
-      border-left: 1px solid $text-color-light
-      padding-left: 10px
+    &:hover
+      color: #FFF
+      background-color: $blue
 
     &.active
-      color: #000
+      color: #222
+      background-color: #F8F8F8
+
+  .tab-switch:nth-child(2)
+    left: -3px
+
+  .tab-switch:nth-child(3)
+    left: -6px
+
+  .tab-switch:last-child
+    border-right: 1px solid #EEE
 
 div.tabs
   margin-top: 30px
 
   .tab
-    +box
-    background-color: #fff
     display: none
-    padding: 17px 20px 8px 20px
+
+    &.about
+      +box
+      background-color: #fff
+      padding: 17px 20px 8px 20px
 
     h1, h2, h3, h4, h5, h6
       margin-top: 0
+
+    &.reviews
+
+      .photo
+        width: 70px
+        height: 70px
+        display: inline-block
+
+      .body
+        +box
+        background-color: #fff
+        padding: 17px 20px 15px 20px
+        float: right
+        width: 530px
+        position: relative
+
+        .dreieck
+          width: 18px
+          height: 18px
+          background-color: #FFF
+          +transform(rotate(-45deg))
+          +box-shadow(inset 1px 1px 0 0px #DDD)
+          position: absolute
+          top: 18px
+          left: -10px
+
+
+        h5
+          font-size: 14px
+          margin-bottom: 10px
+
+          span
+            float: right
+            color: $text-color-light
+            font-weight: 300
+            font-size: 12px
+            position: relative
+            top: 3px
+
+        p
+          margin: 0
+
+        .rating
+          margin-top: 10px
+
+          i
+            color: #CCC
+            margin-right: 2px
+            font-size: 20px
+            
+            &.active
+              color: #ffbd00
+
+
+// TABS IN #PERSONALS -------------
+// --------------------------------
+#personals,
+#profile-complete
+
+  nav.tabs
+    margin: 0
+
+    .tab-switch
+      border: none
+      color: $text-color-light
+      text-transform: uppercase
+      font-size: 16px
+      font-weight: 700
+      margin: 20px 0 10px
+      background-color: transparent
+      border-left: 1px solid #FFF
+      position: static
+      +transition(all 600ms ceaser($easeOutExpo))
+
+      &:hover
+        color: #222
+        background-color: transparent
+        border-left: 1px solid $blue
+
+      &.active
+        color: #222
+        background-color: transparent
+        border-left: 1px solid $blue
+
+  div.tabs
+    margin-top: 0
+
+    header
+      margin: 0

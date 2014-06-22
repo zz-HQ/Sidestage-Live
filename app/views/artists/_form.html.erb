@@ -1,5 +1,5 @@
 
-	<div id="new-profile">
+	<div id="new-profile" class="new-profile-form">
 
 		<!-- # resource.errors.full_messages.inspect -->
 		<%= simple_form_for resource, url: artists_path, remote: true do |f| %>
@@ -33,59 +33,19 @@
 
 			</div>
 
-			<div class="input genre">
-				<h3>What describes your Genre best?</h3>
-
-				<% genre_rest = Genre.all[3, Genre.count+1]; genre_one = Genre.all[0]; genre_two = Genre.all[1]; genre_three = Genre.all[2]	%>
-
-				<div class="styled-radios">
-					<div class="act radio">
-						<div class="photo">
-							<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
-						</div>
-						<div class="label">
-							<%= genre_one.name %>
-						</div>
-					</div>
-					<div class="act radio">
-						<div class="photo">
-							<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
-						</div>
-						<div class="label">
-							<%= genre_two.name %>
-						
-						</div>
-					</div>
-					<div class="act radio">
-						<div class="photo">
-							<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one) %>
-						</div>
-						<div class="label">
-							<%= genre_three.name %>
-						</div>
-					</div>
-					<div class="act radio">
-						<div class="photo">
-						</div>
-						<div class="label">
-							<%= nice_select(select_tag 'profile[genre_ids][]', options_for_select(genre_rest.collect { |g| [g.name, g.id] }, (genre_rest & f.object.genres).first.try(:id)), include_blank: true)  %>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
+            <%= render "/account/profiles/genres", f: f %>
+            
 			<div class="input city">
 				<h3>Where do you live?</h3>
 
 				<div id="city-switch">
-		      <%= nice_select(f.select :location, available_locations, include_blank: false) %>
-		    </div>
+		            <%= nice_select(f.select :location, available_locations, include_blank: false) %>
+		        </div>
 			</div>
 
-		<div class="input last">
-		    <input type="submit" value="Continue" class="btn button gross">
-		</div>
+    		<div class="input last">
+    		    <input type="submit" value="Continue" class="btn button gross">
+    		</div>
 
 		<% end %>
 

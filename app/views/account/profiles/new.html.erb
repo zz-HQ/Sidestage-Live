@@ -1,3 +1,18 @@
 <div id="profile">
-	<%= render 'form' %>
+    <aside>
+      <header>Sidebar</header>
+      <%= render 'sidebar' %>
+    </aside>
+
+    <div class="content">
+      <header>
+        Description
+      </header>
+      <div class="">
+        <%= simple_form_for [:account, resource] do |f| %>
+            <%= render "basics_form", f: f %>
+        <% end %>
+      </div>
+    </div>
+    
 </div>

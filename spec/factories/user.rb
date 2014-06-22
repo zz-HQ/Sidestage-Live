@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :user do
-    first_name "user FN"
+    first_name "user FN"    
     last_name "user LN"
     unread_message_counter 0
     sequence :email do |n|
@@ -12,15 +12,23 @@ FactoryGirl.define do
 
 
     factory :quentin do
+      first_name "quentin"
+      stripe_customer_id "123"
     end
 
     factory :bob do
+      first_name "bob"
+      stripe_customer_id "123"
     end
     
     factory :artist do
+      first_name "artist"      
+      stripe_customer_id "123"
     end
     
     factory :customer do
+      first_name "customer"      
+      stripe_customer_id nil
     end
 
   end

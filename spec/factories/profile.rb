@@ -2,8 +2,9 @@ FactoryGirl.define do
   
   factory :profile do
     price 123
-    tagline "TL"
+    title "TL"
     about "about"
+    currency "EUR"
     after(:build) {|profile| profile.genres = [create(:genre)]}
     user 
   end

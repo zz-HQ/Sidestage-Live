@@ -10,10 +10,6 @@ class CreateGenres < ActiveRecord::Migration
     end
     add_index :genres_profiles, [:genre_id, :profile_id]
     
-    Genre.create_translation_table!
-    ['Everything', 'Classical', 'Rock/pop', 'Singer/songwriter', 'Anything but country', 'DJs - mainstream', 'DJs - techno', 'Cover bands'].each do |g|
-      Genre.create :name => g
-    end
   end
 
   def down

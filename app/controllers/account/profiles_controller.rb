@@ -24,22 +24,43 @@ class Account::ProfilesController < Account::ResourcesController
     redirect_to account_profile_path(begin_of_association_chain.profiles.first) and return if begin_of_association_chain.profiles.first.present?
     new!
   end
+
+  def create
+    create! do |success, failure|
+      success.html {redirect_to pricing_account_profile_path(resource) }
+    end
+  end
   
-  def complete
+  def update
+    update! { preview_account_profile_path(resource) }
+  end
+  
+  def description
+    resource.wizard_step = :description
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        redirect_to pricing_account_profile_path(resource)
+        redirect_to payment_account_profile_path(resource)
       end
     end
   end
   
   def pricing
+    resource.wizard_step = :pricing      
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
         redirect_to new_account_payment_detail_path
       end
+    end    
+  end 
+  
+  def complete_pricing
+    resource.wizard_step = :pricing
+    if request.patch?
+      if resource.update_attributes(permitted_params[:profile])
+        redirect_to description_account_profile_path(resource)
+      end
     end
-  end  
+  end
   
   def toggle
     resource.toggle!
@@ -58,7 +79,7 @@ class Account::ProfilesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(profile: [:tagline, :currency, :price, :description, :about, :city, :youtube, :style, :soundcloud, :late_night_fee, :night_fee, :cancellation_policy, :availability, :travel_costs, genre_ids: []])
+    params.permit(profile: [:solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :cancellation_policy, :availability, :travel_costs, genre_ids: []])
   end 
   
   #

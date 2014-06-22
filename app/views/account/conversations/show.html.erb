@@ -1,42 +1,32 @@
 <div id="conversation">
 
-    <header>
-        Conversation with: <%= resource.negotiator_for(current_user).name %>
-    </header>
+  <header>
+    <%= resource.negotiator_for(current_user).name %>
+  </header>
 
-    <div class="content">
-        
-        <% resource.messages.includes(:sender).each do |message| %>
-            <div class="message">
-                <div class="photo">
-                    <%= image_tag message.sender.avatar.url(:thumb), class: "avatar" %>
-                </div>
-                <div class="body">
-                    <!-- TODO: Link auf das Profil des Artists setzen -->
-                    <h3><%= message.sender.name %> - <span><%= message.created_at.strftime("%H:%M") %></span></h3>
-                    <p>
-                        <%= message.body %>
-                    </p>
-                </div>
-            </div>
-        <% end %>
-        <div class="message new-message">
-            <div class="photo">
-                <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
-            </div>
-            <div class="body">
-                <%= simple_form_for @message, url: account_outgoing_messages_path do |f| %>
-                    <%= render "/account/outgoing_messages/form", f: f %>
-                <% end %>
-            </div>
-        </div>
-
+  <div class="content">
+    <div id="messages">
+      <% resource.messages.includes(:sender).each do |message| %>
+        <%= render 'account/conversations/message', message: message %>
+      <% end %>
     </div>
 
-    <% if (deal = resource.deals.last).present? %>
-        <aside id="deal-teaser">
-            <%= render "deal_teaser", deal: deal %>
-        </aside>
-    <% end %>
+    <div class="message new-message">
+      <div class="photo">
+        <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+      </div>
+      <div class="body">
+        <%= simple_form_for @message, url: account_messages_path, data: {remote: true} do |f| %>
+          <%= render "/account/messages/form", f: f %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% if (deal = resource.deals.last).present? %>
+    <aside id="deal-teaser" data-container="deal">
+      <%= render "account/deals/#{deal.state}", deal: deal %>
+    </aside>
+  <% end %>
 
 </div>

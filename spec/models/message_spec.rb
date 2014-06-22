@@ -9,7 +9,7 @@ describe Message, :type => :model do
     end
 
     it "is not valid without valid receiver" do
-      expect(FactoryGirl.build(:user_quentin, receiver_id: 99999)).to be_invalid
+      expect(FactoryGirl.build(:user_quentin, receiver_id: nil)).to be_invalid
     end
     
   end

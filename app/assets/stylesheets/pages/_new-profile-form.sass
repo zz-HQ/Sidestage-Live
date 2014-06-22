@@ -1,0 +1,156 @@
+.new-profile-form
+
+	.input
+		+span-columns(8)
+		border-bottom: 1px solid $border-color
+		padding-bottom: 30px
+		text-align: center
+
+		h3
+			color: #484D4F
+			font-size: 22px
+			font-weight: bold
+			margin: 30px 0
+
+		.act
+			+span-columns(3 of 6)
+
+			.photo
+				background: url("splash/background.jpg") no-repeat center center
+				background-size: 370px
+				width: 370px
+				height: 130px
+				overflow: hidden
+				+transition(opacity 600ms ceaser($easeOutExpo))
+
+			&:hover
+
+				.photo
+					+opacity(0.8)
+
+				.label
+					color: #55B1FF
+					text-decoration: underline
+
+		.radio
+
+			.label
+				font-size: 22px
+				position: relative
+				top: 10px
+				cursor: pointer
+				color: #484D4F
+				padding: 8px 0
+				width: 167px
+				display: inline-block
+
+			&.active
+
+				.label
+					+border-radius($border-radius)
+					background-color: #eee
+					border: 1px solid $border-color
+					color: #000
+					text-decoration: none
+
+		&.genre
+			padding-bottom: 50px
+
+			.act
+				+span-columns(1 of 4)
+
+				&.radio
+					width: 167px
+
+					.nice-select
+						background-color: #fff
+						margin-top: -10px
+						width: 167px
+
+			.photo
+				height: 130px
+				overflow: hidden
+				width: 167px
+
+			.act:nth-child(4)
+				.photo
+					background: none
+
+		&.city
+
+		.nice-select
+			background-color: #EAEDED
+			display: inline-block
+			font-size: 22px
+			height: 50px
+			text-align: center
+			width: 260px
+
+			.select-label-value
+				left: 14px
+				top: 9px
+
+			.select-arrow
+				right: 20px
+				top: 20px
+
+			#profile_location
+				left: 0
+
+		&.last
+			border-bottom: none
+			margin-bottom: -5px
+			padding-bottom: 0
+
+		.gross
+			display: inline-block
+			margin-top: 40px
+
+
+// EDIT PROFILE ------------------
+// -------------------------------
+#edit-profile
+	
+	h3
+		text-align: left
+		font-size: 20px
+
+	.genre
+
+		.act
+			margin-right: 2.1254%
+
+	.city
+		text-align: left
+
+		.nice-select
+
+			.select-arrow
+				right: -10px
+
+	.button
+		display: inline-block
+		margin-top: 30px
+
+// DESCRIPTION ------------------
+// ------------------------------
+#description,
+#pricing
+	
+	.inputs
+		+outer-container
+
+		.input
+			+span-columns(5 of 8)
+
+		.nice-select
+			+span-columns(5 of 8)
+			margin-bottom: 20px
+
+		.hint
+			+span-columns(3 of 8)
+			color: $text-color-light
+			margin-top: 25px
+
+			&.from-nice-select
+				margin-top: 0

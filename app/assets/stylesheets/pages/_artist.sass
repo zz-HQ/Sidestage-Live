@@ -13,18 +13,30 @@
       background-color: #ddd
       margin-bottom: 20px
 
-    .thumbs
-      overflow: hidden
-      padding: 0
+    .picture-viewer
+      margin-top: 30px
 
-      .thumb
-        border: 1px solid $border-color
-        float: left
-        height: 70px
-        list-style-type: none
-        margin-right: 10px
-        text-indent: 0
-        width: 70px
+      .picture
+
+
+      .thumbs
+        overflow: hidden
+        padding: 0
+        margin-bottom: 20px
+
+        .thumb
+          border: 1px solid $border-color
+          float: left
+          height: 70px
+          list-style-type: none
+          margin-right: 18px
+          text-indent: 0
+          width: 70px
+          cursor: pointer
+          +transition(opacity 600ms ceaser($easeOutExpo))
+
+          &:hover
+            +opacity(0.8)
     
   aside
     +span-columns(2)
@@ -35,56 +47,63 @@
       h3
         font-weight: 400
 
-.social-share-dummy
-  +retina-sprite(social-share, $sprite, $sprite2x)
+#artist,
+#conversation
+  
+  .content
+    width: 620px
+    margin-right: 0
 
-.booking-teaser
-  +box
-  padding: 25px 30px 25px
-  text-align: center
+  .social-share-dummy
+    +retina-sprite(social-share, $sprite, $sprite2x)
 
-  .label
+  .booking-teaser
+    +box
+    padding: 25px 30px 25px
+    text-align: center
 
-  .price
-    color: $text-color
-    font-size: 44px
-    font-weight: 400
-    margin-top: 0
+    .label
 
-  .date
-    margin: 20px 0 -15px
+    .price
+      color: $text-color
+      font-size: 44px
+      font-weight: 400
+      margin-top: 0
 
-    input
-      height: auto
+    .date
+      margin: 20px 0 -37px
 
-    .fa
-      position: relative
-      left: 66px
-      bottom: 51px
-      color: #999DA2
+      input
+        height: auto
+
+      .fa
+        position: relative
+        left: 66px
+        bottom: 51px
+        color: #999DA2
 
 
-  .btn-submit
-    margin-bottom: 8px
-    width: 100%
+    .btn-submit
+      margin-bottom: 8px
+      width: 100%
 
-.artist-teaser
-  +box
-  padding: 15px
-  text-align: center
-  background-color: #fff
+  .artist-teaser
+    +box
+    padding: 15px
+    text-align: center
+    background-color: #fff
 
-  .photo
-    img
-      max-width: 100%
+    .photo
+      img
+        max-width: 100%
 
-  .name
-    color: $text-color
-    font-size: 22px
-    font-weight: normal
-    margin: 19px 0 16px
+    .name
+      color: $text-color
+      font-size: 22px
+      font-weight: normal
+      margin: 19px 0 16px
 
-  .button
+    .button
 
 
 
