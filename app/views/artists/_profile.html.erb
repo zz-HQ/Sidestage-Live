@@ -85,7 +85,7 @@
       
           <%# TODO: Provide Helper to render price & currency properly %>
           <div class="price">
-            <%= localized_price(resource.price, resource.user.currency) %>
+            <%= artist_price(resource) %>
           </div>
       
           <% if artist_contactable?(resource.user) %>

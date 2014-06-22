@@ -126,7 +126,7 @@ class Deal < ActiveRecord::Base
   end
   
   def set_price
-    self.price ||= profile.try(:price)
+    self.price ||= profile.try(:price_with_surcharge)
   end
 
   def set_currency

@@ -15,7 +15,7 @@
   </div>
   <div class="label">
     <div class="genres"><%= artist.genres.map(&:name).join(", ") %></div>
-    <div class="price">from <strong><%= localized_price(artist.price, artist.user.currency) %></strong></div>
+    <div class="price">from <strong><%= artist_price(artist) %></strong></div>
   </div>
   
   <%#= link_to "View Profile", artist_path(artist) %>

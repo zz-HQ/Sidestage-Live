@@ -91,6 +91,11 @@ class Profile < ActiveRecord::Base
     update_attribute :published, !published
   end
   
+  def price_with_surcharge
+    return price unless ENV["surcharge"].present?
+    (price + surcharge).round
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -108,5 +113,10 @@ class Profile < ActiveRecord::Base
   def description_step?
     wizard_step == :description
   end
+
+  def surcharge
+    price * (ENV["surcharge"].to_i / 100.0)
+  end
+  
   
 end
