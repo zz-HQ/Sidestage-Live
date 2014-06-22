@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :message do
     body "body"
+    current_user factory: :user
     association :sender, factory: :user
     association :receiver, factory: :quentin
         

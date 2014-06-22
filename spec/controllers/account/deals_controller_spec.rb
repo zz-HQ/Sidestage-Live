@@ -27,7 +27,7 @@ describe Account::DealsController, :type => :controller do
       describe "payment info available" do
 
         it "creates deal" do
-          customer = FactoryGirl.create(:user)
+          customer = FactoryGirl.create(:quentin)
           profile = FactoryGirl.create(:profile)
           
           sign_in(customer)

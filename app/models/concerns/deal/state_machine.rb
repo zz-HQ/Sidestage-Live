@@ -17,7 +17,7 @@ module Deal::StateMachine
       state :rejected
       state :cancelled
       
-      event :offer do
+      event :offer, after: :create_offer_message do
         transitions from: [ :requested ], to: :offered
       end
       
@@ -29,17 +29,28 @@ module Deal::StateMachine
         transitions from: [:requested, :offered], to: :declined
       end
       
-      event :accept do
-        transitions [:offered] => :accepted
+      event :accept, after: :create_system_message  do
+        transitions from: [:requested], to: :accepted, guards: [:current_user_is_artist?, :customer_charged?]
       end
       
-      event :confirm do
-        transitions [ :requested ] => :confirmed
+      event :confirm, after: :create_system_message  do
+        transitions from: [ :offered ], to: :confirmed, guards: [:current_user_is_customer?, :customer_charged?]
       end
       
     end
 
   end
   
+  def customer_charged?
+    return charge_deal_customer(customer, self)
+  end
+  
+  def current_user_is_artist?
+    current_user == artist
+  end
+
+  def current_user_is_customer?
+    current_user == customer
+  end
   
 end

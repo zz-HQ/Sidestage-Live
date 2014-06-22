@@ -10,6 +10,7 @@ class Deal < ActiveRecord::Base
   
   include Deal::StateMachine
   include Conversationable
+  include Payment
   
   has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
@@ -49,8 +50,6 @@ class Deal < ActiveRecord::Base
   before_save :set_state_transition_at
 
   after_create :create_system_message
-  
-  after_update :create_offer_message, if: :offered?
   
   #
   # Associations
@@ -149,6 +148,7 @@ class Deal < ActiveRecord::Base
   
   def customer_must_be_chargeable
     errors.add :customer_id, :not_chargeable unless customer.paymentable?
+    customer.paymentable?
   end
   
   #
@@ -161,7 +161,7 @@ class Deal < ActiveRecord::Base
   
   def create_system_message
     message = Message.new current_user: current_user, receiver_id: partner_id, conversation_id: conversation_id, system_message: true
-    message.body = { source: self.class.name, state: state, requester_id: current_user.id, price: price }.to_json
+    message.body = { source: self.class.name, state: state, customer_id: customer_id, artist_id: artist_id }.to_json
     message.save
   end
 
@@ -180,33 +180,7 @@ class Deal < ActiveRecord::Base
     end
   end
   
-  def charge_customer
-    return false if stripe_charge_id.present?
-    
-    if customer.stripe_customer_id.blank?
-      errors.add :payment, "No payment info available."
-      return false
-    end
-    
-    begin
-      charge = Stripe::Charge.create(
-        :amount => price_in_cents,
-        :currency => currency,
-        :customer => customer.stripe_customer_id,
-        :description => "Deal #{customer.name}"
-      )
-      self.charged_price = price_in_cents
-      self.stripe_charge_id = charge.id
-      return save(validate: false)
-    rescue Stripe::CardError => e
-      # TODO: Stripe Charge CardError
-      User.where(id: customer.id).update_all(stripe_log: e.json_body.inspect) 
-      Rails.logger.info "##########################"
-      Rails.logger.info e.inspect
-      Rails.logger.info "##########################"
-    end
-    
-  end
+
   
 
 end

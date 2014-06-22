@@ -43,12 +43,7 @@ class User < ActiveRecord::Base
   
   has_many :profiles, dependent: :destroy
 
-  has_many :outgoing_messages, class_name: 'Message', foreign_key: :sender_id
-  has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id, dependent: :nullify
-  has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id, dependent: :nullify
-  
-  has_many :booking_requests, class_name: 'Deal', foreign_key: :customer_id, autosave: false
-  has_many :offers, -> { offers }, class_name: 'Deal', foreign_key: :artist_id  
+  has_many :messages, class_name: 'Message', foreign_key: :sender_id
 
   mount_uploader :avatar, AvatarUploader
   

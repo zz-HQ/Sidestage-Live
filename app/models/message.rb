@@ -64,7 +64,9 @@ class Message < ActiveRecord::Base
   #
   
   before_validation :assign_sender  
+  
   before_create :attach_to_conversation
+  
   after_create :update_conversation_order, :update_receiver_counter
   
   #

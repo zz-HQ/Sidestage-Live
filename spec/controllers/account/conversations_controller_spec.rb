@@ -22,8 +22,8 @@ describe Account::ConversationsController, :type => :controller do
     end
 
     it "decrements receiver unread message counter" do
-      conversation = FactoryGirl.create(:message, current_user: current_user).conversation
-      expect(conversation.receiver.unread_message_counter).to eq(1)      
+      conversation = FactoryGirl.create(:message, sender: current_user, current_user: current_user).conversation
+      expect(conversation.receiver.reload.unread_message_counter).to eq(1)      
       sign_in(conversation.receiver)
       
       get :show, id: conversation.id

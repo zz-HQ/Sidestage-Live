@@ -13,6 +13,7 @@
         <% end %>
         <% if deal.is_customer?(current_user) %>
             <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, remote: true, class: "btn" %>
+            <%= link_to "Confirm", confirm_account_deal_path(deal), method: :put, remote: true, class: "btn" if deal.offered? %>
         <% else %>    
             <%= link_to "Accept", accept_account_deal_path(deal), method: :put, remote: true, class: "btn" unless deal.offered? %>
             <%= link_to "Decline", decline_account_deal_path(deal), method: :put, remote: true, class: "btn" %>

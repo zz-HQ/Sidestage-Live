@@ -49,3 +49,25 @@ de:
         other: "Displaying <b>all&nbsp;%{count}</b> %{model}"
       multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
       multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
+  view:
+    messages:
+      system_messages:
+        deals:          
+          requested: 
+            customer: "You sent a booking request."
+            artist: "You received a new booking request from %{customer_name}."
+          offered: 
+            customer: "You received a new offer from the artist."
+            artist: "You made new offer."
+          cancelled:
+            customer: "You have cancelled this event."
+            artist: "The customer has cancelled this event."
+          declined:
+            artist: "You have declined this event."
+            customer: "The artist declined this event. <a href='%{artists_path}'>Click here</a> to view more artist."
+          accepted:
+            artist: "You accepted this event."
+            customer: "The artist accepted your booking request."   
+          confirmed:
+            artist: "The customer confirmed your offer."
+            customer: "You confirmed."            

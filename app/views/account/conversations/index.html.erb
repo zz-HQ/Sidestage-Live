@@ -14,10 +14,10 @@
 						<h3><%= conversation.negotiator_for(current_user).name %></h3>
 						<p>
 							<!-- TODO: Pfeil nur anzeigen wenn letzte Nachricht von mir ist -->
-							<% if conversation.messages.last.sender_id == current_user.id %>
+							<% if (message = conversation.messages.last).present? && message.sender_id == current_user.id %>
 							    <i class="fa fa-reply"></i>
 							<% end %>
-							<%= conversation.body %>
+							<%= message ? message_body(message) : conversation.body %>
 						</p>
 					</div>
 				</div>
