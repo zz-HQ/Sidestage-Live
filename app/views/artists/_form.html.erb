@@ -2,7 +2,7 @@
 	<div id="new-profile" class="new-profile-form">
 
 		<!-- # resource.errors.full_messages.inspect -->
-		<%= simple_form_for resource, url: artists_path, remote: true do |f| %>
+		<%= simple_form_for resource, url: artists_path, remote: true, html: { id: "profile-form" } do |f| %>
 
 			<header>
 				<h2>List your Music!</h2>

@@ -1,9 +1,9 @@
-$(document).on 'change', '#new-profile .genre select', (e) ->
+$(document).on 'change', '#profile-form .genre select', (e) ->
   return if $(this).val() == ""
-  $('#new-profile .genre input[type="radio"]').removeAttr('checked').trigger('change')
+  $('#profile-form .genre input[type="radio"]').removeAttr('checked').trigger('change')
 
-$(document).on 'change', "#new-profile input[type='radio'][name='profile[genre_ids][]']", (e) ->
+$(document).on 'change', "#profile-form input[type='radio'][name='profile[genre_ids][]']", (e) ->
   if($(this).is(":checked"))
-    $('#new-profile .genre select').val("").trigger("change")
+    $('#profile-form .genre select').val("").trigger("change")
     
 

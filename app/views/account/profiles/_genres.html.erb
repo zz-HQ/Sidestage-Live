@@ -14,7 +14,7 @@
 		</div>
 		<div class="act radio">
 			<div class="photo">
-				<%= radio_button_tag 'profile[genre_ids][]', genre_two.id, f.object.genres.include?(genre_one) %>
+				<%= radio_button_tag 'profile[genre_ids][]', genre_two.id, f.object.genres.include?(genre_two) %>
 			</div>
 			<div class="label">
 				<%= genre_two.name %>
@@ -23,7 +23,7 @@
 		</div>
 		<div class="act radio">
 			<div class="photo">
-				<%= radio_button_tag 'profile[genre_ids][]', genre_three.id, f.object.genres.include?(genre_one) %>
+				<%= radio_button_tag 'profile[genre_ids][]', genre_three.id, f.object.genres.include?(genre_three) %>
 			</div>
 			<div class="label">
 				<%= genre_three.name %>

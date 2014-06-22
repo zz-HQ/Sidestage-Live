@@ -54,20 +54,20 @@ de:
       system_messages:
         deals:          
           requested: 
-            customer: "You sent a booking request."
-            artist: "You received a new booking request from %{customer_name}."
+            you: "You sent a booking request."
+            partner: "You received a new booking request from %{partner_name}."
           offered: 
-            customer: "You received a new offer from the artist."
-            artist: "You made new offer."
+            you: "You made new offer."
+            partner: "You received a new offer from %{partner_name}."
           cancelled:
-            customer: "You have cancelled this event."
-            artist: "The customer has cancelled this event."
+            you: "You have cancelled this event."
+            partner: "%{partner_name} has cancelled this event."
           declined:
-            artist: "You have declined this event."
-            customer: "The artist declined this event. <a href='%{artists_path}'>Click here</a> to view more artist."
+            you: "You have declined this event."
+            partner: "%{partner_name} declined this event. <a href='%{artists_path}'>Click here</a> to view more artist."
           accepted:
-            artist: "You accepted this event."
-            customer: "The artist accepted your booking request."   
+            you: "You accepted this event."
+            partner: "%{partner_name} accepted your booking request."   
           confirmed:
-            artist: "The customer confirmed your offer."
-            customer: "You confirmed."            
+            you: "You confirmed."
+            partner: "%{partner_name} confirmed your offer."

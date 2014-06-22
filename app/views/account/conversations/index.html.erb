@@ -5,23 +5,7 @@
 
 	<div class="content">
 		<% current_user.conversations.each do |conversation| %>
-			<%= link_to(account_conversation_path(conversation)) do %>
-				<div class="message">
-					<div class="photo">
-						<%= image_tag conversation.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
-					</div>
-					<div class="body">
-						<h3><%= conversation.negotiator_for(current_user).name %></h3>
-						<p>
-							<!-- TODO: Pfeil nur anzeigen wenn letzte Nachricht von mir ist -->
-							<% if (message = conversation.messages.last).present? && message.sender_id == current_user.id %>
-							    <i class="fa fa-reply"></i>
-							<% end %>
-							<%= message ? message_body(message) : conversation.body %>
-						</p>
-					</div>
-				</div>
-			<% end %>		
+		    <%= render conversation %>
 		<% end %>
 	</div>
 

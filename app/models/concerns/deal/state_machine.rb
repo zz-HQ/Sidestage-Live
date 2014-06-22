@@ -22,7 +22,7 @@ module Deal::StateMachine
       end
       
       event :cancel, after: :create_system_message do
-        transitions from: [:requested, :offered], to: :cancelled
+        transitions from: [:requested, :offered, :confirmed, :accepted], to: :cancelled
       end
 
       event :decline, after: :create_system_message do

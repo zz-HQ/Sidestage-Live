@@ -10,8 +10,8 @@
         Profile
       </header>
 
-      <div id="edit-profile" class="new-profile-form">
-        <%= simple_form_for [:account, resource] do |f| %>
+      <div class="new-profile-form">
+        <%= simple_form_for [:account, resource], html: { id: "profile-form" } do |f| %>
             <%= render "basics_form", f: f %>
     	<% end %>
       </div>

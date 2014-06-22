@@ -21,6 +21,7 @@
 </div>  
 
 <%= render "genres", f: f %>
+
 <div class="input city">
 	<h3>Where are you based?</h3>
 	<%= nice_select(f.select :location, available_locations, include_blank: false) %>

@@ -2,10 +2,9 @@ module Account::MessagesHelper
   
   def deal_system_message_body(message)
     json = JSON.parse(message.body)
-    customer = message.receiver_id == json["customer_id"].to_i ? message.receiver : message.sender
-    artist = message.receiver == customer ? message.sender : message.receiver
-    current_user_to_s = current_user == customer ? "customer" : "artist"
-    raw t("view.messages.system_messages.deals.#{json['state']}.#{current_user_to_s}",  artists_path: artists_path, customer_name: customer.name)
+    partner = message.sender == current_user ? message.receiver : message.sender
+    current_user_to_s = current_user.id == json["current_user_id"].to_i ? "you" : "partner"
+    raw t("view.messages.system_messages.deals.#{json['state']}.#{current_user_to_s}",  partner_name: partner.name, artists_path: artists_path)
   end
   
   def system_message_body(message)
