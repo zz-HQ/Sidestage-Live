@@ -6,7 +6,7 @@
         <!-- TODO: Link auf das Profil des Artists setzen -->
             <%- if message.system_message? -%>
                 <h3 class="ss"><span>Sidestage <%= message.created_at.strftime("%H:%M") %></span></h3>
-                <p><span><%= message_body(message) %></span></p>
+                <p class="footnote"><%= message_body(message) %></p>
             <%- else -%>
                 <h3><%= message.sender.name %><span>- <%= message.created_at.strftime("%H:%M") %></span></h3>
                 <p><%= message_body(message) %></p>

@@ -11,12 +11,12 @@
             <%= link_to "Accept & confirm", confirm_account_deal_path(deal), method: :put, class: "btn" %>
         </p>
         <p>
-            <%= link_to "Cancel request", cancel_account_deal_path(deal), method: :put, class: "btn" %>
+            <%= link_to "Cancel request", cancel_account_deal_path(deal), method: :put, class: "link" %>
         </p>
     <% else %>    
         <%= render "account/deals/offerable", deal: deal %>
     <% end %>    
-    <p class="booking-teaser-footer">
-        Need help? Contact support@sidestage.com
+    <p class="footnote">
+        Need help? Contact <a href="mailto:support@sidestage.com" class="link">support@sidestage.com</a>
     </p>
 </div>
