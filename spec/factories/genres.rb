@@ -14,10 +14,5 @@ FactoryGirl.define do
       name "Country"
     end
   end
-  
-  # FactoryGirl.create(:genre_classic)
-  # FactoryGirl.create(:genre_pop)
-  # FactoryGirl.create(:genre_dj)
-  # FactoryGirl.create(:genre_country)
-    
+
 end

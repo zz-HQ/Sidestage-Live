@@ -26,7 +26,7 @@ gem 'unf' # resolves fog errors
 # Frontend
 gem 'simple_form'
 gem 'turbolinks'
-gem 'sass-rails'
+gem 'sass-rails', '4.0.3'
 gem 'compass-rails'
 gem 'compass-rgbapng', require: 'rgbapng'
 gem 'ceaser-easing'
