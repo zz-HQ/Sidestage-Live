@@ -32,9 +32,19 @@ class Account::ProfilesController < Account::ResourcesController
   end
   
   def update
-    update! { preview_account_profile_path(resource) }
+    update! { pricing_account_profile_path(resource) }
   end
   
+  def pricing
+    resource.wizard_step = :pricing      
+    if request.patch?
+      if resource.update_attributes(permitted_params[:profile])
+        set_flash        
+        redirect_to description_account_profile_path
+      end
+    end    
+  end 
+
   def description
     resource.wizard_step = :description
     if request.patch?
@@ -45,16 +55,7 @@ class Account::ProfilesController < Account::ResourcesController
     end
   end
   
-  def pricing
-    resource.wizard_step = :pricing      
-    if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        set_flash        
-        redirect_to pricing_account_profile_path
-      end
-    end    
-  end 
-  
+
   def complete_pricing
     resource.wizard_step = :pricing
     if request.patch?
@@ -68,7 +69,7 @@ class Account::ProfilesController < Account::ResourcesController
   def toggle
     resource.toggle!
     set_flash
-    redirect_to account_root_path
+    redirect_to preview_account_profile_path(resource)
   end
 
   #

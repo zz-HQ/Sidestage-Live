@@ -78,9 +78,6 @@
 
     <%# TODO: Finish Aside %>
     <div class="booking-teaser" data-container="deal">
-        <% if current_user && (deal = Deal.between(current_user, resource.user_id).first).present?%>
-            <%= render "account/deals/#{deal.state}", deal: deal %>
-        <% else %>
           <div class="label">from</div>
       
           <%# TODO: Provide Helper to render price & currency properly %>
@@ -111,7 +108,6 @@
                   </div>
               <% end %>
           <% end %>
-      <% end %>
     </div>
     
     <%# TODO: Replace with database data %>    
