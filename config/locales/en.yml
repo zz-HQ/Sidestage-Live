@@ -1,2 +1,6 @@
 en:
-    
+  activerecord:
+    models:
+      profile:
+        one: Profile
+        other: Profiles

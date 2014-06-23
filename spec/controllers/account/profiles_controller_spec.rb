@@ -4,6 +4,12 @@ require 'before_each_helper'
 describe Account::ProfilesController, :type => :controller do
   
   before_each
+  before(:each) do
+    FactoryGirl.create(:genre_classic)
+    FactoryGirl.create(:genre_pop)
+    FactoryGirl.create(:genre_dj)
+    FactoryGirl.create(:genre_country)
+  end
   
   it "redirects index to new" do
     sign_in(FactoryGirl.create(:user))
