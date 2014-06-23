@@ -26,7 +26,7 @@
             <div style="display:none;" data-container="new-offer">
                 <div class="devise-lightbox">
                     <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
-                	  <%= f.input :price %>
+                	  <%= f.input :price, as: :string %>
                 	  <%= f.input :body, label: false, placeholder: "Note..." %>
                 	  <%= f.button :submit, class: "btn btn-submit" %>
                 	<% end %>
