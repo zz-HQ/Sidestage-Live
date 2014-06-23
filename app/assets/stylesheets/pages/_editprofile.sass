@@ -15,10 +15,12 @@
 			+transition(all 600ms ceaser($easeOutExpo))
 
 			&:hover
-				color: lighten($text-color, 50%)
+				color: $blue
+				+opacity(0.5)
 
 			&.active
-				color: lighten($text-color, 50%)
+				color: $blue
+				+opacity(0.5)
 
 	header
 		+bigger-font
