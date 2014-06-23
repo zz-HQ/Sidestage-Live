@@ -20,11 +20,10 @@
       .photo
         +span-columns(1 of 7)
         overflow: hidden
+        min-height: 1px
 
         img
-          +border-radius(50%)
           +transition(opacity 800ms ceaser($easeOutExpo))
-          border: 1px solid $blue
           width: 100%
 
       .body
@@ -37,11 +36,19 @@
 
           span
             color: #777
-            font-size: 17px
+            font-size: 16px
             font-weight: 300
+
+          &.ss
+            margin: 10px 0 0
 
         p
           margin: 0
+
+          span
+            color: #777
+            font-size: 16px
+            font-weight: 300
 
       &.new-message
         margin-top: 30px

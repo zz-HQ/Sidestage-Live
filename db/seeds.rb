@@ -59,7 +59,7 @@ artist_attributes = [
   },
   {
     first_name: "Beyoncé",
-    last_name: "",
+    last_name: "Knowles",
     city: "Berlin", 
     mobile: "013456789",
     avatar: File.open("#{Rails.root.to_s}/public/seed/beyonce.jpg"),
@@ -67,7 +67,7 @@ artist_attributes = [
   },
   {
     first_name: "P!nk",
-    last_name: "",
+    last_name: "Floyd",
     city: "Berlin", 
     mobile: "013456789",
     avatar: File.open("#{Rails.root.to_s}/public/seed/pink.jpg"),
@@ -100,6 +100,7 @@ profile_attributes = {
   profile_attributes.each do |key, val|
    profile.send("#{key}=", val)
   end
+  profile.name = "#{user.first_name} #{user.last_name}"
   profile.price = rand(500)
   profile.genre_ids = Genre.all.map(&:id).sample
   user.confirmed_at = Time.now

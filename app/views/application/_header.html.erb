@@ -34,6 +34,7 @@
                 <%= link_to "Create Profile", new_account_profile_path %>
             <% end %>
             <%= link_to "Dashboard", account_dashboard_path %>
+            <%= link_to "Account Settings", account_personal_path %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           </div>
           <div class="username"><%= current_user.name %></div>
