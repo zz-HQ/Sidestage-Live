@@ -50,6 +50,8 @@ class Profile < ActiveRecord::Base
   validates :title, :name, :about, presence: true, if: :description_step?
   validates :price, numericality: true, allow_blank: true
   
+  validates :genre_ids, :price, :title, :name, :about, presence: true, on: :publishing
+  
   #
   # Scopes
   # ---------------------------------------------------------------------------------------
@@ -96,6 +98,10 @@ class Profile < ActiveRecord::Base
     (price + surcharge).round
   end
   
+  def publishable?
+    valid?(:publishing)
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -117,6 +123,5 @@ class Profile < ActiveRecord::Base
   def surcharge
     price * (ENV["surcharge"].to_i / 100.0)
   end
-  
   
 end

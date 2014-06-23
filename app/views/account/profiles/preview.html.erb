@@ -6,7 +6,7 @@
 		<% if resource.published? %>
 			<%= link_to "Unpublish", toggle_account_profile_path(resource), method: :put, class: "btn btn-danger" %>
 		<% else  %>
-		<%= link_to "Publish", toggle_account_profile_path(resource), method: :put, class: "btn btn-accept" %>
+		<%= link_to_publish_profile(resource) %>
 		<% end %>
 	</div>
 </div>            
