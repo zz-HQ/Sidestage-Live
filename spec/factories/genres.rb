@@ -15,10 +15,9 @@ FactoryGirl.define do
     end
   end
   
-  Genre.delete_all
-  FactoryGirl.create(:genre_classic)
-  FactoryGirl.create(:genre_pop)
-  FactoryGirl.create(:genre_dj)
-  FactoryGirl.create(:genre_country)
+  # FactoryGirl.create(:genre_classic)
+  # FactoryGirl.create(:genre_pop)
+  # FactoryGirl.create(:genre_dj)
+  # FactoryGirl.create(:genre_country)
     
 end
