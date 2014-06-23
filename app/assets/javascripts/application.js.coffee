@@ -34,6 +34,7 @@ App.init = ->
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'Y-m-d'
+    scrollInput: false
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
   App.setStripeListener()
 
