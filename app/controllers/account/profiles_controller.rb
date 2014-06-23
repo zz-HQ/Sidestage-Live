@@ -48,7 +48,7 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :pricing      
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        redirect_to new_account_payment_detail_path
+        redirect_to pricing_account_profile_path
       end
     end    
   end 

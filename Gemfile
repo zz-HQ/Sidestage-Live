@@ -3,7 +3,7 @@ ruby '2.1.0'
 
 
 # Backend
-gem 'rails', '4.1.1'
+gem 'rails', '~> 4.1.1'
 gem 'devise'
 # TODO: Two MYSQL Gems ????
 #gem 'mysql'
@@ -26,8 +26,8 @@ gem 'unf' # resolves fog errors
 # Frontend
 gem 'simple_form'
 gem 'turbolinks'
+gem 'compass-rails', '~> 1.1.7'
 gem 'sass-rails'
-gem 'compass-rails'
 gem 'compass-rgbapng', require: 'rgbapng'
 gem 'ceaser-easing'
 gem 'jquery-rails', '3.1.0'
@@ -39,6 +39,7 @@ gem 'asset_sync'
 gem 'jquery-fileupload-rails'
 gem 'paper_trail', '~> 3.0.2'
 gem 'aasm'
+
 
 group :production do
   gem 'unicorn'
