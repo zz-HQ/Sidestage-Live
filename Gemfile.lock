@@ -281,7 +281,7 @@ DEPENDENCIES
   carrierwave
   ceaser-easing
   coffee-rails (~> 4.0.0)
-  compass-rails
+  compass-rails (~> 1.1.7)
   compass-rgbapng
   devise
   factory_girl_rails
@@ -300,10 +300,10 @@ DEPENDENCIES
   newrelic_rpm
   paper_trail (~> 3.0.2)
   quiet_assets
-  rails (= 4.1.1)
+  rails (~> 4.1.1)
   rails_12factor
   rspec-rails
-  sass-rails (= 4.0.3)
+  sass-rails
   simple_form
   spring
   stripe!

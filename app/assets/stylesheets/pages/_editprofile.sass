@@ -1,4 +1,5 @@
-#profile
+#profile,
+#edit-pictures
 
 	aside
 
@@ -8,21 +9,18 @@
 			margin-bottom: 10px
 
 		a
-			color: $text-color-light
-			padding: 14px 10px
+			color: $blue
 			display: block
-			border-left: 1px solid #EEE
-			margin-bottom: 15px
 			width: 200px
 			+transition(all 600ms ceaser($easeOutExpo))
 
 			&:hover
-				color: inherit
-				border-left: 1px solid $blue
+				color: $blue
+				+opacity(0.5)
 
 			&.active
-				color: inherit
-				border-left: 1px solid $blue
+				color: $blue
+				+opacity(0.5)
 
 	header
 		+bigger-font

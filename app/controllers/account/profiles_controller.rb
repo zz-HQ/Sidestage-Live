@@ -50,7 +50,7 @@ class Account::ProfilesController < Account::ResourcesController
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
         set_flash        
-        redirect_to new_account_payment_detail_path
+        redirect_to pricing_account_profile_path
       end
     end    
   end 

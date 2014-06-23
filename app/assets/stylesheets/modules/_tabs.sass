@@ -106,25 +106,24 @@ div.tabs
 
     .tab-switch
       border: none
-      color: $text-color-light
+      color: $blue
       text-transform: uppercase
       font-size: 16px
       font-weight: 700
-      margin: 20px 0 10px
+      margin: 0 0 10px
       background-color: transparent
-      border-left: 1px solid #FFF
       position: static
       +transition(all 600ms ceaser($easeOutExpo))
 
       &:hover
-        color: #222
+        color: $blue
+        +opacity(0.5)
         background-color: transparent
-        border-left: 1px solid $blue
 
       &.active
-        color: #222
+        color: $blue
+        +opacity(0.5)
         background-color: transparent
-        border-left: 1px solid $blue
 
   div.tabs
     margin-top: 0
