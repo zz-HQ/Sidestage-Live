@@ -1,2 +1,4 @@
 en:
-  
+  time:
+    formats:
+      event_date: "%A, %B %d, %Y"  

@@ -35,13 +35,12 @@ class Account::DealsController < Account::ResourcesController
   end
   
   def offer
-    resource.body = permitted_params[:deal][:body]
     resource.price = permitted_params[:deal][:price]
     resource.offer
     resource.save
     respond_to do |format|
       format.html { redirect_to account_conversation_path(resource.conversation) }
-      format.js { render :show }
+      format.js { render :offer }
     end
   end
   
@@ -68,7 +67,7 @@ class Account::DealsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:start_at, :price, :body, :profile_id, :stripe_token])
+    params.permit(deal: [:start_at, :price, :profile_id, :stripe_token])
   end
     
   #

@@ -49,7 +49,7 @@ class Deal < ActiveRecord::Base
   
   before_save :set_state_transition_at
 
-  after_create :create_system_message
+  after_save :create_system_message
   
   #
   # Associations
@@ -160,15 +160,17 @@ class Deal < ActiveRecord::Base
   #
   
   def create_system_message
-    message = Message.new current_user: current_user, receiver_id: partner_id, conversation_id: conversation_id, system_message: true
-    message.body = { source: self.class.name, source_id: self.id, state: state, current_user_id: current_user.id, customer_id: customer_id, artist_id: artist_id }.to_json
-    message.save
-  end
-
-  def create_offer_message
-    if changes.include?(:body) && body.present?
-      message = Message.new current_user: current_user, receiver_id: partner_id, conversation_id: conversation_id
-      message.body = body
+    if changes.include?('price') || changes.include?('state')
+      message = Message.new current_user: current_user, receiver_id: partner_id, conversation_id: conversation_id, system_message: true
+      message.body = { 
+        source: self.class.name, 
+        source_id: self.id, 
+        state: state, 
+        current_user_id: current_user.id, 
+        customer_id: customer_id, 
+        artist_id: artist_id,
+        price: price,
+        event_date: start_at }.to_json
       message.save
     end
   end

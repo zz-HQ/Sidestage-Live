@@ -1,37 +1,24 @@
 <div class="booking-teaser">
-    <div class="label">Price</div>
-    <div class="price">
-        <%= localized_price(deal.price, deal.currency) %>
-    </div>
-    <div class="label">
-        start:<br>
-        <span data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></span>
-        <%= link_to "<i class='fa fa-pencil'></i>".html_safe, "#", data: { toggle: "#edit-deal" } %>
-        <%= simple_form_for deal, url: account_deal_path(deal), html: { id: "edit-deal", style: "display:none;" }, remote: true do |f| %>
-            <%= f.input :start_at, as: :string, input_html: { value: l(deal.start_at, format: :deal_start_at), class: "date-picker" }, label: false %>
-	        <%= f.button :submit, class: "btn" %>
-        <% end %>
-        <% if deal.is_customer?(current_user) %>
-            <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, remote: true, class: "btn" %>
-            <%= link_to "Confirm", confirm_account_deal_path(deal), method: :put, remote: true, class: "btn" if deal.offered? %>
-        <% else %>    
-            <%= link_to "Accept", accept_account_deal_path(deal), method: :put, remote: true, class: "btn" unless deal.offered? %>
-            <%= link_to "Decline", decline_account_deal_path(deal), method: :put, remote: true, class: "btn" %>
-            <div class="or">
-              <div class="line"></div>
-                <span>or</span>
-              <div class="line"></div>
-            </div>
-            <%= link_to "Make new offer", "#", class: "btn btn-submit", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
-            <div style="display:none;" data-container="new-offer">
-                <div class="devise-lightbox">
-                    <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
-                	  <%= f.input :price, as: :string %>
-                	  <%= f.button :submit, class: "btn btn-submit" %>
-                	<% end %>
-                </div>
-            </div>
-        <% end %>
-        
-    </div>
+    <p>
+    Event data: <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+    </p>
+
+    <% if deal.is_customer?(current_user) %>
+        <p class="price customer">
+        Total cost: <%= localized_price(deal.price, deal.currency) %>
+        </p>
+        <p>
+            We are waiting on the artist to accept your booking
+        </p>
+        <p>
+        <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, class: "link" %>
+        </p>
+
+    <% else %>
+        <%= render "account/deals/offerable", deal: deal %>
+    <% end %>
+    
+    <p class="footnote">
+        Need help? Contact <a href="mailto:support@sidestage.com" class="link">support@sidestage.com</a>
+    </p>
 </div>

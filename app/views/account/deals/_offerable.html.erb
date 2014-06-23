@@ -1,0 +1,26 @@
+<span class="gray small">You'll get</span>
+<p class="price artist">
+    +<%= localized_price(deal.price, deal.currency) %>
+</p>
+<p>
+    <%= link_to "Accept", accept_account_deal_path(deal), method: :put, class: "btn" unless deal.offered? %>
+    <%= link_to "Decline request", decline_account_deal_path(deal), method: :put, class: "link" %>            
+</p>    
+<%= link_to "Accept, but increase price for this event", "#", class: "link", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
+<p class="footnote dark">
+    you can increase the pricing for this specific event to cover additional costs, time or travel.
+</p>    
+<div style="display:none;" data-container="new-offer">
+    <div class="devise-lightbox">
+        <h1>How much would you like to earn for this event?</h1>
+        <p class="footnote">Old price: <%= localized_price(deal.price, deal.currency) %></p>
+        <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
+            <%= f.input :price, as: :string, label: "New Price" %>
+            <%= f.button :submit, value: "Update price", class: "btn btn-submit" %>
+    	<% end %>
+    	<p class="footnote">
+    	    This is a one-time pricing change for this specific request. To update pricing
+    	    on your public profile, visit your Listing settings.
+    	</p>
+    </div>
+</div>
