@@ -39,6 +39,7 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :description
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
+        set_flash
         redirect_to payment_account_profile_path(resource)
       end
     end
@@ -48,6 +49,7 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :pricing      
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
+        set_flash        
         redirect_to new_account_payment_detail_path
       end
     end    
@@ -57,6 +59,7 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :pricing
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
+        set_flash
         redirect_to description_account_profile_path(resource)
       end
     end
@@ -64,7 +67,7 @@ class Account::ProfilesController < Account::ResourcesController
   
   def toggle
     resource.toggle!
-    flash[:notice] = "Profile #{resource.published? ? 'published' : 'unpublished'}!"
+    set_flash
     redirect_to account_root_path
   end
 
@@ -91,6 +94,10 @@ class Account::ProfilesController < Account::ResourcesController
   #
   
   private
+  
+  def set_flash
+    flash[:notice] = t("flash.actions.update.notice", resource_name: resource.class.model_name.human) 
+  end
   
   
 end
