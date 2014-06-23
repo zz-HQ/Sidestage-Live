@@ -17,23 +17,23 @@ module Deal::StateMachine
       state :rejected
       state :cancelled
       
-      event :offer, after: :create_offer_message do
+      event :offer do
         transitions from: [ :requested ], to: :offered
       end
       
-      event :cancel, after: :create_system_message do
+      event :cancel do
         transitions from: [:requested, :offered, :confirmed, :accepted], to: :cancelled
       end
 
-      event :decline, after: :create_system_message do
+      event :decline do
         transitions from: [:requested, :offered], to: :declined
       end
       
-      event :accept, after: :create_system_message  do
+      event :accept do
         transitions from: [:requested], to: :accepted, guards: [:current_user_is_artist?, :customer_charged?]
       end
       
-      event :confirm, after: :create_system_message  do
+      event :confirm do
         transitions from: [ :offered ], to: :confirmed, guards: [:current_user_is_customer?, :customer_charged?]
       end
       

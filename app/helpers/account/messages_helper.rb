@@ -4,7 +4,13 @@ module Account::MessagesHelper
     json = JSON.parse(message.body)
     partner = message.sender == current_user ? message.receiver : message.sender
     current_user_to_s = current_user.id == json["current_user_id"].to_i ? "you" : "partner"
-    raw t("view.messages.system_messages.deals.#{json['state']}.#{current_user_to_s}",  partner_name: partner.name, artists_path: artists_path)
+
+    t("view.messages.system_messages.deals.#{json['state']}.#{current_user_to_s}",  
+      partner_name: partner.name, 
+      artist_path: artist_path(partner), 
+      artists_path: artists_path,
+      price: localized_price(json["price"], json["currency"]),
+      event_date: l(json["event_date"].to_date, format: :event_date)).html_safe rescue ""
   end
   
   def system_message_body(message)

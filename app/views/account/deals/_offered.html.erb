@@ -1,1 +1,22 @@
-<%= render "account/deals/requested", deal: deal %>
+<div class="booking-teaser">
+    <p>
+    Event data: <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+    </p>
+
+    <% if deal.is_customer?(current_user) %>
+        <p class="price updated customer">
+        Update Total cost: <%= localized_price(deal.price, deal.currency) %>
+        </p>
+        <p>
+            <%= link_to "Accept & confirm", confirm_account_deal_path(deal), method: :put, class: "btn" %>
+        </p>
+        <p>
+            <%= link_to "Cancel request", cancel_account_deal_path(deal), method: :put, class: "btn" %>
+        </p>
+    <% else %>    
+        <%= render "account/deals/offerable", deal: deal %>
+    <% end %>    
+    <p class="booking-teaser-footer">
+        Need help? Contact support@sidestage.com
+    </p>
+</div>
