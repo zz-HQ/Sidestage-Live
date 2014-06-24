@@ -51,33 +51,21 @@
       <% end %>
     </div>
 
-
-    <%# TODO: About | Details | Reviews %>
-    <nav class="tabs" data-id="artist">
-      <div class="tab-switch">About</div>
-      <div class="tab-switch">Reviews</div>
-    </nav>
-    
-    <div class="tabs" data-id="artist">
-      <div class="tab about">
-        <h4>About</h4>
-        <p><%= resource.about %></p>
+    <div class="reviews">
+      <h4>Reviews</h4>
+      <div class="photo">
+        <%= image_tag resource.user.avatar_url(:thumb) %>
       </div>
-      <div class="tab reviews">
-        <div class="photo">
-          <%= image_tag resource.user.avatar_url(:thumb) %>
-        </div>
-        <div class="body">
-          <div class="dreieck"></div>
-          <h5>Taylor Swift <span>20.05.14</span></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-          <div class="rating">
-            <i class="fa fa-star active"></i>
-            <i class="fa fa-star active"></i>
-            <i class="fa fa-star active"></i>
-            <i class="fa fa-star active"></i>
-            <i class="fa fa-star"></i>
-          </div>
+      <div class="body">
+        <div class="dreieck"></div>
+        <h5>Taylor Swift <span>20.05.14</span></h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+        <div class="rating">
+          <i class="fa fa-star active"></i>
+          <i class="fa fa-star active"></i>
+          <i class="fa fa-star active"></i>
+          <i class="fa fa-star active"></i>
+          <i class="fa fa-star"></i>
         </div>
       </div>
     </div>
