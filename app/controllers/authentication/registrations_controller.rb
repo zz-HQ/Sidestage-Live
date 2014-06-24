@@ -55,5 +55,10 @@ class Authentication::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :newsletter_subscribed]
   end    
-    
+
+  def is_flashing_format?
+    true
+  end    
+
 end
+

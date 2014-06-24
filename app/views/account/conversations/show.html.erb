@@ -24,11 +24,20 @@
   </div>
 
   <aside>
-    <% resource.deals.each do |deal| %>
-      <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
-        <%= render "account/deals/#{deal.state}", deal: deal %>
-      <% end %>
+    <% resource.deals.select { |d| d.cancelled? || d.rejected? }.each do |deal| %>
+        <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
+            <%= render "account/deals/#{deal.state}", deal: deal %>
+        <% end %>
+        <% break %>
     <% end %>
+      
+    <% resource.deals.each do |deal| %>
+        <% next if deal.cancelled? || deal.rejected? %>
+         <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
+            <%= render "account/deals/#{deal.state}", deal: deal %>
+        <% end %>
+    <% end %>
+    
   </aside>
 
 </div>

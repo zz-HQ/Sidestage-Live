@@ -1,6 +1,7 @@
 <div id="flash-messages">
   <% flash.each do |name, msg| %>
-    <% if msg.is_a?(String) %>
+    <% #TOD: why the following check? %>
+    <%# if msg.is_a?(String) %>
       <div class="flash flash-<%= name %>">
         <div class="wrap">
           <div class="flash-message">
@@ -11,6 +12,6 @@
           </div>
         </div>
       </div>
-    <% end %>
+    <%# end %>
   <% end %>
 </div>
