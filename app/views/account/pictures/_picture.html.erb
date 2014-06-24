@@ -1,6 +1,6 @@
-<div class="picture">
+<%= content_tag :div, id: dom_id(picture), class: "picture" do %>
   <%= image_tag picture.picture.url(:medium_rect) %>
   <div class="actions">
-    <%= link_to "delete", account_picture_path(picture), method: :delete, data: {remote: true, confirm: "Are you absolutely sure?"} %>
+    <%= link_to "delete", account_profile_picture_path(picture.imageable, picture), method: :delete, data: {remote: true, confirm: "Are you absolutely sure?"} %>
   </div>
-</div>
+<% end %>

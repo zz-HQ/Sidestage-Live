@@ -3,6 +3,5 @@ vex.closeAll();
     vex.closeAll();
     vex.open({ content: "<%= j render("form").strip.html_safe %>" });
 <% else %>
-    $("[data-container=deal]").html("<%= j render("#{resource.state}", deal: resource).strip.html_safe %>");
     vex.dialog.alert('Your booking request has been sent to <%= resource.artist.name %> for approval. Your credit card will not be billed until your booking is confirmed');
 <% end %>

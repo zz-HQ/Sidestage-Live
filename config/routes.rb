@@ -33,8 +33,8 @@ Airmusic::Application.routes.draw do
           match 'pricing', to: 'profiles#pricing', via: :all          
           match 'complete_pricing', to: 'profiles#complete_pricing', via: :all            
         end
+        resources :pictures, only: [:index, :create, :destroy]
       end
-      resources :pictures, only: [:index, :create, :destroy]
       resources :messages
       resources :deals do
         member do

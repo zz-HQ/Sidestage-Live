@@ -35,7 +35,7 @@ class Account::PersonalsController < Account::ResourcesController
   end
   
   #
-  # Private
+  # Protected
   # ---------------------------------------------------------------------------------------
   #
   #
@@ -47,7 +47,6 @@ class Account::PersonalsController < Account::ResourcesController
   def permitted_params
     params.permit(user: [:first_name, :last_name, :about, :password, :password_confirmation, :stripe_token, :avatar])
   end
-  
   
   #
   # Private

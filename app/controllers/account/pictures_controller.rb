@@ -1,13 +1,15 @@
-class Account::PicturesController < ApplicationController
+class Account::PicturesController < Account::ResourcesController
+ 
   #
-  # Filters
+  # Settings
   # ---------------------------------------------------------------------------------------
   #
   #
   #
   #
 
-  before_action :find_pictures
+  belongs_to :profile, :polymorphic => true
+  respond_to :html, :js
 
   #
   # Actions
@@ -16,28 +18,9 @@ class Account::PicturesController < ApplicationController
   #
   #
   #
-
-  respond_to :html, :js
   
-  def index
-  end
-
   def create
-    current_user.profile.pictures.create! picture: params[:file]
-    render "update"
-  end
-
-  def destroy
-    picture = current_user.profile.pictures.find params[:id]
-    picture.destroy
-    render "update"
-  end
-
-
-private
-
-  def find_pictures
-    @pictures = current_user.profile.pictures
+    set_resource_ivar(current_user.profile.pictures.create! picture: params[:file])
   end
   
 end
