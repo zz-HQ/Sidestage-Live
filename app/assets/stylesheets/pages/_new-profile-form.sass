@@ -3,7 +3,6 @@
 	.input
 		+span-columns(8)
 		border-bottom: 1px solid $border-color
-		padding-bottom: 30px
 		text-align: center
 
 		h3
@@ -12,8 +11,14 @@
 			font-weight: bold
 			margin: 30px 0
 
+		.styled-radios
+			min-height: 83px
+
 		.act
-			+span-columns(3 of 6)
+			+span-columns(1 of 4)
+
+			&.radio
+				width: 167px
 
 			.photo
 				background: url("splash/background.jpg") no-repeat center center
@@ -54,27 +59,16 @@
 					text-decoration: none
 
 		&.genre
-			padding-bottom: 50px
 
-			.act
-				+span-columns(1 of 4)
-
-				&.radio
-					width: 167px
-
-					.nice-select
-						background-color: #fff
-						margin-top: -10px
-						width: 167px
+			.nice-select
+				background-color: #fff
+				margin-top: -10px
+				width: 167px
 
 			.photo
 				height: 130px
 				overflow: hidden
 				width: 167px
-
-			.act:nth-child(4)
-				.photo
-					background: none
 
 		&.city
 
