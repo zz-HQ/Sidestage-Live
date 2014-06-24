@@ -23,10 +23,12 @@
     </div>
   </div>
 
-  <% resource.deals.each do |deal| %>
-      <%= content_tag :aside, data: { container: dom_id(deal) } do %>
-          <%= render "account/deals/#{deal.state}", deal: deal %>
+  <aside>
+    <% resource.deals.each do |deal| %>
+      <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
+        <%= render "account/deals/#{deal.state}", deal: deal %>
       <% end %>
-  <% end %>
+    <% end %>
+  </aside>
 
 </div>
