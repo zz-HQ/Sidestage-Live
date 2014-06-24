@@ -1,14 +1,11 @@
 <div id="artist">
 
   <div class="content">
-    <div class="social-share-dummy"></div>
 
     <h2><%= resource.user.name %></h2>
-    
-    <%# TODO: Excerpt from DB %>    
-    <p class="excerpt">
-      <%= resource.title %>
-    </p>
+    <p><%= resource.title %></p>
+    <div class="social-share-dummy"></div>
+    <p><%= resource.about %></p>
     
     <nav class="tabs" data-id="social">
       <%- if has_soundcloud? -%>

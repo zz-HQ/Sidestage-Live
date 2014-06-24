@@ -4,9 +4,19 @@
   
   .content
     +span-columns(5)
+    width: 620px
+    margin-right: 0
 
-    .excerpt
-      margin: 20px 0 35px
+    h2
+      font-size: 45px
+      margin: 0
+
+    p
+      margin: 0 0 10px
+
+    .social-share-dummy
+      +retina-sprite(social-share, $sprite, $sprite2x)
+      margin: 15px 0
 
     .soundcloud-widget,
     .youtube-widget
@@ -41,81 +51,53 @@
   aside
     +span-columns(2)
     +shift(1)
-    
-    .requirements
-      margin-top: 35px
-      h3
+
+    .booking-teaser
+      +box
+      padding: 25px 30px 25px
+      text-align: center
+
+      .photo
+        img
+          max-width: 100%
+
+      .name
+        color: $text-color
+        font-size: 22px
+        font-weight: normal
+        margin: 19px 0 16px
+        padding-bottom: 8px
+        border-bottom: 1px solid #DDD
+
+      .label
+
+      .price
+        color: $text-color
+        font-size: 44px
         font-weight: 400
+        margin-top: 0
 
-#artist,
-#conversation
-  
-  .content
-    width: 620px
-    margin-right: 0
+      .date
+        margin: 20px 0 -37px
 
-  .social-share-dummy
-    +retina-sprite(social-share, $sprite, $sprite2x)
+        input
+          height: auto
 
-  .booking-teaser
-    +box
-    padding: 25px 30px 25px
-    text-align: center
+        .fa
+          position: relative
+          left: 66px
+          bottom: 51px
+          color: #999DA2
 
-    .photo
-      img
-        max-width: 100%
-
-    .name
-      color: $text-color
-      font-size: 22px
-      font-weight: normal
-      margin: 19px 0 16px
-      padding-bottom: 8px
-      border-bottom: 1px solid #DDD
-
-    .label
-
-    .price
-      color: $text-color
-      font-size: 44px
-      font-weight: 400
-      margin-top: 0
-
-    .date
-      margin: 20px 0 -37px
-
-      input
-        height: auto
-
-      .fa
-        position: relative
-        left: 66px
-        bottom: 51px
-        color: #999DA2
-
-
-    .btn-submit
-      margin-bottom: 8px
-      width: 100%
-
-  aside
+      .btn-submit
+        margin-bottom: 8px
+        width: 100%
 
     .contact-artist
       text-align: center
       font-size: 13px
       text-decoration: underline
       margin-top: 12px
-
-
-
-
-
-
-
-
-
-
 
 
 
