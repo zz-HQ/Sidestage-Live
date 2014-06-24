@@ -74,7 +74,7 @@ class Deal < ActiveRecord::Base
   
   scope :by_user, ->(user_id) { where('artist_id = :user_id OR customer_id = :user_id', user_id: user_id) }
   scope :between, ->(customer_id, artist_id) { where(artist_id: [artist_id, customer_id], customer_id: [artist_id, customer_id]) }
-
+  
   #
   # Instance Methods
   # ---------------------------------------------------------------------------------------
