@@ -20,6 +20,23 @@ module Account::ProfilesHelper
     content_tag :iframe, nil, width: "100%", height: "350", scrolling: "no", frameborder: "no", src: iframe_src
   end
 
+  def has_youtube?
+    !resource.youtube.blank? && resource.youtube.include?("youtube")
+  end
+
+  def youtube_id
+    resource.youtube[/v=([^&]+)/, 1]
+  end
+
+  def youtube_widget
+    youtube_src = "//www.youtube.com/embed/#{youtube_id}?rel=0"
+    content_tag :iframe, nil, width: "100%", height: "350", scrolling: "no", frameborder: "no", src: youtube_src
+  end
+
+  def has_images?
+    !resource.pictures.empty?
+  end
+
 private
 
   def soundcloud_id_from_iframe(iframe)
