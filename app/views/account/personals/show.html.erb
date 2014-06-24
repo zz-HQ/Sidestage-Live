@@ -3,23 +3,15 @@
     <%= render "sidebar" %>
 
   <div class="content">
-
-    <div class="tabs" data-id="personals">
-
-      <div class="tab">
-        <header>Personals</header>
-        <%= simple_form_for resource, url: account_personal_path do |f| %>
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :email %>
-          <%= f.input :avatar, label: "Profile picture" %>
-          <div class="input">
-            <%= f.button :submit, value: "Update", class: "btn" %>
-          </div>
-        <% end %>
+    <header>Personals</header>
+    <%= simple_form_for resource, url: account_personal_path do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :email %>
+      <%= f.input :avatar, label: "Profile picture" %>
+      <div class="input">
+        <%= f.button :submit, value: "Update", class: "btn" %>
       </div>
-
-    </div>
-
+    <% end %>
   </div>
 </div>
