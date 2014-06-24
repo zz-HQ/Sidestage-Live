@@ -5,7 +5,7 @@
 
     <% if deal.is_customer?(current_user) %>
         <p class="price customer">
-        Total cost: <%= localized_price(deal.price, deal.currency) %>
+        Total cost: <%= localized_price(deal.price_with_surcharge, deal.currency) %>
         </p>
         <p>
             We are waiting on the artist to accept your booking

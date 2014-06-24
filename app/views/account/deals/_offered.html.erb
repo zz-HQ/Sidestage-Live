@@ -5,7 +5,7 @@
 
     <% if deal.is_customer?(current_user) %>
         <p class="price updated customer">
-        Update Total cost: <%= localized_price(deal.price, deal.currency) %>
+        Update Total cost: <%= localized_price(deal.price_with_surcharge, deal.currency) %>
         </p>
         <p>
             <%= link_to "Accept & confirm", confirm_account_deal_path(deal), method: :put, class: "btn" %>

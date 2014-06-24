@@ -1,6 +1,6 @@
 <span class="gray small">You'll get</span>
 <p class="price artist">
-    +<%= localized_price(deal.price, deal.currency) %>
+    +<%= localized_price(deal.price_with_surcharge, deal.currency) %>
 </p>
 <p>
     <%= link_to "Accept", accept_account_deal_path(deal), method: :put, class: "btn" unless deal.offered? %>
@@ -13,7 +13,7 @@
 <div style="display:none;" data-container="new-offer">
     <div class="devise-lightbox">
         <h1>How much would you like to earn for this event?</h1>
-        <p class="footnote">Old price: <%= localized_price(deal.price, deal.currency) %></p>
+        <p class="footnote">Old price: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
         <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
             <%= f.input :price, as: :string, label: "New Price" %>
             <%= f.button :submit, value: "Update price", class: "btn btn-submit" %>

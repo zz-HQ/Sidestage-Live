@@ -22,12 +22,12 @@ module Payment
     return false if customer.stripe_customer_id.nil?
     begin
       charge = Stripe::Charge.create(
-        :amount => deal.price_in_cents,
+        :amount => deal.price_with_surcharge_in_cents,
         :currency => deal.currency,
         :customer => customer.stripe_customer_id,
         :description => "Deal #{customer.name}"
       )
-      deal.charged_price = deal.price_in_cents
+      deal.charged_price = deal.price_with_surcharge_in_cents
       deal.stripe_charge_id = charge.id
       Deal.where(id: deal.id).update_all(charged_price: deal.charged_price, stripe_charge_id: deal.stripe_charge_id)
       return true

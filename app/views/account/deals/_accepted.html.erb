@@ -1,7 +1,7 @@
 <div class="booking-teaser">
     <div class="label">Price</div>
     <div class="price">
-        <%= localized_price(deal.price, deal.currency) %>
+        <%= localized_price(deal.price_with_surcharge, deal.currency) %>
     </div>
     <div class="label">
         start:<br>

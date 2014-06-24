@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
   #
   #
   
-  store :social_media, accessors: [ :facebook, :twitter, :soundcloud, :blog ]
-
   #
   # Validations
   # ---------------------------------------------------------------------------------------

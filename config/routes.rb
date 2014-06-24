@@ -15,7 +15,9 @@ Airmusic::Application.routes.draw do
     namespace :account do
       resource :personal do
         collection do
-          match 'complete', to: 'personals#complete', via: :all          
+          match 'payment', to: 'personals#payment', via: :all
+          match 'password', to: 'personals#password', via: :all
+          match 'complete', to: 'personals#complete', via: :all
         end
       end
       resource :dashboard, controller: :dashboard do

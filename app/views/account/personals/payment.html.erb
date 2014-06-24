@@ -1,0 +1,20 @@
+<div id="personals">
+    
+    <%= render "sidebar" %>
+
+  <div class="content">
+        <header>Payments</header>
+
+        <% if current_user.paymentable? %>
+            You have already provided payment info.
+        <% else %>
+            <div data-content="payment-form">
+                <%= simple_form_for resource, url: payment_account_personal_path, data: { form: "payment" } do |f| %>
+                    <%= f.input :stripe_token, as: :hidden %>
+                    <%= render "account/payment_details/payment_form" %>
+                    <%= f.button :submit, value: "Update", class: "btn" %>
+                <% end %>
+            </div>
+      <% end %>
+  </div>
+</div>

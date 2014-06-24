@@ -1,12 +1,6 @@
 <div id="personals">
-  <aside>
-    <header></header>
-    <nav class="tabs" data-id="personals">
-      <div class="tab-switch">Account</div>
-      <div class="tab-switch">Password</div>
-      <div class="tab-switch">Payment</div>
-    </nav>
-  </aside>
+    
+    <%= render "sidebar" %>
 
   <div class="content">
 
@@ -22,24 +16,6 @@
           <%= f.input :avatar %>
           <%= f.button :submit, value: "Update", class: "btn" %>
         <% end %>
-      </div>
-      <div class="tab">
-        <header>Password</header>
-        <%= simple_form_for resource, url: account_personal_path do |f| %>
-            <%= f.input :password %>
-            <%= f.input :password_confirmation %>
-        <%= f.button :submit, value: "Update", class: "btn" %>
-        <% end %>
-      </div>
-      <div class="tab">
-        <header>Payments</header>
-        <div data-content="payment-form">
-          <%= simple_form_for resource, url: account_personal_path do |f| %>
-            <%= f.input :stripe_token, as: :hidden %>
-            <%= render "account/payment_details/payment_form" %>
-            <%= f.button :submit, value: "Update", class: "btn" %>
-          <% end %>
-        </div>
       </div>
 
     </div>

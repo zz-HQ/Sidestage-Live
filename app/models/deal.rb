@@ -11,6 +11,7 @@ class Deal < ActiveRecord::Base
   include Deal::StateMachine
   include Conversationable
   include Payment
+  include Surcharge  
   
   has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
@@ -90,11 +91,6 @@ class Deal < ActiveRecord::Base
     artist_id == user.id
   end
   
-  
-  def price_in_cents
-    price * 100
-  end
-
   def partner_id
     current_user.id == artist_id ? customer_id : artist_id
   end  
@@ -126,7 +122,7 @@ class Deal < ActiveRecord::Base
   end
   
   def set_price
-    self.price ||= profile.try(:price_with_surcharge)
+    self.price ||= profile.try(:price)
   end
 
   def set_currency
@@ -169,7 +165,7 @@ class Deal < ActiveRecord::Base
         current_user_id: current_user.id, 
         customer_id: customer_id, 
         artist_id: artist_id,
-        price: price,
+        price: price_with_surcharge,
         event_date: start_at }.to_json
       message.save
     end
