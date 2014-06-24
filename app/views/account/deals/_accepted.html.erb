@@ -7,5 +7,6 @@
         start:<br>
         <span data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></span>
     </div>
-    <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, class: "link" %>    
+    <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, class: "link" if deal.is_customer?(current_user) %>    
+    <%= link_to "Cancel", reject_account_deal_path(deal), method: :put, class: "link" if deal.is_artist?(current_user) %>
 </div>

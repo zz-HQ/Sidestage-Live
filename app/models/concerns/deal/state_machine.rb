@@ -16,6 +16,7 @@ module Deal::StateMachine
       state :declined
       state :rejected
       state :cancelled
+      state :rejected
       
       event :offer do
         transitions from: [ :requested ], to: :offered
@@ -23,6 +24,10 @@ module Deal::StateMachine
       
       event :cancel do
         transitions from: [:requested, :offered, :confirmed, :accepted], to: :cancelled
+      end
+
+      event :reject do
+        transitions from: [:requested, :confirmed, :accepted], to: :rejected, guards: [:current_user_is_artist?]
       end
 
       event :decline do

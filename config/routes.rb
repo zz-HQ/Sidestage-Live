@@ -42,6 +42,7 @@ Airmusic::Application.routes.draw do
           put :confirm
           put :decline
           put :accept
+          put :reject
           patch :offer
         end
       end

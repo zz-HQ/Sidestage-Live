@@ -71,3 +71,7 @@ de:
           confirmed:
             you: "Congrats! Your booking is confirmed for %{event_date}. If you need further assistance, please contact support@sidestage.com."
             partner: "Congrats! Your booking is confirmed for %{event_date}. If you need further assistance, please contact support@sidestage.com."
+          rejected:
+            you: "You have cancelled this booking request."
+            partner: "The artist has cancelled this booking request. Support will be in touch with you shortly. "
+            
