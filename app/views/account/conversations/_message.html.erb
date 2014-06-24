@@ -5,10 +5,10 @@
     <div class="body">
         <!-- TODO: Link auf das Profil des Artists setzen -->
             <%- if message.system_message? -%>
-                <h3 class="ss"><span>Sidestage <%= message.created_at.strftime("%H:%M") %></span></h3>
+                <h3 class="ss"><span>Sidestage <%= message.created_at.strftime("%A, %B %-d, %Y") %></span></h3>
                 <p class="footnote"><%= message_body(message) %></p>
             <%- else -%>
-                <h3><%= message.sender.name %><span>- <%= message.created_at.strftime("%H:%M") %></span></h3>
+                <h3><%= message.sender.name %><span>- <%= message.created_at.strftime("%A, %B %-d, %Y") %></span></h3>
                 <p><%= message_body(message) %></p>
             <%- end -%>
     </div>    
