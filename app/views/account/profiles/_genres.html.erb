@@ -33,7 +33,7 @@
 			<div class="photo">
 			</div>
 			<div class="label">
-				<%= nice_select(select_tag 'profile[genre_ids][]', options_for_select(genre_rest.collect { |g| [g.name, g.id] }, (genre_rest & f.object.genres).first.try(:id)), include_blank: true)  %>
+				<%= nice_select(select_tag 'profile[genre_ids][]', options_for_select(genre_rest.collect { |g| [g.name, g.id] }, (genre_rest & f.object.genres).first.try(:id)), prompt: "Other")  %>
 			</div>
 		</div>
 	</div>
