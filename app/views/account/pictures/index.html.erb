@@ -24,9 +24,9 @@
          
       <%#= form_for :picture, url: account_profile_pictures_path(parent), multipart: true, html: { id: "new_picture" } do |f| %>
         <%#= f.file_field :picture, accept: 'image/png,image/gif,image/jpeg', multiple: true %>
-        <a href="#" id="fileupload-button">Upload Pictures</a>
+       <%- if false -%> <a href="#" id="fileupload-button">Upload Pictures</a> <%- end -%>
       <% end %>
-      <div id="file-upload-status">Upload still running. <span class="value">0</span> left …</div>
+      <% if false %><div id="file-upload-status">Upload still running. <span class="value">0</span> left …</div><%- end -%>
     </div>
 
   </div>

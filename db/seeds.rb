@@ -28,7 +28,7 @@ artist_attributes = [
   {
     first_name: "Taylor",
     last_name: "Swift",
-    city: "Berlin", 
+    city: ["Berlin", "London"].sample, 
     mobile: "013456789",
     avatar: File.open("#{Rails.root.to_s}/public/seed/taylor-swift.jpg"),
     currency: "EUR"
@@ -36,7 +36,7 @@ artist_attributes = [
   {
     first_name: "Justin",
     last_name: "Timberlake",
-    city: "Berlin", 
+    city: ["Berlin", "London"].sample, 
     mobile: "013456789",
     avatar: File.open("#{Rails.root.to_s}/public/seed/justin-timberlake.jpg"),
     currency: "EUR"
@@ -44,7 +44,7 @@ artist_attributes = [
   {
     first_name: "Bon",
     last_name: "Jovi",
-    city: "London", 
+    city: ["Berlin", "London"].sample, 
     mobile: "013456789",
     avatar: File.open("#{Rails.root.to_s}/public/seed/bon-jovi.jpg"),
     currency: "EUR"    
@@ -52,7 +52,7 @@ artist_attributes = [
   {
     first_name: "The",
     last_name: "Rolling Stones",
-    city: "Berlin", 
+    city: ["Berlin", "London"].sample, 
     mobile: "013456789",
     avatar: File.open("#{Rails.root.to_s}/public/seed/the-rolling-stones.jpg") ,
     currency: "EUR"    
@@ -60,7 +60,7 @@ artist_attributes = [
   {
     first_name: "Beyoncé",
     last_name: "Knowles",
-    city: "Berlin", 
+    city: ["Berlin", "London"].sample, 
     mobile: "013456789",
     avatar: File.open("#{Rails.root.to_s}/public/seed/beyonce.jpg"),
     currency: "EUR"    
@@ -68,7 +68,7 @@ artist_attributes = [
   {
     first_name: "P!nk",
     last_name: "Floyd",
-    city: "Berlin", 
+    city: ["Berlin", "London"].sample, 
     mobile: "013456789",
     avatar: File.open("#{Rails.root.to_s}/public/seed/pink.jpg"),
     currency: "EUR"
@@ -78,7 +78,7 @@ artist_attributes = [
 
 profile_attributes = {
   published: true,
-  location: "Berlin",
+  location: ["Berlin", "London"].sample, 
   price: 22,
   currency: "EUR",
   name: "Pro",
