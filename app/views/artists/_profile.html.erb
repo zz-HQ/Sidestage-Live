@@ -102,9 +102,9 @@
   
               <div class="button">
                 <% if current_user %>
-                    <%= f.submit "Book it", class: "btn btn-submit" %>
+                    <%= f.submit "Book now", class: "btn btn-submit" %>
                 <% else %>
-                    <%= link_to "Book it", link_or_login(new_user_session_path(return_to: request.url)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                    <%= link_to "Book now", link_or_login(new_user_session_path(return_to: request.url)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
                 <% end %>
               </div>
           <% end %>
