@@ -8,6 +8,7 @@ class ArtistsController < ApplicationController
   #
   #
   
+  before_filter :redirect_if_unpublished, only: [:show]
   
   #
   # Settings
@@ -63,6 +64,10 @@ class ArtistsController < ApplicationController
   
   def permitted_params
     params.permit(profile: [:solo, :name, :location, :price, :title, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
+  end
+  
+  def redirect_if_unpublished
+    redirect_to artists_path unless resource.published?
   end
   
   def collection

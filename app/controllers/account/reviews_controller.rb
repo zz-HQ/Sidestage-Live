@@ -10,7 +10,7 @@ class Account::ReviewsController < Account::ResourcesController
 
   actions :create, :new
 
-  belongs_to :profile
+  belongs_to :profile, class_name: Profile, finder: :find_reviewable
 
   respond_to :html, :js  
 
@@ -29,20 +29,6 @@ class Account::ReviewsController < Account::ResourcesController
   #
   #
   #
-  
-  def create
-    create! do |format|
-      format.html{
-        redirect_to root_path 
-      }
-      format.js{
-        Rails.logger.info "###########################"
-        Rails.logger.info "sf"
-        Rails.logger.info "###########################"
-      }
-    end
-    
-  end
 
   #
   # Protected
@@ -68,12 +54,7 @@ class Account::ReviewsController < Account::ResourcesController
   
   private
   
-  def parent
-    Profile.published.where(id: params[:profile_id]).first
-  end
-  
-  def end_of_association_chain
-    parent.reviews
+  def begin_of_association_chain
   end
   
   def build_resource

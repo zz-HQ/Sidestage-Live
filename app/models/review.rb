@@ -9,8 +9,7 @@ class Review < ActiveRecord::Base
   #
   
   validates :profile_id, :author_id, :body, presence: true
-  
-  
+  validates :rate, numericality: true, allow_blank: true   
 
   #
   # Associations
@@ -22,7 +21,7 @@ class Review < ActiveRecord::Base
   
   belongs_to :profile
   belongs_to :artist
-  belongs_to :author
+  belongs_to :author, class_name: User
   
 
   #

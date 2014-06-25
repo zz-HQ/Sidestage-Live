@@ -82,6 +82,18 @@ class Profile < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, allow_destroy: true, reject_if: :all_blank
   
   has_and_belongs_to_many :genres  
+
+  #
+  # Class Methods
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+
+  def self.find_reviewable(id)
+    published.find(id)
+  end
   
   #
   # Instance Methods

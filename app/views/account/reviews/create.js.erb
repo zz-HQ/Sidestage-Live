@@ -1,0 +1,3 @@
+<% if resource.errors.blank? %>
+  $("[data-container=reviews]").append("<%= j(render('review', review: resource)) %>")
+<% end %>
