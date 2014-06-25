@@ -77,6 +77,7 @@ class Profile < ActiveRecord::Base
   
   belongs_to :user
   
+  has_many :reviews, dependent: :delete_all
   has_many :pictures, as: :imageable
   accepts_nested_attributes_for :pictures, allow_destroy: true, reject_if: :all_blank
   

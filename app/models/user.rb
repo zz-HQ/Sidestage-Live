@@ -40,7 +40,6 @@ class User < ActiveRecord::Base
   #
   
   has_many :profiles, dependent: :destroy
-
   has_many :messages, class_name: 'Message', foreign_key: :sender_id
 
   mount_uploader :avatar, AvatarUploader

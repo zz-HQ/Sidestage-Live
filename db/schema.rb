@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618152308) do
+ActiveRecord::Schema.define(version: 20140625140703) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -139,6 +139,20 @@ ActiveRecord::Schema.define(version: 20140618152308) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.integer  "author_id"
+    t.integer  "profile_id"
+    t.integer  "artist_id"
+    t.text     "body"
+    t.integer  "rate",       limit: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["artist_id"], name: "index_reviews_on_artist_id", using: :btree
+  add_index "reviews", ["author_id"], name: "index_reviews_on_author_id", using: :btree
+  add_index "reviews", ["profile_id"], name: "index_reviews_on_profile_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

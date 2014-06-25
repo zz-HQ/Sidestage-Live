@@ -67,8 +67,16 @@
           <i class="fa fa-star active"></i>
           <i class="fa fa-star"></i>
         </div>
+
       </div>
     </div>
+    <% if current_user %>
+        <%= simple_form_for :review, url: account_profile_reviews_path(resource), remote: true do |f| %>
+            <%= f.input :rate %>
+            <%= f.input :body %>
+            <%= f.submit class: "btn gross" %>
+        <% end %>
+    <% end %>
 
   </div>
 
