@@ -1,22 +1,26 @@
 <div class="booking-teaser">
-    <p>
-    Event data: <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
-    </p>
-
+  <table>
+    <tr>
+      <td>Event data:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
+    </tr>
     <% if deal.is_customer?(current_user) %>
-        <p class="price updated customer">
-        Update Total cost: <%= localized_price(deal.price_with_surcharge, deal.currency) %>
-        </p>
-        <p>
-            <%= link_to "Accept & confirm", confirm_account_deal_path(deal), method: :put, class: "btn" %>
-        </p>
-        <p>
-            <%= link_to "Cancel request", cancel_account_deal_path(deal), method: :put, class: "link" %>
-        </p>
-    <% else %>    
-        <%= render "account/deals/offerable", deal: deal %>
-    <% end %>    
-    <p class="footnote">
-        Need help? Contact <a href="mailto:support@sidestage.com" class="link">support@sidestage.com</a>
-    </p>
+    <tr class="price updated">
+      <td>New price:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
+    </tr>
+    <tr>
+      <!-- TODO: offered Status -->
+      <td>Status:</td><td>Another status</td>
+    </tr>
+  </table>
+  
+  <hr>
+
+  <p><%= link_to "Accept & confirm", confirm_account_deal_path(deal), method: :put, class: "btn btn-confirm" %></p>
+  <p><%= link_to "Cancel request", cancel_account_deal_path(deal), method: :put, class: "link" %></p>
+
+  <% else %>    
+    <%= render "account/deals/offerable", deal: deal %>
+  <% end %>    
+
+  <p class="footnote">Need help? Contact <a href="mailto:support@sidestage.com" class="link">support@sidestage.com</a></p>
 </div>

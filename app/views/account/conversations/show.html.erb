@@ -1,16 +1,12 @@
-  <div id="conversation">
-
-  <header>
-    <%= resource.negotiator_for(current_user).name %>
-  </header>
-
+<div id="conversation" class="container">
   <div class="content">
+    <header><%= resource.negotiator_for(current_user).name %></header>
+    
     <div id="messages">
       <% resource.messages.includes(:sender).each do |message| %>
         <%= render 'account/conversations/message', message: message %>
       <% end %>
     </div>
-
     <div class="message new-message">
       <div class="photo">
         <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
@@ -32,12 +28,11 @@
     <% end %>
       
     <% resource.deals.each do |deal| %>
-        <% next if deal.cancelled? || deal.rejected? || deal.declined? %>
-         <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
-            <%= render "account/deals/#{deal.state}", deal: deal %>
-        <% end %>
+      <% next if deal.cancelled? || deal.rejected? || deal.declined? %>
+       <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
+        <%= render "account/deals/#{deal.state}", deal: deal %>
+      <% end %>
     <% end %>
-    
   </aside>
 
 </div>

@@ -1,8 +1,6 @@
 <% if deal.is_customer?(current_user) %>
-    <div class="booking-teaser">
-        <p>
-            The artist has declined your booking request.
-        </p>
-        <%= link_to "View more artists", artists_path, class: "btn" %>    
-    </div>
+  <div class="booking-teaser">
+    <p class="footnote">The artist has declined your booking request.</p>
+    <%= link_to "View more artists", artists_path, class: "btn" %>    
+  </div>
 <% end %>

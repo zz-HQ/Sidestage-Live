@@ -1,24 +1,24 @@
 <div class="booking-teaser">
-    <p>
-    Event data: <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
-    </p>
+  <table>
+    <tr>
+      <td>Event data:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
+    </tr>
+  <% if deal.is_customer?(current_user) %>
+    <tr class="price customer">
+      <td>Total cost:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
+    </tr>
+    <tr>
+      <!-- TODO: pending Status -->
+      <td>Status:</td><td>Pending artist confirmation</td>
+    </tr>
+  </table>
 
-    <% if deal.is_customer?(current_user) %>
-        <p class="price customer">
-        Total cost: <%= localized_price(deal.price_with_surcharge, deal.currency) %>
-        </p>
-        <p>
-            We are waiting on the artist to accept your booking
-        </p>
-        <p>
-        <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, class: "link" %>
-        </p>
+  <hr>
 
-    <% else %>
-        <%= render "account/deals/offerable", deal: deal %>
-    <% end %>
-    
-    <p class="footnote">
-        Need help? Contact <a href="mailto:support@sidestage.com" class="link">support@sidestage.com</a>
-    </p>
+  <%= link_to "Cancel Booking", cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
+  <% else %>
+    <%= render "account/deals/offerable", deal: deal %>
+  <% end %>
+
+  <p class="footnote">Need help? Contact <a href="mailto:support@sidestage.com" class="link">support@sidestage.com</a></p>
 </div>

@@ -1,6 +1,10 @@
 .link
 	color: #999
-	text-decoration: underline
+	display: block
+	text-align: center
+
+	&:hover
+		text-decoration: underline
 
 .footnote
 	font-size: 14px
@@ -8,3 +12,21 @@
 	a
 		color: #999
 		text-decoration: underline
+
+
+.cancel-booking
+	margin: 20px 40px
+	background-color: transparent
+	color: $text-color-light
+	border: 1px solid $border-color
+
+	&:hover
+		background-color: transparent
+		color: $text-color
+
+.btn-confirm
+	margin: 20px 40px
+	background-color: #1D7C05
+
+	&:hover
+		background-color: lighten(#1D7C05, 10%)
