@@ -23,20 +23,40 @@ class Account::PersonalsController < Account::ResourcesController
   #
   
   def complete
-    update_account(payment_account_personal_path)
+    if request.patch?
+      if resource.update_attributes(permitted_params[:user])
+        set_flash_message(resource)
+        redirect_to payment_details_account_personal_path
+      end
+    end    
   end
   
   def password
     if request.patch?
       if resource.update_with_password(permitted_params[:user])
-        flash[:notice] = t("flash.actions.update.notice", resource_name: resource.class.model_name.human) 
+        set_flash_message(resource)
         redirect_to password_account_personal_path
       end
     end
   end
   
-  def payment
-    update_account(payment_account_personal_path)
+  def payment_details
+    @credit_card = current_user.credit_card
+    if request.patch?
+      if resource.update_attributes(permitted_params[:user])
+        @credit_card = current_user.credit_card
+        set_flash_message(resource)
+      end
+    end    
+  end
+  
+  def update_credit_card
+    @credit_card = current_user.credit_card
+    if @credit_card.update_attributes(permitted_params[:credit_card])
+      set_flash_message(@credit_card)
+      redirect_to payment_details_account_personal_path and return
+    end
+    render :payment_details
   end
   
   #
@@ -50,7 +70,12 @@ class Account::PersonalsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(user: [:first_name, :last_name, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar])
+    params.permit user: [
+        :first_name, :last_name, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
+      ],
+      credit_card: [
+        :name, :exp_month, :exp_year
+      ]
   end
   
   #
@@ -66,14 +91,9 @@ class Account::PersonalsController < Account::ResourcesController
   def resource
     get_resource_ivar || set_resource_ivar(current_user)
   end
-
-  def update_account(redirect_path)
-    if request.patch?
-      if resource.update_attributes(permitted_params[:user])
-        flash[:notice] = t("flash.actions.update.notice", resource_name: resource.class.model_name.human) 
-        redirect_to redirect_path
-      end
-    end
+  
+  def set_flash_message(res)
+    flash[:notice] = t("flash.actions.update.notice", resource_name: res.class.model_name.human)
   end
   
 end

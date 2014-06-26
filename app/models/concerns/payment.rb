@@ -4,31 +4,16 @@ module Payment
   included do
   end
   
-  def credit_last4
-    credit_card["last4"]
-  end
-  
-  def credit_type
-    credit_card["type"]
-  end
-  
-  def credit_exp_month
-    I18n.t("date.abbr_month_names")[credit_card["exp_month"].to_i]
-  end
-  
-  def credit_exp_year
-    credit_card["exp_year"]
-  end
-  
   def credit_card
-    @card ||= retrieve_credit_card
-    @card.first
+    return if stripe_customer_id.nil?
+    @credit_card ||= CreditCard.from_stripe_customer(retrieve_customer)
   end
   
-  def retrieve_credit_card
+  def retrieve_customer
     begin
-       Stripe::Customer.retrieve(stripe_customer_id).cards
+       @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
     rescue Stripe::StripeError => e
+      # TODO: Stripe Customer Retrieve Error
       User.where(id: id).update_all(stripe_log: e.json_body.inspect)
       Rails.logger.info "###########################"
       Rails.logger.info e.inspect
@@ -42,6 +27,7 @@ module Payment
       Stripe::Customer.create(card: user.stripe_token, description: desc || user.email)
     rescue Stripe::StripeError => e
       # TODO: Stripe Customer Create Error
+      user.stripe_token = nil
       user.errors.add :stripe_customer_id, e.json_body[:error][:message]
       User.where(id: user.id).update_all(stripe_log: e.json_body.inspect)
       Rails.logger.info "###########################"

@@ -5,7 +5,7 @@
     <div class="body">
     <!-- TODO: Link auf das Profil des Artists setzen -->
     <%- if message.system_message? -%>
-        <h3 class="ss"><span><%= message.created_at.strftime("%A, %-d %B, %Y") %></span></h3>
+        <h3 class="ss"><span><%= l message.created_at, format: :conversation %></span></h3>
         <p class="footnote"><%= message_body(message) %></p>
     <%- else -%>
         <h3><%= link_to message.sender.name, artist_path(message.sender) %><span><%= l message.created_at, format: :message %></span></h3>

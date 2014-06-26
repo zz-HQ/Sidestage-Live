@@ -196,5 +196,7 @@ de:
       short: ! '%d. %B, %H:%M Uhr'
       date:  ! '%d.%m.%Y'
       deal_start_at: "%d. %m. %Y"
-      event_date: "%A, %d %B %Y"      
+      event_date: "%A, %d %B %Y"
+      conversation: "%A, %-d %B, %Y"
+      message: "%A, %B %d, %Y"      
     pm: nachmittags

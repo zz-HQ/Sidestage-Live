@@ -112,7 +112,10 @@ class User < ActiveRecord::Base
   
   def set_payment_info    
     if changes.include?(:stripe_token)
-      self.stripe_customer_id ||= create_stripe_customer(self).try(:id) if stripe_token.present?
+      if stripe_token.present?
+        self.stripe_customer_id ||= create_stripe_customer(self).try(:id) 
+        return self.stripe_customer_id.present?
+      end
     end
   end
   

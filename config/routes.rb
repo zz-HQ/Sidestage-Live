@@ -15,7 +15,8 @@ Airmusic::Application.routes.draw do
     namespace :account do
       resource :personal do
         collection do
-          match 'payment', to: 'personals#payment', via: :all
+          post 'update_credit_card'
+          match 'payment_details', to: 'personals#payment_details', via: :all
           match 'password', to: 'personals#password', via: :all
           match 'complete', to: 'personals#complete', via: :all
         end
