@@ -23,11 +23,16 @@ class Account::PersonalsController < Account::ResourcesController
   #
   
   def complete
-    update_account(account_root_path)
+    update_account(payment_account_personal_path)
   end
   
   def password
-    update_account(password_account_personal_path)
+    if request.patch?
+      if resource.update_with_password(permitted_params[:user])
+        flash[:notice] = t("flash.actions.update.notice", resource_name: resource.class.model_name.human) 
+        redirect_to password_account_personal_path
+      end
+    end
   end
   
   def payment
@@ -45,7 +50,7 @@ class Account::PersonalsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(user: [:first_name, :last_name, :about, :password, :password_confirmation, :stripe_token, :avatar])
+    params.permit(user: [:first_name, :last_name, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar])
   end
   
   #
