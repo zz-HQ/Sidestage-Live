@@ -4,11 +4,10 @@
 			<%= image_tag conversation.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
 		</div>
 		<div class="body">
-			<h3><%= conversation.negotiator_for(current_user).name %></h3>
+			<h3><%= conversation.negotiator_for(current_user).name %> <span><%= conversation.created_at.strftime("%A, %-d %B, %Y") %></span></h3>
 			<p>
-				<!-- TODO: Pfeil nur anzeigen wenn letzte Nachricht von mir ist -->
 				<% if (message = conversation.messages.last).present? && message.sender_id == current_user.id %>
-				    <i class="fa fa-reply"></i>
+				  <i class="fa fa-reply"></i>
 				<% end %>
 				<%= message ? (strip_tags message_body(message)) : (strip_tags conversation.body) %>
 			</p>
