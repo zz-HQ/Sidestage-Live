@@ -1,41 +1,11 @@
 <div id="profile-complete">
-  <aside>
-    <header></header>
-    <nav class="tabs" data-id="complete">
-      <div class="tab-switch">Account</div>
-      <div class="tab-switch">Payment</div>
-    </nav>
-  </aside>
-
-  <div class="content">
-    <h1>Complete your Profile</h1>
     
-    <div class="tabs" data-id="complete">
-      <%= simple_form_for resource, url: complete_account_personal_path, data: { form: "payment", optional: true }, html: { multipart: true } do |f| %>
+	<%= render "sidebar" %>
 
-      <div class="tab">
-        <header>Personals</header>
-        <%= f.input :stripe_token, as: :hidden %>
-        <label>Profile Picture</label>
-        <%= f.file_field :avatar %>
-        <%= f.label :about %>
-        <%= f.text_area :about %>
-      </div>
-      <div class="tab">
-        <header>Payments</header>
-        <% unless current_user.paymentable? %>
-          <h4>Add payment details</h4>
-          <p>(Recommended but optional)</p>
-          <%= render "account/payment_details/payment_form" %>
+    <div class="content">
+        <h1>Complete your Profile</h1>
+        <%= simple_form_for resource, url: complete_account_personal_path, html: { multipart: true } do |f| %>
+            <%= render "user_form", f: f %>
         <% end %>
-      </div>
-
-      <input type="submit" value="Confirm" class="btn btn-submit">
-      <%= link_to "Skip", account_root_path %>
-
-      <% end %>
     </div>
-
-  </div>
-
 </div>
