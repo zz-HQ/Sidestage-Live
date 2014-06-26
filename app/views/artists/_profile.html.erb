@@ -50,25 +50,18 @@
       </div>
       <% end %>
     </div>
-
-    <div class="reviews">
-      <h4>Reviews</h4>
-      <div class="photo">
-        <%= image_tag resource.user.avatar_url(:thumb) %>
-      </div>
-      <div class="body">
-        <div class="dreieck"></div>
-        <h5>Taylor Swift <span>20.05.14</span></h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-        <div class="rating">
-          <i class="fa fa-star active"></i>
-          <i class="fa fa-star active"></i>
-          <i class="fa fa-star active"></i>
-          <i class="fa fa-star active"></i>
-          <i class="fa fa-star"></i>
-        </div>
-      </div>
-    </div>
+    
+    <div data-container="reviews" class="reviews">
+        <h4>Reviews</h4>        
+        <%= render partial: "account/reviews/review", collection: resource.reviews %>
+    </div>    
+    <% if current_user && current_user.id != resource.user_id %>
+        <%= simple_form_for :review, url: account_profile_reviews_path(resource), remote: true, class: "review-form" do |f| %>
+            <%= f.input :rate %>
+            <%= f.input :body %>
+            <%= f.submit class: "btn gross" %>
+        <% end %>
+    <% end %>
 
   </div>
 

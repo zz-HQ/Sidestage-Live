@@ -34,6 +34,7 @@ Airmusic::Application.routes.draw do
           match 'complete_pricing', to: 'profiles#complete_pricing', via: :all            
         end
         resources :pictures, only: [:index, :create, :destroy]
+        resources :reviews, only: [:new, :create]
       end
       resources :messages
       resources :deals do
@@ -46,6 +47,7 @@ Airmusic::Application.routes.draw do
           patch :offer
         end
       end
+
       resources :conversations
       resources :payment_details
       

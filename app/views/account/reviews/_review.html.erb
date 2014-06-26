@@ -1,0 +1,15 @@
+  <div class="photo">
+    <%= image_tag review.author.avatar_url(:thumb) %>
+  </div>
+  <div class="body">
+    <div class="dreieck"></div>
+    <h5><%= review.author.name %> <span><%= l review.created_at, format: :date %></span></h5>
+    <p><%= review.body %></p>
+    <div class="rating">
+      <i class="fa fa-star active"></i>
+      <i class="fa fa-star active"></i>
+      <i class="fa fa-star active"></i>
+      <i class="fa fa-star active"></i>
+      <i class="fa fa-star"></i>
+    </div>
+  </div>
