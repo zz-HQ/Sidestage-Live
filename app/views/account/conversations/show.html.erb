@@ -29,7 +29,7 @@
       
     <% resource.deals.each do |deal| %>
       <% next if deal.cancelled? || deal.rejected? || deal.declined? %>
-       <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
+        <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
         <%= render "account/deals/#{deal.state}", deal: deal %>
       <% end %>
     <% end %>

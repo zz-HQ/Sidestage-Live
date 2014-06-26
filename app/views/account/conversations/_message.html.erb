@@ -1,15 +1,13 @@
 <div class="message <%= "system" if message.system_message? %>">
+    <%- if message.system_message? -%>
+        <p class="ss"><%= message_body(message) %></p>
+    <%- else -%>
     <div class="photo">
       <%= link_to (image_tag message.sender.avatar.url(:thumb), class: "avatar"), artist_path(message.sender) unless message.system_message? -%>
     </div>
     <div class="body">
-    <!-- TODO: Link auf das Profil des Artists setzen -->
-    <%- if message.system_message? -%>
-        <h3 class="ss"><span><%= message.created_at.strftime("%A, %-d %B, %Y") %></span></h3>
-        <p class="footnote"><%= message_body(message) %></p>
-    <%- else -%>
         <h3><%= link_to message.sender.name, artist_path(message.sender) %><span><%= l message.created_at, format: :message %></span></h3>
         <p><%= message_body(message) %></p>
+    </div>
     <%- end -%>
-    </div>    
 </div>
