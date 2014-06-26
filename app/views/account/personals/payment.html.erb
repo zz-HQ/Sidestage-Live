@@ -3,10 +3,17 @@
   <%= render "sidebar" %>
 
   <div class="content">
-    <header>Payments</header>
+    <header>Payments details</header>
     <% if current_user.paymentable? %>
-      You have already provided payment info.
+      One credit cared on file:
+      <%= current_user.credit_type %>
+      <br/>
+      Card number: **** **** **** <%= current_user.credit_last4 %>
+      <br/>
+      Expiration: <%= "#{current_user.credit_exp_month} #{current_user.credit_exp_year}" %>
+      
     <% else %>
+        You have no credit card on file. Add one below.
       <div data-content="payment-form">
         <%= simple_form_for resource, url: payment_account_personal_path, data: { form: "payment" } do |f| %>
           <%= f.input :stripe_token, as: :hidden %>
