@@ -12,13 +12,15 @@ $btn-hover-darken-percentage: 10%
 
 .btn
   +border-radius($border-radius)
-  +linear-gradient(to bottom, $btn-submit-top-color, $btn-submit-bottom-color)
+  //+linear-gradient(to bottom, $btn-submit-top-color, $btn-submit-bottom-color)
+  background-color: $red
   border: 0
   color: #fff
   cursor: pointer
   display: block
+  font-size: 14px
   margin: 10px 0
-  padding: 5px 13px 7px
+  padding: 11px 13px 12px
   text-align: center
 
   &.gross
@@ -28,7 +30,8 @@ $btn-hover-darken-percentage: 10%
     text-transform: uppercase
   
   &:hover
-    +linear-gradient(to bottom, darken($btn-submit-top-color, $btn-hover-darken-percentage), darken($btn-submit-bottom-color, $btn-hover-darken-percentage))
+    //+linear-gradient(to bottom, darken($btn-submit-top-color, $btn-hover-darken-percentage), darken($btn-submit-bottom-color, $btn-hover-darken-percentage))
+    background-color: darken($red, $btn-hover-darken-percentage)
     color: #fff
 
   &.btn-inline
