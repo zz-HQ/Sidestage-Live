@@ -1,18 +1,16 @@
-<div id="profile">
+<div id="profile" class="container">
+  <aside>
+    <%= render 'sidebar' %>
+  </aside>
 
-    <aside>
-      <header></header>
-      <%= render 'sidebar' %>
-    </aside>
-
-    <div class="content">
-      <header>
-        Pricing
-      </header>
-      <div id="pricing" class="">
-          <%= simple_form_for resource, url: pricing_account_profile_path(resource) do |f| %>
-              <%= render "pricing_form", f: f %>
-          <% end %>
-      </div>
+  <div class="content">
+    <header>
+      Pricing
+    </header>
+    <div id="pricing" class="">
+      <%= simple_form_for resource, url: pricing_account_profile_path(resource) do |f| %>
+        <%= render "pricing_form", f: f %>
+      <% end %>
+    </div>
   </div>
 </div>      

@@ -3,8 +3,6 @@
 	<div class="payment-errors" style="display:none;"></div>
 	<%= text_field_tag nil, nil, data: { stripe: :number }, placeholder: "Card Number", label: false %>
 	<%= text_field_tag nil, nil, data: { stripe: :cvc }, placeholder: "CVC", label: false %>
-	<label>Exp Month</label>
 	<%= nice_select(select_tag nil, options_for_select(1..12), data: { stripe: :exp_month }) %>
-	<label>Exp year</label>
 	<%= nice_select(select_tag nil, options_for_select(Time.now.year..10.years.from_now.year), data: { stripe: :exp_year }) %>
 <% end %>

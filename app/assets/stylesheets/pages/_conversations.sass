@@ -1,10 +1,9 @@
 #conversations,
 #dashboard
-	+outer-container
 	
 	.content
 		+outer-container
-		+span-columns(8)
+		+span-columns(6)
 
 		.message
 			+outer-container
@@ -33,3 +32,26 @@
 					position: relative
 					top: -2px
 					color: #999
+
+				h3
+					margin: 0 0 10px
+
+					span
+						color: #777
+						font-size: 15px
+						float: right
+						font-weight: 400
+
+					&.ss
+						margin: 10px 0 0
+
+				p
+					margin: 0
+
+					span
+						color: #777
+						font-size: 16px
+						font-weight: 300
+
+	aside
+		+span-columns(2)

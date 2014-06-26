@@ -1,13 +1,9 @@
-<div id="dashboard">
-	<header>
-		<div class="headline">
-			Dashboard
-		</div>
-	</header>
+<div id="dashboard" class="container">
+	<header>Dashboard</header>
 
 	<div class="content">
 		<% current_user.conversations.each do |conversation| %>
-		    <%= render conversation %>
+		  <%= render conversation %>
 		<% end %>
 	</div>
 </div>
