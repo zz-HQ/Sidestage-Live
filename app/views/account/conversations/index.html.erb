@@ -1,9 +1,13 @@
 <div id="conversations" class="container">
 	<div class="content">
 		<header>Messages</header>
-		<% current_user.conversations.each do |conversation| %>
-		    <%= render conversation %>
-		<% end %>
+		<%- if current_user.conversations.count <= 0 -%>
+			<p>You don't have any messages!</p>
+		<%- else -%>
+			<%- current_user.conversations.each do |conversation| -%>
+			  <%= render conversation %>
+			<%- end -%>
+		<%- end -%>
 	</div>
 
 </div>

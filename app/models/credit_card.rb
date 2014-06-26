@@ -44,7 +44,7 @@ class CreditCard
   
   def update_attributes(attributes)
     attributes.each do |name, value|
-      stripe_card.send("#{name}=", value)
+      stripe_card.send("#{name}=", value.present? ? value : nil)
     end
     begin
       stripe_card.save

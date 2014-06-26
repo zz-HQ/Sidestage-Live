@@ -7,6 +7,7 @@
     <%= image_tag artist.user.avatar_url(:thumb) %>
     <div class="text">
       <h3><%= artist.name %></h3>
+      <p class="price">from <%= artist_price(artist) %></p>
     </div>
     <div class="gradient-overlay"></div>
     <div class="overlay">
@@ -15,7 +16,6 @@
   </div>
   <div class="label">
     <div class="genres"><%= artist.genres.map(&:name).join(", ") %></div>
-    <div class="price">from <strong><%= artist_price(artist) %></strong></div>
   </div>
   
   <%#= link_to "View Profile", artist_path(artist) %>

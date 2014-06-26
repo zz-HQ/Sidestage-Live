@@ -12,9 +12,6 @@
 
   .content
     +span-columns(6)
-    
-    header
-      height: 62px
 
 #artists
   
@@ -65,7 +62,7 @@
           
           .overlay
             +opacity(0)
-            +rgba-background(rgba(#55B1FF, 0.7))
+            +rgba-background(rgba($red, 0.7))
             +transition(opacity 800ms ceaser($easeOutExpo))
             height: 100%
             position: relative
@@ -76,7 +73,7 @@
               +border-radius($border-radius)
               background-color: #fff
               border-radius: 4px
-              color: $blue
+              color: $red
               font-weight: 300
               margin: 0 auto
               padding: 10px 20px
@@ -97,17 +94,17 @@
             width: 100%
 
           .text
-            bottom: 20px
+            bottom: 10px
             color: #fff
-            padding-left: 20px
+            padding-left: 14px
             position: absolute
             z-index: 2
             
             h3
               margin: 0
 
-            .city
-              font-weight: 300
+            p
+              margin: 0
 
         .label
           +span-columns(8)
@@ -116,10 +113,6 @@
           padding: 10px
 
           .genres
-            +span-columns(4)
             color: $text-color
-
-          .price
-            +span-columns(4)
-            color: $blue
-            text-align: right
+            text-align: center
+            padding: 4px 0

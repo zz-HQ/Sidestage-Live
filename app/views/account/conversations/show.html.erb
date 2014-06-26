@@ -7,10 +7,8 @@
         <%= render 'account/conversations/message', message: message %>
       <% end %>
     </div>
+
     <div class="message new-message">
-      <div class="photo">
-        <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
-      </div>
       <div class="body">
         <%= simple_form_for @message, url: account_messages_path, data: {remote: true} do |f| %>
           <%= render "/account/messages/form", f: f %>
@@ -29,7 +27,7 @@
       
     <% resource.deals.each do |deal| %>
       <% next if deal.cancelled? || deal.rejected? || deal.declined? %>
-       <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
+        <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
         <%= render "account/deals/#{deal.state}", deal: deal %>
       <% end %>
     <% end %>
