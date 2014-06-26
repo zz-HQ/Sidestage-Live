@@ -5,7 +5,7 @@
   <div class="content">
     <header>Payments details</header>
     <% if current_user.paymentable? %>
-      One credit cared on file:
+      One credit cared on file: <br> <br>
       <%= current_user.credit_type %>
       <br/>
       Card number: **** **** **** <%= current_user.credit_last4 %>
