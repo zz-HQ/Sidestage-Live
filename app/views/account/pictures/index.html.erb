@@ -1,13 +1,10 @@
-<div id="edit-pictures">
+<div id="edit-pictures" class="container">
   <aside>
-    <header></header>
     <%= render 'account/profiles/sidebar', resource: current_user.profile %>
   </aside>
 
   <div class="content">
-    <header>
-      Uploaded Pictures
-    </header>
+    <header>Uploaded Pictures</header>
     
     <div id="pictures">
         <% if collection.present? %>

@@ -1,11 +1,11 @@
-<div id="profile">
-    <div class="content">
-      <header>Pricing</header>
+<div id="profile" class="container">
+  <div class="content">
+    <header>Pricing</header>
 
-      <div class="complete-pricing">
-          <%= simple_form_for resource, url: complete_pricing_account_profile_path(resource) do |f| %>
-              <%= render "pricing_form", f: f %>
-          <% end %>
-      </div>
-  </div>
+	  <div class="complete-pricing">
+	    <%= simple_form_for resource, url: complete_pricing_account_profile_path(resource) do |f| %>
+	      <%= render "pricing_form", f: f %>
+	    <% end %>
+	  </div>
+</div>
 </div>      
