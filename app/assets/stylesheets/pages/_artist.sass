@@ -111,28 +111,36 @@
 
     .booking-teaser
       +box
-      padding: 25px 30px 25px
+      padding: 10px 12px 10px
       text-align: center
 
       .photo
+        padding: 15px
+
         img
           max-width: 100%
 
       .name
         color: $text-color
         font-size: 22px
-        font-weight: normal
-        margin: 19px 0 16px
-        padding-bottom: 8px
-        border-bottom: 1px solid #DDD
+        font-weight: 400
 
       .label
+        color: $text-color-light
+        margin-bottom: 20px
+
+        &.message-artist
+          margin: 20px 0 10px
+
+          a
+            color: $text-color-light
+            font-size: 15px
 
       .price
         color: $text-color
         font-size: 44px
-        font-weight: 400
-        margin-top: 0
+        font-weight: 700
+        margin-bottom: 28px
 
       .date
         margin: 20px 0 -37px
@@ -142,19 +150,13 @@
 
         .fa
           position: relative
-          left: 66px
-          bottom: 51px
-          color: #999DA2
+          left: 80px
+          bottom: 52px
+          color: $text-color-light
 
       .btn-submit
         margin-bottom: 8px
         width: 100%
-
-    .contact-artist
-      text-align: center
-      font-size: 13px
-      text-decoration: underline
-      margin-top: 12px
 
 
 
