@@ -5,25 +5,29 @@
   <div class="content">
     <header>Payments details</header>
     <% if current_user.paymentable? %>
-      One credit cared on file:
-      <%= current_user.credit_card.type %>
-      <br/>
-      Card number: **** **** **** <%= current_user.credit_card.last4 %>
-      <br/>
-      Expiration: <%= current_user.credit_card.expiration_human %>
-        <div>
-            <a href="#" data-toggle="#edit-credit-card">Edit</a>
-            <%= simple_form_for @credit_card, url: update_credit_card_account_personal_path, html: { id: "edit-credit-card", style: "display:none;" } do |f| %>
-                <%= f.object.errors.full_messages if f.object.errors.full_messages.present? %>
-                <%= f.input :name %>
-                <%= nice_select(f.select :exp_month, 1..12) %>
-                <%= nice_select(f.select :exp_year, Time.now.year..10.years.from_now.year) %>
-                <%= f.button :submit, value: "Update", class: "btn" %>
-            <% end %>
-        </div>
+      <h4>One credit card on file:</h4>
+      <p><%= current_user.credit_card.type %></p>
+      <p>Card number: **** **** **** <%= current_user.credit_card.last4 %></p>
+      <p>Expiration: <%= current_user.credit_card.expiration_human %></p>
+
+      <div>
+        <a href="#" data-toggle="#edit-credit-card" class="btn">Update card</a>
+        <%= simple_form_for @credit_card, url: update_credit_card_account_personal_path, html: { id: "edit-credit-card", style: "display:none;" } do |f| %>
+            <%= f.object.errors.full_messages if f.object.errors.full_messages.present? %>
+            <%= f.input :name %>
+            <%= nice_select(f.select :exp_month, 1..12) %>
+            <%= nice_select(f.select :exp_year, Time.now.year..10.years.from_now.year) %>
+            <%= f.button :submit, value: "Update", class: "btn" %>
+        <% end %>
+      </div>
+
+      <!-- TODO: remove credit card button -->
+      <a href="#" data-toggle="#edit-credit-card">Remove card</a>
+
+      <p>You can currently only store one credit card. <br> More payment methods are coming.</p>
       
     <% else %>
-        You have no credit card on file. Add one below.
+      <p>You have no credit card on file. Add one below.</p>
       <div data-content="payment-form">
         <%= simple_form_for resource, url: payment_details_account_personal_path, data: { form: "payment" } do |f| %>
           <%= f.input :stripe_token, as: :hidden %>
