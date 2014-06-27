@@ -120,7 +120,7 @@
 		margin: 20px 0 10px
 
 	.input
-	
+
 		.label
 			font-size: 18px
 			padding: 12px 0
@@ -151,11 +151,15 @@
 		display: inline-block
 		margin-top: 30px
 
-// DESCRIPTION ------------------
-// ------------------------------
+
+
+
 #description,
 #pricing,
 #personals
+	
+	h4
+		margin-top: 40px
 	
 	.inputs
 		+outer-container
@@ -174,3 +178,76 @@
 
 		&.from-nice-select
 			margin-top: 0
+
+// DESCRIPTION ------------------
+// ------------------------------
+#description
+	.profile_name,
+	.profile_about,
+	.profile_facebook,
+	.profile_twitter
+		.input
+			width: 350px
+
+		.hint
+			width: 43%
+
+	.profile_title
+		.hint
+			margin-top: 44px
+
+	.profile_name
+		.hint
+			margin-top: 30px
+
+	.profile_about
+		.hint
+			margin-top: 36px
+
+
+// PRICING ---------------
+// -----------------------
+#pricing
+	.complete-pricing
+
+		.parts
+			+outer-container
+			margin-bottom: 20px
+
+			.headline
+				+span-columns(1 of 4)
+
+				h4
+					margin: 20px 0 10px
+
+			.inputs
+				+span-columns(3 of 4)
+				float: right
+				+omega
+
+	.profile_price 
+
+		.input
+			width: 150px
+
+		.hint
+			width: 67%
+			margin-top: 30px
+
+	.profile_currency .nice-select
+		width: 100px
+
+	.profile_cancellation_policy .nice-select
+		width: 400px
+
+	.profile_availability 
+
+		.nice-select
+			width: 250px
+
+		.hint
+			width: 50%
+
+	.input,
+	.nice-select
+		display: inline-block

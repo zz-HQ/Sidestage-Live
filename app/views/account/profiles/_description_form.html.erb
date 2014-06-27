@@ -1,32 +1,32 @@
-<div class="inputs">
-	<%= f.input :name, placeholder: "Stage name", label: "Stage name" %>
+<div class="inputs profile_name">
+	<%= f.input :name, label: "Stage name" %>
+	<div class="hint">Your real name or Madonna. Whatever name people yell when you're on stage.</div>
 </div>
-<div class="inputs">
-	<%= f.input :title, as: :string, placeholder: "One sentence to describe your act", label: "One sentence to describe your act" %>
+<div class="inputs profile_title">
+	<%= f.input :title, as: :string, label: "One sentence to describe your act" %>
 	<div class="hint">Make sure it's catchy and unique.</div>
 </div>
-<div class="inputs">
-	<%= f.input :about, placeholder: "Tell us about you and/or your act.", label: "Tell us about you and/or your act." %>
+<div class="inputs profile_about">
+	<%= f.input :about, label: "Tell us about you and/or your act." %>
 	<div class="hint">Your chance to tell everyone a bit more about you. How you got into music, what drive you. Anything that may be helpful for someone to know who may be hiring you.</div>
 </div>
-<hr>
 
 <h4>Samples of your performance</h4>
 <div class="inputs">
-	<%= f.input :youtube, placeholder: "Paste youtube link here" %>
+	<%= f.input :youtube, placeholder: "Paste youtube link here", label: "Youtube video" %>
 	<div class="hint">Post your best stuff, this is your chance to show people how you perform.</div>
 </div>
 <div class="inputs">
-	<%= f.input :soundcloud, as: :text, placeholder: 'Post SoundCloud embed code here' %>	
+	<%= f.input :soundcloud, as: :text, placeholder: 'Post SoundCloud embed code here', label: "SoundCloud track or playlist" %>
 </div>
-<hr>
 
 <h4>Social media links</h4>
-<div class="inputs">
-	<%= f.input :facebook, placeholder: "Facebook profile link" %>	
+<div class="inputs profile_facebook">
+	<%= f.input :facebook, placeholder: "Facebook profile link", label: "Facebook" %>	
 </div>
-<div class="inputs">
-	<%= f.input :twitter, placeholder: "@..." %>	
+<div class="inputs profile_twitter">
+	<%= f.input :twitter, placeholder: "@...", label: "Twitter" %>	
 </div>
+<!-- TODO: Website input -->
 
 <%= f.button :submit, value: "Continue", class: "btn" %>
