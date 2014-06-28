@@ -7,5 +7,5 @@
 	<h4>Photos</h4>
 	<%= link_to "- Manage Photos", resource.new_record? ? "#" : account_profile_pictures_path(resource) %>
 	<h4>Payments</h4>
-	<%= link_to "- Add/Edit payout method", resource.new_record? ? "#" : payment_account_profile_path(resource) %>
+	<%= link_to "- Add payout method", resource.new_record? ? "#" : payment_account_profile_path(resource) %>
 </div>

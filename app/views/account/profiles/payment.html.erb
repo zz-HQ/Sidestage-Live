@@ -4,15 +4,29 @@
   </aside>
 
   <div class="content">
-    <header>Payment Details</header>
-    <div class="">
-      <h1>How do you want to get paid</h1>
-      <p>
-      <span class="btn button gross">Bank Accout</span>
-      </p>
-      <p>
-      <%= link_to "Do it later", account_conversations_path, class: "btn button gross" %>
-      </p>
+    <header>Add payout method<p>You'll need to enter your bank account details to get paid.</p></header>
+    <div id="payment">
+      <div class="input">
+        <label>IBAN</label>
+        <input type="text">
+      </div>
+      <div class="input">
+        <label>BIC / Swift Code</label>
+        <input type="text">
+      </div>
+      <div class="input">
+        <input type="submit" value="Save" class="btn">
+        <%= link_to "Skip", account_conversations_path, class: "skip" %>
+      </div>
+
+      <div class="footnote">
+        <p>Your bank details are handled securely. <br> 
+          We use Stripe to process payment.
+        </p>
+        <p>For questions, contact <br> 
+          <a href="mailto:support@sidestage.com">support@sidestage.com</a>
+        </p>
+      </div>
     </div>
   </div>
 </div>      
