@@ -6,9 +6,12 @@
     <div class="dreieck"></div>
     <h5><%= review.author.name %> <span><%= l review.created_at, format: :date %></span></h5>
     <p><%= review.body %></p>
-    <div class="rating">
+    <div class="star-rating">
       <%- review.rate.to_i.times do |a| -%>
-        <i class="fa fa-star active"></i>
+        <i class="fa fa-star rating-star rating-on"></i>
+      <%- end -%>
+      <%- (5 - review.rate.to_i).times do |a| -%>
+        <i class="fa fa-star rating-star rating-off"></i>
       <%- end -%>
     </div>
   </div>

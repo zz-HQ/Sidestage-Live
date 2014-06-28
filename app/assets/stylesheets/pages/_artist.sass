@@ -50,7 +50,7 @@
             +opacity(0.8)
 
     .reviews
-      margin: 40px 0 0
+      margin: 40px 0
 
       .review
         display: inline-block
@@ -95,16 +95,18 @@
           p
             margin: 0
 
-          .rating
+          .star-rating
             margin-top: 10px
 
-            i
-              color: #CCC
-              margin-right: 2px
-              font-size: 20px
-              
-              &.active
-                color: #ffbd00
+    .new-review
+      .star-rating
+        margin-bottom: 20px
+
+        span
+          color: $text-color
+          font-size: 17px
+          font-weight: 700
+          margin-right: 10px
     
   aside
     +span-columns(2)

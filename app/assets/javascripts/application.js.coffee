@@ -31,6 +31,7 @@ App.init = ->
   $('.styled-radios').styledRadios()
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
+  $('.star-rating-editable').starRating()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'Y-m-d'
