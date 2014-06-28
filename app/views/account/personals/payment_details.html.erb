@@ -10,24 +10,25 @@
         <p><%= current_user.credit_card.type %></p>
         <p>Card number: **** **** **** <%= current_user.credit_card.last4 %></p>
         <p>Expiration: <%= current_user.credit_card.expiration_human %></p>
-
-        <%= simple_form_for @credit_card, url: update_credit_card_account_personal_path, html: { id: "edit-credit-card", style: "display:none;" } do |f| %>
-            <%= f.object.errors.full_messages if f.object.errors.full_messages.present? %>
-            <%= f.input :name %>
-            <%= nice_select(f.select :exp_month, 1..12) %>
-            <%= nice_select(f.select :exp_year, Time.now.year..10.years.from_now.year) %>
-            <%= f.button :submit, value: "Update", class: "btn" %>
-        <% end %>
-
         <div class="footnote">
           <p>You can currently only store one credit card. <br> More payment methods are coming.</p>
         </div>
       </div>
 
       <div class="buttons">
-        <a href="#" data-toggle="#edit-credit-card" class="btn">Update card</a>
-        <!-- TODO: remove credit card button -->
-        <a href="#" class="delete">Remove card</a>
+        <%- if current_user.deals.count > 0 -%>
+          <%= link_to "Remove card", "#", class: "btn", data: { lightbox: :html, target: "[data-container='remove-card']" } %>
+        <%- else -%>
+          <!-- TODO: remove credit card path?? -->
+          <%= link_to "Remove card", "#", method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %>
+        <%- end -%>
+      </div>
+
+      <div style="display:none;" data-container="remove-card">
+        <div class="devise-lightbox">
+          <h2>Wait!</h2>
+          <p class="label">Before you remove your credit card, you need to cancel all your booking requests.</p>
+        </div>
       </div>
       
     <% else %>
