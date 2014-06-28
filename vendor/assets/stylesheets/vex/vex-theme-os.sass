@@ -9,6 +9,8 @@
 +keyframes-vex-pulse
 
 $blue: #3288e6
+$red: #E50000
+$border-radius: 2px
 
 .vex.vex-theme-os
     padding-top: 160px
@@ -43,7 +45,7 @@ $blue: #3288e6
         cursor: pointer
 
         &:before
-            +border-radius(3px)
+            +border-radius($border-radius)
             position: absolute
             content: "\00D7"
             font-size: 26px
@@ -70,7 +72,7 @@ $blue: #3288e6
             margin-bottom: 1em
 
             textarea, input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"]
-                +border-radius(3px)
+                +border-radius($border-radius)
                 background: #fff
                 width: 100%
                 padding: .25em .67em
@@ -82,7 +84,7 @@ $blue: #3288e6
                 margin: 0 0 .25em
 
                 &:focus
-                    +box-shadow(inset 0 0 0 1px $blue)
+                    +box-shadow(inset 0 0 0 1px $red)
                     outline: none
 
         .vex-dialog-buttons
@@ -90,7 +92,7 @@ $blue: #3288e6
             text-align: center
 
     .vex-dialog-button
-        +border-radius(3px)
+        +border-radius($border-radius)
         border: 0
         float: right
         margin: 0 0 0 .5em
@@ -114,7 +116,7 @@ $blue: #3288e6
                 +vex-animation(none)
 
         &.vex-dialog-button-primary
-            background: $blue
+            background: $red
             color: #fff
 
         &.vex-dialog-button-secondary
