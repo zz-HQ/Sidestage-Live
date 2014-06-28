@@ -6,12 +6,11 @@
     <header>Payments details</header>
     <% if current_user.paymentable? %>
       <h4>One credit card on file:</h4>
-      <p><%= current_user.credit_card.type %></p>
-      <p>Card number: **** **** **** <%= current_user.credit_card.last4 %></p>
-      <p>Expiration: <%= current_user.credit_card.expiration_human %></p>
+      <div class="credit-card-info">
+        <p><%= current_user.credit_card.type %></p>
+        <p>Card number: **** **** **** <%= current_user.credit_card.last4 %></p>
+        <p>Expiration: <%= current_user.credit_card.expiration_human %></p>
 
-      <div>
-        <a href="#" data-toggle="#edit-credit-card" class="btn">Update card</a>
         <%= simple_form_for @credit_card, url: update_credit_card_account_personal_path, html: { id: "edit-credit-card", style: "display:none;" } do |f| %>
             <%= f.object.errors.full_messages if f.object.errors.full_messages.present? %>
             <%= f.input :name %>
@@ -19,12 +18,17 @@
             <%= nice_select(f.select :exp_year, Time.now.year..10.years.from_now.year) %>
             <%= f.button :submit, value: "Update", class: "btn" %>
         <% end %>
+
+        <div class="footnote">
+          <p>You can currently only store one credit card. <br> More payment methods are coming.</p>
+        </div>
       </div>
 
-      <!-- TODO: remove credit card button -->
-      <a href="#" data-toggle="#edit-credit-card">Remove card</a>
-
-      <p>You can currently only store one credit card. <br> More payment methods are coming.</p>
+      <div class="buttons">
+        <a href="#" data-toggle="#edit-credit-card" class="btn">Update card</a>
+        <!-- TODO: remove credit card button -->
+        <a href="#" class="delete">Remove card</a>
+      </div>
       
     <% else %>
       <div class="footnote">
