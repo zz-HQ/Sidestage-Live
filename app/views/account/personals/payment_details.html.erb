@@ -27,12 +27,14 @@
       <p>You can currently only store one credit card. <br> More payment methods are coming.</p>
       
     <% else %>
-      <p>You have no credit card on file. Add one below.</p>
-      <div data-content="payment-form">
+      <div class="footnote">
+        <p>You have no credit card on file. Add one below.</p>
+      </div>
+      <div data-content="payment-form" class="payment-form">
         <%= simple_form_for resource, url: payment_details_account_personal_path, data: { form: "payment" } do |f| %>
           <%= f.input :stripe_token, as: :hidden %>
           <%= render "account/payment_details/payment_form" %>
-          <%= f.button :submit, value: "Update", class: "btn" %>
+          <%= f.button :submit, value: "Save credit card", class: "btn" %>
         <% end %>
       </div>
     <% end %>
