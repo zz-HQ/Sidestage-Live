@@ -19,7 +19,7 @@
 <div style="display:none;" data-container="new-offer">
   <div class="devise-lightbox">
     <h2>How much would you like to earn for this event?</h2>
-    <p class="footnote">Old price: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
+    <h4>Old price: <%= localized_price(deal.price_with_surcharge, deal.currency) %></h4>
     <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
       <%= f.input :price, as: :string, label: "New Price" %>
       <%= f.button :submit, value: "Update price", class: "btn btn-submit" %>
