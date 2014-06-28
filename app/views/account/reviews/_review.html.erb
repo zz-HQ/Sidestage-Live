@@ -1,3 +1,4 @@
+<div class="review">
   <div class="photo">
     <%= image_tag review.author.avatar_url(:thumb) %>
   </div>
@@ -6,10 +7,9 @@
     <h5><%= review.author.name %> <span><%= l review.created_at, format: :date %></span></h5>
     <p><%= review.body %></p>
     <div class="rating">
-      <i class="fa fa-star active"></i>
-      <i class="fa fa-star active"></i>
-      <i class="fa fa-star active"></i>
-      <i class="fa fa-star active"></i>
-      <i class="fa fa-star"></i>
+      <%- review.rate.to_i.times do |a| -%>
+        <i class="fa fa-star active"></i>
+      <%- end -%>
     </div>
   </div>
+</div>

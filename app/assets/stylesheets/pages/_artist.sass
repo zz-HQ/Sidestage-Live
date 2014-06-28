@@ -52,55 +52,59 @@
     .reviews
       margin: 40px 0 0
 
-      .photo
-        width: 70px
-        height: 70px
+      .review
         display: inline-block
+        margin-bottom: 20px
 
-      .body
-        +box
-        background-color: #fff
-        padding: 17px 20px 15px 20px
-        float: right
-        width: 530px
-        position: relative
+        .photo
+          width: 70px
+          height: 70px
+          float: left
 
-        .dreieck
-          width: 18px
-          height: 18px
-          background-color: #FFF
-          +transform(rotate(-45deg))
-          +box-shadow(inset 1px 1px 0 0px #DDD)
-          position: absolute
-          top: 18px
-          left: -10px
+        .body
+          +box
+          background-color: #fff
+          padding: 17px 20px 15px 20px
+          float: left
+          width: 530px
+          position: relative
+          margin-left: 20px
 
+          .dreieck
+            width: 18px
+            height: 18px
+            background-color: #FFF
+            +transform(rotate(-45deg))
+            +box-shadow(inset 1px 1px 0 0px #DDD)
+            position: absolute
+            top: 18px
+            left: -10px
 
-        h5
-          font-size: 14px
-          margin: 0 0 10px
+          h5
+            font-size: 14px
+            margin: 0 0 10px
 
-          span
-            float: right
-            color: $text-color-light
-            font-weight: 300
-            font-size: 12px
-            position: relative
-            top: 3px
+            span
+              float: right
+              color: $text-color-light
+              font-weight: 300
+              font-size: 12px
+              position: relative
+              top: 3px
 
-        p
-          margin: 0
+          p
+            margin: 0
 
-        .rating
-          margin-top: 10px
+          .rating
+            margin-top: 10px
 
-          i
-            color: #CCC
-            margin-right: 2px
-            font-size: 20px
-            
-            &.active
-              color: #ffbd00
+            i
+              color: #CCC
+              margin-right: 2px
+              font-size: 20px
+              
+              &.active
+                color: #ffbd00
     
   aside
     +span-columns(2)
