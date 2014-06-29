@@ -13,17 +13,20 @@ FactoryGirl.define do
 
     factory :quentin do
       first_name "quentin"
-      stripe_customer_id "123"
+      stripe_customer_id "quentin_123"
+      stripe_card_id "quentin_123"
     end
 
     factory :bob do
       first_name "bob"
-      stripe_customer_id "123"
+      stripe_customer_id "bob_123"
+      stripe_card_id "bob_123"
     end
     
     factory :artist do
       first_name "artist"      
-      stripe_customer_id "123"
+      stripe_customer_id "artist_123"
+      stripe_card_id "artist_123"
     end
     
     factory :customer do

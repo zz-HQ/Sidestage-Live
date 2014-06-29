@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   #
   #
   
+  attr_accessor :stripe_token
+  
   #
   # Validations
   # ---------------------------------------------------------------------------------------
@@ -41,7 +43,8 @@ class User < ActiveRecord::Base
   
   has_many :profiles, dependent: :destroy
   has_many :messages, class_name: 'Message', foreign_key: :sender_id
-
+  has_many :bookings, class_name: 'Deal', foreign_key: :customer_id
+  
   mount_uploader :avatar, AvatarUploader
   
   #
@@ -52,7 +55,7 @@ class User < ActiveRecord::Base
   #
   #
   
-  before_save :set_default_currency, :set_payment_info
+  before_save :set_default_currency, :add_credit_card
   
   #
   # Instance Methods
@@ -82,17 +85,13 @@ class User < ActiveRecord::Base
     [first_name, last_name].join(" ")
   end
   
-  def save_stripe_customer_id!(customer_id)
-    update_attribute :stripe_customer_id, customer_id
-  end
-  
   def paymentable?
-    stripe_customer_id.present?
+    stripe_customer_id.present? && stripe_card_id.present?
   end
   
   def make_paymentable_by_token(token)
     self.stripe_token = token
-    set_payment_info
+    add_credit_card
     return save
   end
   
@@ -110,11 +109,12 @@ class User < ActiveRecord::Base
     self.currency ||= Rails.configuration.default_currency
   end
   
-  def set_payment_info    
-    if changes.include?(:stripe_token)
-      if stripe_token.present?
-        self.stripe_customer_id ||= create_stripe_customer(self).try(:id) 
-        return self.stripe_customer_id.present?
+  def add_credit_card    
+    if stripe_token.present? 
+      if stripe_customer_id.blank?
+        return create_stripe_customer
+      elsif stripe_card_id.blank?
+        return create_stripe_card
       end
     end
   end

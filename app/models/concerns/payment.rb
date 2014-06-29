@@ -5,7 +5,8 @@ module Payment
   end
   
   def credit_card
-    return if stripe_customer_id.nil?
+    return if stripe_card_id.nil?
+    @credit_card = nil if changes.include?(:stripe_card_id)
     @credit_card ||= CreditCard.from_stripe_customer(retrieve_customer)
   end
   
@@ -13,26 +14,41 @@ module Payment
     begin
        @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
     rescue Stripe::StripeError => e
-      # TODO: Stripe Customer Retrieve Error
       User.where(id: id).update_all(stripe_log: e.json_body.inspect)
-      Rails.logger.info "###########################"
-      Rails.logger.info e.inspect
-      Rails.logger.info "###########################"
       return [{}]
     end
   end
-  
-  def create_stripe_customer(user, desc=nil)
+
+  def destroy_stripe_card
+    return true if stripe_card_id.blank?
     begin
-      Stripe::Customer.create(card: user.stripe_token, description: desc || user.email)
+      retrieve_customer.cards.retrieve(stripe_card_id).delete
+      User.where(id: id).update_all(stripe_card_id: nil)
+      return true
     rescue Stripe::StripeError => e
-      # TODO: Stripe Customer Create Error
-      user.stripe_token = nil
-      user.errors.add :stripe_customer_id, e.json_body[:error][:message]
-      User.where(id: user.id).update_all(stripe_log: e.json_body.inspect)
-      Rails.logger.info "###########################"
-      Rails.logger.info e.inspect
-      Rails.logger.info "###########################"
+      errors.add :stripe_card_id, e.json_body[:error][:message]
+      User.where(id: id).update_all(stripe_log: e.json_body.inspect)
+      return false
+    end
+  end
+  
+  def create_stripe_card
+    begin
+      return save_stripe_card!(retrieve_customer.cards.create(card: stripe_token))
+    rescue Stripe::StripeError => e
+      User.where(id: id).update_all(stripe_log: e.json_body.inspect)
+      errors.add :stripe_card_id, e.json_body[:error][:message]
+      stripe_token = nil
+    end
+  end
+  
+  def create_stripe_customer
+    begin
+      return save_stripe_customer!(Stripe::Customer.create(card: stripe_token, description: email))
+    rescue Stripe::StripeError => e
+      User.where(id: id).update_all(stripe_log: e.json_body.inspect)
+      errors.add :stripe_customer_id, e.json_body[:error][:message]
+      stripe_token = nil
     end
   end
 
@@ -51,15 +67,26 @@ module Payment
       Deal.where(id: deal.id).update_all(charged_price: deal.charged_price, stripe_charge_id: deal.stripe_charge_id)
       return true
     rescue Stripe::StripeError => e
-      # TODO: Stripe Charge CardError
-      deal.errors.add :stripe_charge_id, e.json_body[:error][:message] 
       User.where(id: customer.id).update_all(stripe_log: e.json_body.inspect) 
-      Rails.logger.info "##########################"
-      Rails.logger.info e.inspect
-      Rails.logger.info "##########################"
+      deal.errors.add :stripe_charge_id, e.json_body[:error][:message] 
     end
     return false
     
+  end
+
+  def save_stripe_card!(card)
+    self.stripe_card_id = card.id
+    User.where(id: id).update_all(stripe_card_id: self.stripe_card_id)
+    stripe_token = nil
+    return true
+  end
+  
+  def save_stripe_customer!(customer)
+    self.stripe_customer_id = customer.id
+    self.stripe_card_id = customer.cards.first.id
+    User.where(id: id).update_all(stripe_customer_id: self.stripe_customer_id, stripe_card_id: self.stripe_card_id)
+    stripe_token = nil
+    return true
   end
   
 end

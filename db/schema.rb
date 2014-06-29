@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625140703) do
+ActiveRecord::Schema.define(version: 20140629095710) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20140625140703) do
     t.string   "currency"
     t.text     "additionals"
     t.string   "avatar"
+    t.text     "payout"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -159,8 +160,6 @@ ActiveRecord::Schema.define(version: 20140625140703) do
     t.string   "last_name"
     t.string   "salutation"
     t.string   "mobile"
-    t.text     "social_media"
-    t.string   "airmusic_name"
     t.string   "avatar"
     t.string   "city"
     t.string   "email",                  default: "",    null: false
@@ -188,7 +187,7 @@ ActiveRecord::Schema.define(version: 20140625140703) do
     t.string   "role"
     t.text     "about"
     t.boolean  "newsletter_subscribed",  default: false
-    t.string   "stripe_token"
+    t.string   "stripe_card_id"
     t.text     "stripe_log"
   end
 

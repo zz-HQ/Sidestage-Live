@@ -34,6 +34,7 @@ class Profile < ActiveRecord::Base
   }
   
   store :additionals, accessors: [ :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
+  store :payout, accessors: [ :iban, :bic ]
   
   attr_accessor :wizard_step
   
@@ -50,7 +51,8 @@ class Profile < ActiveRecord::Base
   validates :price, presence: true, if: :price_step?
   validates :title, :name, :about, presence: true, if: :description_step?
   validates :price, numericality: true, allow_blank: true
-  
+  validates :bic, :iban, presence: true, if: :payment_step?
+
   validates :genre_ids, :price, :title, :name, :about, presence: true, on: :publishing
   
   #
@@ -127,6 +129,10 @@ class Profile < ActiveRecord::Base
   
   def description_step?
     wizard_step == :description
+  end
+
+  def payment_step?
+    wizard_step == :payment
   end
   
 end

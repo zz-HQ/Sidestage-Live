@@ -6,18 +6,14 @@
   <div class="content">
     <header>Add payout method<p>You'll need to enter your bank account details to get paid.</p></header>
     <div id="payment">
-      <div class="input">
-        <label>IBAN</label>
-        <input type="text">
-      </div>
-      <div class="input">
-        <label>BIC / Swift Code</label>
-        <input type="text">
-      </div>
-      <div class="input">
-        <input type="submit" value="Save" class="btn">
-        <%= link_to "Skip", account_conversations_path, class: "skip" %>
-      </div>
+        <%= simple_form_for resource, url: payment_account_profile_path(resource) do |f| %>
+          <%= f.input :iban %>
+          <%= f.input :bic %>
+          <div class="input">
+              <input type="submit" value="Save" class="btn">
+              <%= link_to "Skip", account_conversations_path, class: "skip" %>
+          </div>
+      <% end %>
 
       <div class="footnote">
         <p>Your bank details are handled securely. <br> 

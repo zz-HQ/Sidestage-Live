@@ -55,13 +55,21 @@ class Account::ProfilesController < Account::ResourcesController
     end
   end
   
-
   def complete_pricing
     resource.wizard_step = :pricing
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
         set_flash
         redirect_to description_account_profile_path(resource)
+      end
+    end
+  end
+  
+  def payment
+    resource.wizard_step = :payment
+    if request.patch?
+      if resource.update_attributes(permitted_params[:profile])
+        set_flash
       end
     end
   end
@@ -83,7 +91,7 @@ class Account::ProfilesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(profile: [:solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :cancellation_policy, :availability, :travel_costs, genre_ids: []])
+    params.permit(profile: [:solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :cancellation_policy, :availability, :travel_costs, :bic, :iban, genre_ids: []])
   end 
   
   #

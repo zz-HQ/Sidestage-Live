@@ -16,11 +16,10 @@
       </div>
 
       <div class="buttons">
-        <%- if current_user.deals.count > 0 -%>
+        <%- if current_user.bookings.pending.present? -%>
           <%= link_to "Remove card", "#", class: "btn", data: { lightbox: :html, target: "[data-container='remove-card']" } %>
         <%- else -%>
-          <!-- TODO: remove credit card path?? -->
-          <%= link_to "Remove card", "#", method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %>
+          <%= link_to "Remove card", remove_card_account_personal_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %>
         <%- end -%>
       </div>
 

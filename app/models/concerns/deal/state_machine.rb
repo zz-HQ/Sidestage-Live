@@ -1,12 +1,13 @@
 module Deal::StateMachine
   extend ActiveSupport::Concern
 
-
-  included do
-    
+  
+  included do    
     #There is a better Gem 'state_machine' available, but unfortunatley not maintained anymore
     include AASM
-
+    
+    PENDING_STATES = [ :requested, :offered ]
+    
     aasm column: 'state', whiny_transitions: false do
       
       state :requested, initial: true
@@ -14,7 +15,6 @@ module Deal::StateMachine
       state :confirmed
       state :accepted
       state :declined
-      state :rejected
       state :cancelled
       state :rejected
       

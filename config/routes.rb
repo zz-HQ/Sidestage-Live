@@ -15,7 +15,7 @@ Airmusic::Application.routes.draw do
     namespace :account do
       resource :personal do
         collection do
-          post 'update_credit_card'
+          delete 'remove_card'
           match 'payment_details', to: 'personals#payment_details', via: :all
           match 'password', to: 'personals#password', via: :all
           match 'complete', to: 'personals#complete', via: :all
@@ -26,13 +26,13 @@ Airmusic::Application.routes.draw do
       end
       resources :profiles do
         member do
-          get :payment          
           get :preview
           put :toggle
           match 'description', to: 'profiles#description', via: :all
           match 'basics', to: 'profiles#basics', via: :all          
           match 'pricing', to: 'profiles#pricing', via: :all          
           match 'complete_pricing', to: 'profiles#complete_pricing', via: :all            
+          match 'payment', to: 'profiles#payment', via: :all          
         end
         resources :pictures, only: [:index, :create, :destroy]
         resources :reviews, only: [:new, :create]

@@ -50,13 +50,11 @@ class Account::PersonalsController < Account::ResourcesController
     end    
   end
   
-  def update_credit_card
-    @credit_card = current_user.credit_card
-    if @credit_card.update_attributes(permitted_params[:credit_card])
-      set_flash_message(@credit_card)
-      redirect_to payment_details_account_personal_path and return
+  def remove_card
+    if current_user.destroy_stripe_card
+      flash[:notice] = t("flash.actions.destroy.notice", resource_name: CreditCard.model_name.human)
     end
-    render :payment_details
+    redirect_to payment_details_account_personal_path
   end
   
   #
