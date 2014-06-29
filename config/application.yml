@@ -1,1 +1,3 @@
-surcharge: 20
+surcharge: "20"
+mail_from: "Sidestage <info@sidestage.com>"
+mail_return_path: "info@sidestage.com"

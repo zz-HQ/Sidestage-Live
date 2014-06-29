@@ -1,3 +1,6 @@
+#ENV.update YAML.load_file('config/application.yml')[Rails.env]
+ENV.update YAML.load_file('config/application.yml')
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -37,6 +40,6 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
-  config.action_mailer.default_url_options = { :host => 'test.host' }
+  config.action_mailer.default_url_options = { :host => 'test.host', locale: I18n.default_locale }
   
 end

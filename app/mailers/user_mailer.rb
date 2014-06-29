@@ -7,8 +7,8 @@ class UserMailer < Devise::Mailer
   #
   #
 
-  default :from => "sidestage.com <admin@sidestage.com>",
-          :reply_to => "sidestage.com <info@sidestage.com>",
-          :return_path => "sidestage.com <info@sidestage.com>"
+  default :from => ENV["mail_from"],
+          :reply_to => ENV["mail_from"],
+          :return_path => ENV["mail_return_path"]
           
 end

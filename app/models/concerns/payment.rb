@@ -64,7 +64,7 @@ module Payment
       )
       deal.charged_price = deal.price_with_surcharge_in_cents
       deal.stripe_charge_id = charge.id
-      Deal.where(id: deal.id).update_all(charged_price: deal.charged_price, stripe_charge_id: deal.stripe_charge_id)
+      ensure_stripe_charge!
       return true
     rescue Stripe::StripeError => e
       User.where(id: customer.id).update_all(stripe_log: e.json_body.inspect) 

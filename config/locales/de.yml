@@ -34,21 +34,6 @@ de:
       destroy:
         notice: "%{resource_name} wurde erfolgreich gelöscht."
         alert: "%{resource_name} konnte nicht gelöscht werden."
-  will_paginate:
-    previous_label: "<i class='fa fa-caret-left'></i>"
-    next_label: "<i class='fa fa-caret-right'></i>"
-    page_gap: "&hellip;"
-    page_entries_info:
-      single_page:
-        zero:  "No %{model} found"
-        one:   "Displaying 1 %{model}"
-        other: "Displaying all %{count} %{model}"
-      single_page_html:
-        zero:  "No %{model} found"
-        one:   "Displaying <b>1</b> %{model}"
-        other: "Displaying <b>all&nbsp;%{count}</b> %{model}"
-      multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
-      multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
   view:
     messages:
       system_messages:
@@ -74,4 +59,27 @@ de:
           rejected:
             you: "You have cancelled this booking request."
             partner: "The artist has cancelled this booking request. Support will be in touch with you shortly. "
-            
+  mail:
+    deals:
+      requested:
+        subject: "Deal State Change"
+        body: "New deal request"
+      offered:
+        subject: "Price change"
+        body: "New price"
+      cancelled:
+        subject: "Deal Cancelled"
+        body: "Customer cancelled"
+      declined:
+        subject: "Deal declined"
+        body: "Artist declined"
+      accepted:
+        subject: "Deal accepted"
+        body: "Artist accepted"
+      confirmed:
+        subject: "Deal confirmed"
+        body: "Customer confirmed"
+      rejected:
+        subject: "Deal cancelled"
+        body: "Artist cancelled"
+                  

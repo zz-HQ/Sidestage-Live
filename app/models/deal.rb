@@ -52,6 +52,8 @@ class Deal < ActiveRecord::Base
 
   after_save :create_system_message
   
+  after_rollback :ensure_stripe_charge!, on: :update
+  
   #
   # Associations
   # ---------------------------------------------------------------------------------------
@@ -167,7 +169,9 @@ class Deal < ActiveRecord::Base
         artist_id: artist_id,
         price: price_with_surcharge,
         event_date: start_at }.to_json
-      message.save
+      if message.save
+        notify_partner
+      end
     end
   end
   
@@ -178,7 +182,19 @@ class Deal < ActiveRecord::Base
     end
   end
   
-
   
+  def notify_partner
+    if current_user.id == customer_id 
+      DealMailer.artist_notification(self).deliver
+    else
+      DealMailer.customer_notification(self).deliver
+    end
+  end
+  
+  def ensure_stripe_charge!
+    if changes.include?(:stripe_charge_id) && stripe_charge_id.present?
+      update_columns(charged_price: price_with_surcharge_in_cents, stripe_charge_id: stripe_charge_id)
+    end
+  end
 
 end

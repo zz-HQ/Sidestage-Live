@@ -1,0 +1,6 @@
+<%= strip_tags t("mail.deals.#{@deal.state}.body",  
+  partner_name: @deal.artist.name, 
+  artist_path: artist_path(@deal.artist), 
+  artists_path: artists_path,
+  price: localized_price(@deal.price, @deal.currency),
+  event_date: l(@deal.start_at.to_date, format: :event_date)).html_safe %>
