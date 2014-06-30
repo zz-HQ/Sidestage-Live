@@ -5,22 +5,22 @@
   width: 100%
 
   .btn-accept
-    +linear-gradient(to bottom, #7ae85a, #4ade22)
+    background: #7ae85a
     display: inline-block
 
     &:hover
-      +linear-gradient(to bottom, #7ae85a, #4ade22)
+      background: darken(#7ae85a, 10%)
 
   .btn-danger
-    +linear-gradient(to bottom, #f01e4a, #e50014)
+    background: $red
     display: inline-block
 
     &:hover
-      +linear-gradient(to bottom, #f01e4a, #e50014)
+      background: darken($red, 10%)
 
   .btn-default
-    +linear-gradient(to bottom, #bbb, #999)
+    background: #999
     display: inline-block
 
     &:hover
-      +linear-gradient(to bottom, #bbb, #999)
+      background: darken(#999, 10%)
