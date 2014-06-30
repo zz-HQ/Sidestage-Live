@@ -5,11 +5,12 @@
 
   <div class="content">
     <header>Uploaded Avatar</header>
-      <% if current_user.avatar.present? %>
-          <%= content_tag :div, id: "avatar_#{dom_id(current_user)}", class: "picture" do %>
-          	<div class="img">
+    <div class="avatar">
+        <% if current_user.avatar.present? %>
+         <%= content_tag :div, id: "avatar_#{dom_id(current_user)}", class: "avatar-pic" do %>
+            <div class="img">
           		<%= image_tag current_user.avatar.url(:big) %>
-          	</div>
+            </div>
             <div class="actions">
               <%= link_to "delete", destroy_avatar_account_personal_path, method: :delete, data: { remote: true, confirm: "Are you absolutely sure?" } %>
             </div>
@@ -18,9 +19,8 @@
       
       <%= simple_form_for current_user, url: upload_avatar_account_personal_path, html: { multipart: true } do |f| %>
           <%= f.input :avatar, as: :file, label: "Select Profile picture" %>
-          <input type="submit" value="Upload">
+          <input type="submit" value="Upload" class="btn">
       <% end %>
-
 
 
     <header>Uploaded Pictures</header>
