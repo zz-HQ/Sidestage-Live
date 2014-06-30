@@ -95,15 +95,14 @@
           </div>
 
         </div><!-- #animation-container -->
-
-        <div class="footer text-center">
-          <p class="text-shadow">Sidestage © <%= Time.now.year %></p>  
-        </div>
         
       </div><!-- #splash-content -->
 
     </div><!-- #splash -->
 
+    <div class="footer">
+      <p class="text-shadow"><%= link_to "Terms", terms_path %> & <%= link_to "Privacy", privacy_path %> - Sidestage © <%= Time.now.year %></p>  
+    </div>
 
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
