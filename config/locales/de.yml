@@ -63,23 +63,22 @@ de:
     deals:
       requested:
         subject: "Deal State Change"
-        body: "New deal request"
+        body: "You've received a booking request from %{customer_name}. Please sign in to your Sidestage account to review it."
       offered:
         subject: "Price change"
-        body: "New price"
+        body: "Great news! The artist has accepted your booking request, but updated the price to cover some additional costs. Please log in to review the changes."
       cancelled:
         subject: "Deal Cancelled"
-        body: "Customer cancelled"
+        body: "Your booking for %{event_date} has been cancelled by the customer. We apologize for any inconvenience this may cause. <br/><br/>If you have any questions, please contact us, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       declined:
         subject: "Deal declined"
-        body: "Artist declined"
+        body: "Unfortunately, the artist has declined your booking request for %{event_date}. View more artist profiles on Sidestage.com. If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       accepted:
         subject: "Deal accepted"
-        body: "Artist accepted"
+        body: "Your booking is now confirmed with %{partner_name}. <br/><br/>If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       confirmed:
         subject: "Deal confirmed"
-        body: "Customer confirmed"
+        body: "Great news! Your price update was accepted by the customer, and your booking is confirmed for %{event_date}. <br> <br> If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       rejected:
         subject: "Deal cancelled"
-        body: "Artist cancelled"
-                  
+        body: "%{partner_name} has cancelled your booking for %{event_date}. We apologize for the inconvenience. Visit <a href='www.sidestage.com'>www.sidestage.com</a> to find more avialable artists. <br/><br/>If we can provide any assistance, please contact <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
