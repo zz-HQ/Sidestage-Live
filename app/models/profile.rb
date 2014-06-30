@@ -13,9 +13,6 @@ class Profile < ActiveRecord::Base
   include Filter
   include Surcharge
 
-  mount_uploader :avatar, AvatarUploader  
-
-
   #
   # Attributes
   # ---------------------------------------------------------------------------------------

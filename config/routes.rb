@@ -15,6 +15,8 @@ Airmusic::Application.routes.draw do
     namespace :account do
       resource :personal do
         collection do
+          delete :destroy_avatar
+          patch :upload_avatar
           delete 'remove_card'
           match 'payment_details', to: 'personals#payment_details', via: :all
           match 'password', to: 'personals#password', via: :all
@@ -26,8 +28,6 @@ Airmusic::Application.routes.draw do
       end
       resources :profiles do
         member do
-          delete :destroy_avatar
-          patch :upload_avatar
           get :preview
           put :toggle
           match 'description', to: 'profiles#description', via: :all

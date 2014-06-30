@@ -75,17 +75,6 @@ class Account::ProfilesController < Account::ResourcesController
     end
   end
   
-  def upload_avatar
-    if resource.update_attributes(permitted_params[:profile])
-      set_flash
-    end
-    redirect_to :back
-  end
-  
-  def destroy_avatar
-    resource.remove_avatar!
-  end
-  
   def toggle
     resource.toggle!
     set_flash

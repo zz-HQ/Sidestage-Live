@@ -56,6 +56,18 @@ class Account::PersonalsController < Account::ResourcesController
     end
     redirect_to payment_details_account_personal_path
   end
+
+  
+  def upload_avatar
+    if resource.update_attributes(permitted_params[:user])
+      set_flash_message(resource)
+    end
+    redirect_to :back
+  end
+  
+  def destroy_avatar
+    resource.remove_avatar!
+  end
   
   #
   # Protected
