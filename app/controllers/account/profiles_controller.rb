@@ -50,7 +50,7 @@ class Account::ProfilesController < Account::ResourcesController
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
         set_flash
-        redirect_to payment_account_profile_path(resource)
+        redirect_to account_profile_pictures_path(resource)
       end
     end
   end
@@ -74,6 +74,17 @@ class Account::ProfilesController < Account::ResourcesController
     end
   end
   
+  def upload_avatar
+    if resource.update_attributes(permitted_params[:profile])
+      set_flash
+    end
+    redirect_to :back
+  end
+  
+  def destroy_avatar
+    resource.remove_avatar!
+  end
+  
   def toggle
     resource.toggle!
     set_flash
@@ -91,7 +102,7 @@ class Account::ProfilesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(profile: [:solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :cancellation_policy, :availability, :travel_costs, :bic, :iban, genre_ids: []])
+    params.permit(profile: [:avatar, :solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :cancellation_policy, :availability, :travel_costs, :bic, :iban, genre_ids: []])
   end 
   
   #

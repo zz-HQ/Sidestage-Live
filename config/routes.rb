@@ -26,6 +26,8 @@ Airmusic::Application.routes.draw do
       end
       resources :profiles do
         member do
+          delete :destroy_avatar
+          patch :upload_avatar
           get :preview
           put :toggle
           match 'description', to: 'profiles#description', via: :all
