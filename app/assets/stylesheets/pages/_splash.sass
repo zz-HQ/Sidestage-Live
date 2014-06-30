@@ -60,6 +60,7 @@ body.desktop
       width: 530px
       
       #email-form,
+      #city-form,
       #email-response
         +backface-visibility(hidden)
         +border-radius($border-radius)
@@ -71,7 +72,8 @@ body.desktop
         position: absolute
         top: 0
 
-      #email-form
+      #email-form,
+      #city-form
         +transform(rotateX(0deg))
 
         [type="text"],
@@ -81,6 +83,13 @@ body.desktop
           font-size: 18px
           outline: none
           padding: 14px
+
+        .nice-select
+          background-color: #fff
+          color: #999DA2
+          font-weight: 300
+          width: 342px
+          display: inline-block
 
         [type="text"]
           background-color: #fff
@@ -95,6 +104,10 @@ body.desktop
           margin-left: 7px
           text-transform: uppercase
           width: 120px
+
+          &.city-btn
+            position: relative
+            top: -38px
 
           &:hover
             background-color: darken(#7bf, 10%)
@@ -133,7 +146,7 @@ body.desktop
     +opacity(0.5)
     position: relative
     text-align: center
-    top: 230px
+    bottom: -70px
 
 body.phone
   color: #000

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sidestage</title>
+    <meta name="description" content="Sidestage is a marketplace for hiring musicians.">
+    <meta name="keywords" content="Sidestage">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body id="main" class="desktop <%= "old-browser" if old_browser? %>">
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <div id="background"></div>
+
+    <header>
+
+      <div class="wrap">
+        <%# TODO: Change to root_path when splash page goes offline!!! %>
+        <h1 id="logo"><%= link_to "Sidestage", artists_path %></h1>
+
+        <nav id="main-nav">
+
+          <%- if user_signed_in? -%>
+            
+            <a href="<%= account_conversations_path %>" class="messages">
+              <%# TODO: Mail Icon %>
+              <div class="icon"><i class="fa fa-envelope"></i></div>
+              <%# TODO: Real Mesage Count %>
+              <% if current_user.unread_message_counter.to_i > 0 %>
+                <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>
+              <% end %>
+            </a>
+
+            <div class="user">
+              <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+              <div class="dropdown">
+                <i class="fa fa-caret-up"></i>
+                <hr>
+                <% if current_user.profile.present? && current_user.profile.persisted? %>
+                    <%= link_to "Profile", preview_account_profile_path(current_user.profile) %>
+                <% else %>    
+                    <%= link_to "Create Profile", new_account_profile_path %>
+                <% end %>
+                <%= link_to "Dashboard", account_dashboard_path %>
+                <%= link_to "Account Settings", account_personal_path %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              </div>
+              <div class="username"><%= current_user.name %></div>
+              <div class="arrow"></div>
+            </div>
+
+          <%- else -%>
+
+            <%= link_to "Create Artist Listing", new_artist_path %>
+            <%= link_to "Log in", new_user_session_path(format: :html) , data: {lightbox: "ajax"} %>
+            <%= link_to "Sign up", new_user_registration_path(format: :html), data: {lightbox: "ajax"}, class: "btn btn-inline" %>
+
+          <%- end -%>
+        </nav>
+      </div>
+
+    </header>
+
+    
+
+    <div id="splash">
+      <div id="splash-content">
+        
+        <div id="text">
+          <h2 class="text-shadow">Life's Your Stage.</h2>
+          <p class="text-shadow">
+            Instantly book a musician to play at your party or event.
+          </p>
+        </div>
+
+
+        <div id="animation-container">
+
+          <div id="city-form">
+              <%= simple_form_for :location, url: "artists", method: :Get do |f| %>
+                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false) %>
+                  <%= f.submit :submit, class: 'city-btn' %>
+              <% end %>    
+          </div>
+
+        </div><!-- #animation-container -->
+
+        <div class="footer text-center">
+          <p class="text-shadow">Sidestage © <%= Time.now.year %></p>  
+        </div>
+        
+      </div><!-- #splash-content -->
+
+    </div><!-- #splash -->
+
+
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%- if Rails.env.production? -%>
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create', 'UA-51563182-1');ga('send','pageview');
+    </script>
+    <%- end -%>
+
+  </body>
+</html>
