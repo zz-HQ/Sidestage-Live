@@ -66,7 +66,8 @@ class Account::PersonalsController < Account::ResourcesController
   end
   
   def destroy_avatar
-    resource.remove_avatar!
+    resource.remove_avatar = true
+    resource.save
   end
   
   #
