@@ -5,22 +5,26 @@
 
   <div class="content">
     <header>Uploaded Avatar</header>
+
+    <div class="avatar">
       <% if parent.avatar.present? %>
-          <%= content_tag :div, id: dom_id(parent), class: "picture" do %>
-          	<div class="img">
-          		<%= image_tag parent.avatar.url(:big) %>
-          	</div>
+          <%= content_tag :div, id: dom_id(parent), class: "avatar-pic" do %>
+            <div class="img">
+              <%= image_tag parent.avatar.url(:big) %>
+            </div>
             <div class="actions">
               <%= link_to "delete", destroy_avatar_account_profile_path(parent), method: :delete, data: { remote: true, confirm: "Are you absolutely sure?" } %>
             </div>
           <% end %>
       <% end %>
       
-      <%= simple_form_for parent, url: upload_avatar_account_profile_path(parent), html: { multipart: true } do |f| %>
-          <%= f.input :avatar, as: :file, label: "Select Profile picture" %>
-          <input type="submit" value="Upload">
-      <% end %>
-
+      <div class="avatar-form">
+        <%= simple_form_for parent, url: upload_avatar_account_profile_path(parent), html: { multipart: true } do |f| %>
+            <%= f.input :avatar, as: :file, label: "Select Profile picture" %>
+            <input type="submit" value="Upload" class="btn">
+        <% end %>
+      </div>
+    </div>
 
 
     <header>Uploaded Pictures</header>
