@@ -71,6 +71,7 @@ class Account::ProfilesController < Account::ResourcesController
       if resource.update_attributes(permitted_params[:profile])
         set_flash
       end
+      redirect_to preview_account_profile_path(resource)
     end
   end
   
