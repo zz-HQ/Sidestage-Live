@@ -16,23 +16,68 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%- if Rails.env.development? -%>
-    <script>
+    <script>/*
     setTimeout(function() {
       window.location.href = "/en/artists";
-    }, 1500);
+    }, 1500);*/
     </script>
     <%- end -%>
   </head>
-  <body class="desktop <%= "old-browser" if old_browser? %>">
+  <body id="main" class="desktop <%= "old-browser" if old_browser? %>">
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     
     <div id="background"></div>
 
-    <div class="row">
-      <h1 id="logo">Sidestage</h1>  
-    </div>
+    <header>
+
+      <div class="wrap">
+        <%# TODO: Change to root_path when splash page goes offline!!! %>
+        <h1 id="logo"><%= link_to "Sidestage", artists_path %></h1>
+
+        <nav id="main-nav">
+
+          <%- if user_signed_in? -%>
+            
+            <a href="<%= account_conversations_path %>" class="messages">
+              <%# TODO: Mail Icon %>
+              <div class="icon"><i class="fa fa-envelope"></i></div>
+              <%# TODO: Real Mesage Count %>
+              <% if current_user.unread_message_counter.to_i > 0 %>
+                <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>
+              <% end %>
+            </a>
+
+            <div class="user">
+              <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+              <div class="dropdown">
+                <i class="fa fa-caret-up"></i>
+                <hr>
+                <% if current_user.profile.present? && current_user.profile.persisted? %>
+                    <%= link_to "Profile", preview_account_profile_path(current_user.profile) %>
+                <% else %>    
+                    <%= link_to "Create Profile", new_account_profile_path %>
+                <% end %>
+                <%= link_to "Dashboard", account_dashboard_path %>
+                <%= link_to "Account Settings", account_personal_path %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              </div>
+              <div class="username"><%= current_user.name %></div>
+              <div class="arrow"></div>
+            </div>
+
+          <%- else -%>
+
+            <%= link_to "Create Artist Listing", new_artist_path %>
+            <%= link_to "Log in", new_user_session_path(format: :html) , data: {lightbox: "ajax"} %>
+            <%= link_to "Sign up", new_user_registration_path(format: :html), data: {lightbox: "ajax"}, class: "btn btn-inline" %>
+
+          <%- end -%>
+        </nav>
+      </div>
+
+    </header>
     
 
     <div id="splash">
