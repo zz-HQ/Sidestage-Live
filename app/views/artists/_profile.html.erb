@@ -111,7 +111,7 @@
                 <% if current_user %>
                     <%= f.submit "Book Now", class: "btn btn-submit" %>
                 <% else %>
-                    <%= link_to "Book Now", link_or_login(new_user_session_path(return_to: request.url)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                    <%= link_to "Book Now", link_or_signin(new_user_session_path(return_to: request.url)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
                 <% end %>
               </div>
           <% end %>
@@ -119,7 +119,7 @@
 
       <% if artist_contactable?(resource.user)  %>
         <div class="label message-artist">
-          <%= link_to "Message artist", link_or_login(new_account_message_path(receiver_id: resource.user.id, format: :html)), data: { lightbox: "ajax" } %>
+          <%= link_to "Message artist", link_or_signin(new_account_message_path(receiver_id: resource.user.id, format: :html)), data: { lightbox: "ajax" } %>
       <% end %>
     </div>
 
