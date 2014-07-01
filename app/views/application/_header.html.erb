@@ -5,7 +5,10 @@
     <h1 id="logo"><%= link_to "Sidestage", artists_path %></h1>
 
     <div id="city-switch">
-        <%= form_tag request.params, method: :Get do |f| %>
+        <%= form_tag artists_path, method: :Get do |f| %>
+            <% request.query_parameters.except(:location).each do |k,v| %>
+                <%= hidden_field_tag k, v %>
+            <% end %>
             <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, class: "submit-on-change") %>
         <% end %>    
     </div>
