@@ -2,7 +2,7 @@
   <h2>Sign up</h2>
 
   <div class="facebook">
-    <%= link_to "<i class='fa fa-facebook-square'></i> Log in with Facebook".html_safe, nil, class: "btn btn-facebook" %>
+    <%= link_to "<i class='fa fa-facebook-square'></i> Log in with Facebook".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
 
     <p>We post nothing without your permission!</p>
   </div>

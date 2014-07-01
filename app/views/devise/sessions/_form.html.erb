@@ -3,7 +3,7 @@
     <h2>Log in</h2>
     
     <div class="facebook">
-      <%= link_to "Log in with Facebook", nil, class: "btn btn-facebook" %>
+      <%= link_to "Log in with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
 
       <p>We'll post nothing without your permission!</p>
     </div>

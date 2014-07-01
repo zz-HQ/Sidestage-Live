@@ -15,6 +15,7 @@ gem 'gibbon' # Handles Mailchimp integration
 gem 'browser'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'will_paginate'
+gem 'omniauth-facebook'
 
 # Image Processing
 gem 'carrierwave'
