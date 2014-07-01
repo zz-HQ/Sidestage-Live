@@ -13,20 +13,21 @@
 
 <h4>Samples of your performance</h4>
 <div class="inputs">
-	<%= f.input :youtube, placeholder: "Paste youtube link here", label: "Youtube video" %>
+	<%= f.input :youtube, placeholder: "Paste YouTube link here", label: "Youtube video" %>
 	<div class="hint">Post your best stuff, this is your chance to show people how you perform.</div>
 </div>
 <div class="inputs">
 	<%= f.input :soundcloud, as: :text, placeholder: 'Post SoundCloud embed code here', label: "SoundCloud track or playlist" %>
+	<div class="hint">Be sure you copy the embed code, not the track or playlist URL.</div>
 </div>
 
-<h4>Social media links</h4>
+<!-- <h4>Social media links</h4>
 <div class="inputs profile_facebook">
-	<%= f.input :facebook, placeholder: "Facebook profile link", label: "Facebook" %>	
+	<%#= f.input :facebook, placeholder: "Facebook profile link", label: "Facebook" %>	
 </div>
 <div class="inputs profile_twitter">
-	<%= f.input :twitter, placeholder: "@...", label: "Twitter" %>	
-</div>
+	<%#= f.input :twitter, placeholder: "@...", label: "Twitter" %>	
+</div> -->
 <!-- TODO: Website input -->
 
 <%= f.button :submit, value: "Continue", class: "btn" %>

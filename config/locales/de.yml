@@ -32,6 +32,7 @@ de:
       update:
         notice: "%{resource_name} wurde erfolgreich aktualisiert."
       destroy:
+        credit_card: "Your credit card information is now star dust."
         notice: "%{resource_name} wurde erfolgreich gelöscht."
         alert: "%{resource_name} konnte nicht gelöscht werden."
   view:
@@ -39,7 +40,7 @@ de:
       system_messages:
         deals:          
           requested: 
-            you: "Your booking request has been sent to <a href='%{artist_path}'>%{partner_name}</a> and is pending approval."
+            you: "Your booking request has been sent to %{partner_name} and is pending approval."
             partner: "You've received a booking request from %{partner_name}. Please accept or decline this booking request in the side panel."
           offered: 
             you: "You have accepted this booking request, but a pricing confirmation is being sent to the customer."

@@ -40,6 +40,10 @@
           <%= render "account/payment_details/payment_form" %>
           <%= f.button :submit, value: "Save credit card", class: "btn" %>
         <% end %>
+        <div class="footnote">
+          <p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p>
+          <p>For questions, contact <br><a href="mailto:support@sidestage.com">support@sidestage.com</a> </p>
+        </div>
       </div>
     <% end %>
   </div>

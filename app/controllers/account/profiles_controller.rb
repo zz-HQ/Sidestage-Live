@@ -78,7 +78,11 @@ class Account::ProfilesController < Account::ResourcesController
   def toggle
     resource.toggle!
     set_flash
-    redirect_to preview_account_profile_path(resource)
+    if resource.published?
+      redirect_to artist_path(resource)
+    else
+      redirect_to preview_account_profile_path(resource)
+    end
   end
 
   #

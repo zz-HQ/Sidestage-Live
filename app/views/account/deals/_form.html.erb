@@ -1,7 +1,7 @@
 <div class="devise-lightbox">
 	<h3>To proceed with this booking, please enter your payment details.</h3>
 	<%= simple_form_for resource, url: account_deals_path(resource), authenticity_token: true, data: { form: current_user.paymentable? ? nil : :payment }, html: { id: "deal-request" } do |f| %>
-		<div class="form-inputs">
+		<div class="form-inputs payment-form">
 	    <%= f.input :start_at, as: :hidden %>
 	    <%= f.input :profile_id, as: :hidden %>
 	    <%= f.input :stripe_token, as: :hidden %>
