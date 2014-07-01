@@ -1,4 +1,6 @@
 Airmusic::Application.routes.draw do
+  devise_for :users, controllers: { sessions: "authentication/sessions", registrations: "authentication/registrations", confirmations: "authentication/confirmations", :omniauth_callbacks => "authentication/omniauth_callbacks" }
+  
 
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
     root to: "home#index"
@@ -7,8 +9,6 @@ Airmusic::Application.routes.draw do
 
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
-  
-    devise_for :users, controllers: { sessions: "authentication/sessions", registrations: "authentication/registrations", confirmations: "authentication/confirmations" }
     
     resources :artists, :only => [:new, :create, :index, :show]
     
