@@ -22,7 +22,7 @@
       <%= f.input :email, required: true, autofocus: true, placeholder: "Email", label: false %>
       <%= f.input :password, required: true, placeholder: "Password", input_html: { autocomplete: "off" }, label: false %>
       <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "off" }, placeholder: "Password Confirmation", label: false %>
-      <%= f.check_box :newsletter_subscribed, default: true %>Send me Sidestage updates
+      <%= f.check_box :newsletter_subscribed, default: true, checked: true %>Send me Sidestage updates
     </div>
 
     <div class="form-actions">
