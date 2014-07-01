@@ -1,9 +1,9 @@
-<div id="profile-complete">
+<div id="personals" class="container">
     
 	<%= render "sidebar" %>
 
     <div class="content">
-        <header>Complete your Profile</header>
+        <header>Complete your profile</header>
         <%= simple_form_for resource, url: complete_account_personal_path, html: { multipart: true } do |f| %>
             <%= render "user_form", f: f %>
         <% end %>

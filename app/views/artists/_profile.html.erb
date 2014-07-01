@@ -2,7 +2,7 @@
 
   <div class="content">
 
-    <h2><%= resource.user.name %></h2>
+    <h2><%= resource.name %></h2>
     <p class="title"><%= resource.title %></p>
 
     <p><%= simple_format (strip_tags resource.about) %></p>
@@ -15,7 +15,7 @@
       <div class="tab-switch">Youtube</div>
       <%- end -%>
       <% if has_images? %>
-      <div class="tab-switch">Images</div>
+      <div class="tab-switch">Photos</div>
       <% end %>
     </nav>
 
@@ -84,7 +84,7 @@
         <%= image_tag resource.user.avatar_url(:thumb) %>
       </div>
       <div class="name">
-        <%= resource.name %>
+        <%= resource.user.name %>
       </div>
       <div class="label"><%= resource.location %></div>
   

@@ -5,12 +5,12 @@
 		<%= simple_form_for resource, url: artists_path, remote: true, html: { id: "profile-form" } do |f| %>
 
 			<header>
-				<h2>List your Music!</h2>
-				<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+				<h2>List Your Music!</h2>
+				<p>Sidestage lets you make money by offering your music as a service to people who want to hire musicians for private events.</p>
 			</header>
 			
 			<div class="input">
-				<h3>You are..</h3>
+				<h3>You are...</h3>
 				
 				<div class="styled-radios">
 					<div class="act radio">
@@ -21,7 +21,7 @@
 					</div>
 					<div class="act radio">
 						<div class="label">
-							Band
+							Group
 						</div>
 						<%= f.radio_button :solo, false %>
 					</div>
@@ -39,7 +39,7 @@
 			</div>
 
     		<div class="input last">
-    		  <input type="submit" value="Continue" class="btn button gross">
+    		  <input type="submit" value="Continue" class="btn button center">
     		</div>
 
 		<% end %>

@@ -52,7 +52,7 @@ class Account::PersonalsController < Account::ResourcesController
   
   def remove_card
     if current_user.destroy_stripe_card
-      flash[:notice] = t("flash.actions.destroy.notice", resource_name: CreditCard.model_name.human)
+      flash[:credit_card] = t("flash.actions.destroy.notice", resource_name: CreditCard.model_name.human)
     end
     redirect_to payment_details_account_personal_path
   end

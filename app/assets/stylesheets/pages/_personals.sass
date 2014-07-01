@@ -2,10 +2,15 @@
 	h4
 		margin: 0 0 20px
 
+		a
+			&:hover
+				text-decoration: underline
+				color: $blue
+
 	.content
 
 		form
-			width: 500px
+			width: 350px
 
 		.credit-card-info
 			+span-columns(5 of 8)
@@ -15,6 +20,7 @@
 
 			.footnote
 				margin-top: 100px
+				font-size: 16px
 
 		.buttons
 			+span-columns(3 of 8)
@@ -22,7 +28,6 @@
 
 			a
 				float: left
-				width: 50%
 
 				&.delete
 					position: relative
@@ -35,10 +40,21 @@
 			.btn
 				display: inline-block
 
-		.nice-select
-			float: left
-			width: 47%
-			margin-right: 27px
+			.cvc
+				width: 70px
 
-			+ .nice-select
-				margin-right: 0
+			.nice-select
+				float: left
+				width: 35%
+				margin-right: 16px
+
+			.footnote
+				margin-top: 50px
+				font-size: 16px
+
+// PAYMENT FORM ---
+// ----------------
+.payment-form
+
+	.btn
+		display: inline-block

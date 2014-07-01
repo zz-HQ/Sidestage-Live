@@ -1,7 +1,9 @@
 <%= f.input :avatar, label: "Select Profile picture" %>
-<%= f.input :first_name, label: false %>
-<%= f.input :last_name, label: false %>
-<%= f.input :email, label: false %>
+<label>First and last name</label>
+<%= f.input :first_name, label: false, placeholder: "First name" %>
+<%= f.input :last_name, label: false, placeholder: "Last name" %>
+<label>Email</label>
+<%= f.input :email, label: false, placeholder: "Email" %>
 <%#= f.input :about, label: "Tell our community something about you" %>
 
 <div class="input">

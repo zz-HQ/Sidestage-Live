@@ -2,7 +2,7 @@
   <%= render "sidebar" %>
 
   <div class="content">
-    <header>Personals</header>
+    <header>Profile details</header>
     <%= simple_form_for resource, url: account_personal_path, html: { multipart: true } do |f| %>
       <%= render "user_form", f: f %>
     <% end %>
