@@ -44,7 +44,7 @@
 				position: relative
 				top: 10px
 				cursor: pointer
-				color: #484D4F
+				color: $text-color
 				padding: 8px 0
 				width: 167px
 				display: inline-block
@@ -55,7 +55,6 @@
 					+border-radius($border-radius)
 					background-color: #eee
 					border: 1px solid $border-color
-					color: #000
 					text-decoration: none
 
 		&.genre
@@ -64,6 +63,17 @@
 				background-color: #fff
 				margin-top: -10px
 				width: 167px
+				text-align: left
+
+				&.active
+					background-color: #eee
+					border: 1px solid $border-color
+
+				.select-label-value
+					width: 70%
+					height: 25px
+					white-space: nowrap
+					overflow: hidden
 
 			.photo
 				height: 130px
