@@ -2,7 +2,11 @@
 
   <div class="wrap">
     <%# TODO: Change to root_path when splash page goes offline!!! %>
-    <h1 id="logo"><%= link_to "Sidestage", artists_path %></h1>
+    <h1 id="logo">
+      <%= link_to artists_path do %>
+        <%= image_tag "sprite/sidestage-logo.png" %>
+      <% end %>
+    </h1>
 
     <div id="city-switch">
         <%= form_tag artists_path, method: :Get do |f| %>
