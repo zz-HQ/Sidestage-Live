@@ -52,8 +52,12 @@
     </div>
     
     <div data-container="reviews" class="reviews">
-        <h4>Reviews</h4>        
+      <h4>Reviews</h4>
+      <% if resource.reviews.count <= 0 %>
+        <p>This artist has no reviews yet.</p>
+      <% else %>        
         <%= render partial: "account/reviews/review", collection: resource.reviews %>
+      <% end %>
     </div>
 
     <% if current_user && current_user.id != resource.user_id %>
