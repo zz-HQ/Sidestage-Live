@@ -198,5 +198,6 @@ de:
       deal_start_at: "%d. %m. %Y"
       event_date: "%A, %d %B %Y"
       conversation: "%A, %-d %B, %Y"
-      message: "%A, %B %d, %Y"      
+      message: "%A, %B %d, %Y"
+      review: "%B %Y"
     pm: nachmittags

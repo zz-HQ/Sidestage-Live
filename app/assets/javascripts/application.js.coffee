@@ -34,7 +34,7 @@ App.init = ->
   $('.star-rating-editable').starRating()
   $('.date-picker').datetimepicker
     timepicker: false
-    format: 'Y-m-d'
+    format: 'j/n/Y'
     scrollInput: false
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
   App.setStripeListener()

@@ -90,8 +90,8 @@
 
           <div id="city-form">
               <%= simple_form_for :location, url: "artists", method: :Get do |f| %>
-                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false) %>
-                  <%= f.submit :submit, class: 'city-btn' %>
+                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: "Select your city") %>
+                  <%= f.submit :submit, value: "Search", class: 'city-btn' %>
               <% end %>    
           </div>
 
