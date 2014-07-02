@@ -7,9 +7,9 @@ nav.tabs
     display: inline-block
     font-size: 14px
     padding: 12px 30px
-    border-left: 1px solid #EEE
-    border-top: 1px solid #EEE
-    border-bottom: 1px solid #EEE
+    border-left: 1px solid $border-color
+    border-top: 1px solid $border-color
+    border-bottom: 1px solid $border-color
     position: relative
 
     &:hover
@@ -18,7 +18,10 @@ nav.tabs
 
     &.active
       color: #222
-      background-color: #F8F8F8
+      background-color: #FAFAFA
+
+  .tab-switch:first-child
+    +border-radius(4px 0 0 4px)
 
   .tab-switch:nth-child(2)
     left: -3px
@@ -27,7 +30,8 @@ nav.tabs
     left: -6px
 
   .tab-switch:last-child
-    border-right: 1px solid #EEE
+    border-right: 1px solid $border-color
+    +border-radius(0 4px 4px 0)
 
 div.tabs
   margin-top: 30px
