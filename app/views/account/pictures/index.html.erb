@@ -4,7 +4,7 @@
   </aside>
 
   <div class="content">
-    <header>Profile picture</header>
+    <header>Profile picture <p>This is the picture that will show up in search listings.</p> </header>
     <div class="avatar">
       <% if current_user.avatar.present? %>
          <%= content_tag :div, id: "avatar_#{dom_id(current_user)}", class: "avatar-pic" do %>
