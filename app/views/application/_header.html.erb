@@ -36,9 +36,9 @@
             <i class="fa fa-caret-up"></i>
             <hr>
             <% if current_user.profile.present? && current_user.profile.persisted? %>
-                <%= link_to "Your Artist Listing", preview_account_profile_path(current_user.profile) %>
+                <%= link_to "Your Artist Profile", preview_account_profile_path(current_user.profile) %>
             <% else %>    
-                <%= link_to "Create artist listing", new_account_profile_path %>
+                <%= link_to "Create Artist Profile", new_account_profile_path %>
             <% end %>
             <%#= link_to "Dashboard", account_dashboard_path %>
             <%= link_to "Account", account_personal_path %>
@@ -50,7 +50,7 @@
 
       <%- else -%>
 
-        <%= link_to "Create Artist Listing", new_artist_path %>
+        <%= link_to "Create Artist Profile", new_artist_path %>
         <%= link_to "Log in", new_user_session_path(format: :html) , data: {lightbox: "ajax"} %>
         <%= link_to "Sign up", new_user_registration_path(format: :html), data: {lightbox: "ajax"}, class: "btn btn-inline" %>
 

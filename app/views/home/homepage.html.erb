@@ -53,9 +53,9 @@
                 <i class="fa fa-caret-up"></i>
                 <hr>
                 <% if current_user.profile.present? && current_user.profile.persisted? %>
-                    <%= link_to "Your Artist Listing", preview_account_profile_path(current_user.profile) %>
+                    <%= link_to "Your Artist Profile", preview_account_profile_path(current_user.profile) %>
                 <% else %>    
-                    <%= link_to "Create artist listing", new_account_profile_path %>
+                    <%= link_to "Create Artist Profile", new_account_profile_path %>
                 <% end %>
                 <%#= link_to "Dashboard", account_dashboard_path %>
                 <%= link_to "Account", account_personal_path %>
@@ -67,7 +67,7 @@
 
           <%- else -%>
 
-            <%= link_to "Create Artist Listing", new_artist_path %>
+            <%= link_to "Create Artist Profile", new_artist_path %>
             <%= link_to "Log in", new_user_session_path(format: :html) , data: {lightbox: "ajax"} %>
             <%= link_to "Sign up", new_user_registration_path(format: :html), data: {lightbox: "ajax"}, class: "btn btn-inline" %>
 
@@ -104,6 +104,35 @@
       </div><!-- #splash-content -->
 
     </div><!-- #splash -->
+
+    
+    <div id="staff-picks">
+      <div class="wrap">
+        <h2>Staff picks: Artists that we like and recommend.</h2>
+
+        <% @profiles.each do |profile| %>
+
+          <%= content_tag :a, href: artist_path(profile), class: "artist" do %>
+            <div class="photo">
+              <%= image_tag profile.user.avatar_url(:thumb) %>
+              <div class="text">
+                <h3><%= profile.name %></h3>
+                <p class="price">from <%= artist_price(profile) %></p>
+              </div>
+              <div class="gradient-overlay"></div>
+              <div class="overlay">
+                <div class="view-profile">View Profile</div>
+              </div>
+            </div>
+            <div class="label">
+              <div class="genres"><%= profile.genres.map(&:name).join(", ") %></div>
+            </div>
+          <% end %>
+
+        <% end %>
+      </div>
+    </div>
+    
 
     <div class="footer">
       <p class="text-shadow"><%= link_to "Terms", terms_path %> & <%= link_to "Privacy", privacy_path %> - Sidestage © <%= Time.now.year %></p>  

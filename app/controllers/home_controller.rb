@@ -53,10 +53,13 @@ class HomeController < ApplicationController
   end
 
   def homepage
+    @profiles = Profile.published.limit(3)
     respond_to do |wants|
       wants.html
       wants.html.mobile
     end
+
+    
   end
   
 

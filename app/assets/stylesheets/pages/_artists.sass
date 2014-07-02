@@ -40,75 +40,81 @@
       +span-columns(8)
 
       .artist
-        +span-columns(2 of 8)
         +omega(4n)
-        margin-bottom: 30px
 
-        .photo
-          height: 230px
-          position: relative
 
-          .gradient-overlay
-            +linear-gradient(to top, rgba(0,0,0,0.67), rgba(0,0,0,0.1), rgba(0,0,0,0))
-            background-color: transparent
-            height: 100%
-            position: absolute
-            width: 100%
-            z-index: 1
-          
-          .overlay
-            +opacity(0)
-            +rgba-background(rgba($red, 0.7))
-            +transition(opacity 800ms ceaser($easeOutExpo))
-            height: 100%
-            position: relative
-            width: 100%
-            z-index: 1
+// ARTIST --------
+// ---------------
+.artist
+  +span-columns(2 of 8)
+  margin-bottom: 30px
 
-            .view-profile
-              +border-radius($border-radius)
-              background-color: #fff
-              border-radius: 4px
-              color: $red
-              font-weight: 300
-              margin: 0 auto
-              padding: 10px 20px
-              position: relative
-              text-align: center
-              text-transform: uppercase
-              top: 90px
-              width: 170px
+  .photo
+    height: 230px
+    position: relative
 
-          &:hover
-            .overlay
-              +opacity(1)
-              +transition(opacity 200ms ceaser($easeOutCirc))
+    .gradient-overlay
+      +linear-gradient(to top, rgba(0,0,0,0.67), rgba(0,0,0,0.1), rgba(0,0,0,0))
+      background-color: transparent
+      height: 100%
+      position: absolute
+      width: 100%
+      z-index: 1
+    
+    .overlay
+      +opacity(0)
+      +rgba-background(rgba($red, 0.7))
+      +transition(opacity 800ms ceaser($easeOutExpo))
+      height: 100%
+      position: relative
+      width: 100%
+      z-index: 1
 
-          img
-            position: absolute
-            top: 0
-            width: 100%
+      .view-profile
+        +border-radius($border-radius)
+        background-color: #fff
+        border-radius: 4px
+        color: $red
+        font-weight: 300
+        margin: 0 auto
+        padding: 10px 20px
+        position: relative
+        text-align: center
+        text-transform: uppercase
+        top: 90px
+        width: 170px
 
-          .text
-            bottom: 10px
-            color: #fff
-            padding-left: 14px
-            position: absolute
-            z-index: 2
-            
-            h3
-              margin: 0
+    &:hover
+      .overlay
+        +opacity(1)
+        +transition(opacity 200ms ceaser($easeOutCirc))
 
-            p
-              margin: 0
+    img
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
 
-        .label
-          +span-columns(8)
-          background-color: #fff
-          border: 1px solid #DDE5E5
-          padding: 10px
+    .text
+      bottom: 10px
+      color: #fff
+      padding-left: 14px
+      position: absolute
+      z-index: 2
+      
+      h3
+        margin: 0
 
-          .genres
-            color: $text-color
-            text-align: center
-            padding: 4px 0
+      p
+        margin: 0
+
+  .label
+    +span-columns(8)
+    background-color: #fff
+    border: 1px solid #DDE5E5
+    padding: 10px
+
+    .genres
+      color: $text-color
+      text-align: center
+      padding: 4px 0
