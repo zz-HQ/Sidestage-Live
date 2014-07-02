@@ -51,6 +51,13 @@ class HomeController < ApplicationController
       wants.html.mobile
     end
   end
+
+  def homepage
+    respond_to do |wants|
+      wants.html
+      wants.html.mobile
+    end
+  end
   
 
   def create_subscriber
