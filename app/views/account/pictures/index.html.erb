@@ -4,7 +4,7 @@
   </aside>
 
   <div class="content">
-    <header>Profile picture <p>This is the picture that will show up in search listings.</p> </header>
+    <header>Profile picture<p>This is the picture that will show up in search listings.</p></header>
     <div class="avatar">
       <% if current_user.avatar.present? %>
          <%= content_tag :div, id: "avatar_#{dom_id(current_user)}", class: "avatar-pic" do %>
@@ -26,13 +26,13 @@
     </div>
 
 
-    <header>Photos</header>
+    <header>Photos<p>These photos will show up as part of your public artist listing. Try to use high quality photos.</p></header>
     
     <div id="pictures">
         <% if collection.present? %>
             <%= render collection %>
         <% else %>    
-            <p>You don't have any photos yet. Add photos of you and your performance to your profile.</p>
+            <p class="light">You don't have any photos yet. Add photos of you and your performance to your profile.</p>
         <% end %>
     </div>
 
