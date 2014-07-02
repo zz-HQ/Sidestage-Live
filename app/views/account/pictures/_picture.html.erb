@@ -2,7 +2,8 @@
 	<div class="img">
 		<%= image_tag picture.picture.url(:medium_rect) %>
 	</div>
+	<div class="gradient-overlay"></div>
   <div class="actions">
-    <%= link_to "delete", account_profile_picture_path(picture.imageable, picture), method: :delete, data: {remote: true, confirm: "Are you absolutely sure?"} %>
+    <%= link_to "<i class='fa fa-trash-o'></i> remove".html_safe, account_profile_picture_path(picture.imageable, picture), method: :delete, data: {remote: true, confirm: "Are you absolutely sure?"} %>
   </div>
 <% end %>

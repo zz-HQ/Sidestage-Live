@@ -9,10 +9,11 @@
       <% if current_user.avatar.present? %>
          <%= content_tag :div, id: "avatar_#{dom_id(current_user)}", class: "avatar-pic" do %>
             <div class="img">
-          		<%= image_tag current_user.avatar.url(:big) %>
+          		<%= image_tag current_user.avatar.url(:thumb) %>
             </div>
+            <div class="gradient-overlay"></div>
             <div class="actions">
-              <%= link_to "delete", destroy_avatar_account_personal_path, method: :delete, data: { remote: true, confirm: "Are you absolutely sure?" } %>
+              <%= link_to "<i class='fa fa-trash-o'></i> remove".html_safe, destroy_avatar_account_personal_path, method: :delete, data: { remote: true, confirm: "Are you absolutely sure?" } %>
             </div>
           <% end %>
       <% end %>
