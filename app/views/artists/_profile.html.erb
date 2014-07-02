@@ -124,7 +124,15 @@
       <% if artist_contactable?(resource.user)  %>
         <div class="label message-artist">
           <%= link_to "Message artist", link_or_signin(new_account_message_path(receiver_id: resource.user.id, format: :html)), data: { lightbox: "ajax" } %>
+        </div>
       <% end %>
+
+      <div class="like-btn">
+        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhttp://lvh.me:4000/&amp;layout=button_count&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp" style="overflow:hidden;width:110px;height:20px;" scrolling="no" frameborder="0" allowTransparency="true"></iframe><style>.fbook{position: absolute; font-color:#ddd; top:-1668px; font-size:10;}</style></style>
+      </div>
+      <div class="tweet-btn">
+        <iframe allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html" style="width:90px; height:20px;"></iframe>
+      </div>
     </div>
 
   </aside>  
