@@ -5,7 +5,9 @@
     <h2><%= resource.name %></h2>
     <p class="title"><%= resource.title %></p>
 
-    <p><%= simple_format (strip_tags resource.about) %></p>
+    <div class="about">
+      <p><%= simple_format (strip_tags resource.about) %></p>
+    </div>
     
     <nav class="tabs" data-id="social">
       <%- if has_soundcloud? -%>

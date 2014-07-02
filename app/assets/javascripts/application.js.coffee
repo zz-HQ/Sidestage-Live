@@ -26,6 +26,9 @@ window.App = {} if window.App == undefined
 App = window.App
 
 App.init = ->
+  $('.about').readmore({
+    maxHeight: 147
+  })
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
