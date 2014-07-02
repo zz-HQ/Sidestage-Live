@@ -32,14 +32,13 @@ class Account::ProfilesController < Account::ResourcesController
   end
   
   def update
-    update! { pricing_account_profile_path(resource) }
+    redirect_to pricing_account_profile_path(resource) if resource.update_attributes(permitted_params[:profile])
   end
   
   def pricing
     resource.wizard_step = :pricing      
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        set_flash        
         redirect_to description_account_profile_path
       end
     end    
@@ -49,7 +48,6 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :description
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        set_flash
         redirect_to account_profile_pictures_path(resource)
       end
     end
@@ -59,7 +57,6 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :pricing
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        set_flash
         redirect_to description_account_profile_path(resource)
       end
     end
@@ -69,9 +66,8 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :payment
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        set_flash
+        redirect_to preview_account_profile_path(resource)
       end
-      redirect_to preview_account_profile_path(resource)
     end
   end
   
@@ -108,10 +104,5 @@ class Account::ProfilesController < Account::ResourcesController
   #
   
   private
-  
-  def set_flash
-    flash[:notice] = t("flash.actions.update.notice", resource_name: resource.class.model_name.human) 
-  end
-  
   
 end
