@@ -16,28 +16,7 @@
 
 		.act
 			+span-columns(1 of 4)
-
-			&.radio
-				width: 167px
-
-			.photo
-				background: url("splash/background.jpg") no-repeat center center
-				background-size: 370px
-				width: 370px
-				height: 130px
-				overflow: hidden
-				+transition(opacity 600ms ceaser($easeOutExpo))
-
-			&:hover
-
-				.photo
-					+opacity(0.8)
-
-				.label
-					color: #55B1FF
-					text-decoration: underline
-
-		.radio
+			width: 167px
 
 			.label
 				font-size: 22px
@@ -49,13 +28,25 @@
 				width: 167px
 				display: inline-block
 
-			&.active
+			&:hover
+				.label
+					color: #55B1FF
+					text-decoration: underline
 
+			&.active
 				.label
 					+border-radius($border-radius)
 					background-color: #eee
 					border: 1px solid $border-color
 					text-decoration: none
+
+				&:hover
+					.label
+						color: inherit
+
+		&.big
+			.act:first-child
+				+shift(1)
 
 		&.genre
 
@@ -74,6 +65,7 @@
 					height: 25px
 					white-space: nowrap
 					overflow: hidden
+					color: $text-color
 
 			.photo
 				height: 130px

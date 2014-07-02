@@ -33,9 +33,11 @@ App.init = ->
   $('.picture-viewer').pictureViewer()
   $('.star-rating-editable').starRating()
   $('.date-picker').datetimepicker
+    onGenerate: ( ct ) -> (@).find('.xdsoft_label').css('display': 'none') 
     timepicker: false
     format: 'j/n/Y'
     scrollInput: false
+    minDate:'-1970/01/01'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
   App.setStripeListener()
 

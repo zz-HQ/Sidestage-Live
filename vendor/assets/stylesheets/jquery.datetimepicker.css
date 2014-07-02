@@ -157,7 +157,7 @@
     opacity: 1;
 }
 .xdsoft_datetimepicker  .xdsoft_label{
-	display: inline;
+	display: none;
     position: relative;
     z-index: 9999;
     margin: 0;

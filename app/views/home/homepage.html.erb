@@ -55,7 +55,7 @@
                 <% if current_user.profile.present? && current_user.profile.persisted? %>
                     <%= link_to "Your Artist Listing", preview_account_profile_path(current_user.profile) %>
                 <% else %>    
-                    <%= link_to "Create Profile", new_account_profile_path %>
+                    <%= link_to "Create artist listing", new_account_profile_path %>
                 <% end %>
                 <%#= link_to "Dashboard", account_dashboard_path %>
                 <%= link_to "Account", account_personal_path %>
@@ -90,11 +90,11 @@
         </div>
 
 
-        <div id="animation-container">
+        <div id="animation-container" class="home">
 
           <div id="city-form">
               <%= simple_form_for :location, url: "artists", method: :Get do |f| %>
-                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: "Select your city") %>
+                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: "Where is your event?") %>
                   <%= f.submit :submit, value: "Search", class: 'city-btn' %>
               <% end %>    
           </div>

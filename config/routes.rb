@@ -59,7 +59,7 @@ Airmusic::Application.routes.draw do
 
     get 'terms-of-service', to: "pages#terms", as: "terms"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
-    get 'homepage', to: "home#homepage", as: "homepage"    
+    get 'home', to: "home#homepage", as: "homepage"    
 
   end
 
