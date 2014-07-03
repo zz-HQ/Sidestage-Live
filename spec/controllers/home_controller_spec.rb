@@ -5,6 +5,9 @@ describe HomeController, :type => :controller do
   
   before_each
   
+  it "renders home" do
+    get :index
+  end
   
   it "sets new currency in session" do
     FactoryGirl.create(:euro)

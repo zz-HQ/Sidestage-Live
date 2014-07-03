@@ -8,38 +8,23 @@ module PageableResource
   protected
 
   def next_resource
-    @next_resource ||= resources.where("id > ?", resource.id).order("id ASC").first
+    if resources.arel.orders.present?
+      field = resources.arel.orders.first.split(" ").first
+      @next_resource ||= resources.where("#{field} > ?", resource.send(field)).first
+    else
+      @next_resource ||= resources.where("id > ?", resource.id).order("id ASC").first      
+    end
   end
 
   def prev_resource
-    @prev_resource ||= resources.where("id < ?", resource.id).order("id DESC").first
+    if resources.arel.orders.present?
+      field = resources.arel.orders.first.split(" ").first
+      @prev_resource ||= resources.where("#{field} < ?", resource.send(field)).last
+    else
+      @prev_resource ||= resources.where("id < ?", resource.id).order("id DESC").first
+    end
   end
   
-  # def next_resource
-  #   @next_resource ||= resources.paginate(page: next_page, per_page: 1).first
-  # end
-  # 
-  # def prev_resource
-  #   return if prev_page < 1
-  #   @prev_resource ||= resources.paginate(page: prev_page, per_page: 1).first
-  # end
-  
-  def resource_page
-    1
-  end
-
-  def current_page
-    params[:page].to_i == 0 ? resource_page : params[:page].to_i
-  end
-
-  def prev_page
-    current_page - 1
-  end
-  
-  def next_page
-    current_page + 1
-  end
-    
   def resources
     end_of_association_chain
   end
