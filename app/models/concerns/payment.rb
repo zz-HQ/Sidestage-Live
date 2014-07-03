@@ -6,13 +6,13 @@ module Payment
   
   def credit_card
     return if stripe_card_id.nil?
-    @credit_card = nil if changes.include?(:stripe_card_id)
     @credit_card ||= CreditCard.from_stripe_customer(retrieve_customer)
   end
   
   def retrieve_customer
     begin
-       @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
+      @stripe_customer = nil if stripe_token.present?
+      @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
     rescue Stripe::StripeError => e
       User.where(id: id).update_all(stripe_log: e.json_body.inspect)
       return [{}]

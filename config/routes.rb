@@ -21,6 +21,7 @@ Airmusic::Application.routes.draw do
           match 'payment_details', to: 'personals#payment_details', via: :all
           match 'password', to: 'personals#password', via: :all
           match 'complete', to: 'personals#complete', via: :all
+          match 'complete_payment', to: 'personals#complete_payment', via: :all          
         end
       end
       resource :dashboard, controller: :dashboard do

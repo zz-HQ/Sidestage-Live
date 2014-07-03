@@ -30,9 +30,18 @@ class Account::PersonalsController < Account::ResourcesController
   def complete
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
-        redirect_to payment_details_account_personal_path
+        redirect_to complete_payment_account_personal_path
       end
     end    
+  end
+  
+  def complete_payment
+    if request.patch?
+      if resource.update_attributes(permitted_params[:user])
+        redirect_to root_path and return
+      end
+    end
+    render :payment_details
   end
   
   def password
@@ -44,12 +53,12 @@ class Account::PersonalsController < Account::ResourcesController
   end
   
   def payment_details
-    @credit_card = current_user.credit_card
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
         @credit_card = current_user.credit_card
       end
     end    
+    @credit_card ||= current_user.credit_card    
   end
   
   def remove_card

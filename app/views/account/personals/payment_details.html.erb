@@ -35,7 +35,7 @@
         <p>You have no credit card on file. Add one below.</p>
       </div>
       <div data-content="payment-form" class="payment-form">
-        <%= simple_form_for resource, url: payment_details_account_personal_path, data: { form: "payment" } do |f| %>
+        <%= simple_form_for resource, url: request.path, data: { form: "payment" } do |f| %>
           <%= f.input :stripe_token, as: :hidden %>
           <%= render "account/payment_details/payment_form" %>
           <%= f.button :submit, value: "Save credit card", class: "btn" %>
