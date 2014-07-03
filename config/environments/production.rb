@@ -72,7 +72,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'http://www.sidestage.com', locale: I18n.default_locale }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
     address: ENV['MAILGUN_SMTP_SERVER'],
     port: ENV['MAILGUN_SMTP_PORT'],
