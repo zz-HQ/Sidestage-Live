@@ -169,7 +169,7 @@
 	float:left;
 	width:182px;
 	text-align:center;
-	//cursor:pointer;
+	cursor:default;
 }
 .xdsoft_datetimepicker  .xdsoft_label:hover{
 	text-decoration:none;
