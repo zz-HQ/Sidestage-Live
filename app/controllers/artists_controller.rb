@@ -1,4 +1,6 @@
 class ArtistsController < ApplicationController
+  
+  include PageableResource
 
   #
   # Filters
@@ -22,7 +24,7 @@ class ArtistsController < ApplicationController
   defaults :resource_class => Profile, :instance_name => 'profile'
   actions :index, :show, :new, :create
   respond_to :html, :js
-
+  
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -71,8 +73,12 @@ class ArtistsController < ApplicationController
   end
   
   def collection
-    get_collection_ivar || set_collection_ivar(end_of_association_chain.filter(params).sorty(params).published.page(params[:page] || 1))
+    get_collection_ivar || set_collection_ivar(resources.page(params[:page] || 1))
   end  
+  
+  def resources
+    end_of_association_chain.filter(params).sorty(params).published
+  end
   
   def build_resource
     super.tap do |profile|
