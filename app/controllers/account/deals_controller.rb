@@ -48,6 +48,7 @@ class Account::DealsController < Account::ResourcesController
     next if event == :offer
     define_method event do
       resource.send("#{event.to_s}!")
+      flash[:notice] = t(:"flash.actions.update.deal.confirmed") if event == :accept
       respond_to do |format|
         format.html { redirect_to account_conversation_path(resource.conversation) }
         format.js { render :show }

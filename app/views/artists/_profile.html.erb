@@ -86,7 +86,7 @@
       </div>
     <% end %>
 
-    <% if next_resource.present? %>
+    <% if defined?(next_resource) && next_resource.present? %>
         <div class="next-artist right">
           <%= link_to artist_path(next_resource) do %>
             View next artist <i class='fa fa-angle-right'></i>

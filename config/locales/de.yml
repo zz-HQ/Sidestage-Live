@@ -30,6 +30,8 @@ de:
       create:
         notice: "%{resource_name} wurde erfolgreich angelegt."
       update:
+        deal:
+          confirmed: "Deal confirmed!"
         notice: "%{resource_name} wurde erfolgreich aktualisiert."
       destroy:
         credit_card: "Your credit card information is now star dust."

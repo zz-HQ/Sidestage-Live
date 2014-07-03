@@ -21,11 +21,15 @@ class Account::PersonalsController < Account::ResourcesController
   #
   #
   #
+
+  def update
+    resource.update_attributes(permitted_params[:user])
+    render :show
+  end  
   
   def complete
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
-        set_flash_message(resource)
         redirect_to payment_details_account_personal_path
       end
     end    
@@ -34,7 +38,6 @@ class Account::PersonalsController < Account::ResourcesController
   def password
     if request.patch?
       if resource.update_with_password(permitted_params[:user])
-        set_flash_message(resource)
         redirect_to password_account_personal_path
       end
     end
@@ -45,7 +48,6 @@ class Account::PersonalsController < Account::ResourcesController
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
         @credit_card = current_user.credit_card
-        set_flash_message(resource)
       end
     end    
   end
@@ -60,7 +62,6 @@ class Account::PersonalsController < Account::ResourcesController
   
   def upload_avatar
     if resource.update_attributes(permitted_params[:user])
-      set_flash_message(resource)
     end
     redirect_to :back
   end
@@ -101,10 +102,6 @@ class Account::PersonalsController < Account::ResourcesController
   
   def resource
     get_resource_ivar || set_resource_ivar(current_user)
-  end
-  
-  def set_flash_message(res)
-    flash[:notice] = t("flash.actions.update.notice", resource_name: res.class.model_name.human)
   end
   
 end
