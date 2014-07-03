@@ -7,6 +7,10 @@
 .wrap
   +outer-container
 
+#main
+  padding-bottom: 50px
+  background-color: #F8F8F8
+
 #main > header,
 #splash > header
   background-color: #fff
@@ -155,9 +159,8 @@
 
 body > footer
   background-color: #fff
-  margin-top: 75px
   overflow: hidden
-  padding: 22px 0
+  padding: 22px 0 32px 0
   box-shadow: 0 0px 1px #DDE6E6
 
   .left
@@ -183,9 +186,6 @@ body > footer
       right: 5px
       color: #6f777b
 
-      &.globe
-        //+retina-sprite(icon-globe, $sprite, $sprite2x)
-
       &.currency
         right: 5px
     
@@ -199,6 +199,8 @@ body > footer
 
     .nice-select
       border: none
+      height: 27px
+      margin: 0
 
       .select-label
         position: absolute
@@ -227,7 +229,6 @@ body > #wrap
 
 body > footer
   clear:both
-  height: 90px
   position: relative
 
 /* CLEAR FIX */

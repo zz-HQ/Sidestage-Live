@@ -1,7 +1,13 @@
 <div id="artist">
 
   <div class="content">
-
+    <div class="infos">
+      <span><i class="fa fa-tag"></i> <%= resource.genres.map(&:name).join(", ") %></span>
+      <span><i class="fa fa-map-marker"></i> <%= resource.location %></span>
+      <span><i class="fa fa-comment-o"></i> <%= resource.reviews.count %></span>
+      <!-- <span class="right heart"><i class="fa fa-heart-o"></i></span> -->
+    </div>
+    
     <h2><%= resource.name %></h2>
     <p class="title"><%= resource.title %></p>
 
