@@ -157,7 +157,7 @@
     opacity: 1;
 }
 .xdsoft_datetimepicker  .xdsoft_label{
-	display: none;
+		display: block;
     position: relative;
     z-index: 9999;
     margin: 0;
@@ -169,10 +169,10 @@
 	float:left;
 	width:182px;
 	text-align:center;
-	cursor:pointer;
+	cursor:default;
 }
 .xdsoft_datetimepicker  .xdsoft_label:hover{
-	text-decoration:underline;
+	text-decoration:none;
 }
 .xdsoft_datetimepicker  .xdsoft_label > .xdsoft_select{
 	border:1px solid #ccc;

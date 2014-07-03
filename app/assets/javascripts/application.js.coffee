@@ -34,9 +34,6 @@ App.init = ->
     expandEffect: 'slideDown'
     collapseEffect: 'slideUp'
   })
-  # $('.about').readmore({
-  #   maxHeight: 147
-  # })
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
@@ -44,7 +41,6 @@ App.init = ->
   $('.picture-viewer').pictureViewer()
   $('.star-rating-editable').starRating()
   $('.date-picker').datetimepicker
-    onGenerate: ( ct ) -> (@).find('.xdsoft_label').css('display': 'none') 
     timepicker: false
     format: 'j/n/Y'
     scrollInput: false

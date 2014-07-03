@@ -433,12 +433,12 @@
 					yearselect =$('<div class="xdsoft_select xdsoft_yearselect"><div></div></div>');
 
 				//constructor lego
-				mounth_picker
-					.find('.xdsoft_month span')
-						.after(monthselect);
-				mounth_picker
-					.find('.xdsoft_year span')
-						.after(yearselect);
+				// mounth_picker
+				// 	// .find('.xdsoft_month span')
+				// 	// 	.after(monthselect);
+				// mounth_picker
+				// 	.find('.xdsoft_year span')
+				// 		.after(yearselect);
 
 				mounth_picker
 					.find('.xdsoft_month,.xdsoft_year')
