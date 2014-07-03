@@ -26,9 +26,17 @@ window.App = {} if window.App == undefined
 App = window.App
 
 App.init = ->
-  $('.about').readmore({
-    maxHeight: 147
+  $('.about').expander({
+    slicePoint:       300
+    expandPrefix:     '... ' # default is '... '
+    expandText:       'read more' # default is 'read more'
+    userCollapseText: '[^]'
+    expandEffect: 'slideDown'
+  collapseEffect: 'slideUp'
   })
+  # $('.about').readmore({
+  #   maxHeight: 147
+  # })
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
