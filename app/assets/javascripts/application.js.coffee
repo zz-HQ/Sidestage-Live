@@ -32,7 +32,7 @@ App.init = ->
     expandText:       'read more' # default is 'read more'
     userCollapseText: '[^]'
     expandEffect: 'slideDown'
-  collapseEffect: 'slideUp'
+    collapseEffect: 'slideUp'
   })
   # $('.about').readmore({
   #   maxHeight: 147
