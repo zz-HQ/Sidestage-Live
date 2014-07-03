@@ -20,7 +20,8 @@
     <h2>How much would you like to earn for this event?</h2>
     <h4>Old price: <%= localized_price(deal.price, deal.currency) %></h4>
     <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
-      <%= f.input :price, as: :string, label: "New Price" %>
+      <label>New price</label>
+      <%= f.input :price, as: :string, label: false %>
       <%= f.button :submit, value: "Update price", class: "btn btn-submit" %>
   	<% end %>
   	<p class="label">
