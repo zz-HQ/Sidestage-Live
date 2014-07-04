@@ -66,7 +66,7 @@ de:
     deals:
       requested:
         subject: "Deal State Change"
-        body: "You've received a booking request from %{customer_name}. Please sign in to your Sidestage account to review it."
+        body: "You've received a booking request from %{customer_name}. Please sign in to your Sidestage account to review it. <br/> <br/> <a href='www.sidestage.com'>Sign in to Sidestage</a>."
       offered:
         subject: "Price change"
         body: "Great news! The artist has accepted your booking request, but updated the price to cover some additional costs. Please log in to review the changes."
