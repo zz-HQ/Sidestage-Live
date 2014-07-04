@@ -109,6 +109,10 @@ class User < ActiveRecord::Base
     @profile ||= profiles.first
   end
   
+  def profile_name
+    profile.try(:name) || name
+  end
+  
   def name
     [first_name, last_name].join(" ")
   end

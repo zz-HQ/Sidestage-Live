@@ -3,7 +3,7 @@
   <div class="wrap">
     <%# TODO: Change to root_path when splash page goes offline!!! %>
     <h1 id="logo">
-      <%= link_to "home" do %>
+      <%= link_to root_path do %>
         <%= image_tag "sprite/sidestage-logo.png" %>
       <% end %>
     </h1>
@@ -13,7 +13,7 @@
             <% request.query_parameters.except(:location).each do |k,v| %>
                 <%= hidden_field_tag k, v %>
             <% end %>
-            <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, class: "submit-on-change") %>
+            <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: "Choose city", class: "submit-on-change") %>
         <% end %>    
     </div>
 

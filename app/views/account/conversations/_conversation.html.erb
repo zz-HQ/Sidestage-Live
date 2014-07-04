@@ -4,7 +4,7 @@
 			<%= image_tag conversation.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
 		</div>
 		<div class="body">
-			<h3><%= conversation.negotiator_for(current_user).name %> <span><%= l conversation.created_at, format: :conversation %></span></h3>
+			<h3><%= conversation.negotiator_for(current_user).profile_name %> <span><%= l conversation.created_at, format: :conversation %></span></h3>
 			<p>
 				<% if (message = conversation.messages.last).present? && message.sender_id == current_user.id %>
 				  <i class="fa fa-reply"></i>
