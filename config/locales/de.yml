@@ -31,7 +31,7 @@ de:
         notice: "%{resource_name} wurde erfolgreich angelegt."
       update:
         deal:
-          confirmed: "Deal confirmed!"
+          confirmed: "Booking confirmed!"
         notice: "%{resource_name} wurde erfolgreich aktualisiert."
       destroy:
         credit_card: "Your credit card information is now star dust."
@@ -80,7 +80,7 @@ de:
         subject: "Deal accepted"
         body: "Your booking is now confirmed with %{artist_name}. <br/><br/>If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       confirmed:
-        subject: "Deal confirmed"
+        subject: "Booking confirmed"
         body: "Great news! Your price update was accepted by the customer, and your booking is confirmed for %{event_date}. <br> <br> If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       rejected:
         subject: "Deal cancelled"

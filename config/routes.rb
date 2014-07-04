@@ -3,7 +3,7 @@ Airmusic::Application.routes.draw do
   
 
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
-    root to: "home#index"
+    root to: "home#homepage"
 
     post 'create_subscriber', to: "home#create_subscriber", as: "create_subscriber"
 
@@ -60,7 +60,7 @@ Airmusic::Application.routes.draw do
 
     get 'terms-of-service', to: "pages#terms", as: "terms"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
-    get 'home', to: "home#homepage", as: "homepage"    
+    get 'index', to: "home#index", as: "homepage"    
 
   end
 

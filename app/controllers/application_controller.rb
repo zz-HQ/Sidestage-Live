@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    current_user.profile.present? ? preview_account_profile_path(current_user.profile) : (stored_location_for(resource) || account_root_path)
+    current_user.profile.present? ? preview_account_profile_path(current_user.profile) : (stored_location_for(resource) || root_path)
   end
 
   def after_sign_out_path_for(resource)
