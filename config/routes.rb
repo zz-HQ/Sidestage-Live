@@ -64,6 +64,9 @@ Airmusic::Application.routes.draw do
 
   end
 
+  match "/404", :to => "errors#not_found", via: :get
+  match "/500", :to => "errors#internal_error", via: :get  
+  match "/422", :to => "errors#unacceptable", via: :get  
   
   get '/:locale', :to => "home#index", :constraints => { :locale => /\w{2}/ }
   

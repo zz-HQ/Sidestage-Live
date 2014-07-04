@@ -22,5 +22,7 @@ module Airmusic
     config.i18n.default_locale = :de
     config.default_currency = "EUR"
     
+    config.exceptions_app = self.routes
+    
   end
 end
