@@ -3,5 +3,5 @@ vex.closeAll();
     vex.closeAll();
     vex.open({ content: "<%= j render("form").strip.html_safe %>" });
 <% else %>
-    vex.dialog.alert("<h2>Your booking request was sent to <%= resource.artist.profile_name %> on <%= l resource.created_at.to_date %></h2><p>We'll notify you once your request is accepted or not.</p> <br/> <br/> <p>If you need to cancel your booking request, you can do so by going to Message > <%= resource.artist.profile_name %>.</p> <%= j(link_to "Cancel booking request", cancel_account_deal_path(resource), method: :put, class: "cancel-link") %>");
+    vex.dialog.alert("<h2>Your booking request was sent to <%= resource.artist.profile_name %> for <%= l resource.start_at, format: :event_date %></h2><p>We'll notify you once your request is accepted or not.</p> <br/> <br/> <p>If you need to cancel your booking request, you can do so by going to Message > <%= resource.artist.profile_name %>.</p> <%= j(link_to "Cancel booking request", cancel_account_deal_path(resource), method: :put, class: "cancel-link") %>");
 <% end %>
