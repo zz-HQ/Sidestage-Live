@@ -85,10 +85,14 @@ class ApplicationController < ActionController::Base
     request.variant = :mobile if browser.mobile?
     request.variant = :tablet if browser.tablet?
     request.variant = :old_browser if old_browser?
-  end  
+  end 
+  
+  def user_currency
+    current_user && current_user.profile.try(:currency)
+  end
 
   def load_currency
-    @current_currency ||= Currency.where(name: session[:currency] || Rails.configuration.default_currency).first
+    @current_currency ||= Currency.where(name: session[:currency] || user_currency || Rails.configuration.default_currency).first
   end
 
   def set_ajax_layout

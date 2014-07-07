@@ -8,6 +8,7 @@ class Profile < ActiveRecord::Base
   #
   #  
   
+  extend FriendlyId
   include Profile::Presentable
   include Sortable
   include Filter
@@ -38,6 +39,8 @@ class Profile < ActiveRecord::Base
   
   attr_accessor :wizard_step
   
+  friendly_id :name, :use => [:slugged, :finders]
+  
   #
   #
   # Validations
@@ -49,7 +52,12 @@ class Profile < ActiveRecord::Base
 
   validates :user_id, :genre_ids, presence: true
   validates :price, presence: true, if: :price_step?
-  validates :title, :name, :about, presence: true, if: :description_step?
+  
+  with_options if: :description_step? do |profile|
+    profile.validates :title, :name, :about, presence: true
+    profile.validates :name, uniqueness: { case_sensitive: false }, allow_blank: true
+  end
+  
   validates :price, numericality: true, allow_blank: true
   validates :bic, :iban, presence: true, if: :payment_step?
 
@@ -133,6 +141,10 @@ class Profile < ActiveRecord::Base
 
   def payment_step?
     wizard_step == :payment
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
   end
   
 end

@@ -1,6 +1,6 @@
 <div id="conversation" class="container">
   <div class="content">
-    <header><%= resource.negotiator_for(current_user).name %></header>
+    <header><%= resource.negotiator_for(current_user).profile_name %></header>
     
     <div id="messages">
       <% resource.messages.includes(:sender).each do |message| %>

@@ -34,7 +34,7 @@ de:
       default: ! '%d.%m.%Y'
       long: ! '%e. %B %Y'
       short: ! '%e. %b'
-      event_date: "%A, %d %B %Y"
+      event_date: "%A, %B %d, %Y"
     month_names:
     -
     - Januar
@@ -196,7 +196,7 @@ de:
       short: ! '%d. %B, %H:%M Uhr'
       date:  ! '%d.%m.%Y'
       deal_start_at: "%d. %m. %Y"
-      event_date: "%A, %d %B %Y"
+      event_date: "%A, %B %d, %Y"
       conversation: "%A, %-d %B, %Y"
       message: "%A, %B %d, %Y"
       review: "%B %Y"
