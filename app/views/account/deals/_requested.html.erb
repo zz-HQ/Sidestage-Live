@@ -1,7 +1,7 @@
 <div class="booking">
   <table>
     <tr>
-      <td>Event data:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
+      <td>Event date:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
     </tr>
   <% if deal.is_customer?(current_user) %>
     <tr class="price customer">

@@ -2,7 +2,7 @@
   <table>
     <tr>
       <!-- TODO: richtiges Format als Text -->
-      <td>Event data:</td><td data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></td>
+      <td>Event date:</td><td data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></td>
     </tr>
     <tr class="price">
       <td>Price:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
