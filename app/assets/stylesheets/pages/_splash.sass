@@ -80,6 +80,9 @@ body.desktop
       #city-form
         +transform(rotateX(0deg))
 
+        form
+          width: 470px
+
         [type="text"],
         [type="submit"]
           +border-radius($border-radius)
@@ -112,12 +115,8 @@ body.desktop
           +transition(background-color 500ms ceaser($easeOutExpo))
           background-color: $red
           color: #fff
-          margin-left: 7px
           width: 120px
-
-          &.city-btn
-            position: relative
-            top: -38px
+          float: right
 
           &:hover
             background-color: darken($red, 10%)
