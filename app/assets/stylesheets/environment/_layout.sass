@@ -7,12 +7,6 @@
 .wrap
   +outer-container
 
-#main
-  padding-bottom: 50px
-
-  &.homepage
-    padding-bottom: 0
-
 #main > header,
 #splash > header
   background-color: #fff
@@ -20,6 +14,7 @@
   padding: 22px 0
   box-shadow: 0 1px 0px #DDE6E6
   height: 80px
+  min-width: 574px
   
   .wrap
     overflow: visible
@@ -166,14 +161,18 @@
       text-decoration: none
       top: 3px
 
-body > footer
+#main > .wrap
+  padding-bottom: 50px
+  min-width: 974px
+
+#main > footer
   background-color: #fff
   overflow: hidden
   padding: 22px 0 32px 0
   box-shadow: 0 0px 1px #DDE6E6
 
   .left
-    +span-columns(4)
+    +span-columns(6)
     position: relative
     top: 10px
     color: $text-color-light
@@ -185,7 +184,7 @@ body > footer
         text-decoration: underline
 
   .right
-    +span-columns(4)
+    +span-columns(2)
     position: relative
     text-align: right
     top: 6px
@@ -239,7 +238,7 @@ body > #wrap
   min-height: 100%
   //background-color: #F8F8F8
 
-body > footer
+#main > footer
   clear:both
   position: relative
 
