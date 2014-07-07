@@ -1,5 +1,5 @@
 <% if deal.is_customer?(current_user) %>
-  <div class="booking-teaser">
+  <div class="booking">
     <p class="footnote">To make a new booking visit the artist's profile page</p>
     <%= link_to "View profile", artist_path(deal.artist), class: "btn" %>
   </div>
