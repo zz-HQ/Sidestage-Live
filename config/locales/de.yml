@@ -65,7 +65,7 @@ de:
   mail:
     deals:
       requested:
-        subject: "Deal State Change"
+        subject: "New booking request"
         body: "You've received a booking request from %{customer_name}. Please sign in to your Sidestage account to review it. <br/> <br/> <a href='www.sidestage.com'>Sign in to Sidestage</a>."
       offered:
         subject: "Price change"
@@ -74,7 +74,7 @@ de:
         subject: "Deal Cancelled"
         body: "Your booking for %{event_date} has been cancelled by the customer. We apologize for any inconvenience this may cause. <br/><br/>If you have any questions, please contact us, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       declined:
-        subject: "Deal declined"
+        subject: "Booking request declined"
         body: "Unfortunately, the artist has declined your booking request for %{event_date}. View more artist profiles on Sidestage.com. If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       accepted:
         subject: "Deal accepted"
