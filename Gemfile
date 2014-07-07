@@ -5,8 +5,6 @@ ruby '2.1.0'
 # Backend
 gem 'rails', '~> 4.1.1'
 gem 'devise'
-# TODO: Two MYSQL Gems ????
-#gem 'mysql'
 gem 'mysql2'
 gem 'inherited_resources'
 gem 'jbuilder', '~> 1.2'
@@ -16,6 +14,9 @@ gem 'browser'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'will_paginate'
 gem 'omniauth-facebook'
+gem 'paper_trail', '~> 3.0.2'
+gem 'aasm'
+gem 'friendly_id', '~> 5.0.0'
 
 # Image Processing
 gem 'carrierwave'
@@ -38,9 +39,6 @@ gem 'bourbon'
 gem 'neat'
 gem 'asset_sync'
 gem 'jquery-fileupload-rails'
-gem 'paper_trail', '~> 3.0.2'
-gem 'aasm'
-
 
 group :production do
   gem 'unicorn'
