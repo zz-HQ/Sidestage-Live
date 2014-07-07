@@ -69,7 +69,7 @@ de:
         body: "You've received a booking request from %{customer_name}. Please sign in to your Sidestage account to review it. <br/> <br/> <a href='http://sidestage.com'>Sign in to Sidestage</a>."
       offered:
         subject: "Price change"
-        body: "Great news! The artist has accepted your booking request, but updated the price to cover some additional costs. Please log in to review the changes."
+        body: "Great news! The artist has accepted your booking request, but updated the price to cover some additional costs. Please <a href='http://sidestage.com/users/sign_in'>log in</a> to review the changes."
       cancelled:
         subject: "Deal Cancelled"
         body: "Your booking for %{event_date} has been cancelled by the customer. We apologize for any inconvenience this may cause. <br/><br/>If you have any questions, please contact us, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
