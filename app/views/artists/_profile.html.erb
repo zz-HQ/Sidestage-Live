@@ -159,6 +159,7 @@
   $(window).scroll(function(e) {
     // Get the position of the location where the scroller starts.
     var scroller_anchor = $("aside").offset().top;
+    var scroller_stopper = $(".new-review").offset().top - 120;
     var scroller_anchor_stop = $("footer").offset().top;
     var bottom_anchor = $(this).scrollTop() + window.innerHeight - $('footer').innerHeight() + 1;
      
@@ -172,11 +173,11 @@
             'width': '230px'
         });
 
-        if (bottom_anchor >= scroller_anchor_stop)
+        if (scroller_stopper <= $(this).scrollTop())
         {    // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
             $('.booking-teaser').css({
-                'top': 'auto',
-                'bottom': '140px'
+                'position': 'absolute',
+                'top': scroller_stopper - 200 + "px"
             });
         }
     }
