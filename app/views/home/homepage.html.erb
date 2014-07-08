@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=974">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -43,9 +43,9 @@
         <div id="animation-container" class="home">
 
           <div id="city-form">
-              <%= simple_form_for :location, url: "artists", method: :Get do |f| %>
-                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: "Where is your event?") %>
-                  <%= f.submit :submit, value: "Search", class: 'city-btn' %>
+              <%= simple_form_for :location, url: artists_path, method: :Get, html: { id: "homepage-search" } do |f| %>
+                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), id: "location", include_blank: false, prompt: "Where is your event?") %>
+                  <%= f.submit :submit, value: "Search", name: nil, class: 'city-btn' %>
               <% end %>    
           </div>
 

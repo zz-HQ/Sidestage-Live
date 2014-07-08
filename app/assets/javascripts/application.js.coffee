@@ -34,6 +34,7 @@ App.init = ->
     expandEffect: 'slideDown'
     collapseEffect: 'slideUp'
   })
+  #$('.booking-teaser').sidebarScroller()
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
@@ -53,6 +54,12 @@ $(document).on 'change', '.submit-on-change', (e) -> $(@).closest('form').trigge
 $(document).on 'click', '[data-toggle]', (e) -> 
   $($(this).attr("data-toggle")).toggle()
   return false
+
+$(document).on 'submit', '#homepage-search', (e) ->
+  if($(this).find("select#location").val() == "")
+    e.preventDefault()
+    return false
+
 
 $.ajaxSetup
   headers:
