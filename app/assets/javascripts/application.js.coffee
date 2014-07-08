@@ -34,7 +34,7 @@ App.init = ->
     expandEffect: 'slideDown'
     collapseEffect: 'slideUp'
   })
-  $('.booking-teaser').sidebarScroller()
+  #$('.booking-teaser').sidebarScroller()
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
