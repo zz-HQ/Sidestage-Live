@@ -55,6 +55,12 @@ $(document).on 'click', '[data-toggle]', (e) ->
   $($(this).attr("data-toggle")).toggle()
   return false
 
+$(document).on 'submit', '#homepage-search', (e) ->
+  if($(this).find("select#location").val() == "")
+    e.preventDefault()
+    return false
+
+
 $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

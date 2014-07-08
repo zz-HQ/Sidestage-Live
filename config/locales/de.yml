@@ -52,7 +52,7 @@ de:
             you: "You have accepted this booking request, but a pricing confirmation is being sent to the customer."
             partner: "The artist has accepted this booking request, and changed the price. Please Accept & Confirm or you can cancel this booking."
           cancelled:
-            you: "You have cancelled this booking request."
+            you: "You have cancelled this booking request for %{event_date}."
             partner: "The customer has cancelled this booking request. Support will be in touch with you shortly. "
           declined:
             you: "You have decline this booking request."

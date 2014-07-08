@@ -43,9 +43,9 @@
         <div id="animation-container" class="home">
 
           <div id="city-form">
-              <%= simple_form_for :location, url: "artists", method: :Get do |f| %>
-                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: "Where is your event?") %>
-                  <%= f.submit :submit, value: "Search", class: 'city-btn' %>
+              <%= simple_form_for :location, url: artists_path, method: :Get, html: { id: "homepage-search" } do |f| %>
+                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), id: "location", include_blank: false, prompt: "Where is your event?") %>
+                  <%= f.submit :submit, value: "Search", name: nil, class: 'city-btn' %>
               <% end %>    
           </div>
 
