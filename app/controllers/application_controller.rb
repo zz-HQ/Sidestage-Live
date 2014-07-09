@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   #
   #  
 
-  before_action :detect_device_format, :auth_production, :set_ajax_layout
+  before_action :detect_device_format, :set_ajax_layout
   before_filter :store_location, :load_currency
 
   #
@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+    home_path
   end
   
   def store_location

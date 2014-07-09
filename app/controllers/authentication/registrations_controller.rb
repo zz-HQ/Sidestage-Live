@@ -36,12 +36,12 @@ class Authentication::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     assign_potential_profile
-    root_path
+    home_path
   end
   
   def after_inactive_sign_up_path_for(resource)
     assign_potential_profile
-    root_path
+    home_path
   end
   
   def assign_potential_profile
