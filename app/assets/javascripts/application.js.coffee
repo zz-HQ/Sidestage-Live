@@ -49,7 +49,9 @@ App.init = ->
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
   App.setStripeListener()
 
-$(document).on 'change', '.submit-on-change', (e) -> $(@).closest('form').trigger 'submit'
+$(document).on 'change', '.submit-on-change', (e) -> 
+  if($(@).val() != "")
+    $(@).closest('form').trigger 'submit'
 
 $(document).on 'click', '[data-toggle]', (e) -> 
   $($(this).attr("data-toggle")).toggle()

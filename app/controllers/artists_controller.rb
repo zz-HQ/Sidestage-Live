@@ -10,7 +10,9 @@ class ArtistsController < ApplicationController
   #
   #
   
+  before_filter :reject_scraper, only: [:index]
   before_filter :redirect_if_unpublished, only: [:show]
+  
   
   #
   # Settings
@@ -70,6 +72,10 @@ class ArtistsController < ApplicationController
   
   def redirect_if_unpublished
     redirect_to artists_path unless resource.published?
+  end
+  
+  def reject_scraper
+    redirect_to root_path if params[:location].blank?
   end
   
   def collection

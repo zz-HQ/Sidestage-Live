@@ -71,7 +71,7 @@ class Profile < ActiveRecord::Base
   #
   #  
   
-  sortable :price
+  sortable :price, :name
   
   filterable :location, :price
   
