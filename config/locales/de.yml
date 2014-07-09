@@ -75,17 +75,17 @@ de:
         subject: "Price change"
         body: "Great news! The artist has accepted your booking request for %{event_date}, but updated the price to cover some additional costs. Please <a href='http://sidestage.com/users/sign_in'>log in</a> to review the changes."
       cancelled:
-        subject: "Deal Cancelled"
+        subject: "Booking Cancelled"
         body: "Your booking for %{event_date} has been cancelled by the customer. We apologize for any inconvenience this may cause. <br/><br/>If you have any questions, please contact us, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       declined:
         subject: "Booking request declined"
         body: "Unfortunately, the artist has declined your booking request for %{event_date}. View more artist profiles on Sidestage.com. If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       accepted:
-        subject: "Deal accepted"
+        subject: "Booking accepted"
         body: "Your booking for %{event_date} is now confirmed with %{artist_name}. <br/><br/>If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       confirmed:
         subject: "Booking confirmed"
         body: "Great news! Your price update was accepted by the customer, and your booking is confirmed for %{event_date}. <br> <br> If we can be of any assistance, please contact us at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
       rejected:
-        subject: "Deal cancelled"
+        subject: "Booking cancelled"
         body: "%{artist_name} has cancelled your booking for %{event_date}. We apologize for the inconvenience. Visit <a href='http://sidestage.com'>www.sidestage.com</a> to find more avialable artists. <br/><br/>If we can provide any assistance, please contact <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
