@@ -57,7 +57,8 @@ class User < ActiveRecord::Base
   #
   
   before_save :set_default_currency, :add_credit_card
-  
+  after_create :add_to_newsletter
+
   #
   # Class Methods
   # ---------------------------------------------------------------------------------------
@@ -139,6 +140,16 @@ class User < ActiveRecord::Base
   
   def set_default_currency
     self.currency ||= Rails.configuration.default_currency
+  end
+
+  def add_to_newsletter
+    if self.newsletter_subscribed?
+      Rails.logger.debug { "newsletter set #{self.newsletter_subscribed}" }
+      mailchimp_api = Gibbon::API.new
+      res = mailchimp_api.lists.batch_subscribe(id: Rails.application.secrets.mailchimp_newsletter_id, :double_optin => false, :batch => [{:email => {:email => self.email}, :merge_vars => {:FNAME => self.first_name, :LNAME => self.last_name}}])
+    else
+      logger.debug { "no newsletter set" }
+    end
   end
   
   def add_credit_card    
