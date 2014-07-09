@@ -47,7 +47,7 @@ de:
         deals:          
           requested: 
             you: "Your booking request has been sent to %{partner_name} and is pending approval."
-            partner: "You've received a booking request from %{partner_name}. Please accept or decline this booking request in the side panel."
+            partner: "You've received a booking request from %{partner_name} for %{event_date}. Please accept or decline this booking request in the side panel."
           offered: 
             you: "You have accepted this booking request, but a pricing confirmation is being sent to the customer."
             partner: "The artist has accepted this booking request, and changed the price. Please Accept & Confirm or you can cancel this booking."
@@ -70,7 +70,7 @@ de:
     deals:
       requested:
         subject: "New booking request"
-        body: "You've received a booking request from %{customer_name} for %{event_date}. Please sign in to your Sidestage account to review it. <br/> <br/> <a href='http://sidestage.com'>Sign in to Sidestage</a>."
+        body: "You've received a booking request from %{customer_name}. Please sign in to your Sidestage account to review it. <br/> <br/> <a href='http://sidestage.com'>Sign in to Sidestage</a>."
       offered:
         subject: "Price change"
         body: "Great news! The artist has accepted your booking request for %{event_date}, but updated the price to cover some additional costs. Please <a href='http://sidestage.com/users/sign_in'>log in</a> to review the changes."

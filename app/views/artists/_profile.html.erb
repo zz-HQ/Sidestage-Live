@@ -137,18 +137,18 @@
           <%= link_to "Message artist", link_or_signin(new_account_message_path(receiver_id: resource.user.id, format: :html)), data: { lightbox: "ajax" } %>
         </div>
       <% end %>
+    </div>
 
-      <div class="like-btn">
-        <div id="fb-root"></div>
-        <script src="http://connect.facebook.net/en_US/all.js#appId=204703199589477&amp;xfbml=1"></script>
-        <fb:like href="<?php the_permalink() ?>" send="false" width="90" show_faces="false" action="like" font="" layout="button_count"></fb:like>
-      </div>
-      <div class="tweet-btn">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-count="horizontal" data-text="Check out <%= resource.name %> on Sidestage">Tweet</a>
-        <script>
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-        </script>
-      </div>
+
+    <div class="like-btn">
+      <div id="fb-root"></div>
+      <script src="http://connect.facebook.net/en_US/all.js#appId=204703199589477&amp;xfbml=1"></script>
+      <fb:like href="<?php the_permalink() ?>" send="false" width="90" show_faces="false" action="like" font="" layout="button"></fb:like>
+    </div>
+
+    <div class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-size="small" data-text="Check out <%= resource.name %> on Sidestage" data-count="none">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
 
   </aside>  
