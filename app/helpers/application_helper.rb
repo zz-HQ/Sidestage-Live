@@ -33,7 +33,7 @@ module ApplicationHelper
   end
   
   def available_locations
-    ["Berlin", "London"]
+    ["Berlin"]
   end
   
   def available_locales
