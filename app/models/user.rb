@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   #
   
   before_save :set_default_currency, :add_credit_card
-  after_create :add_to_newsletter
+  after_create :add_to_newsletter, :notify_admin
 
   #
   # Class Methods
@@ -150,6 +150,10 @@ class User < ActiveRecord::Base
     else
       logger.debug { "no newsletter set" }
     end
+  end
+  
+  def notify_admin
+    AdminMailer.lead_notification(self).deliver
   end
   
   def add_credit_card    
