@@ -35,21 +35,13 @@ class Authentication::RegistrationsController < Devise::RegistrationsController
   protected 
 
   def after_sign_up_path_for(resource)
-    assign_potential_profile
+    assign_potential_profile(resource)
     home_path
   end
   
   def after_inactive_sign_up_path_for(resource)
-    assign_potential_profile
+    assign_potential_profile(resource)
     home_path
-  end
-  
-  def assign_potential_profile
-    if session[:profile].present?
-      profile = Profile.new(session[:profile]) 
-      resource.profiles << profile
-      session[:profile] = nil
-    end
   end
   
   def configure_permitted_parameters

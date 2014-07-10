@@ -77,6 +77,14 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, params[:return_to]) if params[:return_to].present?
   end
   
+  def assign_potential_profile(user)
+    if session[:profile].present?
+      profile = Profile.new(session[:profile]) 
+      user.profiles << profile
+      session[:profile] = nil
+    end
+  end
+  
   def old_browser?
     browser.ie? && browser.version.to_i <= 9
   end
