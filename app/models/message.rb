@@ -67,7 +67,7 @@ class Message < ActiveRecord::Base
   
   before_create :attach_to_conversation
   
-  after_create :update_conversation_order, :update_receiver_counter
+  after_create :update_conversation_order, :update_receiver_counter, :notify_receiver
   
   #
   # Private
@@ -95,6 +95,12 @@ class Message < ActiveRecord::Base
   
   def update_receiver_counter
     User.increment_counter :unread_message_counter, receiver_id
+  end
+  
+  def notify_receiver
+    unless system_message?
+      UserMailer.message_notification(self).deliver
+    end
   end
   
 end
