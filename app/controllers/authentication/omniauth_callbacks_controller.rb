@@ -1,7 +1,7 @@
 class Authentication::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = from_omniauth(request.env["omniauth.auth"])
+    @user = User.from_omniauth(request.env["omniauth.auth"])
     logger.debug { "------ facebook #{request.env["omniauth.auth"]}" }
     if @user.persisted?
       had_profile = @user.profile.present?
