@@ -18,6 +18,7 @@
   </div>
 
   <aside>
+    <header>Booking Details</header>
     <div class="deals">
       <% resource.deals.select { |d| d.rejected? }.each do |deal| %>
         <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
