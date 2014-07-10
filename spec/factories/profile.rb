@@ -11,11 +11,13 @@ FactoryGirl.define do
     
     factory :gaga do
       name "gaga"
+      location "california"      
       price 200      
     end
     
     factory :shakira do
       name "shakira"
+      location "mexico"
       price 300
     end
     

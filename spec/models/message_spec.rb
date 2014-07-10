@@ -22,6 +22,19 @@ describe Message, :type => :model do
     end
     
   end
+  
+  describe "deliveries" do
+    
+    it "notifies receiver" do
+      message = FactoryGirl.create(:user_quentin)
+      expect(ActionMailer::Base.deliveries.last.to).to eq([message.receiver.email])
+    end
 
+    it "does not notify receiver for system message" do
+      message = FactoryGirl.create(:system_message_quentin)
+      expect(ActionMailer::Base.deliveries.map(&:to).flatten).to_not include(message.receiver.email)
+    end
+    
+  end
   
 end

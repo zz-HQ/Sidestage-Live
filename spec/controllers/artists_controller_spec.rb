@@ -6,12 +6,18 @@ describe ArtistsController, :type => :controller do
   before_each
   
   
-  it "displays all artists" do
-    FactoryGirl.create(:shakira)
+  it "rejects scrapers" do
+    get :index    
+    expect(response).to redirect_to(root_path)
+  end
+  
+  it "gets index" do
+    shakira = FactoryGirl.create(:shakira)
     FactoryGirl.create(:gaga)
 
-    get :index
-
+    get :index, location: shakira.location
+    
+    expect(response.status).to eq(200)
   end
   
   context "pagination" do

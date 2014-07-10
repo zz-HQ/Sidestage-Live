@@ -24,6 +24,12 @@ FactoryGirl.define do
       association :sender, factory: :quentin
       association :receiver, factory: :bob
     end
+    
+    factory :system_message_quentin do
+      system_message true
+      association :sender, factory: :bob
+      association :receiver, factory: :quentin      
+    end
         
   end 
 end
