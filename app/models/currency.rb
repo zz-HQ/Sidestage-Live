@@ -9,5 +9,17 @@ class Currency < ActiveRecord::Base
   #
   
   validates :name, :symbol, presence: true
+
+
+  #
+  # Scopes
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  default_scope -> { order("name ASC") }
+  
   
 end

@@ -14,6 +14,7 @@ module PageableResource
     else
       @next_resource ||= resources.where("id > ?", resource.id).order("id ASC").first      
     end
+    @next_resource ||= collection.first #rotate back to first item
   end
 
   def prev_resource
