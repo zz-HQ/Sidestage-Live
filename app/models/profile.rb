@@ -142,9 +142,14 @@ class Profile < ActiveRecord::Base
   def payment_step?
     wizard_step == :payment
   end
-
+  
+  #friendly_id overrides
   def should_generate_new_friendly_id?
     name_changed? || super
   end
+  
+  def resolve_friendly_id_conflict(candidates)
+    candidates.first + friendly_id_config.sequence_separator #+ SecureRandom.uuid
+  end  
   
 end
