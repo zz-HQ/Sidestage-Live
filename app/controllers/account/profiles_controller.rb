@@ -91,7 +91,7 @@ class Account::ProfilesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(profile: [:avatar, :solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :cancellation_policy, :availability, :travel_costs, :bic, :iban, genre_ids: []])
+    params.permit(profile: [:avatar, :solo, :location, :title, :name, :currency, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :availability, :travel_costs, :bic, :iban, genre_ids: []])
   end 
   
   #

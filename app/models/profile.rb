@@ -21,7 +21,7 @@ class Profile < ActiveRecord::Base
   #
   #
   #
-  
+
   CANCELLATION_POLICY = {
     flexible: 'activerecord.attributes.profile.cancellation_policy.flexible',
     moderate: 'activerecord.attributes.profile.cancellation_policy.moderate',
@@ -39,7 +39,12 @@ class Profile < ActiveRecord::Base
   
   attr_accessor :wizard_step
   
-  friendly_id :name, :use => [:slugged, :finders]
+  friendly_id :name do |config|
+    config.use [:slugged, :finders]
+    config.use Module.new{ def resolve_friendly_id_conflict(candidates);  candidates.first; end }
+    config.use Module.new{ def should_generate_new_friendly_id?; name_changed? || super; end }
+    config.use Module.new{ def to_param; friendly_id.presence.to_param || ((persisted? && key = to_key) ? key.join('-') : nil); end }
+  end
   
   #
   #
@@ -55,7 +60,7 @@ class Profile < ActiveRecord::Base
   
   with_options if: :description_step? do |profile|
     profile.validates :title, :name, :about, presence: true
-    profile.validates :name, uniqueness: { case_sensitive: false }, allow_blank: true
+    profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
   end
   
   validates :price, numericality: true, allow_blank: true
@@ -76,6 +81,17 @@ class Profile < ActiveRecord::Base
   filterable :location, :price
   
   scope :published, -> { where(published: true) }
+
+  #
+  # Callbacks
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
+  after_validation :reverse_friendly
+
 
   #
   # Associations
@@ -143,13 +159,11 @@ class Profile < ActiveRecord::Base
     wizard_step == :payment
   end
   
-  #friendly_id overrides
-  def should_generate_new_friendly_id?
-    name_changed? || super
+  def reverse_friendly
+    if description_step? && errors.present?
+      errors.add friendly_id_config.base, errors[friendly_id_config.slug_column.to_sym] if errors.include?(friendly_id_config.slug_column.to_sym)
+      send "#{friendly_id_config.slug_column}=", send("#{friendly_id_config.slug_column}_was")
+    end
   end
-  
-  def resolve_friendly_id_conflict(candidates)
-    candidates.first + friendly_id_config.sequence_separator #+ SecureRandom.uuid
-  end  
   
 end
