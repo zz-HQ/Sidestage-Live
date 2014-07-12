@@ -9,5 +9,25 @@ module ModulesHelper
     select_content = label + select
     content_tag(:div, select_content, class: "nice-select")
   end
+
+  def star_rating(options = {})
+    klass = "star-rating"
+    klass += " star-rating-editable" if options[:editable].present?
+    content_tag(:div, class: klass) do
+
+    	content = ''
+
+    	content += content_tag(:span, "Rating:") if options[:label].present?
+
+      5.times do |i|
+        klass = "fa fa-star rating-star rating-off"
+        content += content_tag(:i, nil, class: klass)
+      end
+
+      content += options[:f].input :rate, as: :hidden, required: true
+      
+      content.html_safe
+    end
+  end
   
 end

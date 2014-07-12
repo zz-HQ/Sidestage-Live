@@ -83,15 +83,7 @@
     <% if current_user && current_user.id != resource.user_id %>
       <div class="new-review">
         <%= simple_form_for :review, url: account_profile_reviews_path(resource), remote: true, class: "review-form" do |f| %>
-            <div class="star-rating star-rating-editable">
-              <span>Rating:</span>
-              <i class="fa fa-star rating-star rating-off"></i>
-              <i class="fa fa-star rating-star rating-off"></i>
-              <i class="fa fa-star rating-star rating-off"></i>
-              <i class="fa fa-star rating-star rating-off"></i>
-              <i class="fa fa-star rating-star rating-off"></i>
-              <%= f.input :rate, as: :hidden, required: true %>
-            </div>
+            <%= star_rating editable: true, f: f, label: true %>
             <%= f.input :body, as: :text, placeholder: "Your review", label: false %>
             <%= f.submit class: "btn", value: "Send" %>
         <%- end -%>
