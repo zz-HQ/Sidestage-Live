@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707153607) do
+ActiveRecord::Schema.define(version: 20140712221327) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -138,8 +138,10 @@ ActiveRecord::Schema.define(version: 20140707153607) do
     t.string   "avatar"
     t.text     "payout"
     t.string   "slug"
+    t.boolean  "featured",    default: false
   end
 
+  add_index "profiles", ["featured"], name: "index_profiles_on_featured", using: :btree
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 

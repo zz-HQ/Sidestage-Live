@@ -81,7 +81,8 @@ class Profile < ActiveRecord::Base
   filterable :location, :price
   
   scope :published, -> { where(published: true) }
-
+  scope :featured, -> { where(featured: true) }
+  
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------
