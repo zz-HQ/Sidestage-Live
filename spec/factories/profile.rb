@@ -21,6 +21,14 @@ FactoryGirl.define do
       price 300
     end
     
+    factory :unpublished do
+      name "unpublished"
+      location "mexico"
+      price 300
+      published false
+    end
+    
+    
   end
   
 end
