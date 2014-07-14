@@ -34,12 +34,14 @@
       <div class="footnote">
         <p>You have no credit card on file. Add one below.</p>
       </div>
-      <div data-content="payment-form" class="payment-form">
+      <div data-content="payment-form" id="payment" class="payment-form">
         <%= simple_form_for resource, url: request.path, data: { form: "payment" } do |f| %>
           <%= f.input :stripe_token, as: :hidden %>
           <%= render "account/payment_details/payment_form" %>
-          <%= f.button :submit, value: "Save credit card", class: "btn" %>
-          <%= link_to "Skip", root_path %>
+          <div class="input">
+            <%= f.submit "Save credit card", class: "btn" %>
+            <%= link_to "Skip", root_path, class: "skip" %>
+          </div>
         <% end %>
         <div class="footnote">
           <p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p>
