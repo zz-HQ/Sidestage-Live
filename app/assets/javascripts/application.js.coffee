@@ -62,6 +62,10 @@ $(document).on 'submit', '#homepage-search', (e) ->
     e.preventDefault()
     return false
 
+$(document).on 'click', '#fileupload-button', (e) ->
+  e.preventDefault()
+  $('#file').trigger 'click'
+
 $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

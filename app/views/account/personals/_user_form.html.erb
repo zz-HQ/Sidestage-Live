@@ -1,4 +1,14 @@
-<%= f.input :avatar, label: "Select Profile picture" %>
+<div class="avatar-uploader">
+	<div id="avatar" class="avatar">
+		<%= render 'avatar' %>
+	</div>
+	<a href="#" id="avatar-upload-button">Add profile picture</a>
+</div>
+
+<div class="new-avatar" style="display:none;">
+	<%= f.input :avatar, label: false, id: "avatar-file" %>
+</div>
+
 <label>First and last name</label>
 <%= f.input :first_name, label: false, placeholder: "First name" %>
 <%= f.input :last_name, label: false, placeholder: "Last name" %>
