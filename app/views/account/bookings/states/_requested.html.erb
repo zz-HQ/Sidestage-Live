@@ -1,0 +1,8 @@
+<% if deal.is_customer?(current_user) %>
+    Pending
+    <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
+<% else %>
+    <%= link_to "Confirm Booking", accept_account_deal_path(deal), method: :put, class: "btn btn-confirm" unless deal.offered? %>
+    <%= link_to "Decline booking", decline_account_deal_path(deal), method: :put, class: "link" %>
+<% end %>
+

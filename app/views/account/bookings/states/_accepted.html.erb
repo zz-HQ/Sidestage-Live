@@ -1,0 +1,3 @@
+Confirmed
+<%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" if deal.is_customer?(current_user) %>
+<%= link_to "Cancel", reject_account_deal_path(deal), method: :put, class: "btn cancel-booking" if deal.is_artist?(current_user) %>

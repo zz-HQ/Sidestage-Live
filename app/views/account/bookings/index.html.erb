@@ -1,0 +1,11 @@
+<div class="container">
+	<div class="content">
+		<header>Your bookings</header>
+		<% if collection.present? %>
+            <%= render partial: "deal", collection: collection, as: :deal %>
+		<% else %>
+            <p>You currently have no bookings.</p>
+		<% end %>
+	</div>
+
+</div>

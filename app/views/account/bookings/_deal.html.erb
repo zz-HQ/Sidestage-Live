@@ -1,0 +1,11 @@
+<%= image_tag deal.negotiator_for(current_user).avatar.url(:thumb), style: "width:40px;height:40px", class: "avatar" %>
+<br>
+<%= deal.negotiator_for(current_user).profile_name %>
+<br>
+<%= l deal.start_at, format: :event_date %>
+<br>    			
+<%= link_to "View conversation", account_conversation_path(deal.conversation_id) %>
+
+<div class="actions">
+    <%= render "account/bookings/states/#{deal.state}", deal: deal %>
+</div>    

@@ -42,6 +42,7 @@ Airmusic::Application.routes.draw do
         resources :reviews, only: [:new, :create]
       end
       resources :messages
+      resources :bookings, only: [:index]
       resources :deals do
         member do
           put :cancel
