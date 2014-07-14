@@ -36,6 +36,14 @@ class AdminMailer < ActionMailer::Base
       format.html
     end
   end
+  
+  def profile_published(profile)
+    @profile = profile
+    mail(subject: "Sidestage: #{profile.name} published profile") do |format|
+      format.text
+      format.html
+    end
+  end
 
   #
   # Protected Methods

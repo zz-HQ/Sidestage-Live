@@ -92,7 +92,8 @@ class Profile < ActiveRecord::Base
   #  
   
   after_validation :reverse_friendly
-
+  
+  after_save :notify_admin_on_publish
 
   #
   # Associations
@@ -164,6 +165,12 @@ class Profile < ActiveRecord::Base
     if description_step? && errors.present?
       errors.add friendly_id_config.base, errors[friendly_id_config.slug_column.to_sym] if errors.include?(friendly_id_config.slug_column.to_sym)
       send "#{friendly_id_config.slug_column}=", send("#{friendly_id_config.slug_column}_was")
+    end
+  end
+  
+  def notify_admin_on_publish
+    if published_changed? && published?
+      AdminMailer.profile_published(self).deliver
     end
   end
   
