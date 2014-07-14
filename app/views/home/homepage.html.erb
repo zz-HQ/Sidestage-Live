@@ -16,6 +16,9 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
+    <%= render "olark" %>
+    
   </head>
   <body id="main" class="desktop <%= "old-browser" if old_browser? %> homepage">
     <!--[if lt IE 7]>
@@ -99,5 +102,7 @@
     </script>
     <%- end -%>
 
+     <%= render "olark" %>
+    
   </body>
 </html>

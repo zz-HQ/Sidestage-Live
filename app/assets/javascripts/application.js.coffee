@@ -62,7 +62,6 @@ $(document).on 'submit', '#homepage-search', (e) ->
     e.preventDefault()
     return false
 
-
 $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
