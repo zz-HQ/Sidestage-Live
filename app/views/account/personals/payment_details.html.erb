@@ -39,6 +39,7 @@
           <%= f.input :stripe_token, as: :hidden %>
           <%= render "account/payment_details/payment_form" %>
           <%= f.button :submit, value: "Save credit card", class: "btn" %>
+          <%= link_to "Skip", root_path %>
         <% end %>
         <div class="footnote">
           <p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p>

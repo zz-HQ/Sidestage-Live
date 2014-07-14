@@ -1,5 +1,5 @@
 <div class="form-inputs">
 	<%= f.input :body, autofocus: true, placeholder: "Reply", label: false %>
 	<%= f.input :receiver_id, as: :hidden %>	
-	<%= f.button :submit, value: "Reply", class: "btn" %>
+	<%= f.button :submit, value: "Reply", class: "btn", data: { disable_with: "Sending..." } %>
 </div>
