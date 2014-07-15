@@ -41,6 +41,7 @@
                 <%#= link_to "Create Artist Profile", new_account_profile_path %>
             <% end %>
             <%#= link_to "Dashboard", account_dashboard_path %>
+            <%= link_to "My Bookings", account_bookings_path %>
             <%= link_to "Account", account_personal_path %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           </div>

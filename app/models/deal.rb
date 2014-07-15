@@ -76,6 +76,7 @@ class Deal < ActiveRecord::Base
   
   scope :by_user, ->(user_id) { where('artist_id = :user_id OR customer_id = :user_id', user_id: user_id) }
   scope :pending, -> { where(state: Deal::PENDING_STATES) }
+  scope :upcoming, -> { order("start_at ASC") }
   
   #
   # Instance Methods
@@ -95,7 +96,11 @@ class Deal < ActiveRecord::Base
   
   def partner_id
     current_user.id == artist_id ? customer_id : artist_id
-  end  
+  end 
+  
+  def negotiator_for(user)
+    @negotiator ||= is_customer?(user) ? artist : customer
+  end
     
   #
   # Private

@@ -19,7 +19,7 @@
 
   <aside>
     <header>Booking Details</header>
-    <% if resource.deals.offered.count > 0 %>
+    <% if resource.deals.requested.count > 0 %>
       <div class="deals">
           <% resource.deals.select { |d| d.rejected? }.each do |deal| %>
             <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>

@@ -1,0 +1,24 @@
+<div class="booking">
+	<div class="photo">
+		<%= image_tag deal.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
+	</div>
+	<div class="negotiator"><%= deal.negotiator_for(current_user).profile_name %></div>
+	<div class="infos">
+		<div class="date"><%= l deal.start_at, format: :event_date %></div>
+		<%= link_to "View conversation history", account_conversation_path(deal.conversation_id), class: 'link' %>
+	</div>
+
+	<div class="actions">
+	  <%= render "account/bookings/states/#{deal.state}", deal: deal %>
+
+	  <div style="display:none;" data-container="cancel-offer">
+		  <div class="devise-lightbox cancel-offer">
+		    <h4>Are you sure you want to cancel your booking request with <%= deal.negotiator_for(current_user).profile_name %> for <%= l deal.start_at, format: :event_date %>?</h4>
+		    <%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, class: "btn" if deal.is_customer?(current_user) %>
+				<%= link_to "Cancel", reject_account_deal_path(deal), method: :put, class: "btn" if deal.is_artist?(current_user) %>
+				<p id="close-vex" class="btn cancel-booking">Nevermind</p>
+		  	<p class="footnote">If you haven't, please quickly review our <%= link_to "Cancellation Policy", "#" %>.</p>
+		  </div>
+		</div>
+	</div>
+</div>

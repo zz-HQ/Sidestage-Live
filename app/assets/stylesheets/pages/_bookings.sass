@@ -1,0 +1,63 @@
+#bookings
+	.booking
+		+outer-container
+		padding: 25px 0
+		border-bottom: 1px solid $border-color
+
+		.photo
+			+span-columns(1 of 10)
+			overflow: hidden
+
+			img
+				width: 100%
+
+		.negotiator
+			+span-columns(2 of 10)
+			font-size: 18px
+			font-weight: 400
+			margin-top: 30px
+
+		.infos
+			+span-columns(3 of 10)
+			text-align: center
+			padding-top: 15px
+
+			.date
+				font-weight: 400
+				margin-bottom: 20px
+
+		.actions
+			+span-columns(4 of 10)
+			padding-top: 10px
+
+			.btn
+				display: inline-block
+				float: left
+				width: 47%
+
+			.btn:nth-child(2)
+				margin-left: 20px
+
+.cancel-offer
+	h4
+		text-align: center
+		font-size: 17px
+
+	a
+		text-decoration: none
+		color: inherit
+
+		&.btn
+			color: white
+
+	.btn
+		display: inline-block
+		width: auto
+		padding: 12px 35px
+
+	.btn:nth-child(2)
+		margin: 20px 20px 20px 47px
+
+	.footnote
+		a
+			text-decoration: underline
