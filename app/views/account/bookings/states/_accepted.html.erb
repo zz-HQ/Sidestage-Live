@@ -1,4 +1,3 @@
 <a href="#" class="btn btn-confirm"><i class='fa fa-check'></i> Confirmed</a>
 
-<%= link_to "Cancel", cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" if deal.is_customer?(current_user) %>
-<%= link_to "Cancel", reject_account_deal_path(deal), method: :put, class: "btn cancel-booking" if deal.is_artist?(current_user) %>
+<%= link_to "Cancel", "#" , data: { lightbox: :html, target: "[data-container='cancel-offer']" }, class: "btn cancel-booking" %>
