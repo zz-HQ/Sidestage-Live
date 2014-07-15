@@ -2,6 +2,9 @@ module Surcharge
   extend ActiveSupport::Concern
   
   included do
+    def self.surcharge_base
+      ENV["surcharge"]
+    end 
   end
   
   
@@ -11,13 +14,12 @@ module Surcharge
   
     
   def price_with_surcharge
-    return price unless ENV["surcharge"].present?
+    return price unless price.present? && Profile.surcharge_base.present?
     (price + surcharge).round
   end
   
   def surcharge
-    price * (ENV["surcharge"].to_i / 100.0)
+    price * (Profile.surcharge_base.to_i / 100.0)
   end
-    
-  
+   
 end
