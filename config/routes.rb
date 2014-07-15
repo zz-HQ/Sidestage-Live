@@ -1,4 +1,5 @@
 Airmusic::Application.routes.draw do
+  #mount Sidekiq::Web => '/sidekiq'
   devise_for :users, controllers: { sessions: "authentication/sessions", registrations: "authentication/registrations", confirmations: "authentication/confirmations", :omniauth_callbacks => "authentication/omniauth_callbacks" }
   
 
