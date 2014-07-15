@@ -31,7 +31,11 @@
         </a>
 
         <div class="user">
-          <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+          <div class="navi-avatar">
+            <%= render "avatar" %>  
+          </div>
+          
+
           <div class="dropdown">
             <i class="fa fa-caret-up"></i>
             <hr>

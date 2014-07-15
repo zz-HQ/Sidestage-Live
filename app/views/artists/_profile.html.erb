@@ -14,7 +14,7 @@
 
       
       <!-- 
-      <span><i class="fa fa-tag"></i> <%= resource.genres.map(&:name).join(", ") %></span>
+      <span><i class="fa fa-tag"></i> <%#= resource.genres.map(&:name).join(", ") %></span>
       <span><i class="fa fa-map-marker"></i> <%= resource.location %></span>
       <span><i class="fa fa-comment-o"></i> <%= resource.reviews.count %></span>
       -->
@@ -73,6 +73,8 @@
     
     <div data-container="reviews" class="reviews">
       <h4>Reviews</h4>
+      <%= link_to "Do you know this artist? Leave a review.", "#", class: "light", data: { lightbox: :html, target: "[data-container='new-review']" } %>
+
       <% if resource.reviews.count <= 0 %>
         <p>This artist has no reviews yet.</p>
       <% else %>        
@@ -81,12 +83,16 @@
     </div>
 
     <% if current_user && current_user.id != resource.user_id %>
-      <div class="new-review">
-        <%= simple_form_for :review, url: account_profile_reviews_path(resource), remote: true, class: "review-form" do |f| %>
-            <%= star_rating editable: true, f: f, label: true %>
-            <%= f.input :body, as: :text, placeholder: "Your review", label: false %>
-            <%= f.submit class: "btn", value: "Send" %>
-        <%- end -%>
+      <div style="display:none;" data-container="new-review">
+        <div class="devise-lightbox new-review">
+          <h3>Leave a review for <%= resource.name %></h3>
+
+          <%= simple_form_for :review, url: account_profile_reviews_path(resource), remote: true, class: "review-form" do |f| %>
+              <%= star_rating editable: true, f: f, label: true %>
+              <%= f.input :body, as: :text, placeholder: "Your review", label: false %>
+              <%= f.submit class: "btn", value: "Send" %>
+          <%- end -%>
+        </div>
       </div>
     <% end %>
 

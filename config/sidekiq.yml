@@ -1,0 +1,11 @@
+# Sample configuration file for Sidekiq.
+# Options here can still be overridden by cmd line args.
+#   sidekiq -C config.yml
+---
+:verbose: false
+:url: <%= ENV['REDISCLOUD_URL'] %>
+:namespace: "sidestage:sidekiq:p"
+:concurrency: 5
+:queues:
+  - [critical, 4]
+  - [default, 1]

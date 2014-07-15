@@ -72,7 +72,11 @@ class Account::PersonalsController < Account::ResourcesController
   def upload_avatar
     if resource.update_attributes(permitted_params[:user])
     end
-    redirect_to :back
+    respond_to do |wants|
+      wants.html {redirect_to :back}
+      wants.js
+    end
+    
   end
   
   def destroy_avatar

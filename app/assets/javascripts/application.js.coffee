@@ -34,13 +34,12 @@ App.init = ->
     expandEffect: 'slideDown'
     collapseEffect: 'slideUp'
   })
-  #$('.booking-teaser').sidebarScroller()
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
-  $('.star-rating-editable').starRating()
+  $('.vex-content .star-rating-editable').starRating()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'

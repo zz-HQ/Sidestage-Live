@@ -33,8 +33,9 @@ do ($ = jQuery, window, document) ->
       self = @
       @$input = $(@$element).find('[type="hidden"]')
       @$stars = $(@$element).find('.rating-star')
-
+      
       @$stars.on 'click', (e) ->
+        console.log "-----------Hallo"
         self.value = $(@).index()
         self.render()
 
