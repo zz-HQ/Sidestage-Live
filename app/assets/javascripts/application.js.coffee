@@ -12,7 +12,7 @@
 #
 #= require jquery
 #= require jquery_ujs
-#= require turbolinks
+# require turbolinks
 #= require boilerplate
 #= require jquery.datetimepicker
 #= require vex/vex.combined.min
