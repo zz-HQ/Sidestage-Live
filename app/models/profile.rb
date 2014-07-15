@@ -170,7 +170,7 @@ class Profile < ActiveRecord::Base
   
   def notify_admin_on_publish
     if published_changed? && published?
-      AdminMailer.profile_published(self).deliver
+      AdminMailer.delay.profile_published(self)
     end
   end
   

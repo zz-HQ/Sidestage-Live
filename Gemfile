@@ -17,6 +17,8 @@ gem 'omniauth-facebook'
 gem 'paper_trail', '~> 3.0.2'
 gem 'aasm'
 gem 'friendly_id', '~> 5.0.0'
+gem 'sidekiq'
+
 
 # Image Processing
 gem 'carrierwave'

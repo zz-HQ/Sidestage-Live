@@ -99,7 +99,7 @@ class Message < ActiveRecord::Base
   
   def notify_receiver
     unless system_message?
-      UserMailer.message_notification(self).deliver
+      UserMailer.delay.message_notification(self)
     end
   end
   
