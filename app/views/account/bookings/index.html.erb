@@ -3,11 +3,27 @@
 		<header>Your bookings</header>
 		<% if collection.present? %>
 			<div class="bookings">
-				<%= render partial: "deal", collection: collection, as: :deal %>
+				<% collection.each do |deal| %>
+					<% unless deal.cancelled? || deal.rejected? %>
+						<% if deal.start_at > Time.now %>
+							<%= render partial: "deal", object: deal %>
+						<% end %>
+					<% end %>
+				<% end %>
 			</div>
 		<% else %>
       <p>You currently have no bookings.</p>
 		<% end %>
+		
+		<div class="bookings">
+			<h3>Past Bookings</h3>
+			<% collection.each do |deal| %>
+				<% if deal.confirmed? %>
+					<% if deal.start_at < Time.now %>
+							<%= render partial: "deal", object: deal %>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
 	</div>
-
 </div>
