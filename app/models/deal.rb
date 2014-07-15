@@ -189,12 +189,11 @@ class Deal < ActiveRecord::Base
     end
   end
   
-  
   def notify_partner
     if current_user.id == customer_id 
-      DealMailer.artist_notification(self).deliver
+      DealMailer.delay.artist_notification(self)
     else
-      DealMailer.customer_notification(self).deliver
+      DealMailer.delay.customer_notification(self)
     end
   end
   
@@ -205,7 +204,7 @@ class Deal < ActiveRecord::Base
   end
   
   def notify_admin
-    AdminMailer.new_booking_request(self).deliver
+    AdminMailer.delay.new_booking_request(self)
   end
   
 end

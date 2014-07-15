@@ -155,7 +155,7 @@ class User < ActiveRecord::Base
   end
   
   def notify_admin
-    AdminMailer.lead_notification(self).deliver
+    AdminMailer.delay.lead_notification(self)
   end
   
   def add_credit_card    
