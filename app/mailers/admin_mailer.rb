@@ -31,7 +31,6 @@ class AdminMailer < ActionMailer::Base
   def lead_notification(user)
     @user = user
     mail(subject: "Sidestage: New Lead #{user.name}") do |format|
-      format.text
       format.html
     end
   end
@@ -39,7 +38,13 @@ class AdminMailer < ActionMailer::Base
   def profile_published(profile)
     @profile = profile
     mail(subject: "Sidestage: #{profile.name} published profile") do |format|
-      format.text
+      format.html
+    end
+  end
+  
+  def new_booking_request(deal)
+    @deal = deal
+    mail(subject: "Sidestage: new booking request") do |format|
       format.html
     end
   end

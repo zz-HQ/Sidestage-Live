@@ -14,7 +14,7 @@ $(document).on 'click', '[data-lightbox="ajax"]', (e) ->
   ).success (data, textStatus, jqXHR) ->
     vex.open
       content: data
-  .error (data, textStatus, jqXHR) ->    
+  .error (data, textStatus, jqXHR) ->
     alert(textStatus)
 
 $(document).on 'click', '[data-lightbox="html"]', (e) ->

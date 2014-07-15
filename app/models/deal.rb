@@ -49,8 +49,10 @@ class Deal < ActiveRecord::Base
   before_validation :assign_artist, :assign_customer, :set_price, :set_currency, :attach_to_conversation, :make_customer_paymentable, on: :create
   
   before_save :set_state_transition_at
-
+  
   after_save :create_system_message
+  
+  after_create :notify_admin
   
   after_rollback :ensure_stripe_charge!, on: :update
   
@@ -201,5 +203,9 @@ class Deal < ActiveRecord::Base
       update_columns(charged_price: price_with_surcharge_in_cents, stripe_charge_id: stripe_charge_id)
     end
   end
-
+  
+  def notify_admin
+    AdminMailer.new_booking_request(self).deliver
+  end
+  
 end
