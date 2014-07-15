@@ -1,0 +1,39 @@
+#bookings
+	.booking
+		+outer-container
+		padding: 25px 0
+		border-bottom: 1px solid $border-color
+
+		.photo
+			+span-columns(1 of 10)
+			overflow: hidden
+
+			img
+				width: 100%
+
+		.negotiator
+			+span-columns(2 of 10)
+			font-size: 18px
+			font-weight: 400
+			margin-top: 30px
+
+		.infos
+			+span-columns(3 of 10)
+			text-align: center
+			padding-top: 15px
+
+			.date
+				font-weight: 400
+				margin-bottom: 20px
+
+		.actions
+			+span-columns(4 of 10)
+			padding-top: 10px
+
+			.btn
+				display: inline-block
+				float: left
+				width: 47%
+
+			.btn:last-child
+				margin-left: 20px

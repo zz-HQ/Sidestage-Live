@@ -22,8 +22,11 @@ hr
 		text-decoration: underline
 
 
-.cancel-booking
-	margin: 20px 40px
+
+// DEAL BUTTONS --------
+// ---------------------
+.cancel-booking,
+.decline-booking
 	background-color: transparent
 	color: $text-color-light
 	border: 1px solid $border-color
@@ -33,11 +36,35 @@ hr
 		color: $text-color
 
 .btn-confirm
-	margin: 20px 40px
 	background-color: #1D7C05
 
 	&:hover
 		background-color: lighten(#1D7C05, 10%)
+
+.btn-accept
+	background-color: #E3E3E3
+	border: 1px solid #D9D9D9
+	color: #1D7C05
+	font-weight: 400
+
+	&:hover
+		background-color: #E3E3E3
+		color: lighten(#1D7C05, 10%)
+
+.btn-pending
+	background-color: #E3E3E3
+	border: 1px solid #D9D9D9
+	color: $text-color
+
+	&:hover
+		background-color: #E3E3E3
+		color: inherit
+
+
+
+
+
+
 
 .right
 	float: right
