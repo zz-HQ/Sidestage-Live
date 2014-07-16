@@ -4,7 +4,7 @@ class AddArchive < ActiveRecord::Migration
     add_column :users, :verified, :boolean, default: false
     User.connection.execute("UPDATE users SET verified = 1")
     
-    add_column :messages, :customer_archived, :boolean, default: false
-    add_column :messages, :artist_archived, :boolean, default: false
+    add_column :conversations, :sender_archived, :boolean, default: false
+    add_column :conversations, :receiver_archived, :boolean, default: false
   end
 end

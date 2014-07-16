@@ -38,8 +38,7 @@ App.setStripeListener = ->
 #TODO: remove the following two lines after turbolinks is activated again
 $(document).on 'submit', '[data-form=payment]', stripeListener
 
-
-$(document).on 'blur', "input[type=text][data-surcharge]", (e) ->
+$(document).on 'keyup', "input[name='profile[price]']", (e) ->
   price = parseInt($(@).val())
   surcharged = price + ( price * ($(@).attr("data-surcharge") / 100.0) )
   surcharged = (if isNaN(surcharged) then "" else surcharged.toFixed(0))

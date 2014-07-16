@@ -214,11 +214,22 @@
 // PRICING ---------------
 // -----------------------
 #pricing
+	
+	.parts
+		width: 54%
+	
+	label
+		color: $text-color-light
+		text-transform: capitalize
+		font-size: 14px
+		font-weight: 400
+
 	.complete-pricing
 
 		.parts
 			+outer-container
 			margin-bottom: 20px
+			width: 54%
 
 			.headline
 				+span-columns(1 of 4)
@@ -231,14 +242,26 @@
 				float: right
 				+omega
 
-	.profile_price 
+	.profile_price
 
 		.input
 			width: 100px
 
+			input
+				color: $text-color-light
+
 		.hint
 			width: 67%
 			margin-top: 30px
+
+		.surcharged_price
+			padding: 13px 31px 13px 13px
+			background-color: #e3e3e3
+			border: 1px solid #D8D8D8
+			display: inline-block
+			margin-bottom: 20px
+			width: 100px
+			color: $text-color-light
 
 	.profile_currency .nice-select
 		width: 100px

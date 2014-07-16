@@ -15,15 +15,17 @@
       <p>You currently have no bookings.</p>
 		<% end %>
 		
-		<div class="bookings">
-			<h3>Past Bookings</h3>
-			<% collection.each do |deal| %>
-				<% if deal.confirmed? %>
-					<% if deal.start_at < Time.now %>
-							<%= render partial: "deal", object: deal %>
+		<% if false %>
+			<div class="bookings">
+				<h3>Past Bookings</h3>
+				<% collection.each do |deal| %>
+					<% if deal.confirmed? %>
+						<% if deal.start_at < Time.now %>
+								<%= render partial: "deal", object: deal %>
+						<% end %>
 					<% end %>
 				<% end %>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	</div>
 </div>

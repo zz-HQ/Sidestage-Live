@@ -37,9 +37,9 @@ App.init = ->
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
+  $('.star-rating-editable').starRating()
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
-  $('.vex-content .star-rating-editable').starRating()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
@@ -50,7 +50,14 @@ App.init = ->
 
 $(document).on 'change', '.submit-on-change', (e) -> 
   if($(@).val() != "")
-    $(@).closest('form').trigger 'submit'
+    if($(@).val() != "Other")
+      $(@).closest('form').trigger 'submit'
+    else
+      window.location.replace("/en/city")
+
+$(document).on 'change', '.redirect-on-change-to-other', (e) -> 
+  if($(@).val() == "Other")
+      window.location.replace("/en/city")
 
 $(document).on 'click', '[data-toggle]', (e) -> 
   $($(this).attr("data-toggle")).toggle()
