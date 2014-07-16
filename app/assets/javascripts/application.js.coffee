@@ -59,6 +59,9 @@ $(document).on 'change', '.redirect-on-change-to-other', (e) ->
   if($(@).val() == "Other")
       window.location.replace("/en/city_launches/new")
 
+$(document).on 'change', 'select[data-linked=true]', (e) -> 
+  window.location.replace($(@).val())
+
 $(document).on 'click', '[data-toggle]', (e) -> 
   $($(this).attr("data-toggle")).toggle()
   return false
