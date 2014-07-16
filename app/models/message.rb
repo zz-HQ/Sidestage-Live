@@ -90,6 +90,7 @@ class Message < ActiveRecord::Base
   def update_conversation_order
     conversation.body = self.body
     conversation.last_message_at = self.created_at
+    conversation.sender_archived = conversation.receiver_archived = false
     conversation.save
   end
   

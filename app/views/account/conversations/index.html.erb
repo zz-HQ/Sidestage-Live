@@ -1,12 +1,12 @@
 <div id="conversations" class="container">
 	<div class="content">
 		<header>Messages</header>
-		<%- if current_user.conversations.count <= 0 -%>
-			<p>You don't have any messages!</p>
+		<%- if current_user.unarchived_conversations.present? -%>
+    		<%- current_user.unarchived_conversations.each do |conversation| -%>
+    		  <%= render conversation %>
+    		<%- end -%>
 		<%- else -%>
-			<%- current_user.conversations.each do |conversation| -%>
-			  <%= render conversation %>
-			<%- end -%>
+		    <p>You don't have any messages!</p>
 		<%- end -%>
 	</div>
 

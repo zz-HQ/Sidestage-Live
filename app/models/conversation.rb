@@ -34,6 +34,8 @@ class Conversation < ActiveRecord::Base
   
   scope :by_user, ->(user_id) { where("sender_id = :user_id OR receiver_id = :user_id" , user_id: user_id) }
   scope :ordered_by_last_message, -> { order("last_message_at DESC") }
+  scope :archived_by, ->(user_id) { where("(sender_id = :user_id AND sender_archived IN (:archived)) OR (receiver_id = :user_id AND receiver_archived IN (:archived))", user_id: user_id, archived: true) }
+  scope :unarchived_by, ->(user_id) { where("(sender_id = :user_id AND sender_archived IN (:archived)) OR (receiver_id = :user_id AND receiver_archived IN (:archived))", user_id: user_id, archived: [false, nil]) }
   
   #
   # Callbacks
@@ -55,6 +57,10 @@ class Conversation < ActiveRecord::Base
     self.receiver_id == user.id ? self.sender : self.receiver
   end
   
+  def archive_by!(user)
+    sender_id == user.id ? sender_archive! : receiver_archive!
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -64,5 +70,14 @@ class Conversation < ActiveRecord::Base
   #
   
   private
+
+  def sender_archive!
+    update_attribute :sender_archived, true
+  end
+
+  def receiver_archive!
+    update_attribute :receiver_archived, true
+  end
+  
 
 end

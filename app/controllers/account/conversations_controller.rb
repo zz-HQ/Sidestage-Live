@@ -20,6 +20,7 @@ class Account::ConversationsController < Account::ResourcesController
   
   before_filter :update_unread_message_counter, only: :show
   
+  respond_to :html, :js
   
   #
   # Actions
@@ -34,6 +35,14 @@ class Account::ConversationsController < Account::ResourcesController
     @message.receiver_id = resource.negotiator_for(current_user).id
     @message.conversation = resource
     show!
+  end
+
+  def archive
+    resource.archive_by!(current_user)
+    respond_to do |format|
+      format.html{ redirect_to collection_path }
+      format.js{}
+    end
   end
 
   #

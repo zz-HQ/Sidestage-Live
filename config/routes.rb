@@ -55,7 +55,11 @@ Airmusic::Application.routes.draw do
         end
       end
 
-      resources :conversations
+      resources :conversations do 
+        member do
+          put :archive
+        end
+      end
       resources :payment_details
       
       root 'dashboard#index'

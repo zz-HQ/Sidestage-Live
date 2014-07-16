@@ -104,6 +104,14 @@ class User < ActiveRecord::Base
     Conversation.by_user(self.id).ordered_by_last_message
   end
   
+  def archived_conversations
+    conversations.archived_by(id)
+  end
+
+  def unarchived_conversations
+    conversations.unarchived_by(id)
+  end
+  
   def messages
     Message.by_user(self.id)
   end

@@ -11,6 +11,7 @@
 				<% end %>
 				<%= message ? (strip_tags message_body(message)) : (strip_tags conversation.body) %>
 			</p>
+			<%= link_to "Archive", archive_account_conversation_path(conversation), class: "btn", method: :put %>
 		</div>
 	</div>
 <% end %>
