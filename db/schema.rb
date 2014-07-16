@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712221327) do
+ActiveRecord::Schema.define(version: 20140716085707) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",       null: false
@@ -95,14 +95,16 @@ ActiveRecord::Schema.define(version: 20140712221327) do
   add_index "genres_profiles", ["genre_id", "profile_id"], name: "index_genres_profiles_on_genre_id_and_profile_id", using: :btree
 
   create_table "messages", force: true do |t|
-    t.integer  "sender_id",       null: false
-    t.integer  "receiver_id",     null: false
+    t.integer  "sender_id",                         null: false
+    t.integer  "receiver_id",                       null: false
     t.text     "body"
     t.datetime "read_at"
-    t.integer  "conversation_id", null: false
+    t.integer  "conversation_id",                   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "system_message"
+    t.boolean  "customer_archived", default: false
+    t.boolean  "artist_archived",   default: false
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
@@ -195,6 +197,8 @@ ActiveRecord::Schema.define(version: 20140712221327) do
     t.text     "stripe_log"
     t.string   "provider"
     t.string   "uid"
+    t.datetime "phone_nr_verified_at"
+    t.boolean  "verified",               default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

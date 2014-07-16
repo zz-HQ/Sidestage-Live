@@ -3,13 +3,13 @@
 		<h4>Base price</h4>
 	</div>
 	<div class="inputs profile_price">
-		<%= f.input :price, as: :string, input_html: { data: { surcharge: Profile.surcharge_base } } %>
+		<%= f.input :price, as: :string, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } } %>
 		<div class="hint">Your base price is the minimum you want to make for a set, whether that's 45 minutes or 2 hours.<br /> Note: Sidestage will add 20% on top of your base price, which is the total price the customer will pay to book you.</div>
 	</div>
 	<div class="inputs profile_price">
 		Price the customer will see (includes Sidestage's fee of <%= Profile.surcharge_base %>%)
 		<br>
-		<span class="surcharged_price" id="profile_surcharged_price"><%= resource.price_with_surcharge %></span>
+		<span class="surcharged_price" data-container="surcharged-price"><%= resource.price_with_surcharge %></span>
         
 	</div>
 

@@ -112,6 +112,10 @@ class User < ActiveRecord::Base
     @profile ||= profiles.first
   end
   
+  def artist?
+    profile.present?
+  end
+  
   def profile_name
     profile.try(:name) || name
   end

@@ -6,7 +6,7 @@ module Deal::StateMachine
     #There is a better Gem 'state_machine' available, but unfortunatley not maintained anymore
     include AASM
     
-    PENDING_STATES = [ :requested, :offered ]
+    PENDING_STATES = [:requested, :offered]
     
     aasm column: 'state', whiny_transitions: false do
       
@@ -19,11 +19,11 @@ module Deal::StateMachine
       state :rejected
       
       event :offer do
-        transitions from: [ :requested ], to: :offered
+        transitions from: [:requested], to: :offered, guards: [:current_user_is_artist?]
       end
       
       event :cancel do
-        transitions from: [:requested, :offered, :confirmed, :accepted], to: :cancelled
+        transitions from: [:requested, :offered, :confirmed, :accepted], to: :cancelled, guards: [:current_user_is_customer?]
       end
 
       event :reject do
@@ -31,7 +31,7 @@ module Deal::StateMachine
       end
 
       event :decline do
-        transitions from: [:requested, :offered], to: :declined
+        transitions from: [:requested, :offered], to: :declined, guards: [:current_user_is_artist?]
       end
       
       event :accept do

@@ -14,10 +14,12 @@ stripeListener = (e, message) ->
 
     e.preventDefault()
     $(".payment-status").show()
+    $(".payment-errors").hide()
     Stripe.card.createToken $("[data-form=payment]"), (status, response) ->
       if response.error
         $(".payment-errors").text(response.error.message).show()
         $(".payment-status").hide()
+        return false
       else
         form = $("[data-form=payment]")
         token = response["id"]
@@ -29,13 +31,16 @@ stripeListener = (e, message) ->
       return
     #somehow the following line is needed  
     return false
-App.setStripeListener = ->
-  $('[data-form=payment]').off 'submit', stripeListener
-  $('[data-form=payment]').on 'submit', stripeListener
+App.setStripeListener = ->  
+  #$('[data-form=payment]').off 'submit', stripeListener
+  #$('[data-form=payment]').on 'submit', stripeListener
+  
+#TODO: remove the following two lines after turbolinks is activated again
+$(document).on 'submit', '[data-form=payment]', stripeListener
 
 
-$(document).on 'blur', "input[name='profile[price]']", (e) ->
+$(document).on 'blur', "input[type=text][data-surcharge]", (e) ->
   price = parseInt($(@).val())
   surcharged = price + ( price * ($(@).attr("data-surcharge") / 100.0) )
   surcharged = (if isNaN(surcharged) then "" else surcharged.toFixed(0))
-  $("#profile_surcharged_price").html(surcharged)
+  $($(@).attr("data-surcharged-label")).html(surcharged)
