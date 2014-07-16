@@ -1,0 +1,75 @@
+#main > footer
+  clear: both
+  position: relative
+  background-color: #fff
+  overflow: hidden
+  padding: 22px 0 32px 0
+  border-top: 1px solid $border-color
+  color: $text-color-light
+
+  .left
+    +span-columns(4)
+    position: relative
+    //top: 10px
+
+    a
+      color: inherit
+
+      &:hover
+        text-decoration: underline
+
+    > div
+      +span-columns(1 of 3)
+    
+    h4
+      margin: 0 0 10px
+
+    ul
+      margin: 0
+      padding: 0
+
+  .right
+    +span-columns(4)
+    position: relative
+    text-align: right
+    top: 6px
+
+    .icon
+      float: left
+      position: relative
+      top: 6px
+      right: 5px
+      color: #6f777b
+
+      &.currency
+        right: 5px
+    
+    .select-locale,
+    .select-currency
+      display: inline-block
+      width: 120px
+
+    .select-currency
+      width: 60px
+
+    .nice-select
+      border: none
+      height: 27px
+      margin: 0
+
+      .select-label
+        position: absolute
+        display: inline-block
+
+        .select-label-value
+          position: static
+
+        .select-arrow
+          right: -18px
+          top: 3px
+      
+      select
+        left: 0
+
+  .copyright
+    margin-top: 30px

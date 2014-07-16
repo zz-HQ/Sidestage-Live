@@ -1,8 +1,30 @@
 <footer>
   <div class="wrap">
-    
     <nav class="left">
-      <p class="text-shadow"><%= link_to "Terms", terms_path %> & <%= link_to "Privacy", privacy_path %> - Sidestage © <%= Time.now.year %></p>
+      <div class="legal">
+        <h4>Legal</h4>
+        <ul>
+          <li><%= link_to "Terms", terms_path %></li>
+          <li><%= link_to "Privacy", privacy_path %></li>
+        </ul>
+      </div>
+
+      <div class="community">
+        <h4>Community</h4>
+        <ul>
+          <li><%= link_to "Facebook", "https://www.facebook.com/sidestageHQ" %></li>
+          <li><%= link_to "Twitter", "https://twitter.com/sidestagehq" %></li>
+        </ul>
+      </div>
+
+      <div class="get-help">
+        <h4>Get help</h4>
+        <ul>
+          <li><%= link_to "Cancellations", "#" %></li>
+          <li><%= link_to "FAQ", "#" %></li>
+        </ul>
+      </div>
+
     </nav>
 
     <nav class="right">
@@ -18,6 +40,8 @@
   		    <% end %>
         </div>
       <% end %>
+
+      <!-- Currency -->
       <div class="select-currency">
         <div class="icon currency"><i class="fa fa-<%= current_currency.name.downcase %>"></i></div>
 		    <%= form_tag change_currency_path do |f| %>
@@ -29,8 +53,11 @@
 		    <% end %>
       </div>
     </nav>
+  </div>
 
-  </div>  
+  <div class="wrap copyright">
+    <p>Sidestage, Inc. © <%= Time.now.year %></p>
+  </div>
 </footer>
 
 <%- if Rails.env.production? -%>
