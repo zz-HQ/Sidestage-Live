@@ -34,7 +34,7 @@ App.setStripeListener = ->
   $('[data-form=payment]').on 'submit', stripeListener
 
 
-$(document).on 'blur', "input[name='profile[price]']", (e) ->
+$(document).on 'keyup', "input[name='profile[price]']", (e) ->
   price = parseInt($(@).val())
   surcharged = price + ( price * ($(@).attr("data-surcharge") / 100.0) )
   surcharged = (if isNaN(surcharged) then "" else surcharged.toFixed(0))
