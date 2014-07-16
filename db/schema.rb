@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716085707) do
+ActiveRecord::Schema.define(version: 20140716163428) do
+
+  create_table "city_launches", force: true do |t|
+    t.string   "email"
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",                         null: false

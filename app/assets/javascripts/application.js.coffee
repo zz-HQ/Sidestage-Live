@@ -53,11 +53,11 @@ $(document).on 'change', '.submit-on-change', (e) ->
     if($(@).val() != "Other")
       $(@).closest('form').trigger 'submit'
     else
-      window.location.replace("/en/city")
+      window.location.replace("/en/city_launches/new")
 
 $(document).on 'change', '.redirect-on-change-to-other', (e) -> 
   if($(@).val() == "Other")
-      window.location.replace("/en/city")
+      window.location.replace("/en/city_launches/new")
 
 $(document).on 'click', '[data-toggle]', (e) -> 
   $($(this).attr("data-toggle")).toggle()
