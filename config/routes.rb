@@ -61,6 +61,8 @@ Airmusic::Application.routes.draw do
       root 'dashboard#index'
     end
 
+    get 'cancellations', to: "pages#cancellations", as: "cancellations"
+    get 'faq', to: "pages#faq", as: "faq"
     get 'terms-of-service', to: "pages#terms", as: "terms"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
     get 'index', to: "home#index", as: "homepage"    
