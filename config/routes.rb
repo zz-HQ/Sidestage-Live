@@ -63,6 +63,7 @@ Airmusic::Application.routes.draw do
 
     get 'cancellations', to: "pages#cancellations", as: "cancellations"
     get 'faq', to: "pages#faq", as: "faq"
+    get 'city', to: "pages#city", as: "city"
     get 'terms-of-service', to: "pages#terms", as: "terms"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
     get 'index', to: "home#index", as: "homepage"    
