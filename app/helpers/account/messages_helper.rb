@@ -1,7 +1,7 @@
 module Account::MessagesHelper
 
   def messages_filter
-    [["Inbox (#{current_user.unread_message_counter})", account_conversations_path], ["Archive", archived_account_conversations_path]]
+    [["Inbox (#{current_user.unread_message_counter.to_i})", account_conversations_path], ["Archive", archived_account_conversations_path]]
   end
     
   def deal_system_message_body(message)
