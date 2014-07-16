@@ -1,5 +1,3 @@
 <% if resource.errors.blank? %>
-  $("[data-container=reviews]").append("<%= j(render('review', review: resource)) %>");
-  $('#review_body, #review_rate').val('').trigger('blur');
-  $('.star-rating-editable .rating-star').removeClass('rating-on').addClass('rating-off');
+	window.location.replace("<%= artist_path(resource.profile) %>")
 <% end %>
