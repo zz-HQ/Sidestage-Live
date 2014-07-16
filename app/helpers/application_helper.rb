@@ -33,6 +33,10 @@ module ApplicationHelper
   end
   
   def available_locations
+    ["Berlin", "Other"]
+  end
+
+  def available_locations_homepage
     ["Berlin"]
   end
   

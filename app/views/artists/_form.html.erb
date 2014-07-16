@@ -34,7 +34,7 @@
 				<h3>Where are you based?</h3>
 
 				<div id="city-switch">
-          <%= nice_select(f.select :location, available_locations, include_blank: false) %>
+          <%= nice_select(f.select :location, available_locations, {include_blank: false}, {class: "redirect-on-change-to-other"}) %>
         </div>
 			</div>
 
