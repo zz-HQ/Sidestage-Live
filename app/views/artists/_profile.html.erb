@@ -90,11 +90,8 @@
           </script>     
       </div>          
       
-      <% if resource.reviews.count <= 0 %>
-        <p>This artist has no reviews yet.</p>
-      <% else %>        
         <%= render partial: "account/reviews/review", collection: resource.reviews %>
-      <% end %>
+
     </div>
 
     <% if defined?(next_resource) && next_resource.present? %>
