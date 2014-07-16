@@ -30,6 +30,9 @@ class Account::ReviewsController < Account::ResourcesController
   #
   #
 
+  def new
+  end
+
   #
   # Protected
   # ---------------------------------------------------------------------------------------

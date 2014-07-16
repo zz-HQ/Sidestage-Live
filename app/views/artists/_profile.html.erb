@@ -75,18 +75,7 @@
       <h4>Reviews</h4>
 
       <% if current_user && current_user.id != resource.user_id %>
-        <%= link_to "Do you know this artist? Leave a review.", "#", class: "light", data: { lightbox: :html, target: "[data-container='new-review']" } %>
-        <div style="display:none;" data-container="new-review">
-          <div class="devise-lightbox new-review">
-            <h3>Leave a review for <%= resource.name %></h3>
-
-            <%= simple_form_for :review, url: account_profile_reviews_path(resource), remote: true, class: "review-form" do |f| %>
-                <%= star_rating editable: true, f: f, label: true %>
-                <%= f.input :body, as: :text, placeholder: "Your review", label: false %>
-                <%= f.submit class: "btn", value: "Send" %>
-            <%- end -%>
-          </div>
-        </div>
+        <%= link_to "Do you know this artist? Leave a review.", new_account_profile_review_path(resource), class: "light", data: { lightbox: :ajax } %>
       <% end %>
 
       <% if resource.reviews.count <= 0 %>
