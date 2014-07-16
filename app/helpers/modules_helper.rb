@@ -1,13 +1,17 @@
 module ModulesHelper
 
-  def nice_select(select)
+  def nice_select(select, options = {})
     raise "I need a select tag" if select.blank?
+
+    klass = "nice-select"
+    klass += " small" if options[:small].present?
+
     label_value = content_tag(:span, "label", class: "select-label-value")
     #arrow = content_tag(:span, nil, class: "select-arrow")
     arrow = content_tag(:i, nil, class: "fa fa-angle-down select-arrow")
     label = content_tag(:span, (label_value + arrow), class: "select-label")
     select_content = label + select
-    content_tag(:div, select_content, class: "nice-select")
+    content_tag(:div, select_content, class: klass)
   end
 
   def star_rating(options = {})

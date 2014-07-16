@@ -3,7 +3,13 @@
 	
 	.content
 		+outer-container
-		+span-columns(6)
+		+span-columns(7)
+
+		header
+			.nice-select
+				display: inline-block
+				top: 8px
+				left: 8px
 
 		.message
 			+outer-container
@@ -23,7 +29,7 @@
 					width: 100%
 
 			.body
-				+span-columns(9 of 10)
+				+span-columns(7 of 10)
 				cursor: pointer
 
 				i
@@ -53,6 +59,14 @@
 						color: #777
 						font-size: 16px
 						font-weight: 300
+
+			.archive
+				+span-columns(2 of 10)
+
+				a
+					margin-top: 14px
+					text-align: center
+					display: block
 
 	aside
 		+span-columns(2)

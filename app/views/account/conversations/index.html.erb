@@ -1,10 +1,12 @@
 <div id="conversations" class="container">
 	<div class="content">
-		<header>Messages</header>
-		<%- if current_user.unarchived_conversations.present? -%>
-    		<%- current_user.unarchived_conversations.each do |conversation| -%>
-    		  <%= render conversation %>
-    		<%- end -%>
+		<header>
+			Messages
+			<%= nice_select((select_tag 'messages', options_for_select(conversations_features), include_blank: false), small: true) %>
+		</header>
+		
+    <%- if collection.present? -%>
+		  <%= render collection %>
 		<%- else -%>
 		    <p>You don't have any messages!</p>
 		<%- end -%>

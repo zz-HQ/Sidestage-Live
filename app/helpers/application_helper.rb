@@ -39,6 +39,13 @@ module ApplicationHelper
   def available_locations_homepage
     ["Berlin"]
   end
+
+  def conversations_features
+    if current_user.unread_message_counter.to_i > 0
+      inbox_counter = "(#{current_user.unread_message_counter.to_i})"
+    end
+    ["Inbox #{inbox_counter}", "Archive"]
+  end
   
   def available_locales
     {
