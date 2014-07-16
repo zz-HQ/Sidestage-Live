@@ -30,6 +30,8 @@ de:
       messages:
         create:
           notice: "Your message has been sent."
+      conversations:
+          archived: "Conversation was moved to Archive."
     actions:
       create:
         notice: "%{resource_name} successfully created."

@@ -57,6 +57,10 @@ class Conversation < ActiveRecord::Base
     self.receiver_id == user.id ? self.sender : self.receiver
   end
   
+  def archived_by?(user)
+    sender_id == user.id ? sender_archived? : receiver_archived?
+  end
+  
   def archive_by!(user)
     sender_id == user.id ? sender_archive! : receiver_archive!
   end

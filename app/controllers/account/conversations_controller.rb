@@ -36,9 +36,17 @@ class Account::ConversationsController < Account::ResourcesController
     @message.conversation = resource
     show!
   end
+  
+  def archived
+    set_collection_ivar(current_user.archived_conversations)
+    respond_to do |format|
+      format.html{ render :index }
+    end
+  end
 
   def archive
     resource.archive_by!(current_user)
+    flash[:notice] = t(:"flash.account.conversations.archived")
     respond_to do |format|
       format.html{ redirect_to collection_path }
       format.js{}
@@ -63,8 +71,12 @@ class Account::ConversationsController < Account::ResourcesController
   #
   #
   #
-  
+    
   private
+  
+  def collection
+    get_collection_ivar || set_collection_ivar(current_user.unarchived_conversations)
+  end
   
   def update_unread_message_counter
     unread_msgs = resource.messages.select { |m| m.receiver_id == current_user.id && m.read_at.nil? }.count
