@@ -1,7 +1,7 @@
 <div class="devise-lightbox new-review">
   <h3>Leave a review for <%= resource.name %></h3>
 
-  <%= simple_form_for  Review.new,  url: account_profile_reviews_path(resource), remote: true, class: "review-form" do |f| %>
+  <%= simple_form_for :review, url: account_profile_reviews_path(resource), remote: true, class: "review-form" do |f| %>
       <%= star_rating editable: true, f: f, label: true %>
       <%= f.input :body, as: :text, placeholder: "Your review", label: false %>
       <%= f.submit class: "btn", value: "Send" %>
