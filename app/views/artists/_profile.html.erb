@@ -75,7 +75,7 @@
       <h4>Reviews</h4>
 
       <% if current_user && current_user.id != resource.user_id %>
-        <%= link_to "Do you know this artist? Leave a review.", new_account_profile_review_path(resource), class: "light", data: { lightbox: :html, target: "[data-container='new-review']" } %>
+        <%= link_to "Do you know this artist? Leave a review.", new_account_profile_review_path(resource), class: "light link-to-new-review", data: { lightbox: :html, target: "[data-container='new-review']" } %>
       <% end %>
       
       <div style="display:none;" data-container="new-review">
