@@ -56,6 +56,7 @@ Airmusic::Application.routes.draw do
       end
 
       resources :conversations do 
+        get :archived, on: :collection
         member do
           put :archive
         end
