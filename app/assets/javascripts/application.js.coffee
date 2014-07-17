@@ -50,7 +50,7 @@ App.init = ->
 
 $(document).on 'change', '.submit-on-change', (e) -> 
   if($(@).val() != "")
-    if($(@).val() != "Other")
+    if($(@).val() != "More cities")
       $(@).closest('form').trigger 'submit'
     else
       window.location.replace("/en/city_launches/new")
