@@ -12,6 +12,7 @@ class ArtistsController < ApplicationController
   
   before_filter :reject_scraper, only: [:index]
   before_filter :redirect_if_unpublished, only: [:show]
+  before_filter :only_available_cities, only: [:index]
   
   
   #
@@ -90,6 +91,10 @@ class ArtistsController < ApplicationController
     super.tap do |profile|
       profile.user_id = -1
     end
+  end
+
+  def only_available_cities
+    redirect_to new_city_launch_path if params[:location] == "More cities"
   end
 
 end
