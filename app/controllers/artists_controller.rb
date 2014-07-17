@@ -12,7 +12,7 @@ class ArtistsController < ApplicationController
   
   before_filter :reject_scraper, only: [:index]
   before_filter :redirect_if_unpublished, only: [:show]
-  before_filter :only_available_cities, only: [:index]  
+  before_filter :only_available_cities, only: [:index]
   
   #
   # Settings
