@@ -67,7 +67,7 @@ de:
             partner: "The customer has cancelled this booking request. Support will be in touch with you shortly. "
           declined:
             you: "You have decline this booking request."
-            partner: "Unfortunately the artist has declined the booking request. Please <a href='%{artists_path}'>click here</a> to view more artist profiles."
+            partner: "Unfortunately, %{partner_name} has declined the booking request. Please <a href='%{artists_path}'>click here</a> to view more artist profiles."
           accepted:
             you: "You have accepted this booking request for %{event_date}."
             partner: "Great news! This booking request has been accepted by the artist. The booking is confirmed for %{event_date}. Your credit card will now be charged %{price}. <br/><br/>If you need help with this booking, contact us, support@sidestage.com."
