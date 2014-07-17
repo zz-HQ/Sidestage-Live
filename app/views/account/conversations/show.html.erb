@@ -40,9 +40,9 @@
 
       <% if current_user.artist? %>
         Make <%= resource.negotiator_for(current_user).profile_name %> an offer to play at their next event.
-        <%= link_to "Make offer", "#", class: "btn", data: { lightbox: :html, target: "[data-container='artist-offer']" } %>
+        <%= link_to "Make offer", "#", class: "btn btn-confirm", data: { lightbox: :html, target: "[data-container='artist-offer']" } %>
   	    <div style="display:none;" data-container="artist-offer">
-  		  <div class="devise-lightbox">
+  		  <div class="devise-lightbox new-offer">
   		      <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
     	  </div>
         </div>
