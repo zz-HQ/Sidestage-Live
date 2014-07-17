@@ -5,8 +5,8 @@
 	    <%= f.input :start_at, as: :hidden %>
 	    <%= f.input :profile_id, as: :hidden %>
 	    <%= f.input :stripe_token, as: :hidden %>
-      <%= render "account/payment_details/payment_form" %>
-      <%= f.button :submit, class: "btn", value: "Book Now" %>
+        <%= render "account/payment_details/payment_form" %>
+        <%= f.button :submit, class: "btn", value: "Book Now" %>
     </div>
 	<% end %>
 	<div class="label">Your payment data is secure. <br> We use Stripe to process payments.</div>

@@ -77,7 +77,7 @@ module Payment
   def save_stripe_card!(card)
     self.stripe_card_id = card.id
     User.where(id: id).update_all(stripe_card_id: self.stripe_card_id)
-    stripe_token = nil
+    self.stripe_token = nil
     return true
   end
   
@@ -85,7 +85,7 @@ module Payment
     self.stripe_customer_id = customer.id
     self.stripe_card_id = customer.cards.first.id
     User.where(id: id).update_all(stripe_customer_id: self.stripe_customer_id, stripe_card_id: self.stripe_card_id)
-    stripe_token = nil
+    customer.stripe_token = nil
     return true
   end
   

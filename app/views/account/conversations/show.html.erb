@@ -19,7 +19,7 @@
 
   <aside>
     <header>Booking Details</header>
-    <% if resource.deals.requested.count > 0 %>
+    <% if resource.deals.visible_in_conversation.present? %>
       <div class="deals">
           <% resource.deals.select { |d| d.rejected? }.each do |deal| %>
             <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
@@ -38,12 +38,12 @@
     <% else %>
       <p>There is currently no booking request made.</p>
 
-      <% if false && current_user.artist? %>
+      <% if current_user.artist? %>
         Make <%= resource.negotiator_for(current_user).profile_name %> an offer to play at their next event.
         <%= link_to "Make offer", "#", class: "btn", data: { lightbox: :html, target: "[data-container='artist-offer']" } %>
   	    <div style="display:none;" data-container="artist-offer">
   		  <div class="devise-lightbox">
-              <%= render "account/offers/form", deal: Deal.new(customer: resource.negotiator_for(current_user)) %>
+  		      <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
     	  </div>
         </div>
       <% end %>

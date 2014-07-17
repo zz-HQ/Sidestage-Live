@@ -5,44 +5,129 @@ describe Account::DealsController, :type => :controller do
   
   before_each 
   
+  context "states" do
+    
+    before(:each) do
+      allow(Stripe::Charge).to receive(:create) { 
+        val = "MOCK"; def val.id; "123"; end; val
+      }
+    end
+
+    it "offers" do
+      deal = FactoryGirl.create(:requested_deal)
+      
+      sign_in(deal.artist)
+      put :offer, id: deal.to_param, deal: { price: 1000 }
+
+      expect(assigns(:deal).offered?).to be true
+      expect(assigns(:deal).price).to be 1000
+      expect(response).to redirect_to(account_conversation_path(deal.conversation))
+    end
+    
+    it "accepts" do
+      deal = FactoryGirl.create(:requested_deal)
+      
+      sign_in(deal.artist)
+      put :accept, id: deal.to_param
+
+      expect(assigns(:deal).accepted?).to be true
+      expect(response).to redirect_to(account_conversation_path(deal.conversation))
+    end
+
+    it "confirms" do
+      deal = FactoryGirl.create(:offered_deal)
+      
+      sign_in(deal.customer)
+      put :confirm, id: deal.to_param
+      
+      expect(assigns(:deal).confirmed?).to be true
+      expect(response).to redirect_to(account_conversation_path(deal.conversation))      
+    end
+    
+    it "declines" do
+      deal = FactoryGirl.create(:requested_deal)
+      
+      sign_in(deal.artist)
+      put :decline, id: deal.to_param
+      
+      expect(assigns(:deal).declined?).to be true
+      expect(response).to redirect_to(account_conversation_path(deal.conversation))      
+    end
+    
+    it "rejects" do
+      deal = FactoryGirl.create(:requested_deal)
+      
+      sign_in(deal.artist)
+      put :reject, id: deal.to_param
+      
+      expect(assigns(:deal).rejected?).to be true
+      expect(response).to redirect_to(account_conversation_path(deal.conversation))      
+    end
+
+    it "cancels" do
+      deal = FactoryGirl.create(:confirmed_deal)
+      
+      sign_in(deal.customer)
+      put :cancel, id: deal.to_param
+      
+      expect(assigns(:deal).cancelled?).to be true
+      expect(response).to redirect_to(account_conversation_path(deal.conversation))      
+    end
+    
+    
+  end
+  
   context "Payment" do
     
-    describe "ajax" do
-      
       describe "payment info missing" do
 
-        it "initial request renders form" do
-          customer = FactoryGirl.create(:customer)
-          profile = FactoryGirl.create(:profile)
-          expect(customer).to_not be_paymentable
+        describe "ajax" do
 
-          sign_in(customer)
-          post :create, deal: { profile_id: profile.id, start_at: Time.now }, format: "js"
+          it "initial request renders form" do
+            customer = FactoryGirl.create(:customer)
+            profile = FactoryGirl.create(:profile)
+            expect(customer).to_not be_paymentable
 
-          expect(response).to render_template("create")
-          expect(response).to render_template(partial: "_form")
+            sign_in(customer)
+            post :create, deal: { profile_id: profile.id, start_at: Time.now }, format: "js"
+
+            expect(response).to render_template("create")
+            expect(response).to render_template(partial: "_form")
+          end
+
         end
+        
+        it "redirects to payment details if confirming" do
+          deal = FactoryGirl.create(:proposed_deal, customer: FactoryGirl.create(:customer))
+          sign_in(deal.customer)
+          
+          put :confirm, id: deal.to_param
+          
+          expect(response).to redirect_to(payment_details_account_personal_path)
+        end
+
       end
 
       describe "payment info available" do
-
-        it "creates deal" do
-          customer = FactoryGirl.create(:quentin)
-          profile = FactoryGirl.create(:profile)
+      
+        describe "ajax" do
+      
+          it "creates deal" do
+            customer = FactoryGirl.create(:quentin)
+            profile = FactoryGirl.create(:profile)
           
-          sign_in(customer)
-          post :create, deal: { profile_id: profile.id, start_at: Time.now }, format: "js"
+            sign_in(customer)
+            post :create, deal: { profile_id: profile.id, start_at: Time.now }, format: "js"
           
-          expect(response).to render_template("create")
-          expect(response).to render_template(partial: "_form", count: 0)
+            expect(response).to render_template("create")
+            expect(response).to render_template(partial: "_form", count: 0)
+          end
+      
         end
+      
       end
-      
-      
       
     end
     
-  end
-
   
 end

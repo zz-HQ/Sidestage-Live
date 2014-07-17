@@ -28,9 +28,9 @@ class Account::DealsController < Account::ResourcesController
   #
   #
   
-  def show
-    show! do |format|
-      format.html { redirect_to account_conversation_path(resource.conversation) }
+  def create
+    create! do |success, failure|
+      success.html{ redirect_to account_conversation_path(resource.conversation) }
     end
   end
   
@@ -44,8 +44,21 @@ class Account::DealsController < Account::ResourcesController
     end
   end
   
-  Deal.aasm.events.keys.each do |event|
-    next if event == :offer
+  def confirm
+    resource.confirm!
+    respond_to do |format|
+      format.html{
+        if resource.errors.include?(:customer_id)
+          flash[:error] = resource.errors.messages[:customer_id].first
+          redirect_to payment_details_account_personal_path
+        else
+          redirect_to account_conversation_path(resource.conversation)
+        end
+      }
+    end
+  end
+  
+  Deal.aasm.events.keys.reject { |e| e.in?([:offer, :confirm]) }.each do |event|
     define_method event do
       resource.send("#{event.to_s}!")
       flash[:notice] = t(:"flash.actions.update.deal.confirmed") if event == :accept
@@ -90,6 +103,7 @@ class Account::DealsController < Account::ResourcesController
   def build_resource
     super.tap do |deal|
       deal.current_user = current_user
+      deal.customer = current_user
     end
   end
   

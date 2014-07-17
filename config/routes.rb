@@ -44,6 +44,7 @@ Airmusic::Application.routes.draw do
       end
       resources :messages
       resources :bookings, only: [:index]
+      resources :offers, only: [:create, :new]
       resources :deals, except: [:destroy] do
         member do
           put :cancel
@@ -57,9 +58,7 @@ Airmusic::Application.routes.draw do
 
       resources :conversations do 
         get :archived, on: :collection
-        member do
-          put :archive
-        end
+        put :archive, on: :member
       end
       resources :payment_details
       

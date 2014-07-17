@@ -1,0 +1,21 @@
+<div class="booking">
+  <table>
+    <tr>
+      <td>Event date:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
+     </tr>
+     <tr class="price">
+         <% if deal.is_customer?(current_user) %>
+            <td>price:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
+         <% else %>
+            <td>You'll earn:</td><td><%= localized_price(deal.price, deal.currency) %></td>
+        <% end %>    
+     </tr>
+     </table>      
+     <hr>
+     <% if deal.is_customer?(current_user) %>
+         <p><%= link_to "Accept & confirm", confirm_account_deal_path(deal), method: :put, class: "btn btn-confirm" %></p>
+         <p><%= link_to "Cancel offer", cancel_account_deal_path(deal), method: :put, class: "link" %></p>
+     <% else %>
+        <%= link_to "Cancel booking", decline_account_deal_path(deal), method: :put, class: "link" %>
+     <% end %>
+</div>

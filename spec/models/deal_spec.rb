@@ -39,12 +39,12 @@ describe Deal, :type => :model do
       expect(deal.state_transition_at).to be_present
     end
         
-    it "assigns artis on creat" do
+    it "assigns artis on create" do
       deal = FactoryGirl.create(:deal)
       expect(deal.artist).to eq(deal.profile.user)
     end
     
-    it "assigns conversation on creat" do
+    it "assigns conversation on create" do
       deal = FactoryGirl.create(:deal)
       expect(deal.conversation).to be_present
     end
@@ -54,7 +54,7 @@ describe Deal, :type => :model do
   
   context "Payment" do
 
-    context "when customer chargeable" do
+    context "customer chargeable" do
 
       it "charges customer on accept" do
         deal = FactoryGirl.create(:deal)
@@ -106,7 +106,29 @@ describe Deal, :type => :model do
       
     end
     
-    context "when charging fails" do
+    context "customer not chargeable" do
+      
+      it "proposes" do
+        customer = FactoryGirl.create(:customer)
+        expect(customer.paymentable?).to be false
+        
+        deal = FactoryGirl.create(:proposed_deal, customer: customer)
+        
+        expect(deal.proposed?).to be true
+      end
+      
+      it "has error on customer_id upon confirming" do
+        deal = FactoryGirl.create(:proposed_deal, customer: FactoryGirl.create(:customer))
+        deal.current_user = deal.customer
+        deal.confirm!
+
+        expect(deal.proposed?).to be true
+        expect(deal.errors).to have_key(:customer_id)
+      end
+      
+    end
+    
+    context "charging fails" do
       
       it "does not change to accepted" do
         deal = FactoryGirl.create(:deal)

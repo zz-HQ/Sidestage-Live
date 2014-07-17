@@ -36,7 +36,7 @@ class Deal < ActiveRecord::Base
   validates :artist_id, :profile_id, :customer_id, :price, :start_at, :currency, :conversation_id, presence: true
   validates :price, numericality: true, allow_blank: true 
   
-  validate :customer_must_be_chargeable, on: :create
+  validate :customer_must_be_chargeable, if: :should_customer_be_chargeable?
 
   #
   # Callbacks
@@ -79,6 +79,7 @@ class Deal < ActiveRecord::Base
   scope :by_user, ->(user_id) { where('artist_id = :user_id OR customer_id = :user_id', user_id: user_id) }
   scope :pending, -> { where(state: Deal::PENDING_STATES) }
   scope :upcoming, -> { order("start_at ASC") }
+  scope :visible_in_conversation, -> { where('state NOT IN (?)', Deal::HIDDEN_CONVERSATION_STATES) }
   
   #
   # Instance Methods
@@ -201,6 +202,10 @@ class Deal < ActiveRecord::Base
     if changes.include?(:stripe_charge_id) && stripe_charge_id.present?
       update_columns(charged_price: price_with_surcharge_in_cents, stripe_charge_id: stripe_charge_id)
     end
+  end
+  
+  def should_customer_be_chargeable?
+    requested? || confirmed?    
   end
   
   def notify_admin

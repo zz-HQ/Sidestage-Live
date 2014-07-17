@@ -32,6 +32,7 @@ FactoryGirl.define do
     factory :customer do
       first_name "customer"      
       stripe_customer_id nil
+      stripe_card_id nil
     end
 
   end

@@ -7,10 +7,12 @@ module Deal::StateMachine
     include AASM
     
     PENDING_STATES = [:requested, :offered]
+    HIDDEN_CONVERSATION_STATES = [:declined, :cancelled]
     
     aasm column: 'state', whiny_transitions: false do
       
       state :requested, initial: true
+      state :proposed
       state :offered
       state :confirmed
       state :accepted
@@ -23,7 +25,7 @@ module Deal::StateMachine
       end
       
       event :cancel do
-        transitions from: [:requested, :offered, :confirmed, :accepted], to: :cancelled, guards: [:current_user_is_customer?]
+        transitions from: [:requested, :offered, :confirmed, :accepted, :proposed], to: :cancelled, guards: [:current_user_is_customer?]
       end
 
       event :reject do
@@ -31,7 +33,7 @@ module Deal::StateMachine
       end
 
       event :decline do
-        transitions from: [:requested, :offered], to: :declined, guards: [:current_user_is_artist?]
+        transitions from: [:requested, :offered, :proposed], to: :declined, guards: [:current_user_is_artist?]
       end
       
       event :accept do
@@ -39,7 +41,7 @@ module Deal::StateMachine
       end
       
       event :confirm do
-        transitions from: [ :offered ], to: :confirmed, guards: [:current_user_is_customer?, :customer_charged?]
+        transitions from: [:offered, :proposed], to: :confirmed, guards: [:current_user_is_customer?, :customer_must_be_chargeable, :customer_charged?]
       end
       
     end
