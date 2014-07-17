@@ -12,7 +12,7 @@ class ArtistsController < ApplicationController
   
   before_filter :reject_scraper, only: [:index]
   before_filter :redirect_if_unpublished, only: [:show]
-  
+  before_filter :only_available_cities, only: [:index]  
   
   #
   # Settings
@@ -73,7 +73,11 @@ class ArtistsController < ApplicationController
   def redirect_if_unpublished
     redirect_to artists_path unless resource.published?
   end
-  
+
+  def only_available_cities
+    redirect_to new_city_launch_path if params[:location] == "More cities"
+  end
+    
   def reject_scraper
     redirect_to root_path if params[:location].blank?
   end

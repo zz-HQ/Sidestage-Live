@@ -1,1 +1,3 @@
-<%= t("mail.deals.#{@deal.state}.body", event_date: l(@deal.start_at.to_date, format: :event_date), customer_name: @deal.customer.name).html_safe %>
+<%= t("mail.deals.#{@deal.state}.body", 
+    event_date: l(@deal.start_at.to_date, format: :event_date), 
+    customer_name: @deal.customer.name).html_safe %>

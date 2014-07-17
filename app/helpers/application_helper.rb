@@ -36,10 +36,6 @@ module ApplicationHelper
     ["Berlin", "More cities"]
   end
 
-  def available_locations_homepage
-    ["Berlin"]
-  end
-
   def available_locales
     {
       de: "Deutsch",
