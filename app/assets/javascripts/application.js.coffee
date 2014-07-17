@@ -56,7 +56,7 @@ $(document).on 'change', '.submit-on-change', (e) ->
       window.location.replace("/en/city_launches/new")
 
 $(document).on 'change', '.redirect-on-change-to-other', (e) -> 
-  if($(@).val() == "Other")
+  if($(@).val() == "More cities")
       window.location.replace("/en/city_launches/new")
 
 $(document).on 'change', 'select[data-linked=true]', (e) -> 
