@@ -44,6 +44,19 @@
   	    <div style="display:none;" data-container="artist-offer">
   		  <div class="devise-lightbox new-offer">
   		      <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
+            <script>
+            jQuery(document).ready(function(){
+                $('.date-picker').datetimepicker({
+                  timepicker: false,
+                  format: 'j/n/Y',
+                  scrollInput: false,
+                  minDate: '-1970/01/01',
+                  onChangeDateTime: function(dp, $input) {
+                    return $($input).datetimepicker('hide');
+                  }
+                });
+            })
+          </script> 
     	  </div>
         </div>
       <% end %>

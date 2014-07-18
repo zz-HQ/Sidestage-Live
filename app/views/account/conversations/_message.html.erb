@@ -8,7 +8,7 @@
     </div>
     <div class="body">
         <h3><%= link_to_if message.sender.profile.present?, message.sender.profile_name, artist_path(message.sender.profile||1) %></h3>
-        <p><%= message_body(message) %></p>
+        <p><%= simple_format(message_body(message)) %></p>
     </div>
     <%- end -%>
 </div>
