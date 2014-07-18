@@ -48,7 +48,14 @@ class AdminMailer < ActionMailer::Base
       format.html
     end
   end
-
+  
+  def more_cities(city_launch)
+    @city_launch = city_launch
+    mail(subject: "Sidestage: More cities signup") do |format|
+      format.html
+    end
+  end
+  
   #
   # Protected Methods
   # ---------------------------------------------------------------------------------------

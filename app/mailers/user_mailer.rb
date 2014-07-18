@@ -11,6 +11,8 @@ class UserMailer < Devise::Mailer
           :reply_to => ENV["mail_from"],
           :return_path => ENV["mail_return_path"]
   
+  layout "email/user"
+  
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -19,8 +21,9 @@ class UserMailer < Devise::Mailer
   #
 
   def message_notification(message)
+    @user = message.receiver
     @message = message
-    mail(to: message.receiver.email, subject: "New Message") do |format|
+    mail(to: @user.email, subject: "New Message") do |format|
       format.text
       format.html
     end

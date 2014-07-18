@@ -10,7 +10,9 @@ class DealMailer < ActionMailer::Base
   default :from => ENV["mail_from"],
           :reply_to => ENV["mail_from"],
           :return_path => ENV["mail_return_path"]
-
+  
+  layout "email/user"
+            
   #
   # Helpers
   # ---------------------------------------------------------------------------------------
@@ -29,16 +31,18 @@ class DealMailer < ActionMailer::Base
   #
 
   def artist_notification(deal)
+    @user = deal.artist
     @deal = deal
-    mail(setup(deal.artist, deal)) do |format|
+    mail(setup(@user, deal)) do |format|
       format.text
       format.html
     end
   end
 
   def customer_notification(deal)
+    @user = deal.customer
     @deal = deal
-    mail(setup(deal.customer, deal)) do |format|
+    mail(setup(@user, deal)) do |format|
       format.text
       format.html
     end

@@ -19,7 +19,7 @@ module Airmusic
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     #config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'core', '**', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :de
+    config.i18n.default_locale = :en
     config.default_currency = "EUR"
     
     config.exceptions_app = self.routes

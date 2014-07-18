@@ -94,7 +94,7 @@
 
     </div>
 
-    <% if defined?(next_resource) && next_resource.present? %>
+    <% if defined?(next_resource) && next_resource(true).present? %>
         <div class="next-artist right">
           <%= link_to artist_path(next_resource, params.except(:id)) do %>
             View next artist <i class='fa fa-angle-right'></i>

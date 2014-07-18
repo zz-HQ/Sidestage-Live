@@ -7,14 +7,14 @@ module PageableResource
   
   protected
 
-  def next_resource
+  def next_resource(rotate=true)
     if resources.arel.orders.present?
       field = resources.arel.orders.first.split(" ").first
       @next_resource ||= resources.where("#{field} > ?", resource.send(field)).first
     else
       @next_resource ||= resources.where("id > ?", resource.id).order("id ASC").first      
     end
-    @next_resource ||= collection.first #rotate back to first item
+    @next_resource ||= resources.first if rotate == true #rotate back to first item
   end
 
   def prev_resource
