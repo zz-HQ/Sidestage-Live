@@ -90,7 +90,11 @@
           </script>     
       </div>          
       
+      <% if resource.reviews.count > 0 %>
         <%= render partial: "account/reviews/review", collection: resource.reviews %>
+      <% else %>
+        <p>This artist has no reviews yet.</p>
+      <% end %>
 
     </div>
 
