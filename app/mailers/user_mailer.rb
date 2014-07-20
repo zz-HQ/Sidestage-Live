@@ -12,7 +12,17 @@ class UserMailer < Devise::Mailer
           :return_path => ENV["mail_return_path"]
   
   layout "email/user"
+
+  #
+  # Filters
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
   
+  after_filter :send_sms, only: [:message_notification]
+    
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -27,6 +37,10 @@ class UserMailer < Devise::Mailer
       format.text
       format.html
     end
-  end          
-          
+  end
+  
+  def send_sms
+    @user.send_sms("New message from Sidestage")
+  end
+  
 end

@@ -12,6 +12,16 @@ class DealMailer < ActionMailer::Base
           :return_path => ENV["mail_return_path"]
   
   layout "email/user"
+
+  #
+  # Filters
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  after_filter :send_sms
             
   #
   # Helpers
@@ -65,5 +75,9 @@ class DealMailer < ActionMailer::Base
   def subject(deal)
     I18n.t :"mail.deals.#{deal.state}.subject"
   end  
+  
+  def send_sms
+    @user.send_sms("New message from Sidestage")
+  end
   
 end

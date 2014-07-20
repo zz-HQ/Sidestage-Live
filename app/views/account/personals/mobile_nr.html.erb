@@ -1,0 +1,29 @@
+<div id="personals" class="container">
+    
+	<%= render "sidebar" %>
+
+    <div class="content">
+        <header>Verify your phone number</header>
+
+        <% if resource.mobile_nr_confirmed? %>
+            <p><%= resource.mobile_nr %></p>
+            <p>Confirmed at: <%= l resource.mobile_nr_confirmed_at %> </p>
+
+        <% else %>
+
+            <%= simple_form_for resource, url: mobile_nr_account_personal_path do |f| %>
+                <%= f.input :mobile_nr, input_html: { autocomplete: "off" }, label: "Mobile number (with country code)", placeholder: "e.g +49 172 222 2222" %>
+                <div class="input">
+                	<%= f.button :submit, value: "Send verification code", class: "btn" %>
+                </div>
+            <% end %>
+            <hr>
+            <label>Enter code</label>
+            <%= simple_form_for resource, url: confirm_mobile_nr_account_personal_path do |f| %>
+                <%= text_field_tag :confirmation_code %>
+                <%= f.button :submit, value: "Confirm", class: "btn" %>
+            <% end %>
+        <% end %>
+        
+    </div>
+</div>

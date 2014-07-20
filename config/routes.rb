@@ -20,6 +20,8 @@ Airmusic::Application.routes.draw do
           delete :destroy_avatar
           patch :upload_avatar
           delete 'remove_card'
+          patch :confirm_mobile_nr
+          match 'mobile_nr', to: 'personals#mobile_nr', via: :all
           match 'payment_details', to: 'personals#payment_details', via: :all
           match 'password', to: 'personals#password', via: :all
           match 'complete', to: 'personals#complete', via: :all

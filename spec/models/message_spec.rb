@@ -25,9 +25,15 @@ describe Message, :type => :model do
   
   describe "deliveries" do
     
-    it "notifies receiver" do
+    it "notifies receiver per mail" do
       message = FactoryGirl.create(:user_quentin)
       expect(ActionMailer::Base.deliveries.last.to).to eq([message.receiver.email])
+    end
+
+    it "notifies receiver per sms" do
+      message = FactoryGirl.create(:user_quentin)
+      open_last_text_message_for message.receiver.mobile_nr
+      expect(current_text_message.body).to eq("New message from Sidestage")
     end
 
     it "does not notify receiver for system message" do

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   include Payment
+  include TwoFactor
 
   #
   # Plugins
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
   #
   #
   
-  attr_accessor :stripe_token
+  attr_accessor :stripe_token, :wizard_step
   
   #
   # Validations
@@ -32,7 +33,11 @@ class User < ActiveRecord::Base
   #
   
   validates :first_name, :last_name, presence: true
-  
+
+  with_options if: proc { |u| u.wizard_step == :mobile_nr } do |user|
+    user.validates :mobile_nr, presence: true
+    user.validates :mobile_nr, format: { with: /\A\+[1-9][0-9]+\z/ }, allow_blank: true
+  end
 
   #
   # Associations
@@ -56,7 +61,11 @@ class User < ActiveRecord::Base
   #
   #
   
+  before_validation :sanitize_mobile_nr
+
+  before_save :generate_secrete_key, on: :create
   before_save :set_default_currency, :add_credit_card
+
   after_create :add_to_newsletter, :notify_admin
 
   #
@@ -142,6 +151,10 @@ class User < ActiveRecord::Base
     return save
   end
   
+  def send_sms(message)
+    SmsWorker.perform_async(id, message) if mobile_nr_confirmed?
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -151,6 +164,14 @@ class User < ActiveRecord::Base
   #
   
   private
+  
+  def sanitize_mobile_nr
+    self.mobile_nr = mobile_nr.gsub(/\s/,'') if mobile_nr_changed?
+  end
+  
+  def generate_secrete_key
+    self.otp_secret_key = ROTP::Base32.random_base32
+  end
   
   def set_default_currency
     self.currency ||= Rails.configuration.default_currency

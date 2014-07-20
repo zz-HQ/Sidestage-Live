@@ -4,6 +4,8 @@ FactoryGirl.define do
     first_name "user FN"    
     last_name "user LN"
     unread_message_counter 0
+    mobile_nr "+4912345678"
+    mobile_nr_confirmed_at Time.now
     sequence :email do |n|
       "user#{n}@example.com"
     end

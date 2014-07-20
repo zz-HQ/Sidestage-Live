@@ -1,3 +1,4 @@
 <%= t("mail.deals.#{@deal.state}.body", 
     event_date: l(@deal.start_at.to_date, format: :event_date), 
+    artist_name: @deal.artist.profile_name,
     customer_name: @deal.customer.name).html_safe %>

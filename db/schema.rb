@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716163428) do
+ActiveRecord::Schema.define(version: 20140719150344) do
 
   create_table "city_launches", force: true do |t|
     t.string   "email"
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(version: 20140716163428) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "salutation"
-    t.string   "mobile"
+    t.string   "mobile_nr"
     t.string   "avatar"
     t.string   "city"
     t.string   "email",                  default: "",    null: false
@@ -201,11 +201,13 @@ ActiveRecord::Schema.define(version: 20140716163428) do
     t.text     "about"
     t.boolean  "newsletter_subscribed",  default: false
     t.string   "stripe_card_id"
-    t.text     "stripe_log"
+    t.text     "error_log"
     t.string   "provider"
     t.string   "uid"
-    t.datetime "phone_nr_verified_at"
+    t.datetime "mobile_nr_confirmed_at"
     t.boolean  "verified",               default: false
+    t.string   "otp_secret_key"
+    t.string   "mobile_nr_country_code"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

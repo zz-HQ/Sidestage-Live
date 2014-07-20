@@ -18,7 +18,8 @@ gem 'paper_trail', '~> 3.0.2'
 gem 'aasm'
 gem 'friendly_id', '~> 5.0.0'
 gem 'sidekiq'
-
+gem 'twilio-ruby', '~> 3.11'
+gem 'rotp'
 
 # Image Processing
 gem 'carrierwave'
@@ -57,7 +58,8 @@ group :development do
   gem 'better_errors'
 end
 
-group :development, :test do
+group :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'sms-spec'
 end

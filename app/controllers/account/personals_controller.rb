@@ -68,6 +68,22 @@ class Account::PersonalsController < Account::ResourcesController
     redirect_to payment_details_account_personal_path
   end
 
+  def mobile_nr
+    resource.wizard_step = :mobile_nr    
+    if request.patch?
+      if resource.update_attributes(permitted_params[:user])
+        resource.send_otp_code
+        flash.now[:notice] = "Verification code sent."
+      end
+    end
+  end
+  
+  def confirm_mobile_nr
+    unless params[:confirmation_code] && resource.confirm_mobile_nr(params[:confirmation_code])
+      flash.now[:error] = "Confirmation failed. invalid code!"
+    end
+    render :mobile_nr
+  end
   
   def upload_avatar
     if resource.update_attributes(permitted_params[:user])
@@ -96,7 +112,7 @@ class Account::PersonalsController < Account::ResourcesController
   
   def permitted_params
     params.permit user: [
-        :first_name, :last_name, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
+        :first_name, :last_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
       ],
       credit_card: [
         :name, :exp_month, :exp_year

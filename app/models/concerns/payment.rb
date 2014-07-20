@@ -14,7 +14,7 @@ module Payment
       @stripe_customer = nil if stripe_token.present?
       @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
     rescue Stripe::StripeError => e
-      User.where(id: id).update_all(stripe_log: e.json_body.inspect)
+      User.where(id: id).update_all(error_log: e.json_body.inspect)
       return [{}]
     end
   end
@@ -27,7 +27,7 @@ module Payment
       return true
     rescue Stripe::StripeError => e
       errors.add :stripe_card_id, e.json_body[:error][:message]
-      User.where(id: id).update_all(stripe_log: e.json_body.inspect)
+      User.where(id: id).update_all(error_log: e.json_body.inspect)
       return false
     end
   end
@@ -36,7 +36,7 @@ module Payment
     begin
       return save_stripe_card!(retrieve_customer.cards.create(card: stripe_token))
     rescue Stripe::StripeError => e
-      User.where(id: id).update_all(stripe_log: e.json_body.inspect)
+      User.where(id: id).update_all(error_log: e.json_body.inspect)
       errors.add :stripe_card_id, e.json_body[:error][:message]
       stripe_token = nil
     end
@@ -46,7 +46,7 @@ module Payment
     begin
       return save_stripe_customer!(Stripe::Customer.create(card: stripe_token, description: email))
     rescue Stripe::StripeError => e
-      User.where(id: id).update_all(stripe_log: e.json_body.inspect)
+      User.where(id: id).update_all(error_log: e.json_body.inspect)
       errors.add :stripe_customer_id, e.json_body[:error][:message]
       stripe_token = nil
     end
@@ -67,7 +67,7 @@ module Payment
       ensure_stripe_charge!
       return true
     rescue Stripe::StripeError => e
-      User.where(id: customer.id).update_all(stripe_log: e.json_body.inspect) 
+      User.where(id: customer.id).update_all(error_log: e.json_body.inspect) 
       deal.errors.add :stripe_charge_id, e.json_body[:error][:message] 
     end
     return false
