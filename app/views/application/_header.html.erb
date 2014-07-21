@@ -56,7 +56,8 @@
       <%- else -%>
 
         <%= link_to "Create Artist Profile", new_artist_path %>
-        <%= link_to "Log in", new_user_session_path(format: :html) , data: {lightbox: "ajax"} %>
+        <a href="<%= new_user_session_path(format: :html) %>" data-lightbox="ajax" onClick="_gaq.push([‚_trackEvent(signup, register]);">Log in</a>
+        <%#= link_to "Log in", new_user_session_path(format: :html) , data: {lightbox: "ajax"} %>
         <%= link_to "Sign up", new_user_registration_path(format: :html), data: {lightbox: "ajax"}, class: "btn btn-inline" %>
 
       <%- end -%>
