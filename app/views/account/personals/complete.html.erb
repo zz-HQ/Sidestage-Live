@@ -4,6 +4,20 @@
 
     <div class="content">
         <header>Complete your profile</header>
+
+				<%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>
+					<div class="avatar-uploader">
+						<div id="avatar" class="avatar">
+							<%= render 'avatar' %>
+						</div>
+						<a href="#" id="avatar-upload-button">Add profile picture</a>
+					</div>
+
+					<div class="new-avatar" style="display:none;">
+						<%= f.input :avatar, label: false, id: "avatar-file" %>
+					</div>
+				<% end %>
+
         <%= simple_form_for resource, url: complete_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>
             <%= render "user_form", f: f %>
         <% end %>
