@@ -1,0 +1,28 @@
+<div id="personals" class="container">
+    
+	<%= render "account/personals/sidebar" %>
+
+    <div class="content">
+        <% if resource.mobile_nr_confirmed? %>
+            <header>Your mobile number</header>
+            <p>The mobile phone number below has been verified</p>
+            <p><%= resource.mobile_nr %> <%= link_to "Remove", account_mobile_numbers_path, method: :delete, class: "btn" %></p>
+            <p>To add a new number, remove the old one first.</p>
+        <% else %>
+            <header>Verify your mobile number</header>
+            <%= simple_form_for resource, url: account_mobile_numbers_path do |f| %>
+                <%= f.input :mobile_nr, input_html: { autocomplete: "off" }, label: "Mobile number (with country code)", placeholder: "e.g +49 172 222 2222" %>
+                <div class="input">
+                	<%= f.button :submit, value: "Send verification code", class: "btn" %>
+                </div>
+            <% end %>
+            <hr>
+            <label>Enter code</label>
+            <%= simple_form_for resource, url: confirm_account_mobile_numbers_path do |f| %>
+                <%= f.input :mobile_confirmation_code, input_html: { autocomplete: "off" }, label: nil %>
+                <%= f.button :submit, value: "Confirm", class: "btn" %>
+            <% end %>
+        <% end %>
+        
+    </div>
+</div>

@@ -17,9 +17,10 @@ module User::TwoFactor
   #
   #
   #
+
   
   def mobile_nr_confirmed?
-    mobile_nr_confirmed_at.present?
+    mobile_nr.present? && mobile_nr_confirmed_at.present?
   end
 
   def send_otp_code
@@ -33,11 +34,14 @@ module User::TwoFactor
   
   def confirm_mobile_nr(code)
     return true if mobile_nr_confirmed_at.present?
-    return update_attribute(:mobile_nr_confirmed_at, Time.now) if verify_otp(code)
+    return update_column(:mobile_nr_confirmed_at, Time.now) if verify_otp(code)
     return false
   end
   
   def verify_otp(code)
+    puts "### votp #######################"
+    puts code
+    puts "##########################"
     totp = ROTP::TOTP.new(otp_secret_key.to_s, drift: User.allowed_otp_drift_seconds)
     totp.verify_with_drift(code, User.allowed_otp_drift_seconds)
   end

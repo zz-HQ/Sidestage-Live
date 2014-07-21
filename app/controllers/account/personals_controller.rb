@@ -68,23 +68,6 @@ class Account::PersonalsController < Account::ResourcesController
     redirect_to payment_details_account_personal_path
   end
 
-  def mobile_nr
-    resource.wizard_step = :mobile_nr    
-    if request.patch?
-      if resource.update_attributes(permitted_params[:user])
-        resource.send_otp_code
-        flash.now[:notice] = "Verification code sent."
-      end
-    end
-  end
-  
-  def confirm_mobile_nr
-    unless params[:confirmation_code] && resource.confirm_mobile_nr(params[:confirmation_code])
-      flash.now[:error] = "Confirmation failed. invalid code!"
-    end
-    render :mobile_nr
-  end
-  
   def upload_avatar
     if resource.update_attributes(permitted_params[:user])
     end
