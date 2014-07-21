@@ -30,7 +30,7 @@ class AdminMailer < ActionMailer::Base
 
   def lead_notification(user)
     @user = user
-    mail(subject: "Sidestage: New #{user.profile.present? ? 'Profile' : 'User'} Lead") do |format|
+    mail(subject: "Sidestage: New #{user.profile.present? ? 'Profile' : 'User'} Lead #{user.profile_name}") do |format|
       format.html
     end
   end
