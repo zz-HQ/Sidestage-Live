@@ -1,7 +1,7 @@
 class SmsWorker
   include Sidekiq::Worker
   
-  sidekiq_options queue: :critical, retry: 2, :backtrace => true
+  sidekiq_options retry: 2
   
   def perform(user_id, message)
     user = User.find user_id
