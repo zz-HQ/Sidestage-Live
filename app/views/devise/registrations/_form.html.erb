@@ -21,8 +21,7 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name, required: true, autofocus: true, placeholder: "First Name", label: false %>
-      <%= f.input :last_name, required: true, autofocus: true, placeholder: "Last Name", label: false %>
+      <%= f.input :full_name, required: true, autofocus: true, placeholder: "Full Name", label: false %>
       <%= f.input :email, required: true, autofocus: true, placeholder: "Email", label: false %>
       <%= f.input :password, required: true, placeholder: "Password", input_html: { autocomplete: "off" }, label: false %>
       <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "off" }, placeholder: "Password Confirmation", label: false %>
