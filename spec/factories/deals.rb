@@ -3,14 +3,14 @@ FactoryGirl.define do
   factory :deal do
     start_at Time.now
     currency "EUR"
-    current_user factory: :quentin
+    current_user { customer }
     association :profile, factory: :profile
     association :customer, factory: :quentin
 
     factory :requested_deal do
       state "requested"
       price 124
-      current_user factory: :quentin
+      current_user { customer }
       association :profile, factory: :profile
       association :customer, factory: :quentin    
     end
@@ -18,7 +18,7 @@ FactoryGirl.define do
     factory :confirmed_deal do
       state "confirmed"
       price 124
-      current_user factory: :quentin
+      current_user { customer }
       association :profile, factory: :profile
       association :customer, factory: :quentin    
     end
@@ -26,7 +26,7 @@ FactoryGirl.define do
     factory :offered_deal do
       state "offered"
       price 124
-      current_user factory: :quentin
+      current_user { profile.user }
       association :profile, factory: :profile
       association :customer, factory: :quentin    
     end

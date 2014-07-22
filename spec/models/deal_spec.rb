@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Deal, :type => :model do
 
+  before do
+    clear_messages
+  end
+
   describe "Validations" do
 
     it "has valid Factory" do
@@ -49,7 +53,28 @@ describe Deal, :type => :model do
       expect(deal.conversation).to be_present
     end
     
+  end
+  
+  context "SMS notifications" do
     
+    it "Request sends sms to artist" do
+      deal = FactoryGirl.create(:requested_deal)
+      open_last_text_message_for deal.artist.mobile_nr
+      expect(current_text_message.body).to include("You have a new booking request")      
+    end
+
+    it "Confirm sends sms to artist" do
+      deal = FactoryGirl.create(:confirmed_deal)
+      open_last_text_message_for deal.artist.mobile_nr
+      expect(current_text_message.body).to include("is confirmed for")      
+    end
+
+    it "Confirm sends sms to customer" do
+      deal = FactoryGirl.create(:confirmed_deal)
+      open_last_text_message_for deal.customer.mobile_nr
+      expect(current_text_message.body).to include("is confirmed for")      
+    end
+
   end
   
   context "Payment" do
@@ -147,6 +172,5 @@ describe Deal, :type => :model do
     end
     
   end
-  
   
 end

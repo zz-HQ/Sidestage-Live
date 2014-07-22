@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Message, :type => :model do
+
+  before do
+    clear_messages
+  end
   
   describe "Validations" do
 
