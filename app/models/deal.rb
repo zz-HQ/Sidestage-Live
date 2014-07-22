@@ -191,7 +191,10 @@ class Deal < ActiveRecord::Base
   end
   
   def notify_partner
-    if current_user.id == customer_id 
+    if state.to_sym.in?(NOTIFY_BOTH_PARTIES_STATES)
+      DealMailer.delay.artist_notification(self)
+      DealMailer.delay.customer_notification(self)
+    elsif is_customer?(current_user)
       DealMailer.delay.artist_notification(self)
     else
       DealMailer.delay.customer_notification(self)

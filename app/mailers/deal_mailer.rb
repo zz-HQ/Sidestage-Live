@@ -6,7 +6,9 @@ class DealMailer < ActionMailer::Base
   #
   #
   #
-
+  
+  include ActionView::Helpers::SanitizeHelper 
+  
   default :from => ENV["mail_from"],
           :reply_to => ENV["mail_from"],
           :return_path => ENV["mail_return_path"]
@@ -30,8 +32,6 @@ class DealMailer < ActionMailer::Base
   #
   #
   #
-
-  helper :application
   
   #
   # Actions
@@ -43,6 +43,8 @@ class DealMailer < ActionMailer::Base
   def artist_notification(deal)
     @user = deal.artist
     @deal = deal
+
+    setup_notification_body(deal.customer, deal)
     mail(setup(@user, deal)) do |format|
       format.text
       format.html
@@ -52,6 +54,8 @@ class DealMailer < ActionMailer::Base
   def customer_notification(deal)
     @user = deal.customer
     @deal = deal
+
+    setup_notification_body(deal.artist, deal)    
     mail(setup(@user, deal)) do |format|
       format.text
       format.html
@@ -74,10 +78,16 @@ class DealMailer < ActionMailer::Base
     
   def subject(deal)
     I18n.t :"mail.deals.#{deal.state}.subject"
-  end  
+  end 
+  
+  def setup_notification_body(partner, deal)
+    @notification_body ||= t("mail.deals.#{deal.state}.body",  
+      partner_name: partner.profile_name,
+      event_date: l(deal.start_at.to_date, format: :event_date))
+  end
   
   def send_sms
-    @user.send_sms("New message from Sidestage")
+    @user.send_sms(strip_tags(@notification_body))
   end
   
 end

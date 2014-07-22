@@ -79,25 +79,25 @@ en:
     deals:
       requested:
         subject: "New booking request"
-        body: "You have a new booking request from %{customer_name}. Please log in to Sidestage to review it."
+        body: "You have a new booking request from %{partner_name}. Please log in to Sidestage to review it."
       proposed:
         subject: "New booking request"
-        body: "You have a new booking request from %{artist_name}. Please log in to Sidestage to review it."
+        body: "You have a new booking request from %{partner_name}. Please log in to Sidestage to review it."
       offered:
         subject: "Price change"
-        body: "You have a new message from %{artist_name}."
+        body: "You have a new message from %{partner_name}."
       cancelled:
         subject: "Booking Cancelled"
-        body: "Your booking with %{customer_name} for %{event_date} has been cancelled."
+        body: "Your booking with %{partner_name} for %{event_date} has been cancelled."
       declined:
         subject: "Booking request declined"
-        body: "Your booking request with %{artist_name} for %{event_date} has been declined."
+        body: "Your booking request with %{partner_name} for %{event_date} has been declined."
       accepted:
         subject: "Booking accepted"
-        body: "Your booking with %{artist_name} is confirmed for %{event_date}."
+        body: "Your booking with %{partner_name} is confirmed for %{event_date}."
       confirmed:
         subject: "Booking confirmed"
-        body: "Your booking with %{artist_name} is confirmed for %{event_date}."
+        body: "Your booking with %{partner_name} is confirmed for %{event_date}."
       rejected:
         subject: "Booking cancelled"
-        body: "Your booking with %{artist_name} for %{event_date} has been cancelled."
+        body: "Your booking with %{partner_name} for %{event_date} has been cancelled."
