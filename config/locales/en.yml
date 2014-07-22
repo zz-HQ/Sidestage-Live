@@ -3,13 +3,8 @@ en:
     models:
       profile:
         one: Profil
-        other: Profile
+        other: Profiles
     attributes:
-      deal:
-        aasm_state:
-          requested: Requested
-          cancelled: Cancelled
-          accepted: Accepted
       profile:
         cancellation_policy:
           flexible: "full refund 1 day prior to event, except fees"
@@ -53,6 +48,7 @@ en:
         alert: "%{resource_name} could not be deleted."
   view:
     messages:
+      sms: "You have a new Sidestage message from %{partner_name}. Please log in to Sidestage to view it."
       system_messages:
         deals:
           requested: &requested 

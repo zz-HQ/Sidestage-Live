@@ -40,7 +40,7 @@ class UserMailer < Devise::Mailer
   end
   
   def send_sms
-    @user.send_sms("New message from Sidestage")
+    @user.send_sms(t(:"view.messages.sms", partner_name: @message.sender.profile_name))
   end
   
 end

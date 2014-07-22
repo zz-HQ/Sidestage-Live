@@ -37,7 +37,7 @@ describe Message, :type => :model do
     it "notifies receiver per sms" do
       message = FactoryGirl.create(:user_quentin)
       open_last_text_message_for message.receiver.mobile_nr
-      expect(current_text_message.body).to eq("New message from Sidestage")
+      expect(current_text_message.body).to eq(I18n.t(:"view.messages.sms", partner_name: message.sender.profile_name))
     end
 
     it "does not notify receiver for system message" do
