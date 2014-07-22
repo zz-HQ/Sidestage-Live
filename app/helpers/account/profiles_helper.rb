@@ -25,11 +25,11 @@ module Account::ProfilesHelper
   end
 
   def has_youtube?
-    !resource.youtube.blank? && resource.youtube.include?("youtube")
+    !resource.youtube.blank? && resource.youtube.include?("youtu")
   end
 
   def youtube_id
-    resource.youtube[/v=([^&]+)/, 1]
+    resource.youtube[/^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/, 1]
   end
 
   def youtube_widget
