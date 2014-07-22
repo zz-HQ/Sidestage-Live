@@ -45,6 +45,8 @@ en:
         deal:
           confirmed: "Booking confirmed!"
         notice: "%{resource_name} successfully updated."
+        password:
+          notice: Your password was successfully changed.
       destroy:
         credit_card: "Your credit card information is now star dust."
         notice: "%{resource_name} deleted."

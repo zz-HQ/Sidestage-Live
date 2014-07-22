@@ -47,7 +47,8 @@ class Account::PersonalsController < Account::ResourcesController
   def password
     if request.patch?
       if resource.update_with_password(permitted_params[:user])
-        redirect_to password_account_personal_path
+        flash[:notice] = t("flash.actions.update.password.notice")
+        render :password
       end
     end
   end
