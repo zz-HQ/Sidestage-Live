@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   #
   
   has_many :profiles, dependent: :destroy
-  has_many :messages, class_name: 'Message', foreign_key: :sender_id
+  has_many :messages, class_name: 'Message', foreign_key: :sender_id, dependent: :delete_all
   has_many :bookings, class_name: 'Deal', foreign_key: :customer_id
   
   mount_uploader :avatar, AvatarUploader

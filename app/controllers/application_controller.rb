@@ -106,8 +106,6 @@ class ApplicationController < ActionController::Base
   def set_ajax_layout
     if request.headers['X-Lightbox'].present? || controller_name == 'home'
       self.class.layout false
-    else
-      self.class.layout "application"
     end
   end
   

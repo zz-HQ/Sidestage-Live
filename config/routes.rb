@@ -1,8 +1,8 @@
 Airmusic::Application.routes.draw do
   #mount Sidekiq::Web => '/sidekiq'
+  
   devise_for :users, controllers: { sessions: "authentication/sessions", registrations: "authentication/registrations", confirmations: "authentication/confirmations", :omniauth_callbacks => "authentication/omniauth_callbacks" }
   
-
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
     root to: "home#homepage"
 
@@ -11,8 +11,7 @@ Airmusic::Application.routes.draw do
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
 
-    resources :artists, :only => [:new, :create, :index, :show] do
-    end
+    resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
       resource :mobile_numbers, only: [:show, :destroy, :update] do
@@ -75,7 +74,14 @@ Airmusic::Application.routes.draw do
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
     get 'index', to: "home#index", as: "homepage"    
     get 'home', to: "home#homepage", as: "home"    
-
+    
+    namespace :admin do
+      root to: "dashboard#index"
+      resources :profiles
+      resources :deals
+      resources :users
+    end
+    
   end
 
   match "/404", :to => "errors#not_found", via: :get
@@ -84,5 +90,4 @@ Airmusic::Application.routes.draw do
   
   get '/:locale', :to => "home#index", :constraints => { :locale => /\w{2}/ }
   
-
 end
