@@ -1,5 +1,5 @@
 <tr>
     <td><%= profile.name %></td>
     <td><%= profile.user.email %></td>
-    <td><%= bool_label(profile.published?) %></td>
+    <td><%= link_to_bool profile.published? , target: toggle_admin_profile_path(profile), true_text: "Unpublish", false_text: "Publish" %></td>
 </tr>

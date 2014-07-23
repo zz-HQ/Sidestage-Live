@@ -1,0 +1,25 @@
+en:
+  simple_form:
+    required:
+      text: "required"
+      mark: "*"
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      user:
+        remember_me: Remember me
+        newsletter_subscribed: Send me Sidestage updates 
+    placeholders:
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+        full_name: Full name
+  helpers:
+    submit:
+      user:
+        sign_in: "Log me in!"
+        sign_up: "Sign me up!"

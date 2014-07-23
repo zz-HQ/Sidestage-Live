@@ -1,0 +1,6 @@
+en:
+  application:
+    artists:
+      index:
+        view_profile: View Profile
+        price_from: from

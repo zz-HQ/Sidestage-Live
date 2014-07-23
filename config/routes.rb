@@ -77,7 +77,11 @@ Airmusic::Application.routes.draw do
     
     namespace :admin do
       root to: "dashboard#index"
-      resources :profiles
+      resources :profiles do
+        member do
+          put :toggle
+        end
+      end
       resources :deals
       resources :users do
         member do

@@ -1,4 +1,17 @@
 en:
+  application:
+    devise:
+      session_title: Log in
+      registration_title: Sign up
+      are_you_new: "Are you new?"
+      facebook_login: "Log in with Facebook"
+      facebook_hint: "We'll post nothing without your permission!"
+      or: or
+      login_error: Login incorrect
+      sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
+      have_an_account: Have an account?
+      artist_hint: "If you're an artist, create an Artist Profile instead."
+      
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed."
@@ -55,3 +68,4 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  

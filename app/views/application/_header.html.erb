@@ -13,7 +13,7 @@
             <% request.query_parameters.except(:location).each do |k,v| %>
                 <%= hidden_field_tag k, v %>
             <% end %>
-            <%= nice_select((select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: "Choose city", class: "submit-on-change"), small: true) %>
+            <%= nice_select((select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: t(:"helpers.select.prompts.choose_city"), class: "submit-on-change"), small: true) %>
         </form>    
     </div>
 
@@ -40,14 +40,14 @@
             <i class="fa fa-caret-up"></i>
             <hr>
             <% if current_user.profile.present? && current_user.profile.persisted? %>
-                <%= link_to "Your Artist Profile", preview_account_profile_path(current_user.profile) %>
+                <%= link_to t(:"application.menu.your_profile"), preview_account_profile_path(current_user.profile) %>
             <% else %>    
                 <%#= link_to "Create Artist Profile", new_account_profile_path %>
             <% end %>
             <%#= link_to "Dashboard", account_dashboard_path %>
-            <%= link_to "My Bookings", account_bookings_path %>
-            <%= link_to "Account", account_personal_path %>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            <%= link_to t(:"application.menu.my_bookings"), account_bookings_path %>
+            <%= link_to t(:"application.menu.account"), account_personal_path %>
+            <%= link_to t(:"application.menu.log_out"), destroy_user_session_path, method: :delete %>
           </div>
           <div class="username"><%= current_user.name %></div>
           <div class="arrow"></div>
@@ -55,10 +55,10 @@
 
       <%- else -%>
 
-        <%= link_to "Create Artist Profile", new_artist_path %>
-        <a href="<%= new_user_session_path(format: :html) %>" data-lightbox="ajax" onClick="_gaq.push([‚_trackEvent(signup, register]);">Log in</a>
+        <%= link_to t(:"application.menu.create_profile"), new_artist_path %>
+        <a href="<%= new_user_session_path(format: :html) %>" data-lightbox="ajax" onClick="_gaq.push([‚_trackEvent(signup, register]);"><%= t(:"application.menu.sign_in") %></a>
         <%#= link_to "Log in", new_user_session_path(format: :html) , data: {lightbox: "ajax"} %>
-        <%= link_to "Sign up", new_user_registration_path(format: :html), data: {lightbox: "ajax"}, class: "btn btn-inline" %>
+        <%= link_to t(:"application.menu.sign_up"), new_user_registration_path(format: :html), data: {lightbox: "ajax"}, class: "btn btn-inline" %>
 
       <%- end -%>
     </nav>

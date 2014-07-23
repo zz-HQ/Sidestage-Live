@@ -51,9 +51,9 @@
       <div id="splash-content">
         
         <div id="text">
-          <h2 class="text-shadow">Life's Your Stage.</h2>
+          <h2 class="text-shadow"><%= t(:"application.home.index.teaser.title") %></h2>
           <p class="text-shadow">
-            Instantly book a musician to play at your party or event.
+            <%= t(:"application.home.index.teaser.body") %>
           </p>
         </div>
 
@@ -62,8 +62,8 @@
 
           <div id="city-form">
               <%= simple_form_for :location, url: artists_path, method: :Get, html: { id: "homepage-search" } do |f| %>
-                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), id: "location", include_blank: false, prompt: "Where is your event?") %>
-                  <%= f.submit :submit, value: "Search", name: nil, class: 'city-btn' %>
+                  <%= nice_select(select_tag 'location', options_for_select(available_locations, params[:location]), id: "location", include_blank: false, prompt: t(:"helpers.select.prompts.event_search")) %>
+                  <%= f.submit :submit, value: t(:"application.buttons.search"), name: nil, class: 'city-btn' %>
               <% end %>    
           </div>
 
@@ -76,7 +76,7 @@
     
     <div id="staff-picks">
       <div class="wrap">
-        <h2>Staff picks: Artists that we like and recommend.</h2>
+        <h2><%= t(:"application.home.index.featured") %></h2>
 
         <% @profiles.each do |profile| %>
 
@@ -85,11 +85,11 @@
               <%= image_tag profile.user.avatar_url(:thumb) %>
               <div class="text">
                 <h3><%= profile.name %></h3>
-                <p class="price">from <%= artist_price(profile) %></p>
+                <p class="price"><%= t(:"application.artists.index.price_from") %> <%= artist_price(profile) %></p>
               </div>
               <div class="gradient-overlay"></div>
               <div class="overlay">
-                <div class="view-profile">View Profile</div>
+                <div class="view-profile"><%= t(:"application.artists.index.view_profile") %></div>
               </div>
             </div>
             <div class="label">

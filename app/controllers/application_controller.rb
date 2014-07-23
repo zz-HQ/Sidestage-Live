@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   #
   #  
   
-  helper_method :current_currency, :old_browser?
+  helper_method :current_currency, :old_browser?, :profile_in_session?
   
   #
   # Protected
@@ -85,6 +85,10 @@ class ApplicationController < ActionController::Base
       user.profiles << profile
       session[:profile] = nil
     end
+  end
+  
+  def profile_in_session?
+    session[:profile].present?
   end
   
   def old_browser?

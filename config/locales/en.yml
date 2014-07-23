@@ -18,11 +18,10 @@ en:
             customer_id:
               not_chargeable: "Payment details missing!"
   helpers:
-    label:
-      user:
-        first_name: "Vorname"
-        last_name: "Nachname"
-        
+    select:
+      prompts:
+        event_search: Where is your event?
+        choose_city: Choose city
   flash:
     account:
       messages:
