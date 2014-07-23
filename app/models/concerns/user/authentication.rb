@@ -16,7 +16,8 @@ module User::Authentication
         user.remote_avatar_url = auth.info.image.gsub('http://','https://') # assuming the user model has an image
         user.skip_confirmation!
         mailchimp_api = Gibbon::API.new
-        res = mailchimp_api.lists.batch_subscribe(id: Rails.application.secrets.mailchimp_newsletter_id, :double_optin => false, :batch => [{:email => {:email => user.email}, :merge_vars => {:FNAME => user.first_name, :LNAME => user.last_name}}])
+        newsletter_id = user.artist? ? "f38b96fdb5" : "ce0be5cff0"
+        res = mailchimp_api.lists.batch_subscribe(id: newsletter_id, :double_optin => false, :batch => [{:email => {:email => user.email}, :merge_vars => {:FNAME => user.full_name, :LNAME => ""}}])
       end
     end
 

@@ -146,9 +146,10 @@ class User < ActiveRecord::Base
 
   def add_to_newsletter
     if self.newsletter_subscribed?
+      newsletter_id = self.artist? ? "f38b96fdb5" : "ce0be5cff0"
       Rails.logger.debug { "newsletter set #{self.newsletter_subscribed}" }
       mailchimp_api = Gibbon::API.new
-      res = mailchimp_api.lists.batch_subscribe(id: Rails.application.secrets.mailchimp_newsletter_id, :double_optin => false, :batch => [{:email => {:email => self.email}, :merge_vars => {:FNAME => self.first_name, :LNAME => self.last_name}}])
+      res = mailchimp_api.lists.batch_subscribe(id: newsletter_id, :double_optin => false, :batch => [{:email => {:email => self.email}, :merge_vars => {:FNAME => self.full_name, :LNAME => ""}}])
     else
       logger.debug { "no newsletter set" }
     end
