@@ -10,7 +10,6 @@ class Admin::ResourcesController < Admin::BaseController
 
   inherit_resources
   
-  
   #
   # Private
   # ---------------------------------------------------------------------------------------

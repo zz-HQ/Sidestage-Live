@@ -1,5 +1,5 @@
 <tr>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td><%= user.verified? %></td>
+    <td><%= link_to_bool user.verified? , target: toggle_verification_admin_user_path(user), true_text: "Unverify", false_text: "Verify" %></td>
 </tr>    

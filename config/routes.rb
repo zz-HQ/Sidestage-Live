@@ -79,7 +79,11 @@ Airmusic::Application.routes.draw do
       root to: "dashboard#index"
       resources :profiles
       resources :deals
-      resources :users
+      resources :users do
+        member do
+          put :toggle_verification
+        end
+      end
     end
     
   end

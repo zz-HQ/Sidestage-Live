@@ -8,8 +8,6 @@
     <div id="wrap">
       <div id="main" class="clearfix">
 
-        <%#= render 'header' %>
-        
         <%= render 'flash' %>
 
         <%= yield :outer_wrap %>
@@ -24,7 +22,8 @@
       </div>
     </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>
