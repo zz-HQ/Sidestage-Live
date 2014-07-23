@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception. For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  layout :set_layout
+  
   #
   # Filters
   # ---------------------------------------------------------------------------------------
@@ -20,7 +22,7 @@ class ApplicationController < ActionController::Base
   #
   #  
 
-  before_action :detect_device_format, :set_ajax_layout
+  before_action :detect_device_format
   before_filter :store_location, :load_currency
 
   #
@@ -71,7 +73,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     home_path
-  end
+  end 
   
   def store_location
     store_location_for(:user, params[:return_to]) if params[:return_to].present?
@@ -103,10 +105,9 @@ class ApplicationController < ActionController::Base
     @current_currency ||= Currency.where(name: session[:currency] || user_currency || Rails.configuration.default_currency).first
   end
 
-  def set_ajax_layout
-    if request.headers['X-Lightbox'].present? || controller_name == 'home'
-      self.class.layout false
-    end
+  def set_layout
+    return false if request.headers['X-Lightbox'].present? || controller_name == 'home'
+    return "application"
   end
   
 end

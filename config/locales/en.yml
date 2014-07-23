@@ -1,9 +1,6 @@
 en:
   activerecord:
     models:
-      profile:
-        one: Profil
-        other: Profiles
     attributes:
       profile:
         cancellation_policy:

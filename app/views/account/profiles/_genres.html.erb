@@ -31,3 +31,9 @@
 	</div>
 
 </div>
+
+<% if resource.errors.include?(:genre_ids) %>
+    <div class="field_with_errors">
+        <span class="error"><%= resource.errors[:genre_ids].first %></span>
+    </div>
+<% end %>
