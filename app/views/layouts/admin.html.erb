@@ -4,24 +4,27 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <%= render 'head' %>
-  <body>
+  <body style="padding-top:60px;">
     <div id="wrap">
       <div id="main" class="clearfix">
 
-        <%= render 'header' %>
+        <%#= render 'header' %>
         
         <%= render 'flash' %>
 
         <%= yield :outer_wrap %>
         
-        <div class="wrap">
+        <div class="container">
+          <%= render 'nav' %>
           <%= yield %>
         </div>
 
-        <%= render 'footer' %>
+        <%#= render 'footer' %>
         
       </div>
     </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>
