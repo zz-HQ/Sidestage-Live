@@ -59,6 +59,7 @@ class Profile < ActiveRecord::Base
   validates :price, presence: true, if: :price_step?
   
   with_options if: :description_step? do |profile|
+    profile.validates :name, length: { maximum: 26 }
     profile.validates :title, :name, :about, presence: true
     profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
   end
