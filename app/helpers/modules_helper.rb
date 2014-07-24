@@ -6,7 +6,7 @@ module ModulesHelper
     klass = "nice-select"
     klass += " small" if options[:small].present?
 
-    label_value = content_tag(:span, "label", class: "select-label-value")
+    label_value = content_tag(:span, nil, class: "select-label-value")
     #arrow = content_tag(:span, nil, class: "select-arrow")
     arrow = content_tag(:i, nil, class: "fa fa-angle-down select-arrow")
     label = content_tag(:span, (label_value + arrow), class: "select-label")

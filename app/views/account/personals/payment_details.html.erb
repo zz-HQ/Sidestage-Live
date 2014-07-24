@@ -25,8 +25,8 @@
 
       <div style="display:none;" data-container="remove-card">
         <div class="devise-lightbox">
-          <h2>Wait!</h2>
-          <p class="label">Before you remove your credit card, you need to cancel all your booking requests.</p>
+          <h2>Wait!</h2> <br>
+          <p>Before you remove your credit card, you need to cancel all your booking requests.</p>
         </div>
       </div>
       
@@ -40,7 +40,7 @@
           <%= render "account/payment_details/payment_form" %>
           <div class="input">
             <%= f.submit "Save credit card", class: "btn" %>
-            <%= link_to "Skip", root_path, class: "skip" %>
+            <%= link_to "Skip", account_mobile_numbers_path, class: "skip" %>
           </div>
         <% end %>
         <div class="footnote">

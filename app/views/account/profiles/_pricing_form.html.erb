@@ -11,7 +11,7 @@
 
 	<label for="profile_price">How much do you want to make?</label>
 	<div class="inputs profile_price">
-		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } } %>
+		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
 	</div>
 
 	<label>Price the customer will see (includes <br> Sidestage's fee of <%= Profile.surcharge_base %>%)</label>
