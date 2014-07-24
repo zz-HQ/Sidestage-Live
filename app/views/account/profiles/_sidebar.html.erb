@@ -8,4 +8,6 @@
 	<%= link_to "- Manage photos", resource.new_record? ? "#" : account_profile_pictures_path(resource) %>
 	<h4>Payments</h4>
 	<%= link_to "- Add payout method", resource.new_record? ? "#" : payment_account_profile_path(resource) %>
+	<h4>Phone</h4>
+	<%= link_to "- Verify Phone Number", account_mobile_numbers_path %>
 </div>
