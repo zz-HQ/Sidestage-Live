@@ -13,6 +13,10 @@ en:
           world: Anywhere in the world
     errors:
       models:
+        user:
+          attributes:
+            mobile_confirmation_code:
+              invalid: "The code you entered is incorrect"
         deal:
           attributes:
             customer_id:
