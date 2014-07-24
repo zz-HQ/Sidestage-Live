@@ -72,6 +72,7 @@ Airmusic::Application.routes.draw do
     get 'faq', to: "pages#faq", as: "faq"
     get 'terms-of-service', to: "pages#terms", as: "terms"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
+    get 'jobs', to: "pages#jobs", as: "jobs"
     get 'index', to: "home#index", as: "homepage"    
     get 'home', to: "home#homepage", as: "home"    
     
