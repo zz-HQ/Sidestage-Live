@@ -1,17 +1,19 @@
-<h3>Send new offer to <%= resource.customer.profile_name %></h3>
-<p>
-  You can make an offer to another Sidestage member. <br> Example, if they want you to play a solo or acoustic set,
-  which would cost a lot less than the price listed on your profile.
-</p>
-<%= simple_form_for resource, url: account_offers_path, remote: true, authenticity_token: true do |f| %>
-<label>How much do you want to make?</label>
-<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } } %>
-<label>Price the customer will see(includes <br> Sidestage's fee of <%= Profile.surcharge_base %>%)</label>
-<span class="surcharged_price" data-container="surcharged-price"></span>
-<div class="date">
-      <%= f.input :start_at, as: :string, placeholder: "Event date", input_html: { class: "date-picker" }, label: false %>
-  <i class="fa fa-calendar"></i>
+<div class="devise-lightbox new-offer">
+	<h3>Send new offer to <%= resource.customer.profile_name %></h3>
+	<p>
+	  You can make an offer to another Sidestage member. <br> Example, if they want you to play a solo or acoustic set,
+	  which would cost a lot less than the price listed on your profile.
+	</p>
+	<%= simple_form_for resource, url: account_offers_path, remote: true, authenticity_token: true do |f| %>
+	<label>How much do you want to make?</label>
+	<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } } %>
+	<label>Price the customer will see(includes <br> Sidestage's fee of <%= Profile.surcharge_base %>%)</label>
+	<span class="surcharged_price" data-container="surcharged-price"></span>
+	<div class="date">
+	      <%= f.input :start_at, as: :string, placeholder: "Event date", input_html: { class: "date-picker" }, label: false %>
+	  <i class="fa fa-calendar"></i>
+	</div>
+	<%= f.input :customer_id, as: :hidden %>
+	<%= f.button :submit, class: "btn", value: "Send request" %>
+	<% end %>
 </div>
-<%= f.input :customer_id, as: :hidden %>
-<%= f.button :submit, class: "btn", value: "Send request" %>
-<% end %>
