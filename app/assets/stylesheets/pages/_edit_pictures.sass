@@ -35,28 +35,32 @@
     .avatar-form
       float: left
 
+    p
+      margin-bottom: 10px
+
     #pictures
       +outer-container
 
-      .picture
-        +span-columns(2 of 6)
-        +omega(3n)
-        margin-bottom: 18px
-        position: relative
+      .pictures
+        .picture
+          +span-columns(2 of 6)
+          +omega(3n)
+          margin-bottom: 18px
+          position: relative
 
-        &:hover
+          &:hover
 
-          .gradient-overlay
-            +opacity(1)
+            .gradient-overlay
+              +opacity(1)
 
-          .actions
-            +opacity(1)
+            .actions
+              +opacity(1)
 
-        .img
-          width: 230px
-          height: 230px
-          background: url("ajax-loader.gif") no-repeat center center
-          +transition(opacity 400ms ceaser($easeOutExpo))
+          .img
+            width: 230px
+            height: 230px
+            background: url("ajax-loader.gif") no-repeat center center
+            +transition(opacity 400ms ceaser($easeOutExpo))
 
     .gradient-overlay
       +linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.05), rgba(0,0,0,0))

@@ -31,9 +31,13 @@
     
     <div id="pictures">
         <% if collection.present? %>
+          <div class="pictures">
             <%= render collection %>
-        <% else %>    
+          </div>
+        <% else %>
+          <div class="pictures">
             <p class="light">You don't have any photos yet. Add photos of you and your performance to your profile.</p>
+          </div>
         <% end %>
     </div>
 
