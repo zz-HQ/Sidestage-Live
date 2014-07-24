@@ -39,9 +39,6 @@ module User::TwoFactor
   end
   
   def verify_otp(code)
-    puts "### votp #######################"
-    puts code
-    puts "##########################"
     totp = ROTP::TOTP.new(otp_secret_key.to_s, drift: User.allowed_otp_drift_seconds)
     totp.verify_with_drift(code, User.allowed_otp_drift_seconds)
   end
