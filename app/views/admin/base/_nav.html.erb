@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "sidestage", root_path, class: "navbar-brand" %>
+      <%= link_to "sidestage", admin_root_path, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,6 +17,9 @@
         <li class="<%= 'active' if controller_name == 'users' %>"><%= link_to "All Users", admin_users_path %></li>
         <li class="<%= 'active' if controller_name == 'profiles' %>"><%= link_to "Artists", admin_profiles_path %></li>
         <li class="<%= 'active' if controller_name == 'deals' %>"><%= link_to "Deals", admin_deals_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Website", root_path %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

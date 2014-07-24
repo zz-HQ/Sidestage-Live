@@ -1,10 +1,9 @@
 <div class="parts">
 	<div class="headline">
-		<h4>Pricing</h4>
 		<p>What’s the minimum amount that you would like to make for a performance – regardless if it’s a 30 minutes or 2 hours? In short, this is the price that it takes to get you to an event. You can always change it later.</p> <br>
 	</div>
 
-	<label for="profile_currency">Select default currency:</label>
+	<label for="profile_currency">Select your default currency:</label>
 	<div class="inputs profile_currency">
 		<%= nice_select(f.select :currency, Currency.all.map(&:name)) %>
 	</div>
@@ -14,7 +13,7 @@
 		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
 	</div>
 
-	<label>Price the customer will see (includes <br> Sidestage's fee of <%= Profile.surcharge_base %>%)</label>
+	<p class='light'>Price the customer will see (includes Sidestage's <br> fee of <%= Profile.surcharge_base %>%)</p>
 	<div class="inputs profile_price">
 		<span class="surcharged_price" data-container="surcharged-price"><%= resource.price_with_surcharge %></span>
 	</div>

@@ -1,9 +1,19 @@
 .new-profile-form
 
+	.genres
+		h3
+			font-size: 16px !important
+			font-weight: 400 !important
+			color: #252525 !important
+
 	.input
 		+span-columns(8)
 		border-bottom: 1px solid $border-color
 		text-align: center
+
+		> label
+			text-align: left
+			margin: 20px 0 10px !important
 
 		h3
 			color: #484D4F
@@ -101,6 +111,10 @@
 		.center
 			display: inline
 			margin-top: 30px
+
+	.input.last
+		border: none
+		margin-top: 10px
 
 
 // EDIT PROFILE ------------------
@@ -214,15 +228,12 @@
 // PRICING ---------------
 // -----------------------
 #pricing
+
+	p
+		margin-bottom: 5px
 	
 	.parts
 		width: 54%
-	
-	label
-		color: $text-color-light
-		text-transform: capitalize
-		font-size: 14px
-		font-weight: 400
 
 	.complete-pricing
 
