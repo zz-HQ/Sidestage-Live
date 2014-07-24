@@ -19,8 +19,10 @@ class User::AsMobileNumber < User
   #
   
   validates :mobile_nr, presence: true
-  validates :mobile_nr, format: { with: /\A\+[1-9][0-9]+\z/ }, allow_blank: true
-
+  validates :mobile_nr, format: { with: /\A\+[1-9][0-9]+\z/ }, length: { minimum: 8 }, allow_blank: true
+  validate :must_include_country_code, :must_start_with_non_zero, :must_start_with_plus
+  
+  
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------
@@ -57,6 +59,27 @@ class User::AsMobileNumber < User
   
   def sanitize_mobile_nr
     self.mobile_nr = mobile_nr.to_s.gsub(/\s/,'') if mobile_nr_changed? 
+  end
+  
+  def must_start_with_non_zero
+    if mobile_nr.to_s.starts_with?("+0")
+      errors.delete :mobile_nr
+      errors.add :mobile_nr, :must_start_with_non_zero
+    end
+  end
+  
+  def must_start_with_plus
+    unless mobile_nr.to_s.starts_with?("+")
+      errors.delete :mobile_nr
+      errors.add :mobile_nr, :plus_missing
+    end
+  end
+  
+  def must_include_country_code
+    unless mobile_nr.to_s =~ /\A\+[1-9].*\z/
+      errors.delete :mobile_nr
+      errors.add :mobile_nr, :country_code_missing
+    end
   end
 
   def verify_mobile_confirmation_code

@@ -13,6 +13,13 @@ en:
           world: Anywhere in the world
     errors:
       models:
+        user/as_mobile_number:
+          attributes:
+            mobile_nr:
+              country_code_missing: "You did not include a country code"
+              plus_missing: "Does not begin with plus sign"
+              must_start_with_non_zero: "No 0 after the plus sign"
+              too_short: "Your phone number looks a bit short"
         user:
           attributes:
             mobile_confirmation_code:
@@ -60,10 +67,10 @@ en:
             partner: "You have a new booking request from %{partner_name}."
           cancelled:
             you: "You have declined the booking request from %{partner_name} for %{event_date}."
-            partner: "%{partner_name} has declined your booking request for %{event_date}."
+            partner: "%{partner_name} has cancelled your booking request for %{event_date}."
           declined:
             you: "You have declined the booking request from %{partner_name} for %{event_date}."
-            partner: "%{partner_name} has declined your booking request for %{event_date}."
+            partner: "%{partner_name} has cancelled your booking request for %{event_date}."
           accepted:
             you: "Your booking with %{partner_name} is confirmed for %{event_date}."
             partner: "Your booking with %{partner_name} is confirmed for %{event_date}."
@@ -86,10 +93,10 @@ en:
         body: "You have a new message from %{partner_name}."
       cancelled:
         subject: "Booking Cancelled"
-        body: "Your booking with %{partner_name} for %{event_date} has been cancelled."
+        body: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
       declined:
-        subject: "Booking request declined"
-        body: "Your booking request with %{partner_name} for %{event_date} has been declined."
+        subject: "Booking request cancelled"
+        body: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
       accepted:
         subject: "Booking accepted"
         body: "Your booking with %{partner_name} is confirmed for %{event_date}."
