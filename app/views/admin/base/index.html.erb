@@ -1,5 +1,8 @@
-<p class="text-center bg-success">Total: <%= collection.size %></p>
+<p class="text-center bg-success">Total: <%= collection.count %></p>
+
 <table class="table table-striped table-hover">
     <%= render "collection_head" %>
     <%= render collection %>
 </table>
+
+<%= paginate collection %>

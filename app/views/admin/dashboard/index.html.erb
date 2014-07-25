@@ -1,0 +1,36 @@
+<h1>Statistics</h1>
+
+<table class="table table-striped table-condensed table-hover">
+    <tr>
+        <td>Total published Profiles:</td>
+        <td><%= Profile.published.count %></td>
+    </tr>
+    <tr>
+        <td>Total unpublished Profiles:</td>
+        <td><%= Profile.unpublished.count %></td>
+    </tr>
+    <tr>
+        <td>Total individual messages (non system) sent:</td>
+        <td><%= Message.non_system.count %></td>
+    </tr>
+    <tr>
+        <td>Total conversations:</td>
+        <td><%= Conversation.count %></td>
+    </tr>     
+    <tr>
+        <td>Users (artists, non artists):</td>
+        <td><%= User.count %></td>
+    </tr>
+    <tr>
+        <td>Booking requests sent:</td>
+        <td><%= Deal.count %></td>
+    </tr>
+    <tr>
+        <td>Booking requests cancelled:</td>
+        <td><%= Deal.cancelled.count %></td>
+    </tr>
+    <tr>
+        <td>Booking requests declined by artist:</td>
+        <td><%= Deal.declined.count %></td>
+    </tr>
+</table>

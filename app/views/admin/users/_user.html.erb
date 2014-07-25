@@ -1,5 +1,14 @@
 <tr>
+    <td><%= image_tag user.avatar.url(:thumb), class: "avatar", style: "height:36px;width:36px" %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
+    <td>
+        <%= user.mobile_nr %>
+        <% if user.mobile_nr_confirmed? %>
+            <br/>
+            <span class="badge">Confirmed: <%= l user.mobile_nr_confirmed_at, format: :only_date %></span>
+        <% end %>
+    </td>
+    <td><%= bool_label(user.paymentable?) %></td>
     <td><%= link_to_bool user.verified? , target: toggle_verification_admin_user_path(user), true_text: "Unverify", false_text: "Verify" %></td>
 </tr>    

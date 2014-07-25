@@ -1,0 +1,17 @@
+<p>
+    <% Deal.aasm.states.each do |state| %>
+        <%= link_to params.merge(by_state: state.name), class: "btn btn-default" do %>
+            <%= state.name %> <span class="badge"><%= Deal.send(state.name).count %></span>
+        <% end %>
+    <% end %> 
+</p>
+
+<p class="text-center bg-success">Total: <%= collection.count %></p>
+
+
+<table class="table table-striped table-hover">
+    <%= render "collection_head" %>
+    <%= render collection %>
+</table>
+
+<%= paginate collection %>

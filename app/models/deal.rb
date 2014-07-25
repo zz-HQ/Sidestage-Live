@@ -80,7 +80,9 @@ class Deal < ActiveRecord::Base
   scope :pending, -> { where(state: Deal::PENDING_STATES) }
   scope :upcoming, -> { order("start_at ASC") }
   scope :visible_in_conversation, -> { where('state NOT IN (?)', Deal::HIDDEN_CONVERSATION_STATES) }
-  
+  scope :since, ->(since) { where("updated_at > ?", since) }
+  scope :created_since, ->(since) { where("created_at > ?", since) }
+     
   #
   # Instance Methods
   # ---------------------------------------------------------------------------------------
