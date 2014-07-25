@@ -84,6 +84,7 @@ class Profile < ActiveRecord::Base
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where("published = ? OR published = ?", nil, false) }
   scope :featured, -> { where(featured: true) }
+  scope :latest, -> { order("ID DESC") }
   
   #
   # Callbacks

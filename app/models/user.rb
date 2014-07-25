@@ -59,12 +59,14 @@ class User < ActiveRecord::Base
   after_create :add_to_newsletter, :notify_admin
 
   #
-  # Class Methods
+  # Scopes
   # ---------------------------------------------------------------------------------------
   #
   #
   #
   #
+  
+  scope :latest, -> { order("ID DESC") }
 
   #
   # Instance Methods

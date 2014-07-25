@@ -21,7 +21,7 @@ class Admin::ResourcesController < Admin::BaseController
   private
   
   def collection
-    get_collection_ivar || set_collection_ivar(end_of_association_chain.page(params[:page] || 1))
+    get_collection_ivar || set_collection_ivar(end_of_association_chain.latest.page(params[:page] || 1))
   end  
     
 end
