@@ -1,0 +1,54 @@
+<h1>Weekly Statistics</h1>
+
+Since: <%= l (since = Time.now.wday.days.ago), format: :event_date  %>
+<table class="table table-striped table-condensed table-hover">
+    <tr>
+        <td>
+            Total individual messages (non system) sent: 
+        </td>
+        <td>    
+            <%= Message.non_system.since(since).count %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Total conversations:
+        </td>
+        <td>
+            <%= Conversation.since(since).count %>
+        </td>
+    </tr>     
+    <tr>
+        <td>
+            Users (artists, non artists):
+        </td>
+        <td>
+            <%= User.since(since).count %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Booking requests sent:
+        </td>
+        <td>
+            <%= Deal.created_since(since).count %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Booking requests cancelled:
+        </td>
+        <td>
+            <%= Deal.cancelled.since(since).count %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Booking requests declined by artist:
+        </td>
+        <td>
+            <%= Deal.declined.since(since).count %>
+        </td>
+    </tr>
+
+</table>
