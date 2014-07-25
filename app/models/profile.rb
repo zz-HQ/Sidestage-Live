@@ -82,6 +82,7 @@ class Profile < ActiveRecord::Base
   filterable :location, :price
   
   scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where("published = ? OR published = ?", nil, false) }
   scope :featured, -> { where(featured: true) }
   
   #
