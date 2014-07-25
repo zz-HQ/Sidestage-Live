@@ -1,5 +1,8 @@
 <tr>
+    <td><%= image_tag profile.user.avatar.url(:thumb), class: "avatar", style: "height:36px;width:36px" %></td>    
     <td><%= profile.name %></td>
     <td><%= profile.user.email %></td>
+    <td><%= localized_price profile.price, profile.currency %></td>
+    <td><%= bool_label(profile.payoutable?) %></td>
     <td><%= link_to_bool profile.published? , target: toggle_admin_profile_path(profile), true_text: "Unpublish", false_text: "Publish" %></td>
 </tr>

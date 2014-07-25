@@ -12,7 +12,6 @@ gem 'globalize', '~> 4.0.1'
 gem 'gibbon' # Handles Mailchimp integration
 gem 'browser'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-gem 'will_paginate'
 gem 'omniauth-facebook'
 gem 'paper_trail', '~> 3.0.2'
 gem 'aasm'
@@ -42,6 +41,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'asset_sync'
 gem 'jquery-fileupload-rails'
+gem 'kaminari'
 
 group :production do
   gem 'unicorn'

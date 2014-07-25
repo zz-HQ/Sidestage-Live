@@ -141,6 +141,10 @@ class Profile < ActiveRecord::Base
     valid?(:publishing)
   end
   
+  def payoutable?
+    iban.present? && bic.present?
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
