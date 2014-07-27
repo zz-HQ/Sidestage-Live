@@ -10,5 +10,14 @@
         <% end %>
     </td>
     <td><%= bool_label(user.paymentable?) %></td>
-    <td><%= link_to_bool user.verified? , target: toggle_verification_admin_user_path(user), true_text: "Unverify", false_text: "Verify" %></td>
+    <td class="text-right">
+        <%= link_to_bool user.verified? , target: toggle_verification_admin_user_path(user), true_text: "Unverify", false_text: "Verify" %>
+        
+        <%= link_to "Confirm", confirm_admin_user_path(user), method: :put, class: "btn btn-success", title: "Confirm Email" unless user.confirmed? %>
+        <%= link_to admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, title: "Delete", class: "btn btn-danger" do %>
+            <span class="glyphicon glyphicon-remove"></span>
+        <% end %>
+        
+
+    </td>
 </tr>    

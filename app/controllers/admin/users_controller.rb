@@ -9,9 +9,14 @@ class Admin::UsersController < Admin::ResourcesController
   #
   #
   
+  def confirm
+    resource.confirm!
+    redirect_to :back  
+  end
+  
   def toggle_verification
     resource.update_attribute :verified, !resource.verified?
-    redirect_to collection_path
+    redirect_to :back 
   end
   
 end

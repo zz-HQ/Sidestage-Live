@@ -86,6 +86,7 @@ Airmusic::Application.routes.draw do
       resources :deals
       resources :users do
         member do
+          put :confirm
           put :toggle_verification
         end
       end
