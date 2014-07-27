@@ -11,7 +11,7 @@ class Admin::DealsController < Admin::ResourcesController
   private
   
   def collection
-    query = end_of_association_chain
+    query = end_of_association_chain.latest
     if params[:by_state].present?
       query = query.send(params[:by_state])
     end

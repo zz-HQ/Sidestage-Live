@@ -39,8 +39,13 @@ class User < ActiveRecord::Base
   #
   
   has_many :profiles, dependent: :destroy
-  has_many :messages, class_name: 'Message', foreign_key: :sender_id, dependent: :delete_all
   has_many :bookings, class_name: 'Deal', foreign_key: :customer_id
+
+  has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id, dependent: :delete_all
+  has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id, dependent: :delete_all
+
+  has_many :sent_conversations, class_name: 'Conversation', foreign_key: :sender_id, dependent: :delete_all
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: :receiver_id, dependent: :delete_all
   
   mount_uploader :avatar, AvatarUploader
   
@@ -59,12 +64,14 @@ class User < ActiveRecord::Base
   after_create :add_to_newsletter, :notify_admin
 
   #
-  # Class Methods
+  # Scopes
   # ---------------------------------------------------------------------------------------
   #
   #
   #
   #
+  
+  scope :latest, -> { order("ID DESC") }
 
   #
   # Instance Methods

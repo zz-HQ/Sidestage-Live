@@ -8,12 +8,11 @@
     <div id="wrap">
       <div id="main" class="clearfix">
 
-        <%= render 'flash' %>
-
         <%= yield :outer_wrap %>
         
         <div class="container">
           <%= render 'nav' %>
+          <%= render 'flash' %>          
           <%= yield %>
         </div>
 
