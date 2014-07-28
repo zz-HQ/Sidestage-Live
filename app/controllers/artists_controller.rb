@@ -83,7 +83,8 @@ class ArtistsController < ApplicationController
   end
   
   def collection
-    get_collection_ivar || set_collection_ivar(resources.page(params[:page] || 1))
+    get_collection_ivar || set_collection_ivar(resources)
+    #get_collection_ivar || set_collection_ivar(resources.page(params[:page] || 1))
   end  
   
   def resources
