@@ -18,7 +18,7 @@ gem 'aasm'
 gem 'friendly_id', '~> 5.0.0'
 gem 'sidekiq'
 gem 'twilio-ruby', '~> 3.11'
-gem 'rotp'
+gem 'rotp', '2.0'
 
 # Image Processing
 gem 'carrierwave'
