@@ -64,7 +64,7 @@ Airmusic::Application.routes.draw do
       end
       resources :payment_details
       
-      root 'dashboard#index'
+      root 'personals#complete'
     end
     
     resources :city_launches
