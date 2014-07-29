@@ -16,6 +16,7 @@ gem 'omniauth-facebook'
 gem 'paper_trail', '~> 3.0.2'
 gem 'aasm'
 gem 'friendly_id', '~> 5.0.0'
+gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'sidekiq'
 gem 'twilio-ruby', '~> 3.11'
 gem 'rotp', '2.0'
