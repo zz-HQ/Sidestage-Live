@@ -18,8 +18,15 @@ en:
         password: Password
         password_confirmation: Password confirmation
         full_name: Full name
+      review:
+        body: Your review  
   helpers:
     submit:
+      create: 'Create %{model}'
+      update: 'Update %{model}'
+      submit: 'Save %{model}'
       user:
         sign_in: "Log me in!"
         sign_up: "Sign me up!"
+      review:
+        submit: Send  

@@ -21,7 +21,7 @@ module ModulesHelper
 
     	content = ''
 
-    	content += content_tag(:span, "Rating:") if options[:label].present?
+    	content += content_tag(:span, "#{Review.human_attribute_name(:rating)}:") if options[:label].present?
 
       5.times do |i|
         klass = "fa fa-star rating-star rating-off"

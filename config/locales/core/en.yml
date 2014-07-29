@@ -185,11 +185,6 @@ en:
     select:
       prompt: "Please select"
 
-    submit:
-      create: 'Create %{model}'
-      update: 'Update %{model}'
-      submit: 'Save %{model}'
-
   errors:
     format: "%{attribute} %{message}"
 

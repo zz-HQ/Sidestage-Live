@@ -7,11 +7,11 @@
     <%= image_tag artist.user.avatar_url(:thumb) %>
     <div class="text">
       <h3><%= artist.name %></h3>
-      <p class="price">from <%= artist_price(artist) %></p>
+      <p class="price"><%= t(:"application.artists.index.price_from") %> <%= artist_price(artist) %></p>
     </div>
     <div class="gradient-overlay"></div>
     <div class="overlay">
-      <div class="view-profile">View Profile</div>
+      <div class="view-profile"><%= t(:"application.artists.index.view_profile") %></div>
     </div>
   </div>
   <div class="label">

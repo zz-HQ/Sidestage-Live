@@ -4,3 +4,9 @@ en:
       index:
         view_profile: View Profile
         price_from: from
+      show:
+        leave_a_review: Do you know this artist? Leave a review.
+        no_reviews: This artist has no reviews yet.
+        view_next: "View next artist"
+      new:
+        title: Leave a review for

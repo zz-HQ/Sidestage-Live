@@ -72,15 +72,15 @@
     </div>
     
     <div data-container="reviews" class="reviews">
-      <h4>Reviews</h4>
+      <h4><%= Review.model_name.human(count: 2) %></h4>
 
       <% if current_user && current_user.id != resource.user_id %>
-        <%= link_to "Do you know this artist? Leave a review.", new_account_profile_review_path(resource), class: "light link-to-new-review", data: { lightbox: :html, target: "[data-container='new-review']" } %>
+        <%= link_to t(:"application.artists.show.leave_a_review"), new_account_profile_review_path(resource), class: "light link-to-new-review", data: { lightbox: :html, target: "[data-container='new-review']" } %>
       <% end %>
       
       <div style="display:none;" data-container="new-review">
           <div class="devise-lightbox new-review">
-            <h3>Leave a review for <%= resource.name %></h3>
+            <h3><%= t(:"application.artists.new.title") %> <%= resource.name %></h3>
             <%= render "account/reviews/form", parent: resource %>
           </div>
           <script>
@@ -93,7 +93,7 @@
       <% if resource.reviews.count > 0 %>
         <%= render partial: "account/reviews/review", collection: resource.reviews %>
       <% else %>
-        <p>This artist has no reviews yet.</p>
+        <p><%= t(:"application.artists.show.no_reviews") %></p>
       <% end %>
 
     </div>
@@ -101,7 +101,7 @@
     <% if defined?(next_resource) && next_resource(true).present? %>
         <div class="next-artist right">
           <%= link_to artist_path(next_resource, params.except(:id)) do %>
-            View next artist <i class='fa fa-angle-right'></i>
+              <%= t(:"application.artists.show.view_next") %> <i class='fa fa-angle-right'></i>
           <% end %>
         </div>
     <% end %>
