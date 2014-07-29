@@ -108,9 +108,13 @@ class ApplicationController < ActionController::Base
   def load_currency
     @current_currency ||= Currency.where(name: session[:currency] || user_currency || Rails.configuration.default_currency).first
   end
-
+  
+  def lightbox_request?
+    request.headers['X-Lightbox'].present?
+  end
+  
   def set_layout
-    return false if request.headers['X-Lightbox'].present? || controller_name == 'home'
+    return false if lightbox_request? || controller_name == 'home'
     return "application"
   end
   
