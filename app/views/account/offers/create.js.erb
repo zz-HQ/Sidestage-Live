@@ -2,5 +2,5 @@ vex.closeAll();
 <% if resource.errors.present? %>
     vex.open({ content: "<%= j render("form").strip.html_safe %>" });
 <% else %>
-    vex.open({showCloseButton: false, content: "<form class='vex-dialog-form'><h3>Your booking request was sent to <%= resource.customer.profile_name %> for <%= l(resource.start_at, format: :event_date) %></h3><p>We'll notify you once your request is accepted or not.</p> <br/> <p>You can cancel your booking request by clicking the Message icon > <%= resource.customer.profile_name %> and then Cancel in the conversation view. <br/><br /></p> <%= j(link_to "OK", account_conversation_path(resource.conversation), class: "btn btn-inline", style: "margin-right: 15px; margin-left: 70px;") %> <%= j(link_to "Cancel booking request", decline_account_deal_path(resource), method: :put, class: "cancel-link") %></form>"});
+    vex.open({showCloseButton: false, content: "<%= t(:"application.deals.new.success_html", partner_name:  resource.customer.profile_name, event_date: l(resource.start_at, format: :event_date), link_to_conversation: j(link_to "OK", account_conversation_path(resource.conversation), class: "btn btn-inline", style: "margin-right: 15px; margin-left: 70px;"), link_to_cancel_deal: j(link_to t(:"application.deals.new.cancel_booking"), decline_account_deal_path(resource), method: :put, class: "cancel-link")) %>"});
 <% end %>

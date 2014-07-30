@@ -18,7 +18,7 @@
   </div>
 
   <aside>
-    <header>Booking Details</header>
+    <header><%= t(:"application.conversations.show.sidebar_title") %></header>
     <% if resource.deals.visible_in_conversation.present? %>
       <div class="deals">
           <% resource.deals.select { |d| d.rejected? }.each do |deal| %>
@@ -36,11 +36,11 @@
           <% end %>
       </div>
     <% else %>
-      <p>There is currently no booking request made.</p>
+      <p><%= t(:"application.conversations.show.requests_empty") %></p>
 
       <% if current_user.artist? %>
-        Make <%= resource.negotiator_for(current_user).profile_name %> an offer to play at their next event.
-        <%= link_to "Make offer", "#", class: "btn btn-confirm", data: { lightbox: :html, target: "[data-container='artist-offer']" } %>
+        <%= t(:"application.conversations.show.make_offer_html", customer_name: resource.negotiator_for(current_user).profile_name) %>
+        <%= link_to t(:"application.conversations.show.make_offer"), "#", class: "btn btn-confirm", data: { lightbox: :html, target: "[data-container='artist-offer']" } %>
   	    <div style="display:none;" data-container="artist-offer">
   		      <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
             <script>

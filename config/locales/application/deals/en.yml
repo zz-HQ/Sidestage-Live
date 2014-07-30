@@ -4,3 +4,14 @@ en:
       new:
         title: To proceed with this booking, please enter your payment details.
         foot_note_html: Your payment data is secure. <br> We use Stripe to process payments.
+        verification_message: Verifying payment...
+        success_html: "<form class='vex-dialog-form'><h3>Your booking request was sent to %{partner_name} for %{event_date}</h3><p>We'll notify you once your request is accepted or not.</p> <br/> <p>You can cancel your booking request by clicking the Message icon > %{partner_name} and then Cancel in the conversation view. <br/><br /></p> %{link_to_conversation} %{link_to_cancel_deal}</form>"
+        cancel_booking: Cancel booking request
+      show:
+        cancel: Cancel Booking
+        view_more_artists: View more artists
+        states:
+          cancelled:
+            desc: To make a new booking visit the artist's profile page  
+          declined:
+            desc: The artist has declined your booking request.  

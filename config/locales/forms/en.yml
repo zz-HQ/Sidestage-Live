@@ -30,6 +30,10 @@ en:
           body: Reply
       deal:
         start_at: Event date
+      credit_card:
+        number: Card number
+        exp_month: Exp month
+        exp_year: Exp year
   helpers:
     submit:
       create: 'Create %{model}'
@@ -45,6 +49,7 @@ en:
       deal:
         create: Book now
         submit: Book now
+        submit_proposal: Send request
       profile:
         submit: Continue
         create: Continue

@@ -1,0 +1,14 @@
+en:
+  application:
+    conversations:
+      show:
+        sidebar_title: Booking Details
+        requests_empty: There is currently no booking request made.
+        make_offer_html: Make %{customer_name} an offer to play at their next event.
+        make_offer: Make offer
+    offers:
+      new:
+        title: "Send new offer to %{customer_name}"
+        desc_html: "You can make an offer to another Sidestage member. <br> Example, if they want you to play a solo or acoustic set, which would cost a lot less than the price listed on your profile."
+        price_label: How much do you want to make?
+        surcharge_label_html: "Price the customer will see (includes <br> Sidestage's fee of %{surcharge_base}%)" 

@@ -17,7 +17,11 @@ en:
         solo_true: Solo Artist
         solo_false: Group  
       review:
-        rating: Rating    
+        rating: Rating
+      deal:
+        start_at: Event date
+        price: Price
+        price_for_customer: Total cost
     errors:
       models:
         user/as_mobile_number:

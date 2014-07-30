@@ -1,11 +1,11 @@
 <div class="booking">
   <table>
     <tr>
-      <td>Event date:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
+      <td><%= Deal.human_attribute_name(:start_at) %>:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
     </tr>
   <% if deal.is_customer?(current_user) %>
     <tr class="price customer">
-      <td>Total cost:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
+      <td><%= Deal.human_attribute_name(:price_for_customer) %>:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
     </tr>
     <!-- <tr>
       <td>Status:</td><td>Pending artist confirmation</td>
@@ -14,10 +14,9 @@
 
   <hr>
 
-  <%= link_to "Cancel Booking", cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
+  <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
   <% else %>
     <%= render "account/deals/offerable", deal: deal %>
   <% end %>
-
   <p class="footnote">Need help? Contact <a href="mailto:support@sidestage.com" class="link">support@sidestage.com</a></p>
 </div>
