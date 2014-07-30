@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 20140722142523) do
     t.integer  "currency_id"
     t.string   "rate_from"
     t.string   "rate_to"
-    t.float    "rate"
-    t.float    "ask"
-    t.float    "bid"
+    t.float    "rate",        limit: 24
+    t.float    "ask",         limit: 24
+    t.float    "bid",         limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
   end

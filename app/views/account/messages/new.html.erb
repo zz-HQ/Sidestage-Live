@@ -1,5 +1,5 @@
 <div class="devise-lightbox">
-	<h3>Send message to: <%= resource.receiver.profile_name %></h3>
+	<h3><%= t(:"application.messages.new.title") %> <%= resource.receiver.profile_name %></h3>
 	<%= simple_form_for resource, url: account_messages_path do |f| %>
 		<%= render "form", f: f %>
 	<% end %>

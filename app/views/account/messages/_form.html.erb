@@ -1,5 +1,5 @@
 <div class="form-inputs">
-	<%= f.input :body, autofocus: true, placeholder: "Type your message here.", label: false %>
+	<%= f.input :body, autofocus: true, label: false %>
 	<%= f.input :receiver_id, as: :hidden %>	
-	<%= f.button :submit, value: "Send", class: "btn", data: { disable_with: "Sending..." }  %>
+	<%= f.submit class: "btn", data: { disable_with: "#{t(:"helpers.submit.message.disable_with")}" }  %>
 </div>

@@ -1,27 +1,26 @@
-
 	<div id="new-profile" class="new-profile-form">
 
 		<!-- # resource.errors.full_messages.inspect -->
 		<%= simple_form_for resource, url: artists_path, remote: true, html: { id: "profile-form" } do |f| %>
 
 			<header>
-				<h2>Create an Artist Profile!</h2>
-				<p>Sidestage lets you make money by offering your music as a service to people who want to hire musicians for private events.</p>
+				<h2><%= t(:"application.artists.new.title") %></h2>
+				<p><%= t(:"application.artists.new.desc") %></p>
 			</header>
 			
 			<div class="input big">
-				<h3>You are...</h3>
+				<h3><%= t(:"simple_form.labels.profile.solo") %></h3>
 				
 				<div class="styled-radios">
 					<div class="act radio">
 						<div class="label">
-							Solo Artist
+							<%= t(:"activerecord.attributes.profile.solo_true") %>
 						</div>
 						<%= f.radio_button :solo, true %>
 					</div>
 					<div class="act radio">
 						<div class="label">
-							Group
+							<%= t(:"activerecord.attributes.profile.solo_false") %>
 						</div>
 						<%= f.radio_button :solo, false %>
 					</div>
@@ -31,7 +30,7 @@
 			<%= render "/account/profiles/genres", f: f %>
             
 			<div class="input city">
-				<h3>Where are you based?</h3>
+				<h3><%= t(:"simple_form.labels.profile.location") %></h3>
 
 				<div id="city-switch">
           <%= nice_select(f.select :location, available_locations, {include_blank: false}, {class: "redirect-on-change-to-other"}) %>
@@ -39,7 +38,7 @@
 			</div>
 
     		<div class="input last">
-    		  <input type="submit" value="Continue" class="btn button center">
+    		    <%= f.submit class: "btn button center" %>
     		</div>
 
 		<% end %>

@@ -11,22 +11,41 @@ en:
     labels:
       user:
         remember_me: Remember me
-        newsletter_subscribed: Send me Sidestage updates 
+        newsletter_subscribed: Send me Sidestage updates
+      profile:
+        solo: You are...
+        genre_ids: What's closest to your style?
+        location: Where are you based?
     placeholders:
       user:
         email: Email
         password: Password
         password_confirmation: Password confirmation
-        full_name: Full name
+        full_name: Full name        
       review:
         body: Your review  
+      message:
+        body: Type your message here.
+        reply:
+          body: Reply
+      deal:
+        start_at: Event date
   helpers:
     submit:
       create: 'Create %{model}'
       update: 'Update %{model}'
-      submit: 'Save %{model}'
+      submit: Send
+      message:
+        create: Send
+        disable_with: Sending...
+        reply: Reply
       user:
         sign_in: "Log me in!"
         sign_up: "Sign me up!"
-      review:
-        submit: Send  
+      deal:
+        create: Book now
+        submit: Book now
+      profile:
+        submit: Continue
+        create: Continue
+        update: Continue  

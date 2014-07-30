@@ -14,6 +14,8 @@ en:
           city: Only my city
           state: In my state/region
           world: Anywhere in the world
+        solo_true: Solo Artist
+        solo_false: Group  
       review:
         rating: Rating    
     errors:

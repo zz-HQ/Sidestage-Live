@@ -1,6 +1,6 @@
-<% if @message.persisted? %>
-    $('#messages').append('<%= j render('account/conversations/message', message: @message) %>');
-    $('#message_body').val('').trigger('blur');
+<% if resource.errors.present? %>
+    alert("<%= resource.errors.full_messages.first.html_safe %>");
 <% else %>
-    alert("Message couldn't be sent.");
+    $('#messages').append('<%= j render('account/conversations/message', message: resource) %>');
+    $('#message_body').val('').trigger('blur');
 <% end %>

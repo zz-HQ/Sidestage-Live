@@ -1,12 +1,12 @@
 <div class="input">
-	<label>You are..</label>
+	<label><%= t(:"simple_form.labels.profile.solo") %></label>
 	<div class="styled-radios">
 		<div class="act radio">
-			<div class="label">Solo Artist</div>
+			<div class="label"><%= t(:"activerecord.attributes.profile.solo_true") %></div>
 			<%= f.radio_button :solo, true %>
 		</div>
 		<div class="act radio">
-			<div class="label">Band</div>
+			<div class="label"><%= t(:"activerecord.attributes.profile.solo_false") %></div>
 			<%= f.radio_button :solo, false %>
 		</div>
 	</div>
@@ -17,10 +17,10 @@
 </div>
 
 <div class="input city last">
-	<label>Where are you based?</label>
+	<label><%= t(:"simple_form.labels.profile.location") %></label>
 	<%= nice_select(f.select :location, available_locations, include_blank: false) %>
 </div>
 
 <div class="input last">
-	<%= f.button :submit, value: "Continue", class: "btn" %>
+	<%= f.submit class: "btn" %>
 </div>
