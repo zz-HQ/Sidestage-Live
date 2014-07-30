@@ -9,6 +9,7 @@ class CityLaunch < ActiveRecord::Base
   #
 
   validates :email, :city, presence: true
+  validates :email, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/ }
   
   #
   # Callbacks
