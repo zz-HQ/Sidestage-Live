@@ -79,6 +79,10 @@ $(document).on 'click', '#fileupload-button', (e) ->
   e.preventDefault()
   $('#file').trigger 'click'
 
+$(document).on 'click', '.close', (e) ->
+    e.preventDefault()
+    $(@).closest('#cookies').slideUp(200)
+
 $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
