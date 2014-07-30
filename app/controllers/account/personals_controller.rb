@@ -72,6 +72,7 @@ class Account::PersonalsController < Account::ResourcesController
 
   def upload_avatar
     if resource.update_attributes(permitted_params[:user])
+      flash[:notice] = "Successfully uploaded a profile picture!"
     end
     respond_to do |wants|
       wants.html {redirect_to :back}
