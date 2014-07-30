@@ -1,6 +1,9 @@
 <div id="conversation" class="container">
   <div class="content">
-    <header><%= resource.negotiator_for(current_user).profile_name %></header>
+    <header>
+      <%= resource.negotiator_for(current_user).profile_name %>
+      <span class="right"><%= link_to "Archive", archive_account_conversation_path(resource), method: :put unless resource.archived_by?(current_user) %></span>
+    </header>
     
     <div id="messages">
       <% resource.messages.includes(:sender).each do |message| %>
