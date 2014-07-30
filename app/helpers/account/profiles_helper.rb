@@ -2,10 +2,15 @@ module Account::ProfilesHelper
   
   def link_to_publish_profile(profile)
     css_class = ["btn", "btn-accept"]
-    css_class << "unpublishable disabled" unless profile.publishable?
-    url = profile.publishable? ? toggle_account_profile_path(profile) : "#"
-    method = profile.publishable? ? :put : :get
-    link_to "Publish", url, method: method, class: css_class, disabled: !profile.publishable?
+    css_class << "unpublishable disabled" unless profile.publishable? && publishable?
+    if profile.publishable? && publishable? 
+      url = toggle_account_profile_path(profile)
+      method = :put
+    else
+      url = "#"
+      method = :get
+    end
+    link_to "Publish", url, method: method, class: css_class, disabled: 'disabled' unless !profile.publishable? && publishable?
   end
 
   def has_soundcloud?
@@ -39,6 +44,14 @@ module Account::ProfilesHelper
 
   def has_images?
     !resource.pictures.empty?
+  end
+
+  def publishable?
+    if has_youtube? || has_images? || has_soundcloud?
+      unless resource.user.avatar.blank?
+        true
+      end
+    end
   end
 
 private

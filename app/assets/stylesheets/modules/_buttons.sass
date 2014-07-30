@@ -45,6 +45,10 @@ $btn-hover-darken-percentage: 10%
     &:hover
       +linear-gradient(to bottom, darken($btn-facebook-top-color, $btn-hover-darken-percentage), darken($btn-facebook-bottom-color, $btn-hover-darken-percentage))
 
+  &.disabled
+    background-color: lighten($red, 27%) !important
+    cursor: default !important
+
 
 .flat-btn
   +box
