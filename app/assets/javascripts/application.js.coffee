@@ -88,5 +88,22 @@ $.ajaxSetup
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     'Accept': "text/javascript, application/javascript, text/html"
 
+
+flashMessage = (name, msg) ->
+  $('#flash-messages').find(".flash").addClass name
+  $('#flash-messages').find(".flash-message").html msg
+  $('#flash-messages').delay(100).animate
+    height: '60px'
+  ,
+    duration: 150
+    # ab hier auskommentieren, damit es offen bleibt
+    complete: ->
+      $(this).delay(3000)
+      .animate
+        height: 0
+      ,
+        duration: 200
+
+
 $(document).on 'page:update', App.init
 $ -> App.init()
