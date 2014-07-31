@@ -1,13 +1,13 @@
 <div class="sidebar">
-	<h4>Basics</h4>
-	<%= link_to "- Settings", resource.new_record? ? "#" : basics_account_profile_path(resource) %>
-	<%= link_to "- Pricing & terms", resource.new_record? ? "#" : pricing_account_profile_path(resource) %>
-	<h4>Description</h4>
-	<%= link_to "- Profile & content", resource.new_record? ? "#" : description_account_profile_path(resource) %>
-	<h4>Photos</h4>
-	<%= link_to "- Manage photos", resource.new_record? ? "#" : account_profile_pictures_path(resource) %>
-	<h4>Payments</h4>
-	<%= link_to "- Add payout method", resource.new_record? ? "#" : payment_account_profile_path(resource) %>
-	<h4>Phone</h4>
-	<%= link_to "- Verify Phone Number", account_mobile_numbers_path %>
+	<h4><%= t(:"application.profiles.sidebar.basics") %></h4>
+	<%= link_to t(:"application.profiles.sidebar.settings_link"), resource.new_record? ? "#" : basics_account_profile_path(resource) %>
+	<%= link_to t(:"application.profiles.sidebar.pricing_link"), resource.new_record? ? "#" : pricing_account_profile_path(resource) %>
+	<h4><%= t(:"application.profiles.sidebar.description") %></h4>
+	<%= link_to t(:"application.profiles.sidebar.description_link"), resource.new_record? ? "#" : description_account_profile_path(resource) %>
+	<h4><%= t(:"application.profiles.sidebar.photos") %></h4>
+	<%= link_to t(:"application.profiles.sidebar.photos_link"), resource.new_record? ? "#" : account_profile_pictures_path(resource) %>
+	<h4><%= t(:"application.profiles.sidebar.payment") %></h4>
+	<%= link_to t(:"application.profiles.sidebar.payment_link"), resource.new_record? ? "#" : payment_account_profile_path(resource) %>
+	<h4><%= t(:"application.personals.sidebar.phone") %></h4>
+	<%= link_to t(:"application.personals.sidebar.phone_link"), account_mobile_numbers_path %>
 </div>

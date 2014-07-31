@@ -1,24 +1,24 @@
 <div class="inputs profile_name">
-	<%= f.input :name, label: "Stage name" %>
-	<div class="hint">Your real name or Madonna. Whatever name people yell when you're on stage.</div>
+	<%= f.input :name, hint: false %>
+	<div class="hint"><%= t(:"simple_form.hints.profile.name") %></div>
 </div>
 <div class="inputs profile_title">
-	<%= f.input :title, as: :string, label: "One sentence to describe your act" %>
-	<div class="hint">Make sure it's catchy and unique.</div>
+	<%= f.input :title, as: :string, hint: false %>
+	<div class="hint"><%= t(:"simple_form.hints.profile.title") %></div>
 </div>
 <div class="inputs profile_about">
-	<%= f.input :about, label: "Tell us about you and/or your act." %>
-	<div class="hint">Your chance to tell everyone a bit more about you. How you got into music, what drives you. Anything that may be helpful for someone to know who may be hiring you.</div>
+	<%= f.input :about, hint: false %>
+	<div class="hint"><%= t(:"simple_form.hints.profile.about") %></div>
 </div>
 
 <h4>Samples of your performance</h4>
 <div class="inputs">
-	<%= f.input :youtube, placeholder: "Paste YouTube link here", label: "Youtube video" %>
-	<div class="hint">Post your best stuff, this is your chance to show people how you perform.</div>
+	<%= f.input :youtube, hint: false %>
+	<div class="hint"><%= t(:"simple_form.hints.profile.youtube") %></div>
 </div>
 <div class="inputs">
-	<%= f.input :soundcloud, as: :text, placeholder: '<iframe>…', label: "SoundCloud Track/Playlist Embed Code" %>
-	<div class="hint">Be sure you copy the embed code, not the track or playlist URL.</div>
+	<%= f.input :soundcloud, as: :text, hint: false %>
+	<div class="hint"><%= t(:"simple_form.hints.profile.soundcloud") %></div>
 </div>
 
 <!-- <h4>Social media links</h4>

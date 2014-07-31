@@ -50,6 +50,8 @@ en:
       prompts:
         event_search: Where is your event?
         choose_city: Choose city
+    confirm:
+      sure: "Are you sure?"
   flash:
     account:
       messages:

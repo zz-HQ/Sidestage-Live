@@ -4,7 +4,7 @@
   </aside>
 
   <div class="content">
-    <header>Your public profile <p>The better your profile looks and reads, the more booking requests you will receive.</p> </header>
+    <header><%= t(:"application.profiles.description.title_html") %></header>
     <div id="description" class="">
       <%= simple_form_for resource, url: description_account_profile_path(resource) do |f| %>
         <%= render "description_form", f: f %>

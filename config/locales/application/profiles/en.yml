@@ -1,0 +1,31 @@
+en:
+  application:
+    profiles:
+      sidebar:
+        basics: Basics
+        settings_link: "- Settings"
+        pricing_link: "- Pricing & terms"
+        description: Description
+        description_link: " - Profile & content"
+        photos: Photos
+        photos_link: "- Manage photos"
+        payment: Payments
+        payment_link: "- Add payout method"
+      basics:
+        title_html: "Create an Artist Profile.<p>Make money by getting hired to play at private events, in your city and around the world.</p>"  
+      pricing:
+        title_html: "Pricing and terms<p>Set your price, name your terms.</p>"  
+        desc: "What’s the minimum amount that you would like to make for a performance – regardless if it’s a 30 minutes or 2 hours? In short, this is the price that it takes to get you to an event. You can always change it later."
+        hint_html: "<strong>Please read:</strong> Booking requests are only confirmed if you accept them. Before confirming a booking, you can increase the price to cover additional costs for that related booking."
+      description:
+        title_html: "Your public profile <p>The better your profile looks and reads, the more booking requests you will receive.</p> "  
+      payment:
+        title_html: "Add payout method<p>You'll need to enter your bank account details to get paid.</p>"  
+        security_hint: "Your bank details are handled securely. We use Stripe to process payment."
+      pictures:
+        index:
+          avatar_title_html: "Profile picture<p>This is the picture that will show up in search listings.</p>"
+          title_html: "Photos<p>These photos will show up as part of your public artist listing. Try to use high quality photos.</p>"
+          empty: "You don't have any photos yet. Add photos of you and your performance to your profile."
+        new:
+          title: "Upload New Pictures"  

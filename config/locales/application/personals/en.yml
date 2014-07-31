@@ -19,7 +19,6 @@ en:
         new:
           title: You have no credit card on file. Add one below.
           security_hint_html: "<p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p><p>For questions, contact <br><a href='mailto:support@sidestage.com'>support@sidestage.com</a> </p>"
-          skip: Skip
         show:
           title: "One credit card on file:"
           card_count_hint_html: You can currently only store one credit card. <br> More payment methods are coming.

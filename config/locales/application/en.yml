@@ -12,3 +12,9 @@ en:
       search: Search
     links:
       forgot_password: Forgot password?
+      edit: Edit
+      unpublish: Unpublish
+      publish: Publish
+      skip: Skip
+      continue: Continue
+      remove: Remove

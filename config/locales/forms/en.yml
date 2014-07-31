@@ -21,9 +21,25 @@ en:
         solo: You are...
         genre_ids: What's closest to your style?
         location: Where are you based?
+        currency: "Select your default currency:"
+        price: "How much do you want to make?"
+        surcharge_html: "Price the customer will see (includes Sidestage's <br> fee of %{surcharge_base}%)"
+        name: Stage name
+        title: One sentence to describe your act
+        about: Tell us about you and/or your act.
+        youtube: Youtube video
+        soundcloud: SoundCloud Track/Playlist Embed Code
+        avatar: Select Profile picture
       deal:
         new_price: New price
         old_price: Old price
+    hints:
+      profile:
+        name: "Your real name or Madonna. Whatever name people yell when you're on stage."
+        title: "Make sure it's catchy and unique."
+        about: "Your chance to tell everyone a bit more about you. How you got into music, what drives you. Anything that may be helpful for someone to know who may be hiring you."
+        youtube: "Post your best stuff, this is your chance to show people how you perform."
+        soundcloud: "Be sure you copy the embed code, not the track or playlist URL."    
     placeholders:
       user:
         email: Email
@@ -47,6 +63,9 @@ en:
         number: Card number
         exp_month: Exp month
         exp_year: Exp year
+      profile:
+        youtube: Paste YouTube link here
+        soundcloud: "<iframe>…"
   helpers:
     submit:
       create: 'Create %{model}'
@@ -75,4 +94,5 @@ en:
       profile:
         submit: Continue
         create: Continue
-        update: Continue  
+        update: Continue
+        submit_avatar: Upload

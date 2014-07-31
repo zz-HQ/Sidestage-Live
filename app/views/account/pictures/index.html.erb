@@ -4,7 +4,7 @@
   </aside>
 
   <div class="content">
-    <header>Profile picture<p>This is the picture that will show up in search listings.</p></header>
+    <header><%= t(:"application.profiles.pictures.index.avatar_title_html") %></header>
     <div class="avatar">
       <% if current_user.avatar.present? %>
          <%= content_tag :div, id: "avatar_#{dom_id(current_user)}", class: "avatar-pic" do %>
@@ -13,21 +13,21 @@
             </div>
             <div class="gradient-overlay"></div>
             <div class="actions">
-              <%= link_to "<i class='fa fa-trash-o'></i> remove".html_safe, destroy_avatar_account_personal_path, method: :delete, data: { remote: true, confirm: "Are you absolutely sure?" } %>
+              <%= link_to "<i class='fa fa-trash-o'></i> #{t(:"application.links.remove")}".html_safe, destroy_avatar_account_personal_path, method: :delete, data: { remote: true, confirm: "#{t(:"helpers.confirm.sure")}" } %>
             </div>
           <% end %>
       <% end %>
       
       <div class="avatar-form">
         <%= simple_form_for current_user, url: upload_avatar_account_personal_path, html: { multipart: true } do |f| %>
-            <%= f.input :avatar, as: :file, label: "Select Profile picture" %>
-            <input type="submit" value="Upload" class="btn">
+            <%= f.input :avatar, as: :file %>
+            <%= f.submit value: "#{t(:"helpers.submit.profile.submit_avatar")}", class: "btn" %>
         <% end %>
       </div>
     </div>
 
 
-    <header>Photos<p>These photos will show up as part of your public artist listing. Try to use high quality photos.</p></header>
+    <header><%= t(:"application.profiles.pictures.index.title_html") %></header>
     
     <div id="pictures">
         <% if collection.present? %>
@@ -36,13 +36,13 @@
           </div>
         <% else %>
           <div class="pictures">
-            <p class="light">You don't have any photos yet. Add photos of you and your performance to your profile.</p>
+            <p class="light"><%= t(:"application.profiles.pictures.index.empty") %></p>
           </div>
         <% end %>
     </div>
 
     <div id="picture-upload">
-      <h3>Upload New Pictures</h3>
+      <h3><%= t(:"application.profiles.pictures.new.title") %></h3>
       <%= form_tag(account_profile_pictures_path(parent), multipart: true, id: "new_picture", method: :post) do %>
           <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true %>
          
@@ -51,7 +51,7 @@
       <% if false %><div id="file-upload-status">Upload still running. <span class="value">0</span> left …</div><%- end -%>
     </div>
 
-    <%= link_to "Continue", "payment", class: "btn continue" %>
+    <%= link_to t(:"application.links.continue"), "payment", class: "btn continue" %>
 
   </div>
 </div>

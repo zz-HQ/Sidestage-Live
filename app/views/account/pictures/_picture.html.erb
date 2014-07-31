@@ -4,6 +4,6 @@
 	</div>
 	<div class="gradient-overlay"></div>
   <div class="actions">
-    <%= link_to "<i class='fa fa-trash-o'></i> remove".html_safe, account_profile_picture_path(picture.imageable, picture), method: :delete, data: {remote: true, confirm: "Are you absolutely sure?"} %>
+    <%= link_to "<i class='fa fa-trash-o'></i> #{t(:"application.links.remove")}".html_safe, account_profile_picture_path(picture.imageable, picture), method: :delete, data: {remote: true, confirm: "#{t(:"helpers.confirm.sure")}"} %>
   </div>
 <% end %>

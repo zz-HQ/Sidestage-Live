@@ -10,7 +10,7 @@ module Account::ProfilesHelper
       url = "#"
       method = :get
     end
-    link_to "Publish", url, method: method, class: css_class, disabled: 'disabled' unless !profile.publishable? && publishable?
+    link_to t(:"application.links.publish"), url, method: method, class: css_class, disabled: 'disabled' unless !profile.publishable? && publishable?
   end
 
   def has_soundcloud?

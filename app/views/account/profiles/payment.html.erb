@@ -4,19 +4,19 @@
   </aside>
 
   <div class="content">
-    <header>Add payout method<p>You'll need to enter your bank account details to get paid.</p></header>
+    <header><%= t(:"application.profiles.payment.title_html") %></header>
     <div id="payment">
         <%= simple_form_for resource, url: payment_account_profile_path(resource) do |f| %>
           <%= f.input :iban %>
           <%= f.input :bic %>
           <div class="input">
-              <input type="submit" value="Save" class="btn">
-              <%= link_to "Skip", preview_account_profile_path(resource), class: "skip" %>
+              <%= f.submit class: "btn" %>
+              <%= link_to t(:"application.links.skip"), preview_account_profile_path(resource), class: "skip" %>
           </div>
       <% end %>
 
       <div class="footnote">
-        <p>Your bank details are handled securely. We use Stripe to process payment.</p>
+        <p><%= t(:"application.profiles.payment.security_hint") %></p>
       </div>
     </div>
   </div>
