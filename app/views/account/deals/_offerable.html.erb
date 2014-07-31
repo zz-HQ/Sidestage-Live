@@ -1,17 +1,14 @@
 <tr class="price">
-  <td>You'll earn:</td><td><%= localized_price(deal.price, deal.currency) %></td>
+  <td><%= t(:"application.deals.show.you_will_earn") %>:</td><td><%= localized_price(deal.price, deal.currency) %></td>
 </tr>
-<!-- <tr>
-  <td>Status:</td><td>Pending artist confirmation</td>
-</tr> -->
 </table>
 
 <hr>
 
-<%= link_to "Confirm Booking", accept_account_deal_path(deal), method: :put, class: "btn btn-confirm" unless deal.offered? || deal.proposed? %>
+<%= link_to t(:"application.deals.show.confirm"), accept_account_deal_path(deal), method: :put, class: "btn btn-confirm" unless deal.offered? || deal.proposed? %>
 
-<%= link_to "Change price", "#", class: "link", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
+<%= link_to t(:"application.deals.show.change_price"), "#", class: "link", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
 <!--<p class="footnote">You can increase the pricing for this specific event to cover additional costs, time or travel.</p>-->
 
-<%= link_to "Decline booking", decline_account_deal_path(deal), method: :put, class: "link" %>
+<%= link_to t(:"application.deals.show.decline"), decline_account_deal_path(deal), method: :put, class: "link" %>
 <%= render "account/deals/update_price", deal: deal %>

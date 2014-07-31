@@ -43,7 +43,6 @@ module User::TwoFactor
     totp.verify_with_drift(code, User.allowed_otp_drift_seconds)
   end
   
-  
   #
   # Private
   # ---------------------------------------------------------------------------------------

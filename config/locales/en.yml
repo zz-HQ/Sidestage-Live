@@ -4,6 +4,9 @@ en:
       review:
         one: Review
         other: Reviews
+      message:
+        one: Message
+        other: Messages 
     attributes:
       profile:
         cancellation_policy:

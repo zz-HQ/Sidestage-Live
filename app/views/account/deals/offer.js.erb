@@ -3,5 +3,5 @@
 <% else %>
   vex.closeAll();
   $("[data-container='<%= dom_id(resource) %>']").html("<%= j render("#{resource.state}", deal: resource).strip.html_safe %>");
-  vex.dialog.alert('Your pricing update was successful. We just need the customer to accept this change in order to confirm this booking. Stay tuned!');
+  vex.dialog.alert('<%= t(:"application.deals.update.success") %>');
 <% end %>

@@ -9,7 +9,7 @@ module Account::MessagesHelper
     partner = message.sender == current_user ? message.receiver : message.sender
     current_user_to_s = current_user.id == json["current_user_id"].to_i ? "you" : "partner"
 
-    t("view.messages.system_messages.deals.#{json['state']}.#{current_user_to_s}",  
+    t(:"view.messages.system_messages.deals.#{json['state']}.#{current_user_to_s}",  
       partner_name: partner.profile_name, 
       artist_path: artist_path(partner), 
       artists_path: artists_path,

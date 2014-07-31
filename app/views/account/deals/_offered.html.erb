@@ -1,25 +1,22 @@
 <div class="booking">
   <table>
     <tr>
-      <td>Event date:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
+      <td><%= Deal.human_attribute_name(:start_at) %>:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
     </tr>
     <% if deal.is_customer?(current_user) %>
     <tr class="price updated">
-      <td>New price:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
+      <td><%= t(:"simple_form.labels.deal.new_price") %>:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
     </tr>
-    <!-- <tr>
-      <td>Status:</td><td>Another status</td>
-    </tr> -->
   </table>
   
   <hr>
 
-  <p><%= link_to "Accept & confirm", confirm_account_deal_path(deal), method: :put, class: "btn btn-confirm" %></p>
-  <p><%= link_to "Cancel request", cancel_account_deal_path(deal), method: :put, class: "link" %></p>
+  <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn btn-confirm" %></p>
+  <p><%= link_to t(:"application.deals.show.cancel_offer"), cancel_account_deal_path(deal), method: :put, class: "link" %></p>
 
   <% else %>    
     <%= render "account/deals/offerable", deal: deal %>
   <% end %>    
 
-  <p class="footnote">Need help? Contact <a href="mailto:support@sidestage.com" class="link">support@sidestage.com</a></p>
+   <%= render "account/deals/help_note" %>
 </div>

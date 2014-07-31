@@ -1,6 +1,8 @@
 en:
   application:
     conversations:
+      index:
+        empty: You don't have any messages!
       show:
         sidebar_title: Booking Details
         requests_empty: There is currently no booking request made.

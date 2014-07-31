@@ -1,14 +1,14 @@
 <div id="conversations" class="container">
 	<div class="content">
 		<header>
-			Messages
+			<%= Message.model_name.human(count: 2) %>
 			<%= nice_select((select_tag 'messages', options_for_select(messages_filter, request.path), include_blank: false, data: { linked: true }), small: true) %>
 		</header>
 		
     <%- if collection.present? -%>
 		  <%= render collection %>
 		<%- else -%>
-		    <p>You don't have any messages!</p>
+		    <p><%= t(:"application.conversations.index.empty") %></p>
 		<%- end -%>
 	</div>
 

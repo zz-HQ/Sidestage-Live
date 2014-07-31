@@ -16,6 +16,9 @@ en:
         solo: You are...
         genre_ids: What's closest to your style?
         location: Where are you based?
+      deal:
+        new_price: New price
+        old_price: Old price
     placeholders:
       user:
         email: Email
@@ -50,6 +53,7 @@ en:
         create: Book now
         submit: Book now
         submit_proposal: Send request
+        update_price: Send updated price
       profile:
         submit: Continue
         create: Continue

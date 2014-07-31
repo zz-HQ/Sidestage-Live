@@ -1,14 +1,13 @@
-
 <div style="display:none;" data-container="new-offer">
   <div class="devise-lightbox update_price">
-    <h3>Update price</h3>
-    <p>To cover additional costs, you can make a one-time pricechange for this booking.</p>
+    <h3><%= t(:"application.deals.update.title") %></h3>
+    <p><%= t(:"application.deals.update.desc") %></p>
     <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
-      <label>New price:</label>
+      <label><%= t(:"simple_form.labels.deal.new_price") %>:</label>
       <%= f.input :price, as: :string, label: false %>
-      <span class="old_price">(Old price: <%= localized_price(deal.price, deal.currency) %>)</span>
-      <%= f.button :submit, value: "Send updated price", class: "btn btn-submit" %>
+      <span class="old_price">(<%= t(:"simple_form.labels.deal.old_price") %>: <%= localized_price(deal.price, deal.currency) %>)</span>
+      <%= f.button :submit, value: t(:"helpers.submit.deal.update_price"), class: "btn btn-submit" %>
   	<% end %>
-  	<p>This will not change the pricing on your profile listing. To update your pricing on your profile, visit your listing settings.</p>
+  	<p><%= t(:"application.deals.update.change_price_footer") %></p>
   </div>
 </div>
