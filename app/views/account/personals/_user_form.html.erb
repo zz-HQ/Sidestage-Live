@@ -1,11 +1,9 @@
-
-
-<label>Full name</label>
-<%= f.input :full_name, label: false, placeholder: "Full name" %>
-<label>Email</label>
-<%= f.input :email, label: false, placeholder: "Email" %>
+<%= f.label :full_name, required: false %>
+<%= f.input :full_name, label: false %>
+<%= f.label :email, required: false %>
+<%= f.input :email, label: false %>
 <%#= f.input :about, label: "Tell our community something about you" %>
 
 <div class="input">
-  <%= f.button :submit, value: "Save", class: "btn" %>
+  <%= f.submit class: "btn" %>
 </div>

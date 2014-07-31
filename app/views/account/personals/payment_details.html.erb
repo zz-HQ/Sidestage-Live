@@ -3,49 +3,47 @@
   <%= render "sidebar" %>
 
   <div class="content">
-    <header>Payments details</header>
+    <header><%= t(:"application.personals.payment_details.title") %></header>
     <% if current_user.paymentable? %>
-      <h4>One credit card on file:</h4>
+      <h4><%= t(:"application.personals.payment_details.show.title") %></h4>
       <div class="credit-card-info">
         <p><%= current_user.credit_card.type %></p>
-        <p>Card number: **** **** **** <%= current_user.credit_card.last4 %></p>
-        <p>Expiration: <%= current_user.credit_card.expiration_human %></p>
+        <p><%= t(:"activerecord.attributes.credit_card.number") %>: **** **** **** <%= current_user.credit_card.last4 %></p>
+        <p><%= t(:"activerecord.attributes.credit_card.expiration") %>: <%= current_user.credit_card.expiration_human %></p>
         <div class="footnote">
-          <p>You can currently only store one credit card. <br> More payment methods are coming.</p>
+          <p><%= t(:"application.personals.payment_details.show.card_count_hint_html") %></p>
         </div>
       </div>
 
       <div class="buttons">
         <%- if current_user.bookings.pending.present? -%>
-          <%= link_to "Remove card", "#", class: "btn", data: { lightbox: :html, target: "[data-container='remove-card']" } %>
+          <%= link_to t(:"application.personals.payment_details.show.remove"), "#", class: "btn", data: { lightbox: :html, target: "[data-container='remove-card']" } %>
         <%- else -%>
-          <%= link_to "Remove card", remove_card_account_personal_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %>
+          <%= link_to t(:"application.personals.payment_details.show.remove"), remove_card_account_personal_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %>
         <%- end -%>
       </div>
 
       <div style="display:none;" data-container="remove-card">
         <div class="devise-lightbox">
-          <h2>Wait!</h2> <br>
-          <p>Before you remove your credit card, you need to cancel all your booking requests.</p>
+            <%= t(:"application.personals.payment_details.show.remove_hint_html") %>
         </div>
       </div>
       
     <% else %>
       <div class="footnote">
-        <p>You have no credit card on file. Add one below.</p>
+        <p><%= t(:"application.personals.payment_details.new.title") %></p>
       </div>
       <div data-content="payment-form" id="payment" class="payment-form">
         <%= simple_form_for resource, url: request.path, data: { form: "payment" } do |f| %>
           <%= f.input :stripe_token, as: :hidden %>
           <%= render "account/payment_details/payment_form" %>
           <div class="input">
-            <%= f.submit "Save credit card", class: "btn" %>
-            <%= link_to "Skip", account_mobile_numbers_path, class: "skip" %>
+            <%= f.submit value: t(:"helpers.submit.credit_card.submit"), class: "btn" %>
+            <%= link_to t(:"application.personals.payment_details.new.skip"), account_mobile_numbers_path, class: "skip" %>
           </div>
         <% end %>
         <div class="footnote">
-          <p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p>
-          <p>For questions, contact <br><a href="mailto:support@sidestage.com">support@sidestage.com</a> </p>
+            <%= t(:"application.personals.payment_details.new.security_hint_html") %>
         </div>
       </div>
     <% end %>

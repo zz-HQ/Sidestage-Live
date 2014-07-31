@@ -1,0 +1,36 @@
+en:
+  application:
+    personals:
+      sidebar:
+        account: Account
+        account_link: "- Account details"
+        security: Security
+        security_link: "- Change password"
+        phone: Phone
+        phone_link: "- Verify Phone Number"
+        payment: Payment
+        payment_link: "- Add/edit credit card"
+      show:
+        title: Account details
+      password:
+        title: Password  
+      payment_details:
+        title: Payments details
+        new:
+          title: You have no credit card on file. Add one below.
+          security_hint_html: "<p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p><p>For questions, contact <br><a href='mailto:support@sidestage.com'>support@sidestage.com</a> </p>"
+          skip: Skip
+        show:
+          title: "One credit card on file:"
+          card_count_hint_html: You can currently only store one credit card. <br> More payment methods are coming.
+          remove: Remove card
+          remove_hint_html: "<h2>Wait!</h2> <br><p>Before you remove your credit card, you need to cancel all your booking requests.</p>"           
+    mobile_numbers:
+      new:
+        title: Verify your phone number
+        desc_html: "<p>To get notifications delivered to your phone, please verify your phone number below. We won’t share your phone number with other users on the site without your persmission.</p><p><i>Enter your phone number with country code (e.g +49 172 444 4444).</i></p>"
+        save_hint: We’ll send you a text message with a verifiaction code. Enter the code in the box below.
+      show:
+        title: Your mobile number
+        desc: The mobile phone number below has been verified
+        remove_hint: "To add a new number, remove the old one first."

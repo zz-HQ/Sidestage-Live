@@ -25,6 +25,9 @@ en:
         start_at: Event date
         price: Price
         price_for_customer: Total cost
+      credit_card:
+        number: Card number
+        expiration: Expiration  
     errors:
       models:
         user/as_mobile_number:
