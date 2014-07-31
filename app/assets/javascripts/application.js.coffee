@@ -81,7 +81,7 @@ $(document).on 'click', '#fileupload-button', (e) ->
 
 $(document).on 'click', '.close', (e) ->
     e.preventDefault()
-    $(@).closest('#cookies').slideUp(200)
+    $(@).closest('#cookies').fadeOut(200)
 
 $.ajaxSetup
   headers:

@@ -29,6 +29,7 @@ class Account::MobileNumbersController < AuthenticatedController
   
   def confirm
     resource.update_attributes(permitted_params)
+    flash.now[:notice] = "Your phone number has been verified."
     render :show
   end
   
