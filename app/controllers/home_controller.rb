@@ -44,6 +44,10 @@ class HomeController < ApplicationController
     redirect_to request.referer.present? ? request.referer : root_path(locale: locale)
   end
 
+  def accept_cookies
+    cookies.permanent[:accepted] = true
+    render inline: ""
+  end
 
   def index
     respond_to do |wants|

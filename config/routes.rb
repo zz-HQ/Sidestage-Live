@@ -68,7 +68,7 @@ Airmusic::Application.routes.draw do
       
       root 'personals#complete'
     end
-    
+
     resources :city_launches
     get 'cancellations', to: "pages#cancellations", as: "cancellations"
     get 'faq', to: "pages#faq", as: "faq"
@@ -77,6 +77,7 @@ Airmusic::Application.routes.draw do
     get 'jobs', to: "pages#jobs", as: "jobs"
     get 'index', to: "home#index", as: "homepage"    
     get 'home', to: "home#homepage", as: "home"    
+    put :accept_cookies, to: "home#accept_cookies", as: "accept_cookies"
     
     namespace :admin do
       root to: "dashboard#index"

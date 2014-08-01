@@ -1,8 +1,10 @@
-<div id="cookies">
-	<div class="wrap">
-    <div class="flash-message">
-    	This website uses cookies. If you don’t like cookies, please leave immediately.
-    	<a class="close link" href="#">OK, I like cookies.</a>
+<% unless cookies.permanent[:accepted].present? %>
+    <div id="cookies">
+    	<div class="wrap">
+        <div class="flash-message">
+        	This website uses cookies. If you don’t like cookies, please leave immediately.
+        	<%= link_to "OK, I like cookies.", accept_cookies_path, method: :put, remote: true, class: "close link" %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+<% end %>
