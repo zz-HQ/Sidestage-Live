@@ -1,2 +1,20 @@
 de:
-  
+  application:
+    menu:
+      sign_up: Sign up
+      sign_in: Log in
+      create_profile: Create Artist Profile
+      my_bookings: My Bookings
+      your_profile: Your Artist Profile
+      account: Account
+      log_out: Log out
+    buttons:
+      search: Search
+    links:
+      forgot_password: Forgot password?
+      edit: Edit
+      unpublish: Unpublish
+      publish: Publish
+      skip: Skip
+      continue: Continue
+      remove: Remove

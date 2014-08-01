@@ -22,14 +22,14 @@ class Account::MobileNumbersController < AuthenticatedController
   def update
     if resource.update_attributes(permitted_params)
       resource.send_otp_code
-      flash.now[:notice] = "Verification code sent. Please check your email, and enter the code in the box below."
+      flash.now[:notice] = t(:"flash.account.mobile_numbers.create.notice")
     end
     render :show
   end
   
   def confirm
     resource.update_attributes(permitted_params)
-    flash.now[:notice] = "Your phone number has been verified."
+    flash.now[:notice] = t(:"flash.account.mobile_numbers.confirm.notice")
     render :show
   end
   

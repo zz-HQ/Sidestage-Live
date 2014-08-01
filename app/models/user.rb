@@ -39,8 +39,10 @@ class User < ActiveRecord::Base
   #
   
   has_many :profiles, dependent: :destroy
-  has_many :bookings, class_name: 'Deal', foreign_key: :customer_id
+  has_many :bookings, class_name: 'Deal', foreign_key: :customer_id, dependent: :destroy
 
+  has_many :artist_deals, class_name: 'Deal', foreign_key: :artist_id, dependent: :destroy
+  
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id, dependent: :delete_all
   has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id, dependent: :delete_all
 

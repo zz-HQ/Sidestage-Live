@@ -59,6 +59,11 @@ en:
           notice: "Your message has been sent."
       conversations:
           archived: "Conversation was moved to Archive."
+      mobile_numbers:
+        create: 
+          notice: "Verification code sent. Please check your mobile, and enter the code in the box below."
+        confirm:
+          notice: "Your phone number has been verified."  
     actions:
       create:
         notice: "%{resource_name} successfully created."

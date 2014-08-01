@@ -1,2 +1,21 @@
 de:
-  
+  application:
+    artists:
+      index:
+        view_profile: View Profile
+        price_from: from
+      show:
+        leave_a_review: Do you know this artist? Leave a review.
+        no_reviews: This artist has no reviews yet.
+        view_next: "View next artist"
+        message_artist: Message artist
+      new:
+        title: Create an Artist Profile!
+        desc: Sidestage lets you make money by offering your music as a service to people who want to hire musicians for private events.
+        solo_title: You are...
+    reviews:    
+      new:
+        title: Leave a review for
+    messages:
+      new:
+        title: "Send message to:"

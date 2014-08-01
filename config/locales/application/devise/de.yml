@@ -1,24 +1,37 @@
 de:
+  application:
+    devise:
+      session_title: Log in
+      registration_title: Sign up
+      are_you_new: "Are you new?"
+      facebook_login: "Log in with Facebook"
+      facebook_hint: "We'll post nothing without your permission!"
+      or: or
+      login_error: Login incorrect
+      sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
+      have_an_account: Have an account?
+      artist_hint: "If you're an artist, create an Artist Profile instead."
+      
   devise:
     confirmations:
-      user:
-        confirmed: Ihr Konto wurde erfolgreich aktiviert.
+      confirmed: "Your account was successfully confirmed."
+      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
-      user:
-        invalid: "Wir konnten keinen Nutzer mit diesen Daten finden. Bitte versuchen Sie es erneut."
-        already_authenticated: "Sie sind bereits eingeloggt."
-        inactive: "Ihr Account ist nicht aktiviert."
-        locked: "Ihr Account ist gesperrt."
-        last_attempt: "You have one more attempt before your account will be locked."
-        not_found_in_database: "Passwort oder E-Mail stimmt nicht."
-        timeout: "Sitzung abgelaufen. Bitte erneut einloggen."
-        unauthenticated: "Bitte einloggen, um fortzufahren."
-        unconfirmed: "Bitte E-Mail bestätigen, bevor Sie fortfahren."
+      already_authenticated: "You are already signed in."
+      inactive: "Your account is not activated yet."
+      invalid: "Invalid email or password."
+      locked: "Your account is locked."
+      last_attempt: "You have one more attempt before your account will be locked."
+      not_found_in_database: "Invalid email or password."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "You need to sign in or sign up before continuing."
+      unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:
-        subject: "E-Mail zur Bestätigung Ihrer Anmeldung"
+        subject: "Confirmation instructions"
       reset_password_instructions:
-        subject: "Passwort neu erstellen"
+        subject: "Reset password instructions"
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:
@@ -26,23 +39,32 @@ de:
       success: "You successfully signed up with %{kind}."
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "In wenigen Minuten erhalten Sie eine E-Mail mit Anleitung zum zurücksetzen Ihres Passwortes."
+      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Passwort erfolgreich geändert. Sie sind nun eingeloggt."
-      updated_not_active: "Passwort erfolgreich geändert."
+      updated: "Your password was changed successfully. You are now signed in."
+      updated_not_active: "Your password was changed successfully."
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Willkommen, Sie sind nun angemeldet."
+      signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "In wenigen Minuten erhalten Sie eine E-Mail mit einem Link zur Bestätigung Ihres Accounts."
+      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "Ihr Konto wurde erfolgreich aktualisiert."
+      updated: "You updated your account successfully."
     sessions:
-      user:
-        signed_in: "Anmeldung erfolgreich."
-        signed_out: "Abmeldung erfolgreich."
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
     unlocks:
-      send_instructions: "In wenigen Minuten erhalten Sie eine E-Mail mit Anleitung zur Entsperrung Ihres Accounts."
+      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+  errors:
+    messages:
+      already_confirmed: "was already confirmed, please try signing in"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"

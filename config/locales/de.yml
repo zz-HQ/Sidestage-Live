@@ -1,2 +1,132 @@
 de:
-  
+  activerecord:
+    models:
+      review:
+        one: Review
+        other: Reviews
+      message:
+        one: Message
+        other: Messages 
+    attributes:
+      profile:
+        cancellation_policy:
+          flexible: "full refund 1 day prior to event, except fees"
+          moderate: "full refund 5 days prior to event, except fees"
+          strict: "50% refund up until 1 week prior to event, except fees"
+        availability:
+          city: Only my city
+          state: In my state/region
+          world: Anywhere in the world
+        solo_true: Solo Artist
+        solo_false: Group  
+      review:
+        rating: Rating
+      deal:
+        start_at: Event date
+        price: Price
+        price_for_customer: Total cost
+      credit_card:
+        number: Card number
+        expiration: Expiration  
+    errors:
+      models:
+        user/as_mobile_number:
+          attributes:
+            mobile_nr:
+              country_code_missing: "You did not include a country code"
+              plus_missing: "Does not begin with plus sign"
+              must_start_with_non_zero: "No 0 after the plus sign"
+              too_short: "Your phone number looks a bit short"
+        user:
+          attributes:
+            mobile_confirmation_code:
+              invalid: "The code you entered is incorrect"
+        deal:
+          attributes:
+            customer_id:
+              not_chargeable: "Payment details missing!"
+  helpers:
+    select:
+      prompts:
+        event_search: Where is your event?
+        choose_city: Choose city
+    confirm:
+      sure: "Are you sure?"
+  flash:
+    account:
+      messages:
+        create:
+          notice: "Your message has been sent."
+      conversations:
+          archived: "Conversation was moved to Archive."
+      mobile_numbers:
+        create: 
+          notice: "Verification code sent. Please check your mobile, and enter the code in the box below."
+        confirm:
+          notice: "Your phone number has been verified."  
+    actions:
+      create:
+        notice: "%{resource_name} successfully created."
+      update:
+        deal:
+          confirmed: "Booking confirmed!"
+        notice: "%{resource_name} successfully updated."
+        password:
+          notice: Your password was successfully changed.
+      destroy:
+        credit_card: "Your credit card information is now star dust."
+        notice: "%{resource_name} deleted."
+        alert: "%{resource_name} could not be deleted."
+  view:
+    messages:
+      sms: "You have a new Sidestage message from %{partner_name}. Please log in to Sidestage to view it."
+      system_messages:
+        deals:
+          requested: &requested 
+            you: "A booking request has been sent to %{partner_name}."
+            partner: "You have a new booking request from %{partner_name}."
+          proposed: *requested
+          offered: 
+            you: "A booking request has been sent to %{partner_name} for %{event_date}."
+            partner: "You have a new booking request from %{partner_name}."
+          cancelled:
+            you: "You have declined the booking request from %{partner_name} for %{event_date}."
+            partner: "%{partner_name} has cancelled your booking request for %{event_date}."
+          declined:
+            you: "You have declined the booking request from %{partner_name} for %{event_date}."
+            partner: "%{partner_name} has cancelled your booking request for %{event_date}."
+          accepted:
+            you: "Your booking with %{partner_name} is confirmed for %{event_date}."
+            partner: "Your booking with %{partner_name} is confirmed for %{event_date}."
+          confirmed:
+            you: "Your booking with %{partner_name} is confirmed for %{event_date}."
+            partner: "Your booking with %{partner_name} is confirmed for %{event_date}."
+          rejected:
+            you: "Your booking with %{partner_name} for %{event_date} has been cancelled. "
+            partner: "Your booking with %{partner_name} for %{event_date} has been cancelled. "
+  mail:
+    deals:
+      requested:
+        subject: "New booking request"
+        body: "You have a new booking request from %{partner_name}. Please log in to Sidestage to review it."
+      proposed:
+        subject: "New booking request"
+        body: "You have a new booking request from %{partner_name}. Please log in to Sidestage to review it."
+      offered:
+        subject: "Price change"
+        body: "You have a new message from %{partner_name}."
+      cancelled:
+        subject: "Booking Cancelled"
+        body: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
+      declined:
+        subject: "Booking request cancelled"
+        body: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
+      accepted:
+        subject: "Booking accepted"
+        body: "Your booking with %{partner_name} is confirmed for %{event_date}."
+      confirmed:
+        subject: "Booking confirmed"
+        body: "Your booking with %{partner_name} is confirmed for %{event_date}."
+      rejected:
+        subject: "Booking cancelled"
+        body: "Your booking with %{partner_name} for %{event_date} has been cancelled."
