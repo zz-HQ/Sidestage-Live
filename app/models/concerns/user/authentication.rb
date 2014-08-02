@@ -3,6 +3,8 @@ module User::Authentication
 
   
   included do
+    
+    attr_accessor :subscribe
 
     devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable
     devise :omniauthable, :omniauth_providers => [:facebook]
@@ -11,13 +13,10 @@ module User::Authentication
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
-        user.first_name = auth.info.first_name
-        user.last_name = auth.info.last_name
+        user.full_name = [auth.info.first_name, auth.info.last_name].compact.join(" ")
         user.remote_avatar_url = auth.info.image.gsub('http://','https://') # assuming the user model has an image
         user.skip_confirmation!
-        mailchimp_api = Gibbon::API.new
-        newsletter_id = user.artist? ? "f38b96fdb5" : "ce0be5cff0"
-        res = mailchimp_api.lists.batch_subscribe(id: newsletter_id, :double_optin => false, :batch => [{:email => {:email => user.email}, :merge_vars => {:FNAME => user.full_name, :LNAME => ""}}])
+        user.subscribe = true if user.new_record?
       end
     end
 

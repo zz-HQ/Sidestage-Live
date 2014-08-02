@@ -21,6 +21,12 @@ describe User, :type => :model do
       expect(user.otp_secret_key).to be_present
     end
     
+    it "signs up from facebook" do
+      facebook_hash = OmniAuth::AuthHash.new info: { name: 'f d', first_name: 'Phillip', last_name: 'Fry', email: 'f@f.com', image: "" }
+      user = User.from_omniauth(facebook_hash)
+      expect(user.persisted?).to be_truthy
+    end
+    
   end
   
   describe "Associations" do

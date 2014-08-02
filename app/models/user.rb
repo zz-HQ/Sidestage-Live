@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   
   before_save :set_default_currency, :add_credit_card
 
-  after_create :add_to_newsletter, :notify_admin
+  after_create :notify_admin
 
   #
   # Scopes
@@ -108,7 +108,7 @@ class User < ActiveRecord::Base
   end
   
   def artist?
-    profile.present?
+    @artist ||= profile.present?
   end
   
   def profile_name
@@ -133,6 +133,11 @@ class User < ActiveRecord::Base
     SmsWorker.perform_async(id, message) if mobile_nr_confirmed?
   end
   
+  def subscribe_to_newsletter
+    MailchimpWorker.perform_async(id)
+  end
+  
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -151,15 +156,8 @@ class User < ActiveRecord::Base
     self.currency ||= Rails.configuration.default_currency
   end
 
-  def add_to_newsletter
-    if self.newsletter_subscribed?
-      newsletter_id = self.artist? ? "f38b96fdb5" : "ce0be5cff0"
-      Rails.logger.debug { "newsletter set #{self.newsletter_subscribed}" }
-      mailchimp_api = Gibbon::API.new
-      res = mailchimp_api.lists.batch_subscribe(id: newsletter_id, :double_optin => false, :batch => [{:email => {:email => self.email}, :merge_vars => {:FNAME => self.full_name, :LNAME => ""}}])
-    else
-      logger.debug { "no newsletter set" }
-    end
+  def after_confirmation
+    subscribe_to_newsletter
   end
   
   def notify_admin
