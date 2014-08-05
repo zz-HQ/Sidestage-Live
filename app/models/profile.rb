@@ -34,7 +34,7 @@ class Profile < ActiveRecord::Base
     world: 'activerecord.attributes.profile.availability.world'
   }
   
-  store :additionals, accessors: [ :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
+  store :additionals, accessors: [ :admin_disabled_at, :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
   store :payout, accessors: [ :iban, :bic ]
   
   attr_accessor :wizard_step
@@ -57,6 +57,7 @@ class Profile < ActiveRecord::Base
 
   validates :user_id, :genre_ids, presence: true
   validates :price, presence: true, if: :price_step?
+  validates :price, numericality: { greater_than: 0 }, allow_blank: true
   
   with_options if: :description_step? do |profile|
     profile.validates :name, length: { maximum: 26 }
@@ -64,7 +65,7 @@ class Profile < ActiveRecord::Base
     profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
   end
   
-  validates :price, numericality: true, allow_blank: true
+  
   validates :bic, :iban, presence: true, if: :payment_step?
 
   validates :genre_ids, :price, :title, :name, :about, presence: true, on: :publishing
@@ -135,11 +136,20 @@ class Profile < ActiveRecord::Base
   #  
   
   def toggle!
-    update_attribute :published, !published
+    update_attribute :published, !published unless admin_disabled?
+  end
+  
+  def toggle_admin_disabled!
+    self.admin_disabled_at = admin_disabled_at.present? ? nil : Time.now
+    save!
+  end
+  
+  def admin_disabled?
+    self.admin_disabled_at.present?
   end
   
   def publishable?
-    valid?(:publishing)
+    valid?(:publishing) && !admin_disabled?
   end
   
   def payoutable?

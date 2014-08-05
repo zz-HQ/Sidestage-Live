@@ -83,6 +83,7 @@ Airmusic::Application.routes.draw do
       root to: "dashboard#index"
       resources :profiles do
         member do
+          put :toggle_admin_disabled          
           put :toggle
         end
       end

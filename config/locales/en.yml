@@ -57,6 +57,9 @@ en:
       messages:
         create:
           notice: "Your message has been sent."
+      deals:
+        create:
+          notice: "Your booking request has been sent."  
       conversations:
           archived: "Conversation was moved to Archive."
       mobile_numbers:

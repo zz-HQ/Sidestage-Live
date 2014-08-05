@@ -97,7 +97,7 @@ class Account::PersonalsController < Account::ResourcesController
   
   def permitted_params
     params.permit user: [
-        :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
+        :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
       ],
       credit_card: [
         :name, :exp_month, :exp_year

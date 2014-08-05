@@ -10,7 +10,12 @@ class Admin::ProfilesController < Admin::ResourcesController
   
   def toggle
     resource.toggle!
-    redirect_to collection_path
+    redirect_to :back
+  end
+  
+  def toggle_admin_disabled
+    resource.toggle_admin_disabled!
+    redirect_to :back
   end
     
 end
