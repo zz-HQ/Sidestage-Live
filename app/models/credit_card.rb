@@ -23,7 +23,7 @@ class CreditCard
     card = CreditCard.new stripe_customer: customer, stripe_card: customer.cards.first
     card.name = customer.cards.first.name
     card.last4 = customer.cards.first.last4
-    card.type = customer.cards.first.type
+    card.type = customer.cards.first.brand
     card.exp_month = customer.cards.first.exp_month
     card.exp_year = customer.cards.first.exp_year
     card
