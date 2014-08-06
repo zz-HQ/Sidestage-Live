@@ -57,7 +57,7 @@ class Account::PersonalsController < Account::ResourcesController
   def payment_details
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
-        @credit_card = current_user.credit_card
+        @credit_card = resource.credit_card
       end
     end    
     @credit_card ||= current_user.credit_card    

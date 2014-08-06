@@ -9,7 +9,7 @@ class CreditCard
   #
   #
   
-  attr_accessor :stripe_customer, :stripe_card, :last4, :exp_month, :exp_year, :name, :type, :error
+  attr_accessor :stripe_customer, :stripe_card, :last4, :exp_month, :exp_year, :name, :brand, :error
 
   #
   # Class Methods
@@ -23,7 +23,7 @@ class CreditCard
     card = CreditCard.new stripe_customer: customer, stripe_card: customer.cards.first
     card.name = customer.cards.first.name
     card.last4 = customer.cards.first.last4
-    card.type = customer.cards.first.brand
+    card.brand = customer.cards.first.brand
     card.exp_month = customer.cards.first.exp_month
     card.exp_year = customer.cards.first.exp_year
     card

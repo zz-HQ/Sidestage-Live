@@ -78,6 +78,7 @@ module Payment
     self.stripe_card_id = card.id
     User.where(id: id).update_all(stripe_card_id: self.stripe_card_id)
     self.stripe_token = nil
+    @stripe_customer = nil
     return true
   end
   
