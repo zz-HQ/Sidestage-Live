@@ -16,11 +16,11 @@
       </div>
 
       <div class="buttons">
-        <%#- if current_user.bookings.pending.present? -%>
-          <%#= link_to t(:"application.personals.payment_details.show.remove"), "#", class: "btn", data: { lightbox: :html, target: "[data-container='remove-card']" } %>
-        <%#- else -%>
+        <%- if current_user.bookings.pending.present? -%>
+          <%= link_to t(:"application.personals.payment_details.show.remove"), "#", class: "btn", data: { lightbox: :html, target: "[data-container='remove-card']" } %>
+        <%- else -%>
           <%= link_to t(:"application.personals.payment_details.show.remove"), remove_card_account_personal_path, method: :delete, data: { confirm: "#{t(:"helpers.confirm.sure")}" }, class: "btn" %>
-        <%#- end -%>
+        <%- end -%>
       </div>
 
       <div style="display:none;" data-container="remove-card">
