@@ -90,6 +90,7 @@ Airmusic::Application.routes.draw do
       resources :deals
       resources :users do
         member do
+          get :backdoor
           put :confirm
           put :toggle_verification
         end

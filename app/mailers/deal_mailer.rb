@@ -81,8 +81,9 @@ class DealMailer < ActionMailer::Base
   end 
   
   def setup_notification_body(partner, deal)
-    @notification_body ||= t("mail.deals.#{deal.state}.body",  
+    @notification_body ||= t("mail.deals.#{deal.state}.body_html",
       partner_name: partner.profile_name,
+      deal_path: account_conversation_url(deal.conversation),
       event_date: l(deal.start_at.to_date, format: :event_date))
   end
   

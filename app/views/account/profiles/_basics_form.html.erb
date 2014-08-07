@@ -18,7 +18,7 @@
 
 <div class="input city last">
 	<label><%= t(:"simple_form.labels.profile.location") %></label>
-	<%= nice_select(f.select :location, available_locations, include_blank: false) %>
+	<%= nice_select(f.select :location, profile_available_locations, include_blank: false) %>
 </div>
 
 <div class="input last">

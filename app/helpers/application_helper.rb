@@ -35,6 +35,10 @@ module ApplicationHelper
   def available_locations
     ["Berlin", "More cities"]
   end
+  
+  def profile_available_locations
+    ["Berlin", "London", "More cities"]
+  end
 
   def available_locales
     {

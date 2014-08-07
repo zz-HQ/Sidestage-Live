@@ -137,7 +137,7 @@
                 <% if current_user %>
                     <%= f.submit class: "btn btn-submit" %>
                 <% else %>
-                    <%= link_to t(:"helpers.submit.deal.submit"), link_or_signin(new_user_session_path(return_to: request.url)), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                    <%= link_to t(:"helpers.submit.deal.submit"), new_user_session_path(return_to: request.url, format: :html), class: "btn btn-submit", data: { lightbox: "ajax" } %>
                 <% end %>
               </div>
           <% end %>
