@@ -68,7 +68,13 @@ class Profile < ActiveRecord::Base
   
   validates :bic, :iban, presence: true, if: :payment_step?
 
-  validates :genre_ids, :price, :title, :name, :about, presence: true, on: :publishing
+  with_options on: :publishing do |profile|
+    profile.validates :genre_ids, :price, :title, :name, :about, presence: true
+    profile.validates :admin_disabled?, inclusion: [false]
+    profile.validate :mobile_nr_must_be_confirmed
+    profile.validate :should_have_at_least_one_media_type
+    profile.validate :user_must_have_avatar
+  end
   
   #
   # Scopes
@@ -116,6 +122,16 @@ class Profile < ActiveRecord::Base
   has_and_belongs_to_many :genres  
 
   #
+  # Delegates
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
+  delegate :mobile_nr_confirmed?, to: :user, prefix: false
+
+  #
   # Class Methods
   # ---------------------------------------------------------------------------------------
   #
@@ -136,7 +152,7 @@ class Profile < ActiveRecord::Base
   #  
   
   def toggle!
-    update_attribute :published, !published unless admin_disabled?
+    update_attribute :published, !published if valid?(:publishing)
   end
   
   def toggle_admin_disabled!
@@ -154,6 +170,30 @@ class Profile < ActiveRecord::Base
   
   def payoutable?
     iban.present? && bic.present?
+  end
+
+  def soundcloud_id_from_iframe(iframe)
+    begin
+      if iframe.include?("playlists")
+        iframe.scan(/https%3A\/\/api.soundcloud.com\/playlists\/(\d*)/)[0][0]
+      else
+        iframe.scan(/https%3A\/\/api.soundcloud.com\/tracks\/(\d*)/)[0][0]
+      end
+      rescue Exception => e
+        return nil
+    end
+  end
+
+  def has_youtube?
+    youtube.present? && youtube.include?("youtu")
+  end
+
+  def has_pictures?
+    pictures.present?
+  end
+  
+  def has_soundcloud?
+    !!soundcloud_id_from_iframe(soundcloud)
   end
   
   #
@@ -189,6 +229,39 @@ class Profile < ActiveRecord::Base
     if published_changed? && published?
       AdminMailer.delay.profile_published(self)
     end
+  end
+
+  #
+  # Validation methods
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+
+  
+  def mobile_nr_must_be_confirmed
+    errors.add :published, :blank unless mobile_nr_confirmed?
+  end
+  
+  def user_must_have_avatar
+    errors.add :user, :avatar_blank unless user.avatar.present?
+  end
+  
+  def should_have_youtube
+    errors.add :youtube, :blank unless has_youtube?
+  end
+
+  def should_have_picture
+    errors.add :pictures, :blank unless has_pictures?
+  end
+
+  def should_have_soundcloud
+    !!soundcloud_id_from_iframe(soundcloud)
+  end
+  
+  def should_have_at_least_one_media_type
+    should_have_youtube || should_have_picture || should_have_soundcloud
   end
   
 end

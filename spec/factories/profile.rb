@@ -6,7 +6,14 @@ FactoryGirl.define do
     about "about"
     currency "EUR"
     published true
-    after(:build) {|profile| profile.genres = [create(:genre)]}
+    youtube "www.youtube.com"
+    after(:build) do |profile| 
+      profile.genres = [create(:genre)]
+    end
+    pictures {
+      [FactoryGirl.build(:picture, imageable: self.instance)]
+    }
+    
     user
     
     factory :gaga do
@@ -25,6 +32,7 @@ FactoryGirl.define do
       name "unpublished"
       location "mexico"
       price 300
+      
       published false
     end
     

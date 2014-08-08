@@ -67,6 +67,10 @@ en:
           notice: "Verification code sent. Please check your mobile, and enter the code in the box below."
         confirm:
           notice: "Your phone number has been verified."  
+      profiles:
+        toggle:
+          alert: "Please make sure you’ve filled in all the required information. If you need help, send an email to support@sidestage.com"
+          
     actions:
       create:
         notice: "%{resource_name} successfully created."

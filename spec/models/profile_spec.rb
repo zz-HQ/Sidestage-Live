@@ -9,6 +9,9 @@ describe Profile, :type => :model do
       expect(profile.published?).to be false
       
       profile.toggle!
+      puts "###########################"
+      puts profile.errors.full_messages.inspect
+      puts "###########################"
       expect(profile.published?).to be true
     end
     

@@ -13,8 +13,9 @@ en:
     links:
       forgot_password: Forgot password?
       edit: Edit
-      unpublish: Unpublish
-      publish: Publish
+      publish: 
+        toggle_true: Unpublish
+        toggle_false: Publish
       skip: Skip
       continue: Continue
       remove: Remove

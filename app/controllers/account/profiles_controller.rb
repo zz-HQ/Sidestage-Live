@@ -76,6 +76,7 @@ class Account::ProfilesController < Account::ResourcesController
     if resource.published?
       redirect_to artist_path(resource)
     else
+      flash[:error] = t(:"flash.account.profiles.toggle.alert") if resource.errors.present?
       redirect_to preview_account_profile_path(resource)
     end
   end

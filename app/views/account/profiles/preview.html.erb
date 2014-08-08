@@ -3,11 +3,7 @@
 <div class="publish">
 	<div class="wrap">
 		<%= link_to t(:"application.links.edit"), basics_account_profile_path(resource), class: "btn btn-default" %>
-		<% if resource.published? %>
-			<%= link_to t(:"application.links.unpublish"), toggle_account_profile_path(resource), method: :put, class: "btn btn-danger" %>
-		<% else  %>
-			<%= link_to_publish_profile(resource) %>
-		<% end %>
+		<%= link_to t(:"application.links.publish.toggle_#{resource.published?}"), toggle_account_profile_path(resource), method: :put, class: "btn btn-danger btn-accept" %>
 	</div>
 </div>            
 <% end %>
