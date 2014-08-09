@@ -2,19 +2,24 @@ require 'spec_helper'
 
 describe Profile, :type => :model do
 
-  describe "Callbacks" do
+  context "disabled by admin" do
     
-    it "toggles publish" do
-      profile = FactoryGirl.create(:unpublished)
+    it "cannot publish" do
+      profile = FactoryGirl.create(:unpublished, admin_disabled_at: Time.now)
       expect(profile.published?).to be false
-      
+
       profile.toggle!
-      puts "###########################"
-      puts profile.errors.full_messages.inspect
-      puts "###########################"
-      expect(profile.published?).to be true
+      expect(profile.published?).to be false      
     end
     
+  end
+  
+  it "toggles publish" do
+    profile = FactoryGirl.create(:unpublished)
+    expect(profile.published?).to be false
+
+    profile.toggle!
+    expect(profile.published?).to be true
   end
   
 end

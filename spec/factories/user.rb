@@ -2,6 +2,7 @@ FactoryGirl.define do
 
   factory :user do
     full_name "user LN"
+    avatar File.open(File.join(Rails.root, 'spec', 'fixtures', 'images', 'example.jpg'))
     unread_message_counter 0
     mobile_nr "+4912345678"
     mobile_nr_confirmed_at Time.now
@@ -10,7 +11,6 @@ FactoryGirl.define do
     end
     password "12345678"
     confirmed_at Time.now
-
 
     factory :quentin do
       full_name "quentin"

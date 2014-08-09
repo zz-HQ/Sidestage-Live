@@ -15,7 +15,6 @@ describe User, :type => :model do
     it "has secret key" do
       user = FactoryGirl.build(:user)
       expect(user.otp_secret_key).to be_nil
-      
       user.save
       
       expect(user.otp_secret_key).to be_present

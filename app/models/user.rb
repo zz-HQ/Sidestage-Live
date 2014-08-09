@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  include Payment, TwoFactor, Authentication, Measurement
+  include Payment, TwoFactor, Authentication, Measurement, Sortable
 
   #
   # Plugins
@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   #
   #
   #
+  
+  sortable :full_name, :email, :unread_message_counter, :mobile_nr
   
   #
   # Attributes

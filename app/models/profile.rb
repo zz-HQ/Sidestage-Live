@@ -84,14 +84,14 @@ class Profile < ActiveRecord::Base
   #
   #  
   
-  sortable :price, :name
+  sortable :price, :name, :location, :mobile_nr, :unread_message_counter, :email
   
   filterable :location, :price
   
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where("published = ? OR published = ?", nil, false) }
   scope :featured, -> { where(featured: true) }
-  scope :latest, -> { order("ID DESC") }
+  scope :latest, -> { order("profiles.id DESC") }
   
   #
   # Callbacks
@@ -152,7 +152,7 @@ class Profile < ActiveRecord::Base
   #  
   
   def toggle!
-    update_attribute :published, !published if valid?(:publishing)
+    update_attribute :published, !published if published? || valid?(:publishing)
   end
   
   def toggle_admin_disabled!

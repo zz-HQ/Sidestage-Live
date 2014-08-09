@@ -69,7 +69,7 @@ en:
           notice: "Your phone number has been verified."  
       profiles:
         toggle:
-          alert: "Please make sure you’ve filled in all the required information. If you need help, send an email to support@sidestage.com"
+          alert: 'Before you publish your profile there are a few things you need to complete. <a href="%{edit_profile_path}">Edit your profile now</a>'
           
     actions:
       create:

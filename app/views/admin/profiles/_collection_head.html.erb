@@ -1,8 +1,11 @@
 <thead>
     <th></th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Price</th>
+    <th><%= sorty :location, label: "City" %></th>
+    <th><%= sorty :name %></th>
+    <th><%= sorty :email %></th>
+    <th><%= sorty :price %></th>
     <th>Payoutable?</th>
+    <th><%= sorty :unread_message_counter, label: "UnreadMsg" %></th>
+    <th><%= sorty :mobile_nr, label: "Phone" %></th>
     <th></th>
 </thead>

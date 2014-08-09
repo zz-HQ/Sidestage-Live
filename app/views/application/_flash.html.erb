@@ -5,7 +5,7 @@
       <div class="flash flash-<%= name %>">
         <div class="wrap">
           <div class="flash-message">
-            <%= msg %>
+            <%= msg.html_safe %>
           </div>
           <div class="flash-close">
             <a class="close" href="#" data-dismiss="alert"><i class="fa fa-times"></i></a>  

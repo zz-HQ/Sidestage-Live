@@ -46,6 +46,10 @@ module ApplicationHelper
       en: "English"
     }
   end
+  
+  def content_yield(yielded, default)
+    yielded.present? ? yielded : default
+  end
 
   def link_or_login(path)
     user_signed_in? ? path : new_user_session_path(return_to: request.url, format: "html")

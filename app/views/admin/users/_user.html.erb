@@ -6,9 +6,10 @@
         <%= user.mobile_nr %>
         <% if user.mobile_nr_confirmed? %>
             <br/>
-            <span class="badge">Confirmed: <%= l user.mobile_nr_confirmed_at, format: :only_date %></span>
+            <span class="badge">Conf: <%= l user.mobile_nr_confirmed_at, format: :only_date %></span>
         <% end %>
     </td>
+    <td><%= user.unread_message_counter %></td>
     <td><%= bool_label(user.paymentable?) %></td>
     <td class="text-right">
         <%= link_to_bool user.verified? , target: toggle_verification_admin_user_path(user), true_text: "Unverify", false_text: "Verify" %>

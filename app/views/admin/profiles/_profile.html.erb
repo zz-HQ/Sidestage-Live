@@ -1,9 +1,18 @@
 <tr>
     <td><%= image_tag profile.user.avatar.url(:thumb), class: "avatar", style: "height:36px;width:36px" %></td>
+    <td><%= profile.location %></td>
     <td><%= profile.name %></td>
     <td><%= profile.user.email %></td>
     <td><%= localized_price profile.price, profile.currency %></td>
     <td><%= bool_label(profile.payoutable?) %></td>
+    <td><%= profile.user.unread_message_counter %></td>    
+    <td>
+        <%= profile.user.mobile_nr %>
+        <% if profile.user.mobile_nr_confirmed? %>
+            <br/>
+            <span class="badge">Conf: <%= l profile.user.mobile_nr_confirmed_at, format: :only_date %></span>
+        <% end %>
+    </td>
     <td class="text-right">
         <%= link_to_bool profile.published?, target: toggle_admin_profile_path(profile), true_text: "Unpublish", false_text: "Publish" %>
         <%= link_to_bool profile.admin_disabled?, target: toggle_admin_disabled_admin_profile_path(profile), true_text: "Enable", false_text: "Disable" %>        

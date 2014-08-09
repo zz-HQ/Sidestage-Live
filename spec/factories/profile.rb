@@ -10,11 +10,11 @@ FactoryGirl.define do
     after(:build) do |profile| 
       profile.genres = [create(:genre)]
     end
-    pictures {
-      [FactoryGirl.build(:picture, imageable: self.instance)]
-    }
+    after(:create) do |profile|
+      profile.pictures = [FactoryGirl.build(:picture, imageable: profile)]
+    end
     
-    user
+    association :user, factory: :user
     
     factory :gaga do
       name "gaga"
