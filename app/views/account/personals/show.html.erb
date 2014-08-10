@@ -20,7 +20,7 @@
         <%= simple_form_for resource, url: account_personal_path, html: { id: "", multipart: true } do |f| %>
           <%= render "user_form", f: f %>
         <% end %>
-        <p>
+        <p class="light">
             <%= t(:"application.personals.show.delete_hint_html") %>
         </p>    
   </div>
