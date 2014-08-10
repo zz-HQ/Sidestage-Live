@@ -11,7 +11,7 @@
         <p><%= t(:"activerecord.attributes.credit_card.number") %>: **** **** **** <%= current_user.credit_card.last4 %></p>
         <p><%= t(:"activerecord.attributes.credit_card.expiration") %>: <%= current_user.credit_card.expiration_human %></p>
         <div class="footnote">
-          <p><%= t(:"application.personals.payment_details.show.card_count_hint_html") %></p>
+          <p><%= t(:"application.personals.payment_details.show.card_hint_html") %></p>
         </div>
       </div>
 
@@ -39,12 +39,8 @@
           <%= render "account/payment_details/payment_form" %>
           <div class="input">
             <%= f.submit value: t(:"helpers.submit.credit_card.submit"), class: "btn" %>
-            <%= link_to t(:"application.links.skip"), account_mobile_numbers_path, class: "skip" %>
           </div>
         <% end %>
-        <div class="footnote">
-            <%= t(:"application.personals.payment_details.new.security_hint_html") %>
-        </div>
       </div>
     <% end %>
   </div>

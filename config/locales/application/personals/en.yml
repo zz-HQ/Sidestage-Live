@@ -12,16 +12,16 @@ en:
         payment_link: "- Add/edit credit card"
       show:
         title: Account details
+        delete_hint_html: "To delete your account, please send us an email, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"
       password:
         title: Password  
       payment_details:
         title: Payments details
         new:
-          title: You have no credit card on file. Add one below.
-          security_hint_html: "<p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p><p>For questions, contact <br><a href='mailto:support@sidestage.com'>support@sidestage.com</a> </p>"
+          title: Sidestage takes care of payments, so you dont't have to worry about it. Please add a credit card to your account.
         show:
-          title: "One credit card on file:"
-          card_count_hint_html: You can currently only store one credit card. <br> More payment methods are coming.
+          title: "The credit card below has been added to your account."
+          card_hint_html: "For questions concerning your credit card, please contact <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"
           remove: Remove card
           remove_hint_html: "<h2>Wait!</h2> <br><p>Before you remove your credit card, you need to cancel all your booking requests.</p>"           
     mobile_numbers:
