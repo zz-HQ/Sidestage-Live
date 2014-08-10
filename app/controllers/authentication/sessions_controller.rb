@@ -7,7 +7,9 @@ class Authentication::SessionsController < Devise::SessionsController
   #
   #
   #
-  
+
+  prepend_before_filter :verify_user, only: [:destroy]
+
   respond_to :html, :js
   
   helper_method :after_sign_in_path_for
@@ -42,5 +44,22 @@ class Authentication::SessionsController < Devise::SessionsController
     end
   end
 
-end
+  #
+  # Private
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  private
+  
+  ## This method intercepts SessionsController#destroy action 
+  ## If a signed in user tries to sign out, it allows the user to sign out 
+  ## If a signed out user tries to sign out again, it redirects them to sign in page
+  def verify_user
+    ## redirect to appropriate path
+    redirect_to new_user_session_path and return unless user_signed_in?
+  end
 
+end
