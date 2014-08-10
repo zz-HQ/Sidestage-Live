@@ -42,9 +42,9 @@ class AdminMailer < ActionMailer::Base
     end
   end
   
-  def new_booking_request(deal)
+  def booking_notification(deal)
     @deal = deal
-    mail(subject: "Sidestage: new booking request") do |format|
+    mail(subject: "Sidestage: Booking #{@deal.state}") do |format|
       format.html
     end
   end

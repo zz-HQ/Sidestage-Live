@@ -40,7 +40,7 @@ class Account::BookingsController < Account::ResourcesController
   private
   
   def collection
-    @deals ||= end_of_association_chain.upcoming
+    @deals ||= end_of_association_chain.my_bookings_overview.upcoming
   end
 
   

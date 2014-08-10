@@ -39,10 +39,16 @@ module Deal::StateMachine
       
       event :accept do
         transitions from: [:requested], to: :accepted, guards: [:current_user_is_artist?, :customer_charged?]
+        after do
+          notify_admin
+        end
       end
       
       event :confirm do
         transitions from: [:offered, :proposed], to: :confirmed, guards: [:current_user_is_customer?, :customer_must_be_chargeable, :customer_charged?]
+        after do
+          notify_admin
+        end
       end
       
     end

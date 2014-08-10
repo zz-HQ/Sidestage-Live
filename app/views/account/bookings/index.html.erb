@@ -3,29 +3,10 @@
 		<header>Your bookings</header>
 		<% if collection.present? %>
 			<div class="bookings">
-				<% collection.each do |deal| %>
-					<% unless deal.cancelled? || deal.rejected? %>
-						<% if deal.start_at > Time.now %>
-							<%= render partial: "deal", object: deal %>
-						<% end %>
-					<% end %>
-				<% end %>
+			    <%= render partial: "deal", collection: collection %>
 			</div>
 		<% else %>
-      <p>You currently have no bookings.</p>
-		<% end %>
-		
-		<% if false %>
-			<div class="bookings">
-				<h3>Past Bookings</h3>
-				<% collection.each do |deal| %>
-					<% if deal.confirmed? %>
-						<% if deal.start_at < Time.now %>
-								<%= render partial: "deal", object: deal %>
-						<% end %>
-					<% end %>
-				<% end %>
-			</div>
+            <p>You currently have no bookings.</p>
 		<% end %>
 	</div>
 </div>
