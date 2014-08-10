@@ -1,6 +1,9 @@
 <div class="devise-lightbox">
-	<h3><%= t(:"application.messages.new.title") %> <%= resource.receiver.profile_name %></h3>
+	<div class="photo"><%= image_tag resource.receiver.avatar.url(:thumb), class: "avatar" %></div>
+	<div class="body"><span><%= t(:"application.messages.new.title") %> <strong><%= resource.receiver.profile_name %></strong></span></div>
+
 	<%= simple_form_for resource, url: account_messages_path do |f| %>
 		<%= render "form", f: f %>
 	<% end %>
+	<span class="light center"><%= t(:"application.account.bookings.index.support_hint_html") %></span>
 </div>

@@ -1,6 +1,11 @@
 .devise, .devise-lightbox
   margin: 0 auto
   position: relative
+  +box
+  background-color: #fff
+  padding: 40px 30px 30px
+  overflow: hidden
+  width: 460px
 
   .link-to-artist-profile
     text-align: center
@@ -67,7 +72,6 @@
       input[type="email"],
       input[type="password"],
       input[type="number"],
-      textarea,
       .nice-select
         padding: 14px 12px
 
@@ -107,13 +111,6 @@
 
     a
       margin-left: 5px
-
-.devise, .devise-lightbox
-  +box
-  background-color: #fff
-  padding: 40px 30px 30px
-  overflow: hidden
-  width: 460px
   
   h2
     text-align: left
@@ -205,3 +202,24 @@
         font-size: 16px
         width: auto
         padding: 11px 26px 12px
+
+  .photo
+    +span-columns(1 of 7)
+    overflow: hidden
+
+    img
+      width: 100%
+
+  .body
+    +span-columns(6 of 7)
+    +omega
+    padding-top: 12px
+
+  .new_message
+    +span-columns(8)
+    margin-top: 20px
+
+  .light.center
+    +span-columns(8)
+
+

@@ -51,7 +51,7 @@ en:
       review:
         body: Your review  
       message:
-        body: Type your message here.
+        body: Type your message here. Be sure to include as much detail as possible about your event.
         reply:
           body: Reply
       deal:
