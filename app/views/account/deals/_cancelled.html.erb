@@ -1,2 +1,2 @@
-<h4 class="title">{Booking Details}</h4>
+<h4 class="title"><%= t(:"application.deals.show.title") %></h4>
 <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
