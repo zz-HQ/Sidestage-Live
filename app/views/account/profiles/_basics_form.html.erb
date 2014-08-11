@@ -21,6 +21,6 @@
 	<%= nice_select(f.select :location, profile_available_locations, include_blank: false) %>
 </div>
 
-<div class="input last">
-	<%= f.submit class: "btn" %>
+<div class="input">
+	<%= f.submit :submit, value: "Save and Continue", class: "btn" %>
 </div>

@@ -18,12 +18,12 @@ de:
         solo: You are...
         genre_ids: What's closest to your style?
         location: Where are you based?
-        currency: "Select your default currency:"
+        currency: "Default currency:"
         price: "How much do you want to make?"
-        surcharge_html: "Price the customer will see (includes Sidestage's <br> fee of %{surcharge_base}%)"
+        surcharge_html: "The price listed on your Sidestage profile will include our fees and taxes."
         name: Stage name
-        title: One sentence to describe your act
-        about: Tell us about you and/or your act.
+        title: Headline sentence to describe your act
+        about: Write a short bio, telling us about you and your music
         youtube: Youtube video
         soundcloud: SoundCloud Track/Playlist Embed Code
         avatar: Select Profile picture
@@ -74,7 +74,7 @@ de:
         reply: Reply
       user:
         sign_in: "Log me in!"
-        sign_up: "Sign me up!"
+        sign_up: "Sign up with email"
         update: Save
         update_password: Update password
       user_as_mobile_number:

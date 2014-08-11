@@ -1,17 +1,17 @@
 <div class="inputs profile_name">
 	<%= f.input :name, hint: false %>
-	<div class="hint"><%= t(:"simple_form.hints.profile.name") %></div>
+	<div class="hint"><%#= t(:"simple_form.hints.profile.name") %></div>
 </div>
 <div class="inputs profile_title">
 	<%= f.input :title, as: :string, hint: false %>
-	<div class="hint"><%= t(:"simple_form.hints.profile.title") %></div>
+	<div class="hint"><%#= t(:"simple_form.hints.profile.title") %></div>
 </div>
 <div class="inputs profile_about">
 	<%= f.input :about, hint: false %>
-	<div class="hint"><%= t(:"simple_form.hints.profile.about") %></div>
+	<div class="hint"><%#= t(:"simple_form.hints.profile.about") %></div>
 </div>
 
-<h4>Samples of your performance</h4>
+<!-- <h4>Samples of your performance</h4>
 <div class="inputs">
 	<%= f.input :youtube, hint: false %>
 	<div class="hint"><%= t(:"simple_form.hints.profile.youtube") %></div>
@@ -19,7 +19,7 @@
 <div class="inputs">
 	<%= f.input :soundcloud, as: :text, hint: false %>
 	<div class="hint"><%= t(:"simple_form.hints.profile.soundcloud") %></div>
-</div>
+</div> -->
 
 <!-- <h4>Social media links</h4>
 <div class="inputs profile_facebook">
@@ -30,4 +30,4 @@
 </div> -->
 <!-- TODO: Website input -->
 
-<%= f.button :submit, value: "Continue", class: "btn" %>
+<%= f.button :submit, value: "Save and Continue", class: "btn" %>

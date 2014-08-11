@@ -14,6 +14,6 @@ $(document).on 'ready page:load page:restore', ->
       filesCount -= 1
       filesCount = 0 if filesCount < 0
 
-$(document).on 'click', '#avatar-upload-button', (e) ->
+$(document).on 'click', '.avatar-upload-button', (e) ->
   e.preventDefault()
   $('#user_avatar').trigger 'click'

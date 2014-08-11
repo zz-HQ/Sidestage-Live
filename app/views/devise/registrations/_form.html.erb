@@ -1,23 +1,20 @@
 <div class="devise-lightbox">
-    <% unless profile_in_session? %>
-        <div class="link-to-artist-profile">
-            <%= link_to t(:"application.devise.artist_hint"), new_artist_path %>
-        </div>
-    <% end %>
 
-  <h2><%= t(:"application.devise.registration_title") %></h2>
+  <img src="<%= asset_path('sidestage_brand.png') %>" alt="logo_brand" class="logo_brand">
+  
+  <% unless true #profile_in_session? %>
+      <div class="link-to-artist-profile">
+          <%= link_to t(:"application.devise.artist_hint"), new_artist_path %>
+      </div>
+  <% end %>
 
-  <div class="facebook">
-    <%= link_to "<i class='fa fa-facebook-square'></i> #{t(:"application.devise.facebook_login")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
+  <!-- <h2><%#= t(:"application.devise.registration_title") %></h2> -->
 
-    <p><%= t(:"application.devise.facebook_hint") %></p>
-  </div>
+  <!-- <div class="facebook">
+    <%#= link_to "<i class='fa fa-facebook-square'></i> #{t(:"application.devise.facebook_login")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
 
-  <div class="or">
-    <div class="line"></div>
-      <span>or</span>
-    <div class="line"></div>      
-  </div>
+    <p><%#= t(:"application.devise.facebook_hint") %></p>
+  </div> -->
 
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), remote: true, authenticity_token: true) do |f| %>
     <%= f.error_notification %>
@@ -27,11 +24,12 @@
       <%= f.input :email, required: true, autofocus: true, label: false %>
       <%= f.input :password, required: true, input_html: { autocomplete: "off" }, label: false %>
       <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "off" }, label: false %>
-      <%= f.check_box :newsletter_subscribed, default: true, checked: true %><%= t(:"simple_form.labels.user.newsletter_subscribed") %>
     </div>
 
     <div class="form-actions">
+      <%= f.check_box :newsletter_subscribed, default: true, checked: true %><%= t(:"simple_form.labels.user.newsletter_subscribed") %>
       <%= f.button :submit, value: t(:"helpers.submit.user.sign_up"), class: "btn", data: { disable_with: "Sending..." } %>
+      <%= link_to t(:"application.devise.facebook_login"), user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
     </div>
     <div class="footnote">
       <%= t(:"application.devise.sign_up_foot_note_html", terms_path: terms_path, privacy_path: privacy_path) %>

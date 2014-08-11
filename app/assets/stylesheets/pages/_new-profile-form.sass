@@ -8,62 +8,54 @@
 
 	.input
 		+span-columns(8)
-		border-bottom: 1px solid $border-color
-		text-align: center
 
 		> label
 			text-align: left
 			margin: 20px 0 10px !important
 
 		h3
-			color: #484D4F
-			font-size: 22px
-			font-weight: bold
+			color: $text-color-light
+			font-size: 18px
+			font-weight: 400
 			margin: 30px 0
-
-		.styled-radios
-			min-height: 83px
 
 		.act
 			+span-columns(1 of 4)
 			width: 167px
+			text-align: center
 
 			.label
 				font-size: 22px
 				position: relative
-				top: 10px
 				cursor: pointer
 				color: $text-color
 				padding: 8px 0
 				width: 167px
 				display: inline-block
+				+border-radius($border-radius)
+				background-color: #fff
+				border: 1px solid $border-color
+				text-decoration: none
 
 			&:hover
 				.label
-					color: #55B1FF
-					text-decoration: underline
+					color: $text-color-light
 
 			&.active
 				.label
-					+border-radius($border-radius)
 					background-color: #eee
-					border: 1px solid $border-color
-					text-decoration: none
 
 				&:hover
 					.label
 						color: inherit
 
-		&.big
-			.act:first-child
-				+shift(1)
-
 		&.genre
 
 			.nice-select
 				background-color: #fff
-				margin-top: -10px
+				margin: 0
 				width: 167px
+				height: 48px
 				text-align: left
 
 				&.active
@@ -102,11 +94,6 @@
 
 			#profile_location
 				left: 0
-
-		&.last
-			border-bottom: none
-			margin-bottom: -5px
-			padding-bottom: 0
 
 		.center
 			display: inline

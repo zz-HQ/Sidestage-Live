@@ -1,8 +1,11 @@
 <div class="wrap">
   <div class="devise">
-    <h2><%= t(:"application.devise.session_title") %></h2>
+
+    <img src="<%= asset_path('sidestage_brand.png') %>" alt="logo_brand" class="logo_brand">
+
+    <!-- <h2><%= t(:"application.devise.session_title") %></h2> -->
     
-    <div class="facebook">
+    <!-- <div class="facebook">
       <%= link_to "<i class='fa fa-facebook-square'></i> #{t(:"application.devise.facebook_login")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
 
       <p><%= t(:"application.devise.facebook_hint") %></p>
@@ -12,7 +15,7 @@
       <div class="line"></div>
         <span><%= t(:"application.devise.or") %></span>
       <div class="line"></div>
-    </div>
+    </div> -->
 
     <%= simple_form_for resource, as: resource_name, url: session_path(resource_name), id: "new-session", remote: true, authenticity_token: true  do |f| %>
 
@@ -23,13 +26,13 @@
       <div class="form-inputs">
         <%= f.input :email, required: false, autofocus: true, label: false %>
         <%= f.input :password, required: false, label: false %>
+      </div>
+
+      <div class="form-actions">
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
           <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name) %><br />
         <% end -%>
-      </div>
-
-      <div class="form-actions">
         <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: "Sending..." }%>
       </div>
     <% end %>
