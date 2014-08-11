@@ -10,13 +10,13 @@ de:
       show:
         cancel: Cancel Booking
         confirm: Confirm Booking
-        accept: "Accept & confirm"
+        accept: "Confirm booking"
         cancel_offer: Cancel request
-        cancel_proposal: Decline offer
+        cancel_proposal: Decline
         change_price: Change price
         decline: Decline booking
         view_more_artists: View more artists
-        you_will_earn: You'll earn
+        you_will_earn: You'll make
         help_note: Need help? Contact
         states:
           cancelled:
