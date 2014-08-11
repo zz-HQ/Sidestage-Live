@@ -29,3 +29,24 @@ input[type="file"]
 textarea
 	height: 100px
 	line-height: 1.5em
+
+
+.new_city_launch
+	.form-inputs
+		input[type="text"],
+		input[type="email"],
+		input[type="password"]
+			margin: 0
+			+border-radius(0)
+			border-bottom: none
+
+		.input:first-child 
+			input
+				+border-radius(4px 4px 0 0)
+
+		.input:last-child 
+			input
+				+border-radius(0 0 4px 4px)
+				border-bottom: 1px solid $border-color
+
+

@@ -1,15 +1,17 @@
 <div class="wrap page">
 
 	<div class="landing-page-container email-signup">
-		<h3>We're coming to a city near you.</h3>
+		<img src="<%= asset_path('sidestage_brand.png') %>">
 
-		<div class="landing-page-subtitle">Sign up to be notified when Sidestage launches in your city.</div>
+		<h3>Get notified when Sidestage launches near you.</h3>
 
 		<div class="form">
 			<%= simple_form_for resource do |f| %>
-                <%= f.input :email, autofocus: true, placeholder: "Your email", label: false %>
-                <%= f.input :city, placeholder: "Your city", label: false %>
-				<input type="submit" value="Sign up" class="btn">
+				<div class="form-inputs">
+		      <%= f.input :email, autofocus: true, placeholder: "Your email", label: false %>
+          <%= f.input :city, placeholder: "Your city", label: false %>
+				</div>
+				<input type="submit" value="<%= t(:'application.menu.sign_up') %>" class="btn">
 			<% end %>
 		</div>
 	</div>
