@@ -53,7 +53,7 @@ de:
       message:
         body: Type your message here. Be sure to include as much detail as possible about your event.
         reply:
-          body: Reply
+          body: Write your message here...
       deal:
         start_at: Event date
       credit_card:

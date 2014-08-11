@@ -67,7 +67,7 @@ en:
       deal_start_at: "%d. %m. %Y"
       event_date: "%A, %B %d, %Y"
       conversation: "%A, %-d %B, %Y"
-      message: "%A, %B %d, %Y"
+      message: "%b %y"
       review: "%B %Y"
     am: "AM"
     pm: "PM"

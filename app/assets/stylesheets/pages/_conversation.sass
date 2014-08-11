@@ -1,21 +1,24 @@
 #conversation
-  .content
-    +span-columns(5)
+  header
+    span a
+      font-size: 16px
+      font-weight: 300
+      color: $text-color-light
 
-    header
-      span
-        font-size: 16px
-        margin-top: 8px
+  .content
+    +span-columns(5 of 7)
+    +omega
 
     #messages
-      position: relative
-      height: 300px
-      overflow: scroll
+      // height: 300px
+      // overflow: scroll
 
     .message
+      +span-columns(8)
       display: inline-block
+      padding-top: 20px
       margin-bottom: 20px
-      width: 100%
+      border-top: 1px solid $border-color
 
       &.system
         margin-bottom: 20px
@@ -34,10 +37,10 @@
         font-size: 15px
         text-align: center
         font-weight: 300
-        margin-bottom: 15px
+        margin-top: 15px
 
       .photo
-        +span-columns(1 of 7)
+        +span-columns(1 of 10)
         overflow: hidden
         min-height: 1px
 
@@ -46,23 +49,31 @@
           width: 100%
 
       .body
-        +span-columns(6 of 7)
+        +span-columns(8 of 10)
         cursor: default
         margin-right: 0px
 
-        h3
-          margin: 0 0 10px
+        h4
+          margin: 0
+          line-height: 1
 
         p
-          margin: 0 0 8px
+          margin: 8px 0 0
 
           span
             color: #777
             font-size: 16px
             font-weight: 300
 
+        p:last-child
+          margin: 0
+
+      .date
+        +span-columns(1 of 10)
+
       &.new-message
-        margin-top: 50px
+        border: none
+        padding: 0
 
         .body
           +span-columns(8)
@@ -74,14 +85,12 @@
           margin-bottom: 12px
 
         .btn
-          float: right
           margin-top: 0px
 
   aside
-    float: right
-    display: block
-    //padding-top: 36px
-    width: 32%
+    +span-columns(2 of 7)
+    border: 1px solid $border-color
+    padding: 10px
     
     > p
       margin-bottom: 10px

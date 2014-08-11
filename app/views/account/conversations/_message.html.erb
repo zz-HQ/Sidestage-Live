@@ -2,13 +2,15 @@
     <%- if message.system_message? -%>
         <span><%= l message.created_at, format: :message %></span><p class="ss"><%= message_body(message) %></p>
     <%- else -%>
-    <span><%= l message.created_at, format: :message %></span>
     <div class="photo">
       <%= link_to_if message.sender.profile.present?, (image_tag message.sender.avatar.url(:thumb), class: "avatar"), artist_path(message.sender.profile||1) unless message.system_message? -%>
     </div>
     <div class="body">
-        <h3><%= link_to_if message.sender.profile.present?, message.sender.profile_name, artist_path(message.sender.profile||1) %></h3>
+        <h4><%= link_to_if message.sender.profile.present?, message.sender.profile_name, artist_path(message.sender.profile||1) %></h4>
         <p><%= simple_format(message_body(message)) %></p>
+    </div>
+    <div class="date">
+        <span><%= l message.created_at, format: :message %></span>
     </div>
     <%- end -%>
 </div>

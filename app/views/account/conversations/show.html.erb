@@ -1,28 +1,11 @@
 <div id="conversation" class="container">
-  <div class="content">
-    <header>
-        <% negotiator = resource.negotiator_for(current_user) %>
-      <%= link_to_if negotiator.artist?, negotiator.profile_name, artist_path(negotiator.profile || 1) %>
-      <span class="right"><%= link_to "Archive", archive_account_conversation_path(resource), method: :put unless resource.archived_by?(current_user) %></span>
-    </header>
-    
-    <div id="messages">
-      <% resource.messages.includes(:sender).each do |message| %>
-        <%= render 'account/conversations/message', message: message %>
-      <% end %>
-    </div>
-
-    <div class="message new-message">
-      <div class="body">
-        <%= simple_form_for @message, url: account_messages_path, data: {remote: true} do |f| %>
-          <%= render "/account/messages/reply_form", f: f %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <header>
+      <% negotiator = resource.negotiator_for(current_user) %>
+    Conversation with <%= link_to_if negotiator.artist?, negotiator.profile_name, artist_path(negotiator.profile || 1) %>
+    <span class="right"><%= link_to "Archive", archive_account_conversation_path(resource), method: :put unless resource.archived_by?(current_user) %></span>
+  </header>
 
   <aside>
-    <header><%= t(:"application.conversations.show.sidebar_title") %></header>
     <% if resource.deals.visible_in_conversation.present? %>
       <div class="deals">
           <% resource.deals.select { |d| d.rejected? }.each do |deal| %>
@@ -45,8 +28,8 @@
       <% if current_user.artist? %>
         <%= t(:"application.conversations.show.make_offer_html", customer_name: resource.negotiator_for(current_user).profile_name) %>
         <%= link_to t(:"application.conversations.show.make_offer"), "#", class: "btn btn-confirm", data: { lightbox: :html, target: "[data-container='artist-offer']" } %>
-  	    <div style="display:none;" data-container="artist-offer">
-  		      <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
+        <div style="display:none;" data-container="artist-offer">
+            <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
             <script>
             jQuery(document).ready(function(){
                 $('.date-picker').datetimepicker({
@@ -64,6 +47,25 @@
       <% end %>
       
     <% end %>
+
+    <p><strong>Your Transaction is Secure</strong></p>
+    <p>We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a href="mailto:support@sidestage.com">support@sidestage.com</a> </p>
   </aside>
+
+  <div class="content">
+    <div class="message new-message">
+      <div class="body">
+        <%= simple_form_for @message, url: account_messages_path, data: {remote: true} do |f| %>
+          <%= render "/account/messages/reply_form", f: f %>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="messages">
+      <% resource.messages.includes(:sender).reverse.each do |message| %>
+        <%= render 'account/conversations/message', message: message %>
+      <% end %>
+    </div>
+  </div>
 
 </div>
