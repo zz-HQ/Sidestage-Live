@@ -5,18 +5,17 @@
     <div class="content mobile-numbers">
         <% if resource.mobile_nr_confirmed? %>
             <header><%= t(:"application.mobile_numbers.show.title") %></header>
-            <p><%= t(:"application.mobile_numbers.show.desc") %></p> <br>
-            <p><%= resource.mobile_nr %> <%= link_to t(:"helpers.submit.user_as_mobile_number.remove"), account_mobile_numbers_path, method: :delete, class: "btn btn-inline" %></p> <br>
-            <p class="light"><%= t(:"application.mobile_numbers.show.remove_hint") %></p>
+            <p class="subtitle"><%= t(:"application.mobile_numbers.show.desc") %></p> <br>
+            <p><%= resource.mobile_nr %> <%= link_to t(:"helpers.submit.user_as_mobile_number.remove"), account_mobile_numbers_path, method: :delete, class: "light delete-link" %></p>
+            <!-- <p class="light"><%#= t(:"application.mobile_numbers.show.remove_hint") %></p> -->
         <% else %>
             <header><%= t(:"application.mobile_numbers.new.title") %></header>
             
-            <%= t(:"application.mobile_numbers.new.desc_html") %>
+            <p class="subtitle"><%= t(:"application.mobile_numbers.new.desc_html") %></p>
             
             <%= simple_form_for resource, url: account_mobile_numbers_path do |f| %>
                 <%= f.input :mobile_nr, input_html: { autocomplete: "off" } %>
                 <div class="input">
-                    <p><%= t(:"application.mobile_numbers.new.save_hint") %></p>
                 	<%= f.submit class: "btn" %>
                 </div>
             <% end %>

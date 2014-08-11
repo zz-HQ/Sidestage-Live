@@ -2,14 +2,11 @@ de:
   application:
     personals:
       sidebar:
-        account: Account
-        account_link: "- Account details"
-        security: Security
-        security_link: "- Change password"
-        phone: Phone
-        phone_link: "- Verify Phone Number"
-        payment: Payment
-        payment_link: "- Add/edit credit card"
+        account_link: "Account"
+        password_link: "Password"
+        phone_link: "Phone"
+        payment_link: "Credit card"
+        bank_account_link: "Bank Account"
       show:
         title: Account details
       password:
