@@ -62,7 +62,7 @@
     </div>
 
     <div id="messages">
-      <% resource.messages.includes(:sender).reverse.each do |message| %>
+      <% resource.messages.includes(:sender).latest.each do |message| %>
         <%= render 'account/conversations/message', message: message %>
       <% end %>
     </div>
