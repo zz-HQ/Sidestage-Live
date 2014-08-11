@@ -4,7 +4,7 @@ module User::Authentication
   
   included do
     
-    attr_accessor :subscribe
+    attr_accessor :new_fb_signup
 
     devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable
     devise :omniauthable, :omniauth_providers => [:facebook]
@@ -16,7 +16,7 @@ module User::Authentication
         user.full_name = [auth.info.first_name, auth.info.last_name].compact.join(" ")
         user.remote_avatar_url = auth.info.image.gsub('http://','https://') # assuming the user model has an image
         user.skip_confirmation!
-        user.subscribe = true if user.new_record?
+        user.new_fb_signup = true if user.new_record?
       end
     end
 

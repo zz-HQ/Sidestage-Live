@@ -65,8 +65,6 @@ class User < ActiveRecord::Base
   
   before_save :set_default_currency, :add_credit_card
 
-  after_create :notify_admin
-
   #
   # Scopes
   # ---------------------------------------------------------------------------------------
@@ -139,6 +137,10 @@ class User < ActiveRecord::Base
     MailchimpWorker.perform_async(id)
   end
   
+  def notify_admin
+    AdminMailer.delay.lead_notification(self)
+  end
+  
   
   #
   # Private
@@ -160,10 +162,7 @@ class User < ActiveRecord::Base
 
   def after_confirmation
     subscribe_to_newsletter
-  end
-  
-  def notify_admin
-    AdminMailer.delay.lead_notification(self)
+    notify_admin
   end
   
   def add_credit_card    
