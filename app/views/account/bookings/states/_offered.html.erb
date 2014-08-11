@@ -1,5 +1,5 @@
 <% if deal.is_customer?(current_user) %>
-  <p><%= link_to "Accept", confirm_account_deal_path(deal), method: :put, class: "btn btn-confirm" %></p>
+  <p><%= link_to "Accept", confirm_account_deal_path(deal), method: :put, class: "btn" %></p>
   <%= link_to "Cancel", "#" , data: { lightbox: :html, target: "[data-container='cancel-offer']" }, class: "btn cancel-booking" %>
 <% else %>
     <%= link_to "Decline", decline_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>

@@ -1,22 +1,16 @@
 <div class="booking">
-  <table>
-    <tr>
-      <td><%= Deal.human_attribute_name(:start_at) %>:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
-    </tr>
-    <% if deal.is_customer?(current_user) %>
-    <tr class="price updated">
-      <td><%= t(:"simple_form.labels.deal.new_price") %>:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
-    </tr>
-  </table>
-  
-  <hr>
+  <h4 class="title">{Booking Details}</h4>
 
-  <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn btn-confirm" %></p>
-  <p><%= link_to t(:"application.deals.show.cancel_offer"), cancel_account_deal_path(deal), method: :put, class: "link" %></p>
+  <p>
+    <%= Deal.human_attribute_name(:start_at) %>: <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+  </p>
+  <% if deal.is_customer?(current_user) %>
+    <p><%= t(:"simple_form.labels.deal.new_price") %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
+
+    <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn" %></p>
+    <p><%= link_to t(:"application.deals.show.cancel_offer"), cancel_account_deal_path(deal), method: :put, class: "btn" %></p>
 
   <% else %>    
     <%= render "account/deals/offerable", deal: deal %>
-  <% end %>    
-
-   <%= render "account/deals/help_note" %>
+  <% end %>
 </div>

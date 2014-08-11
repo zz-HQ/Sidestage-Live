@@ -1,14 +1,12 @@
-<tr class="price">
-  <td><%= t(:"application.deals.show.you_will_earn") %>:</td><td><%= localized_price(deal.price, deal.currency) %></td>
-</tr>
-</table>
+<p>
+	<%= t(:"application.deals.show.you_will_earn") %>: <span><%= localized_price(deal.price, deal.currency) %></span>
+</p>
 
-<hr>
+<p class="light">Sidestage's price to the customer (including our fees) is <span class="surcharged_price" data-container="surcharged-price">0</span>€.</p>
 
-<%= link_to t(:"application.deals.show.confirm"), accept_account_deal_path(deal), method: :put, class: "btn btn-confirm" unless deal.offered? || deal.proposed? %>
+<p><%= link_to t(:"application.deals.show.confirm"), accept_account_deal_path(deal), method: :put, class: "btn" unless deal.offered? || deal.proposed? %></p>
 
-<%= link_to t(:"application.deals.show.change_price"), "#", class: "link", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
-<!--<p class="footnote">You can increase the pricing for this specific event to cover additional costs, time or travel.</p>-->
+<%#= link_to t(:"application.deals.show.change_price"), "#", class: "btn", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
 
-<%= link_to t(:"application.deals.show.decline"), decline_account_deal_path(deal), method: :put, class: "link" %>
+<%= link_to t(:"application.deals.show.decline"), decline_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
 <%= render "account/deals/update_price", deal: deal %>

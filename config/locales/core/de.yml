@@ -192,7 +192,7 @@ de:
       short: ! '%d. %B, %H:%M Uhr'
       date:  ! '%d.%m.%Y'
       deal_start_at: "%d. %m. %Y"
-      event_date: "%A, %B %d, %Y"
+      event_date: "%A, %B %d"
       conversation: "%A, %-d %B, %Y"
       message: "%b %y"
       review: "%B %Y"

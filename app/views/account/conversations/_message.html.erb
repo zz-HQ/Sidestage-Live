@@ -1,6 +1,9 @@
 <div class="message <%= "system" if message.system_message? %>">
     <%- if message.system_message? -%>
-        <span><%= l message.created_at, format: :message %></span><p class="ss"><%= message_body(message) %></p>
+        <span class="ss"><%= message_body(message) %></span>
+        <div class="date">
+            <span><%= l message.created_at, format: :message %></span>
+        </div>
     <%- else -%>
     <div class="photo">
       <%= link_to_if message.sender.profile.present?, (image_tag message.sender.avatar.url(:thumb), class: "avatar"), artist_path(message.sender.profile||1) unless message.system_message? -%>

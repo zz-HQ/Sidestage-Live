@@ -6,50 +6,47 @@
   </header>
 
   <aside>
-    <% if resource.deals.visible_in_conversation.present? %>
-      <div class="deals">
-          <% resource.deals.select { |d| d.rejected? }.each do |deal| %>
-            <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
-                <%= render "account/deals/#{deal.state}", deal: deal %>
-            <% end %>
-            <% break %>
-          <% end %>
-            
-          <% resource.deals.each do |deal| %>
-            <% next if deal.cancelled? || deal.rejected? || deal.declined? %>
-              <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
-              <%= render "account/deals/#{deal.state}", deal: deal %>
-            <% end %>
-          <% end %>
-      </div>
-    <% else %>
-      <p><%= t(:"application.conversations.show.requests_empty") %></p>
-
-      <% if current_user.artist? %>
-        <%= t(:"application.conversations.show.make_offer_html", customer_name: resource.negotiator_for(current_user).profile_name) %>
-        <%= link_to t(:"application.conversations.show.make_offer"), "#", class: "btn btn-confirm", data: { lightbox: :html, target: "[data-container='artist-offer']" } %>
-        <div style="display:none;" data-container="artist-offer">
-            <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
-            <script>
-            jQuery(document).ready(function(){
-                $('.date-picker').datetimepicker({
-                  timepicker: false,
-                  format: 'j/n/Y',
-                  scrollInput: false,
-                  minDate: '-1970/01/01',
-                  onChangeDateTime: function(dp, $input) {
-                    return $($input).datetimepicker('hide');
-                  }
-                });
-            })
-          </script>
+    <div class="booking-widget">
+      <header>
+        <div class="photo">
+          <%= image_tag resource.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
         </div>
-      <% end %>
-      
-    <% end %>
+        <div class="body">
+          <%= resource.negotiator_for(current_user).profile_name %>
+        </div>
+      </header>
 
-    <p><strong>Your Transaction is Secure</strong></p>
-    <p>We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a href="mailto:support@sidestage.com">support@sidestage.com</a> </p>
+      <div class="body">
+        <% if resource.deals.visible_in_conversation.present? %>
+
+          <div class="deals">
+              <% resource.deals.select { |d| d.rejected? }.each do |deal| %>
+                <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
+                    <%= render "account/deals/#{deal.state}", deal: deal %>
+                <% end %>
+                <% break %>
+              <% end %>
+                
+              <% resource.deals.each do |deal| %>
+                <% next if deal.cancelled? || deal.rejected? || deal.declined? %>
+                  <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
+                  <%= render "account/deals/#{deal.state}", deal: deal %>
+                <% end %>
+              <% end %>
+          </div>
+
+        <% else %>
+          <h4 class="title">{Booking details}</h4>
+
+          <%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="secure-text">
+      <div class="header"><i class="fa fa-lock"></i> Your Transaction is Secure</div>
+      <p>{We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a href="mailto:support@sidestage.com">support@sidestage.com</a>.}</p>
+    </div>
   </aside>
 
   <div class="content">
