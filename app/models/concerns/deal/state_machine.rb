@@ -7,7 +7,7 @@ module Deal::StateMachine
     include AASM
     
     PENDING_STATES = [:requested, :offered]
-    HIDDEN_CONVERSATION_STATES = [:declined, :cancelled]
+    VISIBLE_CONVERSATION_STATES = [:requested, :offered, :confirmed, :accepted, :proposed]
     NOTIFY_BOTH_PARTIES_STATES = [:cancelled, :confirmed, :declined, :accepted]
     
     aasm column: 'state', whiny_transitions: false do
