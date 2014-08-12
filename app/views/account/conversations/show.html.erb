@@ -37,10 +37,17 @@
 
         <% else %>
           <h4 class="title"><%= t(:"application.deals.show.title") %></h4>
-          <div class="new-offer" id="offer-form">
-              <%= render "account/offers/form", resource: Deal.new(price: current_user.profile.price, profile: current_user.profile, artist: current_user, customer: resource.negotiator_for(current_user)) %>
-          </div>
+
+          <% if current_user.artist? %>
+              <div class="new-offer" id="offer-form">
+                  <%= render "account/offers/form", resource: Deal.new(price: current_user.profile.price, profile: current_user.profile, artist: current_user, customer: resource.negotiator_for(current_user)) %>
+              </div>
+          <% else %>
+          
+          <% end %>
+
         <% end %>
+
       </div>
     </div>
 
