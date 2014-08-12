@@ -9,7 +9,5 @@ en:
         security_hint_body_html: "We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>." 
     offers:
       new:
-        title: "Send new offer to %{customer_name}"
-        desc_html: "You can make an offer to another Sidestage member. <br> Example, if they want you to play a solo or acoustic set, which would cost a lot less than the price listed on your profile."
-        price_label: How much do you want to make?
-        surcharge_label_html: "Price the customer will see (includes <br> Sidestage's fee of %{surcharge_base}%)" 
+        surcharge_label_html: "Price shown to customer (including our fees) is <span class='surcharged_price' data-container='surcharged-price'>%{surcharged_price}</span>" 
+        total_price: Total Price
