@@ -1,18 +1,17 @@
 <div class="booking">
-  <table>
-    <tr>
-      <!-- TODO: richtiges Format als Text -->
-      <td><%= Deal.human_attribute_name(:start_at) %>:</td><td data-deal="start-at"><%= l(deal.start_at, format: :deal_start_at) %></td>
-    </tr>
-    <tr class="price">
-      <td><%= Deal.human_attribute_name(:price) %>:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
-    </tr>
-  </table>
-
-  <hr>
+		<h4 class="title">{Booking Confirmation}</h4>
+    <p>
+      <i class="fa fa-calendar"></i> <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+    </p>
+    <p class="price">
+        <% if deal.is_customer?(current_user) %>
+            <%= Deal.human_attribute_name(:price) %>: <strong><%= localized_price(deal.price_with_surcharge, deal.currency) %></strong>
+         <% else %>
+            <%= t(:"application.deals.show.you_will_earn") %>: <strong><%= localized_price(deal.price, deal.currency) %></strong>
+        <% end %> 
+    </p>
 
   <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" if deal.is_customer?(current_user) %>
   <%= link_to t(:"application.deals.show.cancel"), reject_account_deal_path(deal), method: :put, class: "btn cancel-booking" if deal.is_artist?(current_user) %>
 
-  <%= render "account/deals/help_note" %>
 </div>

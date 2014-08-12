@@ -1,21 +1,20 @@
 <div class="booking">
-  <table>
-    <tr>
-      <td><%= Deal.human_attribute_name(:start_at) %>:</td><td data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></td>
-     </tr>
-     <tr class="price">
-         <% if deal.is_customer?(current_user) %>
-            <td><%= Deal.human_attribute_name(:price) %>:</td><td><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
+    <h4 class="title"><%= t(:"application.deals.show.title") %></h4>
+    <p class="event-date">
+        <i class="fa fa-calendar"></i> <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+    </p>
+    <p class="price">
+        <% if deal.is_customer?(current_user) %>
+            <%= Deal.human_attribute_name(:price) %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %>
          <% else %>
-            <td><%= t(:"application.deals.show.you_will_earn") %>:</td><td><%= localized_price(deal.price, deal.currency) %></td>
-        <% end %>    
-     </tr>
-     </table>      
-     <hr>
-     <% if deal.is_customer?(current_user) %>
-         <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn btn-confirm" %></p>
-         <p><%= link_to t(:"application.deals.show.cancel_proposal"), cancel_account_deal_path(deal), method: :put, class: "link" %></p>
-     <% else %>
-        <%= link_to t(:"application.deals.show.cancel"), decline_account_deal_path(deal), method: :put, class: "link" %>
-     <% end %>
+            <%= t(:"application.deals.show.you_will_earn") %>: <strong><%= localized_price(deal.price, deal.currency) %></strong>
+        <% end %> 
+    </p>
+
+    <% if deal.is_customer?(current_user) %>
+        <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn" %></p>
+        <p><%= link_to t(:"application.deals.show.cancel_proposal"), cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" %></p>
+    <% else %>
+        <p><%= link_to t(:"application.deals.show.cancel"), decline_account_deal_path(deal), method: :put, class: "btn cancel-booking" %></p>
+    <% end %>
 </div>

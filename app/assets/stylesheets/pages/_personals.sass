@@ -1,10 +1,25 @@
 #personals
 
 	.content
+		.avatar-uploader
+			position: relative
+			margin-bottom: 20px
+
+			.avatar
+				width: 100px
+				height: 100px
+				background: url(fallback/thumb_avatar.jpg) no-repeat center
+				background-size: 100px
+				cursor: pointer
+
+			a
+				position: absolute
+				top: 50px
+				left: 140px
 
 		form
 			width: 350px
-			margin-bottom: 50px
+			margin-bottom: 30px
 
 		.credit-card-info
 			+span-columns(5 of 8)
@@ -50,14 +65,26 @@
 		&.mobile-numbers
 			width: 45%
 
-			.user_as_mobile_number_mobile_confirmation_code
-				width: 200px
-
-			a.btn
+			a.delete-link
 				margin-left: 40px
 
+			form.confirm-mobile-num-form
+				+span-columns(6)
+
+				.user_as_mobile_number_mobile_confirmation_code
+					+span-columns(5)
+
+					input
+						height: 45px
+				
+				.btn
+					+span-columns(3)
+					+omega
+					margin-top: 32px
+					height: 45px
+
 	p
-		margin-bottom: 12px
+		margin-bottom: 28px
 
 // PAYMENT FORM ---
 // ----------------

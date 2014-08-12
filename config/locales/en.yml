@@ -23,7 +23,7 @@ en:
         rating: Rating
       deal:
         start_at: Event date
-        price: Price
+        price: Total price
         price_for_customer: Total cost
       credit_card:
         number: Card number
@@ -76,7 +76,7 @@ en:
         notice: "%{resource_name} successfully created."
       update:
         deal:
-          confirmed: "Booking confirmed!"
+          confirmed: "Booking request accepted. You'll get an email from us, too."
         notice: "%{resource_name} successfully updated."
         password:
           notice: Your password was successfully changed.

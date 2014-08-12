@@ -6,7 +6,7 @@ en:
       long: "%e %b %Y"
       only_month: "%B"
       only_month_year: "%B %Y"
-      event_date: "%A, %B %d, %Y"
+      event_date: "%A, %B %d"
     day_names:
       - Sunday
       - Monday
@@ -65,7 +65,7 @@ en:
       only_month: "%B"
       only_month_year: "%B %Y"
       deal_start_at: "%d. %m. %Y"
-      event_date: "%A, %B %d, %Y"
+      event_date: "%A, %B %d"
       conversation: "%A, %-d %B, %Y"
       message: "%b %y"
       review: "%B %Y"

@@ -30,9 +30,8 @@
       </div>
       
     <% else %>
-      <div class="footnote">
-        <p><%= t(:"application.personals.payment_details.new.title") %></p>
-      </div>
+      <p class="subtitle"><%= t(:"application.personals.payment_details.new.title") %></p>
+      
       <div data-content="payment-form" id="payment" class="payment-form">
         <%= simple_form_for resource, url: request.path, data: { form: "payment" } do |f| %>
           <%= f.input :stripe_token, as: :hidden %>

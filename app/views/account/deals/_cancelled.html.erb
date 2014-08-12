@@ -1,8 +1,2 @@
-<% if deal.is_customer?(current_user) %>
-  <div class="booking">
-    <p class="light"><%= t(:"application.deals.show.states.cancelled.desc") %></p>
-    <%= link_to t(:"application.artists.index.view_profile"), artist_path(deal.artist), class: "btn" %>
-  </div>
- <% else %>
- 	
-<% end %>
+<h4 class="title"><%= t(:"application.deals.show.title") %></h4>
+<%= render "account/offers/form", resource: Deal.new(customer: resource.negotiator_for(current_user)) %>

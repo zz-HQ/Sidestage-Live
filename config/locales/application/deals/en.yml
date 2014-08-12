@@ -8,15 +8,16 @@ en:
         success_html: "<form class='vex-dialog-form'><h3>Your booking request was sent to %{partner_name} for %{event_date}</h3><p>We'll notify you once your request is accepted or not.</p> <br/> <p>You can cancel your booking request by visiting your account -> &quot;My Bookings&quot;. <br/><br /></p> %{link_to_conversation} %{link_to_cancel_deal}</form>"
         cancel_booking: Cancel booking request
       show:
+        title: Booking Details
         cancel: Cancel Booking
         confirm: Confirm Booking
-        accept: "Accept & confirm"
+        accept: "Confirm booking"
         cancel_offer: Cancel request
-        cancel_proposal: Decline offer
+        cancel_proposal: Decline
         change_price: Change price
         decline: Decline booking
         view_more_artists: View more artists
-        you_will_earn: You'll earn
+        you_will_earn: You'll make
         help_note: Need help? Contact
         states:
           cancelled:

@@ -1,18 +1,19 @@
-<div class="devise-lightbox new-offer">
-	<h3><%= t(:"application.offers.new.title", customer_name: resource.customer.profile_name) %></h3>
-	<p>
-        <%= t(:"application.offers.new.desc_html") %>
-	</p>
+<div class="new-offer">
 	<%= simple_form_for resource, url: account_offers_path, remote: true, authenticity_token: true do |f| %>
-    	<label><%= t(:"application.offers.new.price_label") %></label>
-    	<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } } %>
-    	<label><%= t(:"application.offers.new.surcharge_label_html", surcharge_base: Profile.surcharge_base) %></label>
-    	<span class="surcharged_price" data-container="surcharged-price"></span>
     	<div class="date">
     	      <%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
     	      <i class="fa fa-calendar"></i>
     	</div>
-    	<%= f.input :customer_id, as: :hidden %>
-    	<%= f.button :submit, class: "btn", value: t(:"helpers.submit.deal.submit_proposal") %>
+        
+        <% if current_user.artist? %>
+            <label>You'll make: </label>
+            <%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } } %>
+        	<%= f.input :customer_id, as: :hidden %>
+            <p class="light">Price shown to customer (including our fees) is <span class="surcharged_price" data-container="surcharged-price">0</span>€.</p>
+        <% else %>
+            <p class="title">Total Price: 200€</p>
+        <% end %>
+
+    	<%= f.button :submit, class: "btn", value: t(:"helpers.submit.deal.submit") %>
 	<% end %>
 </div>
