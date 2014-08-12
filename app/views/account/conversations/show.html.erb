@@ -9,10 +9,10 @@
     <div class="booking-widget">
       <header>
         <div class="photo">
-          <%= image_tag resource.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
+          <%= image_tag negotiator.avatar.url(:thumb), class: "avatar" %>
         </div>
         <div class="body">
-          <%= resource.negotiator_for(current_user).profile_name %>
+          <%= negotiator.profile_name %>
         </div>
       </header>
 
@@ -32,11 +32,13 @@
           <h4 class="title"><%= t(:"application.deals.show.title") %></h4>
 
           <% if current_user.artist? %>
+              
               <div class="new-offer" id="offer-form">
-                  <%= render "account/offers/form", resource: Deal.new(price: current_user.profile.price, profile: current_user.profile, artist: current_user, customer: resource.negotiator_for(current_user)) %>
+                  <%= render "account/offers/form", resource: Deal.new(price: current_user.profile.price, profile: current_user.profile, customer: negotiator) %>
               </div>
-          <% else %>
-          
+              
+          <% elsif artist_contactable?(negotiator) %>
+            <%= render "account/deals/client_conversation_form", resource: Deal.new(price: negotiator.profile.price, profile: negotiator.profile, artist: negotiator) %>
           <% end %>
 
         <% end %>

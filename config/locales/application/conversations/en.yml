@@ -10,4 +10,6 @@ en:
     offers:
       new:
         surcharge_label_html: "Price shown to customer (including our fees) is <span class='surcharged_price' data-container='surcharged-price'>%{surcharged_price}</span>" 
+    deals:
+      new:    
         total_price: Total Price
