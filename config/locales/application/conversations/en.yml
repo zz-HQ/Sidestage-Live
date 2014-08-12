@@ -4,9 +4,9 @@ en:
       index:
         empty: You don't have any messages!
       show:
-        requests_empty: There is currently no booking request made.
-        make_offer_html: Make %{customer_name} an offer to play at their next event.
-        make_offer: Make offer
+        conversation_with: Conversation with
+        security_hint_title: Your Transaction is Secure
+        security_hint_body_html: "We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>." 
     offers:
       new:
         title: "Send new offer to %{customer_name}"

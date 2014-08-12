@@ -6,11 +6,7 @@
 	</h3>
 	<%= simple_form_for resource, url: account_deals_path(resource), authenticity_token: true, data: { form: current_user.paymentable? ? nil : :payment }, html: { id: "deal-request" } do |f| %>
 		<div class="form-inputs payment-form">
-		    <% if resource.errors.include?(:start_at) %>
-    	        <%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
-	        <% else %>
-	            <%= f.input :start_at, as: :hidden  %>
-	        <% end %>
+	        <%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
     	    <%= f.input :profile_id, as: :hidden %>
     	    <%= f.input :stripe_token, as: :hidden %>
             <%= render "account/payment_details/payment_form" %>

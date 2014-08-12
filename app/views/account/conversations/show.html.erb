@@ -1,7 +1,7 @@
 <div id="conversation" class="container">
   <header>
       <% negotiator = resource.negotiator_for(current_user) %>
-    Conversation with <%= link_to_if negotiator.artist?, negotiator.profile_name, artist_path(negotiator.profile || 1) %>
+    <%= t(:"application.conversations.show.conversation_with")%> <%= link_to_if negotiator.artist?, negotiator.profile_name, artist_path(negotiator.profile || 1) %>
     <span class="right"><%= link_to "Archive", archive_account_conversation_path(resource), method: :put unless resource.archived_by?(current_user) %></span>
   </header>
 
@@ -44,8 +44,8 @@
     </div>
 
     <div class="secure-text">
-      <div class="header"><i class="fa fa-lock"></i> Your Transaction is Secure</div>
-      <p>{We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a href="mailto:support@sidestage.com">support@sidestage.com</a>.}</p>
+      <div class="header"><i class="fa fa-lock"></i> <%= t(:"application.conversations.show.security_hint_title") %></div>
+      <p><%= t(:"application.conversations.show.security_hint_body_html") %></p>
     </div>
   </aside>
 

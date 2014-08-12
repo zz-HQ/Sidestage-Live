@@ -19,7 +19,11 @@ class Account::MessagesController < Account::ResourcesController
   
   def show
     flash.keep
-    redirect_to account_conversation_path(resource.conversation)
+    if resource.conversation.receiver.artist?
+      redirect_to artist_path(resource.conversation.receiver)
+    else
+      redirect_to account_conversation_path(resource.conversation)
+    end
   end
   
   #
