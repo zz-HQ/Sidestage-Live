@@ -20,18 +20,11 @@
         <% if resource.deals.visible_in_conversation.present? %>
 
           <div class="deals">
-              <% resource.deals.select { |d| d.rejected? }.each do |deal| %>
+              <% resource.deals.visible_in_conversation.each do |deal| %>
                 <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
                     <%= render "account/deals/#{deal.state}", deal: deal %>
                 <% end %>
                 <% break %>
-              <% end %>
-                
-              <% resource.deals.each do |deal| %>
-                <% next if deal.cancelled? || deal.rejected? || deal.declined? %>
-                  <%= content_tag :div, data: { container: dom_id(deal) }, class: "deal" do %>
-                  <%= render "account/deals/#{deal.state}", deal: deal %>
-                <% end %>
               <% end %>
           </div>
 

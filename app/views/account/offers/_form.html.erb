@@ -1,10 +1,18 @@
-<%= simple_form_for resource, url: account_offers_path, remote: true, authenticity_token: true do |f| %>
-    <%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
-	<div class="form-inputs">
+<div class="new-offer">
+	<%= simple_form_for resource, url: account_offers_path, remote: true, authenticity_token: true do |f| %>
+		<div class="form-inputs">
+				<div class="date">
+					<%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
+					<i class="fa fa-calendar"></i>
+				</div>
         <label><%= t(:"simple_form.labels.propose.price") %>: </label>
-        <%= f.input :price, as: :string, label: false, input_html: {  data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } } %>
-    	<%= f.input :customer_id, as: :hidden %>
-        <p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(resource.price_with_surcharge, resource.currency)) %></p>
-        <%= f.submit class: "btn" %>
-    </div>
-<% end %>
+        <div class="price">
+        	<%= f.input :price, as: :string, label: false, input_html: {  data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } } %>
+        	<i class="fa fa-<%= resource.profile.currency.downcase %>"></i>
+        </div>
+	    	<%= f.input :customer_id, as: :hidden %>
+	      <p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(resource.price_with_surcharge, resource.currency)) %></p>
+	      <%= f.submit class: "btn" %>
+	    </div>
+	<% end %>
+</div>

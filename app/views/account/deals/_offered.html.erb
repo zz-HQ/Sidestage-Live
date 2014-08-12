@@ -1,6 +1,5 @@
 <div class="booking">
   <h4 class="title"><%= t(:"application.deals.show.title") %></h4>
-
   <p>
     <%= Deal.human_attribute_name(:start_at) %>: <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
   </p>
