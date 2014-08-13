@@ -64,3 +64,13 @@ $btn-hover-darken-percentage: 10%
 
 .btn-submitted
   cursor: default
+
+$blue-btn: #3C8AE5
+
+#personals
+  .btn
+    background-color: $blue-btn
+
+    &:hover
+      background-color: darken($blue-btn, $btn-hover-darken-percentage)
+      color: #fff
