@@ -2,8 +2,8 @@ en:
   application:
     deals:
       new:
-        title: To proceed with this booking, please enter your payment details.
-        foot_note_html: Your payment data is secure. <br> We use Stripe to process payments.
+        title: Send booking request to
+        foot_note_html: Your card will not be charged until your booking is confirmed by the artist.
         verification_message: Verifying payment...
         cancel_booking: Cancel booking request
       show:
