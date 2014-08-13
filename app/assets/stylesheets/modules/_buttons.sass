@@ -39,10 +39,10 @@ $btn-hover-darken-percentage: 10%
       +linear-gradient(to bottom, darken($btn-important-top-color, $btn-hover-darken-percentage), darken($btn-important-bottom-color, $btn-hover-darken-percentage))
 
   &.btn-facebook
-    background-color: $btn-facebook-color
+    background-color: $btn-facebook-color !important
 
     &:hover
-      background-color: darken($btn-facebook-color, 10%)
+      background-color: darken($btn-facebook-color, 10%) !important
 
   &.disabled
     background-color: lighten($red, 27%) !important
@@ -68,7 +68,8 @@ $btn-hover-darken-percentage: 10%
 $blue-btn: #3C8AE5
 
 #personals,
-#profile
+#profile,
+.new_user
   .btn
     background-color: $blue-btn
 
