@@ -32,14 +32,14 @@ class Account::ProfilesController < Account::ResourcesController
   end
   
   def update
-    redirect_to pricing_account_profile_path(resource) if resource.update_attributes(permitted_params[:profile])
+    redirect_to basics_account_profile_path(resource) if resource.update_attributes(permitted_params[:profile])
   end
   
   def pricing
     resource.wizard_step = :pricing      
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        redirect_to description_account_profile_path
+        #redirect_to description_account_profile_path
       end
     end    
   end 
@@ -48,7 +48,7 @@ class Account::ProfilesController < Account::ResourcesController
     resource.wizard_step = :description
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        redirect_to account_profile_pictures_path(resource)
+        #redirect_to account_profile_pictures_path(resource)
       end
     end
   end
