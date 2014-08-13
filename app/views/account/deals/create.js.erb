@@ -2,5 +2,5 @@ vex.closeAll();
 <% if resource.errors.present? %>
     vex.open({ content: "<%= j render("form").strip.html_safe %>" });
 <% else %>
-    vex.open({showCloseButton: false, content: "<%= t(:"application.deals.new.success_html", partner_name:  resource.artist.profile_name, event_date: l(resource.start_at, format: :event_date), link_to_conversation: j(link_to "OK", account_conversation_path(resource.conversation), class: "btn btn-inline", style: "margin-right: 15px; margin-left: 70px;"), link_to_cancel_deal: j(link_to t(:"application.deals.new.cancel_booking"), cancel_account_deal_path(resource), method: :put, class: "cancel-link")) %>"});
+    window.location = "<%= account_conversation_path(resource.conversation) %>"
 <% end %>

@@ -2,11 +2,13 @@
 	<%= t(:"application.deals.show.you_will_earn") %>: <span><%= localized_price(deal.price, deal.currency) %></span>
 </p>
 
-<p class="light">Sidestage's price to the customer (including our fees) is <span class="surcharged_price" data-container="surcharged-price">0</span>€.</p>
+<p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.price_with_surcharge, deal.currency)) %></p>
 
 <p><%= link_to t(:"application.deals.show.confirm"), accept_account_deal_path(deal), method: :put, class: "btn" unless deal.offered? || deal.proposed? %></p>
 
-<%#= link_to t(:"application.deals.show.change_price"), "#", class: "btn", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
 
 <%= link_to t(:"application.deals.show.decline"), decline_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
+
+<%= link_to t(:"application.deals.show.change_price"), "#", class: "btn cancel-booking", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
+
 <%= render "account/deals/update_price", deal: deal %>
