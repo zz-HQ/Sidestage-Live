@@ -19,8 +19,3 @@ en:
         you_will_earn: You'll make
         help_note: Need help? Contact
         confirmed_title: Booking Confirmation
-        states:
-          cancelled:
-            desc: To make a new booking visit the artist's profile page  
-          declined:
-            desc: The artist has declined your booking request.  

@@ -6,7 +6,7 @@ module Deal::StateMachine
     #There is a better Gem 'state_machine' available, but unfortunatley not maintained anymore
     include AASM
     
-    PENDING_STATES = [:requested, :offered]
+    PENDING_STATES = [:requested, :offered, :proposed]
     VISIBLE_CONVERSATION_STATES = [:requested, :offered, :confirmed, :accepted, :proposed]
     NOTIFY_BOTH_PARTIES_STATES = [:cancelled, :confirmed, :declined, :accepted]
     

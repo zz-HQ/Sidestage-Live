@@ -136,11 +136,16 @@
               </div>
   
               <div class="button">
-                <% if current_user %>
-                    <%= f.submit class: "btn btn-submit" %>
-                <% else %>
-                    <%= link_to t(:"helpers.submit.deal.submit"), new_user_session_path(return_to: request.url, format: :html), class: "btn btn-submit", data: { lightbox: "ajax" } %>
-                <% end %>
+                  
+                    <% if current_user %>
+                        <% if current_user.has_pending_deal_with_profile?(resource) %>
+                            <%= link_to t(:"helpers.submit.deal.submit"), "" , class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                        <% else %>
+                            <%= f.submit class: "btn btn-submit" %>
+                        <% end %>
+                    <% else %>
+                        <%= link_to t(:"helpers.submit.deal.submit"), new_user_session_path(return_to: request.url, format: :html), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                    <% end %>
               </div>
           <% end %>
       <% end %>
