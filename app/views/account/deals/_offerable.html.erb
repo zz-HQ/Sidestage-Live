@@ -10,5 +10,6 @@
 <%= link_to t(:"application.deals.show.decline"), decline_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
 
 <%= link_to t(:"application.deals.show.change_price"), "#", class: "btn cancel-booking", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
-
-<%= render "account/deals/update_price", deal: deal %>
+<div style="display:none;" data-container="new-offer">
+    <%= render "account/deals/update_price", deal: deal %>
+</div>

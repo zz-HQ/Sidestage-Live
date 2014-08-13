@@ -70,7 +70,7 @@ en:
           notice: "Booking confirmed. You'll get an email from us, too."
         accepted:
           notice: "Booking request accepted. You'll get an email from us, too."
-        offered:
+        offer:
           notice: "Price for this booking was changed. We need the customer to confirm it."  
       conversations:
           archived: "Conversation was moved to Archive."

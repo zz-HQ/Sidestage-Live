@@ -13,7 +13,7 @@ class Deal < ActiveRecord::Base
   include Payment
   include Surcharge  
   
-  has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
+ # has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
   #
   # Attributes

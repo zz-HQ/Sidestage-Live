@@ -38,11 +38,11 @@ class Account::DealsController < Account::ResourcesController
     resource.price = permitted_params[:deal][:price]
     resource.offer
     if resource.save
-      flash[:notice] = t(:"flash.account.deals.confirm.notice")    
+      flash[:notice] = t(:"flash.account.deals.offer.notice")    
     end
     respond_to do |format|
       format.html { redirect_to account_conversation_path(resource.conversation) }
-      format.js { render :offer }
+      format.js
     end
   end
   

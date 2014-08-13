@@ -24,5 +24,3 @@ en:
             desc: To make a new booking visit the artist's profile page  
           declined:
             desc: The artist has declined your booking request.  
-      update:
-        success: "Your pricing update was successful. We just need the customer to accept this change in order to confirm this booking. Stay tuned!"  
