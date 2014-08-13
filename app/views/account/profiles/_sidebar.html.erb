@@ -1,9 +1,9 @@
 <div class="sidebar">
-	<h4><%= link_to t(:"application.profiles.sidebar.settings_link"), resource.new_record? ? "#" : basics_account_profile_path(resource) %></h4>
-	<h4><%= link_to t(:"application.profiles.sidebar.description_link"), resource.new_record? ? "#" : description_account_profile_path(resource) %></h4>
+	<h4><%= link_to t(:"application.profiles.sidebar.settings_link").html_safe, resource.new_record? ? "#" : basics_account_profile_path(resource) %></h4>
+	<h4><%= link_to t(:"application.profiles.sidebar.description_link").html_safe, resource.new_record? ? "#" : description_account_profile_path(resource) %></h4>
 	<!-- <h4><%= t(:"application.profiles.sidebar.photos") %></h4>
 	<%= link_to t(:"application.profiles.sidebar.photos_link"), resource.new_record? ? "#" : account_profile_pictures_path(resource) %> -->
 	<h4><%= link_to t(:"application.profiles.sidebar.pricing_link"), resource.new_record? ? "#" : pricing_account_profile_path(resource) %></h4>
 	<!-- <h4><%= link_to t(:"application.profiles.sidebar.payment_link"), resource.new_record? ? "#" : payment_account_profile_path(resource) %></h4> -->
-	<h4><%= link_to t(:"application.personals.sidebar.phone_link"), account_mobile_numbers_path %></h4>
+	<!-- <h4><%= link_to t(:"application.personals.sidebar.phone_link"), account_mobile_numbers_path %></h4> -->
 </div>
