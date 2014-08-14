@@ -4,7 +4,7 @@
   </div>
   <div class="body">
     <div class="dreieck"></div>
-    <h5><%= review.author.first_name %> <span><%= l review.created_at, format: :review %></span></h5>
+    <h5><%= review.author.name %> <span><%= l review.created_at, format: :review %></span></h5>
     <p><%= review.body %></p>
     <div class="star-rating">
       <%- review.rate.to_i.times do |a| -%>
