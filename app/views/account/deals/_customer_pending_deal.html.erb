@@ -10,6 +10,6 @@
 	</div>
 	<div class="btns">
 	    <%= link_to t(:"application.artists.show.message_artist"), link_or_signin(new_account_message_path(receiver_id: deal.artist_id, format: :html)), class: "btn", data: { lightbox: "ajax" } %>
-	    <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
+	    <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %>
 	</div>
 </div>

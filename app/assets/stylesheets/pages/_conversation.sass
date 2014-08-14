@@ -1,5 +1,12 @@
 #conversation
+  +span-columns(8)
+
   header
+    font-weight: 300
+    border-bottom: 1px solid $border-color
+    font-size: 18px
+    margin-bottom: 30px
+
     span a
       font-size: 16px
       font-weight: 300
@@ -20,6 +27,7 @@
       padding-top: 20px
       margin-bottom: 20px
       border-top: 1px solid $border-color
+      font-size: 14px
 
       &.system
         margin-bottom: 20px
@@ -30,9 +38,6 @@
           
       .ss
         color: $text-color-light
-
-      span
-        font-weight: 300
 
       .photo
         +span-columns(1 of 10)
@@ -52,6 +57,9 @@
           margin: 0
           line-height: 1
 
+          a
+            font-size: 14px
+
         p
           margin: 8px 0 0
 
@@ -66,13 +74,15 @@
       .date
         +span-columns(1 of 10)
         float: right
+        font-size: 12px
+        color: $text-color-light
 
       &.new-message
         border: none
         padding: 0
 
         .body
-          +span-columns(8)
+          +span-columns(5)
 
         h2
           font-size: 15px
@@ -89,13 +99,13 @@
 
     .booking-widget
       border: 1px solid $border-color
-      padding: 15px
       +span-columns(8)
 
       header
         +outer-container
-        margin-bottom: 20px
+        margin-bottom: 0px
         border-bottom: 1px solid $border-color
+        padding: 15px
 
         .photo
           +span-columns(2)
@@ -103,18 +113,19 @@
         .body
           +span-columns(6)
           +omega
-          font-size: 18px
-          margin-top: 4px
+          padding-top: 17px
+          font-size: 16px
+          font-weight: 400
           padding-left: 5px
 
       .title
         text-align: center
         font-weight: 300
-        font-size: 18px
-        margin: 0 0 15px
+        font-size: 16px
+        margin: 10px 0 25px
 
       .body
-        padding: 0 20px
+        padding: 15px 35px
 
         p
           margin-bottom: 5px
@@ -123,14 +134,12 @@
             margin-right: 4px
 
         .light
-          margin: 20px 0 0
           font-size: 13px
-          text-align: left
+          text-align: center
 
-      .btn
-        width: 100%
-        display: inline-block
-        margin-top: 20px
+        .btns
+          .btn
+            padding: 10px 24px
     
     > p
       margin-bottom: 10px
@@ -139,12 +148,8 @@
       .booking
         text-align: center
 
-        .price,
-        .light
+        .price
           margin-bottom: 25px
-
-        .btn
-          margin-top: 0
 
     // Security text ---------
     .secure-text
@@ -154,6 +159,7 @@
 
       .header
         font-weight: 400
+        font-size: 15px
         margin-bottom: 10px
 
         i
@@ -194,9 +200,8 @@
 
       i.fa
         position: absolute
-        top: 12px
+        top: 13px
         left: 10px
-        color: $text-color-light
 
     .light
       +span-columns(8)
