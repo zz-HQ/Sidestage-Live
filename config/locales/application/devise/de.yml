@@ -10,7 +10,6 @@ de:
       login_error: Login incorrect
       sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
       have_an_account: Have an account?
-      artist_hint: "If you're an artist, create an Artist Profile instead."
       
   devise:
     confirmations:

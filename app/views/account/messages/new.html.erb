@@ -1,5 +1,5 @@
 <div class="devise-lightbox">
-	<div class="photo"><%= image_tag resource.receiver.avatar.url(:thumb), class: "avatar" %></div>
+	<div class="photo"><%= image_tag resource.receiver.avatar.url(:thumb), class: "avatar" if resource.receiver.avatar.present? %></div>
 	<div class="body"><span><%= t(:"application.messages.new.title") %> <strong><%= resource.receiver.profile_name %></strong></span></div>
 
 	<%= simple_form_for resource, url: account_messages_path do |f| %>

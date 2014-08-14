@@ -1,7 +1,6 @@
 <% if resource.errors.present? %>
-  <% #don't know yet what to do' %>
-<% else %>
   vex.closeAll();
-  $("[data-container='<%= dom_id(resource) %>']").html("<%= j render("#{resource.state}", deal: resource).strip.html_safe %>");
-  vex.dialog.alert('<%= t(:"application.deals.update.success") %>');
+  vex.open({ content: "<%= j render("update_price", deal: resource).strip.html_safe %>" });
+<% else %>
+    window.location = "<%= account_conversation_path(resource.conversation) %>"
 <% end %>

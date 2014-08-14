@@ -5,7 +5,7 @@
 			<%= nice_select((select_tag 'messages', options_for_select(messages_filter, request.path), include_blank: false, data: { linked: true }), small: true) %>
 		</header>
 		
-    <%- if collection.present? -%>
+        <%- if collection.present? -%>
 		  <%= render collection %>
 		<%- else -%>
 		    <p><%= t(:"application.conversations.index.empty") %></p>

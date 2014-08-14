@@ -1,11 +1,10 @@
 <div class="booking">
   <h4 class="title"><%= t(:"application.deals.show.title") %></h4>
-
   <p>
-    <%= Deal.human_attribute_name(:start_at) %>: <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+    <i class="fa fa-calendar"></i> <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
   </p>
   <% if deal.is_customer?(current_user) %>
-    <p><%= t(:"simple_form.labels.deal.new_price") %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
+    <p class="price"><%= t(:"simple_form.labels.deal.new_price") %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
 
     <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn" %></p>
     <p><%= link_to t(:"application.deals.show.cancel_offer"), cancel_account_deal_path(deal), method: :put, class: "btn" %></p>

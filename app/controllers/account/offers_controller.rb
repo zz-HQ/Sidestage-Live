@@ -22,7 +22,12 @@ class Account::OffersController < Account::ResourcesController
   
   def create
     create! do |success, failure|
-      success.html{ redirect_to account_conversation_path(resource.conversation) }
+      success.html{ 
+        redirect_to account_conversation_path(resource.conversation), notice: t(:"flash.account.deals.create.notice")
+      }
+      success.js{
+        flash[:notice] = t(:"flash.account.deals.create.notice")
+      }
     end
   end
     

@@ -13,7 +13,7 @@ class Deal < ActiveRecord::Base
   include Payment
   include Surcharge  
   
-  has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
+ # has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
   #
   # Attributes
@@ -77,10 +77,11 @@ class Deal < ActiveRecord::Base
   #
   
   scope :by_user, ->(user_id) { where('artist_id = :user_id OR customer_id = :user_id', user_id: user_id) }
+  scope :by_profile, ->(profile_id) { where(profile_id: profile_id) }
   scope :pending, -> { where(state: Deal::PENDING_STATES) }
   scope :upcoming, -> { order("deals.start_at ASC") }
   scope :latest, -> { order("deals.id DESC") }
-  scope :visible_in_conversation, -> { where('state NOT IN (?)', Deal::HIDDEN_CONVERSATION_STATES) }
+  scope :visible_in_conversation, -> { where('state IN (?)', Deal::VISIBLE_CONVERSATION_STATES) }
   scope :since, ->(since) { where("updated_at > ?", since) }
   scope :created_since, ->(since) { where("created_at > ?", since) }
   scope :my_bookings_overview, -> { where(state: [:confirmed, :accepted]) }

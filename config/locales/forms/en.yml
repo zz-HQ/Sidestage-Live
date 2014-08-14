@@ -27,9 +27,8 @@ en:
         youtube: Youtube video
         soundcloud: SoundCloud Track/Playlist Embed Code
         avatar: Select Profile picture
-      deal:
-        new_price: New price
-        old_price: Old price
+      propose:
+        price: You'll make  
     hints:
       profile:
         name: "Your real name or Madonna. Whatever name people yell when you're on stage."
@@ -86,8 +85,7 @@ en:
       deal:
         create: Book it
         submit: Book it
-        submit_proposal: Send request
-        update_price: Send updated price
+        update: Book it
       profile:
         submit: Continue
         create: Continue

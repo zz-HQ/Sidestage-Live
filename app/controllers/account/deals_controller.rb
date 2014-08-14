@@ -37,10 +37,12 @@ class Account::DealsController < Account::ResourcesController
   def offer
     resource.price = permitted_params[:deal][:price]
     resource.offer
-    resource.save
+    if resource.save
+      flash[:notice] = t(:"flash.account.deals.offer.notice")    
+    end
     respond_to do |format|
       format.html { redirect_to account_conversation_path(resource.conversation) }
-      format.js { render :offer }
+      format.js
     end
   end
   
@@ -52,6 +54,7 @@ class Account::DealsController < Account::ResourcesController
           flash[:error] = resource.errors.messages[:customer_id].first
           redirect_to payment_details_account_personal_path
         else
+          flash[:notice] = t(:"flash.account.deals.confirm.notice")
           redirect_to account_conversation_path(resource.conversation)
         end
       }
@@ -61,7 +64,7 @@ class Account::DealsController < Account::ResourcesController
   Deal.aasm.events.keys.reject { |e| e.in?([:offer, :confirm]) }.each do |event|
     define_method event do
       resource.send("#{event.to_s}!")
-      flash[:notice] = t(:"flash.actions.update.deal.confirmed") if event == :accept
+      flash[:notice] = t(:"flash.account.deals.#{action_name}.notice")
       respond_to do |format|
         format.html { redirect_to account_conversation_path(resource.conversation) }
         format.js { render :show }

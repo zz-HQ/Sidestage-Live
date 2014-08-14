@@ -90,10 +90,12 @@
     .booking-widget
       border: 1px solid $border-color
       padding: 15px
+      +span-columns(8)
 
       header
         +outer-container
         margin-bottom: 20px
+        border-bottom: 1px solid $border-color
 
         .photo
           +span-columns(2)
@@ -102,7 +104,7 @@
           +span-columns(6)
           +omega
           font-size: 18px
-          margin-top: 14px
+          margin-top: 4px
           padding-left: 5px
 
       .title
@@ -125,46 +127,10 @@
           font-size: 13px
           text-align: left
 
-      .new-offer
-        form
-          margin-top: 20px
-
-          label
-            color: $text-color
-            text-transform: capitalize
-            font-size: 14px
-            display: inline-block
-            margin-top: 12px
-
-          .deal_price
-            width: 50%
-            display: inline-block
-            float: right
-            
-            input
-              height: auto
-              margin: 0
-
-          .date
-            position: relative
-            width: 100%
-
-            .fa
-              position: absolute
-              top: 18px
-              right: 18px
-              color: $text-color-light
-
-          .light
-            margin-top: 8px
-            float: left
-
-          .btn
-            font-size: 16px
-            width: auto
-            width: 100%
-            display: inline-block
-            margin-top: 20px
+      .btn
+        width: 100%
+        display: inline-block
+        margin-top: 20px
     
     > p
       margin-bottom: 10px
@@ -173,13 +139,18 @@
       .booking
         text-align: center
 
+        .price,
+        .light
+          margin-bottom: 25px
+
         .btn
-          margin-top: 20px
+          margin-top: 0
 
     // Security text ---------
     .secure-text
       padding: 15px
       margin-top: 10px
+      +span-columns(8)
 
       .header
         font-weight: 400
@@ -188,3 +159,53 @@
         i
           margin-right: 4px
 
+
+.edit-offer,
+.new-offer
+  max-width: 222px
+  margin: 0 auto
+  font-weight: 300
+
+  form
+    margin: 0
+
+    p.event-date
+      +span-columns(8)
+      text-align: center
+      font-weight: 300 !important
+      min-height: 40px
+
+    label,
+    .label
+      display: inline-block
+      margin-top: 10px
+      width: auto
+
+    .price
+      width: 50%
+      display: inline-block
+      float: right
+      position: relative
+      padding: 0
+
+      input
+        margin: 0
+        padding-left: 25px
+
+      i.fa
+        position: absolute
+        top: 12px
+        left: 10px
+        color: $text-color-light
+
+    .light
+      +span-columns(8)
+      float: left
+      margin: 20px 0px 0px
+      font-size: 13px
+      text-align: left
+      font-weight: 300 !important
+      margin: 15px 0 !important
+
+    .btn
+      +span-columns(8)

@@ -1,12 +1,12 @@
 <div id="bookings" class="container">
 	<div class="content">
-		<header>Your bookings</header>
+		<header><%= t(:"application.account.bookings.index.title") %></header>
 		<% if collection.present? %>
 			<div class="bookings">
 			    <%= render partial: "deal", collection: collection %>
 			</div>
 		<% else %>
-            <p>You currently have no bookings.</p>
+            <p><%= t(:"application.account.bookings.index.empty") %></p>
 		<% end %>
 	</div>
 </div>

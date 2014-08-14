@@ -4,12 +4,12 @@ en:
       index:
         empty: You don't have any messages!
       show:
-        requests_empty: There is currently no booking request made.
-        make_offer_html: Make %{customer_name} an offer to play at their next event.
-        make_offer: Make offer
+        conversation_with: Conversation with
+        security_hint_title: Your Transaction is Secure
+        security_hint_body_html: "We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>." 
     offers:
       new:
-        title: "Send new offer to %{customer_name}"
-        desc_html: "You can make an offer to another Sidestage member. <br> Example, if they want you to play a solo or acoustic set, which would cost a lot less than the price listed on your profile."
-        price_label: How much do you want to make?
-        surcharge_label_html: "Price the customer will see (includes <br> Sidestage's fee of %{surcharge_base}%)" 
+        surcharge_label_html: "Price shown to customer (including our fees) is <span class='surcharged_price' data-container='surcharged-price'>%{surcharged_price}</span>" 
+    deals:
+      new:    
+        total_price: Total Price

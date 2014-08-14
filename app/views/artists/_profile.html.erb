@@ -132,15 +132,23 @@
   	          <%= f.input :profile_id, as: :hidden, input_html: { value: resource.id } %>
               <div class="date">
 	              <%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
-                <i class="fa fa-calendar"></i>
+                  <i class="fa fa-calendar"></i>
               </div>
   
               <div class="button">
-                <% if current_user %>
-                    <%= f.submit class: "btn btn-submit" %>
-                <% else %>
-                    <%= link_to t(:"helpers.submit.deal.submit"), new_user_session_path(return_to: request.url, format: :html), class: "btn btn-submit", data: { lightbox: "ajax" } %>
-                <% end %>
+                  
+                    <% if current_user %>
+                        <% if (pending_deal = current_user.pending_deal_with_profile(resource)).present? %>
+                            <%= link_to t(:"helpers.submit.deal.submit"), "" , class: "btn btn-submit", data: { lightbox: :html, target: "[data-container='pending-deal']" } %>
+                            <div style="display:none;" data-container="pending-deal">
+                                <%= render "account/deals/customer_pending_deal", deal: pending_deal %>
+                            </div>
+                        <% else %>
+                            <%= f.submit class: "btn btn-submit" %>
+                        <% end %>
+                    <% else %>
+                        <%= link_to t(:"helpers.submit.deal.submit"), new_user_session_path(return_to: request.url, format: :html), class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                    <% end %>
               </div>
           <% end %>
       <% end %>

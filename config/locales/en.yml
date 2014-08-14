@@ -59,7 +59,19 @@ en:
           notice: "Your message has been sent."
       deals:
         create:
-          notice: "Your booking request has been sent."  
+          notice: "Your booking request has been sent."
+        decline:
+          notice: "Booking request declined."
+        cancel:
+          notice: "Booking request cancelled."  
+        reject:
+          notice: "Booking request cancelled."  
+        confirm:
+          notice: "Booking confirmed. You'll get an email from us, too."
+        accepted:
+          notice: "Booking request accepted. You'll get an email from us, too."
+        offer:
+          notice: "Price for this booking was changed. We need the customer to confirm it."  
       conversations:
           archived: "Conversation was moved to Archive."
       mobile_numbers:
@@ -75,8 +87,6 @@ en:
       create:
         notice: "%{resource_name} successfully created."
       update:
-        deal:
-          confirmed: "Booking request accepted. You'll get an email from us, too."
         notice: "%{resource_name} successfully updated."
         password:
           notice: Your password was successfully changed.

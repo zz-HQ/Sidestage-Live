@@ -51,9 +51,10 @@
 
   //   span 
   //     margin: 0 18px
+
   
   form
-    margin-bottom: 30px
+    margin-bottom: 10px
 
     &#new_message, 
     &#new_deal
@@ -67,13 +68,6 @@
 
     .form-inputs
       margin: 10px 0 20px
-
-      input[type="text"],
-      input[type="email"],
-      input[type="password"],
-      input[type="number"],
-      .nice-select
-        padding: 14px 12px
 
       label
         text-transform: none
@@ -113,7 +107,7 @@
     text-align: center
     margin-top: 20px
 
-  a
+  a.link
     color: #55B1FF
     text-decoration: underline
 
@@ -154,7 +148,34 @@
 
   .label
     color: $text-color-light
-    text-align: center
+    +span-columns(8)
+
+  .date,
+  .payment-inputs,
+  .price
+    +span-columns(8)
+    border-bottom: 1px solid $border-color
+  
+  .payment-inputs,
+  .price
+    padding-top: 15px
+
+    h4
+      padding: 0 0 10px
+
+  .text
+    +span-columns(8)
+    margin-top: 15px
+    
+  .btns
+    +span-columns(8)
+    padding-top: 15px
+
+    .btn
+      margin-bottom: 15px
+
+    .btn:last-child
+      margin-bottom: 0
 
   // NEW PRICE
   &.update_price
@@ -192,7 +213,8 @@
     +omega
     padding-top: 12px
 
-  .new_message
+  .new_message,
+  .new_deal
     +span-columns(8)
     margin-top: 20px
 
