@@ -127,5 +127,10 @@ hr
 		background: url(fallback/thumb_avatar.jpg) no-repeat center
 		background-size: 120px
 		cursor: pointer
+		+transition(opacity 300ms ceaser($easeOutCirc))
+
+		&:hover
+			+opacity(0.85)
+
 
 
