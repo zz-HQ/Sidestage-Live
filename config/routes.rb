@@ -6,6 +6,7 @@ Airmusic::Application.routes.draw do
   devise_for :users, controllers: { sessions: "authentication/sessions", registrations: "authentication/registrations", confirmations: "authentication/confirmations", :omniauth_callbacks => "authentication/omniauth_callbacks" }
   
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
+
     root to: "home#homepage"
 
     post 'create_subscriber', to: "home#create_subscriber", as: "create_subscriber"

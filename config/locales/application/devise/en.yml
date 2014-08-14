@@ -1,16 +1,13 @@
 en:
   application:
     devise:
-      session_title: Log in
       registration_title: Sign up
-      are_you_new: "Are you new?"
-      facebook_login: "Sign up in with Facebook"
-      facebook_hint: "We'll post nothing without your permission!"
-      or: or
-      login_error: Login incorrect
+      facebook_login: "Sign in with Facebook"
       sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
       have_an_account: Have an account?
-      
+      signup_options:
+        customer: I Want To Book an Artist
+        artist: "I'm a Musician, Band or DJ"
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed."
