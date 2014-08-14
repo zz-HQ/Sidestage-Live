@@ -1,11 +1,12 @@
 $btn-submit-top-color: #7bf
 $btn-submit-bottom-color: #5af
 
-$btn-important-top-color: #fb5
-$btn-important-bottom-color: #fa2
+$blue-btn: #3C8AE5
+
+// $btn-important-top-color: #fb5
+// $btn-important-bottom-color: #fa2
 
 $btn-facebook-color: #3b5998
-
 
 $btn-hover-darken-percentage: 10%
 
@@ -20,23 +21,16 @@ $btn-hover-darken-percentage: 10%
   font-size: 14px
   font-weight: 500
   margin: 10px 0
-  padding: 12px 28px
+  padding: 12px 34px
   text-align: center
   
   &:hover
-    //+linear-gradient(to bottom, darken($btn-submit-top-color, $btn-hover-darken-percentage), darken($btn-submit-bottom-color, $btn-hover-darken-percentage))
     background-color: darken($red, $btn-hover-darken-percentage)
     color: #fff
 
   &.btn-inline
     display: inline-block
     margin: 0 0 10px 0
-
-  &.btn-important
-    +linear-gradient(to bottom, $btn-important-top-color, $btn-important-bottom-color)
-
-    &:hover
-      +linear-gradient(to bottom, darken($btn-important-top-color, $btn-hover-darken-percentage), darken($btn-important-bottom-color, $btn-hover-darken-percentage))
 
   &.btn-facebook
     background-color: $btn-facebook-color !important
@@ -48,24 +42,29 @@ $btn-hover-darken-percentage: 10%
     background-color: lighten($red, 27%) !important
     cursor: default !important
 
+  &.btn-blue
+    background-color: $blue-btn
 
-.flat-btn
-  +box
-  +transition(color 400ms ceaser($easeOutExpo), border-color 400ms ceaser($easeOutExpo))
-  color: $text-color
-  padding: 3px 13px 4px
-  cursor: pointer
-  display: block
-  
-  &:hover
-    +transition(color 400ms ceaser($easeOutExpo), border-color 400ms ceaser($easeOutExpo))
-    border-color: $blue
-    color: $blue
+    &:hover
+      background-color: darken($blue-btn, $btn-hover-darken-percentage)
+      color: #fff
 
-.btn-submitted
-  cursor: default
+  &.btn-white
+    background-color: white
+    color: #FFF
+    color: $text-color-light
+    border: 1px solid $border-color
 
-$blue-btn: #3C8AE5
+    &:hover
+      background-color: white
+      color: $text-color
+
+  &.btn-full
+    width: 100%
+
+  &.btn-center
+    margin: 0 auto
+
 
 #personals,
 #profile,

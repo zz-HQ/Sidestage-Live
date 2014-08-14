@@ -58,8 +58,10 @@
         <div style="display:none;" data-container="signup-options">
             <div class="devise-lightbox">
                 <%= image_tag "sidestage_brand.png", alt: "logo_brand", class: "logo_brand" %>
-                <%= link_to t(:"application.devise.signup_options.customer"), new_user_registration_path, class: "btn" %>
-                <%= link_to t(:"application.devise.signup_options.artist"), new_artist_path, class: "btn" %>
+                <div class="btns">
+                  <%= link_to t(:"application.devise.signup_options.customer"), new_user_registration_path, class: "btn btn-blue" %>
+                  <%= link_to t(:"application.devise.signup_options.artist"), new_artist_path, class: "btn btn-white" %>
+                </div>
             </div>    
         </div>    
       <%- end -%>
