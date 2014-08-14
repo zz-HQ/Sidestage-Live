@@ -74,7 +74,7 @@
     </div><!-- #splash -->
 
     
-    <div id="staff-picks">
+    <section id="staff-picks">
       <div class="wrap">
         <h2><%= t(:"application.home.index.featured") %></h2>
 
@@ -99,7 +99,17 @@
 
         <% end %>
       </div>
-    </div>
+    </section>
+
+    <section id="newletter">
+      <div class="wrap">
+        <h2><%= t(:"application.home.index.newsletter") %></h2>
+        <div class="subscription-form">
+          <input type="text" placeholder="Your email">
+          <input type="submit" value="Subscribe" class="btn btn-blue">
+        </div>
+      </div>
+    </section>
     
 
     <%= render 'footer' %>
