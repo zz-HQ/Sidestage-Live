@@ -19,3 +19,6 @@ en:
         you_will_earn: You'll make
         help_note: Need help? Contact
         confirmed_title: Booking Confirmation
+      pending:
+        title: Booking the
+        desc: "You have a pending booking request with this artist. Before you can make a new one, the first one has to be confirmed or cancelled."

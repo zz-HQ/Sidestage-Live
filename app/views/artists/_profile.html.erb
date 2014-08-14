@@ -138,8 +138,11 @@
               <div class="button">
                   
                     <% if current_user %>
-                        <% if current_user.has_pending_deal_with_profile?(resource) %>
-                            <%= link_to t(:"helpers.submit.deal.submit"), "" , class: "btn btn-submit", data: { lightbox: "ajax" } %>
+                        <% if (pending_deal = current_user.pending_deal_with_profile(resource)).present? %>
+                            <%= link_to t(:"helpers.submit.deal.submit"), "" , class: "btn btn-submit", data: { lightbox: :html, target: "[data-container='pending-deal']" } %>
+                            <div style="display:none;" data-container="pending-deal">
+                                <%= render "account/deals/customer_pending_deal", deal: pending_deal %>
+                            </div>
                         <% else %>
                             <%= f.submit class: "btn btn-submit" %>
                         <% end %>

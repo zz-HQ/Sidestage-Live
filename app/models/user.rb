@@ -111,8 +111,8 @@ class User < ActiveRecord::Base
     @artist ||= profile.present?
   end
   
-  def has_pending_deal_with_profile?(profile)
-    bookings.pending.by_profile(profile.id).present?
+  def pending_deal_with_profile(profile)
+    bookings.pending.by_profile(profile.id).first
   end
   
   def profile_name
