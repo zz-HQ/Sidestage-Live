@@ -89,7 +89,7 @@
     text-align: center
     margin-top: 20px
 
-  a
+  a.link
     color: #55B1FF
     text-decoration: underline
 
@@ -145,9 +145,19 @@
     h4
       padding: 0 0 10px
 
+  .text
+    +span-columns(8)
+    margin-top: 15px
+    
   .btns
     +span-columns(8)
     padding-top: 15px
+
+    .btn
+      margin-bottom: 15px
+
+    .btn:last-child
+      margin-bottom: 0
 
   // NEW PRICE
   &.update_price
