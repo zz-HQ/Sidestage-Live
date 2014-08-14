@@ -29,8 +29,10 @@ class Account::PersonalsController < Account::ResourcesController
   
   def complete
     if request.patch?
-      if resource.update_attributes(permitted_params[:user])
+      if resource.avatar.present?
         redirect_to complete_payment_account_personal_path
+      else
+        flash[:error] = t(:"flash.account.users.complete.alert")
       end
     end    
   end
@@ -38,10 +40,13 @@ class Account::PersonalsController < Account::ResourcesController
   def complete_payment
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
-        redirect_to root_path and return
+        redirect_to root_path, notice: t(:"flash.account.users.complete_payment.notice", mobile_nr_path: account_mobile_numbers_path)
       end
     end
-    render :payment_details
+  end
+  
+  def skip_payment
+    redirect_to root_path, notice: t(:"flash.account.users.skip_payment.notice", payment_path: complete_payment_account_personal_path)
   end
   
   def password

@@ -10,12 +10,17 @@ en:
       show:
         title: Account
         delete_hint_html: "To delete your account, please send us an email, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"
+      avatar:
+        title: Profile picture
+        desc: Please add a profile picture. It helps us build trust in our community.  
       password:
         title: Change Your Password  
       payment_details:
-        title: Credit Card
+        title: Payment details
+        credit_card_form_title: "Please enter your payment information"
+        skip: Do this later
         new:
-          title: We handle payments, so you don't have to worry about it. Please add a credit card to your account.
+          title: Sidestage handle payments, so you don't have to worry about it. Please add a credit card to your account.
         show:
           title: "The credit card below has been added to your account."
           card_hint_html: "For questions concerning your credit card, please contact <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"

@@ -1,10 +1,8 @@
 en:
   application:
     devise:
-      registration_title: Sign up
       facebook_login: "Sign in with Facebook"
       sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
-      have_an_account: Have an account?
       signup_options:
         customer: I Want To Book an Artist
         artist: "I'm a Musician, Band or DJ"
@@ -56,6 +54,7 @@ en:
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
+      invalid_signup: Make sure you've provided your name, email and password before signing up.
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"

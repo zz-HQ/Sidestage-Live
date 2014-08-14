@@ -9,7 +9,7 @@ en:
       user:
         remember_me: Remember me
         newsletter_subscribed: Send me Sidestage updates
-        avatar: Add profile picture
+        avatar: Profile picture
         full_name: Full name        
       user_as_mobile_number:
         mobile_nr: Mobile number (with country code)
@@ -67,6 +67,8 @@ en:
       create: 'Create %{model}'
       update: 'Update %{model}'
       submit: Send
+      save_continue: Save and Continue
+      save_finish: Save and Finish
       message:
         create: Send
         disable_with: Sending...

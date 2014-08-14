@@ -5,21 +5,22 @@
     <header><%= t(:"application.personals.show.title") %></header>
 		
 		<%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>
-		<label>Profile picture</label>
-		<div class="avatar-uploader">
-			<div id="avatar" class="avatar avatar-upload-button">
-				<%= render 'avatar' %>
-			</div>
-		</div>
+    		<label><%= t(:"simple_form.labels.user.avatar") %></label>
+    		<div class="avatar-uploader">
+    			<div id="avatar" class="avatar avatar-upload-button">
+    				<%= image_tag current_user.avatar.url(:thumb) %>
+    			</div>
+    		</div>
 
-		<div class="new-avatar" style="display:none;">
-			<%= f.input :avatar, label: false, id: "avatar-file" %>
-		</div>
+    		<div class="new-avatar" style="display:none;">
+    			<%= f.input :avatar, label: false, id: "avatar-file" %>
+    		</div>
 		<% end %>
 
         <%= simple_form_for resource, url: account_personal_path, html: { id: "", multipart: true } do |f| %>
-          <%= render "user_form", f: f %>
+            <%= render "user_form", f: f %>
         <% end %>
+
         <p class="light">
             <%= t(:"application.personals.show.delete_hint_html") %>
         </p>    
