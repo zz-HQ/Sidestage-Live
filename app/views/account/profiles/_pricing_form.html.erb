@@ -34,9 +34,4 @@
 </div>
 <% end %>
 
-<div class="parts">
-	<div class="headline"></div>
-	<div class="inputs">
-		<%= f.submit :submit, value: "Save", class: "btn" %>
-	</div>
-</div>
+<%= render "account/profiles/submit", f: f %>

@@ -79,6 +79,8 @@ en:
           notice: "Verification code sent. Please check your mobile, and enter the code in the box below."
         confirm:
           notice: "Your phone number has been verified."  
+        completion_confirm:
+          notice: "Your phone number is verified. Now complete your profile and publish when ready."  
       profiles:
         toggle:
           alert: 'Before you publish your profile there are a few things you need to complete. <a href="%{edit_profile_path}">Edit your profile now</a>'

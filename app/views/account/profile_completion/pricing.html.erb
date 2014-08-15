@@ -1,0 +1,16 @@
+<div id="profile" class="container">  
+
+    <aside>
+        <div class="sidebar"></div>
+    </aside>
+
+  <div class="content">
+    <header><%= t(:"application.profiles.pricing.title_html") %></header>
+
+	  <div id="pricing" class="complete-pricing">
+	    <%= simple_form_for resource, url: pricing_account_profile_completion_path do |f| %>
+	      <%= render "account/profiles/pricing_form", f: f %>
+	    <% end %>
+	  </div>
+</div>
+</div>      

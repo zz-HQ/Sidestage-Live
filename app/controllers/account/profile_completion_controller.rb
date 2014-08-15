@@ -1,4 +1,4 @@
-class Account::ProfilesController < Account::ResourcesController
+class Account::ProfileCompletionController < Account::ResourcesController
 
   #
   # Settings
@@ -7,7 +7,9 @@ class Account::ProfilesController < Account::ResourcesController
   #
   #
   # 
-  
+
+  defaults :resource_class => Profile, :singleton => true, :instance_name => 'profile'
+
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -15,67 +17,34 @@ class Account::ProfilesController < Account::ResourcesController
   #
   #
   #
-  
-  def index
-    redirect_to new_resource_path
-  end
-  
-  def new
-    redirect_to account_profile_path(begin_of_association_chain.profiles.first) and return if begin_of_association_chain.profiles.first.present?
-    new!
-  end
 
-  def create
-    create! do |success, failure|
-      success.html {redirect_to pricing_account_profile_path(resource) }
-    end
-  end
-  
   def basics
     resource.wizard_step = :basics
     if request.patch?
       if resource.update_attributes(permitted_params[:profile])
-        redirect_to description_account_profile_path(resource)
-      end
-    end
-  end
-    
-  def description
-    resource.wizard_step = :description
-    if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to pricing_account_profile_path(resource)
-      end
-    end
-  end
-
-  def pricing
-    resource.wizard_step = :pricing      
-    if request.patch?
-      resource.update_attributes(permitted_params[:profile])
-    end    
-  end 
-
-
-  def payment
-    resource.wizard_step = :payment
-    if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to preview_account_profile_path(resource)
+        redirect_to description_account_profile_completion_path
       end
     end
   end
   
-  def toggle
-    resource.toggle!
-    if resource.published?
-      redirect_to artist_path(resource)
-    else
-      flash[:error] = t(:"flash.account.profiles.toggle.alert", edit_profile_path: basics_account_profile_path) if resource.errors.present?
-      redirect_to preview_account_profile_path(resource)
+  def description
+    resource.wizard_step = :description
+    if request.patch?
+      if resource.update_attributes(permitted_params[:profile])
+        redirect_to pricing_account_profile_completion_path
+      end
     end
   end
-
+    
+  def pricing
+    resource.wizard_step = :pricing      
+    if request.patch?
+      if resource.update_attributes(permitted_params[:profile])
+        redirect_to phone_account_profile_completion_path
+      end
+    end    
+  end 
+  
   #
   # Protected
   # ---------------------------------------------------------------------------------------
@@ -99,5 +68,9 @@ class Account::ProfilesController < Account::ResourcesController
   #
   
   private
+  
+  def resource
+    get_resource_ivar || set_resource_ivar(current_user.profile)
+  end
   
 end

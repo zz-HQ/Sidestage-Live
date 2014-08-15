@@ -1,0 +1,26 @@
+<% if user.mobile_nr_confirmed? %>
+    <header><%= t(:"application.mobile_numbers.show.title") %></header>
+    <p class="subtitle"><%= t(:"application.mobile_numbers.show.desc") %></p> <br>
+    <p><%= user.mobile_nr %> <%= link_to t(:"helpers.submit.user_as_mobile_number.remove"), account_mobile_numbers_path, method: :delete, class: "light delete-link" %></p>
+    <!-- <p class="light"><%#= t(:"application.mobile_numbers.show.remove_hint") %></p> -->
+<% else %>
+    <header><%= t(:"application.mobile_numbers.new.title") %></header>
+    
+    <p class="subtitle"><%= t(:"application.mobile_numbers.new.desc_html") %></p>
+    
+    <%= simple_form_for user, url: account_mobile_numbers_path do |f| %>
+        <%= f.input :mobile_nr, input_html: { autocomplete: "off" } %>
+        <div class="input">
+        	<%= f.submit class: "btn" %>
+        </div>
+    <% end %>
+    <hr>
+    <%= simple_form_for user, url: confirm_account_mobile_numbers_path, html: { class: "confirm-mobile-num-form"} do |f| %>
+        <%= f.input :mobile_confirmation_code, input_html: { autocomplete: "off" }, maxlength: "6" %>
+        <% if user.mobile_nr.nil? %>
+            <span class="btn btn-blue disabled">Confirm</span>
+        <% else %>
+            <%= f.submit value: t(:"helpers.submit.user_as_mobile_number.confirm"), class: "btn" %>
+        <% end %>
+    <% end %>
+<% end %>

@@ -35,6 +35,14 @@ Airmusic::Application.routes.draw do
       resource :dashboard, controller: :dashboard do
         match '', to: 'dashboard#index', via: :get
       end
+      resource :profile_completion do
+        collection do
+          match 'phone', to: 'profile_completion#phone', via: :get
+          match 'basics', to: 'profile_completion#basics', via: :all          
+          match 'pricing', to: 'profile_completion#pricing', via: :all            
+          match 'description', to: 'profile_completion#description', via: :all                    
+        end
+      end
       resources :profiles do
         member do
           get :preview
@@ -42,7 +50,6 @@ Airmusic::Application.routes.draw do
           match 'description', to: 'profiles#description', via: :all
           match 'basics', to: 'profiles#basics', via: :all          
           match 'pricing', to: 'profiles#pricing', via: :all          
-          match 'complete_pricing', to: 'profiles#complete_pricing', via: :all            
           match 'payment', to: 'profiles#payment', via: :all          
         end
         resources :pictures, only: [:index, :create, :destroy]

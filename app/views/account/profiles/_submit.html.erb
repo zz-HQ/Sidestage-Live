@@ -1,0 +1,7 @@
+<div class="input">
+    <% if controller_name == "profile_completion" %>
+	    <%= f.submit value: t(:"helpers.submit.save_continue"), class: "btn" %>		
+	<% else %>    
+        <%= f.submit class: "btn" %>
+	<% end %>
+</div>
