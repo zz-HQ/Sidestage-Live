@@ -29,3 +29,9 @@ en:
           empty: "You don't have any photos yet. Add photos of you and your performance to your profile."
         new:
           title: "Upload New Pictures"  
+      preview:
+        share_modal:
+          title: Your profile is published
+          desc: "People can now find you on Sidestage. Share your profile with friends to increase your visibility."
+          share_on_fb: "Share on Facebook"    
+          share_on_twitter: "Share on Twitter"

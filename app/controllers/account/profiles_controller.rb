@@ -69,6 +69,7 @@ class Account::ProfilesController < Account::ResourcesController
   def toggle
     resource.toggle!
     if resource.published?
+      flash[:auto_modal]  = "account/profiles/share_modal"
       redirect_to artist_path(resource)
     else
       flash[:error] = t(:"flash.account.profiles.toggle.alert", edit_profile_path: basics_account_profile_path) if resource.errors.present?

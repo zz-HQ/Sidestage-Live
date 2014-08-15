@@ -40,6 +40,10 @@ App.init = ->
   $('.star-rating-editable').starRating()
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
+  $('[data-lightbox=auto]').each (i, e) ->
+    vex.open
+      content: $(e).html()
+  
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
