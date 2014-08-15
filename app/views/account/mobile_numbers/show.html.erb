@@ -23,7 +23,7 @@
             <%= simple_form_for resource, url: confirm_account_mobile_numbers_path, html: { class: "confirm-mobile-num-form"} do |f| %>
                 <%= f.input :mobile_confirmation_code, input_html: { autocomplete: "off" }, maxlength: "6" %>
                 <% if resource.mobile_nr.nil? %>
-                    <span class="btn disabled">Confirm</span>
+                    <span class="btn btn-blue disabled">Confirm</span>
                 <% else %>
                     <%= f.submit value: t(:"helpers.submit.user_as_mobile_number.confirm"), class: "btn" %>
                 <% end %>

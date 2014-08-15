@@ -1,18 +1,9 @@
-$btn-submit-top-color: #7bf
-$btn-submit-bottom-color: #5af
-
 $blue-btn: #3C8AE5
-
-// $btn-important-top-color: #fb5
-// $btn-important-bottom-color: #fa2
-
 $btn-facebook-color: #3b5998
-
 $btn-hover-darken-percentage: 10%
 
 .btn
   +border-radius($border-radius)
-  //+linear-gradient(to bottom, $btn-submit-top-color, $btn-submit-bottom-color)
   background-color: $red
   border: 0
   color: #fff
@@ -48,6 +39,9 @@ $btn-hover-darken-percentage: 10%
     &:hover
       background-color: darken($blue-btn, $btn-hover-darken-percentage)
       color: #fff
+
+    &.disabled
+      background-color: lighten($blue, 5%) !important
 
   &.btn-white
     background-color: white
