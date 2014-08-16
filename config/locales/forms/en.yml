@@ -89,7 +89,7 @@ en:
         submit: Book it
         update: Book it
       profile:
-        submit: Save
+        submit: Continue
         create: Save
         update: Save
         submit_avatar: Upload

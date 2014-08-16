@@ -3,10 +3,10 @@ en:
     profiles:
       sidebar:
         basics: Basics
-        settings_link: "Basic info<p>Your listing settings</p>"
+        settings_link: "Listing Settings"
         pricing_link: "Pricing"
         description: Description
-        description_link: "Description<p>Details about you and your performance</p>"
+        description_link: "Description"
         photos: Photos
         photos_link: "Manage photos"
       basics:

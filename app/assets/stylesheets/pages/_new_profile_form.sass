@@ -1,37 +1,23 @@
 .new-profile-form
-
-	.genres
-		h3
-			font-size: 16px !important
-			font-weight: 400 !important
-			color: #252525 !important
-
 	.input
 		+span-columns(8)
-
-		> label
-			text-align: left
-			margin: 20px 0 10px !important
 
 		h3
 			color: $text-color-light
 			font-size: 18px
-			font-weight: 400
-			margin: 30px 0
+			font-weight: 300
+			margin: 30px 0 20px
 
 		.act
 			+span-columns(1 of 4)
-			width: 167px
 			text-align: center
 
 			.label
-				font-size: 18px
 				position: relative
 				cursor: pointer
-				color: $text-color
-				padding: 8px 0 7px
-				width: 167px
-				display: inline-block
+				padding-top: 10px
+				width: 100%
+				height: 42px
 				+border-radius($border-radius)
 				background-color: #fff
 				border: 1px solid $border-color
@@ -50,12 +36,8 @@
 						color: inherit
 
 		&.genre
-
 			.nice-select
-				background-color: #fff
 				margin: 0
-				width: 167px
-				text-align: left
 
 				&.active
 					background-color: #eee
@@ -67,78 +49,12 @@
 					overflow: hidden
 					color: $text-color
 
-			.photo
-				height: 130px
-				overflow: hidden
-				width: 167px
-
 		&.city
-
-		.nice-select
-			background-color: #EAEDED
-			display: inline-block
-			font-size: 22px
-			height: 42px
-			text-align: center
-			width: 260px
-
-			#profile_location
-				left: 0
-
-		.center
-			display: inline
-			margin-top: 30px
-
-	.input.last
-		border: none
-		margin-top: 10px
-
-
-// EDIT PROFILE ------------------
-// -------------------------------
-#profile
-
-	header
-		border: none
-		margin-bottom: 20px
-	
-	h3
-		text-align: left
-		font-size: 20px
-		margin: 20px 0 10px
-
-	.input
-
-		.label
-			font-size: 18px
-			padding: 12px 0
-
-		&.genre
-
-			.act
-				margin-right: 2.1254%
-
-		.nice-select
-			height: 52px
-
-			.select-label-value
-				font-size: 18px
-				top: 13px
-
-		&.city
-			text-align: left
-
 			.nice-select
-				margin-top: 10px
-
-				.select-arrow
-					right: 20px
-
-	.button
-		display: inline-block
-		margin-top: 30px
-
-
+				background-color: #EAEDED
+				display: inline-block
+				text-align: center
+				width: 260px
 
 
 #description,
