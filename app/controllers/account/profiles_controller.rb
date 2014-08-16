@@ -34,18 +34,14 @@ class Account::ProfilesController < Account::ResourcesController
   def basics
     resource.wizard_step = :basics
     if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to description_account_profile_path(resource)
-      end
+      resource.update_attributes(permitted_params[:profile])
     end
   end
     
   def description
     resource.wizard_step = :description
     if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to pricing_account_profile_path(resource)
-      end
+      resource.update_attributes(permitted_params[:profile])
     end
   end
 
