@@ -1,6 +1,10 @@
 <div id="personals" class="container">
-    
-	<%= render "account/personals/sidebar" unless @coming_from_profile_completion.present? %>
+   
+   <% if @coming_from_profile_completion.present? %>
+   	<aside><div class="sidebar"></div></aside>
+   <% else %>
+		<%= render "account/personals/sidebar" %>
+	<% end %>
 
     <div class="content mobile-numbers">
         <%= render "verification", user: resource %>
