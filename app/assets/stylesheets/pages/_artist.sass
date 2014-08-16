@@ -48,35 +48,68 @@
         margin: 20px 0
         display: block
 
+    .tab
+      > a.delete
+        position: absolute
+        right: 0
+        top: 67%
+        padding: 8px 20px
+        background-color: black
+        color: white
+
+        &:hover
+          background-color: $red
+
     .soundcloud-widget,
     .youtube-widget
       background-color: #ddd
       margin-bottom: 20px
 
     .picture-viewer
-      margin-top: 30px
-
       .thumbs
         overflow: hidden
         padding: 0
         margin-bottom: 20px
 
         .thumb
+          position: relative
           border: 1px solid $border-color
           float: left
           height: 70px
           list-style-type: none
-          margin-right: 18px
+          margin: 8px 8px 0 0
           text-indent: 0
           width: 70px
           cursor: pointer
           +transition(opacity 600ms ceaser($easeOutExpo))
+          +omega(8n)
+
+          .delete
+            position: absolute
+            bottom: 2px
+            right: 2px
+            color: $red
 
           &:hover
             +opacity(0.8)
 
+          &.add-photo-btn
+            background-color: $red
+            font-size: 44px
+            font-weight: 100
+            text-align: center
+            color: white
+            border: none
+
+            &:hover
+              background-color: lighten($red, 10%)
+
+        form
+          display: none
+
     .reviews
       margin: 40px 0
+      +span-columns(8)
 
       .link-to-new-review
         position: relative

@@ -21,12 +21,12 @@ do ($ = jQuery, window, document) ->
       self = @
 
       @$thumbs = @$element.find('.thumb')
-      @picture_url = @$thumbs.eq(0).data("big-picture")
+      @picture_url = @$thumbs.eq(0).data("review")
 
       @$img_tag = @$element.find('.picture img')
 
       @$thumbs.on 'click', ->
-        self.picture_url = $(@).data("big-picture")
+        self.picture_url = $(@).data("review")
         self.render()
 
       @$img_tag.on 'click', ->

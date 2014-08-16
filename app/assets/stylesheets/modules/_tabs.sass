@@ -1,10 +1,11 @@
 nav.tabs
   margin-top: 40px
+  +span-columns(8)
 
   .tab-switch
     color: $text-color-light
     cursor: pointer
-    display: inline-block
+    float: left
     font-size: 14px
     padding: 12px 30px
     border-left: 1px solid $border-color
@@ -21,58 +22,21 @@ nav.tabs
       background-color: #FAFAFA
 
   .tab-switch:first-child
-    +border-radius(4px 0 0 4px)
-
-  .tab-switch:nth-child(2)
-    left: -3px
-
-  .tab-switch:nth-child(3)
-    left: -6px
+    +border-top-left-radius(4px)
+    +border-bottom-left-radius(4px)
 
   .tab-switch:last-child
     border-right: 1px solid $border-color
-    +border-radius(0 4px 4px 0)
+    +border-top-right-radius(4px)
+    +border-bottom-right-radius(4px)
 
 div.tabs
   margin-top: 30px
+  +span-columns(8)
 
   .tab
     display: none
+    position: relative
 
     h1, h2, h3, h4, h5, h6
       margin-top: 0
-
-
-// TABS IN #PERSONALS -------------
-// --------------------------------
-#personals
-
-  nav.tabs
-    margin: 0
-
-    .tab-switch
-      border: none
-      color: $red
-      text-transform: uppercase
-      font-size: 16px
-      font-weight: 700
-      margin: 0 0 10px
-      background-color: transparent
-      position: static
-      +transition(all 600ms ceaser($easeOutExpo))
-
-      &:hover
-        color: $red
-        +opacity(0.5)
-        background-color: transparent
-
-      &.active
-        color: $red
-        +opacity(0.5)
-        background-color: transparent
-
-  div.tabs
-    margin-top: 0
-
-    header
-      margin: 0
