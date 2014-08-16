@@ -6,7 +6,7 @@ en:
         password_link: "Password"
         phone_link: "Phone"
         payment_link: "Credit card"
-        bank_account_link: "Bank Account"
+        bank_link: "Bank details"
       show:
         title: Account
         delete_hint_html: "To delete your account, please send us an email, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"

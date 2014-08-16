@@ -68,6 +68,12 @@ class Account::PersonalsController < Account::ResourcesController
     @credit_card ||= current_user.credit_card    
   end
   
+  def bank_details
+    if request.patch?
+      resource.profile.update_attributes(permitted_params[:profile])
+    end
+  end
+  
   def remove_card
     if current_user.destroy_stripe_card
       flash[:credit_card] = t("flash.actions.destroy.notice", resource_name: CreditCard.model_name.human)
@@ -104,9 +110,8 @@ class Account::PersonalsController < Account::ResourcesController
     params.permit user: [
         :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
       ],
-      credit_card: [
-        :name, :exp_month, :exp_year
-      ]
+      credit_card: [ :name, :exp_month, :exp_year ],
+      profile: [:iban, :bic]
   end
   
   #

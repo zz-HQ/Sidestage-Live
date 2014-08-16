@@ -25,20 +25,12 @@ describe Account::ProfilesController, :type => :controller do
       expect(response).to render_template(:new)
     end
     
-    it "redirects new to show" do
+    it "redirects new to preview" do
       profile = FactoryGirl.create(:profile)
       sign_in(profile.user)    
       get :new
-      expect(response).to redirect_to(account_profile_path(profile))
+      expect(response).to redirect_to(preview_account_profile_path(profile))
     end
-  end
-  
-  it "gets show" do
-    profile = FactoryGirl.create(:profile)
-    sign_in(profile.user)    
-    get :show, id: profile.to_param
-    
-    expect(response).to render_template(:show)
   end
   
 end

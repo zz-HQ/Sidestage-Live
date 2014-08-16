@@ -9,8 +9,6 @@ en:
         description_link: "Description<p>Details about you and your performance</p>"
         photos: Photos
         photos_link: "Manage photos"
-        payment: Payments
-        payment_link: "Add payout method"
       basics:
         title_html: "Your Artist Listing<p>Sidestage lets you make money by offering your music as a service to people who want to hire musicians for private events.</p>"  
       pricing:
@@ -21,7 +19,6 @@ en:
         title_html: "Description <p>The more descriptive your profile is, the more booking requests you will receive.</p>"
       payment:
         title_html: "Add payout method<p>You'll need to enter your bank account details to get paid.</p>"  
-        security_hint: "Your bank details are handled securely. We use Stripe to process payment."
       pictures:
         index:
           avatar_title_html: "Profile picture<p>This is the picture that will show up in search listings.</p>"

@@ -21,7 +21,7 @@ class Account::ProfilesController < Account::ResourcesController
   end
   
   def new
-    redirect_to account_profile_path(begin_of_association_chain.profiles.first) and return if begin_of_association_chain.profiles.first.present?
+    redirect_to preview_account_profile_path(begin_of_association_chain.profiles.first) and return if begin_of_association_chain.profiles.first.present?
     new!
   end
 
@@ -55,16 +55,6 @@ class Account::ProfilesController < Account::ResourcesController
       resource.update_attributes(permitted_params[:profile])
     end    
   end 
-
-
-  def payment
-    resource.wizard_step = :payment
-    if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to preview_account_profile_path(resource)
-      end
-    end
-  end
   
   def toggle
     resource.toggle!

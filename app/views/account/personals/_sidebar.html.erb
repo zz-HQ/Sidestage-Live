@@ -1,8 +1,11 @@
 <aside>
 	<div class="sidebar">
-		<h4><%= link_to t(:"application.personals.sidebar.account_link"), account_personal_path, class: ('active' if controller.class.to_s == 'Account::PersonalsController' && action_name == 'show') %></h4>
-    <h4><%= link_to t(:"application.personals.sidebar.password_link"), password_account_personal_path, class: ('active' if action_name == 'password') %></h4>
-    <h4><%= link_to t(:"application.personals.sidebar.phone_link"), account_mobile_numbers_path, class: ('active' if controller.class.to_s == 'Account::MobileNumbersController' && action_name == 'show') %></h4>
-    <h4><%= link_to t(:"application.personals.sidebar.payment_link"), payment_details_account_personal_path, class: ('active' if action_name == 'payment_details') %></h4>
+    	<h4><%= link_to t(:"application.personals.sidebar.account_link"), account_personal_path, class: ('active' if controller.class.to_s == 'Account::PersonalsController' && action_name == 'show') %></h4>
+        <h4><%= link_to t(:"application.personals.sidebar.password_link"), password_account_personal_path, class: ('active' if action_name == 'password') %></h4>
+        <h4><%= link_to t(:"application.personals.sidebar.phone_link"), account_mobile_numbers_path, class: ('active' if controller.class.to_s == 'Account::MobileNumbersController' && action_name == 'show') %></h4>
+        <h4><%= link_to t(:"application.personals.sidebar.payment_link"), payment_details_account_personal_path, class: ('active' if action_name == 'payment_details') %></h4>
+        <% if current_user.artist? %>
+            <h4><%= link_to t(:"application.personals.sidebar.bank_link"), bank_details_account_personal_path, class: ('active' if action_name == 'bank_details') %></h4>
+        <% end %>
 	</div>
 </aside>

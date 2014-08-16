@@ -26,6 +26,7 @@ Airmusic::Application.routes.draw do
           patch :upload_avatar
           get :skip_payment
           delete 'remove_card'
+          match 'bank_details', to: 'personals#bank_details', via: :all  
           match 'payment_details', to: 'personals#payment_details', via: :all
           match 'password', to: 'personals#password', via: :all
           match 'complete', to: 'personals#complete', via: :all
