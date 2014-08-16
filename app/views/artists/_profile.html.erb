@@ -13,13 +13,6 @@
       <div class="like-btn">
         <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
       </div>
-
-      
-      <!-- 
-      <span><i class="fa fa-tag"></i> <%#= resource.genres.map(&:name).join(", ") %></span>
-      <span><i class="fa fa-map-marker"></i> <%= resource.location %></span>
-      <span><i class="fa fa-comment-o"></i> <%= resource.reviews.count %></span>
-      -->
     </div> 
     
     <h2><%= resource.name %></h2>
@@ -29,49 +22,7 @@
       <p><%= simple_format (strip_tags resource.about) %></p>
     </div>
     
-    <nav class="tabs" data-id="social">
-      <%- if resource.has_soundcloud? -%>
-      <div class="tab-switch">SoundCloud</div>
-      <%- end -%>
-      <%- if resource.has_youtube? -%>
-      <div class="tab-switch">Youtube</div>
-      <%- end -%>
-      <% if resource.has_pictures? %>
-      <div class="tab-switch">Photos</div>
-      <% end %>
-    </nav>
-
-    <div class="tabs" data-id="social">
-      <%- if resource.has_soundcloud? -%>
-      <div class="tab">
-        <%# TODO: Load Soundcloud async if possible %>
-        <%= soundcloud_widget %>
-      </div>
-      <%- end -%>
-      <% if resource.has_youtube? %>
-      <div class="tab">
-        <%# TODO: Load Youtube async if possible %>
-        <%= youtube_widget %>
-      </div>
-      <%- end -%>
-
-      <% if resource.has_pictures? %>
-      <div class="tab">
-        <div class="picture-viewer">
-          <div class="thumbs">
-            <%- resource.pictures.each do |pic| -%>
-              <div class="thumb" data-big-picture="<%= pic.picture.url(:preview) %>">
-                <%= image_tag pic.picture.url(:thumb) %>
-              </div>
-            <%- end -%>
-          </div>
-          <div class="picture">
-            <img>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
+    <%= render 'artists/media_types' %>
     
     <div data-container="reviews" class="reviews">
       <h4><%= Review.model_name.human(count: 2) %></h4>

@@ -141,3 +141,9 @@ validateDetails = ->
 
 $(document).on "change paste keyup", ".paymentInput", ->
   validateDetails()
+
+
+#SUBMIT VIA ENTER
+$(document).on 'keydown', '.media-type-form input', (e) ->
+  if e.keyCode == 13
+    $(@).closest('form').trigger 'submit'
