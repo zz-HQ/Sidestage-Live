@@ -52,6 +52,21 @@ class Account::ProfilesController < Account::ResourcesController
     end    
   end 
   
+  def media
+    resource.update_attributes(permitted_params[:profile])
+    redirect_to :back
+  end
+  
+  def remove_soundcloud
+    resource.update_attribute :soundcloud, nil
+    redirect_to :back
+  end
+
+  def remove_youtube
+    resource.update_attribute :youtube, nil
+    redirect_to :back
+  end
+  
   def toggle
     resource.toggle!
     if resource.published?

@@ -48,10 +48,13 @@ Airmusic::Application.routes.draw do
         member do
           get :preview
           put :toggle
+          patch :media
+          put :remove_soundcloud
+          put :remove_youtube
           match 'description', to: 'profiles#description', via: :all
-          match 'basics', to: 'profiles#basics', via: :all          
-          match 'pricing', to: 'profiles#pricing', via: :all          
-          match 'payment', to: 'profiles#payment', via: :all          
+          match 'basics', to: 'profiles#basics', via: :all
+          match 'pricing', to: 'profiles#pricing', via: :all
+          match 'payment', to: 'profiles#payment', via: :all
         end
         resources :pictures, only: [:index, :create, :destroy]
         resources :reviews, only: [:new, :create]

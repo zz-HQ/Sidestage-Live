@@ -27,6 +27,10 @@ en:
         new:
           title: "Upload New Pictures"  
       preview:
+        soundcloud: 
+          title: Add a SoundCloud track to your profile.
+        youtube:
+          title: Add a YouTube track to your profile.
         share_modal:
           title: Your profile is published
           desc: "People can now find you on Sidestage. Share your profile with friends to increase your visibility."

@@ -1,0 +1,62 @@
+<nav class="tabs" data-id="social">
+    <div class="tab-switch"><%= Profile.human_attribute_name(:soundcloud) %></div>
+    <div class="tab-switch"><%= Profile.human_attribute_name(:youtube) %></div>
+    <div class="tab-switch"><%= Profile.human_attribute_name(:photos) %></div>
+</nav>
+
+<div class="tabs" data-id="social">
+  <div class="tab">
+    <% if resource.has_soundcloud? %>
+      <%= soundcloud_widget %>
+      <p>
+          <%= link_to t(:"application.links.remove"), remove_soundcloud_account_profile_path(resource), method: :put %>
+      </p>
+    <% else %>
+      <div class="media-type-form">
+        <p><strong><%= t(:"application.profiles.preview.soundcloud.title") %></strong></p>
+        <%= simple_form_for resource, url: media_account_profile_path(resource) do |f| %>
+          <%= f.input :soundcloud, hint: false, label: false %>
+        <% end %>
+        <%= link_to "What's this?", "#", class: "link", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
+
+        <div style="display:none;" data-container="help-sc">
+          <div class="devise-lightbox">
+            <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
+            <%= image_tag 'sc-embed-help.png' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="tab">
+    <% if resource.has_youtube? %>
+      <%= youtube_widget %>
+      <p>
+          <%= link_to t(:"application.links.remove"), remove_youtube_account_profile_path(resource), method: :put %>
+      </p>
+    <% else %>
+      <div class="media-type-form">
+        <p><strong><%= t(:"application.profiles.preview.soundcloud.title") %></strong></p>
+        <%= simple_form_for resource, url: media_account_profile_path(resource) do |f| %>
+          <%= f.input :youtube, hint: false, label: false %>
+        <% end %> 
+      </div>
+    <% end %>
+  </div>
+  <% if resource.has_pictures? %>
+    <div class="tab">
+      <div class="picture-viewer">
+        <div class="thumbs">
+          <% resource.pictures.each do |pic| %>
+            <div class="thumb" data-big-picture="<%= pic.picture.url(:preview) %>">
+              <%= image_tag pic.picture.url(:thumb) %>
+            </div>
+          <% end %>
+        </div>
+        <div class="picture">
+          <img>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

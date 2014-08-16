@@ -33,9 +33,6 @@ en:
       profile:
         name: "Your real name or Madonna. Whatever name people yell when you're on stage."
         title: "Make sure it's catchy and unique."
-        about: "Your chance to tell everyone a bit more about you. How you got into music, what drives you. Anything that may be helpful for someone to know who may be hiring you."
-        youtube: "Post your best stuff, this is your chance to show people how you perform."
-        soundcloud: "Be sure you copy the embed code, not the track or playlist URL."    
     placeholders:
       user:
         email: Email
@@ -60,8 +57,8 @@ en:
         exp_month: Exp month
         exp_year: Exp year
       profile:
-        youtube: Paste YouTube link here
-        soundcloud: "<iframe>…"
+        youtube: Click here to paste Youtube 'Embed' code
+        soundcloud: Click here to paste SoundCloud 'Embed' code
   helpers:
     submit:
       create: 'Create %{model}'
