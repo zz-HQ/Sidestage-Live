@@ -21,7 +21,7 @@ class Authentication::ConfirmationsController < Devise::ConfirmationsController
 
   def after_confirmation_path_for(resource_name, resource)
     sign_in(resource_name, resource)
-    resource.profiles.first.present? ? pricing_account_profile_completion_path(resource.profiles.first) : complete_account_personal_path
+    resource.profiles.first.present? ? description_account_profile_completion_path : complete_account_personal_path
   end
     
 end

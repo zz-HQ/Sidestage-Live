@@ -32,7 +32,7 @@ class Account::PersonalsController < Account::ResourcesController
       if resource.avatar.present?
         redirect_to complete_payment_account_personal_path
       else
-        flash[:error] = t(:"flash.account.users.complete.alert")
+        flash.now[:error] = t(:"flash.account.users.complete.alert")
       end
     end    
   end
