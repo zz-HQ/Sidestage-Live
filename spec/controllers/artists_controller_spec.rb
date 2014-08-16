@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'before_each_helper'
+
 
 describe ArtistsController, :type => :controller do
   
-  before_each
+  
   
   
   it "rejects scrapers" do

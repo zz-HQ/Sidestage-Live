@@ -1,12 +1,15 @@
 require 'spec_helper'
-require 'before_each_helper'
+
 
 describe CurrencyService, :type => :model do
   
   let(:currency_service) { CurrencyService.new }
   let(:yahoo_usdeuro_rate) { {"id"=>"USDEUR", "Name"=>"USD to EUR", "Rate"=>"0.1", "Date"=>"6/4/2014", "Time"=>"9:19am", "Ask"=>"0.7339", "Bid"=>"0.7337"}  }
   
-  before_each
+  before(:each) do
+    FactoryGirl.create(:us_dollar)  
+    FactoryGirl.create(:euro)
+  end
   
   it "creates new currency rate" do
     expect(CurrencyRate.count).to eq(0)

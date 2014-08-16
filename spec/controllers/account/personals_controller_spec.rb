@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'before_each_helper'
+
 
 describe Account::PersonalsController, :type => :controller do
 
-  before_each
+  
 
   let (:user) { FactoryGirl.create(:user) }
   

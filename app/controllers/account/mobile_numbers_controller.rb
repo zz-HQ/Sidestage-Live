@@ -39,13 +39,15 @@ class Account::MobileNumbersController < AuthenticatedController
   
   def confirm
     resource.update_attributes(permitted_params)
-    flash.now[:notice] = t(:"flash.account.mobile_numbers.confirm.notice") if resource.mobile_nr_confirmed?
-    if @coming_from_profile_completion.present?
-      session[:coming_from_profile_completion] = nil
-      redirect_to preview_account_profile_path(current_user.profile), notice: t(:"flash.account.mobile_numbers.completion_confirm.notice")
-    else
-      render :show
+    if resource.mobile_nr_confirmed?
+      flash.now[:notice] = t(:"flash.account.mobile_numbers.confirm.notice")
+      if @coming_from_profile_completion.present?
+        session[:coming_from_profile_completion] = nil
+        redirect_to preview_account_profile_path(current_user.profile), notice: t(:"flash.account.mobile_numbers.completion_confirm.notice")
+        return
+      end
     end
+    render :show
   end
   
   def destroy
