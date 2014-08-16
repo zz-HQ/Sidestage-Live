@@ -72,7 +72,7 @@ class Profile < ActiveRecord::Base
     profile.validates :genre_ids, :price, :title, :name, :about, presence: true
     profile.validates :admin_disabled?, inclusion: [false]
     profile.validate :mobile_nr_must_be_confirmed
-    profile.validate :should_have_at_least_one_media_type
+    #profile.validate :should_have_at_least_one_media_type
     profile.validate :user_must_have_avatar
   end
   
