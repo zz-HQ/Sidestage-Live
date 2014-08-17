@@ -48,7 +48,8 @@ Airmusic::Application.routes.draw do
         member do
           get :preview
           put :toggle
-          patch :media
+          patch :soundcloud
+          patch :youtube
           put :remove_soundcloud
           put :remove_youtube
           match 'description', to: 'profiles#description', via: :all

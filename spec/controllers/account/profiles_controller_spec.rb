@@ -76,6 +76,45 @@ describe Account::ProfilesController, :type => :controller do
     expect(response).to render_template(:description)
   end
 
+  it "gets preview" do
+    profile = FactoryGirl.create(:profile)
+    sign_in(profile.user)
+    get :preview, id: profile.to_param
+    expect(response).to render_template(:preview)
+  end
+
+  it "patches youtube" do
+    profile = FactoryGirl.create(:profile)
+    request.env["HTTP_REFERER"] = preview_account_profile_path(profile)    
+    sign_in(profile.user)
+    put :youtube, id: profile.to_param, profile: { youtube: "hi" }
+    expect(response).to redirect_to(preview_account_profile_path(profile))
+  end
+
+  it "patches soundcloud" do
+    profile = FactoryGirl.create(:profile)
+    request.env["HTTP_REFERER"] = preview_account_profile_path(profile)        
+    sign_in(profile.user)
+    put :soundcloud, id: profile.to_param, profile: { soundcloud: "hi" }
+    expect(response).to redirect_to(preview_account_profile_path(profile))
+  end
+  
+  it "removes soundcloud" do
+    profile = FactoryGirl.create(:profile)
+    request.env["HTTP_REFERER"] = preview_account_profile_path(profile)        
+    sign_in(profile.user)
+    put :remove_soundcloud, id: profile.to_param
+    expect(response).to redirect_to(preview_account_profile_path(profile))
+  end
+
+  it "removes youtube" do
+    profile = FactoryGirl.create(:profile)
+    request.env["HTTP_REFERER"] = preview_account_profile_path(profile)            
+    sign_in(profile.user)
+    put :remove_youtube, id: profile.to_param
+    expect(response).to redirect_to(preview_account_profile_path(profile))
+  end
+
   
 end
 

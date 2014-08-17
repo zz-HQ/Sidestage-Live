@@ -1,11 +1,10 @@
 <%- content_for :outer_wrap do -%>
-					
-<div class="publish">
-	<div class="wrap">
-		<%= link_to t(:"application.links.edit"), basics_account_profile_path(resource), class: "btn btn-default" %>
-		<%= link_to t(:"application.links.publish.toggle_#{resource.published?}"), toggle_account_profile_path(resource), method: :put, class: "btn btn-publish" %>
-	</div>
-</div>            
+    <div class="publish">
+    	<div class="wrap">
+    		<%= link_to t(:"application.links.edit"), basics_account_profile_path(resource), class: "btn btn-default" %>
+    		<%= link_to t(:"application.links.publish.toggle_#{resource.published?}"), toggle_account_profile_path(resource), method: :put, class: "btn btn-publish" %>
+    	</div>
+    </div>            
 <% end %>
 
 <%= render '/artists/profile' %>

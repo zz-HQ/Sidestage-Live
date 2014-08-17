@@ -12,7 +12,7 @@
     <% else %>
       <div class="media-type-form">
         <p><strong><%= t(:"application.profiles.preview.soundcloud.title") %></strong></p>
-        <%= simple_form_for resource, url: media_account_profile_path(resource) do |f| %>
+        <%= simple_form_for resource, url: soundcloud_account_profile_path(resource) do |f| %>
           <%= f.input :soundcloud, hint: false, label: false %>
         <% end %>
         <%= link_to "What's this?", "#", class: "link", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
@@ -34,7 +34,7 @@
     <% else %>
       <div class="media-type-form">
         <p><strong><%= t(:"application.profiles.preview.youtube.title") %></strong></p>
-        <%= simple_form_for resource, url: media_account_profile_path(resource) do |f| %>
+        <%= simple_form_for resource, url: youtube_account_profile_path(resource) do |f| %>
           <%= f.input :youtube, hint: false, label: false %>
         <% end %> 
       </div>
@@ -44,7 +44,7 @@
   <div class="tab">
     <div class="picture-viewer">
       <div class="thumbs">
-        <% resource.pictures.reverse.each do |pic| %>
+        <% resource.pictures.latest.each do |pic| %>
           <div id="<%= dom_id(pic) %>" class="thumb" data-review="<%= pic.picture.url(:preview) %>">
             <%= image_tag pic.picture.url(:thumb) %>
             <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, account_profile_picture_path(pic.imageable, pic), method: :delete, data: {remote: true, confirm: "#{t(:"helpers.confirm.sure")}"}, class: 'delete' %>

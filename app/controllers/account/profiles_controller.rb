@@ -52,10 +52,20 @@ class Account::ProfilesController < Account::ResourcesController
     end    
   end 
   
-  def media
+  def soundcloud
+    resource.wizard_step = :soundcloud
     resource.update_attributes(permitted_params[:profile])
+    flash[:error] = resource.errors.full_messages.first if resource.errors.present?
     redirect_to :back
   end
+  
+  def youtube
+    resource.wizard_step = :youtube
+    resource.update_attributes(permitted_params[:profile])
+    flash[:error] = resource.errors.full_messages.first if resource.errors.present? 
+    redirect_to :back
+  end
+  
   
   def remove_soundcloud
     resource.update_attribute :soundcloud, nil
