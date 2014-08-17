@@ -39,11 +39,7 @@ App.init = ->
   $('.styled-radios').styledRadios()
   $('.star-rating-editable').starRating()
   $('#flash-messages').flash()
-  $('.picture-viewer').pictureViewer()
-  $('[data-lightbox=auto]').each (i, e) ->
-    vex.open
-      content: $(e).html()
-  
+  $('.picture-viewer').pictureViewer()  
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'

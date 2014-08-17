@@ -9,6 +9,12 @@ class Admin::UsersController < Admin::ResourcesController
   #
   #
   
+  def destroy
+    destroy! do |success, failure|
+      success.html{ redirect_to :back }
+    end
+  end
+  
   def confirm
     resource.confirm!
     redirect_to :back  
