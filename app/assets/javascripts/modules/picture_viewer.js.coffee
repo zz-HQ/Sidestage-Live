@@ -41,11 +41,11 @@ do ($ = jQuery, window, document) ->
       self.picture_url = self.picture_src
 
       if self.picture_url == self.picture_src
-        next = $(".thumbs").find("[data-big-picture='" + self.picture_src + "']").next().data('big-picture')
+        next = $(".thumbs").find("[data-review='" + self.picture_src + "']").next().data('review')
         if next
           @$img_tag.attr("src", next)
         else
-          @$img_tag.attr("src", self.$thumbs.eq(0).data("big-picture"))
+          @$img_tag.attr("src", self.$thumbs.eq(0).data("review"))
       
 
 

@@ -4,8 +4,8 @@
     <div class="content">
         <header><%= t(:"application.profiles.payment.title_html") %></header>
         <%= simple_form_for resource.profile, url: bank_details_account_personal_path do |f| %>
-            <%= f.input :iban %>
-            <%= f.input :bic %>
+            <%= f.input :iban, label: false, placeholder: "IBAN" %>
+            <%= f.input :bic, label: false, placeholder: "BIC / SWIFT Code" %>
             <%= f.submit class: "btn" %>
         <% end %>
     </div>

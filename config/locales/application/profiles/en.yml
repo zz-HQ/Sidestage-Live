@@ -18,7 +18,7 @@ en:
       description:
         title_html: "Description <p>The more descriptive your profile is, the more booking requests you will receive.</p>"
       payment:
-        title_html: "Add payout method<p>You'll need to enter your bank account details to get paid.</p>"  
+        title_html: "Bank details<p>We handle payments so you don't have to worry about money. <br> Enter your bank details below so you can get paid.</p>"  
       pictures:
         index:
           avatar_title_html: "Profile picture<p>This is the picture that will show up in search listings.</p>"
