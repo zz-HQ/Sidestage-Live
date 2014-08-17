@@ -60,6 +60,7 @@ class Profile < ActiveRecord::Base
   validates :user_id, :genre_ids, presence: true
   validates :price, presence: true, if: :pricing_step?
   validates :price, numericality: { greater_than: 0 }, allow_blank: true
+  validates :youtube, format: { with: (/\A(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})\z/) }
   
   with_options if: :description_step? do |profile|
     profile.validates :name, length: { maximum: 26 }
