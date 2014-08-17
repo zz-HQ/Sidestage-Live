@@ -3,10 +3,10 @@
     <%= render 'sidebar' %>
   </aside>
 
-  <div class="content">
+  <div class="content pricing">
     <header><%= t(:"application.profiles.pricing.title_html") %></header>
     
-    <div id="pricing" class="">
+    <div id="pricing">
       <%= simple_form_for resource, url: pricing_account_profile_path(resource) do |f| %>
         <%= render "pricing_form", f: f %>
       <% end %>

@@ -1,5 +1,6 @@
 <div id="flash-messages">
   <% flash.each do |name, msg| %>
+    <% next unless name.in?(['error', 'notice', 'alert']) %>
     <% #TOD: why the following check? %>
     <%# if msg.is_a?(String) %>
       <div class="flash flash-<%= name %>">

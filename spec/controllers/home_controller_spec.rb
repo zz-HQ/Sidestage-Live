@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'before_each_helper'
+
 
 describe HomeController, :type => :controller do
   
-  before_each
+  
   
   it "renders home" do
     get :index

@@ -1,69 +1,43 @@
 .new-profile-form
-
-	.genres
-		h3
-			font-size: 16px !important
-			font-weight: 400 !important
-			color: #252525 !important
-
 	.input
 		+span-columns(8)
-		border-bottom: 1px solid $border-color
-		text-align: center
-
-		> label
-			text-align: left
-			margin: 20px 0 10px !important
 
 		h3
-			color: #484D4F
-			font-size: 22px
-			font-weight: bold
-			margin: 30px 0
-
-		.styled-radios
-			min-height: 83px
+			color: $text-color-light
+			font-size: 18px
+			font-weight: 300
+			margin: 30px 0 20px
 
 		.act
 			+span-columns(1 of 4)
-			width: 167px
+			text-align: center
 
 			.label
-				font-size: 18px
+				position: relative
 				cursor: pointer
-				color: $text-color
-				padding: 8px 0
-				width: 167px
-				display: inline-block
+				padding-top: 10px
+				width: 100%
 				height: 42px
+				+border-radius($border-radius)
+				background-color: #fff
+				border: 1px solid $border-color
+				text-decoration: none
 
 			&:hover
 				.label
-					color: #55B1FF
-					text-decoration: underline
+					color: $text-color-light
 
 			&.active
 				.label
-					+border-radius($border-radius)
 					background-color: #eee
-					border: 1px solid $border-color
-					text-decoration: none
 
 				&:hover
 					.label
 						color: inherit
 
-		&.big
-			.act:first-child
-				+shift(1)
-
 		&.genre
-
 			.nice-select
-				background-color: #fff
-				margin-top: -8px
-				width: 167px
-				text-align: left
+				margin: 0
 
 				&.active
 					background-color: #eee
@@ -71,102 +45,16 @@
 
 				.select-label-value
 					width: 70%
-					height: 25px
 					white-space: nowrap
 					overflow: hidden
 					color: $text-color
 
-			.photo
-				height: 130px
-				overflow: hidden
-				width: 167px
-
 		&.city
-
-		.nice-select
-			background-color: #EAEDED
-			display: inline-block
-			font-size: 22px
-			height: 42px
-			text-align: center
-			width: 260px
-
-			.select-label-value
-				left: 14px
-				top: 11px
-
-			.select-arrow
-				right: 20px
-				top: 14px
-
-			#profile_location
-				left: 0
-
-		&.last
-			border-bottom: none
-			margin-bottom: -5px
-			padding-bottom: 0
-
-		.center
-			display: inline
-			margin-top: 30px
-
-	.input.last
-		border: none
-		margin-top: 10px
-
-
-// EDIT PROFILE ------------------
-// -------------------------------
-#profile
-
-	header
-		border: none
-		margin-bottom: 20px
-
-		p
-			font-size: 17px
-			font-weight: 300
-			margin: 10px 0 0
-	
-	h3
-		text-align: left
-		font-size: 20px
-		margin: 20px 0 10px
-
-	.input
-
-		.label
-			font-size: 18px
-			padding: 12px 0
-
-		&.genre
-
-			.act
-				margin-right: 2.1254%
-
-		.nice-select
-			height: 52px
-			margin-top: -12px
-
-			.select-label-value
-				font-size: 18px
-				top: 13px
-
-		&.city
-			text-align: left
-
 			.nice-select
-				margin-top: 10px
-
-				.select-arrow
-					right: 20px
-
-	.button
-		display: inline-block
-		margin-top: 30px
-
-
+				background-color: #EAEDED
+				display: inline-block
+				text-align: center
+				width: 260px
 
 
 #description,
@@ -179,7 +67,7 @@
 		+outer-container
 
 	.input
-		+span-columns(5 of 8)
+		+span-columns(5 of 7)
 
 	.nice-select
 		+span-columns(5 of 8)
@@ -188,7 +76,7 @@
 	.hint
 		+span-columns(3 of 8)
 		color: $text-color-light
-		margin-top: 25px
+		//margin-top: 25px
 
 		&.from-nice-select
 			margin-top: 0
@@ -205,13 +93,13 @@
 		.hint
 			width: 43%
 
-	.profile_title
-		.hint
-			margin-top: 44px
+	// .profile_title
+	// 	.hint
+	// 		//margin-top: 44px
 
-	.profile_name
-		.hint
-			margin-top: 30px
+	// // .profile_name
+	// // 	.hint
+	// // 		margin-top: 30px
 
 	.profile_about
 		.input
@@ -220,8 +108,8 @@
 			textarea
 				height: 200px
 
-		.hint
-			margin-top: 33px
+		// .hint
+		// 	margin-top: 33px
 
 
 // PRICING ---------------

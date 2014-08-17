@@ -13,8 +13,8 @@
 
     <% if deal.is_customer?(current_user) %>
         <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn" %></p>
-        <p><%= link_to t(:"application.deals.show.cancel_proposal"), cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" %></p>
+        <p><%= link_to t(:"application.deals.show.cancel_proposal"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %></p>
     <% else %>
-        <p><%= link_to t(:"application.deals.show.cancel"), decline_account_deal_path(deal), method: :put, class: "btn cancel-booking" %></p>
+        <p><%= link_to t(:"application.deals.show.cancel"), decline_account_deal_path(deal), method: :put, class: "btn btn-white" %></p>
     <% end %>
 </div>

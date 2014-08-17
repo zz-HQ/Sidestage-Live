@@ -6,7 +6,7 @@
   <div class="content">
     <header><%= t(:"application.profiles.basics.title_html") %></header>
     <div class="new-profile-form">
-      <%= simple_form_for [:account, resource], html: { id: "profile-form" } do |f| %>
+      <%= simple_form_for resource, url: basics_account_profile_path(resource) do |f| %>
         <%= render "basics_form", f: f %>
       <% end %>
     </div>

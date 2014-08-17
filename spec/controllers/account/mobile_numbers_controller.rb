@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'before_each_helper'
+
 
 describe Account::MobileNumbersController, :type => :controller do
   
-  before_each 
+   
   
   it "renders show" do
     sign_in(FactoryGirl.create(:user))

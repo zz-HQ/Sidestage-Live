@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'before_each_helper'
+
 
 describe Account::OffersController, :type => :controller do
   
-  before_each 
+   
   
   describe "ajax" do
 

@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'before_each_helper'
+
 
 describe Account::ConversationsController, :type => :controller do
   
-  before_each
+  
   
   let(:current_user) { FactoryGirl.create(:user) }
   

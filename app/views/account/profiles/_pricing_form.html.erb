@@ -1,7 +1,7 @@
 <div class="parts">
-	<div class="headline">
+	<!-- <div class="headline">
 		<p><%= t(:"application.profiles.pricing.desc") %></p> <br>
-	</div>
+	</div> -->
 
 	<%= f.label :currency %>
 	<div class="inputs profile_currency">
@@ -12,13 +12,9 @@
 	<div class="inputs profile_price">
 		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
 	</div>
-
 	<p class='light'><%= t(:"simple_form.labels.profile.surcharge_html", surcharge_base: Profile.surcharge_base) %></p>
-	<div class="inputs profile_price">
-		<span class="surcharged_price" data-container="surcharged-price"><%= resource.price_with_surcharge %></span>
-	</div>
 
-	<p><%= t(:"application.profiles.pricing.hint_html") %></p>
+	<!-- <p><%= t(:"application.profiles.pricing.hint_html") %></p> -->
 </div>
 
 <% if false %>
@@ -38,9 +34,4 @@
 </div>
 <% end %>
 
-<div class="parts">
-	<div class="headline"></div>
-	<div class="inputs">
-		<%= f.submit class: "btn" %>
-	</div>
-</div>
+<%= render "account/profiles/submit", f: f %>

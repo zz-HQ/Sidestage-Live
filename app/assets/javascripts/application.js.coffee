@@ -40,6 +40,10 @@ App.init = ->
   $('.star-rating-editable').starRating()
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
+  $('[data-lightbox=auto]').each (i, e) ->
+    vex.open
+      content: $(e).html()
+  
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
@@ -137,3 +141,9 @@ validateDetails = ->
 
 $(document).on "change paste keyup", ".paymentInput", ->
   validateDetails()
+
+
+#SUBMIT VIA ENTER
+$(document).on 'keydown', '.media-type-form input', (e) ->
+  if e.keyCode == 13
+    $(@).closest('form').trigger 'submit'

@@ -26,6 +26,15 @@ class Picture < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
+  #
+  # Scopes
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
+  scope :latest, -> { order("pictures.id DESC") }
 
 
 end

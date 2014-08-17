@@ -6,6 +6,7 @@ Airmusic::Application.routes.draw do
   devise_for :users, controllers: { sessions: "authentication/sessions", registrations: "authentication/registrations", confirmations: "authentication/confirmations", :omniauth_callbacks => "authentication/omniauth_callbacks" }
   
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
+
     root to: "home#homepage"
 
     post 'create_subscriber', to: "home#create_subscriber", as: "create_subscriber"
@@ -23,7 +24,9 @@ Airmusic::Application.routes.draw do
         collection do
           delete :destroy_avatar
           patch :upload_avatar
+          get :skip_payment
           delete 'remove_card'
+          match 'bank_details', to: 'personals#bank_details', via: :all  
           match 'payment_details', to: 'personals#payment_details', via: :all
           match 'password', to: 'personals#password', via: :all
           match 'complete', to: 'personals#complete', via: :all
@@ -33,15 +36,26 @@ Airmusic::Application.routes.draw do
       resource :dashboard, controller: :dashboard do
         match '', to: 'dashboard#index', via: :get
       end
+      resource :profile_completion do
+        collection do
+          match 'phone', to: 'profile_completion#phone', via: :get
+          match 'basics', to: 'profile_completion#basics', via: :all          
+          match 'pricing', to: 'profile_completion#pricing', via: :all            
+          match 'description', to: 'profile_completion#description', via: :all                    
+        end
+      end
       resources :profiles do
         member do
           get :preview
           put :toggle
+          patch :soundcloud
+          patch :youtube
+          put :remove_soundcloud
+          put :remove_youtube
           match 'description', to: 'profiles#description', via: :all
-          match 'basics', to: 'profiles#basics', via: :all          
-          match 'pricing', to: 'profiles#pricing', via: :all          
-          match 'complete_pricing', to: 'profiles#complete_pricing', via: :all            
-          match 'payment', to: 'profiles#payment', via: :all          
+          match 'basics', to: 'profiles#basics', via: :all
+          match 'pricing', to: 'profiles#pricing', via: :all
+          match 'payment', to: 'profiles#payment', via: :all
         end
         resources :pictures, only: [:index, :create, :destroy]
         resources :reviews, only: [:new, :create]
@@ -72,6 +86,7 @@ Airmusic::Application.routes.draw do
     resources :city_launches
     get 'cancellations', to: "pages#cancellations", as: "cancellations"
     get 'faq', to: "pages#faq", as: "faq"
+    get 'press', to: "pages#press", as: "press"
     get 'terms-of-service', to: "pages#terms", as: "terms"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
     get 'jobs', to: "pages#jobs", as: "jobs"

@@ -1,25 +1,24 @@
 <div id="personals" class="container">
-    
-	<%= render "sidebar" %>
+    <aside>
+    	<div class="sidebar"></div>
+    </aside>	
 
     <div class="content">
-        <header>Complete your profile</header>
+        <header><%= t(:"application.personals.avatar.title") %><p><%= t(:"application.personals.avatar.desc") %></p></header>
 
-				<%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>
-					<div class="avatar-uploader">
-						<div id="avatar" class="avatar">
-							<%= render 'avatar' %>
-						</div>
-						<a href="#" id="avatar-upload-button">Add profile picture</a>
-					</div>
+        <%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>
+        	<label><%= t(:"simple_form.labels.user.avatar") %></label>
+        	<div class="avatar-uploader">
+        		<div id="avatar" class="avatar avatar-upload-button">
+        			<%= image_tag current_user.avatar.url(:thumb) %>
+        		</div>
+        	</div>
 
-					<div class="new-avatar" style="display:none;">
-						<%= f.input :avatar, label: false, id: "avatar-file" %>
-					</div>
-				<% end %>
+        	<div class="new-avatar" style="display:none;">
+        		<%= f.input :avatar, label: false, id: "avatar-file" %>
+        	</div>
+        	<%= link_to t(:"helpers.submit.save_continue"), complete_account_personal_path, method: :patch, class: "btn btn-blue btn-inline" %>
 
-        <%= simple_form_for resource, url: complete_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>
-            <%= render "user_form", f: f %>
         <% end %>
     </div>
 </div>

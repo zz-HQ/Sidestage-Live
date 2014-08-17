@@ -6,32 +6,6 @@
     width: 620px
     margin-right: 0
 
-    // .infos
-    //   color: #666
-    //   font-size: 18px
-    //   font-weight: 400
-    //   margin: 10px 0 20px
-
-    //   span
-    //     margin-right: 30px
-    //     cursor: default
-
-    //     i
-    //       font-size: 24px
-    //       margin-right: 5px
-    //       position: relative
-    //       top: 1px
-
-        // &.heart
-        //   cursor: pointer
-
-        //   i
-        //     font-size: 36px
-        //     margin-top: -10px
-
-        //   &:hover
-        //     color: $red
-
     .about
       display: block
       width: 100%
@@ -51,9 +25,40 @@
     .title
       font-size: 24px
 
-    .social-share-dummy
-      +retina-sprite(social-share, $sprite, $sprite2x)
-      margin: 15px 0
+    .media-type-form
+      width: 100%
+      height: 350px
+      padding: 100px 50px 50px
+      text-align: center
+      background-color: #FFFED1
+      border: 2px solid #fef44b
+
+      > p
+        margin: 10px 0
+        color: $text-color-light
+
+      input
+        text-align: center
+        border: none
+        font-weight: 300
+        margin-bottom: 20px
+        background-color: transparent
+
+      a.link
+        margin: 20px 0
+        display: block
+
+    .tab
+      > a.delete
+        position: absolute
+        right: 0
+        top: 67%
+        padding: 8px 20px
+        background-color: black
+        color: white
+
+        &:hover
+          background-color: $red
 
     .soundcloud-widget,
     .youtube-widget
@@ -61,32 +66,50 @@
       margin-bottom: 20px
 
     .picture-viewer
-      margin-top: 30px
-
-      .picture
-
-
       .thumbs
         overflow: hidden
         padding: 0
         margin-bottom: 20px
 
         .thumb
+          position: relative
           border: 1px solid $border-color
           float: left
           height: 70px
           list-style-type: none
-          margin-right: 18px
+          margin: 8px 8px 0 0
           text-indent: 0
           width: 70px
           cursor: pointer
           +transition(opacity 600ms ceaser($easeOutExpo))
+          +omega(8n)
+
+          .delete
+            position: absolute
+            bottom: 2px
+            right: 2px
+            color: $red
 
           &:hover
             +opacity(0.8)
 
+          &.add-photo-btn
+            background-color: $red
+            font-size: 44px
+            font-weight: 100
+            text-align: center
+            color: white
+            border: none
+
+            &:hover
+              background-color: lighten($red, 10%)
+
+        form
+          display: none
+
     .reviews
       margin: 40px 0
+      +span-columns(8)
 
       .link-to-new-review
         position: relative
@@ -194,8 +217,9 @@
         .fa
           position: relative
           left: 80px
-          bottom: 52px
+          bottom: 46px
           color: $text-color-light
+          pointer-events: none
 
       .btn-submit
         margin-bottom: 8px

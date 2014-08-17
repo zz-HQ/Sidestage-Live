@@ -34,6 +34,8 @@ class Profile < ActiveRecord::Base
     world: 'activerecord.attributes.profile.availability.world'
   }
   
+  WIZARD_STEPS = [:pricing, :description, :payment, :soundcloud, :youtube]
+  
   store :additionals, accessors: [ :admin_disabled_at, :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
   store :payout, accessors: [ :iban, :bic ]
   
@@ -56,7 +58,7 @@ class Profile < ActiveRecord::Base
   #  
 
   validates :user_id, :genre_ids, presence: true
-  validates :price, presence: true, if: :price_step?
+  validates :price, presence: true, if: :pricing_step?
   validates :price, numericality: { greater_than: 0 }, allow_blank: true
   
   with_options if: :description_step? do |profile|
@@ -64,9 +66,10 @@ class Profile < ActiveRecord::Base
     profile.validates :title, :name, :about, presence: true
     profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
   end
-  
-  
   validates :bic, :iban, presence: true, if: :payment_step?
+
+  validate :should_have_youtube, if: :youtube_step?
+  validate :should_have_soundcloud, if: :soundcloud_step?
 
   with_options on: :publishing do |profile|
     profile.validates :genre_ids, :price, :title, :name, :about, presence: true
@@ -185,6 +188,7 @@ class Profile < ActiveRecord::Base
   end
 
   def has_youtube?
+    #/\A(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})\z/
     youtube.present? && youtube.include?("youtu")
   end
 
@@ -206,17 +210,11 @@ class Profile < ActiveRecord::Base
   
   private
   
-  def price_step?
-    wizard_step == :pricing
-  end
-  
-  def description_step?
-    wizard_step == :description
-  end
-
-  def payment_step?
-    wizard_step == :payment
-  end
+  WIZARD_STEPS.each do |step|
+    define_method "#{step}_step?" do
+      wizard_step == step
+    end
+  end  
   
   def reverse_friendly
     if description_step? && errors.present?
@@ -248,20 +246,22 @@ class Profile < ActiveRecord::Base
     errors.add :user, :avatar_blank unless user.avatar.present?
   end
   
-  def should_have_youtube
-    errors.add :youtube, :blank unless has_youtube?
+  def should_have_soundcloud
+    errors.add :soundcloud, :invalid unless !!soundcloud_id_from_iframe(soundcloud)
   end
-
+  
+  def should_have_youtube
+    errors.add :youtube, :invalid unless has_youtube?
+  end
+  
   def should_have_picture
     errors.add :pictures, :blank unless has_pictures?
   end
 
-  def should_have_soundcloud
-    !!soundcloud_id_from_iframe(soundcloud)
-  end
-  
   def should_have_at_least_one_media_type
-    should_have_youtube || should_have_picture || should_have_soundcloud
+    unless has_youtube? || !!soundcloud_id_from_iframe(soundcloud) || has_pictures?
+      should_have_youtube || should_have_soundcloud || should_have_picture
+    end
   end
   
 end

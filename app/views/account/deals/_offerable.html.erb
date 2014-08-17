@@ -1,15 +1,16 @@
-<p>
-	<%= t(:"application.deals.show.you_will_earn") %>: <span><%= localized_price(deal.price, deal.currency) %></span>
+<p class="price">
+	<%= t(:"application.deals.show.you_will_earn") %>: <span><strong><%= localized_price(deal.price, deal.currency) %></strong></span>
 </p>
 
-<p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.price_with_surcharge, deal.currency)) %></p>
+<div class="btns">
+	<%= link_to t(:"application.deals.show.confirm"), accept_account_deal_path(deal), method: :put, class: "btn" unless deal.offered? || deal.proposed? %>
 
-<p><%= link_to t(:"application.deals.show.confirm"), accept_account_deal_path(deal), method: :put, class: "btn" unless deal.offered? || deal.proposed? %></p>
+	<%= link_to t(:"application.deals.show.decline"), decline_account_deal_path(deal), method: :put, class: "btn btn-white" %>
 
-
-<%= link_to t(:"application.deals.show.decline"), decline_account_deal_path(deal), method: :put, class: "btn cancel-booking" %>
-
-<%= link_to t(:"application.deals.show.change_price"), "#", class: "btn cancel-booking", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
-<div style="display:none;" data-container="new-offer">
-    <%= render "account/deals/update_price", deal: deal %>
+	<%= link_to t(:"application.deals.show.change_price"), "#", class: "btn btn-white", data: { lightbox: :html, target: "[data-container='new-offer']" } %>
+	<div style="display:none;" data-container="new-offer">
+	    <%= render "account/deals/update_price", deal: deal %>
+	</div>
 </div>
+
+<p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.price_with_surcharge, deal.currency)) %></p>

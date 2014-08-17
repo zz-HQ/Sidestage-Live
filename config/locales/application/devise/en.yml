@@ -1,17 +1,11 @@
 en:
   application:
     devise:
-      session_title: Log in
-      registration_title: Sign up
-      are_you_new: "Are you new?"
-      facebook_login: "Log in with Facebook"
-      facebook_hint: "We'll post nothing without your permission!"
-      or: or
-      login_error: Login incorrect
+      facebook_login: "Sign in with Facebook"
       sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
-      have_an_account: Have an account?
-      artist_hint: "If you're an artist, create an Artist Profile instead."
-      
+      signup_options:
+        customer: I Want To Book an Artist
+        artist: "I'm a Musician, Band or DJ"
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed."
@@ -48,7 +42,7 @@ en:
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+      signed_up_but_unconfirmed: "You've got mail. Check your inbox."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
     sessions:
@@ -60,6 +54,7 @@ en:
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
+      invalid_signup: Make sure you've provided your name, email and password before signing up.
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"

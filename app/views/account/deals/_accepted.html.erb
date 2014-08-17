@@ -11,7 +11,7 @@
         <% end %> 
     </p>
 
-  <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" if deal.is_customer?(current_user) %>
-  <%= link_to t(:"application.deals.show.cancel"), reject_account_deal_path(deal), method: :put, class: "btn cancel-booking" if deal.is_artist?(current_user) %>
+  <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" if deal.is_customer?(current_user) %>
+  <%= link_to t(:"application.deals.show.cancel"), reject_account_deal_path(deal), method: :put, class: "btn btn-white" if deal.is_artist?(current_user) %>
 
 </div>

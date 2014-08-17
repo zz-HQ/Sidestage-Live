@@ -1,7 +1,5 @@
 #personals
-
 	.content
-
 		.avatar-uploader
 			position: relative
 			margin-bottom: 20px
@@ -60,17 +58,33 @@
 			.footnote
 				margin-top: 50px
 
+			.btns
+				float: left
+
+				a
+					display: block
+					text-align: center
+					color: $text-color-light
+
 		.footnote
 			font-size: 16px
 
 		&.mobile-numbers
 			width: 45%
 
-			.user_as_mobile_number_mobile_confirmation_code
-				width: 200px
-
 			a.delete-link
 				margin-left: 40px
+
+			form.confirm-mobile-num-form
+				+span-columns(6)
+
+				.user_as_mobile_number_mobile_confirmation_code
+					+span-columns(5)
+				
+				.btn
+					+span-columns(3)
+					+omega
+					margin-top: 31px
 
 	p
 		margin-bottom: 28px

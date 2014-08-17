@@ -1,42 +1,20 @@
 <div class="wrap">
-  <div class="devise">
-    <h2><%= t(:"application.devise.session_title") %></h2>
-    
-    <div class="facebook">
-      <%= link_to "<i class='fa fa-facebook-square'></i> #{t(:"application.devise.facebook_login")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
+    <div class="devise">
 
-      <p><%= t(:"application.devise.facebook_hint") %></p>
+        <%= image_tag "sidestage_brand.png", alt: "Logo Brand", class: "logo_brand" %>
+
+        <%= simple_form_for resource, as: resource_name, url: session_path(resource_name), id: "new-session"  do |f| %>
+            <div class="form-inputs">
+                <%= f.input :email, required: false, autofocus: true, label: false %>
+                <%= f.input :password, required: false, label: false %>
+            </div>
+            <div class="form-actions">
+                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: "Sending..." }%>
+                <%= link_to "<i class='fa fa-facebook-square'></i> #{t(:"application.devise.facebook_login")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
+                <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name), class: "link" %>
+            </div>
+        <% end %>
+
     </div>
-
-    <div class="or">
-      <div class="line"></div>
-        <span><%= t(:"application.devise.or") %></span>
-      <div class="line"></div>
-    </div>
-
-    <%= simple_form_for resource, as: resource_name, url: session_path(resource_name), id: "new-session", remote: true, authenticity_token: true  do |f| %>
-
-      <div class="errors" style="display:none">
-        <p><%= t(:"application.devise.login_error") %></p>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :email, required: false, autofocus: true, label: false %>
-        <%= f.input :password, required: false, label: false %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name), class: "link" %><br />
-        <% end -%>
-      </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: "Sending..." }%>
-      </div>
-    <% end %>
-      
-    <div class="bottom-link">
-      <span><%= t(:"application.devise.are_you_new") %> <%= link_to t(:"application.menu.sign_up"), new_registration_path(resource_name, format: "html"), data: {lightbox: "ajax"}, class: "link" %> </span>
-    </div>
-
-  </div>
 </div>

@@ -1,13 +1,14 @@
 <div class="booking">
 	<h4 class="title"><%= t(:"application.deals.show.title") %></h4>
   <p>
-    <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+    <i class="fa fa-calendar"></i> <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
   </p>
 
   <% if deal.is_customer?(current_user) %>
-      <p><%= Deal.human_attribute_name(:price_for_customer) %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
-    
-  <p><%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn cancel-booking" %></p>
+      <p class="price"><%= Deal.human_attribute_name(:price_for_customer) %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
+      <div class="btns">
+        <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %>
+      </div>
   <% else %>
     <%= render "account/deals/offerable", deal: deal %>
   <% end %>

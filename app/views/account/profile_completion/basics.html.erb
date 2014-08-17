@@ -1,0 +1,15 @@
+<div id="profile" class="container">
+
+    <aside>
+        <div class="sidebar"></div>
+    </aside>
+
+  <div class="content">
+    <header><%= t(:"application.profiles.basics.title_html") %></header>
+    <div class="new-profile-form">
+      <%= simple_form_for resource, url: basics_account_profile_completion_path do |f| %>
+        <%= render "account/profiles/basics_form", f: f %>
+      <% end %>
+    </div>
+  </div>
+</div>      

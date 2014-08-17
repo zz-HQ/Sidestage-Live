@@ -1,2 +1,2 @@
-$('.pictures').append('<%= j render 'picture', picture: resource %>');
-$('.pictures p').remove();
+$('.thumbs').prepend('<%= j render 'picture', picture: resource %>');
+$('.picture-viewer').pictureViewer();

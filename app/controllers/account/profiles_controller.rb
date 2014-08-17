@@ -21,7 +21,7 @@ class Account::ProfilesController < Account::ResourcesController
   end
   
   def new
-    redirect_to account_profile_path(begin_of_association_chain.profiles.first) and return if begin_of_association_chain.profiles.first.present?
+    redirect_to preview_account_profile_path(begin_of_association_chain.profiles.first) and return if begin_of_association_chain.profiles.first.present?
     new!
   end
 
@@ -31,49 +31,56 @@ class Account::ProfilesController < Account::ResourcesController
     end
   end
   
-  def update
-    redirect_to pricing_account_profile_path(resource) if resource.update_attributes(permitted_params[:profile])
-  end
-  
-  def pricing
-    resource.wizard_step = :pricing      
+  def basics
+    resource.wizard_step = :basics
     if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to description_account_profile_path
-      end
-    end    
-  end 
-
+      resource.update_attributes(permitted_params[:profile])
+    end
+  end
+    
   def description
     resource.wizard_step = :description
     if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to account_profile_pictures_path(resource)
-      end
+      resource.update_attributes(permitted_params[:profile])
     end
   end
-  
-  def complete_pricing
-    resource.wizard_step = :pricing
+
+  def pricing
+    resource.wizard_step = :pricing      
     if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to description_account_profile_path(resource)
-      end
-    end
+      resource.update_attributes(permitted_params[:profile])
+    end    
+  end 
+  
+  def soundcloud
+    resource.wizard_step = :soundcloud
+    resource.update_attributes(permitted_params[:profile])
+    flash[:error] = resource.errors.full_messages.first if resource.errors.present?
+    redirect_to :back
   end
   
-  def payment
-    resource.wizard_step = :payment
-    if request.patch?
-      if resource.update_attributes(permitted_params[:profile])
-        redirect_to preview_account_profile_path(resource)
-      end
-    end
+  def youtube
+    resource.wizard_step = :youtube
+    resource.update_attributes(permitted_params[:profile])
+    flash[:error] = resource.errors.full_messages.first if resource.errors.present? 
+    redirect_to :back
+  end
+  
+  
+  def remove_soundcloud
+    resource.update_attribute :soundcloud, nil
+    redirect_to :back
+  end
+
+  def remove_youtube
+    resource.update_attribute :youtube, nil
+    redirect_to :back
   end
   
   def toggle
     resource.toggle!
     if resource.published?
+      flash[:auto_modal]  = "account/profiles/share_modal"
       redirect_to artist_path(resource)
     else
       flash[:error] = t(:"flash.account.profiles.toggle.alert", edit_profile_path: basics_account_profile_path) if resource.errors.present?

@@ -5,7 +5,8 @@
   background-color: #fff
   padding: 40px 30px 30px
   overflow: hidden
-  width: 460px
+  width: 400px
+  font-size: 14px
 
   .link-to-artist-profile
     text-align: center
@@ -14,7 +15,6 @@
   
   h2
     margin-top: 0
-    font-size: 36px
     font-weight: 300
     line-height: 1.2em
     text-align: center
@@ -24,34 +24,6 @@
     font-size: 24px
     line-height: 1.15em
     margin: 0 0 20px
-    
-  .facebook
-    font-weight: 400
-    margin-bottom: 22px
-
-    a
-      color: #fff
-      text-decoration: none
-      margin: 15px 0
-
-    p
-      text-align: center
-      font-weight: 300
-
-  .or
-    text-align: center
-    margin-bottom: 30px
-
-    .line
-      border-bottom: 1px solid #CBD1D4
-      height: 1px
-      width: 100px
-      display: inline-block
-      position: relative
-      top: -4px
-
-    span 
-      margin: 0 18px
   
   form
     margin-bottom: 10px
@@ -67,7 +39,7 @@
           margin-bottom: 0
 
     .form-inputs
-      margin: 10px 0 30px
+      margin: 10px 0 20px
 
       label
         text-transform: none
@@ -80,15 +52,38 @@
 
       a 
         float: right
+
+    .form-actions
+      text-align: center
+
+      input[type="checkbox"]#user_newsletter_subscribed
+        margin-bottom: 10px
+
+      label
+        font-weight: 300
+        font-size: 14px
+        margin: 0 0 15px
+
+      .btn
+        margin-top: 10px
+        width: 80%
+        height: 46px
+        color: #fff
+        text-decoration: none
+
+      a.link
+        padding: 15px 0
+        color: $text-color-light
+        display: block
+        text-decoration: none
       
   .btn
     margin: 0 auto
     padding: 12px 44px 13px
 
   .footnote
-    font-size: 16px
     text-align: center
-    margin-top: 20px
+    margin: 20px 0
 
   a.link
     color: #55B1FF
@@ -99,19 +94,16 @@
 
   .bottom-link
     border-top: 1px solid $border-color
-    padding: 20px 0
+    padding: 15px 0
     text-align: center
 
     a
       margin-left: 5px
-  
-  h2
-    text-align: left
 
   .bottom-link
-    width: 460px
+    width: 400px
     border-top: 1px solid #dddddd
-    padding: 20px 0
+    padding: 15px 0
     text-align: center
     background-color: #F7F7F7
     margin: 0 -30px -30px
@@ -146,7 +138,7 @@
     h4
       padding: 0 0 10px
 
-  .text
+  .desc
     +span-columns(8)
     margin-top: 15px
     
@@ -159,6 +151,10 @@
 
     .btn:last-child
       margin-bottom: 0
+
+    a.link
+      color: $text-color-light
+      display: block
 
   // NEW PRICE
   &.update_price

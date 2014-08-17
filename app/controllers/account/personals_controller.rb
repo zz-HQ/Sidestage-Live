@@ -29,8 +29,10 @@ class Account::PersonalsController < Account::ResourcesController
   
   def complete
     if request.patch?
-      if resource.update_attributes(permitted_params[:user])
+      if resource.avatar.present?
         redirect_to complete_payment_account_personal_path
+      else
+        flash.now[:error] = t(:"flash.account.users.complete.alert")
       end
     end    
   end
@@ -38,10 +40,13 @@ class Account::PersonalsController < Account::ResourcesController
   def complete_payment
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
-        redirect_to root_path and return
+        redirect_to root_path, notice: t(:"flash.account.users.complete_payment.notice", mobile_nr_path: account_mobile_numbers_path)
       end
     end
-    render :payment_details
+  end
+  
+  def skip_payment
+    redirect_to root_path, notice: t(:"flash.account.users.skip_payment.notice", payment_path: complete_payment_account_personal_path)
   end
   
   def password
@@ -61,6 +66,12 @@ class Account::PersonalsController < Account::ResourcesController
       end
     end    
     @credit_card ||= current_user.credit_card    
+  end
+  
+  def bank_details
+    if request.patch?
+      resource.profile.update_attributes(permitted_params[:profile])
+    end
   end
   
   def remove_card
@@ -99,9 +110,8 @@ class Account::PersonalsController < Account::ResourcesController
     params.permit user: [
         :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
       ],
-      credit_card: [
-        :name, :exp_month, :exp_year
-      ]
+      credit_card: [ :name, :exp_month, :exp_year ],
+      profile: [:iban, :bic]
   end
   
   #
