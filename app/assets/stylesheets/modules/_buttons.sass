@@ -1,10 +1,11 @@
-$blue-btn: #3C8AE5
+$blue-btn: #4A90E2
+$red-btn: #FF364F
 $btn-facebook-color: #3b5998
 $btn-hover-darken-percentage: 10%
 
 .btn
   +border-radius($border-radius)
-  background-color: $red
+  background-color: $red-btn
   border: 0
   color: #fff
   cursor: pointer
@@ -14,9 +15,10 @@ $btn-hover-darken-percentage: 10%
   margin: 10px 0
   padding: 10px 34px
   text-align: center
+  +transition(background-color 400ms ceaser($easeOutExpo))
   
   &:hover
-    background-color: darken($red, $btn-hover-darken-percentage)
+    background-color: darken($red-btn, $btn-hover-darken-percentage)
     color: #fff
 
   &.btn-inline
@@ -30,7 +32,7 @@ $btn-hover-darken-percentage: 10%
       background-color: darken($btn-facebook-color, 10%) !important
 
   &.disabled
-    background-color: lighten($red, 27%) !important
+    background-color: lighten($red-btn, 27%) !important
     cursor: default !important
 
   &.btn-blue
