@@ -12,17 +12,21 @@
     <% else %>
       <div class="media-type-form">
         <p><strong><%= t(:"application.profiles.preview.soundcloud.title") %></strong></p>
-        <%= simple_form_for resource, url: soundcloud_account_profile_path(resource) do |f| %>
-          <%= f.input :soundcloud, hint: false, label: false %>
-        <% end %>
-        <%= link_to "What's this?", "#", class: "link", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
+        <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.soundcloud") %></span>
 
+        <%= link_to "What's this?", "#", class: "link", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
         <div style="display:none;" data-container="help-sc">
           <div class="devise-lightbox">
             <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
             <%= image_tag 'sc-embed-help.png' %>
           </div>
         </div>
+      </div>
+      <div class="media-type-input-field">
+        <%= simple_form_for resource, url: soundcloud_account_profile_path(resource) do |f| %>
+          <%= f.input :soundcloud, hint: false, label: "Copy and paste the SoundCloud Embed code here.", placeholder: "<iframe>...." %>
+          <%= f.submit class: "btn btn-center btn-blue" %>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -34,9 +38,13 @@
     <% else %>
       <div class="media-type-form">
         <p><strong><%= t(:"application.profiles.preview.youtube.title") %></strong></p>
+        <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.youtube") %></span>
+      </div>
+      <div class="media-type-input-field">
         <%= simple_form_for resource, url: youtube_account_profile_path(resource) do |f| %>
-          <%= f.input :youtube, hint: false, label: false %>
-        <% end %> 
+          <%= f.input :youtube, hint: false, label: "Copy and paste the Youtube link here.", placeholder: "<iframe>...." %>
+          <%= f.submit class: "btn btn-center btn-blue" %>
+        <% end %>
       </div>
     <% end %>
   </div>

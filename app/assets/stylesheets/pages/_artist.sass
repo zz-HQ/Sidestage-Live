@@ -25,40 +25,61 @@
     .title
       font-size: 24px
 
-    .media-type-form
-      width: 100%
-      height: 350px
-      padding: 100px 50px 50px
-      text-align: center
-      background-color: #FFFED1
-      border: 2px solid #fef44b
-
-      > p
-        margin: 10px 0
-        color: $text-color-light
-
-      input
-        text-align: center
-        border: none
-        font-weight: 300
-        margin-bottom: 20px
-        background-color: transparent
-
-      a.link
-        margin: 20px 0
-        display: block
-
     .tab
       > a.delete
         position: absolute
         right: 0
-        top: 67%
+        bottom: 5px
         padding: 8px 20px
-        background-color: black
+        background-color: rgba(0,0,0,0.8)
         color: white
 
         &:hover
           background-color: $red
+
+      .media-type-form
+        width: 100%
+        height: 350px
+        padding: 100px 50px 50px
+        text-align: center
+        background-color: #FFFED1
+        border: 2px solid #fef44b
+
+        .open-input-field
+          cursor: pointer
+          font-size: 14px
+          padding: 20px 0
+          display: block
+          +transition(color 400ms ceaser($easeOutExpo))
+
+          &:hover
+            color: $text-color-light
+
+        > p
+          margin: 10px 0
+          color: $text-color-light
+
+        a.link
+          margin: 20px 0
+          display: block
+
+      .media-type-input-field
+        width: 100%
+        height: 350px
+        background-color: #FFF
+        border: 2px solid #333
+        display: none
+        padding: 20px
+
+        input[type="text"]
+          border: none
+          font-weight: 300
+          background-color: transparent
+
+        .btn
+          position: absolute
+          bottom: 20px
+          left: 42%
 
     .soundcloud-widget,
     .youtube-widget

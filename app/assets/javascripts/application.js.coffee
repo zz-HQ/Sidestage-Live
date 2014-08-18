@@ -143,3 +143,7 @@ $(document).on "change paste keyup", ".paymentInput", ->
 $(document).on 'keydown', '.media-type-form input', (e) ->
   if e.keyCode == 13
     $(@).closest('form').trigger 'submit'
+
+$(document).on 'click', '.media-type-form .open-input-field', ->
+  $(@).parent().hide()
+  $(@).closest(".tab").find(".media-type-input-field").show()
