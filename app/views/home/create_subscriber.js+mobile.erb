@@ -1,17 +1,7 @@
-<%- if @success -%>
-
-  showSuccess();
-  
-  $('form').slideUp()
-
-<%- else -%>
-
-  <%- if @already_exists -%>
-    $('#email-response-error').text("That email is already registered.")
-  <%- else -%>
-    $('#email-response-error').text("Hm. That email ain't right.")
-  <%- end -%>
-
-  showError();
-
-<%- end -%>
+<% if @mailchimp_subscriber.errors.present? %>
+  $("#subscription-success").hide();
+  $("#subscription-failure").html("<%= @mailchimp_subscriber.errors.full_messages.join("<br/>") %>").show();
+<% else %>
+  $("#subscription-failure").hide();
+  $("#subscription-success").show();
+<% end %>

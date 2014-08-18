@@ -59,6 +59,8 @@ en:
       profile:
         youtube: Click here to paste Youtube 'Embed' code
         soundcloud: Click here to paste SoundCloud 'Embed' code
+      mailchimp_subscriber:
+        email: Email Address
   helpers:
     submit:
       create: 'Create %{model}'
@@ -86,6 +88,8 @@ en:
         submit: Book it
         update: Book it
         special_offer: "Make Special Offer"
+      mailchimp_subscriber:
+        submit: Subscribe
       profile:
         submit: Continue
         create: Save

@@ -56,7 +56,7 @@ class Conversation < ActiveRecord::Base
   #
   
   def negotiator_for(user)
-    self.receiver_id == user.id ? self.sender : self.receiver
+    @negotiator ||= self.receiver_id == user.id ? self.sender : self.receiver
   end
   
   def archived_by?(user)

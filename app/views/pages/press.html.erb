@@ -3,11 +3,8 @@
 	<div class="press">
 		<h2>Join our press list</h2>
 
-		<div class="subscription-form">
-	  	<input type="text" placeholder="Your email">
-	  	<input type="submit" value="Subscribe" class="btn btn-blue">
-	  </div>
-
+        <%= render "mailchimp_subscription", list_id: :press %>
+        
 	  <br>
 	  <h2>Press Coverage</h2>
 

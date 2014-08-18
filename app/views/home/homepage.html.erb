@@ -104,10 +104,7 @@
     <section id="newletter">
       <div class="wrap">
         <h2><%= t(:"application.home.index.newsletter") %></h2>
-        <div class="subscription-form">
-          <input type="text" placeholder="Your email">
-          <input type="submit" value="Subscribe" class="btn btn-blue">
-        </div>
+        <%= render "mailchimp_subscription" %>
       </div>
     </section>
     
