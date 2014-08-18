@@ -2,13 +2,10 @@ en:
   application:
     profiles:
       sidebar:
-        basics: Basics
         settings_link: "Listing Settings"
-        pricing_link: "Pricing"
-        description: Description
         description_link: "Description"
-        photos: Photos
-        photos_link: "Manage photos"
+        pricing_link: "Pricing"
+        preview_link: "Preview Profile"
       basics:
         title_html: "Your Artist Listing<p>Sidestage lets you make money by offering your music as a service to people who want to hire musicians for private events.</p>"  
       pricing:
