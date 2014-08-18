@@ -68,13 +68,8 @@ class HomeController < ApplicationController
   
 
   def create_subscriber
-    mailchimp_api = Gibbon::API.new
-
-    res = mailchimp_api.lists.batch_subscribe(id: Rails.application.secrets.mailchimp_list_id, double_optin: false, batch: [{email: {email: params[:subscriber][:email]}}])
-    @success = true #res['add_count'] > 0
-    #@already_exists = res['errors'].first['code'] == 214 unless @success
-
-    # @success = false
+    @mailchimp_subscriber = MailchimpSubscriber.new(params[:mailchimp_subscriber])
+    @mailchimp_subscriber.save
 
     respond_to do |wants|
       wants.js
