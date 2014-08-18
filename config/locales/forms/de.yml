@@ -73,7 +73,7 @@ de:
         disable_with: Sending...
         reply: Reply
       user:
-        sign_in: "Log me in!"
+        sign_in: "Log in"
         sign_up: "Sign up with email"
         update: Save
         update_password: Update password

@@ -147,3 +147,10 @@ $(document).on 'keydown', '.media-type-form input', (e) ->
 $(document).on 'click', '.media-type-form .open-input-field', ->
   $(@).parent().hide()
   $(@).closest(".tab").find(".media-type-input-field").show()
+
+
+
+# CLICK ON LOGO, RETURN TO ARTISTS
+$(document).on 'click', "#logo a", (e) ->
+  e.preventDefault()
+  window.location.replace("/")

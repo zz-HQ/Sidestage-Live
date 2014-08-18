@@ -8,7 +8,7 @@ en:
         artist: "I'm a Musician, Band or DJ"
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed."
+      confirmed: "Your account is confirmed. Now complete your profile."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:

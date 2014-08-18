@@ -17,8 +17,8 @@ en:
           city: Only my city
           state: In my state/region
           world: Anywhere in the world
-        solo_true: Solo Artist
-        solo_false: Group  
+        solo_true: Solo Instrument
+        solo_false: Band or Group
       review:
         rating: Rating
       deal:
@@ -34,8 +34,8 @@ en:
           attributes:
             mobile_nr:
               country_code_missing: "You did not include a country code"
-              plus_missing: "Does not begin with plus sign"
-              must_start_with_non_zero: "No 0 after the plus sign"
+              plus_missing: "Enter a valid phone number, starting with a plus (+) sign (e.g. +49 172 888 8888)"
+              must_start_with_non_zero: "Your phone number can't have a 0 after the plus sign"
               too_short: "Your phone number looks a bit short"
         user:
           attributes:

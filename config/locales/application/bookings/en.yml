@@ -3,11 +3,11 @@ en:
     account:
       bookings:
         index:
-          title: Your bookings
+          title: Bookings
           view_conversation: "View conversation history"
           nevermind: Nevermind
           cancellation_prompt: "Are you sure you want to cancel this booking?"
           customer_prompt_html: "You may have to pay cancellation fee."
           cancellation_hint_html: "If you haven't, please review our <a href='%{cancellation_policy_path}'>Cancellation Policy.</a>"
           support_hint_html: "For help please contact <a href='mailto:support@sidestage.com'>support@sidestage.com</a>."
-          empty: You currently have no bookings.
+          empty: You have no confirmed bookings :(

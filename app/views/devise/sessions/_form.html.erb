@@ -11,7 +11,7 @@
             <div class="form-actions">
                 <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
                 <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: "Sending..." }%>
-                <%= link_to "<i class='fa fa-facebook-square'></i> #{t(:"application.devise.facebook_login")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
+                <%= link_to t(:"application.devise.facebook_login"), user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
                 <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name), class: "link" %>
             </div>
         <% end %>
