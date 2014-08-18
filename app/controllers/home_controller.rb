@@ -71,9 +71,8 @@ class HomeController < ApplicationController
     mailchimp_api = Gibbon::API.new
 
     res = mailchimp_api.lists.batch_subscribe(id: Rails.application.secrets.mailchimp_list_id, double_optin: false, batch: [{email: {email: params[:subscriber][:email]}}])
-
-    @success = res['add_count'] > 0
-    @already_exists = res['errors'].first['code'] == 214 unless @success
+    @success = true #res['add_count'] > 0
+    #@already_exists = res['errors'].first['code'] == 214 unless @success
 
     # @success = false
 

@@ -105,8 +105,19 @@
       <div class="wrap">
         <h2><%= t(:"application.home.index.newsletter") %></h2>
         <div class="subscription-form">
-          <input type="text" placeholder="Your email">
-          <input type="submit" value="Subscribe" class="btn btn-blue">
+            <%= simple_form_for :subscriber, url: create_subscriber_path, remote: true do |f| %>
+                <%= f.text_field :email, placeholder: "Email Address" %>
+                <%= f.submit :submit, data: { disable_with: "wait." }, class: "btn btn-blue" %>
+            <% end %>    
+        </div>
+        <div id="email-response">
+            <p id="email-response-success" class="text-shadow" style="display:none">
+                <strong>Your email was submitted!</strong><br>
+                We'll let you know when we launch.
+            </p>
+            <p id="email-response-error" class="text-shadow" style="display:none">
+                That email is already registered.
+            </p>
         </div>
       </div>
     </section>
