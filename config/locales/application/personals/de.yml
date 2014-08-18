@@ -5,14 +5,14 @@ de:
         account_link: "Account"
         password_link: "Password"
         phone_link: "Phone"
-        payment_link: "Credit card"
+        payment_link: "Credit Card"
         bank_account_link: "Bank Account"
       show:
         title: Account details
       password:
         title: Password  
       payment_details:
-        title: Payments details
+        title: Credit Card
         new:
           title: You have no credit card on file. Add one below.
           security_hint_html: "<p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p><p>For questions, contact <br><a href='mailto:support@sidestage.com'>support@sidestage.com</a> </p>"

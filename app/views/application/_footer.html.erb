@@ -7,16 +7,16 @@
           <li><%= link_to "Press", press_path %></li>
           <li><%= link_to "Terms", terms_path %></li>
           <li><%= link_to "Privacy", privacy_path %></li>
-          <li><%= link_to "Jobs", "https://angel.co/sidestage/jobs" %></li>
+          <li><%= link_to "Jobs", "https://angel.co/sidestage/jobs", target: "_blank" %></li>
         </ul>
       </div>
 
       <div class="community">
         <h4>Community</h4>
         <ul>
-          <li><%= link_to "Blog", "http://sidestagehq.tumblr.com" %></li>
-          <li><%= link_to "Facebook", "https://www.facebook.com/sidestageHQ" %></li>
-          <li><%= link_to "Twitter", "https://twitter.com/sidestagehq" %></li>
+          <li><%= link_to "Blog", "http://sidestagehq.tumblr.com", target: "_blank" %></li>
+          <li><%= link_to "Facebook", "https://www.facebook.com/sidestageHQ", target: "_blank" %></li>
+          <li><%= link_to "Twitter", "https://twitter.com/sidestagehq", target: "_blank" %></li>
         </ul>
       </div>
 
@@ -45,7 +45,7 @@
 
       <!-- Currency -->
       <div class="select-currency">
-        <div class="icon currency"><i class="fa fa-<%= current_currency.name.downcase %>"></i></div>
+        <!-- <div class="icon currency"><i class="fa fa-<%= current_currency.name.downcase %>"></i></div> -->
 		    <%= form_tag change_currency_path do |f| %>
 	        <%= nice_select(select_tag( 'currency',
                                       options_for_select(Currency.all.map(&:name), @current_currency.name),

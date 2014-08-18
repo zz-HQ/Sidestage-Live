@@ -24,7 +24,7 @@
       </div>
       <div class="media-type-input-field">
         <%= simple_form_for resource, url: soundcloud_account_profile_path(resource) do |f| %>
-          <%= f.input :soundcloud, hint: false, label: "Copy and paste the SoundCloud Embed code here.", placeholder: "<iframe>...." %>
+          <%= f.input :soundcloud, hint: false, placeholder: "Copy and paste the SoundCloud Embed code here.", label: false %>
           <%= f.submit class: "btn btn-center btn-blue" %>
         <% end %>
       </div>
@@ -42,7 +42,7 @@
       </div>
       <div class="media-type-input-field">
         <%= simple_form_for resource, url: youtube_account_profile_path(resource) do |f| %>
-          <%= f.input :youtube, hint: false, label: "Copy and paste the Youtube link here.", placeholder: "<iframe>...." %>
+          <%= f.input :youtube, hint: false, placeholder: "Copy and paste the Youtube link here.", label: false %>
           <%= f.submit class: "btn btn-center btn-blue" %>
         <% end %>
       </div>

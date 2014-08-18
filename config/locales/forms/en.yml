@@ -85,6 +85,7 @@ en:
         create: Book it
         submit: Book it
         update: Book it
+        special_offer: "Make Special Offer"
       profile:
         submit: Continue
         create: Save

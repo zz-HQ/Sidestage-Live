@@ -9,17 +9,17 @@
 	</div>
 
 	<div class="actions">
-      <%= link_to t(:"application.links.cancel"), "#" , data: { lightbox: :html, target: "[data-container='cancel-offer']" }, class: "btn cancel-booking" %>
+      <%= link_to t(:"application.links.cancel"), "#" , data: { lightbox: :html, target: "[data-container='cancel-offer']" }, class: "btn btn-white" %>
 
 	  <div style="display:none;" data-container="cancel-offer">
 		  <div class="devise-lightbox cancel-offer">
-		    <h4>
+		    <p>
 		        <%= t(:"application.account.bookings.index.cancellation_prompt") %><br/>
 		        <%= t(:"application.account.bookings.index.customer_prompt_html")  if deal.is_customer?(current_user) %>
-		    </h4>
+		    </p>
 		    <%= link_to t(:"application.links.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn" if deal.is_customer?(current_user) %>
 			<%= link_to t(:"application.links.cancel"), reject_account_deal_path(deal), method: :put, class: "btn" if deal.is_artist?(current_user) %>
-			<p id="close-vex" class="btn cancel-booking"><%= t(:"application.account.bookings.index.nevermind") %></p>
+			<p id="close-vex" class="btn btn-white"><%= t(:"application.account.bookings.index.nevermind") %></p>
 		  	<p class="footnote">
 		  	    <%= t(:"application.account.bookings.index.cancellation_hint_html", cancellation_policy_path: "#") if deal.is_customer?(current_user) %><br/>
                 <%= t(:"application.account.bookings.index.support_hint_html") %>

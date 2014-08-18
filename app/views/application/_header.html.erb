@@ -23,7 +23,7 @@
         
         <a href="<%= account_conversations_path %>" class="messages">
           <%# TODO: Mail Icon %>
-          <div class="icon"><i class="fa fa-envelope"></i></div>
+          <div class="icon"><i class="fa fa-envelope-o"></i></div>
           <%# TODO: Real Mesage Count %>
           <% if current_user.unread_message_counter.to_i > 0 %>
             <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>

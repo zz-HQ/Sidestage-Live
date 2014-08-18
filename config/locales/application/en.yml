@@ -3,7 +3,7 @@ en:
     menu:
       sign_up: Sign up
       sign_in: Log in
-      my_bookings: My Bookings
+      my_bookings: Bookings
       your_profile: Edit Profile
       account: Account
       log_out: Log out
@@ -18,4 +18,4 @@ en:
       skip: Skip
       continue: Continue
       remove: Remove
-      cancel: Cancel
+      cancel: Cancel Booking

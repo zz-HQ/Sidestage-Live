@@ -11,7 +11,7 @@
 	        <i class="fa fa-<%= resource.profile.currency.downcase %>"></i>
       </div>
       <%= f.input :customer_id, as: :hidden %>
-      <%= f.submit class: "btn" %>
+      <%= f.submit class: "btn btn-full", value: t(:"helpers.submit.deal.special_offer") %>
       <p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(resource.price_with_surcharge, resource.currency)) %></p>
 	    </div>
 	<% end %>

@@ -5,7 +5,7 @@ en:
         account_link: "Account"
         password_link: "Password"
         phone_link: "Phone"
-        payment_link: "Credit card"
+        payment_link: "Credit Card"
         bank_link: "Bank details"
       show:
         title: Account
@@ -16,7 +16,7 @@ en:
       password:
         title: Change Your Password  
       payment_details:
-        title: Payment details
+        title: Credit Card
         credit_card_form_title: "Please enter your payment information"
         skip: Do this later
         new:
@@ -24,7 +24,7 @@ en:
         show:
           title: "The credit card below has been added to your account."
           card_hint_html: "For questions concerning your credit card, please contact <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"
-          remove: Remove card
+          remove: Remove
           remove_hint_html: "<h2>Wait!</h2> <br><p>Before you remove your credit card, you need to cancel all your booking requests.</p>"           
     mobile_numbers:
       new:
