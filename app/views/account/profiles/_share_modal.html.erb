@@ -8,3 +8,13 @@
         </div>
     </div>
 </div>
+
+<script>
+  jQuery(document).ready(function(){
+      $('[data-lightbox="auto"]').each(function(i, e) {
+        return vex.open({
+          content: $(e).html()
+        });
+      });
+  })
+</script>
