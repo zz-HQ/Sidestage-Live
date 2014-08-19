@@ -77,7 +77,7 @@ class DealMailer < ActionMailer::Base
   end
     
   def subject(deal)
-    I18n.t :"mail.deals.#{deal.state}.subject"
+    I18n.t :"mail.deals.#{deal.state}.subject", partner_name: partner.profile_name
   end 
   
   def setup_notification_body(partner, deal)

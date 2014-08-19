@@ -67,7 +67,6 @@ hr
 // SUBS FORM --------
 // ------------------
 .subscription-form
-	margin: 50px auto
 	+outer-container
 
 	input
@@ -109,6 +108,34 @@ hr
 
 		&:hover
 			+opacity(0.85)
+
+
+
+
+// NEWSLETTER ---------
+// --------------------
+#newsletter
+	.subscription-form
+		position: relative
+		margin: 0 auto
+		padding: 0 0 40px
+
+	#email-response
+		position: absolute
+		top: 62px
+		width: 100%
+
+		#subscription-success
+			color: #387500
+			font-weight: 400
+
+		#subscription-failure
+			color: #D8000C
+			font-weight: 400
+
+
+
+
 
 
 

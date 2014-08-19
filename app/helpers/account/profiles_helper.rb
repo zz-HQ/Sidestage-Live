@@ -4,7 +4,9 @@ module Account::ProfilesHelper
     iframe = resource.soundcloud if iframe.blank?
     track_id = resource.soundcloud_id_from_iframe(iframe)
     return nil if track_id.blank?
-    if resource.soundcloud.include?("playlists")
+    if resource.soundcloud.include?("users")
+      iframe_src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/#{track_id}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=true&amp;visual=true"
+    elsif resource.soundcloud.include?("playlists")
       iframe_src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/#{track_id}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=true&amp;visual=true"
     else
       iframe_src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/#{track_id}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=true&amp;visual=true"
@@ -22,3 +24,6 @@ module Account::ProfilesHelper
   end
   
 end
+"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/40129281&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
+
+"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/7394738&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"

@@ -5,11 +5,9 @@
         <%= f.input :list, input_html: { value: list_id }, as: :hidden, label: false %>
         <%= f.submit data: { disable_with: "wait." }, class: "btn btn-blue" %>
     <% end %>    
-</div>
-<div id="email-response">
-    <p id="subscription-success" class="text-shadow" style="display:none">
-        <strong>Your email was submitted!</strong><br>
-        We'll let you know when we launch.
-    </p>
-    <p id="subscription-failure" class="text-shadow" style="display:none"></p>
+
+    <div id="email-response">
+        <p id="subscription-success" class="text-shadow" style="display:none">You're now subscribed.</p>
+        <p id="subscription-failure" class="text-shadow" style="display:none"></p>
+    </div>
 </div>

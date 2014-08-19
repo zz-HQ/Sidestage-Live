@@ -177,7 +177,9 @@ class Profile < ActiveRecord::Base
 
   def soundcloud_id_from_iframe(iframe)
     begin
-      if iframe.include?("playlists")
+      if iframe.include?("users")
+        iframe.scan(/https%3A\/\/api.soundcloud.com\/users\/(\d*)/)[0][0]
+      elsif iframe.include?("playlists")
         iframe.scan(/https%3A\/\/api.soundcloud.com\/playlists\/(\d*)/)[0][0]
       else
         iframe.scan(/https%3A\/\/api.soundcloud.com\/tracks\/(\d*)/)[0][0]
