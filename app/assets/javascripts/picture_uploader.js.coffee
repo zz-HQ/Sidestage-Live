@@ -4,9 +4,9 @@ $(document).on 'ready page:load page:restore', ->
   renderFilesCount = -> 
     $('#file-upload-status .value').text(filesCount)
     if filesCount > 0
-      $('#file-upload').addClass 'uploading'
+      $('#file-upload-status').show()
     else
-      $('#file-upload').removeClass 'uploading'
+      $('#file-upload-status').hide()
 
   $('#new_picture').fileupload
     add: (e, data) ->
