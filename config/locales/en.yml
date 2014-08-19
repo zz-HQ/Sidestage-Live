@@ -45,6 +45,12 @@ en:
           attributes:
             customer_id:
               not_chargeable: "Payment details missing!"
+        profile:
+          attributes:
+            youtube:
+              invalid: Please enter a valid link
+            soundcloud:
+              invalid: Please enter a valid Embed code
   helpers:
     select:
       prompts:
