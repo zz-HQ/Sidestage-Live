@@ -37,7 +37,7 @@ do ($ = jQuery, window, document) ->
 
         setTimeout =>
           @close()
-        , 30000
+        , 5000
 
     close: ->
       @$element.removeClass 'animation-in'

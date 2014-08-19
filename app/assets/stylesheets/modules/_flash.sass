@@ -1,19 +1,23 @@
 #flash-messages
   +transition(height 500ms ceaser($easeOutExpo))
   height: 0
-  margin: 0 0 32px
+  //margin: 0 0 32px
   overflow: hidden
   padding: 0
+  position: absolute
+  top: 80px
+  z-index: 400
+  width: 100%
 
   .flash
     color: #fff
-    padding: 15px 0
+    padding: 19px 0 18px
     text-align: center
 
     &.flash-notice
       background: #417505
 
-    &.alert-error, &.flash-error
+    &.alert-error, &.flash-error, &.flash-alert
       background: rgb(200, 0, 0)
   
     .flash-message
@@ -36,5 +40,5 @@
         color: #fff
 
   &.animation-in
-    +transition(height 500ms ceaser($easeOutExpo))
-    height: 55px
+    +transition(height 600ms ceaser($easeOutCirc))
+    height: 59px
