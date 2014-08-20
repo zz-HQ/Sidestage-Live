@@ -1,7 +1,7 @@
 #conversation
   +span-columns(8)
 
-  header
+  > header
     font-weight: 300
     border-bottom: 1px solid $border-color
     font-size: 18px
@@ -103,50 +103,6 @@
 
   aside
     +span-columns(2 of 7)
-
-    .booking-widget
-      border: 1px solid $border-color
-      +span-columns(8)
-
-      header
-        +outer-container
-        margin-bottom: 0px
-        border-bottom: 1px solid $border-color
-        padding: 15px
-
-        .photo
-          +span-columns(2)
-
-        .body
-          +span-columns(6)
-          +omega
-          padding-top: 17px
-          font-size: 16px
-          font-weight: 400
-          padding-left: 5px
-
-      .title
-        text-align: center
-        font-weight: 300
-        font-size: 16px
-        margin: 10px 0 25px !important
-
-      .body
-        padding: 15px 35px
-
-        p
-          margin-bottom: 5px
-
-          i
-            margin-right: 4px
-
-        .light
-          font-size: 14px
-          text-align: center
-
-        .btns
-          .btn
-            padding: 10px 24px
     
     > p
       margin-bottom: 10px
@@ -172,12 +128,58 @@
         i
           margin-right: 4px
 
+.booking-widget,
+.edit-offer
+  border: 1px solid $border-color
+  +span-columns(8)
+
+  header
+    +outer-container
+    margin-bottom: 0px
+    border-bottom: 1px solid $border-color
+    padding: 15px
+
+    .photo
+      +span-columns(2)
+
+    .body
+      +span-columns(6)
+      +omega
+      padding-top: 17px
+      font-size: 16px
+      font-weight: 400
+      padding-left: 5px
+
+  .title
+    text-align: center
+    font-weight: 300
+    font-size: 16px
+    margin: 10px 0 25px !important
+
+  > .body
+    +span-columns(8)
+    padding: 15px 35px
+
+    .price
+      border: none
+
+    p
+      margin-bottom: 5px
+
+      i
+        margin-right: 4px
+
+    .light
+      font-size: 14px
+      text-align: center
+
+    .btns
+      .btn
+        padding: 10px 24px
 
 .edit-offer,
 .new-offer
-  max-width: 222px
-  margin: 0 auto
-  font-weight: 300
+  +span-columns(8)
 
   form
     margin: 0

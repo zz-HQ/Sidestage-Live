@@ -1,7 +1,6 @@
 .devise, .devise-lightbox
   margin: 0 auto
   position: relative
-  +box
   background-color: #fff
   padding: 40px 30px 30px
   overflow: hidden
@@ -160,28 +159,9 @@
       display: block
 
   // NEW PRICE
-  &.update_price
-    h4
-      font-size: 18px
-      margin-top: 0
-
-    form
-      width: 67%
-      margin: 20px 0
-
-      .input
-        width: 45%
-        float: left
-
-      .old_price
-        float: left
-        color: $text-color-light
-        font-size: 15px
-        margin: 25px 0 0 10px
-
-      .btn
-        font-size: 16px
-        width: 67%
+  &.edit_offer
+    padding: 0
+    width: 264px
 
   .photo
     +span-columns(1 of 7)

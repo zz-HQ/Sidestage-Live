@@ -9,7 +9,7 @@
     <p class="subtitle"><%= t(:"application.mobile_numbers.new.desc_html") %></p>
     
     <%= simple_form_for user, url: account_mobile_numbers_path do |f| %>
-        <%= f.input :mobile_nr, input_html: { autocomplete: "off" } %>
+        <%= f.input :mobile_nr, required: false, input_html: { autocomplete: "off" } %>
         <div class="input">
         	<%= f.submit class: "btn" %>
         </div>

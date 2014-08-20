@@ -1,19 +1,33 @@
-<div class="devise-lightbox">
+<div class="devise-lightbox edit_offer">
     <div class="edit-offer">
-        <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
-            <div class="form-inputs">
-                <p class="event-date">
-                  <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
-                </p>
-                <div class="label"><%= t(:"simple_form.labels.propose.price") %>: </div>
-                <div class="price">
-                    <%= f.input :price, as: :string, label: false, input_html: {  data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } }, maxlength: 5 %>
-                    <i class="fa fa-<%= deal.currency.downcase %>"></i>
-                </div>
-                <%= f.input :customer_id, as: :hidden %>
-                <p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.price_with_surcharge, deal.currency)) %></p>
-                <%= f.submit class: "btn" %>
+        <header>
+            <div class="photo">
+              <%= image_tag deal.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
             </div>
-        <% end %>
+            <div class="body">
+              <%= deal.negotiator_for(current_user).profile_name %>
+            </div>
+        </header>
+        <div class="body">
+            <h4 class="title">Special Offer</h4>
+            <%= simple_form_for deal, url: offer_account_deal_path(deal), remote: true do |f| %>
+                <div class="form-inputs">
+                    <p class="event-date">
+                        <i class="fa fa-calendar"></i>
+                        <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+                    </p>
+                    <div class="label"><%= t(:"simple_form.labels.propose.price") %>: </div>
+                    <div class="price">
+                        <%= f.input :price, as: :string, label: false, input_html: {  data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } }, maxlength: 5 %>
+                        <i class="fa fa-<%= deal.currency.downcase %>"></i>
+                    </div>
+                    <%= f.input :customer_id, as: :hidden %>
+                    <div class="btns">
+                        <%= f.submit class: "btn", value: t("helpers.submit.deal.special_offer") %>
+                    </div>
+                    <p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.price_with_surcharge, deal.currency)) %></p>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>
