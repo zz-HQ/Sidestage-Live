@@ -64,7 +64,7 @@
         <%= render partial: 'account/conversation_messages/message', collection: @messages %>
     </div>
     <% unless @messages.last_page? %>
-        <p data-container="link-to-more"><%= render partial: "account/conversation_messages/link_to_more", locals: { collection: @messages } %></p>
+        <p class="link-to-more" data-container="link-to-more"><%= render partial: "account/conversation_messages/link_to_more", locals: { collection: @messages } %></p>
     <% end %>
   </div>
 
