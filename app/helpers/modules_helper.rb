@@ -33,5 +33,15 @@ module ModulesHelper
       content.html_safe
     end
   end
+
+  def read_more(text, length = 300)
+    if !text.blank? && text.size > length
+      text = "#{truncate(strip_tags(text), length: length)}"
+    else
+      text = text
+    end
+
+    text
+  end
   
 end

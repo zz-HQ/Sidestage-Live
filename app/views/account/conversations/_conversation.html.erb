@@ -9,7 +9,8 @@
 				<% if (message = conversation.messages.last).present? && message.sender_id == current_user.id %>
 				  <i class="fa fa-reply"></i>
 				<% end %>
-				<%= message ? (strip_tags message_body(message)) : (strip_tags conversation.body) %>
+				<%#= message ? (strip_tags message_body(message)) : (strip_tags conversation.body) %>
+				<%= read_more(message ? (strip_tags message_body(message)) : (strip_tags conversation.body), 185) %>
 			</p>
 		</div>
 		<div class="archive">
