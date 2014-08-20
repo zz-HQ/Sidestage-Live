@@ -34,6 +34,7 @@ class Account::ConversationsController < Account::ResourcesController
     @message = Message.new
     @message.receiver_id = resource.negotiator_for(current_user).id
     @message.conversation = resource
+    @messages = resource.messages.includes(:sender).latest.page(params[:page]||0)
     show!
   end
   

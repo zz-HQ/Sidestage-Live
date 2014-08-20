@@ -9,6 +9,7 @@ class Message < ActiveRecord::Base
   #
   
   include Conversationable, Measurement
+  paginates_per 10
   
   #
   # Attributes

@@ -1,0 +1,1 @@
+<%= link_to t(:"application.pagination.view_more"), account_conversation_conversation_messages_path(@conversation, page: collection.next_page), remote: true unless collection.last_page? %>

@@ -54,17 +54,18 @@
   <div class="content">
     <div class="message new-message">
       <div class="body">
-        <%= simple_form_for @message, url: account_messages_path, data: {remote: true} do |f| %>
+        <%= simple_form_for @message, url: account_messages_path, data: { remote: true } do |f| %>
           <%= render "/account/messages/reply_form", f: f %>
         <% end %>
       </div>
     </div>
 
-    <div id="messages">
-      <% resource.messages.includes(:sender).latest.each do |message| %>
-        <%= render 'account/conversations/message', message: message %>
-      <% end %>
+    <div id="messages" data-container="messages">
+        <%= render partial: 'account/conversation_messages/message', collection: @messages %>
     </div>
+    <% unless @messages.last_page? %>
+        <p data-container="link-to-more"><%= render partial: "account/conversation_messages/link_to_more", locals: { collection: @messages } %></p>
+    <% end %>
   </div>
 
 </div>

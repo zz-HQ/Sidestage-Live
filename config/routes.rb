@@ -17,6 +17,11 @@ Airmusic::Application.routes.draw do
     resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
+
+      concern :paginatable do
+        get '(page/:page)', :action => :index, :on => :collection, :as => ''
+      end
+
       resource :mobile_numbers, only: [:show, :destroy, :update] do
         patch :confirm
       end
@@ -77,8 +82,10 @@ Airmusic::Application.routes.draw do
       resources :conversations do 
         get :archived, on: :collection
         put :archive, on: :member
+        resources :conversation_messages, :concerns => :paginatable
       end
       resources :payment_details
+
       
       root 'personals#complete'
     end

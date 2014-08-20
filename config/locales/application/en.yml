@@ -19,3 +19,5 @@ en:
       continue: Continue
       remove: Remove
       cancel: Cancel Booking
+      pagination:
+        view_more: View more
