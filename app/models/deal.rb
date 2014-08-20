@@ -34,7 +34,7 @@ class Deal < ActiveRecord::Base
   #
   
   validates :artist_id, :profile_id, :customer_id, :price, :start_at, :currency, :conversation_id, presence: true
-  validates :price, numericality: { greater_than: 0 }, allow_blank: true 
+  validates :price, numericality: { greater_than: 24 }, allow_blank: true 
   
   validate :customer_must_be_chargeable, if: :should_customer_be_chargeable?
 

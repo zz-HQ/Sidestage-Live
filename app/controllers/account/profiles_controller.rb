@@ -55,14 +55,14 @@ class Account::ProfilesController < Account::ResourcesController
   def soundcloud
     resource.wizard_step = :soundcloud
     resource.update_attributes(permitted_params[:profile])
-    flash[:error] = resource.errors.full_messages.first if resource.errors.present?
+    flash[:error] = resource.errors.messages[:soundcloud].try(:first) if resource.errors.present? 
     redirect_to :back
   end
   
   def youtube
     resource.wizard_step = :youtube
     resource.update_attributes(permitted_params[:profile])
-    flash[:error] = resource.errors.full_messages.first if resource.errors.present? 
+    flash[:error] = resource.errors.messages[:youtube].try(:first) if resource.errors.present? 
     redirect_to :back
   end
   
