@@ -17,14 +17,18 @@ class Account::MessagesController < Account::ResourcesController
   #
   #
   
-  def show
-    flash.keep
-    if resource.conversation.receiver.artist?
-      redirect_to artist_path(resource.conversation.receiver)
-    else
-      redirect_to account_conversation_path(resource.conversation)
+  def create
+    create! do |success, failure|
+      success.html{
+        if resource.conversation.receiver.artist?
+          redirect_to artist_path(resource.conversation.receiver.profile)
+        else
+          redirect_to account_conversation_path(resource.conversation)
+        end
+      }
     end
   end
+  
   
   #
   # Protected

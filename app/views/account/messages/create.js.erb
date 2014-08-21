@@ -1,6 +1,6 @@
 <% if resource.errors.present? %>
     alert("<%= resource.errors.full_messages.first.html_safe %>");
 <% else %>
-    $('#messages').prepend('<%= j render('account/conversations/message', message: resource) %>');
+    $('#messages').prepend('<%= j render('account/conversation_messages/message', message: resource) %>');
     $('#message_body').val('').trigger('blur');
 <% end %>
