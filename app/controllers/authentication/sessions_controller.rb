@@ -21,9 +21,10 @@ class Authentication::SessionsController < Devise::SessionsController
   #
   #
   #
+
   
   def is_flashing_format?
-    action_name == "destroy" ? false : super
+    action_name.in?(["destroy", "create"]) ? false : super
   end
 
   #
