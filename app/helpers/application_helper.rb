@@ -37,12 +37,8 @@ module ApplicationHelper
   end
   
   def profile_available_locations
-    if user_signed_in?
-      if current_user.artist?
-        ["Berlin", "London"]
-      else
-        ["Berlin", "London", "More cities"]
-      end
+    if user_signed_in? && current_user.artist?
+      ["Berlin", "London"]
     else
       ["Berlin", "London", "More cities"]
     end

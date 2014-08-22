@@ -42,7 +42,9 @@ class Account::ProfileCompletionController < Account::ResourcesController
       if resource.update_attributes(permitted_params[:profile])
         redirect_to phone_account_profile_completion_path
       end
-    end    
+    else
+      resource.currency = Currency.pound.try(:name) if resource.london?
+    end
   end 
   
   #

@@ -152,7 +152,11 @@ class Profile < ActiveRecord::Base
   #
   #
   #
-  #  
+  #
+  
+  def london?
+    location == "London"
+  end  
   
   def toggle!
     update_attribute :published, !published if published? || valid?(:publishing)

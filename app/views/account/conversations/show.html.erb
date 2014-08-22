@@ -33,11 +33,11 @@
           <% if current_user.artist? %>
               
               <div class="new-offer" id="offer-form">
-                  <%= render "account/offers/form", resource: Deal.new(price: current_user.profile.price, profile: current_user.profile, customer: negotiator) %>
+                  <%= render "account/offers/form", resource: Deal.new(price: current_user.profile.price, profile: current_user.profile, customer: negotiator, currency: current_user.profile.currency) %>
               </div>
               
           <% elsif artist_contactable?(negotiator) %>
-                <%= render "account/deals/customer_conversation_deal_form", resource: Deal.new(price: negotiator.profile.price, profile: negotiator.profile, artist: negotiator) %>
+                <%= render "account/deals/customer_conversation_deal_form", resource: Deal.new(price: negotiator.profile.price, profile: negotiator.profile, artist: negotiator, currency: negotiator.profile.currency) %>
           <% end %>
 
         <% end %>

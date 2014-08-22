@@ -22,4 +22,17 @@ class Currency < ActiveRecord::Base
   default_scope -> { order("name ASC") }
   
   
+  #
+  # Class Methods
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  
+  def self.pound
+    where(name: "GBP").first
+  end
+  
 end
