@@ -57,7 +57,7 @@ en:
         exp_month: Exp month
         exp_year: Exp year
       profile:
-        youtube: Click here to paste Youtube 'Embed' code
+        youtube: Click here to paste Youtube URL
         soundcloud: Click here to paste SoundCloud 'Embed' code
       mailchimp_subscriber:
         email: Email Address
