@@ -11,7 +11,7 @@ en:
       search: Search
     links:
       forgot_password: Forgot password?
-      edit: Edit Profile Text
+      edit: Edit Profile
       publish: 
         toggle_true: Unpublish
         toggle_false: Publish
