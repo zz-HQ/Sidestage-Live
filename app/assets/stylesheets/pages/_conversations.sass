@@ -11,57 +11,61 @@
 				left: 6px
 
 		.message
-			+outer-container
 			+span-columns(8)
 			margin-bottom: 30px
 
-			&:hover
+			> a
+				+span-columns(8 of 10)
 
-				img
-					+opacity(0.6)
+				&:hover
+					color: inherit
 
-			.photo
-				+span-columns(1 of 10)
-				overflow: hidden
+				.photo
+					+span-columns(1)
+					overflow: hidden
 
-				img
-					width: 100%
+					img
+						width: 100%
 
-			.body
-				+span-columns(7 of 10)
-				cursor: pointer
-				max-height: 73px
+				.body
+					+span-columns(7)
+					+omega
+					cursor: pointer
+					max-height: 73px
 
-				i
-					font-size: 10px
-					margin-right: 3px
-					position: relative
-					top: -2px
-					color: #999
+					i
+						font-size: 10px
+						margin-right: 5px
+						position: relative
+						top: 6px
+						color: #555
+						float: left
 
-				h3
-					margin: 0 0 10px
+					h3
+						margin: 0 0 10px
 
-					span
-						color: #777
-						font-size: 14px
-						float: right
-						font-weight: 300
-						margin-top: 5px
+						span
+							color: #777
+							font-size: 14px
+							float: right
+							font-weight: 300
+							margin-top: 5px
 
-					&.ss
-						margin: 10px 0 0
+						&.ss
+							margin: 10px 0 0
 
-				p
-					margin: 0
+					p
+						margin: 0
+						float: left
 
-					span
-						color: #777
-						font-size: 16px
-						font-weight: 300
+						span
+							color: #777
+							font-size: 16px
+							font-weight: 300
 
-			.archive
+			> .archive
 				+span-columns(2 of 10)
+				+omega
 
 				a
 					margin-top: 14px
