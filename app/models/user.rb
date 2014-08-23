@@ -51,6 +51,8 @@ class User < ActiveRecord::Base
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: :sender_id, dependent: :delete_all
   has_many :received_conversations, class_name: 'Conversation', foreign_key: :receiver_id, dependent: :delete_all
   
+  has_many :reviews, foreign_key: :author_id, dependent: :delete_all
+  
   mount_uploader :avatar, AvatarUploader
   
   #

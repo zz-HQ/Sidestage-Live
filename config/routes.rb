@@ -110,6 +110,9 @@ Airmusic::Application.routes.draw do
           put :toggle
         end
       end
+      resources :conversations do
+        resources :messages
+      end
       resources :deals
       resources :users do
         member do

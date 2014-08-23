@@ -34,3 +34,23 @@
         <td><%= Deal.declined.count %></td>
     </tr>
 </table>
+
+<h2>Pending Booking Requests</h2>
+<table class="table table-striped table-condensed table-hover">
+    <thead>
+        <th>Customer</th>
+        <th>Artist</th>
+        <th>Message</th>
+        <th>Artist price</th>
+        <th>Last message</th>
+    </thead>
+    <% Deal.pending.latest.includes([:customer, :artist, :conversation, :profile]).limit(30).each do |deal| %>
+        <tr>
+            <td><%= deal.customer.name %></td>
+            <td><%= deal.profile.name %></td>
+            <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
+            <td><%= localized_price deal.price, deal.currency %></td>
+            <td><%= l(deal.conversation.updated_at, format: :conversation) %></td>
+        </tr>
+    <% end %>
+</table>
