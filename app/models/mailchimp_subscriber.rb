@@ -53,7 +53,7 @@ class MailchimpSubscriber
   private
   
   def list_id
-    SUBSCRIBER_LIST[list] || SUBSCRIBER_LIST[:general]
+    SUBSCRIBER_LIST[list.to_s.to_sym] || SUBSCRIBER_LIST[:general]
   end
   
 end
