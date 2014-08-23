@@ -150,7 +150,17 @@ $(document).on 'click', '.media-type-form .open-input-field', ->
 
 
 
-# CLICK ON LOGO, RETURN TO ARTISTS
-$(document).on 'click', "#logo a", (e) ->
-  e.preventDefault()
-  window.location.replace("/")
+# MATCH ME CHECKBOX -----------
+$(document).on 'click', '.match-me-form .act', ->
+  if $(@).find(':checkbox').is(':checked')
+    $(@).find(':checkbox').prop('checked', false)
+    $(@).removeClass('active')
+  else if $('.act.active').length + 1 <= 3
+    $(@).find(':checkbox').prop('checked', true)
+    $(@).addClass('active')
+
+
+
+
+
+

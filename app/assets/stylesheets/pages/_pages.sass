@@ -3,20 +3,10 @@
 	+shift(1)
 
 	header
-		background: #FAFAFA
-		text-align: center
-		border-bottom: 1px solid $border-color
-		padding: 30px 0
-		position: absolute
-		width: 100%
-		left: 0
-		top: 80px
+		margin-bottom: 30px
 
-		h2
-			font-size: 60px
-			color: $text-color
-			font-weight: 300
-			margin: 33px 0 50px
+		h4
+			margin-bottom: 10px
 
 	.content
 		margin-top: 275px
@@ -93,3 +83,64 @@
 
 				a
 					color: $blue
+
+	.match-me-form
+		padding: 0 100px
+
+		label
+			margin-top: 20px
+
+		.labels
+			+outer-container
+
+			.act
+				+span-columns(1 of 3)
+				+omega(3n)
+				margin-bottom: 20px
+
+				input[type="checkbox"]
+					display: none
+
+				.label
+					text-align: center
+
+		.input
+			+span-columns(8)
+
+			&.event input
+				width: 350px
+
+			&.number input
+				width: 80px
+
+			&.event-date .date
+				width: 200px
+
+			&.zip
+				+span-columns(2)
+
+			&.phone
+				+span-columns(6)
+				+omega
+
+				input
+					width: 250px
+
+			&.name,
+			&.email
+				+span-columns(3)
+
+			&.email
+				+span-columns(5)
+				+omega
+
+		.btn
+			margin-top: 30px
+
+
+
+
+
+
+
+
