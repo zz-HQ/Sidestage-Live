@@ -4,7 +4,6 @@
   .content
     +span-columns(5)
     width: 620px
-    margin-right: 0
 
     .about
       display: block
@@ -200,32 +199,32 @@
             margin-top: 10px
     
   aside
-    +span-columns(2)
-    +shift(1)
+    float: right
+    width: 260px
     padding-top: 10px
     margin-top: 40px
 
     .booking-teaser
       +box
-      padding: 10px 12px 10px
+      padding: 16px 29px
       text-align: center
       background-color: #FFF
       position: relative
 
       .photo
-        padding: 15px
+        padding: 13px
 
         img
           max-width: 100%
 
       .name
-        color: $text-color
-        font-size: 22px
+        font-size: 24px
         font-weight: 400
 
       .label
+        margin-top: 7px
         color: $text-color-light
-        //margin-bottom: 20px
+        font-size: 18px
 
         &.message-artist
           margin: 15px 0 5px
@@ -244,25 +243,21 @@
         color: $text-color
         font-size: 44px
         font-weight: 700
-        //margin-bottom: 28px
 
       .date
-        margin: 20px 0 -37px
-
-        input
-          height: auto
+        margin: 20px 0 0
+        position: relative
 
         .fa
-          position: relative
-          left: 80px
-          bottom: 46px
+          position: absolute
+          right: 14px
+          top: 12px
           color: $text-color-light
           pointer-events: none
 
-      .btn-submit
-        margin-bottom: 8px
-        width: 100%
-        font-size: 16px
+      .btn
+        margin-top: 0
+        margin-bottom: 14px
 
   
   .like-btn

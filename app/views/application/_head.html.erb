@@ -15,7 +15,7 @@
   <!-- for Facebook -->
   <meta property="og:title" content="Sidestage" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://www.sidestage.com" />
+  <meta property="og:image" content="<%= yield(:social_img).present? && yield(:social_img) || "http://www.sidestage.com" %>" />
   <meta property="og:url" content="<%= request.url %>" />
   <meta property="og:description" content="<%= yield(:social_desc).present? && yield(:social_desc) || "Instantly book a musician to play at your party or event." %>" />
 

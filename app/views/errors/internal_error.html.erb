@@ -1,6 +1,18 @@
+<% if false %>
 <div class="dialog">
   <div>
     <h1>We're sorry, but something went wrong.</h1>
   </div>
   <p>If you are the application owner check the logs for more information.</p>
+</div>
+<% end %>
+
+<div class="not_found">
+  <h1>Bummer. We couldn't find the page you're looking for. <br> Since you're here, subscribe for our newsletter.</h1>
+
+  <section id="newsletter">
+  	<%= render "mailchimp_subscription", list_id: :newsletter %>
+  </section>
+
+  <p class="go-back"><a href="<%= root_path %>">Or go back to Sidestage</a></p>
 </div>

@@ -1,4 +1,5 @@
 <%= content_for :social_desc, "Check out my Sidestage profile. You can book me to play music at your event" %>
+<%= content_for :social_img, resource.user.avatar_url(:thumb) %>
 
 <div id="artist">
 
@@ -85,29 +86,24 @@
 	              <%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
                   <i class="fa fa-calendar"></i>
               </div>
-  
-              <div class="button">
                   
-                    <% if current_user %>
-                        <% if (pending_deal = current_user.pending_deal_with_profile(resource)).present? %>
-                            <%= link_to t(:"helpers.submit.deal.submit"), "" , class: "btn btn-submit", data: { lightbox: :html, target: "[data-container='pending-deal']" } %>
-                            <div style="display:none;" data-container="pending-deal">
-                                <%= render "account/deals/customer_pending_deal", deal: pending_deal %>
-                            </div>
-                        <% else %>
-                            <%= f.submit class: "btn btn-submit" %>
-                        <% end %>
-                    <% else %>
-                        <%= link_to t(:"helpers.submit.deal.submit"), new_user_registration_path, class: "btn btn-submit" %>
-                    <% end %>
-              </div>
+              <% if current_user %>
+                  <% if (pending_deal = current_user.pending_deal_with_profile(resource)).present? %>
+                      <%= link_to t(:"helpers.submit.deal.submit"), "" , class: "btn", data: { lightbox: :html, target: "[data-container='pending-deal']" } %>
+                      <div style="display:none;" data-container="pending-deal">
+                          <%= render "account/deals/customer_pending_deal", deal: pending_deal %>
+                      </div>
+                  <% else %>
+                      <%= f.submit class: "btn" %>
+                  <% end %>
+              <% else %>
+                  <%= link_to t(:"helpers.submit.deal.submit"), new_user_registration_path, class: "btn" %>
+              <% end %>
           <% end %>
       <% end %>
 
       <% if artist_contactable?(resource.user)  %>
-        <div class="label message-artist">
-          <%= link_to t(:"application.artists.show.message_artist"), link_or_signin(new_account_message_path(receiver_id: resource.user.id, format: :html)), data: { lightbox: "ajax" } %>
-        </div>
+        <%= link_to t(:"application.artists.show.message_artist"), link_or_signin(new_account_message_path(receiver_id: resource.user.id, format: :html)), data: { lightbox: "ajax" }, class: "btn btn-white" %>
       <% end %>
     </div>
 
