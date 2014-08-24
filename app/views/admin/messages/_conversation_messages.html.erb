@@ -6,12 +6,11 @@
                 <h4 class="modal-title" id="myModalLabel">Conversation between Artist and Customer</h4>
             </div>
             <div class="modal-body">
-                <table class="table table-condensed">
+                <table class="table table-condensed conversation-messages">
                     <% collection.each do |message| %>
                         <tr>
-                            <td><%= l message.created_at, format: :message %></td>
-                            <td><%= message.sender.profile_name %></td>
-                            <td><%= message_body(message) %></td>
+                            <td><%= l message.created_at, format: :conversation_message %></td>
+                            <td><%= message.sender.profile_name %>: <%= message_body(message) %></td>
                         </tr>
                     <% end %>
                 </table>

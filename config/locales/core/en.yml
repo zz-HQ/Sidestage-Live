@@ -68,6 +68,7 @@ en:
       event_date: "%A, %B %d"
       conversation: "%A, %-d %B, %Y"
       message: "%b %-d"
+      conversation_message: "%a., %b %d, %H:%M"
       review: "%B %Y"
     am: "AM"
     pm: "PM"
