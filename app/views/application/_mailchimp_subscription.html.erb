@@ -1,4 +1,4 @@
-<% list_id ||= :general %>
+<% list_id ||= :newsletter %>
 <div class="subscription-form">
     <%= simple_form_for :mailchimp_subscriber, url: create_subscriber_path, remote: true do |f| %>
         <%= f.input :email, as: :string, label: false, wrapper: false %>
