@@ -1,3 +1,18 @@
+#profile,
+#personals
+	+outer-container
+
+	aside
+		+span-columns(2)
+
+		header
+			+bigger-font
+			font-weight: 300
+
+	.content
+		+span-columns(6)
+
+
 #personals
 	.content
 		.avatar-uploader
@@ -43,7 +58,7 @@
 					left: 19px
 
 		.payment-form
-			+span-columns(5 of 8)
+			+span-columns(8)
 
 			.btn
 				display: inline-block
@@ -87,12 +102,23 @@
 					+omega
 					margin-top: 31px
 
+		&.payment
+			width: 55%
+
+			.secure-text
+				+span-columns(8)
+				margin-top: 50px
+
 	p
 		margin-bottom: 28px
+		
+		&.subtitle
+			font-size: 16px
 
-// PAYMENT FORM ---
-// ----------------
-.payment-form
 
-	.btn
-		display: inline-block
+
+
+
+
+
+

@@ -43,12 +43,12 @@
 
 			<div class="input number">
 			<label>How many people are coming? (Leave blank if you don't know.)</label>
-			<input type="number" placeholder="100" maxlength="5">
+			<input type="text" pattern="\d*" placeholder="100" maxlength="5">
 			</div>
 
 			<div class="input number">
 			<label>What's your max budget?</label>
-			<input type="number" placeholder="$600" min="10" maxlength="5" required>
+			<input type="text" pattern="\d*" placeholder="$600" min="10" maxlength="5" required>
 			</div>
 
 			<p class="btn btn-blue btn-inline">Next</p>
@@ -70,12 +70,12 @@
 
 	    <div class="input zip">
 				<label>ZIP code</label>
-				<input type="number" placeholder="90046" maxlength="5" required>
+				<input type="text" pattern="\d*" placeholder="90046" maxlength="5" required>
 			</div>
 
 			<div class="input phone">
 				<label>Phone number</label>
-				<input type="number" placeholder="(323) 545-8175" maxlength="12" required>
+				<input type="text" pattern="\d*" placeholder="(323) 545-8175" maxlength="12" required>
 			</div>
 
 			<div class="input name">

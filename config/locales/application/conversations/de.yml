@@ -6,7 +6,7 @@ en:
       show:
         conversation_with: Conversation with
         security_hint_title: Your Transaction is Secure
-        security_hint_body_html: "We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a href='mailto:support@sidestage.com'>support@sidestage.com</a>." 
+        security_hint_body_html: "We keep messaging on the Sidestage platform, because that allows us to provide you the best customer service and ensures the security of your transaction. If you have any questions, please drop us a line at <a class='link' href='mailto:support@sidestage.com'>support@sidestage.com</a>." 
     offers:
       new:
         surcharge_label_html: "The customer's price <br> (including our fees) is <span class='surcharged_price' data-container='surcharged-price'>%{surcharged_price}</span>." 
