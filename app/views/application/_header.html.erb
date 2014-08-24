@@ -3,7 +3,7 @@
   <div class="wrap">
     <%# TODO: Change to root_path when splash page goes offline!!! %>
     <h1 id="logo">
-      <%= link_to root_path do %>
+      <%= link_to params[:location].present? ? artists_path(location: params[:location]) : root_path do %>
         <%= image_tag "sprite/sidestage-logo.png" %>
       <% end %>
     </h1>
@@ -16,6 +16,7 @@
             <%= nice_select((select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: t(:"helpers.select.prompts.choose_city"), class: "submit-on-change"), small: true) %>
         </form>    
     </div>
+    
     <% unless Rails.env.production? %>
     <section id="match-me">
       <%= link_to "Match me", match_me_path %>

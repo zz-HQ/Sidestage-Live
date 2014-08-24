@@ -52,7 +52,7 @@ class Deal < ActiveRecord::Base
   
   after_save :create_system_message
   
-  after_create :notify_admin
+  after_create :create_user_message, :notify_admin
   
   after_rollback :ensure_stripe_charge!, on: :update
   
@@ -186,6 +186,13 @@ class Deal < ActiveRecord::Base
       if message.save
         notify_partner
       end
+    end
+  end
+  
+  def create_user_message
+    if body.present?
+      message = Message.new body: body, current_user: current_user, receiver_id: partner_id, conversation_id: conversation_id
+      message.save
     end
   end
   

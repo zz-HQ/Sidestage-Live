@@ -52,6 +52,7 @@ en:
           body: Write your message here...
       deal:
         start_at: Event date
+        body: "Add a message to the artist, such as special requests or the location of the event."
       credit_card:
         number: Card number
         exp_month: Exp month

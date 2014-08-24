@@ -69,6 +69,7 @@ Airmusic::Application.routes.draw do
       resources :bookings, only: [:index]
       resources :offers, only: [:create, :new]
       resources :deals, except: [:destroy] do
+        post :double_check, on: :collection
         member do
           put :cancel
           put :confirm

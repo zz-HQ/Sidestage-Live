@@ -31,12 +31,17 @@ class Account::DealsController < Account::ResourcesController
   def create
     create! do |success, failure|
       success.html{ 
-        redirect_to account_conversation_path(resource.conversation), notice: t(:"flash.account.deals.create.notice") 
+        redirect_to artist_path(resource.artist), notice: t(:"flash.account.deals.create.notice") 
       }
       success.js{
         flash[:notice] = t(:"flash.account.deals.create.notice")
       }
     end
+  end
+  
+  def double_check
+    build_resource
+    resource.valid?
   end
   
   def offer
@@ -89,7 +94,7 @@ class Account::DealsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:start_at, :price, :profile_id, :stripe_token])
+    params.permit(deal: [:start_at, :price, :body, :profile_id, :stripe_token])
   end
     
   #
