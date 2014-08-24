@@ -12,7 +12,6 @@ class MailchimpSubscriber
   attr_accessor :email, :name, :list
   SUBSCRIBER_LIST = {
     newsletter: Rails.application.secrets.mailchimp_newsletter_id,
-    general: Rails.application.secrets.mailchimp_list_id,
     artist: Rails.application.secrets.mailchimp_artist_id,
     customer: Rails.application.secrets.mailchimp_customer_id,
     press: Rails.application.secrets.mailchimp_press_id
@@ -53,7 +52,7 @@ class MailchimpSubscriber
   private
   
   def list_id
-    SUBSCRIBER_LIST[list.to_s.to_sym] || SUBSCRIBER_LIST[:general]
+    SUBSCRIBER_LIST[list.to_s.to_sym] || SUBSCRIBER_LIST[:newsletter]
   end
   
 end

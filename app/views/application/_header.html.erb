@@ -16,10 +16,11 @@
             <%= nice_select((select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: t(:"helpers.select.prompts.choose_city"), class: "submit-on-change"), small: true) %>
         </form>    
     </div>
-
+    <% unless Rails.env.production? %>
     <section id="match-me">
       <%= link_to "Match me", match_me_path %>
     </section>
+    <% end %>
 
     <nav id="main-nav">
 
