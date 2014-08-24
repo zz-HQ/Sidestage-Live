@@ -32,7 +32,7 @@
 				left: 140px
 
 		form
-			width: 350px
+			+span-columns(8)
 			margin-bottom: 30px
 
 		.credit-card-info
@@ -58,24 +58,21 @@
 					left: 19px
 
 		.payment-form
-			+span-columns(8)
+			+span-columns(4)
 
-			.btn
-				display: inline-block
-
-			.cvc
-				width: 70px
+			input,
+			.nice-select
+				margin-bottom: 7px
 
 			.nice-select
-				float: left
-				width: 35%
-				margin-right: 16px
+				+span-columns(4)
+				+omega(2)
 
 			.footnote
 				margin-top: 50px
 
 			.btns
-				float: left
+				+span-columns(8)
 
 				a
 					display: block
@@ -107,13 +104,13 @@
 
 			.secure-text
 				+span-columns(8)
-				margin-top: 50px
 
 	p
 		margin-bottom: 28px
 		
 		&.subtitle
 			font-size: 16px
+			+span-columns(5)
 
 
 

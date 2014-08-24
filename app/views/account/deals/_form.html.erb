@@ -15,6 +15,7 @@
 		<div class="body">
 			<%= simple_form_for resource, url: account_deals_path(resource), authenticity_token: true, data: { form: current_user.paymentable? ? nil : :payment }, html: { id: "deal-request" } do |f| %>
 				<div class="form-inputs paymentform">
+							<p>Review booking details</p>
 							<div class="date">
 								<%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
 								<i class="fa fa-calendar"></i>
