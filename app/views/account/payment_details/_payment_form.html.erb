@@ -1,7 +1,7 @@
 <% unless current_user.paymentable? %>
     <div class="payment-inputs">
         <% unless controller_name == "personals" %>
-    	    <h4><%= t(:"application.personals.payment_details.credit_card_form_title") %></h4>
+    	    <p><%= t(:"application.personals.payment_details.credit_card_form_title") %></p>
     	<% end %>
     	<div class="payment-status" style="display:none;"><%= t(:"application.deals.new.verification_message") %></div>
     	<div class="payment-errors" style="display:none;"></div>

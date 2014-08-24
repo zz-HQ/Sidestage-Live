@@ -1,33 +1,40 @@
-<div class="devise-lightbox">
+<div class="devise-lightbox payment_form">
+	<div class="payment-form">
 
-	<%# unless resource.customer.paymentable? %>
-		<div class="photo">
-			<%= image_tag resource.artist.avatar.url(:thumb), class: "avatar" %>
-		</div>
+		<%# unless resource.customer.paymentable? %>
+			<header>
+				<div class="photo">
+					<%= image_tag resource.artist.avatar.url(:thumb), class: "avatar" %>
+				</div>
+				<div class="body">
+					<strong><%= resource.artist.profile.name %></strong>
+				</div>
+			</header>
+		<%# end %>
+		
 		<div class="body">
-			<span><%= t(:"application.deals.new.title") %> <strong><%= resource.artist.profile.name %></strong></span>
+			<%= simple_form_for resource, url: account_deals_path(resource), authenticity_token: true, data: { form: current_user.paymentable? ? nil : :payment }, html: { id: "deal-request" } do |f| %>
+				<div class="form-inputs paymentform">
+							<div class="date">
+								<%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
+								<i class="fa fa-calendar"></i>
+							</div>
+							<%= f.input :body, label: false %>
+		    	    <%= f.input :profile_id, as: :hidden %>
+		    	    <%= f.input :stripe_token, as: :hidden %>
+		    	    <div class="bottom">
+		    	    	<%= render "account/payment_details/payment_form" %>
+			          <div class="price">
+			          	<p><%= t(:"application.conversations.deals.new.total_price") %>: <%= localized_price(resource.price_with_surcharge, resource.currency) %></p>
+			          </div>
+		    	    </div>
+		          <div class="btns">
+		          	<%= f.submit class: "btn btn-center" %>
+		          </div>
+		    </div>
+			<% end %>
+			<p class="footnote"><%= t(:"application.deals.new.foot_note_html") %></p>
 		</div>
-	<%# end %>
-	    
-	<%= simple_form_for resource, url: account_deals_path(resource), authenticity_token: true, data: { form: current_user.paymentable? ? nil : :payment }, html: { id: "deal-request" } do |f| %>
-		<div class="form-inputs payment-form">
-			<div class="date">
-				<%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
-				<i class="fa fa-calendar"></i>
-			</div>
-			<div>
-			    <%= f.input :body, label: false %>
-			</div>    
-    	    <%= f.input :profile_id, as: :hidden %>
-    	    <%= f.input :stripe_token, as: :hidden %>
-            <%= render "account/payment_details/payment_form" %>
-            <div class="price">
-            <h4><%= t(:"application.conversations.deals.new.total_price") %>: <%= localized_price(resource.price_with_surcharge, resource.currency) %></h4>
-            </div>
-            <div class="btns">
-            <%= f.submit class: "btn" %>
-            </div>
-        </div>
-	<% end %>
-	<div class="label"><%= t(:"application.deals.new.foot_note_html") %></div>
+
+	</div>
 </div>

@@ -231,3 +231,48 @@
 
     .btn
       +span-columns(8)
+
+.devise-lightbox .payment-form
+  border: 1px solid $border-color
+  +span-columns(8)
+
+  header
+    +outer-container
+    margin-bottom: 0px
+    border-bottom: 1px solid $border-color
+    padding: 15px 35px
+
+    .photo
+      +span-columns(1 of 7)
+
+    .body
+      +span-columns(6 of 7)
+      +omega
+      padding-top: 9px
+      font-size: 16px
+      font-weight: 400
+      padding-left: 5px
+
+      a
+        font-size: inherit
+
+        &:hover
+          color: inherit
+
+  > .body
+    +span-columns(8)
+    padding: 15px 35px
+
+    .date
+      +span-columns(5)
+
+    .price,
+    .payment-inputs
+      > p
+        font-size: 16px
+        margin-bottom: 10px
+
+
+
+
+

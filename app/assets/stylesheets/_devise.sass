@@ -40,6 +40,7 @@
 
     .form-inputs
       margin: 10px 0 20px
+      +span-columns(8)
 
       label
         text-transform: none
@@ -127,18 +128,18 @@
     color: $text-color-light
     +span-columns(8)
 
-  .date,
   .payment-inputs,
   .price
     +span-columns(8)
-    border-bottom: 1px solid $border-color
-  
-  .payment-inputs,
-  .price
     padding-top: 15px
 
     h4
       padding: 0 0 10px
+  
+  .bottom
+    +span-columns(8)
+    border-top: 1px solid $border-color
+    border-bottom: 1px solid $border-color
 
   .desc
     +span-columns(8)
@@ -159,7 +160,7 @@
       display: block
 
   // NEW PRICE
-  &.edit_offer
+  &.edit_offer,
     padding: 0
     width: 264px
 
@@ -183,5 +184,8 @@
 
   .light.center
     +span-columns(8)
+
+  &.payment_form
+    padding: 0
 
 
