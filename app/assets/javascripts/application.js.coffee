@@ -159,6 +159,33 @@ $(document).on 'click', '.match-me-form .act', ->
     $(@).find(':checkbox').prop('checked', true)
     $(@).addClass('active')
 
+  match_me_valid()
+
+################ MATCH ME ALLES
+$(document).on 'keyup', '.match-me-form form :input', ->
+  match_me_valid()
+
+match_me_valid = ->
+  unless $('#kind_event :input').val() == ""
+    unless $('#genres :checkbox').is('checked')
+      unless $('#amount_budget :input').val() == ""
+        $("#btn-next").removeClass("disabled").addClass("next")
+      else
+        $("#btn-next").addClass("disabled").removeClass("next")
+    else
+      $("#btn-next").addClass("disabled").removeClass("next")
+  else
+    $("#btn-next").addClass("disabled").removeClass("next")
+
+$(document).on "click", ".next", ->
+  $("section.what").fadeOut()
+  $("section.when-where").fadeIn()
+
+$(document).on "click", "#btn-fake", ->
+  $("section.when-where").fadeOut()
+  $("section.thanks").fadeIn()
+
+
 
 
 # FB LIKE BUTTON to work with turbolinks

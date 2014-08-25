@@ -1,5 +1,9 @@
-<h1><%= t(:"application.match_me.thanks.title") %></h1>
-<p>
-    <%= t(:"application.match_me.thanks.desc") %>
-</p>    
-<%= link_to t(:"application.links.view_profiles"), root_path, class: "bnt btn-blue" %>
+<section class="thanks">
+	<header>
+		<h4><%= t(:"application.match_me.thanks.title") %></h4>
+		<p><%= t(:"application.match_me.thanks.desc") %></p>
+	</header>
+	<div class="btns">
+		<%= link_to t(:"application.links.view_profiles"), root_path, class: "btn btn-blue btn-center btn-inline" %>
+	</div>
+</section>
