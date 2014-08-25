@@ -193,8 +193,8 @@ loadFacebookSDK = ->
 
 initializeFacebookSDK = ->
   FB.init
-    appId     : 'YOUR_APP_ID'
-    channelUrl: '//WWW.YOUR_DOMAIN.COM/channel.html'
+    appId     : '1438427953107579'
+    channelUrl: '//www.sidestage.com/channel.html'
     status    : true
     cookie    : true
     xfbml     : true
