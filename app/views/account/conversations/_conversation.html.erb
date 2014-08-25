@@ -5,12 +5,10 @@
 		</div>
 		<div class="body">
 			<h3><%= conversation.negotiator_for(current_user).profile_name %> <span><%= l conversation.created_at, format: :conversation %></span></h3>
-			<div>
-				<% if (message = conversation.messages.last).present? && message.sender_id == current_user.id %>
-				  <i class="fa fa-reply"></i>
-				<% end %>
-				<%= simple_format(read_more(message ? (strip_tags message_body(message)) : (strip_tags conversation.body), 185)) %>
-			</div>
+			<% if (message = conversation.messages.last).present? && message.sender_id == current_user.id %>
+			  <i class="fa fa-reply"></i>
+			<% end %>
+			<%= simple_format(read_more(message ? (strip_tags message_body(message)) : (strip_tags conversation.body), 185)) %>
 		</div>
 	<% end %>
 

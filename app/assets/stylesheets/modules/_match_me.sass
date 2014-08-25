@@ -1,0 +1,70 @@
+.match-me-form
+	padding: 0 100px
+
+	label
+		margin-top: 10px
+
+	.labels
+		+outer-container
+
+		.act
+			+span-columns(1 of 3)
+			+omega(3n)
+			margin-bottom: 20px
+
+			input[type="checkbox"]
+				display: none
+
+			.label
+				text-align: center
+
+	.input
+		+span-columns(8)
+
+		&.event input
+			width: 350px
+
+		&.number input
+			width: 80px
+
+		&.event-date .date
+			width: 200px
+
+		&.zip
+			+span-columns(2)
+
+		&.phone
+			+span-columns(6)
+			+omega
+
+			input
+				width: 250px
+
+		&.name,
+		&.email
+			+span-columns(3)
+
+		&.email
+			+span-columns(5)
+			+omega
+
+	.btn
+		margin-top: 30px
+
+	section.what
+		display: block
+
+	section.when-where
+		display: none
+
+	section.thanks
+		text-align: center
+		display: none
+
+
+
+
+
+
+
+
