@@ -139,25 +139,25 @@ en:
     deals:
       requested:
         subject: "New booking request"
-        body_html: "You have a new booking request from %{partner_name}. Please <a style='padding: 20px 25px 18px; background: #3e8ae5; color: #fff; font-weight: 600; margin-top: 30px; font-size: 15px; border-radius: 4px; display: inline-block; text-decoration: none;' href='%{deal_path}'>log in to Sidestage</a> to review it."
+        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>You have a new booking request from %{partner_name}. Please <a href='%{deal_path}'>log in to Sidestage</a> to review it.</p>"
       proposed:
         subject: "New booking request"
-        body_html: "You have a new booking request from %{partner_name}. Please <a style='padding: 20px 25px 18px; background: #3e8ae5; color: #fff; font-weight: 600; margin-top: 30px; font-size: 15px; border-radius: 4px; display: inline-block; text-decoration: none;' href='%{deal_path}'>log in to Sidestage</a> to review it."
+        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>You have a new booking request from %{partner_name}. Please <a href='%{deal_path}'>log in to Sidestage</a> to review it.</p>"
       offered:
         subject: "Special Offer From %{partner_name}."
-        body_html: "%{partner_name} sent you a special offer. <a style='padding: 20px 25px 18px; background: #3e8ae5; color: #fff; font-weight: 600; margin-top: 30px; font-size: 15px; border-radius: 4px; display: inline-block; text-decoration: none;' href='%{deal_path}'>Log in to Sidestage</a> to view it."
+        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>%{partner_name} sent you a special offer. <a href='%{deal_path}'>Log in to Sidestage</a> to view it.</p>"
       cancelled:
         subject: "Booking Cancelled"
-        body_html: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
+        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking request with %{partner_name} for %{event_date} has been cancelled.</p>"
       declined:
         subject: "Booking request cancelled"
-        body_html: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
+        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking request with %{partner_name} for %{event_date} has been cancelled.</p>"
       accepted:
         subject: "Booking accepted"
-        body_html: "Your booking with %{partner_name} is confirmed for %{event_date}."
+        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking with %{partner_name} is confirmed for %{event_date}.</p>"
       confirmed:
         subject: "Booking confirmed"
-        body_html: "Your booking with %{partner_name} is confirmed for %{event_date}."
+        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking with %{partner_name} is confirmed for %{event_date}.</p>"
       rejected:
         subject: "Booking cancelled"
-        body_html: "Your booking with %{partner_name} for %{event_date} has been cancelled."
+        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking with %{partner_name} for %{event_date} has been cancelled.</p>"
