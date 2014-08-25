@@ -77,6 +77,23 @@ describe Account::DealsController, :type => :controller do
     
   end
   
+  
+  context "Actions" do
+    
+    it "double checks" do
+      customer = FactoryGirl.create(:quentin)
+      profile = FactoryGirl.create(:profile)
+    
+      sign_in(customer)
+      post :double_check, deal: { profile_id: profile.id, start_at: Time.now }, format: "js"
+    
+      expect(response).to render_template("double_check")
+      expect(response).to render_template(partial: "_form")
+    end
+    
+  end
+  
+  
   context "Payment" do
     
       describe "payment info missing" do
