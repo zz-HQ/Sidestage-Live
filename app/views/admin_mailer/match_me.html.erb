@@ -1,0 +1,3 @@
+<% MatchMe::TRAVERSABLE_ATTRIBUTES.each do |attr| %>
+    <p><%= MatchMe.human_attribute_name(attr) %>: <%= @match_me.send(attr) %></p>
+<% end %>

@@ -14,6 +14,13 @@ Airmusic::Application.routes.draw do
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
 
+    resources :match_mes, path: 'match_me' do
+      collection do
+        get :thanks
+        match 'location', to: 'match_mes#location', via: :all  
+      end
+    end
+    
     resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
@@ -98,7 +105,6 @@ Airmusic::Application.routes.draw do
     get 'terms-of-service', to: "pages#terms", as: "terms"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
     get 'jobs', to: "pages#jobs", as: "jobs"
-    get 'match_me', to: "pages#match_me", as: "match_me"
     get 'index', to: "home#index", as: "homepage"    
     get 'home', to: "home#homepage", as: "home"    
     put :accept_cookies, to: "home#accept_cookies", as: "accept_cookies"

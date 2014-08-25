@@ -1,0 +1,48 @@
+<div class="wrap page">
+
+	<div class="match-me-form">
+		<header>
+			<h4><%= t(:"application.match_me.location.title") %></h4>
+			<p><%= t(:"application.match_me.location.desc") %></p>
+		</header>
+	    <%= simple_form_for resource, url: location_match_mes_path do |f| %>
+	        <%= f.input :genre, as: :hidden %>
+	        <%= f.input :event, as: :hidden %>
+	        <%= f.input :total_visitors, as: :hidden %>	
+            <%= f.input :max_budget, as: :hidden %>	
+		    <div class="form-inputs">
+
+    			<div class="input event-date">
+    			    <%= f.label :event_date %>
+    				<div class="date">
+    				    <%= f.input :event_date, as: :string, input_html: { class: "date-picker" }, label: false %>
+    		            <i class="fa fa-calendar"></i>
+    		        </div>
+    		    </div>
+    		    
+    	        <div class="input zip">
+    	            <%= f.input :zip_code, maxlength: "5", pattern: "\d*" %>
+    			</div>
+
+    			<div class="input phone">
+    			    <%= f.input :phone_number, pattern: "\d*" %>
+    			</div>
+
+    			<div class="input name">
+    			    <%= f.input :name %>
+    			</div>
+
+    			<div class="input email">
+    			    <%= f.input :email %>
+    			</div>
+
+    			<div class="input details">
+    			    <%= f.input :comment, as: :text %>
+    			</div>
+    			
+			    <%= f.submit t(:"helpers.submit.match_me.location"), class: "btn btn-blue btn-inline" %>
+	        
+	        </div>
+        <% end %>
+    </div>
+</div>

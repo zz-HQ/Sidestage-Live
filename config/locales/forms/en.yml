@@ -29,6 +29,15 @@ en:
         avatar: Select Profile picture
       propose:
         price: You'll make  
+      match_me:
+        genre: "What are you looking for? (Select up to three)"  
+        event: "What kind of event is it?"
+        total_visitors: "How many people are coming? (Leave blank if you don't know.)"
+        max_budget: "What's your max budget?"
+        event_date: "Event date (you can change it later)"
+        zip_code: Zip code
+        phone_number: Phone number
+        comment: "Anything else you'd like the musician to know?"
     hints:
       profile:
         name: "Your real name or Madonna. Whatever name people yell when you're on stage."
@@ -62,6 +71,17 @@ en:
         soundcloud: Click here to paste SoundCloud 'Embed' code
       mailchimp_subscriber:
         email: Email Address
+      match_me:
+        event: "e.g. Wedding, birthday party"
+        total_visitors: 100
+        max_budget: $600
+        zip_code: 90046
+        phone_number: (323) 545-8175
+        name: Name
+        email: who@where.com
+        comment: "The more detail you provide about your event, the better we can match you."
+        
+          
   helpers:
     submit:
       create: 'Create %{model}'
@@ -96,3 +116,6 @@ en:
         create: Save
         update: Save
         submit_avatar: Upload
+      match_me:
+        create: Next  
+        location: Get Matched

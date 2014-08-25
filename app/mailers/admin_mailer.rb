@@ -56,6 +56,13 @@ class AdminMailer < ActionMailer::Base
     end
   end
   
+  def match_me(match_me)
+    @match_me = match_me
+    mail(subject: "Sidestage: Match Me") do |format|
+      format.html
+    end
+  end
+  
   #
   # Protected Methods
   # ---------------------------------------------------------------------------------------

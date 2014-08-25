@@ -60,8 +60,8 @@ class Account::DealsController < Account::ResourcesController
     resource.confirm!
     respond_to do |format|
       format.html{
-        if resource.errors.include?(:customer_id)
-          flash[:error] = resource.errors.messages[:customer_id].first
+        if resource.errors.present?
+          flash[:error] = resource.errors.full_messages.first
           redirect_to payment_details_account_personal_path
         else
           flash[:notice] = t(:"flash.account.deals.confirm.notice")

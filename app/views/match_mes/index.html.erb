@@ -1,0 +1,54 @@
+<div class="wrap page">
+
+	<div class="match-me-form">
+		<header>
+			<h4><%= MatchMe.model_name.human %></h4>
+			<p><%= t(:"application.match_me.index.title") %></p>
+		</header>
+
+	    <%= simple_form_for resource do |f| %>
+		    <div class="form-inputs">
+
+    			<div class="input event">
+    				<%= f.input :event %>
+    			</div>
+
+    			<div class="input">
+    				<%= f.label :genre %>
+    				<div class="labels">
+    					<div class="act">
+    						<input type="checkbox" name="match_me[genre][]" value="DJ">
+    						<div class="label">DJ</div>
+    					</div>
+    					<div class="act">
+    						<input type="checkbox" name="match_me[genre][]" value="Band">
+    						<div class="label">Band</div>
+    					</div>
+    					<div class="act">
+    						<input type="checkbox" name="match_me[genre][]" value="Classical">
+    						<div class="label">Classical</div>
+    					</div>
+    					<div class="act">
+    						<input type="checkbox" name="match_me[genre][]" value="Piano Player">
+    						<div class="label">Piano Player</div>
+    					</div>
+    					<div class="act">
+    						<input type="checkbox" name="match_me[genre][]" value="I'm not sure">
+    						<div class="label">I'm not sure</div>
+    					</div>
+    				</div>
+    			</div>			
+
+    			<div class="input number">
+    			    <%= f.input :total_visitors, pattern: "\d*", maxlength: "5" %>
+    			</div>
+
+    			<div class="input number">
+    			    <%= f.input :max_budget, pattern: "\d*", min: "10", maxlength: "5" %>
+    			</div>
+
+			    <%= f.submit class: "btn btn-blue btn-inline" %>
+	        </div>
+        <% end %>
+    </div>
+</div>
