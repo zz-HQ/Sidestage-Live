@@ -3,7 +3,7 @@
     	<div class="sidebar"></div>
     </aside>	
 
-    <div class="content">
+    <div class="content account">
         <header><%= t(:"application.personals.avatar.title") %><p><%= t(:"application.personals.avatar.desc") %></p></header>
 
         <%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>

@@ -15,6 +15,14 @@
 
 #personals
 	.content
+
+		p
+			margin-bottom: 28px
+			
+			&.subtitle
+				font-size: 16px
+				+span-columns(5)
+
 		.avatar-uploader
 			position: relative
 			margin-bottom: 20px
@@ -85,8 +93,14 @@
 		&.mobile-numbers
 			width: 45%
 
+			p.subtitle
+				+span-columns(8)
+
 			a.delete-link
 				margin-left: 40px
+
+			.user_as_mobile_number_mobile_nr
+				width: 250px
 
 			form.confirm-mobile-num-form
 				+span-columns(6)
@@ -97,7 +111,7 @@
 				.btn
 					+span-columns(3)
 					+omega
-					margin-top: 31px
+					margin-top: 29px
 
 		&.payment
 			width: 55%
@@ -105,12 +119,9 @@
 			.secure-text
 				+span-columns(8)
 
-	p
-		margin-bottom: 28px
-		
-		&.subtitle
-			font-size: 16px
-			+span-columns(5)
+		&.account,
+		&.password
+			width: 35%
 
 
 
