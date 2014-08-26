@@ -1,3 +1,3 @@
-<p>Hey <%= @user.name.split(' ').first %>, thanks for joining Sidestage. <br/> To finishing signing up, we need to make sure we got your email right.</p>
+<p style="color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;">Hey <%= @user.name.split(' ').first %>, thanks for joining Sidestage. <br/> To finishing signing up, we need to make sure we got your email right.</p>
 
 <a style="padding: 20px 25px 18px; background: #3e8ae5; color: #fff; font-weight: 600; margin-top: 30px; font-size: 15px; border-radius: 4px; display: inline-block; text-decoration: none;" href="<%= confirmation_url(@resource, confirmation_token: @token) %>">Confirm Your Email</a>
