@@ -1,7 +1,7 @@
 <div id="personals" class="container">
     <%= render "sidebar" %>
 
-    <div class="content">
+    <div class="content bank">
         <header><%= t(:"application.profiles.payment.title_html") %></header>
         <%= simple_form_for resource.profile, url: bank_details_account_personal_path do |f| %>
             <%= f.input :iban, label: false, placeholder: "IBAN" %>
