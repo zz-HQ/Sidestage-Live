@@ -1,0 +1,19 @@
+<div class="picture-viewer">
+  <div class="thumbs">
+    <% resource.pictures.latest.each do |pic| %>
+      <div id="<%= dom_id(pic) %>" class="thumb" data-review="<%= pic.picture.url(:preview) %>">
+        <%= image_tag pic.picture.url(:thumb) %>
+        <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, account_profile_picture_path(pic.imageable, pic), method: :delete, data: {remote: true, confirm: "#{t(:"helpers.confirm.sure")}"}, class: 'delete' %>
+      </div>
+    <% end %>
+
+    <div class="thumb add-photo-btn"><span id="fileupload-button">+</span></div>
+    <%= form_tag(account_profile_pictures_path(resource), multipart: true, id: "new_picture", method: :post) do %>
+      <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true %>
+    <% end %>
+    <div id="file-upload-status" class="thumb"><div class="loader"></div> <span class="value">0</span> left</div>
+  </div>
+  <div class="picture">
+    <img>
+  </div>
+</div>

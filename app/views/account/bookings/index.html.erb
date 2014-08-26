@@ -8,5 +8,14 @@
 		<% else %>
             <p><%= t(:"application.account.bookings.index.empty") %></p>
 		<% end %>
+		<% if current_user.artist? %>
+			<section class="share">
+				<p>To increase your visibility, and to get more booking requests, share your Sidestage profile on Facebook and Twitter.</p>
+				<div class="btns">
+					<%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), "http://www.facebook.com/sharer/sharer.php?u=#{artist_url(current_user.profile)}", class: "btn btn-facebook btn-inline" %>
+					<%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), "https://twitter.com/intent/tweet?text=Checkout%20my%20@sidestagehq%20artist%20profile%20and%20book%20me%20for%20an%20event&url=#{artist_url(current_user.profile)}", class: "btn btn-inline btn-twitter" %>
+				</div>
+			</section>
+		<% end %>
 	</div>
 </div>

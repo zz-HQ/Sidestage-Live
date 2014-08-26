@@ -1,1 +1,1 @@
-$("#<%= dom_id(resource) %>").remove();
+$("#picture-slider").html("<%= j render partial: 'account/pictures/pictures', locals: {resource: resource.imageable} %>");

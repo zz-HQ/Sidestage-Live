@@ -1,6 +1,7 @@
 $blue-btn: #4A90E2
 $red-btn: #FF364F
 $btn-facebook-color: #3b5998
+$btn-twitter-color: #4099FF
 $btn-hover-darken-percentage: 10%
 
 .btn
@@ -30,6 +31,12 @@ $btn-hover-darken-percentage: 10%
 
     &:hover
       background-color: darken($btn-facebook-color, 10%) !important
+
+  &.btn-twitter
+    background-color: $btn-twitter-color !important
+
+    &:hover
+      background-color: darken($btn-twitter-color, 10%) !important
 
   &.disabled
     background-color: lighten($red-btn, 27%) !important
