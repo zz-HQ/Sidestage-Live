@@ -8,5 +8,6 @@
     	<%= text_field_tag nil, nil, data: { stripe: :number }, placeholder: "#{t(:"simple_form.placeholders.credit_card.number")}", label: false, class: "paymentInput" %>	
     	<%= nice_select(select_tag nil, options_for_select(1..12), data: { stripe: :exp_month }, prompt: "#{t(:"simple_form.placeholders.credit_card.exp_month")}") %>
     	<%= nice_select(select_tag nil, options_for_select(Time.now.year..10.years.from_now.year), data: { stripe: :exp_year }, prompt: "#{t(:"simple_form.placeholders.credit_card.exp_year")}") %>
+        <%= text_field_tag nil, nil, data: { stripe: :cvc }, placeholder: "CCV", label: false, class: "cvc" %> 
     </div>
 <% end %>

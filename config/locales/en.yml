@@ -28,6 +28,7 @@ en:
       credit_card:
         number: Card number
         expiration: Expiration  
+        ccv: CCV
     errors:
       models:
         user/as_mobile_number:
