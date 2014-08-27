@@ -1,3 +1,6 @@
+<%= content_for :social_desc, "You can now book me on Sidestage." %>
+<%= content_for :social_img, resource.user.avatar_url(:thumb) %>
+
 <div id="bookings" class="container">
 	<div class="content">
 		<header><%= t(:"application.account.bookings.index.title") %></header>
@@ -13,7 +16,7 @@
 				<p>To increase your visibility, and to get more booking requests, share your Sidestage profile on Facebook and Twitter.</p>
 				<div class="btns">
 					<%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), "http://www.facebook.com/sharer/sharer.php?u=#{artist_url(current_user.profile)}", class: "btn btn-facebook btn-inline" %>
-					<%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), "https://twitter.com/intent/tweet?text=Checkout%20my%20@sidestagehq%20artist%20profile%20and%20book%20me%20for%20an%20event&url=#{artist_url(current_user.profile)}", class: "btn btn-inline btn-twitter" %>
+					<%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), "https://twitter.com/intent/tweet?text=You%20can%20now%20book%20me%20on%20Sidestage&url=#{artist_url(current_user.profile)}&via=sidestagehq", class: "btn btn-inline btn-twitter" %>
 				</div>
 			</section>
 		<% end %>
