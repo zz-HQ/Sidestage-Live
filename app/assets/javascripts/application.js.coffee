@@ -27,11 +27,11 @@ App = window.App
 
 App.init = ->
   $('.about').expander({
-    slicePoint:       300
-    expandPrefix:     '... ' # default is '... '
-    expandText:       'read more' # default is 'read more'
-    userCollapseText: '[^]'
-    expandEffect: 'slideDown'
+    slicePoint:       300,
+    expandPrefix:     '... ',
+    expandText:       'read more',
+    userCollapseText: '[^]',
+    expandEffect: 'slideDown',
     collapseEffect: 'slideUp'
   })
   $('.nice-select').niceSelect()

@@ -25,4 +25,3 @@ $(document).on 'ready page:load page:restore', ->
 
 $(document).on 'click', '#fileupload-button', (e) ->
   e.preventDefault()
-  $('#file').trigger 'click'
