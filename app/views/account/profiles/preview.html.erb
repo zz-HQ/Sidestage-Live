@@ -3,6 +3,9 @@
     	<div class="wrap">
     		<%= link_to t(:"application.links.edit"), basics_account_profile_path(resource), class: "btn btn-default" %>
     		<%= link_to t(:"application.links.publish.toggle_#{resource.published?}"), toggle_account_profile_path(resource), method: :put, class: "btn btn-publish" %>
+    	    <% unless current_user.mobile_nr_confirmed? || resource.published? %>
+    	        <%= t(:"application.profiles.preview.before_publishing_hint_html", phone_verification_path: account_mobile_numbers_path) %>
+    	    <% end %> 
     	</div>
     </div>            
 <% end %>

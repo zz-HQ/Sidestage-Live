@@ -26,14 +26,14 @@ window.App = {} if window.App == undefined
 App = window.App
 
 App.init = ->
-  $('.about').expander({
-    slicePoint:       300,
-    expandPrefix:     '... ',
-    expandText:       'read more',
-    userCollapseText: '[^]',
-    expandEffect: 'slideDown',
-    collapseEffect: 'slideUp'
-  })
+  # $('.about').expander({
+  #   slicePoint:       300,
+  #   expandPrefix:     '... ',
+  #   expandText:       'read more',
+  #   userCollapseText: '[^]',
+  #   expandEffect: 'slideDown',
+  #   collapseEffect: 'slideUp'
+  # })
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
