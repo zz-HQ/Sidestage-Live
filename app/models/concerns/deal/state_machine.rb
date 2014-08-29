@@ -7,6 +7,7 @@ module Deal::StateMachine
     include AASM
     
     PENDING_STATES = [:requested, :offered, :proposed]
+    CONFIRMED_STATES = [:confirmed, :accepted]  
     VISIBLE_CONVERSATION_STATES = [:requested, :offered, :confirmed, :accepted, :proposed]
     NOTIFY_BOTH_PARTIES_STATES = [:cancelled, :confirmed, :declined, :accepted]
     

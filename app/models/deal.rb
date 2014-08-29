@@ -79,6 +79,7 @@ class Deal < ActiveRecord::Base
   scope :by_user, ->(user_id) { where('artist_id = :user_id OR customer_id = :user_id', user_id: user_id) }
   scope :by_profile, ->(profile_id) { where(profile_id: profile_id) }
   scope :pending, -> { where(state: Deal::PENDING_STATES) }
+  scope :dealed, -> { where(state: Deal::CONFIRMED_STATES) }
   scope :upcoming, -> { order("deals.start_at ASC") }
   scope :past, -> { where("deals.start_at < ?", Time.now) }  
   scope :latest, -> { order("deals.id DESC") }
