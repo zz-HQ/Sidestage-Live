@@ -65,7 +65,9 @@ class Profile < ActiveRecord::Base
     profile.validates :name, length: { maximum: 35 }
     profile.validates :title, :name, :about, presence: true
     profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
+    profile.validate :should_have_avatar
   end
+  
   validates :bic, :iban, presence: true, if: :payment_step?
 
   validate :should_have_youtube, if: :youtube_step?
@@ -76,7 +78,7 @@ class Profile < ActiveRecord::Base
     profile.validates :admin_disabled?, inclusion: [false]
     profile.validate :mobile_nr_must_be_confirmed
     profile.validate :should_have_at_least_one_media_type
-    profile.validate :user_must_have_avatar
+    profile.validate :should_have_avatar
   end
   
   #
@@ -247,8 +249,8 @@ class Profile < ActiveRecord::Base
     errors.add :published, :blank unless mobile_nr_confirmed?
   end
   
-  def user_must_have_avatar
-    errors.add :user, :avatar_blank unless user.avatar.present?
+  def should_have_avatar
+    errors.add :user, :avatar_blank if user.avatar.blank?
   end
   
   def should_have_soundcloud

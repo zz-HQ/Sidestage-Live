@@ -52,6 +52,8 @@ en:
               invalid: Please enter a valid link
             soundcloud:
               invalid: Please enter a valid Embed code
+            user:
+              avatar_blank: Don't leave blank
   helpers:
     select:
       prompts:
