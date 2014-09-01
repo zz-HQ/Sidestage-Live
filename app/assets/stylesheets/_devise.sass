@@ -116,12 +116,28 @@
 
   .new_deal
 
-    .cc-cvc
-      +span-columns(4)
-      +omega
+    // .cc-cvc
+    //   // +span-columns(4)
+    //   // +omega
 
-    .cc-exp
-      +span-columns(4)
+    // .cc-exp
+    //   // +span-columns(4)
+
+    .payment-inputs
+      width: 79% !important
+
+      > p
+        margin-top: 10px
+
+      .cvc
+        width: 70px
+
+      .nice-select
+        float: left
+        width: 35%
+        height: 38px
+        margin-right: 8px
+
 
   .label
     color: $text-color-light
