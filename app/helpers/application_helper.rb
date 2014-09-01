@@ -33,7 +33,7 @@ module ApplicationHelper
   end
   
   def available_locations
-    ["Berlin", "More cities"]
+    ["Berlin","London", "More cities"]
   end
   
   def profile_available_locations
@@ -41,7 +41,7 @@ module ApplicationHelper
       if current_user.artist?
         ["Berlin", "London", "New York City"]
       else
-        ["Berlin", "London", "More cities"]
+        available_locations
       end
     else
       ["Berlin", "London", "New York City", "More cities"]

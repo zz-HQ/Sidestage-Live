@@ -65,9 +65,8 @@ class Profile < ActiveRecord::Base
     profile.validates :name, length: { maximum: 35 }
     profile.validates :title, :name, :about, presence: true
     profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
-    profile.validate :should_have_avatar
+    profile.validate :user_should_have_avatar
   end
-  
   validates :bic, :iban, presence: true, if: :payment_step?
 
   validate :should_have_youtube, if: :youtube_step?
@@ -244,13 +243,16 @@ class Profile < ActiveRecord::Base
   #
   #  
 
+  def should_have_avatar
+    user_should_have_avatar
+  end
+  
+  def user_should_have_avatar
+    errors.add :user, :avatar_blank if user.avatar.blank?
+  end  
   
   def mobile_nr_must_be_confirmed
     errors.add :published, :blank unless mobile_nr_confirmed?
-  end
-  
-  def should_have_avatar
-    errors.add :user, :avatar_blank if user.avatar.blank?
   end
   
   def should_have_soundcloud
