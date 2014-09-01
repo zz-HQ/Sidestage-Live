@@ -111,31 +111,20 @@ $ -> App.init()
 
 # Validation form
 validateDetails = ->
-  expiry = $('.cc-exp').payment('cardExpiryVal')
-  validateExpiry = $.payment.validateCardExpiry(expiry["month"], expiry["year"])
-  validateCVC = $.payment.validateCardCVC($('.cc-cvc').val())
+  #expiry = $('.cc-exp').payment('cardExpiryVal')
+  #console.log expiry
 
-  # if statement on whether the card’s expiry is valid or not
-  if validateExpiry
-  
-    # if the expiry is valid add the identified class
-    $(".cc-exp").addClass "identified"
-  else
-    
-    # remove again if the expiry becomes invalid
-    $(".cc-exp").removeClass "identified"
+  $('input.cc-exp').payment('formatCardExpiry')
+  #console.log $('input.cc-exp').payment('cardExpiryVal')
 
-  # if statement on whether the card’s cvc is valid or not
-  if validateCVC
-    
-    # if the cvc is valid add the identified class
-    $(".cc-cvc").addClass "identified"
-  else
-    
-    # remove again if the cvc becomes invalid
-    $(".cc-cvc").removeClass "identified"
+  # Live validation der expiry
+  #console.log $.payment.validateCardExpiry($('input.cc-exp').payment('cardExpiryVal')["month"], $('input.cc-exp').payment('cardExpiryVal')["year"])
 
-$(document).on "change paste keyup", ".paymentInput", ->
+  $('input[data-stripe=exp_month]').val($('input.cc-exp').payment('cardExpiryVal')["month"])
+  $('input[data-stripe=exp_year]').val($('input.cc-exp').payment('cardExpiryVal')["year"])
+
+
+$(document).on "change paste keyup", ".cc-exp", ->
   validateDetails()
 
 
