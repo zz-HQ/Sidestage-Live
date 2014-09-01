@@ -64,7 +64,7 @@ en:
         body: "Add a message to the artist, such as special requests or the location of the event."
       credit_card:
         number: Card number
-        exp_date: MM / YY
+        expiry: MM / YY
       profile:
         youtube: Click here to paste Youtube URL
         soundcloud: Click here to paste SoundCloud 'Embed' code
