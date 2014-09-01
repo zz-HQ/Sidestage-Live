@@ -15,22 +15,34 @@ stripeListener = (e, message) ->
     e.preventDefault()
     $(".payment-status").show()
     $(".payment-errors").hide()
-    Stripe.card.createToken $("[data-form=payment]"), (status, response) ->
-      if response.error
-        $(".payment-errors").text(response.error.message).show()
-        $(".payment-status").hide()
-        return false
-      else
-        form = $("[data-form=payment]")
-        token = response["id"]
-        form.find("input[name*='stripe_token']").val(token)
-        if(form.attr("data-remote") == "true")
-          $.ajax(method: form.attr("method"), url: form.attr("action"), data: form.serialize())
-        else
-          form.trigger 'submit', ['done']
-      return
+
+    exp_date = $(@).find("[data-stripe='expiry']").val()
+    cardValues = 
+      number: $(@).find("[data-stripe='number']").val()
+      cvc: $(@).find("[data-stripe='cvc']").val()
+      exp_month: exp_date.split("/")[0] || ""
+      exp_year: exp_date.split("/")[1] || ""
+
+    Stripe.card.createToken cardValues, createTokenCallback
     #somehow the following line is needed  
     return false
+
+createTokenCallback = (status, response) ->
+  if response.error
+    $(".payment-errors").text(response.error.message).show()
+    $(".payment-status").hide()
+    return false
+  else
+    form = $("[data-form=payment]")
+    token = response["id"]
+    form.find("input[name*='stripe_token']").val(token)
+    if(form.attr("data-remote") == "true")
+      $.ajax(method: form.attr("method"), url: form.attr("action"), data: form.serialize())
+    else
+      form.trigger 'submit', ['done']
+  return
+  
+
 App.setStripeListener = ->  
   #$('[data-form=payment]').off 'submit', stripeListener
   #$('[data-form=payment]').on 'submit', stripeListener

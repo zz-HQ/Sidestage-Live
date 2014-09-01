@@ -108,37 +108,6 @@ $.ajaxSetup
 $(document).on 'page:update', App.init
 $ -> App.init()
 
-
-# Validation form
-validateDetails = ->
-  expiry = $('.cc-exp').payment('cardExpiryVal')
-  validateExpiry = $.payment.validateCardExpiry(expiry["month"], expiry["year"])
-  validateCVC = $.payment.validateCardCVC($('.cc-cvc').val())
-
-  # if statement on whether the card’s expiry is valid or not
-  if validateExpiry
-  
-    # if the expiry is valid add the identified class
-    $(".cc-exp").addClass "identified"
-  else
-    
-    # remove again if the expiry becomes invalid
-    $(".cc-exp").removeClass "identified"
-
-  # if statement on whether the card’s cvc is valid or not
-  if validateCVC
-    
-    # if the cvc is valid add the identified class
-    $(".cc-cvc").addClass "identified"
-  else
-    
-    # remove again if the cvc becomes invalid
-    $(".cc-cvc").removeClass "identified"
-
-$(document).on "change paste keyup", ".paymentInput", ->
-  validateDetails()
-
-
 #SUBMIT VIA ENTER
 $(document).on 'keydown', '.media-type-form input', (e) ->
   if e.keyCode == 13
