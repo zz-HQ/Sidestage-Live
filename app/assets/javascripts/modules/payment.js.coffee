@@ -16,14 +16,14 @@ stripeListener = (e, message) ->
     $(".payment-status").show()
     $(".payment-errors").hide()
 
-    exp_date = $(@).find("[data-stripe='expiry']").val()
-    cardValues = 
-      number: $(@).find("[data-stripe='number']").val()
-      cvc: $(@).find("[data-stripe='cvc']").val()
-      exp_month: exp_date.split("/")[0] || ""
-      exp_year: exp_date.split("/")[1] || ""
+    # exp_date = $(@).find("[data-stripe='expiry']").val()
+    # cardValues = 
+    #   number: $(@).find("[data-stripe='number']").val()
+    #   cvc: $(@).find("[data-stripe='cvc']").val()
+    #   exp_month: exp_date.split("/")[0] || ""
+    #   exp_year: exp_date.split("/")[1] || ""
 
-    Stripe.card.createToken cardValues, createTokenCallback
+    Stripe.card.createToken $("[data-form=payment]"), createTokenCallback
     #somehow the following line is needed  
     return false
 

@@ -65,6 +65,8 @@ en:
       credit_card:
         number: Card number
         expiry: MM / YY
+        exp_month: Exp month
+        exp_year: Exp year        
       profile:
         youtube: Click here to paste Youtube URL
         soundcloud: Click here to paste SoundCloud 'Embed' code
