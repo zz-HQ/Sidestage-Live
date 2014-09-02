@@ -28,7 +28,7 @@ en:
       credit_card:
         number: Card number
         expiration: Expiration  
-        ccv: CCV
+        cvc: "CVC"
     errors:
       models:
         user/as_mobile_number:

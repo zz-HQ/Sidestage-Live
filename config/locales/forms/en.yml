@@ -35,7 +35,7 @@ en:
         total_visitors: "How many people are coming? (Leave blank if you don't know.)"
         max_budget: "What's your max budget?"
         event_date: "Event date (you can change it later)"
-        zip_code: Zip code
+        zip_code: Post code
         phone_number: Phone number
         comment: "Anything else you'd like the musician to know?"
     hints:
@@ -66,7 +66,8 @@ en:
         number: Card number
         expiry: MM / YY
         exp_month: Exp month
-        exp_year: Exp year        
+        exp_year: Exp year
+        cvc: CVC       
       profile:
         youtube: Click here to paste Youtube URL
         soundcloud: Click here to paste SoundCloud 'Embed' code

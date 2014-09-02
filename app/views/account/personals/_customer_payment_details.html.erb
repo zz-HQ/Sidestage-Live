@@ -34,7 +34,7 @@
             <%= render "account/payment_details/payment_form" %>
             <div class="btns">
                 <%= f.submit value: (action_name == "complete_payment") ? t(:"helpers.submit.save_finish") : t(:"helpers.submit.credit_card.submit"), class: "btn" %>
-                <%= link_to t(:"application.personals.payment_details.skip"), skip_payment_account_personal_path if action_name == "complete_payment" %>
+                <%= link_to t(:"application.personals.payment_details.skip"), skip_payment_account_personal_path, class: 'skip-link' if action_name == "complete_payment" %>
             </div>
         <% end %>
     </div>

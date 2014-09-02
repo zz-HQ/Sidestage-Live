@@ -60,6 +60,7 @@ de:
         number: Card number
         exp_month: Exp month
         exp_year: Exp year
+        cvc: CVC
       profile:
         youtube: Paste YouTube link here
         soundcloud: "<iframe>…"
