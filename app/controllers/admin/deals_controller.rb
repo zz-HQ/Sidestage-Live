@@ -1,6 +1,33 @@
 class Admin::DealsController < Admin::ResourcesController
 
   #
+  # Settings
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  defaults :resource_class => Deal::AsAdmin, :instance_name => 'deal'
+  
+  #
+  # Actions
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  def toggle_payout
+    resource.toggle_payout!
+    respond_to do |format|
+      format.html{ redirect_to :back }
+      format.js{}
+    end
+  end
+  
+
+  #
   # Private
   # ---------------------------------------------------------------------------------------
   #

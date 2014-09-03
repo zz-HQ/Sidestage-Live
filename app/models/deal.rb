@@ -81,13 +81,17 @@ class Deal < ActiveRecord::Base
   scope :pending, -> { where(state: Deal::PENDING_STATES) }
   scope :dealed, -> { where(state: Deal::CONFIRMED_STATES) }
   scope :upcoming, -> { order("deals.start_at ASC") }
-  scope :past, -> { where("deals.start_at < ?", Time.now) }  
+  scope :past, -> { where("deals.start_at < ?", Time.now) }
+  scope :future, -> { where("deals.start_at > ?", Time.now) }
   scope :latest, -> { order("deals.id DESC") }
   scope :visible_in_conversation, -> { where('state IN (?)', Deal::VISIBLE_CONVERSATION_STATES) }
   scope :since, ->(since) { where("updated_at > ?", since) }
   scope :created_since, ->(since) { where("created_at > ?", since) }
   scope :my_bookings_overview, -> { where(state: [:confirmed, :accepted]) }
-     
+  scope :undealed, -> { where(state: Deal::UNDEALED_STATES)}   
+  scope :payed_out, -> { where(payed_out: true) }
+  scope :not_payed_out, -> { where(payed_out: false) }
+   
   #
   # Instance Methods
   # ---------------------------------------------------------------------------------------
@@ -111,7 +115,7 @@ class Deal < ActiveRecord::Base
   def negotiator_for(user)
     @negotiator ||= is_customer?(user) ? artist : customer
   end
-    
+   
   #
   # Private
   # ---------------------------------------------------------------------------------------

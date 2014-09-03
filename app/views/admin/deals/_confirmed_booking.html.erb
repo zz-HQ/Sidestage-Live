@@ -1,0 +1,26 @@
+<%= content_tag :tr, id: "#{deal.state}_#{dom_id(deal)}" do %>
+    <td><%= deal.customer.name %></td>
+    <td><%= deal.profile.name %></td>
+    <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
+    <td><%= localized_price (deal.charged_price / 100), deal.currency if deal.charged_price.present? %></td>
+    <td><%= localized_price deal.price, deal.currency %></td>
+    <td><%= l(deal.start_at, format: :conversation) %></td>
+    <td>
+        <%= link_to "View", "#", data: { toggle: "modal", target: "#payment_#{deal.id}" } %>
+        <div class="modal" id="payment_<%= deal.id %>" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title"><%= deal.profile.name %> Bank details</h4>
+                    </div>
+                    <div class="modal-body">
+                        IBAN: <%= deal.profile.iban %><br>
+                        BIC/SWIFT: <%= deal.profile.bic %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </td>
+    <td><%= link_to "Payout", toggle_payout_admin_deal_path(deal), class: "btn btn-primary", remote: true, method: :put, data: { confirm: "Are you sure?" } unless deal.payed_out? %></td>
+<% end %>

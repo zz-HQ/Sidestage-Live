@@ -8,6 +8,7 @@ module Deal::StateMachine
     
     PENDING_STATES = [:requested, :offered, :proposed]
     CONFIRMED_STATES = [:confirmed, :accepted]  
+    UNDEALED_STATES = [:rejected, :reverted]  
     VISIBLE_CONVERSATION_STATES = [:requested, :offered, :confirmed, :accepted, :proposed]
     NOTIFY_BOTH_PARTIES_STATES = [:cancelled, :confirmed, :declined, :accepted]
     
@@ -20,6 +21,7 @@ module Deal::StateMachine
       state :accepted
       state :declined
       state :cancelled
+      state :reverted
       state :rejected
       
       event :offer do
@@ -29,9 +31,13 @@ module Deal::StateMachine
       event :cancel do
         transitions from: [:requested, :offered, :confirmed, :accepted, :proposed], to: :cancelled, guards: [:current_user_is_customer?]
       end
+      
+      event :revert do
+        transitions from: [:confirmed, :accepted], to: :reverted, guards: [:current_user_is_customer?]
+      end
 
       event :reject do
-        transitions from: [:requested, :confirmed, :accepted], to: :rejected, guards: [:current_user_is_artist?]
+        transitions from: [:confirmed, :accepted], to: :rejected, guards: [:current_user_is_artist?]
       end
 
       event :decline do
