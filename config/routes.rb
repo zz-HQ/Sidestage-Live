@@ -79,6 +79,7 @@ Airmusic::Application.routes.draw do
         post :double_check, on: :collection
         member do
           put :cancel
+          put :revert
           put :confirm
           put :decline
           put :accept
@@ -120,7 +121,11 @@ Airmusic::Application.routes.draw do
       resources :conversations do
         resources :messages
       end
-      resources :deals
+      resources :deals do
+        member do
+          put :toggle_payout
+        end
+      end
       resources :users do
         member do
           get :backdoor

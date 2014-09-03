@@ -55,7 +55,7 @@ describe Account::DealsController, :type => :controller do
     end
     
     it "rejects" do
-      deal = FactoryGirl.create(:requested_deal)
+      deal = FactoryGirl.create(:confirmed_deal)
       
       sign_in(deal.artist)
       put :reject, id: deal.to_param
