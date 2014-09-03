@@ -30,7 +30,7 @@ class Admin::MessagesController < Admin::ResourcesController
   private
   
   def collection
-    get_collection_ivar || set_collection_ivar(end_of_association_chain.latest)
+    get_collection_ivar || set_collection_ivar(end_of_association_chain.latest.non_system)
   end  
     
 end

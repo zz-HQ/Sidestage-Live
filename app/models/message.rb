@@ -55,7 +55,7 @@ class Message < ActiveRecord::Base
   scope :by_user, ->(user_id) { where("sender_id = :user_id OR receiver_id = :user_id" , user_id: user_id) }
   scope :latest, -> { order("ID DESC") }
   scope :unread, -> { where(read_at: nil) }
-  scope :non_system, -> { where("system_message = ? OR system_message = ?", nil, false) }
+  scope :non_system, -> { where("system_message IS NULL OR system_message = ?", false) }
   
   #
   # Callbacks
