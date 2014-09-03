@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722142523) do
+ActiveRecord::Schema.define(version: 20140903122542) do
 
   create_table "city_launches", force: true do |t|
     t.string   "email"
@@ -70,10 +70,10 @@ ActiveRecord::Schema.define(version: 20140722142523) do
 
   create_table "deals", force: true do |t|
     t.integer  "conversation_id"
-    t.integer  "profile_id",          null: false
-    t.integer  "artist_id",           null: false
-    t.integer  "customer_id",         null: false
-    t.integer  "price",               null: false
+    t.integer  "profile_id",                          null: false
+    t.integer  "artist_id",                           null: false
+    t.integer  "customer_id",                         null: false
+    t.integer  "price",                               null: false
     t.datetime "start_at"
     t.text     "body"
     t.datetime "created_at"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20140722142523) do
     t.string   "currency"
     t.string   "state"
     t.datetime "state_transition_at"
+    t.boolean  "payed_out",           default: false
   end
 
   add_index "deals", ["artist_id"], name: "index_deals_on_artist_id", using: :btree
@@ -175,12 +176,12 @@ ActiveRecord::Schema.define(version: 20140722142523) do
     t.string   "mobile_nr"
     t.string   "avatar"
     t.string   "city"
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                       default: "",    null: false
+    t.string   "encrypted_password",          default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",               default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -189,7 +190,7 @@ ActiveRecord::Schema.define(version: 20140722142523) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,     null: false
+    t.integer  "failed_attempts",             default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
@@ -199,16 +200,18 @@ ActiveRecord::Schema.define(version: 20140722142523) do
     t.string   "stripe_customer_id"
     t.string   "role"
     t.text     "about"
-    t.boolean  "newsletter_subscribed",  default: false
+    t.boolean  "newsletter_subscribed",       default: false
     t.string   "stripe_card_id"
     t.text     "error_log"
     t.string   "provider"
     t.string   "uid"
     t.datetime "mobile_nr_confirmed_at"
-    t.boolean  "verified",               default: false
+    t.boolean  "verified",                    default: false
     t.string   "otp_secret_key"
     t.string   "mobile_nr_country_code"
     t.string   "full_name"
+    t.string   "stripe_connect_user_id"
+    t.string   "stripe_connect_access_token"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

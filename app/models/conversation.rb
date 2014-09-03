@@ -38,7 +38,8 @@ class Conversation < ActiveRecord::Base
   scope :ordered_by_last_message, -> { order("last_message_at DESC") }
   scope :archived_by, ->(user_id) { where("(sender_id = :user_id AND sender_archived IN (:archived)) OR (receiver_id = :user_id AND receiver_archived IN (:archived))", user_id: user_id, archived: true) }
   scope :unarchived_by, ->(user_id) { where("(sender_id = :user_id AND sender_archived IN (:archived)) OR (receiver_id = :user_id AND receiver_archived IN (:archived))", user_id: user_id, archived: [false, nil]) }
-    
+  scope :having_no_deals, -> { where("conversations.id NOT IN (SELECT deals.conversation_id FROM deals)") }
+  
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------

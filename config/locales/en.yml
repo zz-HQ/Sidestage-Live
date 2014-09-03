@@ -123,9 +123,10 @@ en:
           offered: 
             you: "A booking request has been sent to %{partner_name} for %{event_date}."
             partner: "You have a new booking request from %{partner_name}."
-          cancelled:
+          cancelled: &cancelled
             you: "You have declined the booking request from %{partner_name} for %{event_date}."
             partner: "%{partner_name} has cancelled your booking request for %{event_date}."
+          reverted: *cancelled
           declined:
             you: "You have declined the booking request from %{partner_name} for %{event_date}."
             partner: "%{partner_name} has cancelled your booking request for %{event_date}."
@@ -142,25 +143,26 @@ en:
     deals:
       requested:
         subject: "New booking request"
-        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>You have a new booking request from %{partner_name}. Please <a href='%{deal_path}'>log in to Sidestage</a> to review it.</p>"
+        body_html: "You have a new booking request from %{partner_name}. Please <a href='%{deal_path}'>log in to Sidestage</a> to review it."
       proposed:
         subject: "New booking request"
-        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>You have a new booking request from %{partner_name}. Please <a href='%{deal_path}'>log in to Sidestage</a> to review it.</p>"
+        body_html: "You have a new booking request from %{partner_name}. Please <a href='%{deal_path}'>log in to Sidestage</a> to review it."
       offered:
         subject: "Special Offer From %{partner_name}."
-        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>%{partner_name} sent you a special offer. <a href='%{deal_path}'>Log in to Sidestage</a> to view it.</p>"
-      cancelled:
+        body_html: "%{partner_name} sent you a special offer. <a href='%{deal_path}'>Log in to Sidestage</a> to view it."
+      cancelled: &cancelled
         subject: "Booking Cancelled"
-        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking request with %{partner_name} for %{event_date} has been cancelled.</p>"
+        body_html: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
+      reverted: *cancelled
       declined:
         subject: "Booking request cancelled"
-        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking request with %{partner_name} for %{event_date} has been cancelled.</p>"
+        body_html: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
       accepted:
         subject: "Booking accepted"
-        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking with %{partner_name} is confirmed for %{event_date}.</p>"
+        body_html: "Your booking with %{partner_name} is confirmed for %{event_date}."
       confirmed:
         subject: "Booking confirmed"
-        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking with %{partner_name} is confirmed for %{event_date}.</p>"
+        body_html: "Your booking with %{partner_name} is confirmed for %{event_date}."
       rejected:
         subject: "Booking cancelled"
-        body_html: "<p style='color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;'>Your booking with %{partner_name} for %{event_date} has been cancelled.</p>"
+        body_html: "Your booking with %{partner_name} for %{event_date} has been cancelled."
