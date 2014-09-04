@@ -46,6 +46,8 @@ App.init = ->
     scrollInput: false
     minDate:'-1970/01/01'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
+  $("input.cc-num").payment "formatCardNumber"
+  $("input.cc-cvc").payment "formatCardCVC"
   App.setStripeListener()
 
 $(document).on 'change', '.submit-on-change', (e) -> 

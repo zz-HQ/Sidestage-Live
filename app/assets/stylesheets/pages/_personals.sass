@@ -72,12 +72,19 @@
 			.nice-select
 				margin-bottom: 7px
 
-			.cc-exp
-				+span-columns(4)
+			.nice-select
+				+span-columns(3)
+				height: 38px
 
 			.cc-cvc
-				+span-columns(4)
-				+omega
+				+span-columns(2)
+
+			// .cc-exp
+			// 	+span-columns(4)
+
+			// .cc-cvc
+			// 	+span-columns(4)
+			// 	+omega
 
 			.footnote
 				margin-top: 50px
@@ -89,6 +96,10 @@
 					display: block
 					text-align: center
 					color: $text-color-light
+
+					&.skip-link
+						float: left
+						margin: 18px 0 0 13px
 
 		.footnote
 			font-size: 16px
