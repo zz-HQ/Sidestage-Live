@@ -46,8 +46,6 @@ App.init = ->
     scrollInput: false
     minDate:'-1970/01/01'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
-  $("input.cc-num").payment "formatCardNumber"
-  $("input.cc-cvc").payment "formatCardCVC"
   App.setStripeListener()
 
 $(document).on 'change', '.submit-on-change', (e) -> 
@@ -130,14 +128,6 @@ $(document).on 'click', '.match-me-form .act', ->
     $(@).find(':checkbox').prop('checked', true)
     $(@).addClass('active')
 
-$(document).on 'keypress', '.phone input', (e) ->
-  #e.preventDefault()
-  value = $(@).val()
-  console.log inputLength = value.replace(/\D/g, '').length
-  unless inputLength <= 7
-    e.preventDefault()
-  unless /^\d+$/.test(value)
-    e.preventDefault()
 
 
 # FB LIKE BUTTON to work with turbolinks
