@@ -47,6 +47,7 @@ App.init = ->
     minDate:'-1970/01/01'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
   App.setStripeListener()
+  App.initGooglePlaces()
 
 $(document).on 'change', '.submit-on-change', (e) -> 
   if($(@).val() != "")
