@@ -10,7 +10,7 @@
 
     <div id="city-switch">
         <form action="<%= artists_path %>" method="GET">
-            <%= text_field_tag nil, params[:location], id: :artist_place, data: { google: :places } %>
+            <%= text_field_tag nil, params[:location], id: :artist_place, data: { google: :places }, placeholder: t(:"simple_form.placeholders.location_search.location") %>
             <%= hidden_field_tag :location, params[:location], id: :event_location %>
             <% request.query_parameters.except(:location).each do |k,v| %>
                 <%= hidden_field_tag k, v %>

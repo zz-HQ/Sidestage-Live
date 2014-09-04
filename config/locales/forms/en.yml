@@ -83,7 +83,8 @@ en:
         name: Name
         email: who@where.com
         comment: "The more detail you provide about your event, the better we can match you."
-        
+      location_search:
+        location: "Where's your event?"
           
   helpers:
     submit:
