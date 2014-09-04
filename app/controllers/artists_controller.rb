@@ -75,7 +75,7 @@ class ArtistsController < ApplicationController
   end
 
   def only_available_cities
-    redirect_to new_city_launch_path if params[:location] == "More cities"
+    redirect_to new_city_launch_path if collection.empty? #params[:location] == "More cities"
   end
     
   def reject_scraper
