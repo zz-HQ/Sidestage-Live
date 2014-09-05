@@ -33,18 +33,18 @@ module ApplicationHelper
   end
   
   def available_locations
-    ["Berlin","London", "More cities"]
+    AVAILABLE_LOCATIONS.map(&:last).collect{|l| l[:name]} + ["More cities"]
   end
   
   def profile_available_locations
     if user_signed_in?
       if current_user.artist?
-        ["Berlin", "London", "New York City"]
+        PROFILE_LOCATIONS.map(&:last).collect{|l| l[:name]}
       else
         available_locations
       end
     else
-      ["Berlin", "London", "New York City", "More cities"]
+       PROFILE_LOCATIONS.map(&:last).collect{|l| l[:name]} + ["More cities"]
     end
   end
 

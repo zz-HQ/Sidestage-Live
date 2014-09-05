@@ -13,9 +13,7 @@ describe ArtistsController, :type => :controller do
   
   it "gets index" do
     shakira = FactoryGirl.create(:shakira)
-    FactoryGirl.create(:gaga)
-
-    get :index, location: shakira.location
+    get :index, lat: AVAILABLE_LOCATIONS[:berlin][:latitude], lng: AVAILABLE_LOCATIONS[:berlin][:longitude]
     
     expect(response.status).to eq(200)
   end

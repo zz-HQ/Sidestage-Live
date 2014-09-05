@@ -2,13 +2,20 @@ window.App = {} if window.App == undefined
 App = window.App
 
 App.initGooglePlaces = ->  
-  $("#artist_place").each ->
+  $("[data-google='event_place']").each ->
+    inputField = $(@)
     options =  types: ["(cities)"]
-    autoCompMap = new google.maps.places.Autocomplete(document.getElementById("artist_place"), options)
+  
+    autoCompMap = new google.maps.places.Autocomplete(document.getElementById($(@).attr("id")), options)
+
     google.maps.event.addListener autoCompMap, "place_changed", ->
-      $("#event_location").val(autoCompMap.getPlace().name)
-      $("#event_location").closest("form").submit()
+      lat = autoCompMap.getPlace().geometry.location.lat()
+      lng = autoCompMap.getPlace().geometry.location.lng()
+      
+      inputField.parent().find("input[name=lat]").val(lat)
+      inputField.parent().find("input[name=lng]").val(lng)
+      inputField.closest("form").submit()
     
-    google.maps.event.addDomListener document.getElementById("artist_place"), "keydown", (e) ->
+    google.maps.event.addDomListener document.getElementById($(@).attr("id")), "keydown", (e) ->
       e.preventDefault()  if e.keyCode is 13
-      return  
+      return

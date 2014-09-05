@@ -20,6 +20,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'sidekiq'
 gem 'twilio-ruby', '~> 3.11'
 gem 'rotp', '2.0'
+gem 'graticule'
 
 # Image Processing
 gem 'carrierwave'

@@ -3,7 +3,7 @@
   <div class="wrap">
     <%# TODO: Change to root_path when splash page goes offline!!! %>
     <h1 id="logo">
-      <%= link_to params[:location].present? ? artists_path(location: params[:location]) : root_path do %>
+      <%= link_to params[:location].present? ? artists_path(location: params[:location], lng: params[:lng], lat: params[:lat]) : root_path do %>
         <%= image_tag "sprite/sidestage-logo.png" %>
       <% end %>
     </h1>
@@ -11,12 +11,12 @@
     <div id="city-switch">
         <form action="<%= artists_path %>" method="GET">
             <i class="fa fa-search"></i>
-            <%= text_field_tag nil, params[:location], id: :artist_place, data: { google: :places }, placeholder: t(:"simple_form.placeholders.location_search.location") %>
-            <%= hidden_field_tag :location, params[:location], id: :event_location %>
-            <% request.query_parameters.except(:location).each do |k,v| %>
+            <%= text_field_tag :location, params[:location], id: :event_place, data: { google: :event_place }, placeholder: t(:"simple_form.placeholders.location_search.location") %>
+            <%= hidden_field_tag :lng, params[:lng] %>
+            <%= hidden_field_tag :lat, params[:lat] %>
+            <% request.query_parameters.except(:lat, :lng, :location).each do |k,v| %>
                 <%= hidden_field_tag k, v %>
             <% end %>
-            <%#= nice_select((select_tag 'location', options_for_select(available_locations, params[:location]), include_blank: false, prompt: t(:"helpers.select.prompts.choose_city"), class: "submit-on-change"), small: true) %>
         </form>    
     </div>
     

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903122542) do
+ActiveRecord::Schema.define(version: 20140905112511) do
 
   create_table "city_launches", force: true do |t|
     t.string   "email"
@@ -140,18 +140,24 @@ ActiveRecord::Schema.define(version: 20140903122542) do
     t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "solo",        default: true
+    t.boolean  "solo",                                    default: true
     t.string   "location"
-    t.boolean  "published",   default: false
+    t.boolean  "published",                               default: false
     t.string   "currency"
     t.text     "additionals"
     t.string   "avatar"
     t.text     "payout"
     t.string   "slug"
-    t.boolean  "featured",    default: false
+    t.boolean  "featured",                                default: false
+    t.decimal  "latitude",      precision: 13, scale: 10
+    t.decimal  "longitude",     precision: 13, scale: 10
+    t.string   "country_long"
+    t.string   "country_short"
   end
 
   add_index "profiles", ["featured"], name: "index_profiles_on_featured", using: :btree
+  add_index "profiles", ["latitude"], name: "index_profiles_on_latitude", using: :btree
+  add_index "profiles", ["longitude"], name: "index_profiles_on_longitude", using: :btree
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
@@ -169,6 +175,12 @@ ActiveRecord::Schema.define(version: 20140903122542) do
   add_index "reviews", ["author_id"], name: "index_reviews_on_author_id", using: :btree
   add_index "reviews", ["profile_id"], name: "index_reviews_on_profile_id", using: :btree
 
+  create_table "tests", force: true do |t|
+    t.string "longitude"
+    t.string "latitude"
+    t.string "city"
+  end
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -176,12 +188,12 @@ ActiveRecord::Schema.define(version: 20140903122542) do
     t.string   "mobile_nr"
     t.string   "avatar"
     t.string   "city"
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                       default: "",    null: false
+    t.string   "encrypted_password",          default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",               default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -190,7 +202,7 @@ ActiveRecord::Schema.define(version: 20140903122542) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,     null: false
+    t.integer  "failed_attempts",             default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
@@ -200,16 +212,18 @@ ActiveRecord::Schema.define(version: 20140903122542) do
     t.string   "stripe_customer_id"
     t.string   "role"
     t.text     "about"
-    t.boolean  "newsletter_subscribed",  default: false
+    t.boolean  "newsletter_subscribed",       default: false
     t.string   "stripe_card_id"
     t.text     "error_log"
     t.string   "provider"
     t.string   "uid"
     t.datetime "mobile_nr_confirmed_at"
-    t.boolean  "verified",               default: false
+    t.boolean  "verified",                    default: false
     t.string   "otp_secret_key"
     t.string   "mobile_nr_country_code"
     t.string   "full_name"
+    t.string   "stripe_connect_user_id"
+    t.string   "stripe_connect_access_token"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

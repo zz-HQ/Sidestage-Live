@@ -66,6 +66,15 @@ class ArtistsController < ApplicationController
   private
 
   
+  def collection
+    get_collection_ivar || set_collection_ivar(resources)
+    #get_collection_ivar || set_collection_ivar(resources.page(params[:page] || 1))
+  end  
+  
+  def resources
+    end_of_association_chain.filter(params).sorty(params).radial(lat: params[:lat], lng: params[:lng], radius: 36).published
+  end
+
   def permitted_params
     params.permit(profile: [:solo, :name, :location, :price, :title, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
   end
@@ -79,16 +88,7 @@ class ArtistsController < ApplicationController
   end
     
   def reject_scraper
-    redirect_to root_path if params[:location].blank?
-  end
-  
-  def collection
-    get_collection_ivar || set_collection_ivar(resources)
-    #get_collection_ivar || set_collection_ivar(resources.page(params[:page] || 1))
-  end  
-  
-  def resources
-    end_of_association_chain.filter(params).sorty(params).published
+    redirect_to root_path if params[:lat].blank? || params[:lng].blank?
   end
   
   def build_resource

@@ -18,19 +18,19 @@ FactoryGirl.define do
     
     factory :gaga do
       name "gaga"
-      location "california"      
+      location "Berlin"      
       price 200      
     end
     
     factory :shakira do
       name "shakira"
-      location "mexico"
+      location "Berlin"
       price 300
     end
     
     factory :unpublished do
       name "unpublished"
-      location "mexico"
+      location "New York City"
       price 300
       
       published false

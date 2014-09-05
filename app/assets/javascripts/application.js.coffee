@@ -107,7 +107,7 @@ $.ajaxSetup
 
 
 $(document).on 'page:update', App.init
-$ -> App.init()
+#$ -> App.init()
 
 #SUBMIT VIA ENTER
 $(document).on 'keydown', '.media-type-form input', (e) ->

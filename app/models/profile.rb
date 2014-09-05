@@ -90,12 +90,17 @@ class Profile < ActiveRecord::Base
   
   sortable :price, :name, :location, :mobile_nr, :unread_message_counter, :email
   
-  filterable :location, :price
+  filterable :price
   
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where("published = ? OR published = ?", nil, false) }
   scope :featured, -> { where(featured: true) }
   scope :latest, -> { order("profiles.id DESC") }
+  scope :radial, ->(lat:, lng:, radius:) {
+    unless lat.blank? || lng.blank? || radius.blank?
+      where("#{Graticule::Distance::Spherical.to_sql(:latitude => lat, :longitude => lng, :units => :kilometers)} <= ?", radius) 
+    end
+  }
   
   #
   # Callbacks
@@ -107,7 +112,11 @@ class Profile < ActiveRecord::Base
   
   after_validation :reverse_friendly
   
+  before_save :geo_locate
+  
   after_save :notify_admin_on_publish
+  
+
 
   #
   # Associations
@@ -232,6 +241,18 @@ class Profile < ActiveRecord::Base
   def notify_admin_on_publish
     if published_changed? && published?
       AdminMailer.delay.profile_published(self)
+    end
+  end
+  
+  def geo_locate
+    PROFILE_LOCATIONS.each do |key, value|
+      if value[:name] == location
+        self.country_long = value[:country_long] if location_changed? || self.country_long.blank?
+        self.country_short = value[:country_short]  if location_changed? || self.country_short.blank?
+        self.latitude = value[:latitude] if location_changed? || self.latitude.blank?
+        self.longitude = value[:longitude] if location_changed? || self.longitude.blank?
+        break
+      end
     end
   end
 
