@@ -20,7 +20,7 @@ en:
         credit_card_form_title: "Please enter your payment information:"
         skip: Do this later
         new:
-          title: Sidestage handle payments, so you don't have to worry about it. Please add a credit card to your account.
+          title: Sidestage handles payments, so you don't have to worry about it. Please add a credit card to your account.
         show:
           title: "The credit card below has been added to your account."
           card_hint_html: "For questions concerning your credit card, please contact <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"
