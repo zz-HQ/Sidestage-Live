@@ -14,11 +14,14 @@ class AddCoordinatesToProfiles < ActiveRecord::Migration
       "London" => { country_long: "United Kingdom", country_short: "UK", latitude: "51.5072", longitude: "0.1275" },
     }
     Profile.all.each do |profile|
-      profile.latitude = coordinates[profile.location][:latitude]
-      profile.longitude = coordinates[profile.location][:longitude]
-      profile.country_long = coordinates[profile.location][:country_long]
-      profile.country_short = coordinates[profile.location][:country_short]
-      profile.save validate: false
+      begin
+        profile.latitude = coordinates[profile.location][:latitude]
+        profile.longitude = coordinates[profile.location][:longitude]
+        profile.country_long = coordinates[profile.location][:country_long]
+        profile.country_short = coordinates[profile.location][:country_short]
+        profile.save validate: false
+      rescue
+      end
     end
     
   end

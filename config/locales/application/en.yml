@@ -3,6 +3,7 @@ en:
     menu:
       sign_up: Sign up
       sign_in: Log in
+      invite_friends: Invite Friends
       my_bookings: Bookings
       your_profile: Edit Profile
       account: Account
@@ -22,3 +23,14 @@ en:
       view_profiles: View Profiles
       pagination:
         view_more: View more
+    social:
+      share:
+        facebook:
+          customer:
+            title: Invite Your Friends to Sidestage
+            desc: Good stuff will happen. :)
+          artist:
+            title: Share Your Profile
+            desc: "The more people you share your profile with, the more booking requests you’ll get. Share with friends on Facebook and Twitter."
+        twitter:
+          text: "Check out a @sidestagehq, a new platform for booking great musicians, bands and DJs"

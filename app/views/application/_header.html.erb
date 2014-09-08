@@ -46,9 +46,30 @@
             <i class="fa fa-caret-up"></i>
             <hr>
             <% if current_user.profile.present? && current_user.profile.persisted? %>
+                <%= link_to t(:"application.menu.invite_friends"), "#", data: { lightbox: :html, target: "[data-container='artist-invite-friend']" } %>
+                <div style="display:none;" data-container="artist-invite-friend">
+                    <div class="devise-lightbox center">
+                        <p><strong><%= t(:"application.social.share.facebook.artist.title") %></strong></p>
+                        <p><%= t(:"application.social.share.facebook.artist.desc") %></p>
+                        <div class="btns">
+                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), facebook_share_url(artist_url(current_user.profile)), target: :_blank, class: "btn btn-facebook btn-inline" %>
+                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.profiles.preview.share_modal.twitter_text"), artist_url(current_user.profile)), target: :_blank, class: "link" %>
+                        </div>
+                    </div>    
+                </div>    
                 <%= link_to t(:"application.menu.your_profile"), preview_account_profile_path(current_user.profile) %>
             <% else %>    
-                <%#= link_to "Create Artist Profile", new_account_profile_path %>
+                <%= link_to t(:"application.menu.invite_friends"), "#", data: { lightbox: :html, target: "[data-container='customer-invite-friend']" } %>
+                <div style="display:none;" data-container="customer-invite-friend">
+                    <div class="devise-lightbox center">
+                        <p><strong><%= t(:"application.social.share.facebook.customer.title") %></strong></p>
+                        <p><%= t(:"application.social.share.facebook.customer.desc") %></p>
+                        <div class="btns">
+                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), facebook_share_url(root_url), target: :_blank, class: "btn btn-facebook btn-inline" %>
+                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.social.share.twitter.text"), root_url), target: :_blank, class: "link" %>
+                        </div>
+                    </div>    
+                </div>    
             <% end %>
             <%#= link_to "Dashboard", account_dashboard_path %>
             <%= link_to t(:"application.menu.my_bookings"), account_bookings_path %>

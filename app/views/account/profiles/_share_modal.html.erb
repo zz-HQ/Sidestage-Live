@@ -3,8 +3,8 @@
         <p><strong><%= t(:"application.profiles.preview.share_modal.title") %></strong></p>
         <p><%= t(:"application.profiles.preview.share_modal.desc") %></p>
         <div class="btns">
-            <%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), "http://www.facebook.com/sharer/sharer.php?u=#{artist_url(@profile)}", class: "btn btn-facebook btn-inline" %>
-            <%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), "https://twitter.com/intent/tweet?text=Checkout%20my%20@sidestagehq%20artist%20profile%20and%20book%20me%20for%20an%20event&url=#{artist_url(@profile)}", class: "link" %>
+            <%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), facebook_share_url(artist_url(@profile)), class: "btn btn-facebook btn-inline" %>
+            <%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.profiles.preview.share_modal.twitter_text"), artist_url(@profile)), class: "link" %>
         </div>
     </div>
 </div>

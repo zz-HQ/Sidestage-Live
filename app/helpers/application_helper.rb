@@ -71,4 +71,13 @@ module ApplicationHelper
     !current_user || (current_user.id != artist.id)
   end
   
+  def facebook_share_url(url)
+    "http://www.facebook.com/sharer/sharer.php?u=#{url}"
+  end
+  
+  def twitter_share_url(text, url)
+    "https://twitter.com/intent/tweet?text=#{text}&url=#{url}"
+  end
+  
+  
 end
