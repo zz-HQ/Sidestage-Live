@@ -46,9 +46,11 @@
 
         .open-input-field
           cursor: pointer
+          z-index: 10dsf
           font-size: 14px
           padding: 20px 0
           display: block
+          pointer-events: none
           +transition(color 400ms ceaser($easeOutExpo))
 
           &:hover
@@ -57,33 +59,39 @@
         > p
           margin: 10px 0
           color: $text-color-light
+          pointer-events: none
+
+          strong
+            pointer-events: none
 
         a.link
           margin: 20px 0
-          display: block
+          display: inline-block
 
-      .media-type-input-field
+      .media-type-field
         width: 100%
-        height: 350px
-        background-color: #FFF
-        border: 2px solid $border-color
+        // height: 350px
+        // background-color: #FFF
+        // border: 2px solid $border-color
         display: none
-        padding: 20px
+        // padding: 20px
 
         label
           font-size: 14px
           color: $text-color-light
           margin-left: 10px
 
-        input[type="text"]
-          border: none
+        textarea
+          // border: none
           font-weight: 300
-          background-color: transparent
+          // background-color: transparent
+          padding: 20px
+          height: 350px
 
         .btn
-          position: absolute
-          bottom: 20px
-          left: 42%
+          // position: absolute
+          // bottom: 20px
+          // left: 42%
 
     .soundcloud-widget,
     .youtube-widget

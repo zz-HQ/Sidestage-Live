@@ -5,16 +5,16 @@
 </nav>
 
 <div class="tabs" data-id="social">
-  <div class="tab">
+  <div id="sc-tab" class="tab">
     <% if resource.has_soundcloud? %>
       <%= soundcloud_widget %>
       <%= link_to t(:"application.links.remove"), remove_soundcloud_account_profile_path(resource), method: :put, class: "delete" %>
     <% else %>
-      <div class="media-type-form">
+      <div id="sc-type" class="media-type-form">
         <p><strong><%= t(:"application.profiles.preview.soundcloud.title") %></strong></p>
         <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.soundcloud") %></span>
 
-        <%= link_to "What's this?", "#", class: "link", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
+        <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
         <div style="display:none;" data-container="help-sc">
           <div class="devise-lightbox">
             <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
@@ -22,28 +22,28 @@
           </div>
         </div>
       </div>
-      <div class="media-type-input-field">
+      <div id="sc-type-field" class="media-type-field">
         <%= simple_form_for resource, url: soundcloud_account_profile_path(resource) do |f| %>
-          <%= f.input :soundcloud, hint: false, placeholder: "Copy and paste the SoundCloud Embed code here.", label: false %>
-          <%= f.submit class: "btn btn-center btn-blue" %>
+          <%= text_area :profile, :soundcloud, hint: false, placeholder: "Copy and paste the SoundCloud Embed code here.", label: false %>
+          <%= f.submit class: "btn btn-center btn-blue", id: "sc-btn" %>
         <% end %>
       </div>
     <% end %>
   </div>
 
-  <div class="tab">
+  <div id="yt-tab" class="tab">
     <% if resource.has_youtube? %>
       <%= youtube_widget %>
       <%= link_to t(:"application.links.remove"), remove_youtube_account_profile_path(resource), method: :put, class: "delete" %>
     <% else %>
-      <div class="media-type-form">
+      <div id="yt-type" class="media-type-form">
         <p><strong><%= t(:"application.profiles.preview.youtube.title") %></strong></p>
         <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.youtube") %></span>
       </div>
-      <div class="media-type-input-field">
+      <div id="yt-type-field" class="media-type-field">
         <%= simple_form_for resource, url: youtube_account_profile_path(resource) do |f| %>
-          <%= f.input :youtube, hint: false, placeholder: "Copy and paste the Youtube link here.", label: false %>
-          <%= f.submit class: "btn btn-center btn-blue" %>
+          <%= text_area :profile, :youtube, hint: false, placeholder: "Copy and paste the Youtube link here.", label: false %>
+          <%= f.submit class: "btn btn-center btn-blue", id: "yt-btn" %>
         <% end %>
       </div>
     <% end %>

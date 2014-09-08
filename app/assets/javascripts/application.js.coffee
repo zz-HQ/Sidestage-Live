@@ -39,7 +39,8 @@ App.init = ->
   $('.styled-radios').styledRadios()
   $('.star-rating-editable').starRating()
   $('#flash-messages').flash()
-  $('.picture-viewer').pictureViewer()  
+  $('.picture-viewer').pictureViewer()
+  $('.tabs').toggleMediaFields()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
@@ -113,11 +114,6 @@ $(document).on 'page:update', App.init
 $(document).on 'keydown', '.media-type-form input', (e) ->
   if e.keyCode == 13
     $(@).closest('form').trigger 'submit'
-
-$(document).on 'click', '.media-type-form .open-input-field', ->
-  $(@).parent().hide()
-  $(@).closest(".tab").find(".media-type-input-field").show()
-
 
 
 # MATCH ME CHECKBOX -----------
