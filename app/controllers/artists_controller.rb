@@ -76,7 +76,7 @@ class ArtistsController < ApplicationController
   end
 
   def permitted_params
-    params.permit(profile: [:solo, :name, :location, :price, :title, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
+    params.permit(profile: [:artist_type, :name, :location, :price, :title, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
   end
   
   def redirect_if_unpublished

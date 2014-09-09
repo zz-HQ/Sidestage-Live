@@ -44,7 +44,7 @@ describe Account::ProfilesController, :type => :controller do
   it "patches basics" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)    
-    put :basics, id: profile.to_param, profile: { solo: (!profile.solo).to_s }
+    put :basics, id: profile.to_param, profile: { artist_type: 'dj' }
     expect(response).to render_template(:basics)
   end
 
