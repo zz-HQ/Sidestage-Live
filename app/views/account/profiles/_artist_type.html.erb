@@ -1,0 +1,16 @@
+<h3><%= t(:"simple_form.labels.profile.artist_type") %></h3>
+
+<div class="styled-radios">
+	<div class="act radio">
+		<div class="label"><%= t(:"simple_form.labels.profile.solo") %></div>
+		<%= f.radio_button :artist_type, :solo %>
+	</div>
+	<div class="act radio">
+		<div class="label"><%= t(:"simple_form.labels.profile.band") %></div>
+		<%= f.radio_button :artist_type, :band %>
+	</div>
+	<div class="act radio">
+		<div class="label">DJ</div>
+		<%= f.radio_button :artist_type, :dj %>
+	</div>
+</div>

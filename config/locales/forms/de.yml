@@ -15,7 +15,7 @@ de:
         mobile_nr: Mobile number (with country code)
         mobile_confirmation_code: Enter verification code
       profile:
-        solo: You are...
+        artist_type: You are...
         genre_ids: What's closest to your style?
         location: Where are you based?
         currency: "Default currency:"

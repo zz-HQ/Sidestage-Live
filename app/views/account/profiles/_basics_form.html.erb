@@ -1,15 +1,5 @@
 <div class="input">
-	<h3><%= t(:"simple_form.labels.profile.solo") %></h3>
-	<div class="styled-radios">
-		<div class="act radio">
-			<div class="label"><%= t(:"activerecord.attributes.profile.solo_true") %></div>
-			<%= f.radio_button :solo, true %>
-		</div>
-		<div class="act radio">
-			<div class="label"><%= t(:"activerecord.attributes.profile.solo_false") %></div>
-			<%= f.radio_button :solo, false %>
-		</div>
-	</div>
+    <%= render "artist_type", f: f %>
 </div>  
 
 <div class="genres">
