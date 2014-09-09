@@ -19,7 +19,7 @@ describe Authentication::OmniauthCallbacksController, :type => :controller do
   end
   
   it "assigns profile from session" do
-    session[:profile] = { solo: true, location: "Berlin", genre_ids: [genre.id] }
+    session[:profile] = { artist_type: :solo, location: "Berlin", genre_ids: [genre.id] }
     expect { get :facebook }.to change(Profile, :count).by(1)
   end
   

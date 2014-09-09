@@ -17,8 +17,6 @@ en:
           city: Only my city
           state: In my state/region
           world: Anywhere in the world
-        solo_true: Solo Instrument
-        solo_false: Band or Group
       review:
         rating: Rating
       deal:
