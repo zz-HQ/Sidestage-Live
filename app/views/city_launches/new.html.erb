@@ -3,17 +3,12 @@
 	<div class="landing-page-container email-signup">
 		<img src="<%= asset_path('sidestage_brand.png') %>">
 
-		<h3>Sidestage is not available in your city yet. Get notified when Sidestage launches near you.</h3>
-
-		<div class="form">
-			<%= simple_form_for resource do |f| %>
-				<div class="form-inputs">
-		      <%= f.input :email, autofocus: true, placeholder: "Your email", label: false %>
-          <%= f.input :city, placeholder: "Your city", label: false %>
-				</div>
-				<input type="submit" value="<%= t(:'application.menu.sign_up') %>" class="btn btn-blue">
-			<% end %>
-		</div>
+		<h3><%= t(:"application.city_launches.desc") %></h3>
+        
+        <section id="newsletter">
+        	<%= render "mailchimp_subscription", list_id: :newsletter %>
+        </section>
+        
 	</div>
 
 </div>

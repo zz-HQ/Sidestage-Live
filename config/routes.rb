@@ -126,6 +126,7 @@ Airmusic::Application.routes.draw do
           put :toggle_payout
         end
       end
+      resources :search_queries
       resources :users do
         member do
           get :backdoor

@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909091530) do
-
-  create_table "city_launches", force: true do |t|
-    t.string   "email"
-    t.string   "city"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140910092655) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",                         null: false
@@ -174,6 +167,14 @@ ActiveRecord::Schema.define(version: 20140909091530) do
   add_index "reviews", ["artist_id"], name: "index_reviews_on_artist_id", using: :btree
   add_index "reviews", ["author_id"], name: "index_reviews_on_author_id", using: :btree
   add_index "reviews", ["profile_id"], name: "index_reviews_on_profile_id", using: :btree
+
+  create_table "search_queries", force: true do |t|
+    t.string  "location"
+    t.text    "content"
+    t.integer "counter",  default: 0
+  end
+
+  add_index "search_queries", ["location"], name: "index_search_queries_on_location", using: :btree
 
   create_table "tests", force: true do |t|
     t.string "longitude"

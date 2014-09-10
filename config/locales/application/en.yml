@@ -34,3 +34,5 @@ en:
             desc: "The more people you share your profile with, the more booking requests you’ll get. Share with friends on Facebook and Twitter."
         twitter:
           text: "Check out a @sidestagehq, a new platform for booking great musicians, bands and DJs"
+    city_launches:
+      desc: "Sidestage is not available in your city yet, but that'll soon change. Get notified when Sidestage launches near you."

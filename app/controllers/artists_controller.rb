@@ -12,7 +12,7 @@ class ArtistsController < ApplicationController
   
   before_filter :reject_scraper, only: [:index]
   before_filter :redirect_if_unpublished, only: [:show]
-  before_filter :only_available_cities, only: [:index]
+  before_filter :record_query, :only_available_cities, only: [:index]
   
   #
   # Settings
@@ -89,6 +89,16 @@ class ArtistsController < ApplicationController
     
   def reject_scraper
     redirect_to root_path if params[:lat].blank? || params[:lng].blank?
+  end
+  
+  def record_query
+    if params[:location].present?
+      search_query = SearchQuery.find_or_create_by(location: params[:location])
+      search_query.location = params[:location]
+      search_query.query = params
+      search_query.counter = search_query.counter.to_i + 1
+      search_query.save
+    end
   end
   
   def build_resource
