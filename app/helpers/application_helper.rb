@@ -33,21 +33,9 @@ module ApplicationHelper
   end
   
   def available_locations
-    AVAILABLE_LOCATIONS.map(&:last).collect{|l| l[:name]} + ["More cities"]
+    AVAILABLE_LOCATIONS.map(&:last).collect{|l| l[:name]} + [current_user.present? ? nil : "More cities"].compact
   end
   
-  def profile_available_locations
-    if user_signed_in?
-      if current_user.artist?
-        PROFILE_LOCATIONS.map(&:last).collect{|l| l[:name]}
-      else
-        available_locations
-      end
-    else
-       PROFILE_LOCATIONS.map(&:last).collect{|l| l[:name]} + ["More cities"]
-    end
-  end
-
   def available_locales
     {
       de: "Deutsch",

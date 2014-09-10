@@ -247,7 +247,7 @@ class Profile < ActiveRecord::Base
   end
   
   def geo_locate
-    PROFILE_LOCATIONS.each do |key, value|
+    AVAILABLE_LOCATIONS.each do |key, value|
       if value[:name] == location
         self.country_long = value[:country_long] if location_changed? || self.country_long.blank?
         self.country_short = value[:country_short]  if location_changed? || self.country_short.blank?
