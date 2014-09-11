@@ -45,11 +45,13 @@ textarea
 
 		.input:first-child 
 			input
-				+border-radius(4px 4px 0 0)
+				+border-top-left-radius($border-radius)
+				+border-top-right-radius($border-radius)
 
 		.input:last-child 
 			input
-				+border-radius(0 0 4px 4px)
+				+border-bottom-left-radius($border-radius)
+				+border-bottom-right-radius($border-radius)
 				border-bottom: 1px solid $border-color
 
 .form-inputs
