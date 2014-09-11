@@ -33,7 +33,7 @@ gem 'unf' # resolves fog errors
 gem 'simple_form'
 gem 'turbolinks'
 gem 'compass-rails', '~> 1.1.7'
-gem 'sass-rails'
+gem 'sass-rails', '4.0.3'
 gem 'compass-rgbapng', require: 'rgbapng'
 gem 'ceaser-easing'
 gem 'jquery-rails', '3.1.0'
@@ -62,6 +62,6 @@ end
 
 group :test do
   gem 'factory_girl_rails'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0.0'
   gem 'sms-spec'
 end

@@ -10,7 +10,7 @@ class MailchimpWorker
       newsletter_id = user.artist? ? Rails.application.secrets.mailchimp_artist_id : Rails.application.secrets.mailchimp_customer_id
       Rails.logger.debug { "newsletter: #{newsletter_id} set for user: #{user.id}" }
       mailchimp_api = Gibbon::API.new
-      res = mailchimp_api.lists.batch_subscribe(id: newsletter_id, :double_optin => false, :batch => [{:email => {:email => user.email}, :merge_vars => {:FNAME => user.full_name, :LNAME => ""}}])
+      res = mailchimp_api.lists.batch_subscribe(id: newsletter_id, double_optin: true, batch: [ { email: { email: user.email }, merge_vars: { :FNAME => user.full_name, :LNAME => "" } } ])
     end
   end
   

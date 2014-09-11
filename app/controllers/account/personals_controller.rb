@@ -24,6 +24,9 @@ class Account::PersonalsController < Account::ResourcesController
 
   def update
     resource.update_attributes(permitted_params[:user])
+    if resource.errors.blank? && (resource.email != permitted_params[:user][:email])
+      flash.now[:notice] = t(:"flash.account.users.update.email.notice")
+    end
     render :show
   end  
   

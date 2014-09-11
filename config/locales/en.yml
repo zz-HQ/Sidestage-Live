@@ -92,12 +92,18 @@ en:
         toggle:
           alert: 'Before you publish your profile there are a few things you need to complete. <a href="%{edit_profile_path}">Edit your profile now</a>'
       users:
+        update:
+          email:
+            notice: "We need to verify your new email address. Check your inbox for a confirmation link."
         complete:
           alert: "Please add a profile picture before continuing. It helps us build trust in our community."
         complete_payment:
           notice: "Awesome, you're set. When you get a chance, <a href='%{mobile_nr_path}'>verify your phone, too</a>"
         skip_payment:
           notice: "You're set, but you'll have to <a href='%{payment_path}'>add a credit card</a> before making a booking."  
+    mailchimps:
+      create:
+        notice: "Thanks! To complete the sign up process, check your inbox and click the confirmation email link."
     actions:
       create:
         notice: "%{resource_name} successfully created."
