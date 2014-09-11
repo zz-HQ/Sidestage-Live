@@ -15,29 +15,29 @@ FactoryGirl.define do
     factory :quentin do
       full_name "quentin"
       mobile_nr "+4922345678"
-      stripe_customer_id "quentin_123"
-      stripe_card_id "quentin_123"
+      balanced_customer_id "quentin_123"
+      balanced_card_id "quentin_123"
     end
 
     factory :bob do
       full_name "bob"
       mobile_nr "+4932345678"
-      stripe_customer_id "bob_123"
-      stripe_card_id "bob_123"
+      balanced_customer_id "bob_123"
+      balanced_card_id "bob_123"
     end
     
     factory :artist do
       full_name "artist"      
       mobile_nr "+4942345678"
-      stripe_customer_id "artist_123"
-      stripe_card_id "artist_123"
+      balanced_customer_id "artist_123"
+      balanced_card_id "artist_123"
     end
     
     factory :customer do
       mobile_nr "+4952345678"  
       full_name "customer"      
-      stripe_customer_id nil
-      stripe_card_id nil
+      balanced_customer_id nil
+      balanced_card_id nil
     end
 
   end

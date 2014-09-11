@@ -67,7 +67,10 @@ class Account::PersonalsController < Account::ResourcesController
       if resource.update_attributes(permitted_params[:user])
         @credit_card = resource.credit_card
       end
-    end    
+    end
+    if resource.errors.present?
+      flash.now[:error] = resource.errors.full_messages.first
+    end
     @credit_card ||= current_user.credit_card    
   end
   
@@ -78,7 +81,7 @@ class Account::PersonalsController < Account::ResourcesController
   end
   
   def remove_card
-    if current_user.destroy_stripe_card
+    if current_user.destroy_balanced_card
       flash[:credit_card] = t("flash.actions.destroy.notice", resource_name: CreditCard.model_name.human)
     end
     redirect_to payment_details_account_personal_path
@@ -111,7 +114,7 @@ class Account::PersonalsController < Account::ResourcesController
   
   def permitted_params
     params.permit user: [
-        :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
+        :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :balanced_token, :avatar
       ],
       credit_card: [ :name, :exp_month, :exp_year ],
       profile: [:iban, :bic]

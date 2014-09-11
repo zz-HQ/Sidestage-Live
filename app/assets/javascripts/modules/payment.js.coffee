@@ -4,7 +4,7 @@ App = window.App
 stripeListener = (e, message) ->
   return true if message?
   
-  stripeToken = $(@).find("input[name*='stripe_token']")
+  stripeToken = $(@).find("input[name*='balanced_token']")
   #if there is no token field at all, then no need to ask stripe for a token
   if stripeToken.length > 0 && stripeToken.val() == ""
     #return if optional and nothing entered
@@ -23,19 +23,25 @@ stripeListener = (e, message) ->
     #   exp_month: exp_date.split("/")[0] || ""
     #   exp_year: exp_date.split("/")[1] || ""
 
-    Stripe.card.createToken $("[data-form=payment]"), createTokenCallback
+    payload =
+      number: $("#credit_card_number").val()
+      expiration_month: $("#credit_card_ex_month").val()
+      expiration_year: $("#credit_card_ex_year").val()
+      cvv: $("#credit_card_cvc").val()
+    balanced.card.create(payload, creditCardCallback);      
     #somehow the following line is needed  
     return false
 
-createTokenCallback = (status, response) ->
-  if response.error
-    $(".payment-errors").text(response.error.message).show()
+creditCardCallback = (response) ->
+  console.log(response)
+  if response.errors
+    $(".payment-errors").text(response.errors[0].description).show()
     $(".payment-status").hide()
     return false
   else
     form = $("[data-form=payment]")
-    token = response["id"]
-    form.find("input[name*='stripe_token']").val(token)
+    token = response.cards[0].id
+    form.find("input[name*='balanced_token']").val(token)
     if(form.attr("data-remote") == "true")
       $.ajax(method: form.attr("method"), url: form.attr("action"), data: form.serialize())
     else

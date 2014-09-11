@@ -23,7 +23,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  attr_accessor :current_user, :stripe_token
+  attr_accessor :current_user, :balanced_token
 
   #
   # Validations
@@ -202,9 +202,9 @@ class Deal < ActiveRecord::Base
   end
   
   def make_customer_paymentable
-    if stripe_token.present?
-      customer.make_paymentable_by_token(stripe_token)
-      errors.add :stripe_token, customer.errors.full_messages.first if customer.errors.present?
+    if balanced_token.present?
+      customer.make_paymentable_by_token(balanced_token)
+      errors.add :balanced_token, customer.errors.full_messages.first if customer.errors.present?
     end
   end
   

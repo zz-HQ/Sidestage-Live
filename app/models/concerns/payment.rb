@@ -5,88 +5,94 @@ module Payment
   end
   
   def credit_card
-    return if stripe_card_id.nil?
-    @credit_card ||= CreditCard.from_stripe_customer(retrieve_customer)
+    return if balanced_card_id.nil?
+    @credit_card ||= CreditCard.from_balanced_customer(retrieve_customer)
   end
   
   def retrieve_customer
     begin
-      @stripe_customer = nil if stripe_token.present?
-      @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
-    rescue Stripe::StripeError => e
-      User.where(id: id).update_all(error_log: e.json_body.inspect)
+      @stripe_customer = nil if balanced_token.present?
+      @stripe_customer ||= Balanced::Customer.fetch("/customers/#{balanced_customer_id}")
+    rescue Balanced::Error => e
+      User.where(id: id).update_all(error_log: e.inspect)
       return [{}]
     end
   end
 
-  def destroy_stripe_card
-    return true if stripe_card_id.blank?
+  def destroy_balanced_card
+    return true if balanced_card_id.blank?
     begin
-      retrieve_customer.cards.retrieve(stripe_card_id).delete
-      User.where(id: id).update_all(stripe_card_id: nil)
+      Balanced::Card.fetch("/cards/#{balanced_card_id}").unstore
+      update_attribute :balanced_card_id, nil
       return true
-    rescue Stripe::StripeError => e
-      errors.add :stripe_card_id, e.json_body[:error][:message]
-      User.where(id: id).update_all(error_log: e.json_body.inspect)
+    rescue Balanced::Error => e
+      errors.add :balanced_card_id, e.error_message
+      User.where(id: id).update_all(error_log: e.inspect)
       return false
     end
   end
   
-  def create_stripe_card
+  def create_balanced_card
     begin
-      return save_stripe_card!(retrieve_customer.cards.create(card: stripe_token))
-    rescue Stripe::StripeError => e
-      User.where(id: id).update_all(error_log: e.json_body.inspect)
-      errors.add :stripe_card_id, e.json_body[:error][:message]
-      stripe_token = nil
+      card = Balanced::Card.fetch("/cards/#{balanced_token}")
+      card.associate_to_customer(retrieve_customer.href)
+      return save_balanced_card!(card)
+    rescue Balanced::Error => e
+      User.where(id: id).update_all(error_log: e.inspect)
+      errors.add :balanced_card_id, e.error_message
+      balanced_token = nil
     end
   end
   
-  def create_stripe_customer
+  def create_balanced_customer
     begin
-      return save_stripe_customer!(Stripe::Customer.create(card: stripe_token, description: email))
-    rescue Stripe::StripeError => e
-      User.where(id: id).update_all(error_log: e.json_body.inspect)
-      errors.add :stripe_customer_id, e.json_body[:error][:message]
-      stripe_token = nil
+      balanced_customer = Balanced::Customer.new(name: name, phone: mobile_nr, email: email)
+      balanced_customer.save
+      card = Balanced::Card.fetch("/cards/#{balanced_token}")
+      card.associate_to_customer(balanced_customer.href)
+      return save_balanced_customer!(balanced_customer)
+    rescue Balanced::Error => e
+      User.where(id: id).update_all(error_log: e.inspect)
+      errors.add :balanced_customer_id, e.error_message
+      balanced_token = nil
     end
   end
 
   def charge_deal_customer(customer, deal)
     return true if deal.stripe_charge_id.present?
-    return false if customer.stripe_customer_id.nil?
+    return false if customer.balanced_customer_id.nil?
     begin
       charge = Stripe::Charge.create(
         :amount => deal.price_with_surcharge_in_cents,
         :currency => deal.currency,
-        :customer => customer.stripe_customer_id,
+        :customer => customer.balanced_customer_id,
         :description => "Deal #{customer.name}"
       )
       deal.charged_price = deal.price_with_surcharge_in_cents
       deal.stripe_charge_id = charge.id
       ensure_stripe_charge!
       return true
-    rescue Stripe::StripeError => e
-      User.where(id: customer.id).update_all(error_log: e.json_body.inspect) 
-      deal.errors.add :stripe_charge_id, e.json_body[:error][:message] 
+    rescue Balanced::Error => e
+      User.where(id: customer.id).update_all(error_log: e.inspect) 
+      deal.errors.add :stripe_charge_id, e.error_message 
     end
     return false
     
   end
 
-  def save_stripe_card!(card)
-    self.stripe_card_id = card.id
-    User.where(id: id).update_all(stripe_card_id: self.stripe_card_id)
-    self.stripe_token = nil
+  def save_balanced_card!(card)
+    self.balanced_card_id = card.id
+    User.where(id: id).update_all(balanced_card_id: self.balanced_card_id)
+    self.balanced_token = nil
     @stripe_customer = nil
     return true
   end
   
-  def save_stripe_customer!(customer)
-    self.stripe_customer_id = customer.id
-    self.stripe_card_id = customer.cards.first.id
-    User.where(id: id).update_all(stripe_customer_id: self.stripe_customer_id, stripe_card_id: self.stripe_card_id)
-    customer.stripe_token = nil
+  def save_balanced_customer!(customer)
+    self.balanced_customer_id = customer.id
+    self.balanced_card_id = customer.cards.first.id if customer.cards.first.present?
+    User.where(id: id).update_all(balanced_customer_id: self.balanced_customer_id, balanced_card_id: self.balanced_card_id)
+    customer.balanced_token = nil
     return true
   end
   

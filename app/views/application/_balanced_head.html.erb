@@ -2,3 +2,6 @@
 <%= javascript_tag do %>
 	Stripe.setPublishableKey('<%= Rails.application.secrets.stripe_publishable_key %>');
 <% end %>
+
+
+<script type="text/javascript" src="https://js.balancedpayments.com/1.1/balanced.js"></script>
