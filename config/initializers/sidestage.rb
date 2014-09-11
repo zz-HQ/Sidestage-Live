@@ -1,6 +1,7 @@
 AVAILABLE_LOCATIONS = {
   berlin: { name: "Berlin", country_long: "Germany", country_short: "DE", latitude: "52.5167", longitude: "13.3833" },
   london: { name: "London", country_long: "United Kingdom", country_short: "UK", latitude: "51.5072", longitude: "0.1275" },
+  new_york_city: { name: "New York City", country_long: "United States", country_short: "US", latitude: "40.7127", longitude: "74.0059" },
   amsterdam: { name: "Amsterdam", country_long: "The Netherlands", country_short: "NL", latitude: "52.3667", longitude: "4.9000" },
   atlanta: { name: "Atlanta", country_long: "United States", country_short: "US", latitude: "33.7550", longitude: "84.3900" },
   austin: { name: "Austin", country_long: "United States", country_short: "US", latitude: "30.2500", longitude: "97.7500" },
