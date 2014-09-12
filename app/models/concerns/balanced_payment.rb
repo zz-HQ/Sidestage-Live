@@ -1,4 +1,4 @@
-module Payment
+module BalancedPayment
   extend ActiveSupport::Concern
   
   included do

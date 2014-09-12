@@ -133,20 +133,20 @@ ActiveRecord::Schema.define(version: 20140911144837) do
     t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "artist_type",                                    default: 0
+    t.integer  "artist_type",                                        default: 0
     t.string   "location"
-    t.boolean  "published",                                      default: false
+    t.boolean  "published",                                          default: false
     t.string   "currency"
     t.text     "additionals"
     t.string   "avatar"
     t.text     "payout"
     t.string   "slug"
-    t.boolean  "featured",                                       default: false
-    t.decimal  "latitude",             precision: 13, scale: 10
-    t.decimal  "longitude",            precision: 13, scale: 10
+    t.boolean  "featured",                                           default: false
+    t.decimal  "latitude",                 precision: 13, scale: 10
+    t.decimal  "longitude",                precision: 13, scale: 10
     t.string   "country_long"
     t.string   "country_short"
-    t.string   "balanced_customer_id"
+    t.string   "balanced_bank_account_id"
   end
 
   add_index "profiles", ["featured"], name: "index_profiles_on_featured", using: :btree

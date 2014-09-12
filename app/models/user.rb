@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  include Payment, TwoFactor, Authentication, Measurement, Sortable
+  include BalancedPayment, TwoFactor, Authentication, Measurement, Sortable
 
   #
   # Plugins
