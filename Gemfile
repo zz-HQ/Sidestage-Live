@@ -44,6 +44,7 @@ gem 'neat'
 gem 'asset_sync'
 gem 'jquery-fileupload-rails'
 gem 'kaminari'
+gem 'jquery-ui-rails', '~> 5.0.0'
 
 group :production do
   gem 'unicorn'

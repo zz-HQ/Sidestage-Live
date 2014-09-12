@@ -12,6 +12,7 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery-ui
 # require turbolinks
 #= require boilerplate
 #= require jquery.datetimepicker
@@ -41,6 +42,17 @@ App.init = ->
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
   $('.tabs').toggleMediaFields()
+  $( "#profile_cities" ).autocomplete
+      source: ["ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang"]
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
