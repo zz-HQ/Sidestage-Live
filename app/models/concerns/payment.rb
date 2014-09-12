@@ -6,7 +6,7 @@ module Payment
   
   def credit_card
     return if balanced_card_id.nil?
-    @credit_card ||= CreditCard.from_balanced_customer(retrieve_customer)
+    @credit_card ||= CreditCard.new(retrieve_balanced_card)
   end
   
   def retrieve_customer
@@ -18,6 +18,14 @@ module Payment
       return [{}]
     end
   end
+  
+  def retrieve_balanced_card(balanced_card_id)
+    begin
+      Balanced::Card.fetch("/cards/#{balanced_card_id}")
+    rescue Balanced::Error => e
+      User.where(id: id).update_all(error_log: e.inspect)
+    end
+  end
 
   def destroy_balanced_card
     return true if balanced_card_id.blank?
@@ -26,7 +34,7 @@ module Payment
       update_attribute :balanced_card_id, nil
       return true
     rescue Balanced::Error => e
-      errors.add :balanced_card_id, e.error_message
+      errors.add :balanced_card_id, e.extras.values.join(",")
       User.where(id: id).update_all(error_log: e.inspect)
       return false
     end
@@ -39,7 +47,7 @@ module Payment
       return save_balanced_card!(card)
     rescue Balanced::Error => e
       User.where(id: id).update_all(error_log: e.inspect)
-      errors.add :balanced_card_id, e.error_message
+      errors.add :balanced_card_id, e.extras.values.join(",")
       balanced_token = nil
     end
   end
@@ -53,28 +61,28 @@ module Payment
       return save_balanced_customer!(balanced_customer)
     rescue Balanced::Error => e
       User.where(id: id).update_all(error_log: e.inspect)
-      errors.add :balanced_customer_id, e.error_message
+      errors.add :balanced_customer_id, e.extras.values.join(",")
       balanced_token = nil
     end
   end
 
   def charge_deal_customer(customer, deal)
-    return true if deal.stripe_charge_id.present?
+    return true if deal.balanced_debit_id.present?
     return false if customer.balanced_customer_id.nil?
     begin
-      charge = Stripe::Charge.create(
-        :amount => deal.price_with_surcharge_in_cents,
-        :currency => deal.currency,
-        :customer => customer.balanced_customer_id,
-        :description => "Deal #{customer.name}"
+      price_to_be_charged = deal.price_in_dollor_with_surcharge_in_cents
+      debit = retrieve_balanced_card(customer.balanced_card_id).debit(
+        :amount => price_to_be_charged,
+        :appears_on_statement_as => 'Sidestage',
+        :description => "#{customer.name} - #{profile.name}"
       )
-      deal.charged_price = deal.price_with_surcharge_in_cents
-      deal.stripe_charge_id = charge.id
-      ensure_stripe_charge!
+      deal.charged_price = price_to_be_charged
+      deal.balanced_debit_id = debit.id
+      ensure_balanced_charge!
       return true
     rescue Balanced::Error => e
       User.where(id: customer.id).update_all(error_log: e.inspect) 
-      deal.errors.add :stripe_charge_id, e.error_message 
+      deal.errors.add :balanced_debit_id, e.extras.values.join(",")
     end
     return false
     

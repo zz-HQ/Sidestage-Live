@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140911144837) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "balanced_charge_id"
+    t.string   "balanced_debit_id"
     t.integer  "charged_price"
     t.string   "currency"
     t.string   "state"

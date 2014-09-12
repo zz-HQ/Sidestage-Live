@@ -75,7 +75,7 @@ en:
           notice: "Booking request cancelled."  
         confirm:
           notice: "Booking confirmed. You'll get an email from us, too."
-        accepted:
+        accept:
           notice: "Booking request accepted. You'll get an email from us, too."
         offer:
           notice: "Price for this booking was changed. We need the customer to confirm it."  

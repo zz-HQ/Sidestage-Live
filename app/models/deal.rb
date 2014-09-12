@@ -54,7 +54,7 @@ class Deal < ActiveRecord::Base
   
   after_create :create_user_message, :notify_admin
   
-  after_rollback :ensure_stripe_charge!, on: :update
+  after_rollback :ensure_balanced_charge!, on: :update
   
   #
   # Associations
@@ -219,9 +219,9 @@ class Deal < ActiveRecord::Base
     end
   end
   
-  def ensure_stripe_charge!
-    if changes.include?(:stripe_charge_id) && stripe_charge_id.present?
-      update_columns(charged_price: price_with_surcharge_in_cents, stripe_charge_id: stripe_charge_id)
+  def ensure_balanced_charge!
+    if changes.include?(:balanced_debit_id) && balanced_debit_id.present?
+      update_columns(charged_price: price_with_surcharge_in_cents, balanced_debit_id: balanced_debit_id)
     end
   end
   

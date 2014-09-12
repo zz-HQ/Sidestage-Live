@@ -9,7 +9,7 @@ class CreditCard
   #
   #
   
-  attr_accessor :balanced_customer, :balanced_card, :number, :exp_month, :exp_year, :name, :brand, :error
+  attr_accessor :balanced_card, :number, :exp_month, :exp_year, :name, :brand, :error
 
   #
   # Class Methods
@@ -19,18 +19,14 @@ class CreditCard
   #
   #
   
-  def initialize(customer, card)
+  def initialize(card)
     @name = card.bank_name
     @number = card.number
     @brand = card.brand
     @exp_month = card.expiration_month
     @exp_year = card.expiration_year
+    balanced_card = card
   end
-  
-  def self.from_balanced_customer(customer)
-    CreditCard.new customer, customer.cards.first
-  end
-
 
   #
   # Instance Methods
