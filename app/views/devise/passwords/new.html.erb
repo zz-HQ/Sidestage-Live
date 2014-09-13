@@ -1,7 +1,7 @@
 <div class="wrap">
   <div class="devise">
-    <h3>Reset Password</h3>
-    <p>Enter the email address associated with your account, and we'll email you a link to reset your password</p><br>
+    <h2>Reset Password</h2>
+    <!-- <p>Enter the email address associated with your account, and we'll email you a link to reset your password</p><br> -->
 
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <%= f.error_notification %>
@@ -10,13 +10,11 @@
         <%= f.input :email, required: true, autofocus: true, placeholder: "Email", label: false %>
       </div>
 
-      <%= f.button :submit, "Send reset link", class: "btn btn-left" %>
+      <div class="form-actions">
+        <%= f.button :submit, "Send reset link", class: "btn" %>
+        <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "link" %>
+      </div>
     <% end %>
-
-    <!-- <div class="bottom-link">
-      <span><%#= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), data: {lightbox: "ajax"} %></span><br>
-      <span><%#= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), data: {lightbox: "ajax"} %></span>
-    </div> -->
 
   </div>
 </div>
