@@ -4,9 +4,9 @@ App = window.App
 balancedCardListener = (e, message) ->
   return true if message?
   
-  stripeToken = $(@).find("input[name*='balanced_token']")
+  balancedToken = $(@).find("input[name*='balanced_token']")
   #if there is no token field at all, then no need to ask stripe for a token
-  if stripeToken.length > 0 && stripeToken.val() == ""
+  if balancedToken.length > 0 && balancedToken.val() == ""
     e.preventDefault()
     $(".payment-status").show()
     $(".payment-errors").hide()
