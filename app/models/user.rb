@@ -174,7 +174,8 @@ class User < ActiveRecord::Base
   def add_credit_card    
     if balanced_token.present? 
       if balanced_customer_id.blank?
-        return create_balanced_customer
+        balanced_customer = create_balanced_customer
+        return balanced_customer && assign_card_to_balanced_customer(balanced_customer, balanced_token)
       elsif balanced_card_id.blank?
         return create_balanced_card
       end

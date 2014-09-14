@@ -35,6 +35,15 @@ FactoryGirl.define do
       
       published false
     end
+
+    factory :balanced do
+      name "balanced"
+      routing_number "123445"
+      account_number "12222"
+      balanced_bank_account_id "4321"
+      location "New York City"
+      price 300
+    end
     
     
   end

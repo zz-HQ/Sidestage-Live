@@ -6,16 +6,16 @@ module BalancedPayment
   
   def credit_card
     return if balanced_card_id.nil?
-    @credit_card ||= CreditCard.new(retrieve_balanced_card)
+    @credit_card ||= CreditCard.new(retrieve_balanced_card(balanced_card_id))
   end
   
-  def retrieve_customer
+  def retrieve_balanced_customer
+    return nil if balanced_customer_id.blank?
     begin
-      @stripe_customer = nil if balanced_token.present?
-      @stripe_customer ||= Balanced::Customer.fetch("/customers/#{balanced_customer_id}")
+      @balanced_customer = nil if balanced_token.present?
+      @balanced_customer ||= Balanced::Customer.fetch("/customers/#{balanced_customer_id}")
     rescue Balanced::Error => e
       User.where(id: id).update_all(error_log: e.inspect)
-      return [{}]
     end
   end
   
@@ -43,12 +43,11 @@ module BalancedPayment
   def create_balanced_card
     begin
       card = Balanced::Card.fetch("/cards/#{balanced_token}")
-      card.associate_to_customer(retrieve_customer.href)
+      card.associate_to_customer(retrieve_balanced_customer.href)
       return save_balanced_card!(card)
     rescue Balanced::Error => e
       User.where(id: id).update_all(error_log: e.inspect)
       errors.add :balanced_card_id, e.extras.values.join(",")
-      balanced_token = nil
     end
   end
   
@@ -56,13 +55,23 @@ module BalancedPayment
     begin
       balanced_customer = Balanced::Customer.new(name: name, phone: mobile_nr, email: email)
       balanced_customer.save
-      card = Balanced::Card.fetch("/cards/#{balanced_token}")
-      card.associate_to_customer(balanced_customer.href)
-      return save_balanced_customer!(balanced_customer)
+      save_balanced_customer!(balanced_customer)
+      return balanced_customer
     rescue Balanced::Error => e
       User.where(id: id).update_all(error_log: e.inspect)
       errors.add :balanced_customer_id, e.extras.values.join(",")
-      balanced_token = nil
+    end
+  end
+  
+  def assign_card_to_balanced_customer(balanced_customer, balanced_token)
+    begin
+      card = Balanced::Card.fetch("/cards/#{balanced_token}")
+      card.associate_to_customer(balanced_customer.href)
+      save_balanced_card!(card)
+      return true
+    rescue Balanced::Error => e
+      User.where(id: id).update_all(error_log: e.inspect)
+      errors.add :balanced_customer_id, e.extras.values.join(",")
     end
   end
 
@@ -91,8 +100,7 @@ module BalancedPayment
   def save_balanced_card!(card)
     self.balanced_card_id = card.id
     User.where(id: id).update_all(balanced_card_id: self.balanced_card_id)
-    self.balanced_token = nil
-    @stripe_customer = nil
+    @balanced_customer = nil
     return true
   end
   
@@ -100,7 +108,6 @@ module BalancedPayment
     self.balanced_customer_id = customer.id
     self.balanced_card_id = customer.cards.first.id if customer.cards.first.present?
     User.where(id: id).update_all(balanced_customer_id: self.balanced_customer_id, balanced_card_id: self.balanced_card_id)
-    customer.balanced_token = nil
     return true
   end
   

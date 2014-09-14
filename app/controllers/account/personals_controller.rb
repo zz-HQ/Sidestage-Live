@@ -73,6 +73,11 @@ class Account::PersonalsController < Account::ResourcesController
     end
     @credit_card ||= current_user.credit_card    
   end
+
+  def remove_card
+    current_user.destroy_balanced_card
+    redirect_to payment_details_account_personal_path
+  end
   
   def bank_details
     if request.patch?
@@ -80,11 +85,9 @@ class Account::PersonalsController < Account::ResourcesController
     end
   end
   
-  def remove_card
-    if current_user.destroy_balanced_card
-      flash[:credit_card] = t("flash.actions.destroy.notice", resource_name: CreditCard.model_name.human)
-    end
-    redirect_to payment_details_account_personal_path
+  def remove_bank_account
+    current_user.profile.destroy_balanced_bank_account!
+    redirect_to bank_details_account_personal_path
   end
 
   def upload_avatar
@@ -117,7 +120,7 @@ class Account::PersonalsController < Account::ResourcesController
         :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :balanced_token, :avatar
       ],
       credit_card: [ :name, :exp_month, :exp_year ],
-      profile: [:iban, :bic, :sort_code, :account_number, :payout_name, :payout_state, :payout_city, :payout_postal_code, :payout_street, :payout_street_2, :payout_country]
+      profile: [:balanced_token, :iban, :bic, :routing_number, :account_number, :payout_name, :payout_state, :payout_city, :payout_postal_code, :payout_street, :payout_street_2, :payout_country]
   end
   
   #

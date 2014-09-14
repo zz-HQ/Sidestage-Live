@@ -185,7 +185,7 @@ class Profile < ActiveRecord::Base
   end
   
   def payoutable?
-    iban.present? && bic.present?
+    (iban.present? && bic.present?) || ()
   end
 
   def soundcloud_id_from_iframe(iframe)
