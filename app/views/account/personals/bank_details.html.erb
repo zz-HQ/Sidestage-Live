@@ -29,11 +29,16 @@
                 <% end %>
 
                 <%= f.input :payout_name, label: false %>
-                <%= f.input :payout_street, label: false %>
-                <%= f.input :payout_street_2, label: false %>            
-                <%= f.input :payout_city, label: false %>
-                <%= f.input :payout_state, label: false %>
-                <%= f.input :payout_postal_code, label: false %>
+
+                <% if resource.profile.usa? %>
+                    <%= f.input :payout_street, label: false %>
+                    <%= f.input :payout_street_2, label: false %>            
+                    <%= f.input :payout_city, label: false %>
+                    <%= f.input :payout_state, label: false %>
+                    <%= f.input :payout_postal_code, label: false %>
+                <% else %>
+                    <%= f.input :payout_address, as: :text, label: false %>
+                <% end %>
                 <%= f.submit class: "btn" %>
             <% end %>
         

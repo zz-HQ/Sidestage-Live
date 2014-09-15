@@ -120,7 +120,7 @@ class Account::PersonalsController < Account::ResourcesController
         :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :balanced_token, :avatar
       ],
       credit_card: [ :name, :exp_month, :exp_year ],
-      profile: [:balanced_token, :iban, :bic, :routing_number, :account_number, :payout_name, :payout_state, :payout_city, :payout_postal_code, :payout_street, :payout_street_2, :payout_country]
+      profile: [:balanced_token, :iban, :bic, :routing_number, :account_number, :payout_name, :payout_address, :payout_state, :payout_city, :payout_postal_code, :payout_street, :payout_street_2, :payout_country]
   end
   
   #

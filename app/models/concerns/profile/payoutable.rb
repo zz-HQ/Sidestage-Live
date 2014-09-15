@@ -5,7 +5,7 @@ module Profile::Payoutable
   included do
     attr_accessor :balanced_token
     
-    store :payout, accessors: [ :iban, :bic, :routing_number, :account_number, :payout_name, :payout_state, :payout_city, :payout_postal_code, :payout_street, :payout_street_2, :payout_country ]
+    store :payout, accessors: [ :iban, :bic, :routing_number, :account_number, :payout_name, :payout_address, :payout_state, :payout_city, :payout_postal_code, :payout_street, :payout_street_2, :payout_country ]
     
     before_save :upload_to_payment_gateway
     
@@ -19,7 +19,7 @@ module Profile::Payoutable
     country_short == "US"
   end
   
-  def payout_address
+  def bankee_address
     [payout_street, payout_street_2, payout_postal_code, payout_city, payout_state].compact.join(" ")
   end
   

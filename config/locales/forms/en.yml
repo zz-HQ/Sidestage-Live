@@ -73,7 +73,7 @@ en:
       profile:
         youtube: Click here to paste Youtube URL
         soundcloud: Click here to paste SoundCloud 'Embed' code
-        payout_name: Legal name
+        payout_name: Name on account
         payout_street: Street address
         payout_street_2: Address line 2 (optional)
         payout_city: City
@@ -82,6 +82,7 @@ en:
         sort_code: Sort code
         routing_number: Routing number
         account_number: Account Number
+        payout_address: "Address associated with bank account"
       mailchimp_subscriber:
         email: Email Address
       match_me:
