@@ -53,7 +53,7 @@
                         <p><%= t(:"application.social.share.facebook.artist.desc") %></p>
                         <div class="btns">
                             <%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), facebook_share_url(artist_url(current_user.profile)), target: :_blank, class: "btn btn-facebook btn-inline" %>
-                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.profiles.preview.share_modal.twitter_text"), root_url), target: :_blank, class: "link" %>
+                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.profiles.preview.share_modal.twitter_text"), "https://www.sidestage.com/"), target: :_blank, class: "link" %>
                         </div>
                     </div>    
                 </div>    
@@ -65,8 +65,8 @@
                         <p><strong><%= t(:"application.social.share.facebook.customer.title") %></strong></p>
                         <p><%= t(:"application.social.share.facebook.customer.desc") %></p>
                         <div class="btns">
-                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), facebook_share_url(root_url), target: :_blank, class: "btn btn-facebook btn-inline" %>
-                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.social.share.twitter.text"), root_url), target: :_blank, class: "link" %>
+                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_fb"), facebook_share_url("https://www.sidestage.com/"), target: :_blank, class: "btn btn-facebook btn-inline" %>
+                            <%= link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.social.share.twitter.text"), "https://www.sidestage.com/"), target: :_blank, class: "link" %>
                         </div>
                     </div>    
                 </div>    
