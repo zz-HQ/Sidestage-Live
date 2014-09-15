@@ -72,9 +72,20 @@
 			.nice-select
 				margin-bottom: 7px
 
+			// kann raus sobald select durch input feld getauscht wird
+			// stattdessen das .cc-exp und .cc-cvc entkommentieren
 			.nice-select
 				+span-columns(3)
 				height: 38px
+
+				.select-label-value
+					width: 56px
+					overflow: hidden
+					word-break: break-all
+					height: 20px
+
+				.select-arrow
+					top: 13px
 
 			.cc-cvc
 				+span-columns(2)
