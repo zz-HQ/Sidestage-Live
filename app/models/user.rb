@@ -66,6 +66,8 @@ class User < ActiveRecord::Base
   before_save :generate_secrete_key
   
   before_save :set_default_currency, :add_credit_card
+  
+  after_destroy :delete_balanced_customer
 
   #
   # Scopes
@@ -180,6 +182,11 @@ class User < ActiveRecord::Base
         return create_balanced_card
       end
     end
+  end
+  
+  def delete_balanced_customer
+    BalancedWorker.perform_async(:delete_card, balanced_card_id)
+    BalancedWorker.perform_async(:delete_customer, balanced_customer_id)
   end
   
 end

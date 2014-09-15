@@ -9,6 +9,8 @@ module Profile::Payoutable
     
     before_save :upload_to_payment_gateway
     
+    after_destroy :delete_balanced_bank_account
+    
   end
   
   def uk?
@@ -79,5 +81,9 @@ module Profile::Payoutable
     end
     return false
   end  
+  
+  def delete_balanced_bank_account
+    BalancedWorker.perform_async(:delete_bank_account, balanced_bank_account_id)
+  end
   
 end
