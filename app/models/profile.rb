@@ -9,10 +9,8 @@ class Profile < ActiveRecord::Base
   #  
   
   extend FriendlyId
-  include Profile::Presentable
-  include Sortable
-  include Filter
-  include Surcharge
+  
+  include Profile::Presentable, Sortable, Filter, Surcharge, Payoutable
 
   #
   # Attributes
@@ -39,7 +37,6 @@ class Profile < ActiveRecord::Base
   enum artist_type: { solo: 0, band: 1, dj: 2 }
   
   store :additionals, accessors: [ :admin_disabled_at, :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
-  store :payout, accessors: [ :iban, :bic ]
   
   attr_accessor :wizard_step
   
@@ -188,7 +185,7 @@ class Profile < ActiveRecord::Base
   end
   
   def payoutable?
-    iban.present? && bic.present?
+    (iban.present? && bic.present?) || ()
   end
 
   def soundcloud_id_from_iframe(iframe)

@@ -1,17 +1,12 @@
 window.App = {} if window.App == undefined
 App = window.App
 
-stripeListener = (e, message) ->
+balancedCardListener = (e, message) ->
   return true if message?
   
-  stripeToken = $(@).find("input[name*='stripe_token']")
+  balancedToken = $(@).find("input[name*='balanced_token']")
   #if there is no token field at all, then no need to ask stripe for a token
-  if stripeToken.length > 0 && stripeToken.val() == ""
-    #return if optional and nothing entered
-    if($(@).attr("data-optional") == "true")
-      if($(@).find("input[data-stripe=number]").val() == "")
-        return
-
+  if balancedToken.length > 0 && balancedToken.val() == ""
     e.preventDefault()
     $(".payment-status").show()
     $(".payment-errors").hide()
@@ -23,19 +18,24 @@ stripeListener = (e, message) ->
     #   exp_month: exp_date.split("/")[0] || ""
     #   exp_year: exp_date.split("/")[1] || ""
 
-    Stripe.card.createToken $("[data-form=payment]"), createTokenCallback
+    payload =
+      number: $("#credit_card_number").val()
+      expiration_month: $("#credit_card_ex_month").val()
+      expiration_year: $("#credit_card_ex_year").val()
+      cvv: $("#credit_card_cvc").val()
+    balanced.card.create(payload, creditCardCallback);      
     #somehow the following line is needed  
     return false
 
-createTokenCallback = (status, response) ->
-  if response.error
-    $(".payment-errors").text(response.error.message).show()
+creditCardCallback = (response) ->
+  if response.errors
+    $(".payment-errors").text(response.errors[0].description).show()
     $(".payment-status").hide()
     return false
   else
     form = $("[data-form=payment]")
-    token = response["id"]
-    form.find("input[name*='stripe_token']").val(token)
+    token = response.cards[0].id
+    form.find("input[name*='balanced_token']").val(token)
     if(form.attr("data-remote") == "true")
       $.ajax(method: form.attr("method"), url: form.attr("action"), data: form.serialize())
     else
@@ -43,12 +43,50 @@ createTokenCallback = (status, response) ->
   return
   
 
-App.setStripeListener = ->  
-  #$('[data-form=payment]').off 'submit', stripeListener
-  #$('[data-form=payment]').on 'submit', stripeListener
-  
+App.setBalancedCardListener = ->  
+  #$('[data-form=payment]').off 'submit', balancedCardListener
+  #$('[data-form=payment]').on 'submit', balancedCardListener
 #TODO: remove the following two lines after turbolinks is activated again
-$(document).on 'submit', '[data-form=payment]', stripeListener
+$(document).on 'submit', '[data-form=payment]', balancedCardListener
+
+################### Bank Account ################
+
+balancedBankAccountListener = (e, message) ->
+  return true if message?
+  balancedToken = $(@).find("input[name*='balanced_token']")
+  if balancedToken.length > 0 && balancedToken.val() == ""
+    e.preventDefault()
+  
+    $(".payment-status").show()
+    $(".payment-errors").hide()
+  
+    payload =
+      name: $("#profile_payout_name").val()
+      routing_number: $("#profile_routing_number").val()
+      account_number: $("#profile_account_number").val()
+  
+    balanced.bankAccount.create payload, bankAccountCallBack
+    return false
+
+bankAccountCallBack = (response) ->
+  if response.errors
+    $(".payment-errors").text(response.errors[0].description).show()
+    $(".payment-status").hide()
+  else
+    form = $("[data-form='bank_account']")
+    token = response.bank_accounts[0].id
+    form.find("input[name*='balanced_token']").val(token)
+    if(form.attr("data-remote") == "true")
+      $.ajax(method: form.attr("method"), url: form.attr("action"), data: form.serialize())
+    else
+      form.trigger 'submit', ['done']
+  return
+
+App.balancedBankAccountListener = ->  
+
+$(document).on 'submit', '[data-form=bank_account]', balancedBankAccountListener
+
+################### End Bank Account ################
 
 $(document).on 'keyup', "input[type=text][data-surcharge]", (e) ->
   price = parseInt($(@).val())

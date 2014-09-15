@@ -67,8 +67,16 @@ class Account::PersonalsController < Account::ResourcesController
       if resource.update_attributes(permitted_params[:user])
         @credit_card = resource.credit_card
       end
-    end    
+    end
+    if resource.errors.present?
+      flash.now[:error] = resource.errors.full_messages.first
+    end
     @credit_card ||= current_user.credit_card    
+  end
+
+  def remove_card
+    current_user.destroy_balanced_card
+    redirect_to payment_details_account_personal_path
   end
   
   def bank_details
@@ -77,11 +85,9 @@ class Account::PersonalsController < Account::ResourcesController
     end
   end
   
-  def remove_card
-    if current_user.destroy_stripe_card
-      flash[:credit_card] = t("flash.actions.destroy.notice", resource_name: CreditCard.model_name.human)
-    end
-    redirect_to payment_details_account_personal_path
+  def remove_bank_account
+    current_user.profile.destroy_balanced_bank_account!
+    redirect_to bank_details_account_personal_path
   end
 
   def upload_avatar
@@ -111,10 +117,10 @@ class Account::PersonalsController < Account::ResourcesController
   
   def permitted_params
     params.permit user: [
-        :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :stripe_token, :avatar
+        :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :balanced_token, :avatar
       ],
       credit_card: [ :name, :exp_month, :exp_year ],
-      profile: [:iban, :bic]
+      profile: [:balanced_token, :iban, :bic, :routing_number, :account_number, :payout_name, :payout_state, :payout_city, :payout_postal_code, :payout_street, :payout_street_2, :payout_country]
   end
   
   #

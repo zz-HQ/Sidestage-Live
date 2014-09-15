@@ -70,3 +70,16 @@ RSpec.configure do |config|
   end  
   
 end
+
+def mock_balanced_payment
+  allow(Balanced::Card).to receive(:fetch) { 
+    val = "MOCK"
+    def val.debit(*args)
+       debit = "123"
+       def debit.id; "1234"; end
+       debit
+    end
+    val
+  }
+end
+

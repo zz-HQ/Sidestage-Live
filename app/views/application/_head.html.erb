@@ -36,8 +36,8 @@
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   
-  <%= render "stripe_head" %>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+  <%= render "balanced_head" %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en"></script>
   <%= yield :html_head %>
   
 </head>

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  include Payment, TwoFactor, Authentication, Measurement, Sortable
+  include BalancedPayment, TwoFactor, Authentication, Measurement, Sortable
 
   #
   # Plugins
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   #
   #
   
-  attr_accessor :stripe_token, :wizard_step
+  attr_accessor :balanced_token, :wizard_step
   
   #
   # Validations
@@ -126,11 +126,11 @@ class User < ActiveRecord::Base
   end
   
   def paymentable?
-    stripe_customer_id.present? && stripe_card_id.present?
+    balanced_customer_id.present? && balanced_card_id.present?
   end
   
   def make_paymentable_by_token(token)
-    self.stripe_token = token
+    self.balanced_token = token
     add_credit_card
     return save
   end
@@ -172,11 +172,12 @@ class User < ActiveRecord::Base
   end
   
   def add_credit_card    
-    if stripe_token.present? 
-      if stripe_customer_id.blank?
-        return create_stripe_customer
-      elsif stripe_card_id.blank?
-        return create_stripe_card
+    if balanced_token.present? 
+      if balanced_customer_id.blank?
+        balanced_customer = create_balanced_customer
+        return balanced_customer && assign_card_to_balanced_customer(balanced_customer, balanced_token)
+      elsif balanced_card_id.blank?
+        return create_balanced_card
       end
     end
   end

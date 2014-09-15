@@ -47,7 +47,7 @@ App.init = ->
     scrollInput: false
     minDate:'-1970/01/01'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
-  App.setStripeListener()
+  App.setBalancedCardListener()
   App.initGooglePlaces()
 
 $(document).on 'change', '.submit-on-change', (e) -> 

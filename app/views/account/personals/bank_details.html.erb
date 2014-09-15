@@ -3,10 +3,41 @@
 
     <div class="content bank">
         <header><%= t(:"application.profiles.payment.title_html") %></header>
-        <%= simple_form_for resource.profile, url: bank_details_account_personal_path do |f| %>
-            <%= f.input :iban, label: false, placeholder: "IBAN" %>
-            <%= f.input :bic, label: false, placeholder: "BIC / SWIFT Code" %>
-            <%= f.submit class: "btn" %>
+        
+        <% if resource.profile.balanced_payoutable? %>
+            <div class="credit-card-info">
+                <p><%= Profile.human_attribute_name(:routing_number) %>: <%= resource.profile.routing_number %></p>
+                <p><%= Profile.human_attribute_name(:account_number) %>: <%= resource.profile.account_number %></p>
+            </div>
+        
+            <div class="buttons">
+                <%= link_to t(:"application.personals.payment_details.show.remove"), remove_bank_account_account_personal_path, method: :delete, class: "link", data: { confirm: t(:"helpers.confirm.sure") } %>
+            </div>
+
+        <% else %>
+        
+            <%= simple_form_for resource.profile, url: bank_details_account_personal_path, data: { form: resource.profile.usa? ? "bank_account" : nil } do |f| %>
+            	<div class="payment-status" style="display:none;"><%= t(:"application.deals.new.verification_message") %></div>
+            	<div class="payment-errors" style="display:none;"></div>
+                <% if resource.profile.uk? || resource.profile.usa? %>
+                    <%= f.input :balanced_token, as: :hidden if resource.profile.usa? %>
+                    <%= f.input :account_number, label: false %>
+                    <%= f.input :routing_number, label: false, placeholder: resource.profile.uk? ? t(:"simple_form.placeholders.profile.sort_code"): t(:"simple_form.placeholders.profile.routing_number") %>
+                <% else %>
+                    <%= f.input :iban, label: false, placeholder: "IBAN" %>
+                    <%= f.input :bic, label: false, placeholder: "BIC / SWIFT Code" %>
+                <% end %>
+
+                <%= f.input :payout_name, label: false %>
+                <%= f.input :payout_street, label: false %>
+                <%= f.input :payout_street_2, label: false %>            
+                <%= f.input :payout_city, label: false %>
+                <%= f.input :payout_state, label: false %>
+                <%= f.input :payout_postal_code, label: false %>
+                <%= f.submit class: "btn" %>
+            <% end %>
+        
         <% end %>
+        
     </div>
 </div>

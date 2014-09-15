@@ -74,7 +74,11 @@ class Account::DealsController < Account::ResourcesController
   Deal.aasm.events.keys.reject { |e| e.in?([:offer, :confirm]) }.each do |event|
     define_method event do
       resource.send("#{event.to_s}!")
-      flash[:notice] = t(:"flash.account.deals.#{action_name}.notice")
+      if resource.errors.present?
+        flash[:error] = resource.errors.full_messages.first
+      else
+        flash[:notice] = t(:"flash.account.deals.#{action_name}.notice")
+      end
       respond_to do |format|
         format.html { redirect_to account_conversation_path(resource.conversation) }
         format.js { render :show }
@@ -94,7 +98,7 @@ class Account::DealsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:start_at, :price, :body, :profile_id, :stripe_token])
+    params.permit(deal: [:start_at, :price, :body, :profile_id, :balanced_token])
   end
     
   #

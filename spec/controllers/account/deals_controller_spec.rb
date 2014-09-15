@@ -3,8 +3,6 @@ require 'spec_helper'
 
 describe Account::DealsController, :type => :controller do
   
-   
-  
   context "states" do
     
     before(:each) do
@@ -26,6 +24,7 @@ describe Account::DealsController, :type => :controller do
     
     it "accepts" do
       deal = FactoryGirl.create(:requested_deal)
+      mock_balanced_payment      
       
       sign_in(deal.artist)
       put :accept, id: deal.to_param
@@ -36,7 +35,8 @@ describe Account::DealsController, :type => :controller do
 
     it "confirms" do
       deal = FactoryGirl.create(:offered_deal)
-      
+      mock_balanced_payment
+
       sign_in(deal.customer)
       put :confirm, id: deal.to_param
       

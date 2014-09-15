@@ -85,16 +85,13 @@ describe Deal, :type => :model do
         deal = FactoryGirl.create(:deal)
         deal.current_user = deal.artist
         expect(deal.customer).to be_paymentable
-        allow(Stripe::Charge).to receive(:create) { 
-          val = "MOCK"
-          def val.id; "123"; end
-          val
-        }
-      
+        
+        mock_balanced_payment
+        
         deal.accept!
       
         expect(deal.accepted?).to be true
-        expect(deal.stripe_charge_id).to eq("123")
+        expect(deal.balanced_debit_id).to eq("1234")
       end
 
       it "charges customer on confirm" do
@@ -105,27 +102,24 @@ describe Deal, :type => :model do
         
         deal.current_user = deal.customer
         expect(deal.customer).to be_paymentable
-        allow(Stripe::Charge).to receive(:create) { 
-          val = "MOCK"
-          def val.id; "123"; end
-          val
-        }
-
+        
+        mock_balanced_payment
+        
         deal.confirm!
         expect(deal.confirmed?).to be true
-        expect(deal.stripe_charge_id).to eq("123")
+        expect(deal.balanced_debit_id).to eq("1234")
       end
 
     
       it "does not charge twice" do
-        deal = FactoryGirl.create(:deal, stripe_charge_id: "already_charged")
+        deal = FactoryGirl.create(:deal, balanced_debit_id: "already_charged")
         deal.current_user = deal.artist
         expect(deal.customer).to be_paymentable
       
         deal.accept!
       
         expect(deal.accepted?).to be true
-        expect(deal.reload.stripe_charge_id).to eq("already_charged")
+        expect(deal.reload.balanced_debit_id).to eq("already_charged")
       
       end
       
@@ -166,7 +160,7 @@ describe Deal, :type => :model do
         deal.accept!
       
         expect(deal.accepted?).to be false
-        expect(deal.stripe_charge_id).to be_nil
+        expect(deal.balanced_debit_id).to be_nil
       end
       
     end
