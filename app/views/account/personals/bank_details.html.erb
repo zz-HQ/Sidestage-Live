@@ -17,29 +17,35 @@
         <% else %>
         
             <%= simple_form_for resource.profile, url: bank_details_account_personal_path, data: { form: resource.profile.usa? ? "bank_account" : nil } do |f| %>
-            	<div class="payment-status" style="display:none;"><%= t(:"application.deals.new.verification_message") %></div>
-            	<div class="payment-errors" style="display:none;"></div>
+                <div class="payment-status" style="display:none;"><%= t(:"application.deals.new.verification_message") %></div>
+                <div class="payment-errors" style="display:none;"></div>
                 <% if resource.profile.uk? || resource.profile.usa? %>
                     <%= f.input :balanced_token, as: :hidden if resource.profile.usa? %>
-                    <%= f.input :account_number, label: false %>
                     <%= f.input :routing_number, label: false, placeholder: resource.profile.uk? ? t(:"simple_form.placeholders.profile.sort_code"): t(:"simple_form.placeholders.profile.routing_number") %>
+                    <%= f.input :account_number, label: false %>
                 <% else %>
                     <%= f.input :iban, label: false, placeholder: "IBAN" %>
-                    <%= f.input :bic, label: false, placeholder: "BIC / SWIFT Code" %>
+                    <%= f.input :bic, label: false, placeholder: "BIC / SWIFT" %>
                 <% end %>
+
+                <hr/>
 
                 <%= f.input :payout_name, label: false %>
 
                 <% if resource.profile.usa? %>
                     <%= f.input :payout_street, label: false %>
-                    <%= f.input :payout_street_2, label: false %>            
-                    <%= f.input :payout_city, label: false %>
-                    <%= f.input :payout_state, label: false %>
+                    <%= f.input :payout_street_2, label: false %>
+                    <div class="inputs">
+                        <%= f.input :payout_city, label: false %>
+                        <%= f.input :payout_state, label: false %>
+                    </div>
                     <%= f.input :payout_postal_code, label: false %>
                 <% else %>
                     <%= f.input :payout_address, as: :text, label: false %>
                 <% end %>
-                <%= f.submit class: "btn" %>
+                <div class="form-actions">
+                    <%= f.submit class: "btn", value: t(:"helpers.submit.credit_card.submit") %>
+                </div>
             <% end %>
         
         <% end %>
