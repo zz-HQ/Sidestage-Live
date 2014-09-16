@@ -11,5 +11,10 @@
 	<div class="hint"><%#= t(:"simple_form.hints.profile.about") %></div>
 </div>
 <!-- TODO: Website input -->
+<div class="inputs profile_social_media">
+	<label>Social Media</label>
+	<%= f.input :facebook, label: false, placeholder: "Facebook page" %>
+	<%= f.input :twitter, label: false, placeholder: "Twitter username" %>
+</div>
 
 <%= render "account/profiles/submit", f: f %>
