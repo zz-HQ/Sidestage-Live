@@ -56,7 +56,7 @@ class Profile < ActiveRecord::Base
   #
   #  
 
-  validates :user_id, :genre_ids, presence: true
+  validates :user_id, :genre_ids, :location, :currency, presence: true
   validates :price, presence: true, if: :pricing_step?
   validates :price, numericality: { greater_than: 24 }, allow_blank: true
   
@@ -109,13 +109,13 @@ class Profile < ActiveRecord::Base
   #
   #  
   
+  before_validation :set_default_currency
+
   after_validation :reverse_friendly
   
   before_save :geo_locate
   
   after_save :notify_admin_on_publish
-  
-
 
   #
   # Associations
@@ -244,15 +244,25 @@ class Profile < ActiveRecord::Base
   end
   
   def geo_locate
-    AVAILABLE_LOCATIONS.each do |key, value|
-      if value[:name] == location
-        self.country_long = value[:country_long] if location_changed? || self.country_long.blank?
-        self.country_short = value[:country_short]  if location_changed? || self.country_short.blank?
-        self.latitude = value[:latitude] if location_changed? || self.latitude.blank?
-        self.longitude = value[:longitude] if location_changed? || self.longitude.blank?
-        break
-      end
+    if (selected_location = location_hash).present?
+      self.country_long = selected_location[:country_long] if location_changed? || self.country_long.blank?
+      self.country_short = selected_location[:country_short]  if location_changed? || self.country_short.blank?
+      self.latitude = selected_location[:latitude] if location_changed? || self.latitude.blank?
+      self.longitude = selected_location[:longitude] if location_changed? || self.longitude.blank?
     end
+  end
+  
+  def set_default_currency
+    if (selected_location = location_hash).present?
+      self.currency = selected_location[:currency]
+    end
+  end
+
+ def location_hash
+    AVAILABLE_LOCATIONS.values.each do |geo_location|
+      return geo_location if geo_location[:name] == self.location
+    end
+    return nil
   end
 
   #

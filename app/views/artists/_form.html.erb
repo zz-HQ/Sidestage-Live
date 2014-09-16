@@ -15,16 +15,14 @@
 			<%= render "/account/profiles/genres", f: f %>
             
 			<div class="input city">
-				<h3><%= t(:"simple_form.labels.profile.location") %></h3>
-
-				<div id="city-switch">
-          <%= nice_select(f.select :location, available_locations, {include_blank: false}, {class: "redirect-on-change-to-other"}) %>
-        </div>
+			    <h3><%= t(:"simple_form.labels.profile.location") %></h3>
+			    <div id="city-switch">
+                    <%= nice_select(f.select :location, available_locations, { include_blank: false }, {class: "redirect-on-change-to-other"}) %>
+                </div>
 			</div>
-
-  		<div class="input">
-  		    <%= f.submit class: "btn button btn-blue", value: "#{t(:"helpers.submit.profile.submit")}" %>
-  		</div>
+      		<div class="input">
+      		    <%= f.submit class: "btn button btn-blue", value: "#{t(:"helpers.submit.profile.submit")}" %>
+      		</div>
 
 		<% end %>
 
