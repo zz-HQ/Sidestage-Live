@@ -80,6 +80,10 @@ $(document).on 'click', '.close', (e) ->
     e.preventDefault()
     $(@).closest('#cookies').fadeOut(200)
 
+$(document).on 'click', '#trigger-email-signup-form', (e) ->
+  $(@).hide()
+  $(".signup-with-email").show()#slideDown()
+
 $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

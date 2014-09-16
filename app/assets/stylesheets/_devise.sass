@@ -38,9 +38,20 @@
         .btn
           margin-bottom: 0
 
-    .form-inputs
-      margin: 10px 0 20px
+    .trigger-email-signup-form
       +span-columns(8)
+      +omega
+      cursor: pointer
+      text-align: center
+      margin: 30px 0 10px
+
+    .signup-with-email
+      display: none
+
+    .form-inputs
+      margin: 30px 0 10px
+      +span-columns(8)
+      +omega
 
       label
         text-transform: none
@@ -99,23 +110,15 @@
       text-decoration: none
 
   .bottom-link
+    // width: 400px
+    // background-color: #F7F7F7
+    // margin: 0 -30px -30px
+    +span-columns(8)
+    +omega
     border-top: 1px solid $border-color
     padding: 15px 0
     text-align: center
-
-    a
-      margin-left: 5px
-
-  .bottom-link
-    width: 400px
-    border-top: 1px solid #dddddd
-    padding: 15px 0
-    text-align: center
-    background-color: #F7F7F7
-    margin: 0 -30px -30px
-
-    a
-      margin-left: 5px
+    margin-top: 20px
 
   .new_deal
 
