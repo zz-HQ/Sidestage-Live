@@ -96,6 +96,7 @@ en:
           email:
             notice: "We need to verify your new email address. Check your inbox for a confirmation link."
         complete:
+          success: "You’re in! You’ll need to add a payment method before you can book an artist."
           alert: "Please add a profile picture before continuing. It helps us build trust in our community."
         complete_payment:
           notice: "Awesome, you're set. When you get a chance, <a href='%{mobile_nr_path}'>verify your phone, too</a>"
