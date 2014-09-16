@@ -1,43 +1,52 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sidestage</title>
-  <meta name="description" content="Find and book amazing musicians, bands and DJs.">
-  <meta name="keywords" content="Sidestage">
-  <meta name="viewport" content="width=974">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sidestage</title>
+    <meta name="description" content="Find and book amazing musicians, bands and DJs.">
+    <meta name="keywords" content="Sidestage">
+    <meta name="viewport" content="width=974">
 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <!-- <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <!-- FontAwesome -->
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <!-- FontAwesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <!-- for Facebook -->
-  <meta property="og:title" content="Sidestage" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="<%= yield(:social_img).present? && yield(:social_img) || "http://www.sidestage.com" %>" />
-  <meta property="og:url" content="<%= request.url %>" />
-  <meta property="og:description" content="<%= yield(:social_desc).present? && yield(:social_desc) || "Find and book amazing musicians, bands and DJs." %>" />
+    <!-- for Facebook -->
+    <meta property="og:title" content="Sidestage" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="<%= yield(:social_img).present? && yield(:social_img) || "http://www.sidestage.com" %>" />
+    <meta property="og:url" content="<%= request.url %>" />
+    <meta property="og:description" content="<%= yield(:social_desc).present? && yield(:social_desc) || "Find and book amazing musicians, bands and DJs." %>" />
 
-  <!-- for Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Sidestage" />
-  <meta name="twitter:description" content="<%= yield(:social_desc).present? && yield(:social_desc) || "Find and book amazing musicians, bands and DJs." %>" />
+    <!-- for Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Sidestage" />
+    <meta name="twitter:description" content="<%= yield(:social_desc).present? && yield(:social_desc) || "Find and book amazing musicians, bands and DJs." %>" />
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  
-  <%# TODO: Twitter Logo %>
-  <%- if false -%>
-  <meta name="twitter:image" content="http://airmusic.herokuapp.com/assets/logo.png" />
-  <%- end -%>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <%= csrf_meta_tags %>
+    <%# TODO: Twitter Logo %>
+    <%- if false -%>
+    <meta name="twitter:image" content="http://airmusic.herokuapp.com/assets/logo.png" />
+    <%- end -%>
 
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  
-  <%= render "stripe_head" %>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-  <%= yield :html_head %>
+    <%= csrf_meta_tags %>
+
+    <!-- Google CDN -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en"></script>
+    <!-- END Google CDN -->
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <%= render "balanced_head" %>
+
+
+
+    <%= yield :html_head %>
   
 </head>

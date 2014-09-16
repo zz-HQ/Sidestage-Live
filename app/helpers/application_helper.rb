@@ -33,7 +33,7 @@ module ApplicationHelper
   end
   
   def available_locations
-    AVAILABLE_LOCATIONS.map(&:last).collect{|l| l[:name]} + [current_user.present? ? nil : "More cities"].compact
+    AVAILABLE_LOCATIONS.map(&:last).collect { |l| l[:name] } 
   end
   
   def available_locales

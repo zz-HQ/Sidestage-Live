@@ -3,37 +3,8 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sidestage</title>
-    <meta name="description" content="Find and book amazing musicians, bands and DJs.">
-    <meta name="keywords" content="Sidestage">
-    <meta name="viewport" content="width=974">
+<%= render 'head' %>
 
-    <!-- for Facebook -->
-    <meta property="og:title" content="Sidestage" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="http://www.sidestage.com" />
-    <meta property="og:url" content="<%= request.url %>" />
-    <meta property="og:description" content="Find and book amazing musicians, bands and DJs." />
-
-    <!-- for Twitter -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Sidestage" />
-    <meta name="twitter:description" content="Find and book amazing musicians, bands and DJs." />
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-
-    <%= render "olark" %>
-
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-  </head>
   <body id="main" class="desktop <%= "old-browser" if old_browser? %> homepage">
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -110,12 +81,9 @@
         <h4 class="light">Questions? Get in touch with our Customer Service team, <a class="light" href="mailto:bookings@sidestage.com">bookings@sidestage.com</a>.</h4>
       </div>
     </section>
-    
 
     <%= render 'footer' %>
 
-
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%- if Rails.env.production? -%>
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

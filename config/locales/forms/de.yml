@@ -83,7 +83,7 @@ de:
         confirm: Confirm
         remove: Remove
       credit_card:
-        submit: Save credit card  
+        submit: Save
       deal:
         create: Book now
         submit: Book now

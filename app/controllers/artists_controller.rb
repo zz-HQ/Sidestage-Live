@@ -37,11 +37,17 @@ class ArtistsController < ApplicationController
   
   def create
     build_resource
+    
+    redirect_to new_city_launch_path and return unless resource.location.blank? || profile_location_supported?
+    
     session[:profile] = permitted_params[:profile]
     render :new and return unless resource.valid?
+    
     respond_to do |format|
       format.html{ redirect_to new_user_registration_path }
-      format.js{}
+      format.js{
+        redirect_to new_city_launch_path
+      }
     end
   end 
     
@@ -105,6 +111,10 @@ class ArtistsController < ApplicationController
     super.tap do |profile|
       profile.user_id = -1
     end
+  end
+  
+  def profile_location_supported?
+    resource.location.downcase.in?(AVAILABLE_LOCATIONS.map(&:last).map { |l| l[:name].downcase })
   end
 
 end

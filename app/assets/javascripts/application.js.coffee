@@ -10,9 +10,7 @@
 # Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 # about supported directives.
 #
-#= require jquery
 #= require jquery_ujs
-#= require jquery-ui
 # require turbolinks
 #= require boilerplate
 #= require jquery.datetimepicker
@@ -27,14 +25,6 @@ window.App = {} if window.App == undefined
 App = window.App
 
 App.init = ->
-  # $('.about').expander({
-  #   slicePoint:       300,
-  #   expandPrefix:     '... ',
-  #   expandText:       'read more',
-  #   userCollapseText: '[^]',
-  #   expandEffect: 'slideDown',
-  #   collapseEffect: 'slideUp'
-  # })
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
@@ -42,25 +32,18 @@ App.init = ->
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
   $('.tabs').toggleMediaFields()
-  $( "#profile_cities" ).autocomplete
-      source: ["ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang"]
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
     scrollInput: false
     minDate:'-1970/01/01'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
-  App.setStripeListener()
+  App.setBalancedCardListener()
   App.initGooglePlaces()
+
+  if $("input#profile_location").length > 0
+    source = $("input#profile_location").data("source").split("|")
+    $("input#profile_location").autocomplete source: source, minLength: 2
 
 $(document).on 'change', '.submit-on-change', (e) -> 
   if($(@).val() != "")
@@ -101,23 +84,6 @@ $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     'Accept': "text/javascript, application/javascript, text/html"
-
-
-# flashMessage = (name, msg) ->
-#   $('#flash-messages').find(".flash").addClass name
-#   $('#flash-messages').find(".flash-message").html msg
-#   $('#flash-messages').delay(100).animate
-#     height: '60px'
-#   ,
-#     duration: 150
-#     # ab hier auskommentieren, damit es offen bleibt
-#     complete: ->
-#       $(this).delay(3000)
-#       .animate
-#         height: 0
-#       ,
-#         duration: 200
-
 
 $(document).on 'page:update', App.init
 #$ -> App.init()

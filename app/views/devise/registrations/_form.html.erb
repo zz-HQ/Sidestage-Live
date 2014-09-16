@@ -13,7 +13,7 @@
             <%= f.input :password, required: true, error: false, input_html: { autocomplete: "off" }, label: false %>
         </div>
 
-        <div class="form-actions">
+        <div class="form-actions login-signup-actions">
             <%= f.check_box :newsletter_subscribed, default: true, checked: true %><%= t(:"simple_form.labels.user.newsletter_subscribed") %>
             <%= f.button :submit, value: t(:"helpers.submit.user.sign_up"), class: "btn", data: { disable_with: "Sending..." } %>
             <%= link_to t(:"application.devise.facebook_signup"), user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>

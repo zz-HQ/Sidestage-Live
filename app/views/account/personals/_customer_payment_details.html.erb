@@ -3,7 +3,7 @@
   <h4><%= t(:"application.personals.payment_details.show.title") %></h4>
   <div class="credit-card-info">
     <p><%= current_user.credit_card.brand %></p>
-    <p><%= t(:"activerecord.attributes.credit_card.number") %>: **** **** **** <%= current_user.credit_card.last4 %></p>
+    <p><%= t(:"activerecord.attributes.credit_card.number") %>: <%= current_user.credit_card.number %></p>
     <p><%= t(:"activerecord.attributes.credit_card.expiration") %>: <%= current_user.credit_card.expiration_human %></p>
     <div class="footnote">
       <p><%= t(:"application.personals.payment_details.show.card_hint_html") %></p>
@@ -30,7 +30,7 @@
 
     <div data-content="payment-form" id="payment" class="payment-form">
         <%= simple_form_for resource, url: request.path, data: { form: "payment" } do |f| %>
-            <%= f.input :stripe_token, as: :hidden %>
+            <%= f.input :balanced_token, as: :hidden %>
             <%= render "account/payment_details/payment_form" %>
             <div class="btns">
                 <%= f.submit value: (action_name == "complete_payment") ? t(:"helpers.submit.save_finish") : t(:"helpers.submit.credit_card.submit"), class: "btn" %>

@@ -1,0 +1,1 @@
+Balanced.configure(Rails.application.secrets.balanced_api_key)

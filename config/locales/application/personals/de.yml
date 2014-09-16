@@ -19,7 +19,7 @@ de:
         show:
           title: "One credit card on file:"
           card_count_hint_html: You can currently only store one credit card. <br> More payment methods are coming.
-          remove: Remove card
+          remove: Remove
           remove_hint_html: "<h2>Wait!</h2> <br><p>Before you remove your credit card, you need to cancel all your booking requests.</p>"           
     mobile_numbers:
       new:

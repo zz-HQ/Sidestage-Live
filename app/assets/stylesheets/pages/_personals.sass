@@ -72,9 +72,20 @@
 			.nice-select
 				margin-bottom: 7px
 
+			// kann raus sobald select durch input feld getauscht wird
+			// stattdessen das .cc-exp und .cc-cvc entkommentieren
 			.nice-select
 				+span-columns(3)
 				height: 38px
+
+				.select-label-value
+					width: 56px
+					overflow: hidden
+					word-break: break-all
+					height: 20px
+
+				.select-arrow
+					top: 13px
 
 			.cc-cvc
 				+span-columns(2)
@@ -142,7 +153,26 @@
 			width: 50%
 
 			form
-				width: 60%
+				> .inputs,
+				> .input,
+				> .form-actions
+					float: left
+					width: 60%
+
+				hr
+					margin-bottom: 27px
+					+span-columns(8)
+
+				.inputs
+					.profile_payout_city
+						+span-columns(5)
+
+					.profile_payout_state
+						+span-columns(3)
+						+omega
+
+				.profile_payout_postal_code input
+					+span-columns(3)
 
 
 

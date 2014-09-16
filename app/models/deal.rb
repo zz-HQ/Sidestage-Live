@@ -6,14 +6,11 @@ class Deal < ActiveRecord::Base
   #
   #
   #
-  #  
+  #
   
-  include Deal::StateMachine
-  include Conversationable
-  include Payment
-  include Surcharge  
+  include Deal::StateMachine, Conversationable, BalancedPayment, Surcharge
   
- # has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
+  #has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
   #
   # Attributes
@@ -23,7 +20,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  attr_accessor :current_user, :stripe_token
+  attr_accessor :current_user, :balanced_token
 
   #
   # Validations
@@ -54,7 +51,7 @@ class Deal < ActiveRecord::Base
   
   after_create :create_user_message, :notify_admin
   
-  after_rollback :ensure_stripe_charge!, on: :update
+  after_rollback :ensure_balanced_charge!, on: :update
   
   #
   # Associations
@@ -202,9 +199,9 @@ class Deal < ActiveRecord::Base
   end
   
   def make_customer_paymentable
-    if stripe_token.present?
-      customer.make_paymentable_by_token(stripe_token)
-      errors.add :stripe_token, customer.errors.full_messages.first if customer.errors.present?
+    if balanced_token.present?
+      customer.make_paymentable_by_token(balanced_token)
+      errors.add :balanced_token, customer.errors.full_messages.first if customer.errors.present?
     end
   end
   
@@ -219,9 +216,9 @@ class Deal < ActiveRecord::Base
     end
   end
   
-  def ensure_stripe_charge!
-    if changes.include?(:stripe_charge_id) && stripe_charge_id.present?
-      update_columns(charged_price: price_with_surcharge_in_cents, stripe_charge_id: stripe_charge_id)
+  def ensure_balanced_charge!
+    if changes.include?(:balanced_debit_id) && balanced_debit_id.present?
+      update_columns(charged_price: price_with_surcharge_in_cents, balanced_debit_id: balanced_debit_id)
     end
   end
   
