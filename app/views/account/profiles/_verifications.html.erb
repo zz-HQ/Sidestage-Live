@@ -1,0 +1,18 @@
+<% if controller_name == "profiles" %>
+<div class="verifications">
+  <header>Verifications</header>
+  <div class="body">
+  	<% unless resource.user.email.blank? %>
+    <p class="verification"><i class="fa fa-check-circle-o"></i> Email Address <br/> <span class="light"><%= resource.user.verified?? "Verified" : "Unverified" %></span> </p>
+    <% end %>
+
+    <% unless resource.user.mobile_nr.blank? %>
+    <p class="verification"><i class="fa fa-check-circle-o"></i> Phone Number <br/> <span class="light">*** *** ****** <%= resource.user.mobile_nr[-3, 3] %></span> </p>
+    <% end %>
+
+    <% unless resource.facebook.blank? %>
+    <p class="verification"><i class="fa fa-check-circle-o"></i> Facebook <br/> <span class="light">433 Friends</span> </p>
+    <% end %>
+  </div>
+</div>
+<% end %>
