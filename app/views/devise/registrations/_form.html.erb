@@ -15,8 +15,10 @@
         <!-- NEWSLETTER SUBSCRIPTION -->
         <%= f.check_box :newsletter_subscribed, default: true, checked: true, class: "hidden" %><%#= t(:"simple_form.labels.user.newsletter_subscribed") %>
 
-        <span id="trigger-email-signup-form" class="trigger-email-signup-form">Sign up with email</span>
-        <section class="signup-with-email">
+        <%= content_tag :span, id: "trigger-email-signup-form", class: "trigger-email-signup-form", style: "display:#{resource.errors.present? ? 'none;' : ''}" do %>
+            Sign up with email
+        <% end %>
+        <%= content_tag :section, class: "signup-with-email", style: "display:#{resource.errors.blank? ? 'none;' : ''}" do %>
             <div class="form-inputs">
                 <%= f.input :full_name, required: true, error: false, autofocus: true, label: false %>
                 <%= f.input :email, required: true, error: false, autofocus: true, label: false %>
@@ -25,7 +27,7 @@
             <div class="form-actions login-signup-actions">
                 <%= f.button :submit, value: t(:"helpers.submit.user.sign_up"), class: "btn", data: { disable_with: "Sending..." } %>
             </div>
-        </section>
+        <% end %>    
 
         <div class="footnote">
             <%= t(:"application.devise.sign_up_foot_note_html", terms_path: terms_path, privacy_path: privacy_path) %>

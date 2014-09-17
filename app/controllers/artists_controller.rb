@@ -11,6 +11,7 @@ class ArtistsController < ApplicationController
   #
   
   before_filter :reject_scraper, only: [:index]
+  before_filter :coerce_params, only: [:index, :show]
   before_filter :redirect_if_unpublished, only: [:show]
   before_filter :record_query, :only_available_cities, only: [:index]
   
@@ -115,6 +116,18 @@ class ArtistsController < ApplicationController
   
   def profile_location_supported?
     resource.location.downcase.in?(AVAILABLE_LOCATIONS.map(&:last).map { |l| l[:name].downcase })
+  end
+  
+  def coerce_params
+    if params[:location].present?
+      session[:location_params] = params
+    else
+      if (loc_params = session[:location_params]).present?
+        params[:location] = loc_params["location"]
+        params[:lng] = loc_params["lng"]
+        params[:lat] = loc_params["lat"]
+      end
+    end
   end
 
 end
