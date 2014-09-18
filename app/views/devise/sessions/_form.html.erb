@@ -4,16 +4,25 @@
         <%= image_tag "sidestage_brand.png", alt: "Logo Brand", class: "logo_brand" %>
 
         <%= simple_form_for resource, as: resource_name, url: session_path(resource_name), id: "new-session"  do |f| %>
-            <div class="form-inputs">
-                <%= f.input :email, required: false, autofocus: true, label: false %>
-                <%= f.input :password, required: false, label: false %>
-            </div>
             <div class="form-actions login-signup-actions">
-                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-                <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: "Sending..." }%>
-                <%= link_to t(:"application.devise.facebook_login"), user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
-                <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name), class: "link" %>
+                <%= link_to t(:"application.devise.facebook_signup"), user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
             </div>
+
+            <%= content_tag :span, id: "trigger-email-signup-form", class: "trigger-email-signup-form", style: "display:#{resource.errors.present? ? 'none;' : ''}" do %>
+                Log in with email
+            <% end %>
+
+            <%= content_tag :section, class: "signup-with-email", style: "display:#{resource.errors.blank? ? 'none;' : ''}" do %>
+                <div class="form-inputs">
+                    <%= f.input :email, required: false, autofocus: true, label: false %>
+                    <%= f.input :password, required: false, label: false %>
+                </div>
+                <div class="form-actions login-signup-actions">
+                    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                    <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: "Sending..." }%>
+                    <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name), class: "link" %>
+                </div>
+            <% end %>
         <% end %>
 
     </div>
