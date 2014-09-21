@@ -6,6 +6,7 @@ FactoryGirl.define do
     about "about"
     currency "EUR"
     published true
+    location "Berlin"
     youtube "www.youtube.com"
     after(:build) do |profile| 
       profile.genres = [create(:genre)]
