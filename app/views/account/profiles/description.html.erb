@@ -7,7 +7,7 @@
     <header><%= t(:"application.profiles.description.title_html") %></header>
     <div id="description" class="">
       <%= simple_form_for resource.user, url: upload_avatar_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>
-        <%= t(:"simple_form.labels.user.avatar") %>
+        <label><%= t(:"simple_form.labels.user.avatar") %></label>
         <% if resource.errors["user"].present? %>
             <span class="error"><%= resource.errors["user"].join(" ") %></span>
         <% end %>        
