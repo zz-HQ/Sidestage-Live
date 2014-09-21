@@ -6,9 +6,6 @@ describe Account::DealsController, :type => :controller do
   context "states" do
     
     before(:each) do
-      allow(Stripe::Charge).to receive(:create) { 
-        val = "MOCK"; def val.id; "123"; end; val
-      }
     end
 
     it "offers" do
@@ -24,7 +21,7 @@ describe Account::DealsController, :type => :controller do
     
     it "accepts" do
       deal = FactoryGirl.create(:requested_deal)
-      mock_balanced_payment      
+      mock_balanced_card      
       
       sign_in(deal.artist)
       put :accept, id: deal.to_param
@@ -35,7 +32,7 @@ describe Account::DealsController, :type => :controller do
 
     it "confirms" do
       deal = FactoryGirl.create(:offered_deal)
-      mock_balanced_payment
+      mock_balanced_card
 
       sign_in(deal.customer)
       put :confirm, id: deal.to_param

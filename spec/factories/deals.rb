@@ -22,6 +22,16 @@ FactoryGirl.define do
       association :profile, factory: :profile
       association :customer, factory: :quentin    
     end
+
+    factory :past_confirmed_charged_deal do
+      start_at 2.day.ago
+      balanced_debit_id "12345"
+      state "confirmed"
+      price 124
+      current_user { customer }
+      association :profile, factory: :balanced
+      association :customer, factory: :quentin    
+    end
   
     factory :offered_deal do
       state "offered"

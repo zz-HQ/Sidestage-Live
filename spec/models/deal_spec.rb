@@ -86,7 +86,7 @@ describe Deal, :type => :model do
         deal.current_user = deal.artist
         expect(deal.customer).to be_paymentable
         
-        mock_balanced_payment
+        mock_balanced_card
         
         deal.accept!
       
@@ -103,7 +103,7 @@ describe Deal, :type => :model do
         deal.current_user = deal.customer
         expect(deal.customer).to be_paymentable
         
-        mock_balanced_payment
+        mock_balanced_card
         
         deal.confirm!
         expect(deal.confirmed?).to be true
@@ -152,8 +152,8 @@ describe Deal, :type => :model do
       it "does not change to accepted" do
         deal = FactoryGirl.create(:deal)
         expect(deal.customer).to be_paymentable
-        allow(Stripe::Charge).to receive(:create) { 
-          e = Stripe::StripeError.new("Error","400", nil, { error: { message: "hi" } })
+        allow(deal).to receive(:retrieve_balanced_card) { 
+          e = Balanced::Error.new("Error")
           raise e
         }
         

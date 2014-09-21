@@ -78,7 +78,7 @@ class Deal < ActiveRecord::Base
   scope :pending, -> { where(state: Deal::PENDING_STATES) }
   scope :dealed, -> { where(state: Deal::CONFIRMED_STATES) }
   scope :upcoming, -> { order("deals.start_at ASC") }
-  scope :past, -> { where("deals.start_at < ?", Time.now) }
+  scope :past, -> { where("DATE(deals.start_at) < ?", Time.now) }
   scope :future, -> { where("deals.start_at > ?", Time.now) }
   scope :latest, -> { order("deals.id DESC") }
   scope :visible_in_conversation, -> { where('state IN (?)', Deal::VISIBLE_CONVERSATION_STATES) }
@@ -86,8 +86,10 @@ class Deal < ActiveRecord::Base
   scope :created_since, ->(since) { where("created_at > ?", since) }
   scope :my_bookings_overview, -> { where(state: [:confirmed, :accepted]) }
   scope :undealed, -> { where(state: Deal::UNDEALED_STATES)}   
-  scope :payed_out, -> { where(payed_out: true) }
-  scope :not_payed_out, -> { where(payed_out: false) }
+  scope :payed_out, -> { where('payed_out = ? OR balanced_credit_id IS NOT NULL', true) }
+  scope :balanced_payed_out, -> { where('balanced_credit_id IS NOT NULL') }  
+  scope :not_payed_out, -> { where('payed_out IS NULL OR payed_out = ? OR balanced_credit_id IS NULL', false) }
+  scope :charged, -> { where('balanced_debit_id IS NOT NULL') }
    
   #
   # Instance Methods
@@ -111,6 +113,14 @@ class Deal < ActiveRecord::Base
   
   def negotiator_for(user)
     @negotiator ||= is_customer?(user) ? artist : customer
+  end
+  
+  def balanced_payed_out?
+    balanced_credit_id.present?
+  end
+  
+  def payed_out?
+    super || balanced_payed_out?
   end
    
   #
