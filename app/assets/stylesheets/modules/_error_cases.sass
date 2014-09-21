@@ -21,14 +21,30 @@
 	color: #D8000C !important
 
 .new_user
+	.alert.alert-error
+		position: absolute
+		width: 100%
+		text-align: center
+		color: #D8000C
+		font-weight: 400
+		display: none
+
 	.error-notification
 		float: left
 		text-align: center
 		margin-top: 20px
 
 	.form-inputs
-		.field_with_errors input
-			border-color: $border-color !important
+		.field_with_errors
+			input
+				border-color: $border-color !important
+
+			&.user_email
+				input
+					border-color: #D8000C !important
+
+				.error
+					top: 3px
 
 #new-profile
 	.field_with_errors

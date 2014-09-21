@@ -1,38 +1,14 @@
 <div class="parts">
-	<!-- <div class="headline">
-		<p><%= t(:"application.profiles.pricing.desc") %></p> <br>
-	</div> -->
-
-	<%= f.label :currency %>
-	<div class="inputs profile_currency">
-	    <%= f.input :currency, as: :string, readonly: true, label: false %>
-	</div>
 
 	<%= f.label :price %>
 	<div class="inputs profile_price">
 		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
+		<i class="fa fa-<%= resource.currency.downcase %>"></i>
 	</div>
 	
 	<p class='light'><%= t(:"simple_form.labels.profile.surcharge_html", surcharge_base: Profile.surcharge_base) %></p>
 
 	<!-- <p><%= t(:"application.profiles.pricing.hint_html") %></p> -->
 </div>
-
-<% if false %>
-<div class="parts">
-	<div class="headline">
-		<h4>Terms</h4>
-	</div>
-	<div class="inputs profile_cancellation_policy">
-		<label>Cancellation Policy</label>
-		<%#= nice_select(f.select :cancellation_policy, resource.cancellation_policy_for_select) %>
-	</div>
-	<div class="inputs profile_availability">
-		<label>Where are you available?</label>
-		<%= nice_select(f.select :availability, resource.availability_for_select) %>
-		<div class="hint from-nice-select">This world is your stage. Live in one city, work in another.</div>
-	</div>
-</div>
-<% end %>
 
 <%= render "account/profiles/submit", f: f %>
