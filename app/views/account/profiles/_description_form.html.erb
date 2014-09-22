@@ -14,7 +14,12 @@
 <div class="inputs profile_social_media">
 	<label>Social Media</label>
 	<%= f.input :facebook, label: false, placeholder: "Facebook page" %>
-	<%= f.input :twitter, label: false, placeholder: "Twitter username" %>
+
+	<div class="inputs twitter-field">
+		<label>Twitter username</label>
+		<%= f.input :twitter, label: false, placeholder: "username" %>
+		<span>@</span>
+	</div>
 </div>
 
 <%= render "account/profiles/submit", f: f %>
