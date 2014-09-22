@@ -3,7 +3,7 @@ en:
     deals:
       new:
         title: Send booking request to
-        foot_note_html: Your card will not be charged until your booking is confirmed by the artist.
+        foot_note_html: Your card will be charged when the artist confirms the booking.
         verification_message: Verifying payment...
         cancel_booking: Cancel booking request
       show:
