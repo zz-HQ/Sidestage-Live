@@ -20,4 +20,4 @@ en:
         confirmed_title: Booking Confirmation
       pending:
         title: Booking the
-        desc: "You have a pending booking request with this artist. Before you can make a new one, the first one has to be confirmed or cancelled."
+        desc: "You have a pending booking with this artist. Please make sure that is confirmed or cancelled before sending another booking request."

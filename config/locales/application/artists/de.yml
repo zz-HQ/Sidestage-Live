@@ -9,6 +9,8 @@ de:
         no_reviews: This artist has no reviews yet.
         view_next: "View next artist"
         message_artist: Message Artist
+        send_message: Send Message
+        view_pending: View Pending Booking
       new:
         title: Create an Artist Profile
         desc: Sidestage lets you make money by offering your music as a service to people who want to hire musicians for private events.
