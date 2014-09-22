@@ -88,7 +88,7 @@
         <th>Bank Details</th>
         <th>Status</th>
     </thead>
-    <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.dealed.not_payed_out.latest.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
+    <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.dealed.not_paid_out.latest.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
 </table>
 
 <h2>Confirmed Bookings (that haven't yet happened)</h2>
@@ -103,7 +103,7 @@
         <th>Bank Details</th>
         <th>Status</th>
     </thead>
-    <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.dealed.not_payed_out.latest.upcoming.future.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
+    <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.dealed.not_paid_out.latest.upcoming.future.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
 </table>
 
 <h2>Past Booking</h2>
@@ -180,7 +180,7 @@
         <th>Bank Details</th>
         <th></th>
     </thead>
-    <tbody id="payed_out_bookings">
-        <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.payed_out.latest.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
+    <tbody id="paid_out_bookings">
+        <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.paid_out.latest.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
     </tbody>
 </table>

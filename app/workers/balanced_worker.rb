@@ -34,10 +34,10 @@ class BalancedWorker
   
   def payout_deal(deal_id)
     deal = Deal.where(id: deal_id).first
-    return if deal.nil? || deal.profile.nil? || deal.payed_out? || !deal.profile.balanced_payoutable?
+    return if deal.nil? || deal.profile.nil? || deal.paid_out? || !deal.profile.balanced_payoutable?
     bank_account = Balanced::BankAccount.fetch("/bank_accounts/#{deal.profile.balanced_bank_account_id}")
     credit = bank_account.credit(amount: deal.dollar_price_in_cents, appears_on_statement_as: "Sidestage")
-    Deal.where(id: deal_id).update_all(balanced_credit_id: credit.id, payed_out: true)
+    Deal.where(id: deal_id).update_all(balanced_credit_id: credit.id, paid_out: true)
   end
   
 end
