@@ -95,6 +95,8 @@ en:
         update:
           email:
             notice: "We need to verify your new email address. Check your inbox for a confirmation link."
+          bank_details:
+            notice: "Your bank details have been successfully added."  
         complete:
           success: "You’re in! You’ll need to add a payment method before you can book an artist."
           alert: "Please add a profile picture before continuing. It helps us build trust in our community."
