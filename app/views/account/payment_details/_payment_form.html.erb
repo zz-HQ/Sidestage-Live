@@ -5,6 +5,7 @@
     	<% end %>
     	<div class="payment-status" style="display:none;"><%= t(:"application.deals.new.verification_message") %></div>
     	<div class="payment-errors" style="display:none;"></div>
+    	<%= f.input :balanced_token, as: :hidden %>
     	<%= text_field_tag nil, nil, id: "credit_card_number", placeholder: "#{t(:"simple_form.placeholders.credit_card.number")}", label: false, class: "cc-num" %>	
     	<%#= text_field_tag nil, nil, data: { stripe: :expiry }, placeholder: "#{t(:"simple_form.placeholders.credit_card.expiry")}", label: false, class: "cc-exp" %>	
     	<%= nice_select(select_tag nil, options_for_select(1..12), id: "credit_card_ex_month", prompt: "#{t(:"simple_form.placeholders.credit_card.exp_month")}") %>

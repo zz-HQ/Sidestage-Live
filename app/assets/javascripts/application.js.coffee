@@ -45,16 +45,16 @@ App.init = ->
     source = $("input#profile_location").data("source").split("|")
     $("input#profile_location").autocomplete source: source, minLength: 1
 
-$(document).on 'change', '.submit-on-change', (e) -> 
-  if($(@).val() != "")
-    if($(@).val() != "More cities")
-      $(@).closest('form').trigger 'submit'
-    else
-      window.location.replace("/en/city_launches/new")
-
-$(document).on 'change', '.redirect-on-change-to-other', (e) -> 
-  if($(@).val() == "More cities")
-      window.location.replace("/en/city_launches/new")
+# $(document).on 'change', '.submit-on-change', (e) -> 
+#   if($(@).val() != "")
+#     if($(@).val() != "More cities")
+#       $(@).closest('form').trigger 'submit'
+#     else
+#       window.location.replace("/en/city_launches/new")
+# 
+# $(document).on 'change', '.redirect-on-change-to-other', (e) -> 
+#   if($(@).val() == "More cities")
+#       window.location.replace("/en/city_launches/new")
 
 $(document).on 'change', 'select[data-linked=true]', (e) -> 
   window.location.replace($(@).val())

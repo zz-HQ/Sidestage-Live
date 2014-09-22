@@ -66,6 +66,9 @@ class Account::PersonalsController < Account::ResourcesController
   def payment_details
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
+        if params[:return_to].present?
+          redirect_to params[:return_to] and return
+        end
         @credit_card = resource.credit_card
       end
     end
