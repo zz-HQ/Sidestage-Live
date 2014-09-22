@@ -9,7 +9,7 @@ class Deal::AsAdmin < Deal
   #
   
   def toggle_payout!
-    update_attribute :payed_out, !payed_out?
+    update_attribute :paid_out, !paid_out?
   end
   
 end

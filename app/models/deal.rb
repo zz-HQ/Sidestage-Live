@@ -86,9 +86,9 @@ class Deal < ActiveRecord::Base
   scope :created_since, ->(since) { where("created_at > ?", since) }
   scope :my_bookings_overview, -> { where(state: [:confirmed, :accepted]) }
   scope :undealed, -> { where(state: Deal::UNDEALED_STATES)}   
-  scope :payed_out, -> { where('payed_out = ? OR balanced_credit_id IS NOT NULL', true) }
-  scope :balanced_payed_out, -> { where('balanced_credit_id IS NOT NULL') }  
-  scope :not_payed_out, -> { where('payed_out IS NULL OR payed_out = ? OR balanced_credit_id IS NULL', false) }
+  scope :paid_out, -> { where('paid_out = ? OR balanced_credit_id IS NOT NULL', true) }
+  scope :balanced_paid_out, -> { where('balanced_credit_id IS NOT NULL') }  
+  scope :not_paid_out, -> { where('paid_out IS NULL OR paid_out = ? OR balanced_credit_id IS NULL', false) }
   scope :charged, -> { where('balanced_debit_id IS NOT NULL') }
    
   #
@@ -115,12 +115,12 @@ class Deal < ActiveRecord::Base
     @negotiator ||= is_customer?(user) ? artist : customer
   end
   
-  def balanced_payed_out?
+  def balanced_paid_out?
     balanced_credit_id.present?
   end
   
-  def payed_out?
-    super || balanced_payed_out?
+  def paid_out?
+    super || balanced_paid_out?
   end
    
   #

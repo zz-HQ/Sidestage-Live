@@ -1,7 +1,7 @@
-<% if resource.payed_out? %>
+<% if resource.paid_out? %>
     $("#<%= "#{resource.state}_#{dom_id(resource.becomes(Deal))}" %>").fadeOut(500, function() { 
         $(this).remove();
-        $("#payed_out_bookings").append("<%= j(render("confirmed_booking", deal: resource.becomes(Deal))) %>").effect("highlight", {}, 1500);
+        $("#paid_out_bookings").append("<%= j(render("confirmed_booking", deal: resource.becomes(Deal))) %>").effect("highlight", {}, 1500);
     });
 <% else %>    
     

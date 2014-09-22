@@ -82,7 +82,9 @@ class Account::PersonalsController < Account::ResourcesController
   
   def bank_details
     if request.patch?
-      resource.profile.update_attributes(permitted_params[:profile])
+      if resource.profile.update_attributes(permitted_params[:profile])
+        flash[:notice] = t(:"flash.account.users.update.bank_details.notice")
+      end
     end
   end
   

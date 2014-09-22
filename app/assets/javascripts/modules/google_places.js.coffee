@@ -4,11 +4,12 @@ App = window.App
 App.initGooglePlaces = ->  
   $("[data-google='event_place']").each ->
     inputField = $(@)
-    options =  types: ["(cities)"]
+    options =  types: ["(regions)"]
   
     autoCompMap = new google.maps.places.Autocomplete(document.getElementById($(@).attr("id")), options)
 
     google.maps.event.addListener autoCompMap, "place_changed", ->
+      console.log(autoCompMap.getPlace());
       lat = autoCompMap.getPlace().geometry.location.lat()
       lng = autoCompMap.getPlace().geometry.location.lng()
       

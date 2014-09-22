@@ -6,8 +6,8 @@
         
         <% if resource.profile.balanced_payoutable? %>
             <div class="credit-card-info">
-                <p><%= Profile.human_attribute_name(:routing_number) %>: <%= resource.profile.routing_number %></p>
-                <p><%= Profile.human_attribute_name(:account_number) %>: <%= resource.profile.account_number %></p>
+                <p><%= Profile.human_attribute_name(:routing_number) %>: *******<%= resource.profile.routing_number[-2, 2] %></p>
+                <p><%= Profile.human_attribute_name(:account_number) %>: *******<%= resource.profile.account_number[-2, 2] %></p>
             </div>
         
             <div class="buttons">

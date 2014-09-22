@@ -6,7 +6,7 @@
   <div class="content">
     <div class="infos">
       <div class="tweet-btn">
-        <a href="https://twitter.com/share" data-url="<%= artist_url(resource) %>" class="twitter-share-button" data-size="small" data-text="Check out <%= resource.name %> on Sidestage " data-via="sidestagehq" data-count="none"></a>
+        <a href="https://twitter.com/share" data-url="<%= artist_url(resource) %>" class="twitter-share-button" data-size="small" data-text="Check out <%= resource.name %> on Sidestage " data-via="sidestagehq<%= " @#{resource.twitter}" if resource.twitter.present? %>" data-count="none"></a>
       </div>
 
       <div class="like-btn">

@@ -27,5 +27,5 @@
             </div>
         </div>
     </td>
-    <td><%= link_to "Payout", toggle_payout_admin_deal_path(deal), class: "btn btn-primary", remote: true, method: :put, data: { confirm: "Are you sure?" } unless deal.payed_out? %></td>
+    <td><%= link_to "Payout", toggle_payout_admin_deal_path(deal), class: "btn btn-primary", remote: true, method: :put, data: { confirm: "Are you sure?" } unless deal.paid_out? %></td>
 <% end %>
