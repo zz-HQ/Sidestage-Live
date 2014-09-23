@@ -8,7 +8,6 @@ class Account::PicturesController < Account::ResourcesController
   #
   #
 
-  belongs_to :profile, :polymorphic => true
   respond_to :html, :js
 
   #
@@ -22,5 +21,21 @@ class Account::PicturesController < Account::ResourcesController
   def create
     set_resource_ivar(current_user.profile.pictures.create! picture: params[:file])
   end
+  
+
+  #
+  # Private
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  private
+  
+  def begin_of_association_chain
+    current_user.profile
+  end
+  
   
 end

@@ -111,13 +111,14 @@ describe Account::DealsController, :type => :controller do
 
         end
         
-        it "redirects to payment details if confirming" do
+        it "shows credit form dialog if confirming" do
           deal = FactoryGirl.create(:proposed_deal, customer: FactoryGirl.create(:customer))
           sign_in(deal.customer)
           
           put :confirm, id: deal.to_param
           
-          expect(response).to redirect_to(payment_details_account_personal_path)
+          expect(response).to redirect_to(account_conversation_path(deal.conversation))
+          expect(flash[:show_credit_card_form]).to be true
         end
 
       end

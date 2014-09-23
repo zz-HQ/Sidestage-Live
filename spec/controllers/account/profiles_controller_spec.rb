@@ -12,28 +12,6 @@ describe Account::ProfilesController, :type => :controller do
     FactoryGirl.create(:genre_country)
   end
   
-  context "new" do
-  
-    it "redirects index to new" do
-      sign_in(FactoryGirl.create(:user))
-      get :index
-      expect(response).to redirect_to(new_account_profile_path)    
-    end    
-    
-    it "renders new" do
-      sign_in(FactoryGirl.create(:user))
-      get :new
-      expect(response).to render_template(:new)
-    end
-    
-    it "redirects new to preview" do
-      profile = FactoryGirl.create(:profile)
-      sign_in(profile.user)    
-      get :new
-      expect(response).to redirect_to(preview_account_profile_path(profile))
-    end
-  end
-  
   it "gets basics" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)    

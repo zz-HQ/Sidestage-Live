@@ -1,6 +1,6 @@
 <div class="sidebar">
-	<h4><%= link_to t(:"application.profiles.sidebar.settings_link").html_safe, resource.new_record? ? "#" : basics_account_profile_path(resource), class: ('active' if action_name == 'basics') %></h4>
-	<h4><%= link_to t(:"application.profiles.sidebar.description_link").html_safe, resource.new_record? ? "#" : description_account_profile_path(resource), class: ('active' if action_name == 'description') %></h4>
-	<h4><%= link_to t(:"application.profiles.sidebar.pricing_link"), resource.new_record? ? "#" : pricing_account_profile_path(resource), class: ('active' if action_name == 'pricing') %></h4>
-	<h4><%= link_to t(:"application.profiles.sidebar.preview_link"), resource.new_record? ? "#" : preview_account_profile_path(current_user.profile) %></h4>
+	<h4><%= link_to t(:"application.profiles.sidebar.settings_link").html_safe, basics_account_profile_path, class: ('active' if action_name == 'basics') %></h4>
+	<h4><%= link_to t(:"application.profiles.sidebar.description_link").html_safe, description_account_profile_path, class: ('active' if action_name == 'description') %></h4>
+	<h4><%= link_to t(:"application.profiles.sidebar.pricing_link"), pricing_account_profile_path, class: ('active' if action_name == 'pricing') %></h4>
+	<h4><%= link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path %></h4>
 </div>

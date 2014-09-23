@@ -16,21 +16,6 @@ class Account::ProfilesController < Account::ResourcesController
   #
   #
   
-  def index
-    redirect_to new_resource_path
-  end
-  
-  def new
-    redirect_to preview_account_profile_path(begin_of_association_chain.profiles.first) and return if begin_of_association_chain.profiles.first.present?
-    new!
-  end
-
-  def create
-    create! do |success, failure|
-      success.html {redirect_to pricing_account_profile_path(resource) }
-    end
-  end
-  
   def basics
     resource.wizard_step = :basics
     if request.patch?
@@ -111,5 +96,9 @@ class Account::ProfilesController < Account::ResourcesController
   #
   
   private
+  
+  def resource
+    get_resource_ivar || set_resource_ivar(current_user.profile)
+  end  
   
 end

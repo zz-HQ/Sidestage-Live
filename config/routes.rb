@@ -32,6 +32,7 @@ Airmusic::Application.routes.draw do
       resource :mobile_numbers, only: [:show, :destroy, :update] do
         patch :confirm
       end
+      
       resource :personal do
         collection do
           delete :destroy_avatar
@@ -57,7 +58,7 @@ Airmusic::Application.routes.draw do
           match 'description', to: 'profile_completion#description', via: :all                    
         end
       end
-      resources :profiles do
+      resource :profile do
         member do
           get :preview
           put :toggle
