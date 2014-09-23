@@ -11,19 +11,12 @@ balancedCardListener = (e, message) ->
     $(".payment-status").show()
     $(".payment-errors").hide()
 
-    # exp_date = $(@).find("[data-stripe='expiry']").val()
-    # cardValues = 
-    #   number: $(@).find("[data-stripe='number']").val()
-    #   cvc: $(@).find("[data-stripe='cvc']").val()
-    #   exp_month: exp_date.split("/")[0] || ""
-    #   exp_year: exp_date.split("/")[1] || ""
-
+    exp_date = $(@).find("#credit_card_exp").val()
     payload =
-      number: $("#credit_card_number").val()
-      expiration: $("#credit_card_exp").val()
-      # expiration_month: $("#credit_card_ex_month").val()
-      # expiration_year: $("#credit_card_ex_year").val()
-      cvv: $("#credit_card_cvc").val()
+      number: $(@).find("#credit_card_number").val()
+      expiration_month: exp_date.split("/")[0] || ""
+      expiration_year: exp_date.split("/")[1] || ""
+      cvv: $(@).find("#credit_card_cvc").val()
     balanced.card.create(payload, creditCardCallback);      
     #somehow the following line is needed  
     return false

@@ -8,9 +8,7 @@
 
         <% if resource.errors.present? %>
             <div class="error-notification">
-                <% resource.errors.each do |field, msg| %>
-                    <%= User.human_attribute_name(field) %>: <%= msg %><br/>
-                <% end %>
+                <%= resource.errors.full_messages.join("<br>").html_safe %>
             </div>
         <% end %>
 
