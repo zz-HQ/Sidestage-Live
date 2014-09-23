@@ -20,8 +20,9 @@ balancedCardListener = (e, message) ->
 
     payload =
       number: $("#credit_card_number").val()
-      expiration_month: $("#credit_card_ex_month").val()
-      expiration_year: $("#credit_card_ex_year").val()
+      expiration: $("#credit_card_exp").val()
+      # expiration_month: $("#credit_card_ex_month").val()
+      # expiration_year: $("#credit_card_ex_year").val()
       cvv: $("#credit_card_cvc").val()
     balanced.card.create(payload, creditCardCallback);      
     #somehow the following line is needed  

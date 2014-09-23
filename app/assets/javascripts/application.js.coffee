@@ -10,6 +10,7 @@
 # Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 # about supported directives.
 #
+#= require jquery
 #= require jquery_ujs
 # require turbolinks
 #= require boilerplate
@@ -25,36 +26,41 @@ window.App = {} if window.App == undefined
 App = window.App
 
 App.init = ->
+  # $('.about').expander({
+  #   slicePoint:       300,
+  #   expandPrefix:     '... ',
+  #   expandText:       'read more',
+  #   userCollapseText: '[^]',
+  #   expandEffect: 'slideDown',
+  #   collapseEffect: 'slideUp'
+  # })
   $('.nice-select').niceSelect()
   $('nav.tabs').tabs()
   $('.styled-radios').styledRadios()
   $('.star-rating-editable').starRating()
   $('#flash-messages').flash()
-  $('.picture-viewer').pictureViewer()
-  $('.tabs').toggleMediaFields()
+  $('.picture-viewer').pictureViewer()  
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
     scrollInput: false
     minDate:'-1970/01/01'
     onChangeDateTime: (dp,$input) -> $($input).datetimepicker 'hide'
-  App.setBalancedCardListener()
-  App.initGooglePlaces()
+  $("input.cc-num").payment "formatCardNumber"
+  $("input.cc-cvc").payment "formatCardCVC"
+  $("input.cc-exp").payment  "formatCardExpiry"
+  App.setStripeListener()
 
-  if $("input#profile_location").length > 0
-    source = $("input#profile_location").data("source").split("|")
-    $("input#profile_location").autocomplete source: source, minLength: 1
+$(document).on 'change', '.submit-on-change', (e) -> 
+  if($(@).val() != "")
+    if($(@).val() != "More cities")
+      $(@).closest('form').trigger 'submit'
+    else
+      window.location.replace("/en/city_launches/new")
 
-# $(document).on 'change', '.submit-on-change', (e) -> 
-#   if($(@).val() != "")
-#     if($(@).val() != "More cities")
-#       $(@).closest('form').trigger 'submit'
-#     else
-#       window.location.replace("/en/city_launches/new")
-# 
-# $(document).on 'change', '.redirect-on-change-to-other', (e) -> 
-#   if($(@).val() == "More cities")
-#       window.location.replace("/en/city_launches/new")
+$(document).on 'change', '.redirect-on-change-to-other', (e) -> 
+  if($(@).val() == "More cities")
+      window.location.replace("/en/city_launches/new")
 
 $(document).on 'change', 'select[data-linked=true]', (e) -> 
   window.location.replace($(@).val())
@@ -80,22 +86,40 @@ $(document).on 'click', '.close', (e) ->
     e.preventDefault()
     $(@).closest('#cookies').fadeOut(200)
 
-$(document).on 'click', '#trigger-email-signup-form', (e) ->
-  $(@).hide()
-  $(".signup-with-email").show()#slideDown()
-
 $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     'Accept': "text/javascript, application/javascript, text/html"
 
+
+# flashMessage = (name, msg) ->
+#   $('#flash-messages').find(".flash").addClass name
+#   $('#flash-messages').find(".flash-message").html msg
+#   $('#flash-messages').delay(100).animate
+#     height: '60px'
+#   ,
+#     duration: 150
+#     # ab hier auskommentieren, damit es offen bleibt
+#     complete: ->
+#       $(this).delay(3000)
+#       .animate
+#         height: 0
+#       ,
+#         duration: 200
+
+
 $(document).on 'page:update', App.init
-#$ -> App.init()
+$ -> App.init()
 
 #SUBMIT VIA ENTER
 $(document).on 'keydown', '.media-type-form input', (e) ->
   if e.keyCode == 13
     $(@).closest('form').trigger 'submit'
+
+$(document).on 'click', '.media-type-form .open-input-field', ->
+  $(@).parent().hide()
+  $(@).closest(".tab").find(".media-type-input-field").show()
+
 
 
 # MATCH ME CHECKBOX -----------

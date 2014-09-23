@@ -122,12 +122,15 @@
 
   .new_deal
 
-    // .cc-cvc
-    //   // +span-columns(4)
-    //   // +omega
+    .cc-num
+      margin-bottom: 8px
 
-    // .cc-exp
-    //   // +span-columns(4)
+    .cc-cvc
+      +span-columns(4)
+      +omega
+
+    .cc-exp
+      +span-columns(4)
 
   .label
     color: $text-color-light
@@ -241,16 +244,16 @@
 
           .form-inputs
             +span-columns(5)
-            margin: 0
+            margin-top: 0
 
-          .cc-cvc
-            width: 70px
+          // .cc-cvc
+          //   width: 70px
 
-          .nice-select
-            float: left
-            width: 30%
-            height: 38px
-            margin-right: 8px
+          // .nice-select
+          //   float: left
+          //   width: 30%
+          //   height: 38px
+          //   margin-right: 8px
 
           > p
             font-weight: 500
