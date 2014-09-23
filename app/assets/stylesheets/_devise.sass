@@ -129,22 +129,6 @@
     // .cc-exp
     //   // +span-columns(4)
 
-    .payment-inputs
-      width: 79% !important
-
-      > p
-        margin-top: 10px
-
-      .cc-cvc
-        width: 70px
-
-      .nice-select
-        float: left
-        width: 35%
-        height: 38px
-        margin-right: 8px
-
-
   .label
     color: $text-color-light
     +span-columns(8)
@@ -239,7 +223,8 @@
 
             p
               font-size: 16px
-              margin-bottom: 10px
+              font-weight: 500
+              margin-bottom: 14px
 
         .date
           +span-columns(4)
@@ -251,17 +236,26 @@
           font-weight: 400
 
         .payment-inputs
-          +span-columns(5)
+          +span-columns(8)
           border-top: 1px solid $border-color
+
+          .form-inputs
+            +span-columns(5)
+            margin: 0
+
+          .cc-cvc
+            width: 70px
+
+          .nice-select
+            float: left
+            width: 30%
+            height: 38px
+            margin-right: 8px
 
           > p
             font-weight: 500
-
-        .price,
-        .date
-          > p
-            font-size: 16px
-            margin-bottom: 10px
+            margin-top: 10px
+            font-size: 14px !important
 
         .price,
         .payment-inputs

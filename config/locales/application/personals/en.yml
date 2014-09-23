@@ -17,7 +17,7 @@ en:
         title: Change Your Password  
       payment_details:
         title: Credit Card
-        credit_card_form_title: "Please enter your payment information:"
+        credit_card_form_title: "Please enter your credit card information:"
         skip: Do this later
         new:
           title: Sidestage handles payments, so you don't have to worry about it. Please add a credit card to your account.
