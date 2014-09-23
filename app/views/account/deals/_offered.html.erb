@@ -5,7 +5,7 @@
     </p>
     <% if deal.is_customer?(current_user) %>
         <p class="price"><%= t(:"simple_form.labels.deal.new_price") %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
-        <%= render "account/deals/accept_button", deal: deal %>
+        <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn" %></p>
         <p><%= link_to t(:"application.deals.show.cancel_offer"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %></p>
         
         

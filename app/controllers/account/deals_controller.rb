@@ -62,7 +62,8 @@ class Account::DealsController < Account::ResourcesController
       format.html{
         if resource.errors.present?
           flash[:error] = resource.errors.full_messages.first
-          redirect_to payment_details_account_personal_path
+          flash[:show_credit_card_form] = true
+          redirect_to account_conversation_path(resource.conversation)
         else
           flash[:notice] = t(:"flash.account.deals.confirm.notice")
           redirect_to account_conversation_path(resource.conversation)

@@ -1,30 +1,28 @@
 <div class="devise-lightbox payment_form">
 	<div class="payment-form">
 
-		<%# unless resource.customer.paymentable? %>
-			<header>
-				<div class="photo">
-					<%= image_tag resource.artist.avatar.url(:thumb), class: "avatar" %>
-				</div>
-				<div class="body">
-					<strong><%= resource.artist.profile.name %></strong>
-				</div>
-			</header>
-		<%# end %>
+		<header>
+			<div class="photo">
+				<%= image_tag resource.artist.avatar.url(:thumb), class: "avatar" %>
+			</div>
+			<div class="body">
+				<strong><%= resource.artist.profile.name %></strong>
+			</div>
+		</header>
 		
 		<div class="body">
 			<%= simple_form_for resource, url: account_deals_path(resource), authenticity_token: true, data: { form: current_user.paymentable? ? nil : :payment }, html: { id: "deal-request" } do |f| %>
 				<div class="form-inputs paymentform">
-							<p>Review booking details</p>
-							<div class="date">
-								<%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
-								<i class="fa fa-calendar"></i>
-							</div>
-							<%= f.input :body, label: false %>
+					<p>Review booking details</p>
+					<div class="date">
+						<%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
+						<i class="fa fa-calendar"></i>
+					</div>
+					<%= f.input :body, label: false %>
 		    	    <%= f.input :profile_id, as: :hidden %>
 		    	    <%= f.input :balanced_token, as: :hidden %>
 		    	    <div class="bottom">
-		    	    	<%= render "account/payment_details/payment_form" %>
+		    	    	<%= render "account/payment_details/payment_form", f: f %>
 			          <div class="price">
 			          	<p><%= t(:"application.conversations.deals.new.total_price") %>: <%= localized_price(resource.price_with_surcharge, resource.currency) %></p>
 			          </div>

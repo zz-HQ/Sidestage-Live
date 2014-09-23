@@ -25,5 +25,8 @@ $(document).on 'click', '[data-lightbox="html"]', (e) ->
 
 jQuery(document).ready ->
   $("[data-lightbox=\"auto\"]").each (i, e) ->
-    vex.open content: $(e).html()
+    vex.open
+      content: $(e).html()
+    $(e).remove() #important, else form input fields are not accessable using js
+    return
   return
