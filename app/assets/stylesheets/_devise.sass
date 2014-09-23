@@ -159,6 +159,7 @@
 
     .btn
       margin-bottom: 15px
+      padding: 12px 34px
 
     .btn:last-child
       margin-bottom: 0
@@ -166,11 +167,16 @@
     a.link
       color: $text-color-light
       display: block
+      font-size: 14px
 
   // NEW PRICE
-  &.edit_offer,
+  &.edit_offer
     padding: 0
     width: 264px
+
+  &.pending_booking
+    padding: 0
+    width: 440px
 
   .photo
     +span-columns(1 of 7)
@@ -225,21 +231,29 @@
 
       > .body
         +span-columns(8)
-        padding: 15px
+        padding: 20px 30px
 
-        form > .form-inputs p
-          font-size: 16px
-          margin-bottom: 10px
+        form
+          > .form-inputs
+            margin-top: 0
 
-        .date,
-        .payment-inputs
-          +span-columns(5)
+            p
+              font-size: 16px
+              margin-bottom: 10px
+
+        .date
+          +span-columns(4)
 
         .price
           +span-columns(8)
           padding-top: 15px
+          margin-bottom: 10px
+          font-weight: 400
 
         .payment-inputs
+          +span-columns(5)
+          border-top: 1px solid $border-color
+
           > p
             font-weight: 500
 
@@ -252,9 +266,11 @@
         .price,
         .payment-inputs
           border-bottom: 1px solid $border-color
-        
-        .bottom
-          +span-columns(8)
-          border-top: 1px solid $border-color
 
+        .btn
+          padding: 10px 34px
+
+        p.footnote
+          padding: 0 30px
+          margin: 10px 0
 

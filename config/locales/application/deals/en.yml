@@ -3,7 +3,7 @@ en:
     deals:
       new:
         title: Send booking request to
-        foot_note_html: Your card will not be charged until your booking is confirmed by the artist.
+        foot_note_html: Your card will be charged when the artist confirms the booking.
         verification_message: Verifying payment...
         cancel_booking: Cancel booking request
       show:
@@ -20,4 +20,4 @@ en:
         confirmed_title: Booking Confirmation
       pending:
         title: Booking the
-        desc: "You have a pending booking request with this artist. Before you can make a new one, the first one has to be confirmed or cancelled."
+        desc: "You have a pending booking with this artist. Please make sure that is confirmed or cancelled before sending another booking request."

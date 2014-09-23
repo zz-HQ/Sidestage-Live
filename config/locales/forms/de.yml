@@ -85,8 +85,8 @@ de:
       credit_card:
         submit: Save
       deal:
-        create: Book now
-        submit: Book now
+        create: Book it
+        submit: Book it
         submit_proposal: Send request
         update_price: Send updated price
       profile:

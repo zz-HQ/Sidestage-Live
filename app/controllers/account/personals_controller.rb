@@ -34,7 +34,7 @@ class Account::PersonalsController < Account::ResourcesController
     if request.patch?
       if resource.avatar.present?
         #redirect_to complete_payment_account_personal_path
-        redirect_to root_path, notice: t(:"flash.account.users.complete.success")
+        redirect_to root_path, notice: t(:"flash.account.users.complete.success", payment_path: payment_details_account_personal_path)
       else
         flash.now[:error] = t(:"flash.account.users.complete.alert")
       end

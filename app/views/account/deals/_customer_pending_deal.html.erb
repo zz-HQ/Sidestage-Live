@@ -1,20 +1,20 @@
-<div class="devise-lightbox edit_offer">
+<div class="devise-lightbox pending_booking">
 <div class="edit-offer">
 	<header>
 		<div class="photo">
 			<%= image_tag deal.artist.avatar.url(:thumb), class: "avatar" %>
 		</div>
 		<div class="body">
-			<span><%= t(:"application.deals.pending.title") %> <strong><%= deal.profile.name %></strong></span>
+			<span><strong><%= deal.profile.name %></strong></span>
 		</div> 
 	</header>
 
-	<div class="body">
+	<div class="body center">
 		
-	  <p class="light"><%= t(:"application.deals.pending.desc") %></p>
+	  <p><%= t(:"application.deals.pending.desc") %></p>
 		<div class="btns">
-		    <%= link_to t(:"application.artists.show.message_artist"), link_or_signin(new_account_message_path(receiver_id: deal.artist_id, format: :html)), class: "btn", data: { lightbox: "ajax" } %>
-		    <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %>
+		    <%= link_to t(:"application.artists.show.send_message"), link_or_signin(new_account_message_path(receiver_id: deal.artist_id, format: :html)), class: "btn btn-inline", data: { lightbox: "ajax" } %>
+		    <%= link_to t(:"application.artists.show.view_pending"), link_or_signin(new_account_message_path(receiver_id: deal.artist_id, format: :html)), class: "link", data: { lightbox: "ajax" } %>
 		</div>
 	</div>
 </div>

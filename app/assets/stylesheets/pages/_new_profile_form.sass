@@ -97,17 +97,6 @@
 		.input
 			width: 350px
 
-		.hint
-			width: 43%
-
-	// .profile_title
-	// 	.hint
-	// 		//margin-top: 44px
-
-	// // .profile_name
-	// // 	.hint
-	// // 		margin-top: 30px
-
 	.profile_about
 		.input
 			width: 450px
@@ -115,11 +104,21 @@
 			textarea
 				height: 200px
 
-		// .hint
-		// 	margin-top: 33px
-
 	.profile_social_media
 		margin-top: 10px
+
+		.inputs
+			position: relative
+			+span-columns(8)
+
+			.input
+				input
+					padding-left: 25px
+
+			> span
+				position: absolute
+				top: 37px
+				left: 10px
 
 
 // PRICING ---------------

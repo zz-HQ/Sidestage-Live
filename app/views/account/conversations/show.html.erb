@@ -13,7 +13,7 @@
           <%= link_to_if negotiator.artist?, (image_tag negotiator.avatar.url(:thumb), class: "avatar"), artist_path(negotiator.profile || 1) %>
         </div>
         <div class="body">
-          <%= link_to_if negotiator.artist?, negotiator.profile_name, artist_path(negotiator.profile || 1) %>
+          <%= link_to_if negotiator.artist?, truncate(negotiator.profile_name, length: 23), artist_path(negotiator.profile || 1) %>
         </div>
       </header>
 
