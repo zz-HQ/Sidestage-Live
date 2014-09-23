@@ -27,6 +27,8 @@ en:
         number: Card number
         expiration: Expiration  
         cvc: "CVC"
+      user:
+        full_name: Name
     errors:
       models:
         user/as_mobile_number:

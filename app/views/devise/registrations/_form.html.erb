@@ -8,7 +8,9 @@
 
         <% if resource.errors.present? %>
             <div class="error-notification">
-                <%= t(:"errors.messages.invalid_signup") %>
+                <% resource.errors.each do |field, msg| %>
+                    <%= User.human_attribute_name(field) %>: <%= msg %><br/>
+                <% end %>
             </div>
         <% end %>
 
