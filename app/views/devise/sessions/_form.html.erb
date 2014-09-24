@@ -5,7 +5,7 @@
 
         <%= simple_form_for resource, as: resource_name, url: session_path(resource_name), id: "new-session"  do |f| %>
             <div class="form-actions login-signup-actions">
-                <%= link_to t(:"application.devise.facebook_signup"), user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
+                <%= link_to t(:"application.devise.facebook_login"), user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
             </div>
 
             <%= content_tag :span, id: "trigger-email-signup-form", class: "trigger-email-signup-form", style: "display:#{resource.errors.present? ? 'none;' : ''}" do %>
