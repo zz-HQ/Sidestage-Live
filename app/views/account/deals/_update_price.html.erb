@@ -4,9 +4,7 @@
             <div class="photo">
               <%= image_tag deal.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
             </div>
-            <div class="body">
-              <%= deal.negotiator_for(current_user).profile_name %>
-            </div>
+            <div class="body"><%= truncate(deal.negotiator_for(current_user).profile_name, length: 20) %></div>
         </header>
         <div class="body">
             <h4 class="title">Special Offer</h4>
