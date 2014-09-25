@@ -45,6 +45,8 @@
       cursor: pointer
       text-align: center
       margin: 30px 0 10px
+      font-weight: 400
+      font-size: 16px
 
     .signup-with-email
 
@@ -80,9 +82,12 @@
       &.login-signup-actions
         .btn
           margin-top: 10px
-          width: 80%
+          width: 70%
           color: #fff
           text-decoration: none
+
+          &.btn-facebook
+            font-size: 16px
 
       a.link
         padding: 15px 0
@@ -120,17 +125,15 @@
     text-align: center
     margin-top: 20px
 
-  .new_deal
+  .cc-num
+    margin-bottom: 8px
 
-    .cc-num
-      margin-bottom: 8px
+  .cc-cvc
+    +span-columns(4)
+    +omega
 
-    .cc-cvc
-      +span-columns(4)
-      +omega
-
-    .cc-exp
-      +span-columns(4)
+  .cc-exp
+    +span-columns(4)
 
   .label
     color: $text-color-light
@@ -159,7 +162,10 @@
   // NEW PRICE
   &.edit_offer
     padding: 0
-    width: 264px
+    width: 280px
+
+    h4.title
+      margin: 0 !important
 
   &.pending_booking
     padding: 0
@@ -245,15 +251,6 @@
           .form-inputs
             +span-columns(5)
             margin-top: 0
-
-          // .cc-cvc
-          //   width: 70px
-
-          // .nice-select
-          //   float: left
-          //   width: 30%
-          //   height: 38px
-          //   margin-right: 8px
 
           > p
             font-weight: 500

@@ -1,9 +1,8 @@
 <header>
 
   <div class="wrap">
-    <%# TODO: Change to root_path when splash page goes offline!!! %>
     <h1 id="logo">
-      <%= link_to params[:location].present? ? artists_path(location: params[:location], lng: params[:lng], lat: params[:lat]) : root_path do %>
+      <%= link_to params[:location].present? && action_name == "show" ? artists_path(location: params[:location], lng: params[:lng], lat: params[:lat]) : root_path do %>
         <%= image_tag "sprite/sidestage-logo.png" %>
       <% end %>
     </h1>
@@ -29,9 +28,7 @@
       <%- if user_signed_in? -%>
         
         <a href="<%= account_conversations_path %>" class="messages">
-          <%# TODO: Mail Icon %>
           <div class="icon"><i class="fa fa-envelope-o"></i></div>
-          <%# TODO: Real Mesage Count %>
           <% if current_user.unread_message_counter.to_i > 0 %>
             <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>
           <% end %>

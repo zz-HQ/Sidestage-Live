@@ -4,7 +4,7 @@ de:
       session_title: Log in
       registration_title: Sign up
       are_you_new: "Are you new?"
-      facebook_login: "Sign up with Facebook"
+      facebook_login: "Log in with Facebook"
       facebook_hint: "We'll post nothing without your permission!"
       or: or
       login_error: Login incorrect

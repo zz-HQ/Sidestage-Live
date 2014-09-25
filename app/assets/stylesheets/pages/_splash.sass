@@ -21,7 +21,7 @@ body.desktop
 
   #splash
     color: #fff
-    height: 100%
+    height: 88%
     position: relative
     width: 100%
     background: #fff image-url('splash/background.jpg') center center no-repeat
@@ -55,10 +55,12 @@ body.desktop
     
     #animation-container
       +perspective(1000px)
-      height: 130px
-      margin: 0 auto
-      position: relative
+      height: 70px
+      position: absolute
       width: 530px
+      left: 50%
+      margin-left: -246px
+      bottom: 40px
 
       &.home
         width: 492px
@@ -70,7 +72,7 @@ body.desktop
         +border-radius($border-radius)
         +transform-style(preserve-3d)
         +transition(transform 600ms ceaser($easeOutQuint))
-        +rgba-background(rgba(#000, 0.3))
+        +rgba-background(rgba(#000, 0.33))
         height: 70px
         padding: 10px
         position: absolute

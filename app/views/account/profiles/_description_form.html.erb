@@ -7,7 +7,9 @@
 	<div class="hint"><%#= t(:"simple_form.hints.profile.title") %></div>
 </div>
 <div class="inputs profile_about">
-	<%= f.input :about, hint: false, placeholder: "Please don't include website links, email addresses or phone numbers in this area." %>
+	<%= f.input :about, hint: false, placeholder: "Please don't include website links, email addresses or phone numbers in this area.", maxlength: '250' %>
+
+	<p class="characters-counter"><span class="count">250</span> characters left</p>
 	<div class="hint"><%#= t(:"simple_form.hints.profile.about") %></div>
 </div>
 <!-- TODO: Website input -->

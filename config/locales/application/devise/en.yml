@@ -1,7 +1,7 @@
 en:
   application:
     devise:
-      facebook_login: "Sign in with Facebook"
+      facebook_login: "Log in with Facebook"
       facebook_signup: "Sign up with Facebook"
       sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
       signup_options:

@@ -26,22 +26,21 @@
             <%= t(:"application.home.index.teaser.body") %>
           </p>
         </div>
-
-
-        <div id="animation-container" class="home">
-
-          <div id="city-form">
-              <%= simple_form_for :location, url: artists_path, method: :Get, html: { id: "homepage-search" } do |f| %>
-                  <%= text_field_tag :location, params[:location], id: :event_place_home, data: { google: :event_place }, placeholder: t(:"simple_form.placeholders.location_search.location") %>
-                  <%= hidden_field_tag :lng, params[:lng] %>
-                  <%= hidden_field_tag :lat, params[:lat] %>
-                  <%= f.submit :submit, value: t(:"application.buttons.search"), name: nil, class: 'city-btn' %>
-              <% end %>    
-          </div>
-
-        </div><!-- #animation-container -->
         
       </div><!-- #splash-content -->
+
+      <div id="animation-container" class="home">
+
+        <div id="city-form">
+            <%= simple_form_for :location, url: artists_path, method: :Get, html: { id: "homepage-search" } do |f| %>
+                <%= text_field_tag :location, params[:location], id: :event_place_home, data: { google: :event_place }, placeholder: t(:"simple_form.placeholders.location_search.location") %>
+                <%= hidden_field_tag :lng, params[:lng] %>
+                <%= hidden_field_tag :lat, params[:lat] %>
+                <%= f.submit :submit, value: t(:"application.buttons.search"), name: nil, class: 'city-btn' %>
+            <% end %>    
+        </div>
+
+      </div><!-- #animation-container -->
 
     </div><!-- #splash -->
 
