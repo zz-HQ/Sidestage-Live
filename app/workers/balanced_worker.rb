@@ -37,7 +37,8 @@ class BalancedWorker
     return if deal.nil? || deal.profile.nil? || deal.paid_out? || !deal.profile.balanced_payoutable?
     bank_account = Balanced::BankAccount.fetch("/bank_accounts/#{deal.profile.balanced_bank_account_id}")
     credit = bank_account.credit(amount: deal.dollar_price_in_cents, appears_on_statement_as: "Sidestage")
-    Deal.where(id: deal_id).update_all(balanced_credit_id: credit.id, paid_out: true)
+    Deal.where(id: id).update_all(balanced_credit_id: credit.id, paid_out: true)
+    deal.credit_on_the_way
   end
   
 end

@@ -108,15 +108,9 @@ $(document).on 'click', '.match-me-form .act', ->
     $(@).addClass('active')
 
 # Characters counter
-characters_counter = ->
+$(document).on 'keyup', '#profile_about', ->
   chars = $('#profile_about').val().length
   $('.characters-counter .count').html 250 - chars
-
-$(document).on 'keyup', '#profile_about', ->
-  characters_counter()
-
-$(document).on 'ready', ->
-  characters_counter()
 
 
 # FB LIKE BUTTON to work with turbolinks

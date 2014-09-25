@@ -29,6 +29,8 @@ en:
         youtube: Youtube video
         soundcloud: SoundCloud Track/Playlist Embed Code
         avatar: Select Profile picture
+        facebook: Social Media
+        twitter: Twitter username
       propose:
         price: You'll make  
       match_me:
@@ -83,6 +85,9 @@ en:
         routing_number: Routing number
         account_number: Account Number
         payout_address: "Address associated with bank account"
+        twitter: username
+        facebook: Facebook page
+        about: "Please don't include website links, email addresses or phone numbers in this area."
       mailchimp_subscriber:
         email: Email Address
       match_me:

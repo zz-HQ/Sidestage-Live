@@ -123,6 +123,7 @@ en:
   view:
     messages:
       sms: "You have a new Sidestage message from %{partner_name}. Please log in to Sidestage to view it."
+      credit_on_the_way: "You've been paid! Money should hit your bank account in 1-2 business days. Thanks for working with Sidestage."
       system_messages:
         deals:
           requested: &requested 

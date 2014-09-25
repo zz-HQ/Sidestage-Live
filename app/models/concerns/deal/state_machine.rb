@@ -11,6 +11,7 @@ module Deal::StateMachine
     UNDEALED_STATES = [:rejected, :reverted]  
     VISIBLE_CONVERSATION_STATES = [:requested, :offered, :confirmed, :accepted, :proposed]
     NOTIFY_BOTH_PARTIES_STATES = [:cancelled, :confirmed, :declined, :accepted]
+    SMS_NOTIFY_BOTH_PARTIES_STATES = [:confirmed, :accepted]
     
     aasm column: 'state', whiny_transitions: false do
       

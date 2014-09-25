@@ -23,8 +23,6 @@ class DealMailer < ActionMailer::Base
   #
   #
   
-  after_filter :send_sms
-            
   #
   # Helpers
   # ---------------------------------------------------------------------------------------
@@ -85,10 +83,6 @@ class DealMailer < ActionMailer::Base
       partner_name: partner.profile_name,
       deal_path: account_conversation_url(deal.conversation),
       event_date: l(deal.start_at.to_date, format: :event_date))
-  end
-  
-  def send_sms
-    @user.send_sms(strip_tags(@notification_body))
   end
   
 end

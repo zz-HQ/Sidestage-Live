@@ -81,7 +81,7 @@ class Deal < ActiveRecord::Base
   scope :past, -> { where("DATE(deals.start_at) < ?", Time.now) }
   scope :future, -> { where("deals.start_at > ?", Time.now) }
   scope :latest, -> { order("deals.id DESC") }
-  scope :visible_in_conversation, -> { where('state IN (?)', Deal::VISIBLE_CONVERSATION_STATES) }
+  scope :visible_in_conversation, -> { future.where('state IN (?)', Deal::VISIBLE_CONVERSATION_STATES) }
   scope :since, ->(since) { where("updated_at > ?", since) }
   scope :created_since, ->(since) { where("created_at > ?", since) }
   scope :my_bookings_overview, -> { where(state: [:confirmed, :accepted]) }
@@ -121,6 +121,10 @@ class Deal < ActiveRecord::Base
   
   def paid_out?
     super || balanced_paid_out?
+  end
+
+  def credit_on_the_way
+    artist.send_sms(I18n.t(:"view.messages.credit_on_the_way"))
   end
    
   #
@@ -196,7 +200,8 @@ class Deal < ActiveRecord::Base
         price: price_with_surcharge,
         event_date: start_at }.to_json
       if message.save
-        notify_partner
+        notify_partner_via_email
+        notify_partner_via_sms
       end
     end
   end
@@ -215,7 +220,7 @@ class Deal < ActiveRecord::Base
     end
   end
   
-  def notify_partner
+  def notify_partner_via_email
     if state.to_sym.in?(NOTIFY_BOTH_PARTIES_STATES)
       DealMailer.delay.artist_notification(self)
       DealMailer.delay.customer_notification(self)
@@ -224,6 +229,22 @@ class Deal < ActiveRecord::Base
     else
       DealMailer.delay.customer_notification(self)
     end
+  end
+  
+  def notify_partner_via_sms
+    if state.to_sym.in?(SMS_NOTIFY_BOTH_PARTIES_STATES)
+      send_sms_to_partner(from: customer, to: artist)
+      send_sms_to_partner(from: artist, to: customer)
+    elsif is_customer?(current_user)
+      send_sms_to_partner(from: customer, to: artist)
+    else
+      send_sms_to_partner(from: artist, to: customer)
+    end
+  end
+  
+  def send_sms_to_partner(from:, to:)
+    notification_body = I18n.t("mail.deals.#{state}.body_html", partner_name: from.profile_name,  deal_path: "", event_date: I18n.l(start_at.to_date, format: :event_date))
+    to.send(:send_sms, ActionController::Base.helpers.strip_tags(notification_body))
   end
   
   def ensure_balanced_charge!

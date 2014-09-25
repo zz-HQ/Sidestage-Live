@@ -7,19 +7,16 @@
 	<div class="hint"><%#= t(:"simple_form.hints.profile.title") %></div>
 </div>
 <div class="inputs profile_about">
-	<%= f.input :about, hint: false, placeholder: "Please don't include website links, email addresses or phone numbers in this area.", maxlength: '250' %>
-
-	<p class="characters-counter"><span class="count">250</span> characters left</p>
+	<%= f.input :about, hint: false, maxlength: '250' %>
+	<p class="characters-counter"><span class="count"><%= 250 - f.object.about.to_s.length %></span> characters left</p>
 	<div class="hint"><%#= t(:"simple_form.hints.profile.about") %></div>
 </div>
 <!-- TODO: Website input -->
 <div class="inputs profile_social_media">
-	<label>Social Media</label>
-	<%= f.input :facebook, label: false, placeholder: "Facebook page" %>
+	<%= f.input :facebook %>
 
 	<div class="inputs twitter-field">
-		<label>Twitter username</label>
-		<%= f.input :twitter, label: false, placeholder: "username" %>
+		<%= f.input :twitter %>
 		<span>@</span>
 	</div>
 </div>
