@@ -22,5 +22,22 @@ module Account::ProfilesHelper
     youtube_src = "//www.youtube.com/embed/#{youtube_id}?rel=0"
     content_tag :iframe, nil, width: "100%", height: "350", scrolling: "no", frameborder: "no", src: youtube_src
   end
+
+  def read_more_link(text, length = 220)
+    if !text.blank? && text.size > length
+      link = content_tag(:span, 'mehr', class: "toggle-about-text show-fulltext link")
+      text = "#{truncate(strip_tags(text), length: length)} #{link}"
+    else
+      text = text
+    end
+
+    simple_format text
+  end
+
+  def read_less_link(text)
+    link = content_tag(:span, '[^]', class: "toggle-about-text show-truncate link")
+    text = "#{strip_tags(text)} #{link}"
+    simple_format text
+  end
   
 end

@@ -18,7 +18,12 @@
     <p class="title"><%= resource.title %></p>
 
     <div class="about">
-      <p><%= simple_format (strip_tags resource.about) %></p>
+      <div class="truncate">
+        <%= read_more_link(resource.about, 490) %>
+      </div>
+      <div class="fulltext" style="display:none;">
+        <%= read_less_link(resource.about) %>
+      </div>
     </div>
 
     <%= render 'media_types' %>

@@ -113,6 +113,15 @@ $(document).on 'keyup', '#profile_about', ->
   $('.characters-counter .count').html 250 - chars
 
 
+# Profile about read more link
+$(document).on 'click', '.toggle-about-text', ->
+  $(@).closest('div').hide()
+  if $(@).hasClass("show-fulltext")
+    $('.fulltext').show()
+  else
+    $('.truncate').show()
+
+
 # FB LIKE BUTTON to work with turbolinks
 fb_root = null
 fb_events_bound = false
