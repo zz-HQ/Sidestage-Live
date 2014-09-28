@@ -128,6 +128,7 @@ class ArtistsController < ApplicationController
         params[:lat] = loc_params["lat"]
       end
     end
+    @location = params[:location]
   end
 
 end

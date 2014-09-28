@@ -58,7 +58,7 @@ class AdminMailer < ActionMailer::Base
   
   def match_me(match_me)
     @match_me = match_me
-    mail(subject: "Sidestage: Match Me") do |format|
+    mail(to: "bookings@sidestage.com", subject: "Sidestage: Match Me") do |format|
       format.html
     end
   end
