@@ -72,8 +72,12 @@ Airmusic::Application.routes.draw do
           match 'payment', to: 'profiles#payment', via: :all
         end
         resources :pictures, only: [:index, :create, :destroy]
+      end
+      
+      resources :profiles, only: [] do
         resources :reviews, only: [:new, :create]
       end
+      
       resources :messages
       resources :bookings, only: [:index]
       resources :offers, only: [:create, :new]

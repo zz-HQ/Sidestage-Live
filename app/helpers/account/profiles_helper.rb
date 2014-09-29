@@ -25,7 +25,7 @@ module Account::ProfilesHelper
 
   def read_more_link(text, length = 220)
     if !text.blank? && text.size > length
-      link = content_tag(:span, 'mehr', class: "toggle-about-text show-fulltext link")
+      link = content_tag(:span, 'more', class: "toggle-about-text show-fulltext link")
       text = "#{truncate(strip_tags(text), length: length)} #{link}"
     else
       text = text

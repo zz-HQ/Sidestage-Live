@@ -1,4 +1,4 @@
-<%= simple_form_for :review, url: account_profile_reviews_path(parent), remote: true, class: "review-form" do |f| %>
+<%= simple_form_for resource, url: account_profile_reviews_path(parent), remote: true, class: "review-form" do |f| %>
     <%= star_rating editable: true, f: f, label: true %>
     <%= f.input :body, as: :text, label: false %>
     <%= f.submit class: "btn" %>

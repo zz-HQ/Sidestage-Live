@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140920115336) do
     t.string   "currency"
     t.string   "state"
     t.datetime "state_transition_at"
-    t.boolean  "payed_out",           default: false
+    t.boolean  "paid_out",            default: false
     t.string   "balanced_credit_id"
   end
 

@@ -38,7 +38,7 @@
       <div style="display:none;" data-container="new-review">
           <div class="devise-lightbox new-review">
             <h3><%= t(:"application.reviews.new.title") %> <%= resource.name %></h3>
-            <%= render "account/reviews/form", parent: resource %>
+            <%= render "account/reviews/form", parent: resource, resource: Review.new %>
           </div>
           <script>
             jQuery(document).ready(function(){
