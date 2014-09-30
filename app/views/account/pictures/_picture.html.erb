@@ -1,4 +1,8 @@
-<%= content_tag :div, data: {review: picture.picture.url(:preview)}, id: dom_id(picture), class: "thumb" do %>
-	<%= image_tag picture.picture.url(:thumb) %>
-  <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, account_profile_picture_path(picture.imageable, picture), method: :delete, data: {remote: true, confirm: "#{t(:"helpers.confirm.sure")}"}, class: "delete" %>
+<%= content_tag :div, id: dom_id(picture), class: "picture" do %>
+	<div class="loading">
+		<i class="fa fa-spinner fa-spin"></i>
+		<p>Uploading...</p>
+	</div>
+	<%= image_tag picture.picture.url(:medium_rect) %>
+  	<%= link_to "<i class='fa fa-trash-o'></i>".html_safe, account_profile_picture_path(picture), method: :delete, data: {remote: true, confirm: "#{t(:"helpers.confirm.sure")}"}, class: "delete actions" %>
 <% end %>

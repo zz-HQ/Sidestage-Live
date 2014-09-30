@@ -1,2 +1,1 @@
-$('.thumbs').prepend('<%= j render 'picture', picture: resource %>');
-$('.picture-viewer').pictureViewer();
+$('#pictures').append('<%= j render 'picture', picture: resource %>').find("#no-pictures").remove();
