@@ -36,6 +36,8 @@
 
       <% if current_user && current_user.id != resource.user_id %>
         <%= link_to t(:"application.artists.show.leave_a_review"), new_account_profile_review_path(resource), class: "light link-to-new-review", data: { lightbox: :html, target: "[data-container='new-review']" } %>
+      <% else %>
+        <%= link_to t(:"application.artists.show.leave_a_review"), new_user_registration_path, class: "light link-to-new-review" %>
       <% end %>
       
       <div style="display:none;" data-container="new-review">
