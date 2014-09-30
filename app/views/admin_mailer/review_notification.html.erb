@@ -1,0 +1,7 @@
+<p style="color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;">
+    Profile: <%= link_to @review.profile.name, artist_url(@review.profile) %> <br/>
+    Reviewer: <%= @review.author.profile_name %><br>
+    Rating: <%= @review.rate.to_i %><br>
+    Comment:<br>
+    <%= @review.body %>
+</p>

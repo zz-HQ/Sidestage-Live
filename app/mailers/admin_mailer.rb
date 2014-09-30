@@ -63,6 +63,13 @@ class AdminMailer < ActionMailer::Base
     end
   end
   
+  def review_notification(review)
+    @review = review
+    mail(subject: "Sidestage: New Review") do |format|
+      format.html
+    end
+  end
+  
   #
   # Protected Methods
   # ---------------------------------------------------------------------------------------

@@ -34,6 +34,7 @@ class Review < ActiveRecord::Base
   
   before_create :assign_artist  
   
+  after_create :notify_admin
 
   #
   # Private
@@ -46,5 +47,11 @@ class Review < ActiveRecord::Base
   def assign_artist
     self.artist_id ||= profile.user_id if profile_id.present?
   end
+  
+  
+  def notify_admin
+    AdminMailer.delay.review_notification(self).deliver
+  end
+  
   
 end
