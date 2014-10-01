@@ -4,5 +4,8 @@
 		<p>Uploading...</p>
 	</div>
 	<%= image_tag picture.picture.url(:medium_rect) %>
+	<%= simple_form_for picture, url: account_profile_picture_path(picture), remote: true, data: { :"auto-save" => true } do |f| %>
+	    <%= f.input :caption, label: false %>
+	<% end %>
   	<%= link_to "<i class='fa fa-trash-o'></i>".html_safe, account_profile_picture_path(picture), method: :delete, data: {remote: true, confirm: "#{t(:"helpers.confirm.sure")}"}, class: "delete actions" %>
 <% end %>

@@ -24,6 +24,20 @@ class Account::PicturesController < Account::ResourcesController
   
 
   #
+  # Protected
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+    
+  protected
+  
+  def permitted_params
+    params.permit(picture: [:file, :caption])
+  end
+
+  #
   # Private
   # ---------------------------------------------------------------------------------------
   #
