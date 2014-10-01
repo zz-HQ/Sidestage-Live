@@ -5,15 +5,21 @@
 
   <div class="content">
     <div class="infos">
-      <div class="tweet-btn">
-        <a href="https://twitter.com/share" data-url="<%= artist_url(resource) %>" class="twitter-share-button" data-size="small" data-text="Check out <%= resource.name %> on Sidestage " data-via="sidestagehq<%= " @#{resource.twitter}" if resource.twitter.present? %>" data-count="none"></a>
+      <div class="share-btn like-btn">
+        <!-- <div class="fb-like" data-url="<%= artist_url(resource) %>" data-href="<%= artist_url(resource) %>" data-layout="button" data-action="like" data-show-faces="false" data-share="false" style="opacity:0.0;position:absolute;"></div><i class="fa fa-facebook-square"></i>Share -->
+        <div class="fb-share-button"></div>
       </div>
 
-      <div class="like-btn">
-        <div class="fb-like" data-url="<%= artist_url(resource) %>" data-href="<%= artist_url(resource) %>" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+      <div class="share-btn tweet-btn">
+        <a href="https://twitter.com/share" data-url="<%= artist_url(resource) %>" data-size="small" data-text="Check out <%= resource.name %> on Sidestage " data-via="sidestagehq<%= " @#{resource.twitter}" if resource.twitter.present? %>" data-count="none" style="color: #4099ff;"><i class="fa fa-twitter"></i>Tweet</a>
       </div>
-      <div class="gplus-btn">
+
+      <div class="share-btn gplus-btn">
         <div class="g-plusone" data-size="medium" data-annotation="none"></div>
+      </div>
+
+      <div class="share-btn pin-btn" style="cursor:pointer;position:relative;top:-2px;">
+        <a href="//en.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" data-pin-shape="round" data-pin-color="white" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_28.png" /></a>
       </div>
     </div> 
 
