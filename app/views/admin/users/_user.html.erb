@@ -11,6 +11,7 @@
     </td>
     <td><%= user.unread_message_counter %></td>
     <td><%= bool_label(user.paymentable?) %></td>
+    <td><%= link_to "backdoor", backdoor_admin_user_path(user), class: "badge" %></td>
     <td class="text-right">
         <%= link_to_bool user.verified? , target: toggle_verification_admin_user_path(user), true_text: "Unverify", false_text: "Verify" %>
         
