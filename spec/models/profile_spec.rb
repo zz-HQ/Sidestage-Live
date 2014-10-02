@@ -14,12 +14,18 @@ describe Profile, :type => :model do
     
   end
   
+  it "auto assigns coordinates" do
+    profile = FactoryGirl.create(:shakira)
+    expect(profile.latitude).to be_present
+    expect(profile.longitude).to be_present
+  end
+  
   it "toggles publish" do
     profile = FactoryGirl.create(:unpublished)
     expect(profile.published?).to be false
 
     profile.toggle!
-    expect(profile.published?).to be true
+      expect(profile.published?).to be true
   end
   
 end
