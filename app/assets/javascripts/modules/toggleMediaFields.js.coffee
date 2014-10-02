@@ -45,12 +45,10 @@ do ($ = jQuery, window, document) ->
 
     render: ->
       self = @
-      console.log self.$id
       $("##{self.$id}").hide()
       $("##{self.$id}-field").show()
 
     close: ->
-      console.log "CLOSE"
       @$field.hide()
       @$tab.show()
 

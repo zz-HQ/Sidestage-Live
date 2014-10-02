@@ -28,13 +28,15 @@
     <div class="picture-viewer">
       <div class="thumbs">
         <%- resource.pictures.each do |pic| -%>
-          <div class="thumb" data-review="<%= pic.picture.url(:preview) %>">
+          <div class="thumb" data-review="<%= pic.picture.url(:preview) %>" data-caption="<%= pic.caption %>">
             <%= image_tag pic.picture.url(:thumb), alt: pic.caption || resource.name %>
           </div>
         <%- end -%>
       </div>
       <div class="picture">
         <img>
+        <div class="gradient-overlay"></div>
+        <div class="caption"></div>        
       </div>
     </div>
   </div>
