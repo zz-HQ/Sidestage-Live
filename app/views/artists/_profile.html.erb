@@ -1,5 +1,7 @@
-<%= content_for :social_desc, "Check out my Sidestage profile. You can book me to play music at your event" %>
-<%= content_for :social_img, resource.user.avatar_url(:thumb) %>
+<% @meta_title = "#{resource.name} artists profile on Sidestage.com" %>
+<% @meta_desc = "Book #{resource.name} for your next party on Sidestage.com" %>
+<% @social_img = resource.user.avatar_url(:thumb) %>
+<% @social_desc = "Book #{resource.name} for your next party on Sidestage.com" %>
 
 <div id="artist">
 

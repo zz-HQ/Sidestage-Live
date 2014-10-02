@@ -51,7 +51,7 @@ module Localizable
   end
   
   def default_url_options(options = {})
-    options.merge(:locale => I18n.locale)
+    options.merge(:locale =>  I18n.locale == I18n.default_locale ? nil : I18n.locale)
   end
     
 end
