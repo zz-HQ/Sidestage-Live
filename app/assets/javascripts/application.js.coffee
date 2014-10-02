@@ -109,7 +109,7 @@ $(document).on 'click', '.match-me-form .act', ->
 # Characters counter
 $(document).on 'keyup', '#profile_about', ->
   chars = $('#profile_about').val().length
-  $('.characters-counter .count').html 250 - chars
+  $('.characters-counter .count').html 747 - chars
 
 
 # Profile about read more link
