@@ -66,6 +66,14 @@ module ApplicationHelper
   def twitter_share_url(text, url)
     "https://twitter.com/intent/tweet?text=#{text}&url=#{url}"
   end
+
+  def googleplus_share_url(url)
+    "https://plus.google.com/share?url=#{url}"
+  end
+
+  def pinterist_share_url(url)
+    "http://pinterest.com/pin/create/link/?url=#{url}"
+  end
   
   
 end

@@ -7,18 +7,20 @@
     <div class="infos">
       <div class="share-btn like-btn">
         <!-- <div class="fb-like" data-url="<%= artist_url(resource) %>" data-href="<%= artist_url(resource) %>" data-layout="button" data-action="like" data-show-faces="false" data-share="false" style="opacity:0.0;position:absolute;"></div><i class="fa fa-facebook-square"></i>Share -->
-        <div class="fb-share-button" data-href="<%= artist_url(resource) %>"></div>
+        <!-- <div class="fb-share-button" data-href="<%= artist_url(resource) %>"></div> -->
+        <%= link_to "<i class='fa fa-facebook-square'></i>Share".html_safe, facebook_share_url(artist_url(current_user.profile)), target: :_blank, style: "color:#3b5998;" %>
       </div>
 
       <div class="share-btn tweet-btn">
-        <a href="https://twitter.com/share" data-url="<%= artist_url(resource) %>" data-size="small" data-text="Check out <%= resource.name %> on Sidestage " data-via="sidestagehq<%= " @#{resource.twitter}" if resource.twitter.present? %>" data-count="none" style="color: #4099ff;"><i class="fa fa-twitter"></i>Tweet</a>
+        <%= link_to "<i class='fa fa-twitter'></i>Tweet".html_safe, twitter_share_url("Check out #{resource.name} on Sidestage via @sidestagehq" + (" @#{resource.twitter}" if resource.twitter.present?), artist_url(resource)), target: :_blank, style: "color:#4099ff;" %>
       </div>
       <div class="share-btn gplus-btn">
-        <div class="g-plusone" data-size="medium" data-href="<%= artist_url(resource) %>" data-annotation="none"></div>
+        <!-- <div class="g-plusone" data-size="medium" data-href="<%= artist_url(resource) %>" data-annotation="none"></div> -->
+        <%= link_to "<i class='fa fa-google-plus'></i>1".html_safe, googleplus_share_url(artist_url(current_user.profile)), target: :_blank, style: "color:#d34836;font-weight:300;" %>
       </div>
 
-      <div class="share-btn pin-btn" style="cursor:pointer;position:relative;top:-2px;">
-        <a href="//en.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" data-pin-shape="round" data-pin-color="white" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_28.png" /></a>
+      <div class="share-btn pin-btn">
+        <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(current_user.profile)), target: :_blank, style: "color:#cb2027;" %>
       </div>
     </div> 
 
