@@ -14,7 +14,7 @@
       </div>
 
       <div class="share-btn tweet-btn">
-        <%= link_to "<i class='fa fa-twitter'></i>Tweet".html_safe, twitter_share_url("Check out #{resource.name} on Sidestage via @sidestagehq" + (" @#{resource.twitter}" if resource.twitter.present?), artist_url(resource)), target: :_blank, style: "color:#4099ff;" %>
+        <%= link_to "<i class='fa fa-twitter'></i>Tweet".html_safe, twitter_share_url("Check out #{resource.name} on Sidestage via @sidestagehq#{resource.twitter.present? ? " @#{resource.twitter}" : ''}", artist_url(resource)), target: :_blank, style: "color:#4099ff;" %>
       </div>
       <div class="share-btn gplus-btn">
         <!-- <div class="g-plusone" data-size="medium" data-href="<%= artist_url(resource) %>" data-annotation="none"></div> -->
@@ -22,6 +22,7 @@
       </div>
       <div class="share-btn pin-btn">
         <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(current_user.profile)), target: :_blank, style: "color:#cb2027;" %>
+        </div>    
     </div> 
 
     <h2><%= resource.name %></h2>
