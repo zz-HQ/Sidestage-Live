@@ -1,1 +1,7 @@
-$("#picture-slider").html("<%= j render partial: 'account/pictures/pictures', locals: {resource: resource.imageable} %>");
+$("#<%= dom_id(resource) %>").remove();
+
+// function show_p () {
+// 	if $("#pictures > div").length == 0 {
+// 		$("#pictures").html("<p id='no-pictures' class='light'><%= t(:"application.profiles.pictures.index.empty") %></p>");
+// 	}
+// }

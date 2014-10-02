@@ -4,54 +4,29 @@
   </aside>
 
   <div class="content">
-    <header><%= t(:"application.profiles.pictures.index.avatar_title_html") %></header>
-    <div class="avatar">
-      <% if current_user.avatar.present? %>
-         <%= content_tag :div, id: "avatar_#{dom_id(current_user)}", class: "avatar-pic" do %>
-            <div class="img">
-          		<%= image_tag current_user.avatar.url(:thumb) %>
-            </div>
-            <div class="gradient-overlay"></div>
-            <div class="actions">
-              <%= link_to "<i class='fa fa-trash-o'></i> #{t(:"application.links.remove")}".html_safe, destroy_avatar_account_personal_path, method: :delete, data: { remote: true, confirm: "#{t(:"helpers.confirm.sure")}" } %>
-            </div>
-          <% end %>
-      <% end %>
-      
-      <div class="avatar-form">
-        <%= simple_form_for current_user, url: upload_avatar_account_personal_path, html: { multipart: true } do |f| %>
-            <%= f.input :avatar, as: :file %>
-            <%= f.submit value: "#{t(:"helpers.submit.profile.submit_avatar")}", class: "btn" %>
-        <% end %>
-      </div>
-    </div>
-
-
     <header><%= t(:"application.profiles.pictures.index.title_html") %></header>
     
-    <div id="pictures">
+    <div id="picture-upload" class="picture-upload">
+      <%= form_tag(account_profile_pictures_path, multipart: true, id: "new_picture", method: :post) do %>
+          <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true, style: "display:none;" %>
+          
+          <span id="fileupload-button" class="btn btn-blue btn-inline">Add photos</span>
+      <% end %>
+      <div id="file-upload-status" style="display:none;"><div class="value" style=""></div></div>
+    </div>
+
+    <div id="pictures" class="pictures">
         <% if collection.present? %>
-          <div class="pictures">
-            <%= render collection %>
-          </div>
+          <%= render collection %>
         <% else %>
-          <div class="pictures">
-            <p class="light"><%= t(:"application.profiles.pictures.index.empty") %></p>
-          </div>
+          <p id="no-pictures" class="light"><%= t(:"application.profiles.pictures.index.empty") %></p>
         <% end %>
     </div>
 
-    <div id="picture-upload">
-      <h3><%= t(:"application.profiles.pictures.new.title") %></h3>
-      <%= form_tag(account_profile_pictures_path(parent), multipart: true, id: "new_picture", method: :post) do %>
-          <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true %>
-         
-       <%- if false -%> <a href="#" id="fileupload-button">Upload Pictures</a> <%- end -%>
-      <% end %>
-      <% if true %><div id="file-upload-status">Upload still running. <span class="value">0</span> left …</div><%- end -%>
-    </div>
-
-    <%= link_to t(:"application.links.continue"), "payment", class: "btn continue" %>
+    <aside class="hint">
+      <p><strong>Add photos:</strong></p> <br/>
+      <p>Users browse photos to quickly get a feel for you and your musical act. Be sure to put your best photo first.</p>
+    </aside>
 
   </div>
 </div>

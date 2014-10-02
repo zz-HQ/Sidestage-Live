@@ -5,6 +5,7 @@ de:
         settings_link: "Listing Settings"
         description_link: "Description"
         pricing_link: "Pricing"
+        photos_link: "Photos"
         preview_link: "Preview Profile"
       basics:
         title_html: "Your Artist Listing<p>Sidestage lets you make money by offering your music as a service to people who want to hire musicians for private events.</p>"  
@@ -19,7 +20,7 @@ de:
       pictures:
         index:
           avatar_title_html: "Profile picture<p>This is the picture that will show up in search listings.</p>"
-          title_html: "Photos<p>These photos will show up as part of your public artist listing. Try to use high quality photos.</p>"
+          title_html: "Photos"
           empty: "You don't have any photos yet. Add photos of you and your performance to your profile."
         new:
           title: "Upload New Pictures"

@@ -52,9 +52,8 @@ $(document).on 'change', '.submit-on-change', (e) ->
   if($(@).val() != "")
       $(@).closest('form').trigger 'submit'
 
-# $(document).on 'change', '.redirect-on-change-to-other', (e) -> 
-#   if($(@).val() == "More cities")
-#       window.location.replace("/en/city_launches/new")
+$(document).on 'change', '[data-auto-save=true]', (e) -> 
+  $(@).trigger 'submit'
 
 $(document).on 'change', 'select[data-linked=true]', (e) -> 
   window.location.replace($(@).val())
