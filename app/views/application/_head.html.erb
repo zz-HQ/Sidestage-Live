@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= @meta_title || "Sidestage" %></title>
-    <meta name="description" content="Find and book amazing musicians, bands and DJs.">
+    <meta name="description" content="<%= @meta_desc || "Find and book amazing musicians, bands and DJs." %>">
     <meta name="keywords" content="Sidestage">
     <meta name="viewport" content="width=974">
 
@@ -27,11 +27,12 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <%# TODO: Twitter Logo %>
-    <%- if false -%>
-    <meta name="twitter:image" content="http://airmusic.herokuapp.com/assets/logo.png" />
-    <%- end -%>
-
+    <% if yield(:image_src).present? %>
+        <%= yield(:image_src) %>
+    <% else %>
+        <link rel="image_src" type="image/jpeg" href="<%= image_url("sidestage_brand.png") %>" />
+    <% end %>
+    
     <%= csrf_meta_tags %>
 
     <!-- Google CDN -->
@@ -50,16 +51,15 @@
     <%= yield :html_head %>
 
     <!-- Google+ -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-
     <script type="text/javascript">
-    (function(d){
-        var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
-        p.type = 'text/javascript';
-        p.async = true;
-        p.src = '//assets.pinterest.com/js/pinit.js';
-        f.parentNode.insertBefore(p, f);
-    }(document));
+      window.___gcfg = {
+        lang: 'en-US'
+      };
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
     </script>
   
 </head>

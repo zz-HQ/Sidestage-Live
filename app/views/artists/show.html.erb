@@ -1,4 +1,10 @@
 <% @meta_title = "#{resource.name} artists profile on Sidestage.com" %>
+<% @meta_desc = "Book #{resource.name} for your next party on Sidestage.com" %>
+
+<%= content_for :image_src do %>
+    <link rel="image_src" type="image/jpeg" href="<%= resource.user.avatar_url(:thumb) %>" />
+<% end %>
+
 <%= render 'profile' %>
 
 <%= content_for :olark do %>
