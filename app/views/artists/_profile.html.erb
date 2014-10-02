@@ -1,5 +1,7 @@
-<%= content_for :social_desc, "Check out my Sidestage profile. You can book me to play music at your event" %>
-<%= content_for :social_img, resource.user.avatar_url(:thumb) %>
+<% @meta_title = "#{resource.name} artists profile on Sidestage.com" %>
+<% @meta_desc = "Book #{resource.name} for your next party on Sidestage.com" %>
+<% @social_img = resource.user.avatar_url(:thumb) %>
+<% @social_desc = "Book #{resource.name} for your next party on Sidestage.com" %>
 
 <div id="artist">
 
@@ -18,10 +20,8 @@
         <!-- <div class="g-plusone" data-size="medium" data-href="<%= artist_url(resource) %>" data-annotation="none"></div> -->
         <%= link_to "<i class='fa fa-google-plus'></i>1".html_safe, googleplus_share_url(artist_url(current_user.profile)), target: :_blank, style: "color:#d34836;font-weight:300;" %>
       </div>
-
       <div class="share-btn pin-btn">
         <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(current_user.profile)), target: :_blank, style: "color:#cb2027;" %>
-      </div>
     </div> 
 
     <h2><%= resource.name %></h2>
@@ -54,7 +54,7 @@
           </div>
           <script>
             jQuery(document).ready(function(){
-                $('.star-rating-editable').starRating()                
+                $('.star-rating-editable').starRating()
             })
           </script>     
       </div>          

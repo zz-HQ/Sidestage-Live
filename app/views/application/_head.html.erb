@@ -1,8 +1,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= @meta_title || "Sidestage" %></title>
-    <meta name="description" content="<%= @meta_desc || "Find and book amazing musicians, bands and DJs." %>">
+    <title><%= raw(@meta_title || "Sidestage") %></title>
+    <meta name="description" content="<%= raw(@meta_desc || "Find and book amazing musicians, bands and DJs.") %>">
     <meta name="keywords" content="Sidestage">
     <meta name="viewport" content="width=974">
 
@@ -15,23 +15,19 @@
     <!-- for Facebook -->
     <meta property="og:title" content="Sidestage" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="<%= yield(:social_img).present? && yield(:social_img) || "http://www.sidestage.com" %>" />
-    <meta property="og:url" content="<%= request.url %>" />
-    <meta property="og:description" content="<%= yield(:social_desc).present? && yield(:social_desc) || "Find and book amazing musicians, bands and DJs." %>" />
+    <meta property="og:image" content="<%= raw(@social_img || "http://www.sidestage.com") %>" />
+    <meta property="og:url" content="<%= raw(request.url) %>" />
+    <meta property="og:description" content="<%= raw(@social_desc || "Find and book amazing musicians, bands and DJs.") %>" />
 
     <!-- for Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Sidestage" />
-    <meta name="twitter:description" content="<%= yield(:social_desc).present? && yield(:social_desc) || "Find and book amazing musicians, bands and DJs." %>" />
+    <meta name="twitter:title" content="<%= raw(@meta_title || "Sidestage") %>" />
+    <meta name="twitter:description" content="<%= raw(@social_desc || "Find and book amazing musicians, bands and DJs.") %>" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <% if yield(:image_src).present? %>
-        <%= yield(:image_src) %>
-    <% else %>
-        <link rel="image_src" type="image/jpeg" href="<%= image_url("sidestage_brand.png") %>" />
-    <% end %>
+    <%= raw("<link rel='image_src' type='image/jpeg' href='#{ @social_img || image_url("sidestage_brand.png")}'/>") %>
     
     <%= csrf_meta_tags %>
 
