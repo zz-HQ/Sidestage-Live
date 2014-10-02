@@ -142,7 +142,7 @@ class User < ActiveRecord::Base
   end
   
   def subscribe_to_newsletter
-    MailchimpWorker.perform_async(id)
+    MailchimpWorker.perform_async(:subscribe_user, id)
   end
   
   def notify_admin

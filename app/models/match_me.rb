@@ -9,7 +9,7 @@ class MatchMe
   #
   #
   
-  TRAVERSABLE_ATTRIBUTES = [:event, :genre, :total_visitors, :max_budget, :event_date, :zip_code, :phone_number, :name, :email, :comment]
+  TRAVERSABLE_ATTRIBUTES = [:event, :genre, :total_visitors, :max_budget, :event_date, :zip_code, :phone_number, :name, :email, :comment, :newsletter_subscribed]
   attr_accessor :wizard_step
   TRAVERSABLE_ATTRIBUTES.each do |a|
     attr_accessor a
@@ -40,10 +40,15 @@ class MatchMe
   def save
     if valid?
       AdminMailer.delay.match_me(self)
+      MailchimpSubscriber.new(name: name, email: email).save
       return true
     else
       return false
     end
+  end
+  
+  def newsletter_subscribed
+    @newsletter_subscribed.nil? ? true : ActiveRecord::ConnectionAdapters::Column::TRUE_VALUES.include?(@newsletter_subscribed)
   end
   
   #

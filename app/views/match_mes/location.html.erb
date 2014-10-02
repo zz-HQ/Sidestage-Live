@@ -39,6 +39,10 @@
     			<div class="input details">
     			    <%= f.input :comment, as: :text %>
     			</div>
+
+    			<div class="input boolean">
+    			    <%= f.input :newsletter_subscribed, as: :boolean %>
+    			</div>
     			
 			    <%= f.submit t(:"helpers.submit.match_me.location"), class: "btn btn-blue btn-inline" %>
 	        

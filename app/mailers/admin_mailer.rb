@@ -58,7 +58,8 @@ class AdminMailer < ActionMailer::Base
   
   def match_me(match_me)
     @match_me = match_me
-    mail(to: "bookings@sidestage.com", subject: "Sidestage: Match Me") do |format|
+    from = @match_me.name.present? ? "#{@match_me.name} <#{@match_me.email}>" : ENV["mail_from"]
+    mail(reply_to: @match_me.email, from: from, to: "bookings@sidestage.com", subject: "Sidestage: Match Me") do |format|
       format.html
     end
   end

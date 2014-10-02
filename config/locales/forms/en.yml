@@ -42,6 +42,7 @@ en:
         zip_code: Post code
         phone_number: Phone number
         comment: "Anything else you'd like the musician to know?"
+        newsletter_subscribed: Send me Sidestage updates
     hints:
       profile:
         name: "Your real name or Madonna. Whatever name people yell when you're on stage."

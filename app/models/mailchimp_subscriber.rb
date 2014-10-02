@@ -31,11 +31,8 @@ class MailchimpSubscriber
   
   def save
     if valid?
-      chimp = Gibbon::API.new.lists.batch_subscribe(id: list_id, :double_optin => true, :batch => [{:email => {:email => email}, :merge_vars => {:FNAME => name, :LNAME => ""}}])
-      if chimp["error_count"].to_i > 0 && chimp["errors"].first["code"] != 214 #ignore duplicates
-        errors.add :email, chimp["errors"].first["error"]
-        return false
-      end
+      MailchimpWorker.perform_async(:subscribe, {list_id: list_id, email: email, name: name})
+      return true
     else
       return false
     end
