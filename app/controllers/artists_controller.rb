@@ -91,11 +91,11 @@ class ArtistsController < ApplicationController
   end
 
   def only_available_cities
-    redirect_to new_city_launch_path if collection.empty? #params[:location] == "More cities"
+    redirect_to new_city_launch_path if collection.empty?
   end
     
   def reject_scraper
-    redirect_to root_path if params[:lat].blank? || params[:lng].blank?
+    redirect_to root_path unless (params[:lat].present? && params[:lng].present?) || params[:short_location].present?
   end
   
   def record_query
@@ -121,14 +121,21 @@ class ArtistsController < ApplicationController
   def coerce_params
     if params[:location].present?
       session[:location_params] = params
+    elsif params[:short_location].present?
+      fill_params_from(AVAILABLE_LOCATIONS.map(&:last).select { |l| l[:short] == params[:short_location].to_s.downcase }.first)
+      session[:location_params] = params
     else
       if (loc_params = session[:location_params]).present?
-        params[:location] = loc_params["location"]
-        params[:lng] = loc_params["lng"]
-        params[:lat] = loc_params["lat"]
+        fill_params_from(loc_params)
       end
     end
     @location = params[:location]
+  end
+  
+  def fill_params_from(location_params)
+    params[:location] = location_params["location"] || location_params[:name]
+    params[:lng] = location_params["lng"] || location_params[:lng]
+    params[:lat] = location_params["lat"] || location_params[:lat]
   end
 
 end

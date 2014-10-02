@@ -3,6 +3,8 @@ require 'sidekiq/web'
 Airmusic::Application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   
+  
+  
   devise_for :users, controllers: { sessions: "authentication/sessions", registrations: "authentication/registrations", confirmations: "authentication/confirmations", :omniauth_callbacks => "authentication/omniauth_callbacks" }
   
   scope '(:locale)', locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|'))   do
@@ -143,7 +145,13 @@ Airmusic::Application.routes.draw do
     end
     
   end
-
+  
+  get ':short_location', 
+    to: 'artists#index', 
+    constraints: lambda { |request|
+      request.params["short_location"].to_s.downcase.in?(AVAILABLE_LOCATIONS.map(&:last).map { |l| l[:short].downcase })
+  }
+  
   match "/404", :to => "errors#not_found", via: :get
   match "/500", :to => "errors#internal_error", via: :get  
   match "/422", :to => "errors#unacceptable", via: :get  
