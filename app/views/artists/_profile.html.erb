@@ -79,11 +79,9 @@
   </div>
 
   <aside>
-
-    <%# TODO: Finish Aside %>
     <div class="booking-teaser" data-container="deal">
       <div class="photo">
-        <%= image_tag resource.user.avatar_url(:thumb) %>
+        <%= image_tag resource.user.avatar_url(:thumb), alt: resource.user.full_name %>
       </div>
       <div class="name"><%= resource.name %></div>
       <div class="label"><%= resource.location %></div>

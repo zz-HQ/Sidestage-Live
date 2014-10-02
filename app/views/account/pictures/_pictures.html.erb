@@ -2,7 +2,7 @@
   <div class="thumbs">
     <% resource.pictures.latest.each do |pic| %>
       <div id="<%= dom_id(pic) %>" class="thumb" data-review="<%= pic.picture.url(:preview) %>" data-caption="<%= pic.caption %>">
-        <%= image_tag pic.picture.url(:thumb) %>
+        <%= image_tag pic.picture.url(:thumb), alt: pic.caption || pic.imageable.name %>
       </div>
     <% end %>
   </div>
