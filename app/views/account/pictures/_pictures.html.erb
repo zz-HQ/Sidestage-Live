@@ -1,12 +1,14 @@
 <div class="picture-viewer">
   <div class="thumbs">
     <% resource.pictures.latest.each do |pic| %>
-      <div id="<%= dom_id(pic) %>" class="thumb" data-review="<%= pic.picture.url(:preview) %>">
+      <div id="<%= dom_id(pic) %>" class="thumb" data-review="<%= pic.picture.url(:preview) %>" data-caption="<%= pic.caption %>">
         <%= image_tag pic.picture.url(:thumb) %>
       </div>
     <% end %>
   </div>
   <div class="picture">
     <img>
+    <div class="gradient-overlay"></div>
+    <div class="caption"></div>
   </div>
 </div>

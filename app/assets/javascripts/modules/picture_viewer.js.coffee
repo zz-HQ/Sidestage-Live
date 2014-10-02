@@ -22,11 +22,14 @@ do ($ = jQuery, window, document) ->
 
       @$thumbs = @$element.find('.thumb')
       @picture_url = @$thumbs.eq(0).data("review")
+      @picture_caption = @$thumbs.eq(0).data("caption")
 
       @$img_tag = @$element.find('.picture img')
+      @$caption_tag = @$element.find('.picture .caption')
 
       @$thumbs.on 'click', ->
         self.picture_url = $(@).data("review")
+        self.picture_caption = $(@).data("caption")
         self.render()
 
       @$img_tag.on 'click', ->
@@ -35,17 +38,21 @@ do ($ = jQuery, window, document) ->
 
     render: ->
       @$img_tag.attr("src", @picture_url)
+      @$caption_tag.html(@picture_caption)
 
     render_next: ->
       self = @
       self.picture_url = self.picture_src
 
       if self.picture_url == self.picture_src
-        next = $(".thumbs").find("[data-review='" + self.picture_src + "']").next().data('review')
-        if next
-          @$img_tag.attr("src", next)
+        next_url = $(".thumbs").find("[data-review='" + self.picture_src + "']").next().data('review')
+        next_caption = $(".thumbs").find("[data-review='" + self.picture_src + "']").next().data('caption')
+        if next_url
+          @$img_tag.attr("src", next_url)
+          @$caption_tag.html(next_caption)
         else
           @$img_tag.attr("src", self.$thumbs.eq(0).data("review"))
+          @$caption_tag.html(self.$thumbs.eq(0).data("caption"))
       
 
 

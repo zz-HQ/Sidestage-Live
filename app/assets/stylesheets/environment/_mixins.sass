@@ -2,8 +2,11 @@
 	+border-radius($border-radius)
 	border: 1px solid $border-color
 
-// =outer-container
-// 	overflow: hidden
-// 	max-width: 72.5em
-// 	margin-left: auto
-// 	margin-right: auto
+=gradient-overlay
+	+linear-gradient(to top, rgba(0,0,0,0.67), rgba(0,0,0,0.1), rgba(0,0,0,0))
+	background-color: transparent
+	height: 100%
+	position: absolute
+	top: 0
+	width: 100%
+	z-index: 1

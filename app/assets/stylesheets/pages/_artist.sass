@@ -153,6 +153,21 @@
 
         form
           display: none
+
+      .picture
+        position: relative
+
+        .gradient-overlay
+          +gradient-overlay
+          +linear-gradient(to top, rgba(0,0,0,0.77), rgba(0,0,0,0.01), rgba(0,0,0,0))
+          background-color: transparent
+
+        .caption
+          bottom: 10px
+          color: #fff
+          padding-left: 14px
+          position: absolute
+          z-index: 2
     
   aside
     float: right
