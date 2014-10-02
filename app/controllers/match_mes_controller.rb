@@ -32,6 +32,8 @@ class MatchMesController < ApplicationController
   end
   
   def location
+    @profiles = Profile.featured.published.limit(3)
+    
     build_resource
     resource.wizard_step = :location
     if resource.save

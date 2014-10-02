@@ -153,10 +153,6 @@ body.desktop
       &.success #email-response
         +rgba-background(rgba(56, 187, 45, 0.8))
 
-  #staff-picks
-    .artist:nth-child(2)
-      +shift(1)
-
   .footer
     text-align: center
     padding: 10px 0
@@ -173,6 +169,18 @@ body.desktop
     .wrap
       padding: 30px 0
       text-align: center
+
+#staff-picks
+  +span-columns(8)
+
+  h2
+    font-weight: 300
+    font-size: 28px
+    text-align: center
+    margin-bottom: 50px
+
+  .artist:nth-child(2)
+    +shift(1)
 
 body.phone
   color: #000

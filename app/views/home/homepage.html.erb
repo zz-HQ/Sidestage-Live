@@ -45,33 +45,7 @@
     </div><!-- #splash -->
 
     
-    <section id="staff-picks">
-        <a name="staffpicks"></a>
-      <div class="wrap">
-        <h2><%= t(:"application.home.index.featured") %></h2>
-
-        <% @profiles.each do |profile| %>
-
-          <%= content_tag :a, href: artist_path(profile), class: "artist" do %>
-            <div class="photo">
-              <%= image_tag profile.user.avatar_url(:thumb) %>
-              <div class="text">
-                <h3><%= profile.name %></h3>
-                <p class="price"><%= t(:"application.artists.index.price_from") %> <%= artist_price(profile) %></p>
-              </div>
-              <div class="gradient-overlay"></div>
-              <div class="overlay">
-                <div class="view-profile"><%= t(:"application.artists.index.view_profile") %></div>
-              </div>
-            </div>
-            <div class="label">
-              <div class="genres"><%= profile.genres.map(&:name).join(", ") %></div>
-            </div>
-          <% end %>
-
-        <% end %>
-      </div>
-    </section>
+    <%= render 'staff_picks' %>
 
     <section id="newsletter">
       <div class="wrap">
