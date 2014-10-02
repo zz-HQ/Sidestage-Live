@@ -247,8 +247,8 @@ class Profile < ActiveRecord::Base
     if (selected_location = location_hash).present?
       self.country_long = selected_location[:country_long] if location_changed? || self.country_long.blank?
       self.country_short = selected_location[:country_short]  if location_changed? || self.country_short.blank?
-      self.latitude = selected_location[:latitude] if location_changed? || self.latitude.blank?
-      self.longitude = selected_location[:longitude] if location_changed? || self.longitude.blank?
+      self.latitude = selected_location[:lat] if location_changed? || self.latitude.blank?
+      self.longitude = selected_location[:lng] if location_changed? || self.longitude.blank?
     end
   end
   

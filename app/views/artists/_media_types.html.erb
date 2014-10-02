@@ -29,7 +29,7 @@
       <div class="thumbs">
         <%- resource.pictures.each do |pic| -%>
           <div class="thumb" data-review="<%= pic.picture.url(:preview) %>">
-            <%= image_tag pic.picture.url(:thumb), alt: pic.picture.caption || picture.imageable.name %>
+            <%= image_tag pic.picture.url(:thumb), alt: pic.caption || resource.name %>
           </div>
         <%- end -%>
       </div>

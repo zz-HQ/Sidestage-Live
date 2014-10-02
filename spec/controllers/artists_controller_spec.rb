@@ -3,19 +3,42 @@ require 'spec_helper'
 
 describe ArtistsController, :type => :controller do
   
-  
-  
-  
   it "rejects scrapers" do
     get :index    
     expect(response).to redirect_to(root_path)
   end
-  
-  it "gets index" do
+
+  it "gets index for short location name" do
     shakira = FactoryGirl.create(:shakira)
-    get :index, lat: AVAILABLE_LOCATIONS[:berlin][:latitude], lng: AVAILABLE_LOCATIONS[:berlin][:longitude]
+    get :index, short_location: "berlin"
     
     expect(response.status).to eq(200)
+  end
+
+  it "gets index for coordinates" do
+    shakira = FactoryGirl.create(:shakira)
+    get :index, lat: AVAILABLE_LOCATIONS[:berlin][:lat], lng: AVAILABLE_LOCATIONS[:berlin][:lng]
+    
+    expect(response.status).to eq(200)
+  end
+  
+  it "rejects scrapper" do
+    shakira = FactoryGirl.create(:shakira)
+    get :index, lat: AVAILABLE_LOCATIONS[:berlin][:lat]
+    
+    expect(response).to redirect_to(root_path)
+  end
+  
+  it "redirects to new city launch" do
+    get :index, lat: AVAILABLE_LOCATIONS[:berlin][:lat], lng: AVAILABLE_LOCATIONS[:berlin][:lng]
+    
+    expect(response).to redirect_to(new_city_launch_path)
+  end
+  
+  it "gets show" do
+    shakira = FactoryGirl.create(:shakira)
+    get :show, id: shakira.to_param    
+    expect(response.status).to be(200)
   end
   
   context "pagination" do
