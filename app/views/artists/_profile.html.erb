@@ -10,7 +10,7 @@
       <div class="share-btn like-btn">
         <!-- <div class="fb-like" data-url="<%= artist_url(resource) %>" data-href="<%= artist_url(resource) %>" data-layout="button" data-action="like" data-show-faces="false" data-share="false" style="opacity:0.0;position:absolute;"></div><i class="fa fa-facebook-square"></i>Share -->
         <!-- <div class="fb-share-button" data-href="<%= artist_url(resource) %>"></div> -->
-        <%= link_to "<i class='fa fa-facebook-square'></i>Share".html_safe, facebook_share_url(artist_url(resource)), target: :_blank, style: "color:#3b5998;" %>
+        <%= link_to "<i class='fa fa-facebook-square'></i>Share".html_safe, facebook_share_url(artist_url(resource)), target: :_blank, style: "color:#3b5998;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=300,toolbar=1,resizable=0'); return false;" %>
       </div>
 
       <div class="share-btn tweet-btn">
@@ -18,10 +18,10 @@
       </div>
       <div class="share-btn gplus-btn">
         <!-- <div class="g-plusone" data-size="medium" data-href="<%= artist_url(resource) %>" data-annotation="none"></div> -->
-        <%= link_to "<i class='fa fa-google-plus'></i>1".html_safe, googleplus_share_url(artist_url(resource)), target: :_blank, style: "color:#d34836;font-weight:300;" %>
+        <%= link_to "<i class='fa fa-google-plus'></i>1".html_safe, googleplus_share_url(artist_url(resource)), target: :_blank, style: "color:#d34836;font-weight:300;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=429,toolbar=1,resizable=0'); return false;" %>
       </div>
       <div class="share-btn pin-btn">
-        <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(resource)), target: :_blank, style: "color:#cb2027;" %>
+        <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(resource)), target: :_blank, style: "color:#cb2027;", onclick: "window.open(this.href, 'mywin', 'left=350,top=200,width=750,height=316,toolbar=1,resizable=0'); return false;" %>
         </div>    
     </div> 
 
