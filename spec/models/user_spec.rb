@@ -21,7 +21,7 @@ describe User, :type => :model do
     end
     
     it "signs up from facebook" do
-      facebook_hash = OmniAuth::AuthHash.new info: { name: 'f d', first_name: 'Phillip', last_name: 'Fry', email: 'f@f.com', image: "" }
+      facebook_hash = OmniAuth::AuthHash.new info: { name: 'f d', first_name: 'Phillip', last_name: 'Fry', email: 'f@f.com', image: "" }, extra: { raw_info: { birthday: "01/30/1981" } }
       user = User.from_omniauth(facebook_hash)
       expect(user.persisted?).to be_truthy
     end
