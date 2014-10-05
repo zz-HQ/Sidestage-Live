@@ -71,8 +71,8 @@ module ApplicationHelper
     "https://plus.google.com/share?url=#{url}"
   end
 
-  def pinterist_share_url(url)
-    "http://pinterest.com/pin/create/link/?url=#{url}"
+  def pinterist_share_url(url, media)
+    "http://pinterest.com/pin/create/link/?url=#{url}&media=#{media}"
   end
   
   

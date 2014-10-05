@@ -21,7 +21,7 @@
         <%= link_to "<i class='fa fa-google-plus'></i>1".html_safe, googleplus_share_url(artist_url(resource)), target: :_blank, style: "color:#d34836;font-weight:300;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=429,toolbar=1,resizable=0'); return false;" %>
       </div>
       <div class="share-btn pin-btn">
-        <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(resource)), target: :_blank, style: "color:#cb2027;", onclick: "window.open(this.href, 'mywin', 'left=350,top=200,width=750,height=316,toolbar=1,resizable=0'); return false;" %>
+        <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(resource), resource.user.avatar_url(:thumb)), target: :_blank, style: "color:#cb2027;", onclick: "window.open(this.href, 'mywin', 'left=350,top=200,width=750,height=316,toolbar=1,resizable=0'); return false;" %>
         </div>    
     </div> 
 
