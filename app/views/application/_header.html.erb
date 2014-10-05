@@ -7,6 +7,7 @@
       <% end %>
     </h1>
 
+    <% unless controller.controller_name == "home" %>
     <div id="city-switch">
         <form action="<%= artists_path %>" method="GET">
             <i class="fa fa-search"></i>
@@ -18,6 +19,7 @@
             <% end %>
         </form>    
     </div>
+    <% end %>
     
     <section id="match-me">
       <%= link_to "Match me", match_mes_path %>
