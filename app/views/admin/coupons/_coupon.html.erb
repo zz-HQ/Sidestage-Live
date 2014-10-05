@@ -3,6 +3,15 @@
     <td><%= coupon.amount %></td>
     <td><%= coupon.currency %></td>
     <td><%= l coupon.expires_at, format: :only_date if coupon.expires_at.present? %></td>
+    <td>
+        <%= link_to toggle_activation_admin_coupon_path(coupon), title: coupon.active?, method: :put, class: "btn btn-default" do %>
+            <% if coupon.active? %>
+                <span style="color: green" class="glyphicon glyphicon-ok-circle"></span>
+            <% else %>   
+                <span style="color: black" class="glyphicon glyphicon-ok-circle"></span>
+            <% end %>
+        <% end %>    
+    </td>
     <td class="text-right">
         <%= link_to "Edit", edit_admin_coupon_path(coupon), class: "btn btn-default" %>
         <%= link_to "Delete", admin_coupon_path(coupon), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
