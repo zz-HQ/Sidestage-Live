@@ -1,0 +1,10 @@
+<tr>
+    <td><%= coupon.code %></td>
+    <td><%= coupon.amount %></td>
+    <td><%= coupon.currency %></td>
+    <td><%= l coupon.expires_at, format: :only_date if coupon.expires_at.present? %></td>
+    <td class="text-right">
+        <%= link_to "Edit", edit_admin_coupon_path(coupon), class: "btn btn-default" %>
+        <%= link_to "Delete", admin_coupon_path(coupon), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </td>
+</tr>    

@@ -9,6 +9,10 @@ class Admin::CouponsController < Admin::ResourcesController
   #
   #
   
+  def show
+    redirect_to collection_path
+  end
+  
   def destroy
     destroy! do |success, failure|
       success.html{ redirect_to :back }
@@ -19,5 +23,19 @@ class Admin::CouponsController < Admin::ResourcesController
     resource.update_attribute :active, !resource.active?
     redirect_to :back 
   end
+
+  #
+  # Protected
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
   
+  protected
+  
+  def permitted_params
+    params.permit(coupon: [:code, :amount, :currency, :description, :expires_at])
+  end
+    
 end

@@ -12,7 +12,7 @@ class Coupon < ActiveRecord::Base
   
   validates :code, :amount, :currency, presence: true
   validates :amount, numericality: true, allow_blank: true
-
+  validates :code, uniqueness: { case_sensitive: false }, allow_blank: true
 
   #
   # Scopes
