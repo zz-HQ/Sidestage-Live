@@ -61,6 +61,8 @@
 
 
      <%= render "olark" %>
+
+     <%= render flash[:auto_modal] if flash[:auto_modal].present? %>
     
   </body>
 </html>
