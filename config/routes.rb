@@ -142,6 +142,12 @@ Airmusic::Application.routes.draw do
           put :toggle_verification
         end
       end
+      resources :coupons do
+        member do
+          put :toggle_activation
+        end        
+      end
+      
     end
     
   end

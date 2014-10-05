@@ -43,7 +43,7 @@ class Account::MobileNumbersController < AuthenticatedController
       flash.now[:notice] = t(:"flash.account.mobile_numbers.confirm.notice")
       if @coming_from_profile_completion.present?
         session[:coming_from_profile_completion] = nil
-        redirect_to preview_account_profile_path(current_user.profile), notice: t(:"flash.account.mobile_numbers.completion_confirm.notice")
+        redirect_to preview_account_profile_path, notice: t(:"flash.account.mobile_numbers.completion_confirm.notice")
         return
       end
     end
