@@ -9,7 +9,7 @@ class Review < ActiveRecord::Base
   #
   
   validates :profile_id, :author_id, :body, presence: true
-  validates :rate, numericality: true, allow_blank: true   
+  validates :rate, numericality: true, allow_blank: true
 
   #
   # Associations
@@ -50,7 +50,7 @@ class Review < ActiveRecord::Base
   
   
   def notify_admin
-    AdminMailer.delay.review_notification(self).deliver
+    AdminMailer.delay.review_notification(self)
   end
   
   
