@@ -21,11 +21,22 @@
 					<%= f.input :body, label: false %>
 		    	    <%= f.input :profile_id, as: :hidden %>
 		    	    <%= f.input :balanced_token, as: :hidden %>
+		    	    <%= f.input :coupon_id, as: :hidden, input_html: { id: :coupon_id } %>
 		    	    <div class="bottom">
-		    	    	<%= render "account/payment_details/payment_form", f: f %>
-			          <div class="price">
-			          	<p><%= t(:"application.conversations.deals.new.total_price") %>: <%= localized_price(resource.price_with_surcharge, resource.currency) %></p>
-			          </div>
+                        <%= render "account/payment_details/payment_form", f: f %>
+                        <%= link_to t(:"application.deals.new.show_coupon"), "#", id: :coupon_show %>
+                        <%= content_tag :div, id: :coupon_form, style: "display: #{f.object.coupon_code.blank? ? "none;" : nil }" do %>
+                            <%= f.input :coupon_code, label: false, input_html: { id: :coupon_code } %> 
+                            <%= button_tag t(:"application.deals.new.apply_coupon"), type: :button, id: :coupon_apply, data: { action: apply_on_profile_coupons_path(profile_id: resource.profile_id), disable_with: t(:"application.deals.new.applying_coupon") } %>
+                            <%= link_to t(:"application.deals.new.cancel_coupon"), "#", id: :coupon_cancel %>
+                            <span id="coupon_failure" style="display:none;"><%= t(:"application.deals.new.coupon_failure") %></span>
+                            <span id="coupon_success" style="display:none;"><%= t(:"application.deals.new.coupon_success") %></span>
+                        <% end %>
+                        <div class="price">
+                            <p>
+                                <%= t(:"application.conversations.deals.new.total_price") %>: <span id="original_price"><%= localized_price(resource.price_with_surcharge, resource.currency) %></span><span style="display:none;" id="coupon_price"></span>
+                            </p>
+                        </div>
 		    	    </div>
 		          <div class="btns">
 		          	<%= f.submit class: "btn btn-center" %>

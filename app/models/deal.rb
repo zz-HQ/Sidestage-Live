@@ -64,6 +64,7 @@ class Deal < ActiveRecord::Base
   belongs_to :profile
   belongs_to :artist, foreign_key: :artist_id, class_name: 'User'
   belongs_to :customer, foreign_key: :customer_id, class_name: 'User'
+  belongs_to :coupons, counter_cache: true
 
   #
   # Scopes

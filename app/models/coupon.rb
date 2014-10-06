@@ -25,5 +25,8 @@ class Coupon < ActiveRecord::Base
   sortable :code, :amount, :currency, :expires_at
 
   scope :latest, -> { order("coupons.id DESC") }
+  scope :active, -> { where("active IS ? OR active = ?", nil, true) }
+  scope :valid, -> { where("expires_at IS ? OR expires_at > ?", nil, Time.now) }
+  
   
 end
