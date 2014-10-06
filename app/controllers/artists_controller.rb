@@ -91,7 +91,7 @@ class ArtistsController < ApplicationController
   end
 
   def only_available_cities
-    redirect_to new_city_launch_path if collection.empty?
+    redirect_to new_city_launch_path if collection.count < Rails.configuration.min_listable_artists
   end
     
   def reject_scraper

@@ -29,7 +29,6 @@ Rails.application.configure do
 
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { host: 'sidestage.dev', locale: nil }
   
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.raise_delivery_errors = true
@@ -48,4 +47,9 @@ Rails.application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true  
+  
+  # SideStage Settings
+  config.action_mailer.default_url_options = { host: 'sidestage.dev', locale: nil }
+  config.default_currency = "USD"
+  config.min_listable_artists = 1
 end

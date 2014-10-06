@@ -39,7 +39,10 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  
+
+  # SideStage Settings
+  config.default_currency = "USD"  
   config.action_mailer.default_url_options = { host:'test.host', locale: nil }
-  
+  config.min_listable_artists = 1
+    
 end
