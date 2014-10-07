@@ -1,12 +1,12 @@
 <nav class="tabs" data-id="social">
   <%- if resource.has_soundcloud? -%>
-  <div class="tab-switch"><%= Profile.human_attribute_name(:soundcloud) %></div>
+  <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:soundcloud) %></div>
   <%- end -%>
   <%- if resource.has_youtube? -%>
-  <div class="tab-switch"><%= Profile.human_attribute_name(:youtube) %></div>
+  <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:youtube) %></div>
   <%- end -%>
   <% if resource.has_pictures? %>
-  <div class="tab-switch"><%= Profile.human_attribute_name(:photos) %></div>
+  <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:photos) %></div>
   <% end %>
 </nav>
 <div class="tabs" data-id="social">

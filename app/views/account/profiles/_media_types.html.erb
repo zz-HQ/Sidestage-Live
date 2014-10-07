@@ -1,7 +1,12 @@
 <nav class="tabs" data-id="social">
-    <div class="tab-switch"><%= Profile.human_attribute_name(:soundcloud) %></div>
-    <div class="tab-switch"><%= Profile.human_attribute_name(:youtube) %></div>
-    <div class="tab-switch"><%= Profile.human_attribute_name(:photos) %></div>
+    <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:soundcloud) %></div>
+    <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:youtube) %></div>
+    <% unless action_name == "preview" %>
+      <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:photos) %></div>
+    <% else %>
+      <a href="<%= account_profile_pictures_path %>" class="tab-switch last"><%= Profile.human_attribute_name(:photos) %></a>
+    <% end %>
+    <span class="new-feature">New! Add captions to your photos.</span>
 </nav>
 
 <div class="tabs" data-id="social">
@@ -49,8 +54,10 @@
     <% end %>
   </div>
 
+  <% unless action_name == "preview" %>
   <div id="picture-slider" class="tab">
     <%= render partial: "account/pictures/pictures" %>
   </div>
+  <% end %>
 
 </div>
