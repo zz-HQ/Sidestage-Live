@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'feature_helper'
 
-feature "deal coupon" do
+feature "deal coupon", js: true do
   
   include Warden::Test::Helpers
   Warden.test_mode!
@@ -11,7 +11,7 @@ feature "deal coupon" do
     gaga = FactoryGirl.create(:gaga)
     login_as(current_user)
     
-    visit artist_path(gaga)
+    visit artist_path(gaga, locale: nil)
     click_button "Book it"
     
     expect(page).to have_selector("#coupon_show", text: "Coupon")
