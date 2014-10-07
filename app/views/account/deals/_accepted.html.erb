@@ -5,7 +5,7 @@
     </p>
     <p class="price">
         <% if deal.is_customer?(current_user) %>
-            <%= Deal.human_attribute_name(:price) %>: <strong><%= localized_price(deal.price_with_surcharge, deal.currency) %></strong>
+            <%= Deal.human_attribute_name(:price) %>: <strong><%= localized_price(deal.price_for_customer, deal.currency) %></strong>
          <% else %>
             <%= t(:"application.deals.show.you_will_earn") %>: <strong><%= localized_price(deal.price, deal.currency) %></strong>
         <% end %> 

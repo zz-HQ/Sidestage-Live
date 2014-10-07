@@ -5,7 +5,7 @@
 			<%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
 			<i class="fa fa-calendar"></i>
 		</div>
-		<p class="title"><%= t(:"application.conversations.deals.new.total_price") %>: <%= localized_price(resource.price_with_surcharge, resource.currency) %></p>
+		<p class="title"><%= t(:"application.conversations.deals.new.total_price") %>: <%= localized_price(resource.price.with_surcharge, resource.currency) %></p>
     <div class="btns">
     	<%= f.submit class: "btn btn-full" %>
     </div>

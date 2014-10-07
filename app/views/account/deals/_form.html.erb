@@ -34,7 +34,7 @@
                         <% end %>
                         <div class="price">
                             <p>
-                                <%= t(:"application.conversations.deals.new.total_price") %>: <span id="original_price"><%= localized_price(resource.price_with_surcharge, resource.currency) %></span><span style="display:none;" id="coupon_price"></span>
+                                <%= t(:"application.conversations.deals.new.total_price") %>: <span id="original_price"><%= localized_price(resource.coupon.present? ? resource.coupon.profile_price(resource.profile).with_surcharge : resource.price.with_surcharge, resource.currency) %></span><span style="display:none;" id="coupon_price"></span>
                             </p>
                         </div>
 		    	    </div>

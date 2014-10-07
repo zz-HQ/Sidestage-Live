@@ -6,8 +6,7 @@ class AddCouponsToDeals < ActiveRecord::Migration
     
     add_column :deals, :coupon_id, :integer
     add_column :deals, :coupon_code, :string
-    add_column :deals, :coupon_amount, :integer
-    add_column :deals, :coupon_currency, :string
+    add_column :deals, :coupon_price, :integer
     add_index :deals, :coupon_id
     
   end

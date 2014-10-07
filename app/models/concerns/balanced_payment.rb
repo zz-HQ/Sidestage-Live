@@ -79,7 +79,7 @@ module BalancedPayment
     return true if deal.balanced_debit_id.present?
     return false if customer.balanced_customer_id.nil?
     begin
-      price_to_be_charged = deal.dollar_price_with_surcharge_in_cents
+      price_to_be_charged = deal.dollar_price_in_cents.with_surcharge
       debit = retrieve_balanced_card(customer.balanced_card_id).debit(
         :amount => price_to_be_charged,
         :appears_on_statement_as => 'Sidestage',

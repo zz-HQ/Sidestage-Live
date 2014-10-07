@@ -13,4 +13,4 @@
 	</div>
 </div>
 
-<p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.price_with_surcharge, deal.currency)) %></p>
+<p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.price.with_surcharge, deal.currency)) %></p>

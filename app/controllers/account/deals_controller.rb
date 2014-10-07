@@ -99,7 +99,7 @@ class Account::DealsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:start_at, :price, :body, :profile_id, :balanced_token])
+    params.permit(deal: [:start_at, :price, :body, :profile_id, :balanced_token, :coupon_id, :coupon_code])
   end
     
   #

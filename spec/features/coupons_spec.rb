@@ -13,7 +13,6 @@ feature "deal coupon", js: true do
     
     visit artist_path(gaga, locale: nil)
     click_button "Book it"
-    
     expect(page).to have_selector("#coupon_show", text: "Coupon")
   end
     

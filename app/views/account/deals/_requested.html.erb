@@ -5,7 +5,7 @@
   </p>
 
   <% if deal.is_customer?(current_user) %>
-      <p class="price"><%= Deal.human_attribute_name(:price_for_customer) %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
+      <p class="price"><%= Deal.human_attribute_name(:price_for_customer) %>: <%= localized_price(deal.price_for_customer, deal.currency) %></p>
       <div class="btns">
         <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %>
       </div>
