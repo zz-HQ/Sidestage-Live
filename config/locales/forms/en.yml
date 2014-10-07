@@ -69,7 +69,7 @@ en:
         body: "Add a message to the artist, such as special requests or the location of the event."
       credit_card:
         number: Card number
-        expiry: MM / YY
+        expiry: MM / YYYY
         exp_month: Exp month
         exp_year: Exp year
         cvc: CVC       

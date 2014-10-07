@@ -1,0 +1,37 @@
+<section id="inspiration" class="inspiration">
+	<a name="inspiration"></a>
+
+	<div class="wrap">
+		<h2><%= t(:"application.home.index.inspiration") %></h2>
+
+		<%= content_tag :a, href: "#", class: "artist" do %>
+			<div class="photo">
+	          <%= image_tag "inspiration/newyork.jpg" %>
+	          <div class="text">
+	            <h2>New York</h2>
+	            <p>Find the perfect band for your wedding</p>
+	          </div>
+	        </div>
+		<% end %>
+
+		<%= content_tag :a, href: "#", class: "artist" do %>
+			<div class="photo">
+	          <%= image_tag "inspiration/berlin.jpg" %>
+	          <div class="text">
+	            <h2>Berlin</h2>
+	            <p>Have live music for your next dinner party</p>
+	          </div>
+	        </div>
+		<% end %>
+
+		<%= content_tag :a, href: "#", class: "artist" do %>
+			<div class="photo">
+	          <%= image_tag "inspiration/london.jpg" %>
+	          <div class="text">
+	            <h2>London</h2>
+	            <p>Get your boss to hire a DJ for your next office party</p>
+	          </div>
+	        </div>
+		<% end %>
+	</div>
+</section>
