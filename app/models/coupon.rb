@@ -45,5 +45,12 @@ class Coupon < ActiveRecord::Base
     new_price = profile.price.with_surcharge - coupon_price
     new_price < 0 ? 0 : new_price.round
   end
+
+  def deal_price(deal)
+    coupon_price = CurrencyConverterService.convert(amount, currency, deal.currency)
+    new_price = deal.customer_price - coupon_price
+    new_price < 0 ? 0 : new_price.round
+  end
+
   
 end

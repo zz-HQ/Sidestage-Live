@@ -28,7 +28,7 @@
                             <p>
                                 <%= t(:"application.conversations.deals.new.total_price") %>: 
                                 <%= content_tag :span, id: :original_price, style: "display: #{resource.coupon.nil? ? nil : "none;" }" do %>
-                                    <%= localized_price(resource.price, resource.currency) %>
+                                    <%= localized_price(resource.customer_price, resource.currency) %>
                                 <% end %>
                                 <%= content_tag :span, id: :coupon_price, style: "display: #{resource.coupon.nil? ? "none;" : nil }" do %>
                                     <%= localized_price(resource.coupon.surcharged_profile_price(resource.profile), resource.currency) unless resource.coupon.nil? %>

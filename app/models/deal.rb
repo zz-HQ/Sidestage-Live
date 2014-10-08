@@ -30,8 +30,8 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  validates :artist_id, :profile_id, :customer_id, :price, :start_at, :currency, :conversation_id, presence: true
-  validates :price, numericality: { greater_than: 24 }, allow_blank: true 
+  validates :artist_id, :profile_id, :customer_id, :artist_price, :customer_price, :start_at, :currency, :conversation_id, presence: true
+  validates :artist_price, :customer_price, numericality: { greater_than: 24 }, allow_blank: true 
   validate :coupon_must_be_valid, on: :create
   validate :customer_must_be_chargeable, if: :should_customer_be_chargeable?
 
@@ -47,7 +47,7 @@ class Deal < ActiveRecord::Base
   
   before_create :assign_coupon
   
-  before_save :set_state_transition_at
+  before_save :redefine_customer_price, :set_state_transition_at
   
   after_save :create_system_message
   
@@ -127,7 +127,11 @@ class Deal < ActiveRecord::Base
   end
   
   def price_for_customer
-    coupon_price.present? ? coupon_price : price
+    coupon_price.present? ? coupon_price : customer_price
+  end
+
+  def artist_price_in_dollar
+    CurrencyConverterService.convert(artist_price, currency, "USD").round
   end
   
   def credit_on_the_way
@@ -161,7 +165,8 @@ class Deal < ActiveRecord::Base
   end
   
   def set_price
-    self.price ||= profile.try(:price).with_surcharge
+    self.artist_price ||= profile.try(:price)
+    self.customer_price ||= self.artist_price.with_surcharge
   end
 
   def set_currency
@@ -176,6 +181,12 @@ class Deal < ActiveRecord::Base
     if coupon.present?
       self.coupon_code = coupon.code
       self.coupon_price = coupon.surcharged_profile_price(profile)
+    end
+  end
+  
+  def redefine_customer_price
+    if artist_price_changed?
+      self.customer_price = artist_price.with_surcharge
     end
   end
 
@@ -217,7 +228,7 @@ class Deal < ActiveRecord::Base
         current_user_id: current_user.id, 
         customer_id: customer_id, 
         artist_id: artist_id,
-        price: price.with_surcharge,
+        price: price_for_customer,
         event_date: start_at }.to_json
       if message.save
         notify_partner_via_email
@@ -269,7 +280,7 @@ class Deal < ActiveRecord::Base
   
   def ensure_balanced_charge!
     if changes.include?(:balanced_debit_id) && balanced_debit_id.present?
-      update_columns(charged_price: price_in_cents.with_surcharge, balanced_debit_id: balanced_debit_id)
+      update_columns(charged_price: price_for_customer.in_cents, balanced_debit_id: balanced_debit_id)
     end
   end
   

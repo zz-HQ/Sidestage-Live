@@ -1,20 +1,26 @@
-<div class="booking">
+<%= content_tag :div, id: dom_id(deal), class: "booking" do %>
     <h4 class="title"><%= t(:"application.deals.show.title") %></h4>
     <p class="event-date">
         <i class="fa fa-calendar"></i> <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
     </p>
     <p class="price">
         <% if deal.is_customer?(current_user) %>
-            <%= Deal.human_attribute_name(:price) %>: <%= localized_price(deal.price_for_customer, deal.currency) %>
+            <%= Deal.human_attribute_name(:price) %>:
+             <span id="original_price"><%= localized_price(deal.price_for_customer, deal.currency) %></span>
+             <span id="coupon_price" style="display: none;"></span>             
          <% else %>
-            <%= t(:"application.deals.show.you_will_earn") %>: <strong><%= localized_price(deal.price, deal.currency) %></strong>
+            <%= t(:"application.deals.show.you_will_earn") %>: <strong><%= localized_price(deal.artist_price, deal.currency) %></strong>
         <% end %> 
     </p>
-
+    <% unless deal.coupon_applied? %>
+        <%= simple_form_for deal, url: apply_on_deal_account_coupons_path(deal_id: deal.id), remote: true do |f| %>
+            <%= render "account/deals/coupon_form", f: f, action: nil %>
+        <% end %>
+    <% end %>
     <% if deal.is_customer?(current_user) %>
         <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn" %></p>
         <p><%= link_to t(:"application.deals.show.cancel_proposal"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %></p>
     <% else %>
         <p><%= link_to t(:"application.deals.show.cancel"), decline_account_deal_path(deal), method: :put, class: "btn btn-white" %></p>
     <% end %>
-</div>
+<% end %>

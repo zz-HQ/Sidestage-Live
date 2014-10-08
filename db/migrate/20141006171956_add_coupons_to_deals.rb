@@ -7,7 +7,10 @@ class AddCouponsToDeals < ActiveRecord::Migration
     add_column :deals, :coupon_id, :integer
     add_column :deals, :coupon_code, :string
     add_column :deals, :coupon_price, :integer
-    add_index :deals, :coupon_id
+    add_column :deals, :customer_price, :integer
+    rename_column :deals, :price, :artist_price
     
+    add_index :deals, :coupon_id
+    Deal.update_all "customer_price = (artist_price + (artist_price * 0.20))"
   end
 end

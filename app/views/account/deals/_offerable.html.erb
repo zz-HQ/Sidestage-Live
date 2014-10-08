@@ -1,5 +1,5 @@
 <p class="price">
-	<%= t(:"application.deals.show.you_will_earn") %>: <span><strong><%= localized_price(deal.price, deal.currency) %></strong></span>
+	<%= t(:"application.deals.show.you_will_earn") %>: <span><strong><%= localized_price(deal.artist_price, deal.currency) %></strong></span>
 </p>
 
 <div class="btns">
@@ -13,4 +13,4 @@
 	</div>
 </div>
 
-<p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.price.with_surcharge, deal.currency)) %></p>
+<p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(deal.customer_price, deal.currency)) %></p>

@@ -12,6 +12,10 @@ class Integer
     self * (Integer.surcharge_base.to_i / 100.0)
   end
   
+  def in_cents
+    self * 100
+  end
+  
 end
 
 class NilClass

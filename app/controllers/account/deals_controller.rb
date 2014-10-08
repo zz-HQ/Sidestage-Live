@@ -45,7 +45,7 @@ class Account::DealsController < Account::ResourcesController
   end
   
   def offer
-    resource.price = permitted_params[:deal][:price]
+    resource.artist_price = permitted_params[:deal][:artist_price]
     resource.offer
     if resource.save
       flash[:notice] = t(:"flash.account.deals.offer.notice")    
@@ -99,7 +99,7 @@ class Account::DealsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:start_at, :price, :body, :profile_id, :balanced_token, :coupon_id, :coupon_code])
+    params.permit(deal: [:start_at, :artist_price, :body, :profile_id, :balanced_token, :coupon_id, :coupon_code])
   end
     
   #
