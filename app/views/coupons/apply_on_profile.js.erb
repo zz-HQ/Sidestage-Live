@@ -1,5 +1,5 @@
 <% if @profile.present? && @coupon.present? %>
-    $("#coupon_price").html("<%= localized_price(@coupon.profile_price(@profile).with_surcharge, @profile.currency) %>");
+    $("#coupon_price").html("<%= localized_price(@coupon.surcharged_profile_price(@profile), @profile.currency) %>");
     $("#coupon_price").show();
     $("#coupon_id").val(<%= @coupon.id %>);
     $("#original_price").hide();

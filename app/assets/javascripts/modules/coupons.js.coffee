@@ -5,7 +5,7 @@ $(document).on 'click', '#coupon_show', (e) ->
 $(document).on 'click', '#coupon_apply', (e) -> 
   button = $(@)
   originalHtml = button.html()
-  button.html(button.data("disable-with"))
+  button.html(button.data("disable-text"))
   $.ajax(
     method: "POST"
     url: button.attr("data-action")

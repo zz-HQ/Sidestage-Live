@@ -8,7 +8,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  include Deal::StateMachine, Conversationable, BalancedPayment, Priceable
+  include DealCoupon, Deal::StateMachine, Conversationable, BalancedPayment, Priceable
   
   #has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
@@ -127,7 +127,7 @@ class Deal < ActiveRecord::Base
   end
   
   def price_for_customer
-    coupon_price.present? ? coupon_price.with_surcharge : price.with_surcharge
+    coupon_price.present? ? coupon_price : price
   end
   
   def credit_on_the_way
@@ -161,7 +161,7 @@ class Deal < ActiveRecord::Base
   end
   
   def set_price
-    self.price ||= profile.try(:price)
+    self.price ||= profile.try(:price).with_surcharge
   end
 
   def set_currency
@@ -175,7 +175,7 @@ class Deal < ActiveRecord::Base
   def assign_coupon
     if coupon.present?
       self.coupon_code = coupon.code
-      self.coupon_price = coupon.profile_price(profile)
+      self.coupon_price = coupon.surcharged_profile_price(profile)
     end
   end
 

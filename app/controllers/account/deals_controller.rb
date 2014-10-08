@@ -31,7 +31,7 @@ class Account::DealsController < Account::ResourcesController
   def create
     create! do |success, failure|
       success.html{ 
-        redirect_to artist_path(resource.artist), notice: t(:"flash.account.deals.create.notice") 
+        redirect_to artist_path(resource.profile), notice: t(:"flash.account.deals.create.notice") 
       }
       success.js{
         flash[:notice] = t(:"flash.account.deals.create.notice")

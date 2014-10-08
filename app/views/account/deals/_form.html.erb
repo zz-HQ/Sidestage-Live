@@ -21,20 +21,18 @@
 					<%= f.input :body, label: false %>
 		    	    <%= f.input :profile_id, as: :hidden %>
 		    	    <%= f.input :balanced_token, as: :hidden %>
-		    	    <%= f.input :coupon_id, as: :hidden, input_html: { id: :coupon_id } %>
 		    	    <div class="bottom">
                         <%= render "account/payment_details/payment_form", f: f %>
-                        <%= link_to t(:"application.deals.new.show_coupon"), "#", id: :coupon_show %>
-                        <%= content_tag :div, id: :coupon_form, style: "display: #{f.object.coupon_code.blank? ? "none;" : nil }" do %>
-                            <%= f.input :coupon_code, label: false, input_html: { id: :coupon_code } %> 
-                            <%= button_tag t(:"application.deals.new.apply_coupon"), type: :button, id: :coupon_apply, data: { action: apply_on_profile_coupons_path(profile_id: resource.profile_id), disable_with: t(:"application.deals.new.applying_coupon") } %>
-                            <%= link_to t(:"application.deals.new.cancel_coupon"), "#", id: :coupon_cancel %>
-                            <span id="coupon_failure" style="display:none;"><%= t(:"application.deals.new.coupon_failure") %></span>
-                            <span id="coupon_success" style="display:none;"><%= t(:"application.deals.new.coupon_success") %></span>
-                        <% end %>
+                        <%= render "coupon_form", f: f, action: apply_on_profile_coupons_path(profile_id: resource.profile_id) %>
                         <div class="price">
                             <p>
-                                <%= t(:"application.conversations.deals.new.total_price") %>: <span id="original_price"><%= localized_price(resource.coupon.present? ? resource.coupon.profile_price(resource.profile).with_surcharge : resource.price.with_surcharge, resource.currency) %></span><span style="display:none;" id="coupon_price"></span>
+                                <%= t(:"application.conversations.deals.new.total_price") %>: 
+                                <%= content_tag :span, id: :original_price, style: "display: #{resource.coupon.nil? ? nil : "none;" }" do %>
+                                    <%= localized_price(resource.price, resource.currency) %>
+                                <% end %>
+                                <%= content_tag :span, id: :coupon_price, style: "display: #{resource.coupon.nil? ? "none;" : nil }" do %>
+                                    <%= localized_price(resource.coupon.surcharged_profile_price(resource.profile), resource.currency) unless resource.coupon.nil? %>
+                                <% end %>
                             </p>
                         </div>
 		    	    </div>

@@ -95,7 +95,9 @@ Airmusic::Application.routes.draw do
           patch :offer
         end
       end
-
+      resources :coupons, only: [:apply_on_deal] do
+        patch 'apply_on_deal/:deal_id', to: 'coupons#apply_on_deal', on: :collection, as: :apply_on_deal
+      end
       resources :conversations do 
         get :archived, on: :collection
         put :archive, on: :member

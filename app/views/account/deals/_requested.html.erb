@@ -1,15 +1,23 @@
-<div class="booking">
-	<h4 class="title"><%= t(:"application.deals.show.title") %></h4>
-  <p>
-    <i class="fa fa-calendar"></i> <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
-  </p>
+<%= content_tag :div, id: dom_id(deal), class: "booking" do %>
+    <h4 class="title"><%= t(:"application.deals.show.title") %></h4>
+    <p>
+        <i class="fa fa-calendar"></i> <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
+    </p>
 
-  <% if deal.is_customer?(current_user) %>
-      <p class="price"><%= Deal.human_attribute_name(:price_for_customer) %>: <%= localized_price(deal.price_for_customer, deal.currency) %></p>
-      <div class="btns">
-        <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %>
-      </div>
-  <% else %>
-    <%= render "account/deals/offerable", deal: deal %>
-  <% end %>
-</div>
+    <% if deal.is_customer?(current_user) %>
+        <p class="price"><%= Deal.human_attribute_name(:price_for_customer) %>: 
+            <span id="original_price"><%= localized_price(deal.price_for_customer, deal.currency) %></span>
+            <span id="coupon_price" style="display: none;"></span>
+        </p>
+        <% unless deal.coupon_applied? %>
+            <%= simple_form_for deal, url: apply_on_deal_account_coupons_path(deal_id: deal.id), remote: true do |f| %>
+                <%= render "account/deals/coupon_form", f: f, action: nil %>
+            <% end %>
+        <% end %>
+        <div class="btns">
+            <%= link_to t(:"application.deals.show.cancel"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %>
+        </div>
+    <% else %>
+        <%= render "account/deals/offerable", deal: deal %>
+    <% end %>
+<% end %>

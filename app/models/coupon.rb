@@ -39,12 +39,11 @@ class Coupon < ActiveRecord::Base
   def valid?
     expires_at.nil? || expires_at > Time.now
   end
-
-  def profile_price(profile)
+  
+  def surcharged_profile_price(profile)
     coupon_price = CurrencyConverterService.convert(amount, currency, profile.currency)
-    new_price = profile.price - coupon_price
+    new_price = profile.price.with_surcharge - coupon_price
     new_price < 0 ? 0 : new_price.round
   end
-
   
 end
