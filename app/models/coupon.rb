@@ -36,7 +36,7 @@ class Coupon < ActiveRecord::Base
   #
   #  
   
-  def valid?
+  def still_valid?
     expires_at.nil? || expires_at > Time.now
   end
   

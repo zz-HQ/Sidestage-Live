@@ -38,7 +38,7 @@
               </div>
               
           <% elsif artist_contactable?(negotiator) %>
-                <%= render "account/deals/customer_conversation_deal_form", resource: Deal.new(price: negotiator.profile.price, profile: negotiator.profile, artist: negotiator, currency: negotiator.profile.currency) %>
+                <%= render "account/deals/customer_conversation_deal_form", resource: Deal.new(customer_price: negotiator.profile.price.with_surcharge, profile: negotiator.profile, artist: negotiator, currency: negotiator.profile.currency) %>
           <% end %>
 
         <% end %>

@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20141006171956) do
     t.datetime "state_transition_at"
     t.boolean  "paid_out",            default: false
     t.string   "balanced_credit_id"
+    t.string   "coupon_currency"
     t.integer  "coupon_id"
     t.string   "coupon_code"
     t.integer  "coupon_price"
@@ -163,8 +164,8 @@ ActiveRecord::Schema.define(version: 20141006171956) do
     t.text     "payout"
     t.string   "slug"
     t.boolean  "featured",                                           default: false
-    t.decimal  "latitude",                 precision: 14, scale: 11
-    t.decimal  "longitude",                precision: 14, scale: 11
+    t.decimal  "latitude",                 precision: 13, scale: 10
+    t.decimal  "longitude",                precision: 13, scale: 10
     t.string   "country_long"
     t.string   "country_short"
     t.string   "balanced_bank_account_id"
@@ -197,6 +198,12 @@ ActiveRecord::Schema.define(version: 20141006171956) do
   end
 
   add_index "search_queries", ["location"], name: "index_search_queries_on_location", using: :btree
+
+  create_table "tests", force: true do |t|
+    t.string "longitude"
+    t.string "latitude"
+    t.string "city"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -239,9 +246,9 @@ ActiveRecord::Schema.define(version: 20141006171956) do
     t.string   "otp_secret_key"
     t.string   "mobile_nr_country_code"
     t.string   "full_name"
-    t.string   "stripe_conenct_user_id"
+    t.string   "stripe_connect_user_id"
     t.string   "stripe_connect_access_token"
-    t.datetime "dob"
+    t.string   "birthday"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

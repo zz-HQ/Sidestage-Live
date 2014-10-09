@@ -133,6 +133,10 @@ class Deal < ActiveRecord::Base
   def artist_price_in_dollar
     CurrencyConverterService.convert(artist_price, currency, "USD").round
   end
+
+  def customer_price_in_dollar
+    CurrencyConverterService.convert(price_for_customer, currency, "USD").round
+  end
   
   def credit_on_the_way
     artist.send_sms(I18n.t(:"view.messages.credit_on_the_way"))
@@ -206,7 +210,7 @@ class Deal < ActiveRecord::Base
   
   def coupon_must_be_valid
     unless coupon_id.nil?
-      errors.add :coupon_code, :invalid unless coupon.present? && coupon.valid? && coupon.active?
+      errors.add :coupon_code, :invalid unless coupon.present? && coupon.still_valid? && coupon.active?
     end
   end  
   

@@ -1,6 +1,6 @@
 class AddCouponsToDeals < ActiveRecord::Migration
   def change
-    add_column :users, :dob, :datetime
+    add_column :users, :birthday, :string
     add_column :coupons, :deals_count, :integer
     add_index :coupons, :code
     

@@ -5,9 +5,14 @@
 			<%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
 			<i class="fa fa-calendar"></i>
 		</div>
-		<p class="title"><%= t(:"application.conversations.deals.new.total_price") %>: <%= localized_price(resource.price.with_surcharge, resource.currency) %></p>
-    <div class="btns">
-    	<%= f.submit class: "btn btn-full" %>
-    </div>
+		<p class="title">
+		    <%= t(:"application.conversations.deals.new.total_price") %>: 
+            <span id="original_price"><%= localized_price(resource.customer_price, resource.currency) %></span>
+            <span id="coupon_price" style="display: none;"></span>
+		</p>
+        <%= render "account/deals/coupon_form", f: f, action: apply_on_profile_coupons_path(profile_id: resource.profile_id) %>
+        <div class="btns">
+        	<%= f.submit class: "btn btn-full" %>
+        </div>
     </div>
 <% end %>
