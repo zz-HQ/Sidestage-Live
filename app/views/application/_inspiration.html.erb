@@ -4,7 +4,7 @@
 	<div class="wrap">
 		<h2><%= t(:"application.home.index.inspiration") %></h2>
 
-		<%= content_tag :a, href: "#", class: "artist" do %>
+		<%= link_to short_location_path(:newyork), class: :artist do %>
 			<div class="photo">
 	          <%= image_tag "inspiration/newyork.jpg" %>
 	          <div class="text">
@@ -14,7 +14,7 @@
 	        </div>
 		<% end %>
 
-		<%= content_tag :a, href: "#", class: "artist" do %>
+		<%= link_to short_location_path(:berlin), class: "artist" do %>
 			<div class="photo">
 	          <%= image_tag "inspiration/berlin.jpg" %>
 	          <div class="text">
@@ -24,7 +24,7 @@
 	        </div>
 		<% end %>
 
-		<%= content_tag :a, href: "#", class: "artist" do %>
+		<%= link_to short_location_path(:london), class: "artist" do %>
 			<div class="photo">
 	          <%= image_tag "inspiration/london.jpg" %>
 	          <div class="text">

@@ -156,7 +156,7 @@ Airmusic::Application.routes.draw do
     to: 'artists#index', 
     constraints: lambda { |request|
       request.params["short_location"].to_s.downcase.in?(AVAILABLE_LOCATIONS.map(&:last).map { |l| l[:short].downcase })
-  }
+  }, as: :short_location
   
   match "/404", :to => "errors#not_found", via: :get
   match "/500", :to => "errors#internal_error", via: :get  
