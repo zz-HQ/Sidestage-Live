@@ -17,7 +17,7 @@ do ($ = jQuery, window, document) ->
     init: ->
       self = @
       @id = @$element.data('id')
-      @$tabs = @$element.find('.tab-switch')
+      @$tabs = @$element.find('.tab-switcher')
       @$content = $('div.tabs[data-id="' + @id + '"]')
 
       @$tabs.on 'click', (e) ->
