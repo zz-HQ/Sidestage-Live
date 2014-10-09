@@ -26,11 +26,11 @@
                         <%= render "coupon_form", f: f, action: apply_on_profile_coupons_path(profile_id: resource.profile_id) %>
                         <div class="price">
                             <p>
-                                <%= t(:"application.conversations.deals.new.total_price") %>: 
-                                <%= content_tag :span, id: :original_price, style: "display: #{resource.coupon.nil? ? nil : "none;" }" do %>
+                                <%= t(:"application.deals.new.total_price") %>: 
+                                <%= content_tag :span, data: { coupon: :original_price }, style: "display: #{resource.coupon.nil? ? nil : "none;" }" do %>
                                     <%= localized_price(resource.customer_price, resource.currency) %>
                                 <% end %>
-                                <%= content_tag :span, id: :coupon_price, style: "display: #{resource.coupon.nil? ? "none;" : nil }" do %>
+                                <%= content_tag :span, data: { coupon: :coupon_price }, style: "display: #{resource.coupon.nil? ? "none;" : nil }" do %>
                                     <%= localized_price(resource.coupon.surcharged_profile_price(resource.profile), resource.currency) unless resource.coupon.nil? %>
                                 <% end %>
                             </p>
