@@ -8,7 +8,10 @@ class Account::CouponsController < Account::ResourcesController
   #
   #
   
-  
+  def apply_on_profile
+    @coupon = Coupon.valid.active.where(code: params[:code]).first
+    @profile = Profile.published.where(id: params[:profile_id]).first
+  end  
   
   def apply_on_deal
     @coupon = Coupon.valid.active.where(code: permitted_params[:coupon_code]).first

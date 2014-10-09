@@ -95,7 +95,8 @@ Airmusic::Application.routes.draw do
           patch :offer
         end
       end
-      resources :coupons, only: [:apply_on_deal] do
+      resources :coupons, only: [:apply_on_deal, :apply_on_profile] do
+        post 'apply_on_profile/:profile_id', to: 'coupons#apply_on_profile', on: :collection, as: :apply_on_profile        
         patch 'apply_on_deal/:deal_id', to: 'coupons#apply_on_deal', on: :collection, as: :apply_on_deal
       end
       resources :conversations do 
@@ -143,10 +144,6 @@ Airmusic::Application.routes.draw do
       
     end
     
-  end
-  
-  resources :coupons, only: [:apply_on_profile] do
-    post 'apply_on_profile/:profile_id', to: 'coupons#apply_on_profile', on: :collection, as: :apply_on_profile
   end
   
   get 'cancellations', to: "pages#cancellations", as: "cancellations"

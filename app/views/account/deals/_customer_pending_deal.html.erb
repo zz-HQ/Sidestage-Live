@@ -13,8 +13,8 @@
 		
 	  <p><%= t(:"application.deals.pending.desc") %></p>
 		<div class="btns">
-		    <%= link_to t(:"application.artists.show.send_message"), link_or_signin(new_account_message_path(receiver_id: deal.artist_id, format: :html)), class: "btn btn-inline", data: { lightbox: "ajax" } %>
-		    <%= link_to t(:"application.artists.show.view_pending"), link_or_signin(new_account_message_path(receiver_id: deal.artist_id, format: :html)), class: "link", data: { lightbox: "ajax" } %>
+		    <%= link_to t(:"application.artists.show.send_message"), new_account_message_path(receiver_id: deal.artist_id, format: :html), class: "btn btn-inline", data: { lightbox: "ajax" } %>
+		    <%= link_to t(:"application.artists.show.view_pending"), account_bookings_path, class: "link" %>
 		</div>
 	</div>
 </div>

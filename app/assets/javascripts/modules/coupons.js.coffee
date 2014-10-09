@@ -20,5 +20,5 @@ $(document).on 'click', '[data-coupon=cancel]', (e) ->
   form.find("[data-coupon=code]").val("")
   form.find("[data-coupon=id]").val("")
   form.find("[data-coupon=coupon_price]").hide()
-  form.find("[data-coupon=original_price").show()
+  form.find("[data-coupon=original_price]").show()
   return false  

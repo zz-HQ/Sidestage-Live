@@ -23,7 +23,7 @@
 		    	    <%= f.input :balanced_token, as: :hidden %>
 		    	    <div class="bottom">
                         <%= render "account/payment_details/payment_form", f: f %>
-                        <%= render "coupon_form", f: f, action: apply_on_profile_coupons_path(profile_id: resource.profile_id) %>
+                        <%= render "coupon_form", f: f, action: apply_on_profile_account_coupons_path(profile_id: resource.profile_id) %>
                         <div class="price">
                             <p>
                                 <%= t(:"application.deals.new.total_price") %>: 

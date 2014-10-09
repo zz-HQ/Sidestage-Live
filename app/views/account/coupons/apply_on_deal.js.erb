@@ -1,14 +1,14 @@
 <% if @deal.present? %>
     <% if @coupon.present? %>
-        $("#<%= dom_id(@deal) %> #coupon_price").html("<%= localized_price(@deal.price_for_customer, @deal.currency) %>");
-        $("#<%= dom_id(@deal) %> #coupon_price").show();
-        $("#<%= dom_id(@deal) %> #original_price").hide();
-        $("#<%= dom_id(@deal) %> #coupon_failure").hide();
-        $("#<%= dom_id(@deal) %> #coupon_success").show();
+        $("#<%= dom_id(@deal) %> [data-coupon=coupon_price]").html("<%= localized_price(@deal.price_for_customer, @deal.currency) %>");
+        $("#<%= dom_id(@deal) %> [data-coupon=coupon_price]").show();
+        $("#<%= dom_id(@deal) %> [data-coupon=original_price]").hide();
+        $("#<%= dom_id(@deal) %> [data-coupon=failure]").hide();
+        $("#<%= dom_id(@deal) %> [data-coupon=success]").show();
     <% else %>
-        $("#<%= dom_id(@deal) %> #coupon_price").hide();
-        $("#<%= dom_id(@deal) %> #original_price").show();
-        $("#<%= dom_id(@deal) %> #coupon_success").hide();
-        $("#<%= dom_id(@deal) %> #coupon_failure").show();
+        $("#<%= dom_id(@deal) %> [data-coupon=coupon_price]").hide();
+        $("#<%= dom_id(@deal) %> [data-coupon=original_price]").show();
+        $("#<%= dom_id(@deal) %> [data-coupon=success]").hide();
+        $("#<%= dom_id(@deal) %> [data-coupon=failure]").show();
     <% end %>
 <% end %>
