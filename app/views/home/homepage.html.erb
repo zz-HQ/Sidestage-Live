@@ -33,7 +33,7 @@
 
         <div id="city-form">
             <%= simple_form_for :location, url: artists_path, method: :Get, html: { id: "homepage-search" } do |f| %>
-                <%= text_field_tag :location, params[:location], id: :event_place_home, data: { google: :event_place }, placeholder: t(:"simple_form.placeholders.location_search.location") %>
+                <%= text_field_tag :location, params[:location], id: :event_place_home, autofocus: true, data: { google: :event_place }, placeholder: t(:"simple_form.placeholders.location_search.location") %>
                 <%= hidden_field_tag :lng, params[:lng] %>
                 <%= hidden_field_tag :lat, params[:lat] %>
                 <%= f.submit :submit, value: t(:"application.buttons.search"), name: nil, class: 'city-btn' %>
@@ -44,7 +44,8 @@
 
     </div><!-- #splash -->
 
-    
+    <%= render 'inspiration' %>
+
     <%= render 'staff_picks' %>
 
     <section id="newsletter">
