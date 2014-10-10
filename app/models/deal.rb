@@ -8,7 +8,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  include DealCoupon, Deal::StateMachine, Conversationable, BalancedPayment, Priceable
+  include DealCoupon, Deal::StateMachine, Conversationable, BalancedPayment
   
   #has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
