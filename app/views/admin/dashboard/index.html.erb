@@ -70,7 +70,7 @@
             <td><%= deal.customer.name %></td>
             <td><%= deal.profile.name %></td>
             <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
-            <td><%= localized_price deal.price, deal.currency %></td>
+            <td><%= localized_price deal.artist_price, deal.currency %></td>
             <td><%= l(deal.conversation.updated_at, format: :conversation) %></td>
         </tr>
     <% end %>
@@ -82,7 +82,7 @@
         <th>Customer</th>
         <th>Artist</th>
         <th>Message</th>
-        <th>Price</th>
+        <th>Customer Price</th>
         <th>Artist payment</th>
         <th>Event Date</th>
         <th>Bank Details</th>
@@ -97,7 +97,7 @@
         <th>Customer</th>
         <th>Artist</th>
         <th>Message</th>
-        <th>Price</th>
+        <th>Cust Price</th>
         <th>Artist payment</th>
         <th>Event Date</th>
         <th>Bank Details</th>
@@ -112,7 +112,7 @@
         <th>Customer</th>
         <th>Artist</th>
         <th>Message</th>
-        <th>Price</th>
+        <th>Customer Price</th>
         <th>Artist payment</th>
         <th>Event Date</th>
     </thead>
@@ -122,7 +122,7 @@
             <td><%= deal.profile.name %></td>
             <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
             <td><%= localized_price (deal.charged_price / 100), deal.currency if deal.charged_price.present? %></td>
-            <td><%= localized_price deal.price, deal.currency %></td>
+            <td><%= localized_price deal.artist_price, deal.currency %></td>
             <td><%= l(deal.start_at, format: :conversation) %></td>
         </tr>
     <% end %>
@@ -142,7 +142,7 @@
             <td><%= deal.customer.name %></td>
             <td><%= deal.profile.name %></td>
             <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
-            <td><%= localized_price deal.price, deal.currency %></td>
+            <td><%= localized_price deal.artist_price, deal.currency %></td>
             <td><%= l(deal.updated_at, format: :conversation) %></td>
         </tr>
     <% end %>
@@ -162,7 +162,7 @@
             <td><%= deal.customer.name %></td>
             <td><%= deal.profile.name %></td>
             <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
-            <td><%= localized_price deal.price, deal.currency %></td>
+            <td><%= localized_price deal.artist_price, deal.currency %></td>
             <td><%= l(deal.updated_at, format: :conversation) %></td>
         </tr>
     <% end %>
@@ -174,7 +174,7 @@
         <th>Customer</th>
         <th>Artist</th>
         <th>Message</th>
-        <th>Price</th>
+        <th>Cust Price</th>
         <th>Artist payment</th>
         <th>Event Date</th>
         <th>Bank Details</th>
