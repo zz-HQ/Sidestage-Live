@@ -80,13 +80,17 @@ module BalancedPayment
     return false if customer.balanced_customer_id.nil?
     begin
       price_to_be_charged = deal.customer_price_in_dollar.in_cents
-      debit = retrieve_balanced_card(customer.balanced_card_id).debit(
-        :amount => price_to_be_charged,
-        :appears_on_statement_as => 'Sidestage',
-        :description => "#{customer.name} - #{profile.name}"
-      )
+      if price_to_be_charged > 0
+        debit = retrieve_balanced_card(customer.balanced_card_id).debit(
+          :amount => price_to_be_charged,
+          :appears_on_statement_as => 'Sidestage',
+          :description => "#{customer.name} - #{profile.name}"
+        )
+        deal.balanced_debit_id = debit.id
+      else
+        deal.balanced_debit_id = "SIDESTAGE_0"
+      end
       deal.charged_price = price_to_be_charged
-      deal.balanced_debit_id = debit.id
       ensure_balanced_charge!
       return true
     rescue Balanced::Error => e
