@@ -110,6 +110,7 @@
     .deal
       .booking
         text-align: center
+        +span-columns(8)
 
         .price
           margin-bottom: 25px
@@ -175,6 +176,7 @@
 
     p
       margin-bottom: 5px
+      +span-columns(8)
 
       i
         margin-right: 4px
@@ -186,6 +188,29 @@
     .btns
       .btn
         padding: 10px 24px
+
+  .coupon-inputs
+    a.link
+      color: $blue
+      text-decoration: none
+      text-align: center
+      margin: 0
+
+    .input
+      +span-columns(5)
+
+    .btn
+      +span-columns(3)
+      +omega
+      padding: 10px 0
+
+    span
+      +span-columns(8)
+      text-align: center
+      position: relative
+      top: -8px
+
+
 
 .edit-offer,
 .new-offer
