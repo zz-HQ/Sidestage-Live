@@ -7,12 +7,12 @@
 			</div>
       <label><%= t(:"simple_form.labels.propose.price") %>: </label>
       <div class="price">
-	        <%= f.input :price, as: :string, label: false, input_html: {  data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } }, maxlength: 5 %>
+	        <%= f.input :artist_price, as: :string, label: false, input_html: {  data: { surcharge: Integer.surcharge_base, surcharged_label: "[data-container='surcharged-price']" } }, maxlength: 5 %>
 	        <i class="fa fa-<%= resource.profile.currency.downcase %>"></i>
       </div>
       <%= f.input :customer_id, as: :hidden %>
       <%= f.submit class: "btn btn-full", value: t(:"helpers.submit.deal.special_offer") %>
-      <p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(resource.price_with_surcharge, resource.currency)) %></p>
+      <p class="light"><%= t(:"application.offers.new.surcharge_label_html", surcharged_price: localized_price(resource.artist_price.with_surcharge, resource.currency)) %></p>
 	    </div>
 	<% end %>
 </div>

@@ -3,5 +3,5 @@
     <td><%= deal.customer.name %></td>
     <td><%= deal.state %></td>
     <td class="text-right"><%= localized_price deal.price, deal.currency %></td>
-    <td class="text-right"><%= localized_price(deal.price_with_surcharge, deal.currency) %></td>
+    <td class="text-right"><%= localized_price(deal.price.with_surcharge, deal.currency) %></td>
 </tr>

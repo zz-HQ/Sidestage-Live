@@ -14,9 +14,7 @@ module User::Authentication
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
         user.full_name = [auth.info.first_name, auth.info.last_name].compact.join(" ")
-        Rails.logger.info "########## FB birthday ################"
-        Rails.logger.info auth.extra.raw_info.birthday
-        Rails.logger.info "##########################"
+        user.birthday =  auth.extra.raw_info.birthday
         user.remote_avatar_url = auth.info.image.gsub('http://','https://') # assuming the user model has an image
         user.skip_confirmation!
         user.new_fb_signup = true if user.new_record?

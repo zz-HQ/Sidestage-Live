@@ -1,0 +1,15 @@
+<div class="coupon-inputs">
+	<%= f.input :coupon_id, as: :hidden, input_html: { data: { coupon: :id } } %>
+	<%= link_to t(:"application.deals.new.show_coupon"), "#", data: { coupon: :show }, class: "link coupon-show" %>
+	<%= content_tag :div, data: { coupon: :form }, style: "display: #{f.object.coupon_code.blank? ? "none;" : nil }" do %>
+	    <%= f.input :coupon_code, label: false, input_html: { data: { coupon: :code } } %> 
+	    <% if action.nil? %>
+	        <%= f.submit t(:"application.deals.new.apply_coupon"), data: { disable_with: t(:"application.deals.new.applying_coupon") } %>
+	    <% else %>
+	        <%= button_tag t(:"application.deals.new.apply_coupon"), type: :button, id: :coupon_apply, data: { action: action, disable_text: t(:"application.deals.new.applying_coupon") }, class: 'btn btn-white' %>
+	    <% end %>
+	    <span data-coupon="failure" style="display:none;"><%= t(:"application.deals.new.coupon_failure") %></span>
+	    <span data-coupon="success" style="display:none;"><%= t(:"application.deals.new.coupon_success") %></span>
+	    <%= link_to t(:"application.deals.new.cancel_coupon"), "#", data: { coupon: :cancel }, class: "link" %>
+	<% end %>
+</div>

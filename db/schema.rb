@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004112930) do
+ActiveRecord::Schema.define(version: 20141006171956) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",                         null: false
@@ -36,7 +36,10 @@ ActiveRecord::Schema.define(version: 20141004112930) do
     t.boolean  "active",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "deals_count"
   end
+
+  add_index "coupons", ["code"], name: "index_coupons_on_code", using: :btree
 
   create_table "currencies", force: true do |t|
     t.string   "name"
@@ -77,7 +80,7 @@ ActiveRecord::Schema.define(version: 20141004112930) do
     t.integer  "profile_id",                          null: false
     t.integer  "artist_id",                           null: false
     t.integer  "customer_id",                         null: false
-    t.integer  "price",                               null: false
+    t.integer  "artist_price",                        null: false
     t.datetime "start_at"
     t.text     "body"
     t.datetime "created_at"
@@ -89,10 +92,15 @@ ActiveRecord::Schema.define(version: 20141004112930) do
     t.datetime "state_transition_at"
     t.boolean  "paid_out",            default: false
     t.string   "balanced_credit_id"
+    t.integer  "coupon_id"
+    t.string   "coupon_code"
+    t.integer  "coupon_price"
+    t.integer  "customer_price"
   end
 
   add_index "deals", ["artist_id"], name: "index_deals_on_artist_id", using: :btree
   add_index "deals", ["conversation_id"], name: "index_deals_on_conversation_id", using: :btree
+  add_index "deals", ["coupon_id"], name: "index_deals_on_coupon_id", using: :btree
   add_index "deals", ["customer_id"], name: "index_deals_on_customer_id", using: :btree
   add_index "deals", ["state"], name: "index_deals_on_state", using: :btree
 
@@ -233,6 +241,7 @@ ActiveRecord::Schema.define(version: 20141004112930) do
     t.string   "full_name"
     t.string   "stripe_conenct_user_id"
     t.string   "stripe_connect_access_token"
+    t.string   "birthday"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

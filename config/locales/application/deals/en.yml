@@ -6,6 +6,12 @@ en:
         foot_note_html: Your card will be charged when the artist confirms the booking.
         verification_message: Verifying payment...
         cancel_booking: Cancel booking request
+        show_coupon: "Coupon"
+        apply_coupon: Apply
+        applying_coupon: Applying...
+        cancel_coupon: Cancel
+        coupon_success: "That works!"
+        coupon_failure: "Invalid code!"
       show:
         title: Booking Details
         cancel: Cancel Booking

@@ -43,7 +43,7 @@ class Account::OffersController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:start_at, :price, :customer_id])
+    params.permit(deal: [:start_at, :artist_price, :customer_id])
   end
     
   #

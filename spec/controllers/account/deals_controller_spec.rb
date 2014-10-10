@@ -12,10 +12,11 @@ describe Account::DealsController, :type => :controller do
       deal = FactoryGirl.create(:requested_deal)
       
       sign_in(deal.artist)
-      put :offer, id: deal.to_param, deal: { price: 1000 }
+      put :offer, id: deal.to_param, deal: { artist_price: 1000 }
 
       expect(assigns(:deal).offered?).to be true
-      expect(assigns(:deal).price).to be 1000
+      expect(assigns(:deal).artist_price).to be 1000
+      expect(assigns(:deal).customer_price).to be 1200
       expect(response).to redirect_to(account_conversation_path(deal.conversation))
     end
     

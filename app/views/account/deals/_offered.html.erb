@@ -1,10 +1,20 @@
-<div class="booking">
+<%= content_tag :div, id: dom_id(deal), class: "booking" do %>
     <h4 class="title"><%= t(:"application.deals.show.title") %></h4>
     <p>
         <i class="fa fa-calendar"></i> <span data-deal="start-at"><%= l(deal.start_at, format: :event_date) %></span>
     </p>
     <% if deal.is_customer?(current_user) %>
-        <p class="price"><%= t(:"simple_form.labels.deal.new_price") %>: <%= localized_price(deal.price_with_surcharge, deal.currency) %></p>
+        <p class="price">
+            <%= t(:"simple_form.labels.deal.new_price") %>: 
+            <span data-coupon="original_price"><%= localized_price(deal.price_for_customer, deal.currency) %></span>
+            <span data-coupon="coupon_price" style="display: none;"></span>
+        </p>
+        <% unless deal.coupon_applied? %>
+            <%= simple_form_for deal, url: apply_on_deal_account_coupons_path(deal_id: deal.id), remote: true do |f| %>
+                <%= render "account/deals/coupon_form", f: f, action: nil %>
+            <% end %>
+        <% end %>
+        
         <p><%= link_to t(:"application.deals.show.accept"), confirm_account_deal_path(deal), method: :put, class: "btn" %></p>
         <p><%= link_to t(:"application.deals.show.cancel_offer"), cancel_account_deal_path(deal), method: :put, class: "btn btn-white" %></p>
         
@@ -12,4 +22,4 @@
     <% else %>
         <%= render "account/deals/offerable", deal: deal %>
     <% end %>
-</div>
+<% end %>

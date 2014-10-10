@@ -31,7 +31,7 @@ class Account::DealsController < Account::ResourcesController
   def create
     create! do |success, failure|
       success.html{ 
-        redirect_to artist_path(resource.artist), notice: t(:"flash.account.deals.create.notice") 
+        redirect_to artist_path(resource.profile), notice: t(:"flash.account.deals.create.notice") 
       }
       success.js{
         flash[:notice] = t(:"flash.account.deals.create.notice")
@@ -45,7 +45,7 @@ class Account::DealsController < Account::ResourcesController
   end
   
   def offer
-    resource.price = permitted_params[:deal][:price]
+    resource.artist_price = permitted_params[:deal][:artist_price]
     resource.offer
     if resource.save
       flash[:notice] = t(:"flash.account.deals.offer.notice")    
@@ -99,7 +99,7 @@ class Account::DealsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(deal: [:start_at, :price, :body, :profile_id, :balanced_token])
+    params.permit(deal: [:start_at, :artist_price, :body, :profile_id, :balanced_token, :coupon_id, :coupon_code])
   end
     
   #

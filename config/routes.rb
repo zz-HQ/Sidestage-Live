@@ -95,7 +95,10 @@ Airmusic::Application.routes.draw do
           patch :offer
         end
       end
-
+      resources :coupons, only: [:apply_on_deal, :apply_on_profile] do
+        post 'apply_on_profile/:profile_id', to: 'coupons#apply_on_profile', on: :collection, as: :apply_on_profile        
+        patch 'apply_on_deal/:deal_id', to: 'coupons#apply_on_deal', on: :collection, as: :apply_on_deal
+      end
       resources :conversations do 
         get :archived, on: :collection
         put :archive, on: :member
@@ -108,15 +111,6 @@ Airmusic::Application.routes.draw do
     end
 
     resources :city_launches
-    get 'cancellations', to: "pages#cancellations", as: "cancellations"
-    get 'faq', to: "pages#faq", as: "faq"
-    get 'press', to: "pages#press", as: "press"
-    get 'terms-of-service', to: "pages#terms", as: "terms"
-    get 'privacy-policy', to: "pages#privacy", as: "privacy"
-    get 'jobs', to: "pages#jobs", as: "jobs"
-    get 'index', to: "home#index", as: "homepage"    
-    get 'home', to: "home#homepage", as: "home"    
-    put :accept_cookies, to: "home#accept_cookies", as: "accept_cookies"
     
     namespace :admin do
       root to: "dashboard#index"
@@ -152,6 +146,16 @@ Airmusic::Application.routes.draw do
     
   end
   
+  get 'cancellations', to: "pages#cancellations", as: "cancellations"
+  get 'faq', to: "pages#faq", as: "faq"
+  get 'press', to: "pages#press", as: "press"
+  get 'terms-of-service', to: "pages#terms", as: "terms"
+  get 'privacy-policy', to: "pages#privacy", as: "privacy"
+  get 'jobs', to: "pages#jobs", as: "jobs"
+  get 'index', to: "home#index", as: "homepage"    
+  get 'home', to: "home#homepage", as: "home"    
+  put :accept_cookies, to: "home#accept_cookies", as: "accept_cookies"
+
   get ':short_location', 
     to: 'artists#index', 
     constraints: lambda { |request|

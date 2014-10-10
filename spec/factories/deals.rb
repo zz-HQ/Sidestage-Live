@@ -9,7 +9,8 @@ FactoryGirl.define do
 
     factory :requested_deal do
       state "requested"
-      price 124
+      artist_price 124
+      customer_price 150
       current_user { customer }
       association :profile, factory: :profile
       association :customer, factory: :quentin    
@@ -17,7 +18,8 @@ FactoryGirl.define do
 
     factory :confirmed_deal do
       state "confirmed"
-      price 124
+      artist_price 124
+      customer_price 150
       current_user { customer }
       association :profile, factory: :profile
       association :customer, factory: :quentin    
@@ -27,7 +29,8 @@ FactoryGirl.define do
       start_at 2.day.ago
       balanced_debit_id "12345"
       state "confirmed"
-      price 124
+      artist_price 124
+      customer_price 150
       current_user { customer }
       association :profile, factory: :balanced
       association :customer, factory: :quentin    
@@ -35,7 +38,8 @@ FactoryGirl.define do
   
     factory :offered_deal do
       state "offered"
-      price 124
+      artist_price 124
+      customer_price 150
       current_user { profile.user }
       association :profile, factory: :profile
       association :customer, factory: :quentin    
@@ -43,7 +47,8 @@ FactoryGirl.define do
     
     factory :proposed_deal do
       state "proposed"
-      price 124
+      artist_price 124
+      customer_price 150
     end
 
   end

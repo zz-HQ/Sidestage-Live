@@ -64,4 +64,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'sms-spec'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end

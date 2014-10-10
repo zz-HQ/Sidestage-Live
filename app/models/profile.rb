@@ -10,7 +10,7 @@ class Profile < ActiveRecord::Base
   
   extend FriendlyId
   
-  include Profile::Presentable, Sortable, Filter, Surcharge, Payoutable
+  include Profile::Presentable, Sortable, Filter, Priceable, Payoutable
 
   #
   # Attributes

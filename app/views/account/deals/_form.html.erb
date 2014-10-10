@@ -22,10 +22,19 @@
 		    	    <%= f.input :profile_id, as: :hidden %>
 		    	    <%= f.input :balanced_token, as: :hidden %>
 		    	    <div class="bottom">
-		    	    	<%= render "account/payment_details/payment_form", f: f %>
-			          <div class="price">
-			          	<p><%= t(:"application.conversations.deals.new.total_price") %>: <%= localized_price(resource.price_with_surcharge, resource.currency) %></p>
-			          </div>
+                        <%= render "account/payment_details/payment_form", f: f %>
+                        <%= render "coupon_form", f: f, action: apply_on_profile_account_coupons_path(profile_id: resource.profile_id) %>
+                        <div class="price">
+                            <p>
+                                <%= t(:"application.deals.new.total_price") %>: 
+                                <%= content_tag :span, data: { coupon: :original_price }, style: "display: #{resource.coupon.nil? ? nil : "none;" }" do %>
+                                    <%= localized_price(resource.customer_price, resource.currency) %>
+                                <% end %>
+                                <%= content_tag :span, data: { coupon: :coupon_price }, style: "display: #{resource.coupon.nil? ? "none;" : nil }" do %>
+                                    <%= localized_price(resource.coupon.surcharged_profile_price(resource.profile), resource.currency) unless resource.coupon.nil? %>
+                                <% end %>
+                            </p>
+                        </div>
 		    	    </div>
 		          <div class="btns">
 		          	<%= f.submit class: "btn btn-center" %>

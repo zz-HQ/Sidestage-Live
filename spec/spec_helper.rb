@@ -63,12 +63,12 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/v/3-0/docs
   config.infer_spec_type_from_file_location!
-  
+
   config.before(:each, :type => :controller) do
     FactoryGirl.create(:us_dollar)  
     FactoryGirl.create(:euro)
   end  
-  
+
 end
 
 def mock_balanced_card
@@ -94,4 +94,5 @@ def mock_balanced_bank_account
     val
   }
 end
+
 

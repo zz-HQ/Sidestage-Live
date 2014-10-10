@@ -2,11 +2,11 @@
 
 	<%= f.label :price %>
 	<div class="inputs profile_price">
-		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Profile.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
+		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Integer.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
 		<i class="fa fa-<%= resource.currency.downcase %>"></i>
 	</div>
 	
-	<p class='light'><%= t(:"simple_form.labels.profile.surcharge_html", surcharge_base: Profile.surcharge_base) %></p>
+	<p class='light'><%= t(:"simple_form.labels.profile.surcharge_html", surcharge_base: Integer.surcharge_base) %></p>
 
 	<!-- <p><%= t(:"application.profiles.pricing.hint_html") %></p> -->
 </div>
