@@ -7,6 +7,10 @@ en:
       signup_options:
         customer: I Want To Book an Artist
         artist: "I'm a Musician, Band or DJ"
+      artist_read_me:
+        title: Become a Sidestage Artist
+        desc_html: "<p>Sidestage helps musicians (DJs, we're talking about you, too) get hired to play private parties, home concerts, weddings, company events and more.</p><br/><p>By joining Sidestage, you're not just opening yourself up to more possibilities as independent arist, you're joining a global community of people who love independent music.</p>"
+        apply: Apply Now
   devise:
     confirmations:
       confirmed: "Your account is confirmed. Now complete your profile."

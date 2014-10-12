@@ -3,6 +3,7 @@ de:
     menu:
       sign_up: Sign up
       sign_in: Log in
+      musician: "I'm a musician"
       create_profile: Create Artist Profile
       my_bookings: Bookings
       your_profile: Edit Profile

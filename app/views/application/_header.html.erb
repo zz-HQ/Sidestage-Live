@@ -80,14 +80,16 @@
         </div>
 
       <%- else -%>
-        <%= link_to t(:"application.menu.sign_in"), new_user_session_path  %>
-        <%= link_to t(:"application.menu.sign_up"), new_user_registration_path(format: :html), data: { lightbox: :html, target: "[data-container='signup-options']" }, class: "btn btn-inline" %>
+        <%= link_to t(:"application.menu.sign_up"), new_user_registration_path %>
+        <%= link_to t(:"application.menu.sign_in"), new_user_session_path %>
+        <%= link_to t(:"application.menu.musician"), new_user_registration_path(format: :html), data: { lightbox: :html, target: "[data-container='signup-options']" }, class: "btn btn-inline" %>
         <div style="display:none;" data-container="signup-options">
-            <div class="devise-lightbox">
-                <%= image_tag "sidestage_brand.png", alt: "logo_brand", class: "logo_brand" %>
+            <div class="devise-lightbox read_more">
+                <%#= image_tag "sidestage_brand.png", alt: "logo_brand", class: "logo_brand" %>
+                <p><strong><%= t(:"application.devise.artist_read_me.title") %></strong></p><br/>
+                <%= t(:"application.devise.artist_read_me.desc_html") %>
                 <div class="btns">
-                  <%= link_to t(:"application.devise.signup_options.customer"), new_user_registration_path, class: "btn btn-blue" %>
-                  <%= link_to t(:"application.devise.signup_options.artist"), new_artist_path, class: "btn btn-white" %>
+                  <%= link_to t(:"application.devise.artist_read_me.apply"), new_artist_path, class: "btn btn-blue btn-inline" %>
                 </div>
             </div>    
         </div>    
