@@ -20,7 +20,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  attr_accessor :current_user, :balanced_token
+  attr_accessor :current_user, :balanced_token, :double_check
 
   #
   # Validations
@@ -43,7 +43,8 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  before_validation :assign_artist, :assign_customer, :set_price, :set_currency, :attach_to_conversation, :make_customer_paymentable, on: :create
+  before_validation :assign_artist, :assign_customer, :set_price, :set_currency, :make_customer_paymentable, on: :create
+  before_validation :attach_to_conversation, on: :create, unless: :double_checking?
   
   before_create :assign_coupon
   
@@ -194,6 +195,9 @@ class Deal < ActiveRecord::Base
     end
   end
 
+  def double_checking?
+    double_check == true
+  end
   
   #
   # Custom Validations

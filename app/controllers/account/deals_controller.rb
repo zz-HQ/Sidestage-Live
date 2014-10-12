@@ -41,6 +41,7 @@ class Account::DealsController < Account::ResourcesController
   
   def double_check
     build_resource
+    resource.double_check = true
     resource.valid?
   end
   
