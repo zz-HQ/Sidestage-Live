@@ -23,6 +23,15 @@ Airmusic::Application.routes.draw do
       end
     end
     
+    resources :express_bookings, path: :black do
+      collection do
+        match 'time', to: 'express_bookings#time', via: :all   
+        match 'payment', to: 'express_bookings#payment', via: :all
+        match 'confirmation', to: 'express_bookings#confirmation', via: :all
+        match 'share', to: 'express_bookings#share', via: :all
+      end
+    end
+    
     resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
