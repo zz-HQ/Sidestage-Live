@@ -2,6 +2,6 @@
     <td><%= deal.profile.name %></td>
     <td><%= deal.customer.name %></td>
     <td><%= deal.state %></td>
-    <td class="text-right"><%= localized_price deal.price, deal.currency %></td>
-    <td class="text-right"><%= localized_price(deal.price.with_surcharge, deal.currency) %></td>
+    <td class="text-right"><%= localized_price deal.customer_price, deal.currency %></td>
+    <td class="text-right"><%= localized_price(deal.charged_price/100, deal.currency) if deal.charged_price.present? %></td>
 </tr>

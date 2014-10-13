@@ -28,6 +28,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.4.2)
+      activerecord (>= 3.2, < 5)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     asset_sync (1.1.0)
@@ -357,6 +359,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  acts-as-taggable-on (~> 3.4)
   asset_sync
   balanced
   better_errors

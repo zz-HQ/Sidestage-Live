@@ -8,7 +8,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  include DealCoupon, Deal::StateMachine, Conversationable, BalancedPayment, Priceable
+  include DealCoupon, Deal::StateMachine, Conversationable, BalancedPayment
   
   #has_paper_trail only: [ :state ], on: [:update, :destroy], class_name: "Versions::#{self.name}"
   
@@ -20,7 +20,7 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  attr_accessor :current_user, :balanced_token
+  attr_accessor :current_user, :balanced_token, :double_check
 
   #
   # Validations
@@ -31,7 +31,7 @@ class Deal < ActiveRecord::Base
   #
   
   validates :artist_id, :profile_id, :customer_id, :artist_price, :customer_price, :start_at, :currency, :conversation_id, presence: true
-  validates :artist_price, :customer_price, numericality: { greater_than: 24 }, allow_blank: true 
+  validates :artist_price, numericality: { greater_than: 24 }, allow_blank: true 
   validate :coupon_must_be_valid, on: :create
   validate :customer_must_be_chargeable, if: :should_customer_be_chargeable?
 
@@ -43,7 +43,8 @@ class Deal < ActiveRecord::Base
   #
   #
   
-  before_validation :assign_artist, :assign_customer, :set_price, :set_currency, :attach_to_conversation, :make_customer_paymentable, on: :create
+  before_validation :assign_artist, :assign_customer, :set_price, :set_currency, :make_customer_paymentable, on: :create
+  before_validation :attach_to_conversation, on: :create, unless: :double_checking?
   
   before_create :assign_coupon
   
@@ -194,6 +195,9 @@ class Deal < ActiveRecord::Base
     end
   end
 
+  def double_checking?
+    double_check == true
+  end
   
   #
   # Custom Validations

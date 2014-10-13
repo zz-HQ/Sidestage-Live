@@ -3,7 +3,7 @@
     <td><%= deal.profile.name %></td>
     <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
     <td><%= localized_price (deal.charged_price / 100), deal.currency if deal.charged_price.present? %></td>
-    <td><%= localized_price deal.price, deal.currency %></td>
+    <td><%= localized_price deal.artist_price, deal.currency %></td>
     <td><%= l(deal.start_at, format: :conversation) %></td>
     <td>
         <%= link_to "View", "#", data: { toggle: "modal", target: "#payment_#{deal.id}" } %>
