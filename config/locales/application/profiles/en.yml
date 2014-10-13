@@ -32,7 +32,7 @@ en:
           title: Add a YouTube track to your profile.
         share_modal:
           title: Your profile is published
-          desc: "People can now find you on Sidestage. Share your profile with friends to increase your visibility."
+          desc_html: "<p>Your profile was published, but is being reviewed by someone at Sidestage. As part of the process, we’d like to set up a short phone interview. One of our reviewers will get in touch within the next 24 hours.</p><p>In the meantime, share your profile with your friends.</p>"
           share_on_fb: "Share on Facebook"    
           share_on_twitter: "Share on Twitter"
           twitter_text: "Check%20out%20@sidestagehq,%20a%20new%20platform%20for%20booking%20great%20musicians,%20bands%20and%20DJs"
