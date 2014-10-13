@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006171956) do
+ActiveRecord::Schema.define(version: 20141013124903) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",                         null: false
@@ -163,8 +163,8 @@ ActiveRecord::Schema.define(version: 20141006171956) do
     t.text     "payout"
     t.string   "slug"
     t.boolean  "featured",                                           default: false
-    t.decimal  "latitude",                 precision: 14, scale: 11
-    t.decimal  "longitude",                precision: 14, scale: 11
+    t.decimal  "latitude",                 precision: 13, scale: 10
+    t.decimal  "longitude",                precision: 13, scale: 10
     t.string   "country_long"
     t.string   "country_short"
     t.string   "balanced_bank_account_id"
@@ -197,6 +197,32 @@ ActiveRecord::Schema.define(version: 20141006171956) do
   end
 
   add_index "search_queries", ["location"], name: "index_search_queries_on_location", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "tests", force: true do |t|
+    t.string "longitude"
+    t.string "latitude"
+    t.string "city"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -239,7 +265,7 @@ ActiveRecord::Schema.define(version: 20141006171956) do
     t.string   "otp_secret_key"
     t.string   "mobile_nr_country_code"
     t.string   "full_name"
-    t.string   "stripe_conenct_user_id"
+    t.string   "stripe_connect_user_id"
     t.string   "stripe_connect_access_token"
     t.string   "birthday"
   end

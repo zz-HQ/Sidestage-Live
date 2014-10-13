@@ -118,6 +118,7 @@ Airmusic::Application.routes.draw do
         member do
           put :toggle_admin_disabled          
           put :toggle
+          put :tags
         end
       end
       resources :conversations do

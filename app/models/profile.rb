@@ -11,7 +11,9 @@ class Profile < ActiveRecord::Base
   extend FriendlyId
   
   include Profile::Presentable, Sortable, Filter, Payoutable
-
+  
+  acts_as_taggable
+  
   #
   # Attributes
   # ---------------------------------------------------------------------------------------

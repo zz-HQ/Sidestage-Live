@@ -21,6 +21,7 @@ gem 'sidekiq'
 gem 'twilio-ruby', '~> 3.11'
 gem 'rotp', '2.0'
 gem 'graticule'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 # Image Processing
 gem 'carrierwave'
