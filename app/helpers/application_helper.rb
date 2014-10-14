@@ -74,6 +74,17 @@ module ApplicationHelper
   def pinterist_share_url(url, media)
     "http://pinterest.com/pin/create/link/?url=#{url}&media=#{media}"
   end
-  
+
+  def express_date
+    ["tonight", "tomorrow", "Friday", "Saturday"]
+  end
+
+  def express_time
+    ["8pm", "9pm", "10pm"]
+  end
+
+  def express_genre
+    ["Classical", "singer/songwriter"]
+  end
   
 end

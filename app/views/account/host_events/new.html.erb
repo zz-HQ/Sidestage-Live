@@ -1,3 +1,14 @@
-<%= simple_form_for resource, url: payment_account_host_events_path do |f| %>
-    <input type="submit" value="Next">
-<% end %>
+<section class="express-booking">
+	<p>Thanks for signing up for Sidestage! We'll send a musician over to your next private party or event. When is it?</p>
+
+	<%= simple_form_for resource, url: payment_account_host_events_path do |f| %>
+		<%= nice_select((select_tag 'express_date', options_for_select(express_date), include_blank: false), id: "express_date") %>
+		<%= nice_select((select_tag 'express_time', options_for_select(express_time), include_blank: false), id: "express_time") %>
+		<%= nice_select((select_tag 'express_genre', options_for_select(express_genre), include_blank: false), id: "express_genre") %>
+		<input type="text" placeholder="Zip code" maxlength="5" pattern="\d*">
+
+		<div class="btns">
+			<input type="submit" value="Next" class="btn btn-inline">
+		</div>
+	<% end %>
+</section>

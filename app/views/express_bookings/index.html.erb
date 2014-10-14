@@ -1,1 +1,13 @@
-<%= link_to "Sign up with Facebook", new_account_host_event_path %>
+<section class="express-booking">
+	<p>Sidestage is a new app where you can order a professional musican to play a private performance - at your home, office, gallery, where ever.</p>
+	<p>Our musicians play for about an hour, and it costs just $99 get started now</p>
+
+	<div class="text-with-select">
+		<p>Hire a musician for</p>
+		<%= nice_select(select_tag 'express_date', options_for_select(express_date), include_blank: false) %>
+	</div>
+
+	<div class="btns">
+		<%= link_to "Sign up with Facebook", new_account_host_event_path, class: "btn btn-inline" %>
+	</div>
+</section>

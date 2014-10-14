@@ -1,3 +1,13 @@
-<%= simple_form_for :event, url: share_account_host_events_path do |f| %>
-    <input type="submit" value="Done">
-<% end %>
+<section class="express-booking confirmation">
+	<img src="<%= asset_path 'checkmark.png' %>" class="icon">
+	<p>Your booking is confirmed for [Friday]. (You'll get an email, too.)</p>
+
+	<%= simple_form_for :event, url: share_account_host_events_path do |f| %>
+		<textarea placeholder="Street address, and any special arrive instructions?"></textarea>
+		<input type="text" maxlength="5" pattern="\d*" placeholder="Mobile number (just in case)">
+
+	    <div class="btns">
+			<input type="submit" value="Done" class="btn btn-inline">
+		</div>
+	<% end %>
+</section>
