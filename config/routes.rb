@@ -37,11 +37,10 @@ Airmusic::Application.routes.draw do
       end
 
       resources :host_events do
-        collection do
-          match 'time', to: 'host_events#time', via: :all   
+        member do
           match 'payment', to: 'host_events#payment', via: :all, as: :payment
-          match 'confirmation', to: 'host_events#confirmation', via: :all
-          match 'share', to: 'host_events#share', via: :all
+          match 'confirmation', to: 'host_events#confirmation', via: :all, as: :confirmation
+          match 'share', to: 'host_events#share', via: :all, as: :share
         end
       end
       

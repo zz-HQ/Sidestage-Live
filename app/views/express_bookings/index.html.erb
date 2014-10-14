@@ -8,6 +8,6 @@
 	</div>
 
 	<div class="btns">
-		<%= link_to "Sign up with Facebook", new_account_host_event_path, class: "btn btn-inline" %>
+	    <%= link_to t(:"application.devise.facebook_signup"), user_omniauth_authorize_path(:facebook), class: "btn btn-inline" %>
 	</div>
 </section>

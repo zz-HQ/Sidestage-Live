@@ -20,8 +20,8 @@
       </div>
       <div class="share-btn pin-btn">
         <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(resource), resource.user.avatar_url(:thumb)), target: :_blank, style: "color:#cb2027;", onclick: "window.open(this.href, 'mywin', 'left=350,top=200,width=750,height=316,toolbar=1,resizable=0'); return false;" %>
-        </div>    
-    </div> 
+      </div>    
+     </div> 
 
     <h2><%= resource.name %></h2>
     <p class="title"><%= resource.title %></p>

@@ -4,9 +4,9 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :user_id
       t.string :event_day
       t.string :event_time
-      t.string :music_type
+      t.string :genre
       t.string :postal_code
-      t.string :balanced_charge_id
+      t.string :balanced_debit_id
       t.integer :charged_price
       t.string :currency
       t.text :address

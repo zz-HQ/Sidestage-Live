@@ -108,9 +108,9 @@ ActiveRecord::Schema.define(version: 20141014085914) do
     t.integer  "user_id"
     t.string   "event_day"
     t.string   "event_time"
-    t.string   "music_type"
+    t.string   "genre"
     t.string   "postal_code"
-    t.string   "balanced_charge_id"
+    t.string   "balanced_debit_id"
     t.integer  "charged_price"
     t.string   "currency"
     t.text     "address"
@@ -179,8 +179,8 @@ ActiveRecord::Schema.define(version: 20141014085914) do
     t.text     "payout"
     t.string   "slug"
     t.boolean  "featured",                                           default: false
-    t.decimal  "latitude",                 precision: 13, scale: 10
-    t.decimal  "longitude",                precision: 13, scale: 10
+    t.decimal  "latitude",                 precision: 14, scale: 11
+    t.decimal  "longitude",                precision: 14, scale: 11
     t.string   "country_long"
     t.string   "country_short"
     t.string   "balanced_bank_account_id"
@@ -234,12 +234,6 @@ ActiveRecord::Schema.define(version: 20141014085914) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "tests", force: true do |t|
-    t.string "longitude"
-    t.string "latitude"
-    t.string "city"
-  end
-
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -281,7 +275,7 @@ ActiveRecord::Schema.define(version: 20141014085914) do
     t.string   "otp_secret_key"
     t.string   "mobile_nr_country_code"
     t.string   "full_name"
-    t.string   "stripe_connect_user_id"
+    t.string   "stripe_conenct_user_id"
     t.string   "stripe_connect_access_token"
     t.string   "birthday"
   end
