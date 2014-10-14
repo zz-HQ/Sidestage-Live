@@ -1,0 +1,4 @@
+<%= simple_form_for :event, url: confirmation_account_host_events_path do |f| %>
+    <%= render partial: "account/payment_details/payment_form", locals: { f: f } %>
+    <input type="submit" value="Pay">
+<% end %>

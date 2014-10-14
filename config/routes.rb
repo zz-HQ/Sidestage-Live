@@ -23,15 +23,7 @@ Airmusic::Application.routes.draw do
       end
     end
     
-    resources :express_bookings, path: :black do
-      collection do
-        match 'time', to: 'express_bookings#time', via: :all   
-        match 'payment', to: 'express_bookings#payment', via: :all
-        match 'confirmation', to: 'express_bookings#confirmation', via: :all
-        match 'share', to: 'express_bookings#share', via: :all
-      end
-    end
-    
+    resources :express_bookings, path: :black    
     resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
@@ -42,6 +34,15 @@ Airmusic::Application.routes.draw do
 
       resource :mobile_numbers, only: [:show, :destroy, :update] do
         patch :confirm
+      end
+
+      resources :host_events do
+        collection do
+          match 'time', to: 'host_events#time', via: :all   
+          match 'payment', to: 'host_events#payment', via: :all, as: :payment
+          match 'confirmation', to: 'host_events#confirmation', via: :all
+          match 'share', to: 'host_events#share', via: :all
+        end
       end
       
       resource :personal do

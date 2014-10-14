@@ -53,6 +53,8 @@ class User < ActiveRecord::Base
   
   has_many :reviews, foreign_key: :author_id, dependent: :delete_all
   
+  has_many :events, dependent: :destroy
+  
   mount_uploader :avatar, AvatarUploader
   
   #
