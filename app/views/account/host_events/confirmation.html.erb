@@ -1,13 +1,12 @@
 <section class="express-booking confirmation">
 	<img src="<%= asset_path 'checkmark.png' %>" class="icon">
-	<p>Your booking is confirmed for [Friday]. (You'll get an email, too.)</p>
+	<p>Your booking is confirmed for [<%= resource.event_day %>]. (You'll get an email, too.)</p>
 
-	<%= simple_form_for :event, url: share_account_host_events_path do |f| %>
-		<textarea placeholder="Street address, and any special arrive instructions?"></textarea>
-		<input type="text" maxlength="5" pattern="\d*" placeholder="Mobile number (just in case)">
-
+	<%= simple_form_for resource, url: confirmation_account_host_event_path(resource) do |f| %>
+	    <%= f.input :address, label: false, placeholder: "Street address, and any special arrive instructions?" %>
+	    <%= f.input :phone, label: false, maxlength: "5", pattern: "\d*", placeholder: "Mobile number (just in case)" %>
 	    <div class="btns">
-			<input type="submit" value="Done" class="btn btn-inline">
+			<input type="submit" value="Submit" class="btn btn-inline">
 		</div>
 	<% end %>
 </section>

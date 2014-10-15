@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014085914) do
+ActiveRecord::Schema.define(version: 20141015130404) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id",                         null: false
@@ -104,6 +104,21 @@ ActiveRecord::Schema.define(version: 20141014085914) do
   add_index "deals", ["customer_id"], name: "index_deals_on_customer_id", using: :btree
   add_index "deals", ["state"], name: "index_deals_on_state", using: :btree
 
+  create_table "event_invitations", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "inviter_id"
+    t.boolean  "signed_up"
+    t.boolean  "visited"
+    t.boolean  "accepted"
+    t.boolean  "rejected"
+    t.string   "email"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_invitations", ["event_id"], name: "index_event_invitations_on_event_id", using: :btree
+
   create_table "events", force: true do |t|
     t.integer  "user_id"
     t.string   "event_day"
@@ -118,6 +133,7 @@ ActiveRecord::Schema.define(version: 20141014085914) do
     t.text     "additionals"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_invitations_count"
   end
 
   create_table "genres", force: true do |t|
@@ -179,8 +195,8 @@ ActiveRecord::Schema.define(version: 20141014085914) do
     t.text     "payout"
     t.string   "slug"
     t.boolean  "featured",                                           default: false
-    t.decimal  "latitude",                 precision: 14, scale: 11
-    t.decimal  "longitude",                precision: 14, scale: 11
+    t.decimal  "latitude",                 precision: 13, scale: 10
+    t.decimal  "longitude",                precision: 13, scale: 10
     t.string   "country_long"
     t.string   "country_short"
     t.string   "balanced_bank_account_id"
@@ -234,6 +250,12 @@ ActiveRecord::Schema.define(version: 20141014085914) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "tests", force: true do |t|
+    t.string "longitude"
+    t.string "latitude"
+    t.string "city"
+  end
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -275,7 +297,7 @@ ActiveRecord::Schema.define(version: 20141014085914) do
     t.string   "otp_secret_key"
     t.string   "mobile_nr_country_code"
     t.string   "full_name"
-    t.string   "stripe_conenct_user_id"
+    t.string   "stripe_connect_user_id"
     t.string   "stripe_connect_access_token"
     t.string   "birthday"
   end

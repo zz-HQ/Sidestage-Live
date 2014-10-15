@@ -15,7 +15,15 @@ Airmusic::Application.routes.draw do
 
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
-
+    
+    resources :events
+    
+    resource :forward do
+      get ":token/event_invitation", to: "forward#event_invitation", as: :event_invitation
+      get "facebook_auth", to: "forward#facebook_auth", as: :facebook_auth
+      
+    end
+    
     resources :match_mes, path: 'match_me' do
       collection do
         get :thanks
@@ -23,7 +31,11 @@ Airmusic::Application.routes.draw do
       end
     end
     
-    resources :express_bookings, path: :black    
+    resources :express_bookings, path: :black do
+      collection do
+        post :sign_up
+      end
+    end
     resources :artists, :only => [:new, :create, :index, :show]
     
     namespace :account do
@@ -40,7 +52,7 @@ Airmusic::Application.routes.draw do
         member do
           match 'payment', to: 'host_events#payment', via: :all, as: :payment
           match 'confirmation', to: 'host_events#confirmation', via: :all, as: :confirmation
-          match 'share', to: 'host_events#share', via: :all, as: :share
+          match 'invite_friends', to: 'host_events#invite_friends', via: :all, as: :invite_friends
         end
       end
       

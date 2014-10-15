@@ -1,0 +1,11 @@
+<section class="express-booking center">
+	<p>Invite your friends</p>
+	<p>We'll send them a personal invitation with the details for <%= resource.event_day %></p>
+    <%= simple_form_for resource, url: invite_friends_account_host_event_path(resource), remote: true do |f| %>
+        <%= f.input :friends_emails, label: false, placeholder: "Add friend's emails (separated by comma)" %>
+        <div class="btns">
+    	    <input type="submit" value="Send" class="btn btn-inline">
+    	    <span data-invite="success" style="display:none;">Invitation sent!</span>
+	    </div>
+    <% end %>
+</section>
