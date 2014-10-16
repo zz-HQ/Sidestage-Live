@@ -66,6 +66,10 @@ class Event < ActiveRecord::Base
     return true if balanced_debit_id.present?
     begin
       price = 99 * 100
+      
+      update_columns balanced_debit_id: "SIDESTAGE_TEST", charged_price: price      
+      return true
+      
       debit = user.retrieve_balanced_card(user.balanced_card_id).debit(
         :amount => price,
         :appears_on_statement_as => 'Sidestage',
