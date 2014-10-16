@@ -107,17 +107,20 @@ ActiveRecord::Schema.define(version: 20141015130404) do
   create_table "event_invitations", force: true do |t|
     t.integer  "event_id"
     t.integer  "inviter_id"
-    t.boolean  "signed_up"
+    t.boolean  "invited"
     t.boolean  "visited"
     t.boolean  "accepted"
     t.boolean  "rejected"
+    t.integer  "attendee_id"
     t.string   "email"
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "event_invitations", ["attendee_id"], name: "index_event_invitations_on_attendee_id", using: :btree
   add_index "event_invitations", ["event_id"], name: "index_event_invitations_on_event_id", using: :btree
+  add_index "event_invitations", ["token"], name: "index_event_invitations_on_token", using: :btree
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -134,6 +137,7 @@ ActiveRecord::Schema.define(version: 20141015130404) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_invitations_count"
+    t.datetime "event_at"
   end
 
   create_table "genres", force: true do |t|

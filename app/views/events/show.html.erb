@@ -2,8 +2,8 @@
 <% if user_signed_in? %>
     <%= resource.user.profile_name %> has invited you to a private musical performance that takes
     place at <%= resource.address %> on <%= resource.event_day %> at <%= resource.event_time %>.
-    <%= link_to "I'm going :)", "#", method: :put, class: "btn btn-inline" %>
-    <%= link_to "I can't make it :(", "#", method: :put, class: "btn btn-inline" %>
+    <%= link_to "I'm going :)", accept_event_path(resource), method: :put, class: "btn btn-inline" %>
+    <%= link_to "I can't make it :(", reject_event_path(resource), method: :put, class: "btn btn-inline" %>
 <% else %>
     This is a private event, please sign in to view the details.
     <%= link_to t(:"application.devise.facebook_signup"), facebook_auth_forward_path %>

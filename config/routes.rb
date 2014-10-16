@@ -16,14 +16,20 @@ Airmusic::Application.routes.draw do
     post 'change_currency', to: 'home#change_currency', as: :change_currency
     post 'change_locale', to: 'home#change_locale', as: :change_locale
     
-    resources :events
-    
+    resources :events do
+      member do
+        put :accept
+        put :reject
+      end
+      collection do
+        get :thanks
+      end
+    end
     resource :forward do
       get ":token/event_invitation", to: "forward#event_invitation", as: :event_invitation
       get "facebook_auth", to: "forward#facebook_auth", as: :facebook_auth
-      
     end
-    
+        
     resources :match_mes, path: 'match_me' do
       collection do
         get :thanks

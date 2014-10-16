@@ -8,4 +8,11 @@
     	    <span data-invite="success" style="display:none;">Invitation sent!</span>
 	    </div>
     <% end %>
+    <p>
+        <%= event_url(resource, locale: nil) %>
+    </p>
+    <p>
+        <%= link_to "<i class='fa fa-facebook-square'></i>Share".html_safe, facebook_share_url(event_url(resource)), target: :_blank, style: "color:#3b5998;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=300,toolbar=1,resizable=0'); return false;" %>
+            <%= link_to "<i class='fa fa-twitter'></i>Tweet".html_safe, twitter_share_url("", event_url(resource)), target: :_blank, style: "color:#4099ff;" %>
+            </p>
 </section>

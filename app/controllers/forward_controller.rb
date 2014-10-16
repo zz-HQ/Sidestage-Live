@@ -1,5 +1,5 @@
 class ForwardController < ApplicationController
-  
+
   def event_invitation
     event_invitation = EventInvitation.where(token: params[:token]).first
     redirect_to root_path and return if event_invitation.nil?

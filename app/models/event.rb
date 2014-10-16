@@ -55,6 +55,11 @@ class Event < ActiveRecord::Base
   #
   #  
   
+  def user_responded?(user)
+    invitation = event_invitations.where("email = ? OR attendee_id = ?", user.email, user.id).first
+    invitation.present? && (invitation.accepted? || invitation.rejected?)
+  end
+  
 
   def charge_user!
     return false unless user.paymentable?
@@ -79,7 +84,7 @@ class Event < ActiveRecord::Base
   def invite_friends!
     if friends_emails.present?
       friends_emails.split(",").each do |email|
-        event_invitations << EventInvitation.new(email: email.strip, inviter: user)
+        event_invitations << EventInvitation.invited.new(email: email.strip, inviter: user)
       end
     end
   end

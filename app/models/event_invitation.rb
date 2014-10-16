@@ -40,6 +40,19 @@ class EventInvitation < ActiveRecord::Base
 
   #
   #
+  # Scopes
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+
+  scope :invited, -> { where(invited: true) }  
+  scope :by_invitee, -> (id) { where(invitee_id: id) }
+  scope :pending, -> { where(accepted: nil, rejected: nil) }
+  
+  #
+  #
   # Instance Methods
   # ---------------------------------------------------------------------------------------
   #
@@ -48,9 +61,12 @@ class EventInvitation < ActiveRecord::Base
   #  
   
   def visited!
-    update_column :visited, true
+    update_column(:visited, true) unless visited?
   end
 
+  def to_param
+    token
+  end
   
   #
   #
@@ -64,7 +80,7 @@ class EventInvitation < ActiveRecord::Base
   private
   
   def mail_invitation
-    EmailWorker.perform_async(:event_invitation_mail, id)
+    EmailWorker.perform_async(:event_invitation_mail, id) if invited?
   end
     
   

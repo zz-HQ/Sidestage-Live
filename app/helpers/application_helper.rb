@@ -84,7 +84,7 @@ module ApplicationHelper
   end
 
   def express_genre
-    ["Classical", "singer/songwriter"]
+    ["Jazz musician", "Classical musician", "Indie singer/songwriter"]
   end
   
 end
