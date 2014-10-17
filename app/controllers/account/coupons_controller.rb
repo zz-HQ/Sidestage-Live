@@ -24,7 +24,11 @@ class Account::CouponsController < Account::ResourcesController
       end
     end
   end  
-
+  
+  def apply_on_event
+    @coupon = Coupon.valid.active.where(code: params[:code]).first
+  end
+  
   #
   # Protected
   # ---------------------------------------------------------------------------------------

@@ -125,6 +125,7 @@ Airmusic::Application.routes.draw do
       resources :coupons, only: [:apply_on_deal, :apply_on_profile] do
         post 'apply_on_profile/:profile_id', to: 'coupons#apply_on_profile', on: :collection, as: :apply_on_profile        
         patch 'apply_on_deal/:deal_id', to: 'coupons#apply_on_deal', on: :collection, as: :apply_on_deal
+        post 'apply_on_event', to: 'coupons#apply_on_event', on: :collection, as: :apply_on_event
       end
       resources :conversations do 
         get :archived, on: :collection

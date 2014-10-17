@@ -11,8 +11,8 @@ class CreateEventInvitations < ActiveRecord::Migration
       t.string :email
       t.string :token
       t.integer :coupon_id
-      t.string :coupon_price
-      t.string :coupon_currency
+      t.integer :coupon_price
+      t.string :coupon_code
       t.timestamps
     end
     

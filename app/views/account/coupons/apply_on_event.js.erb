@@ -1,0 +1,13 @@
+<% if @coupon.present? %>
+    $("form#deal-request [data-coupon=original_price]").hide();
+    $("form#deal-request [data-coupon=coupon_price]").show();
+    $("form#deal-request [data-coupon=id]").val(<%= @coupon.id %>);
+    $("form#deal-request [data-coupon=failure]").hide();
+    $("form#deal-request [data-coupon=success]").show();
+<% else %>
+    $("form#deal-request [data-coupon=id]").val("");
+    $("form#deal-request [data-coupon=coupon_price]").hide();    
+    $("form#deal-request [data-coupon=original_price]").show();
+    $("form#deal-request [data-coupon=success]").hide();
+    $("form#deal-request [data-coupon=failure]").show();
+<% end %>
