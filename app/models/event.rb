@@ -92,7 +92,11 @@ class Event < ActiveRecord::Base
       end
     end
   end
-
+  
+  def notify_sidestage!
+    AdminMailer.delay.event_notification(self)
+  end
+  
   #
   #
   # Private

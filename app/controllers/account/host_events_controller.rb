@@ -36,6 +36,7 @@ class Account::HostEventsController < Account::ResourcesController
   def confirmation
     if request.patch?
       if resource.update_attributes(permitted_params[:event])
+        resource.notify_sidestage!
         redirect_to invite_friends_account_host_event_path(resource)
       end
     end

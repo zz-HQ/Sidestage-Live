@@ -64,6 +64,13 @@ class AdminMailer < ActionMailer::Base
     end
   end
   
+  def event_notification(event)
+    @event = event
+    mail(reply_to: @event.user.email, from: "#{@event.user.name} <#{@event.user.email}>", to: "bookings@sidestage.com", subject: "Sidestage: New Event") do |format|
+      format.html
+    end
+  end
+  
   def review_notification(review)
     @review = review
     mail(subject: "Sidestage: New Review") do |format|
