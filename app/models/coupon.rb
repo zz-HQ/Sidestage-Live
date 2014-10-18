@@ -51,6 +51,12 @@ class Coupon < ActiveRecord::Base
     new_price = deal.customer_price - coupon_price
     new_price < 0 ? 0 : new_price.round
   end
+  
+  def event_price
+    coupon_price = CurrencyConverterService.convert(amount, currency, Event.black_currency)
+    new_price = Event::BLACK_PRICE - coupon_price
+    new_price < 0 ? 0 : new_price.round
+  end
 
   
 end

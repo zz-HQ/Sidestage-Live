@@ -2,15 +2,7 @@
 	<p>Nice... We've got a great musician there. Add your payment details to firm this up.</p>
 
 	<%= simple_form_for resource, url: payment_account_host_event_path(resource), data: { form: "payment" } do |f| %>
-        <% if current_user.paymentable? %>
-            <h4><%= t(:"application.personals.payment_details.show.title") %></h4>
-            <div class="credit-card-info">
-                <p><%= current_user.credit_card.brand %></p>
-                <p><%= t(:"activerecord.attributes.credit_card.number") %>: <%= current_user.credit_card.number %></p>
-                <p><%= t(:"activerecord.attributes.credit_card.expiration") %>: <%= current_user.credit_card.expiration_human %></p>
-            </div>
-	    <% end %>
-	    <%= render partial: "account/payment_details/payment_form", locals: { f: f } %>
+	    <%= render "account/payment_details/payment_form", f: f %>
 	    <div class="btns">
 			<input type="submit" value="Pay" class="btn btn-inline">
 		</div>

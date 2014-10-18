@@ -29,7 +29,7 @@
 
     <div data-content="payment-form" id="payment" class="payment-form">
         <%= simple_form_for resource, url: request.path, data: { form: "payment" } do |f| %>
-            <%= render partial: "account/payment_details/payment_form", locals: { f: f } %>
+            <%= render "account/payment_details/payment_form", f: f %>
             <div class="btns">
                 <%= f.submit value: (action_name == "complete_payment") ? t(:"helpers.submit.save_finish") : t(:"helpers.submit.credit_card.submit"), class: "btn" %>
                 <%= link_to t(:"application.personals.payment_details.skip"), skip_payment_account_personal_path, class: 'skip-link' if action_name == "complete_payment" %>

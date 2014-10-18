@@ -1,4 +1,4 @@
-<% unless current_user.paymentable? %>
+<% if f.object.is_a?(Event) || !current_user.paymentable? %>
     <div class="payment-inputs">
         <% unless controller_name == "personals" %>
     	    <p><%= t(:"application.personals.payment_details.credit_card_form_title") %></p>

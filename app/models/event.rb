@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   #
   #
   #
+  
+  BLACK_PRICE = 99
 
   attr_accessor :balanced_token, :friends_emails
 
@@ -33,6 +35,7 @@ class Event < ActiveRecord::Base
   #  
   
   belongs_to :user
+  belongs_to :coupon
   has_many :event_invitations
 
   #
@@ -44,7 +47,20 @@ class Event < ActiveRecord::Base
   #
   #  
   
-  before_save :make_user_paymentable
+  before_save :assign_coupon
+
+  #
+  #
+  # Class Methods
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #  
+  
+  def self.black_currency
+    Currency.dollar
+  end
 
   #
   #
@@ -62,15 +78,13 @@ class Event < ActiveRecord::Base
   
 
   def charge_user!
-    return false unless user.paymentable?
+    return false if balanced_token.blank?
     return true if balanced_debit_id.present?
     begin
-      price = 99 * 100
-      
-      update_columns balanced_debit_id: "SIDESTAGE_TEST", charged_price: price      
-      return true
-      
-      debit = user.retrieve_balanced_card(user.balanced_card_id).debit(
+      price = (coupon_price || BLACK_PRICE) * 100      
+      # update_columns balanced_debit_id: "SIDESTAGE_TEST", charged_price: price      
+      # return true
+      debit = Balanced::Card.fetch("/cards/#{balanced_token}").debit(
         :amount => price,
         :appears_on_statement_as => 'Sidestage',
         :description => "#{user.name}"
@@ -108,12 +122,12 @@ class Event < ActiveRecord::Base
   
   private
   
-  def make_user_paymentable
-    if balanced_token.present?
-      user.make_paymentable_by_token(balanced_token)
-      errors.add :balanced_token, user.errors.full_messages.first if user.errors.present?
+  def assign_coupon
+    if coupon_id_changed? && coupon.present?
+      self.coupon_code = coupon.code
+      self.coupon_price = coupon.event_price
     end
-  end
+  end  
 
   
 end

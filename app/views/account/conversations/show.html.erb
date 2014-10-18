@@ -80,7 +80,7 @@
                 <div data-content="payment-form" id="payment" class="payment-form">
                     <%= simple_form_for current_user, url: payment_details_account_personal_path, data: { form: "payment" } do |f| %>
                         <%= hidden_field_tag :return_to, request.path %>
-                        <%= render partial: "account/payment_details/payment_form", locals: { f: f } %>
+                        <%= render "account/payment_details/payment_form", f: f %>
                         <div class="btns">
                             <%= f.submit value: t(:"helpers.submit.credit_card.submit"), class: "btn" %>
                         </div>

@@ -20,6 +20,8 @@ class Currency < ActiveRecord::Base
   #
   
   default_scope -> { order("name ASC") }
+  scope :pounds, -> { where(name: "GBP") }
+  scope :dollars, -> { where(name: "USD") }
   
   
   #
@@ -32,7 +34,11 @@ class Currency < ActiveRecord::Base
   
   
   def self.pound
-    where(name: "GBP").first
+    pounds.first
+  end
+
+  def self.dollar
+    dollars.first
   end
   
 end

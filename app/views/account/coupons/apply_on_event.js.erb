@@ -1,13 +1,15 @@
 <% if @coupon.present? %>
-    $("form#deal-request [data-coupon=original_price]").hide();
-    $("form#deal-request [data-coupon=coupon_price]").show();
-    $("form#deal-request [data-coupon=id]").val(<%= @coupon.id %>);
-    $("form#deal-request [data-coupon=failure]").hide();
-    $("form#deal-request [data-coupon=success]").show();
+    selected_option = $("form#new_event select#event_genre").find(":selected");
+    selected_option.text(selected_option.attr("data-text") + " <%= black_price(@coupon.event_price) %>");
+    selected_option.change();
+    $("form#new_event [data-coupon=id]").val(<%= @coupon.id %>);
+    $("form#new_event [data-coupon=failure]").hide();
+    $("form#new_event [data-coupon=success]").show();
 <% else %>
-    $("form#deal-request [data-coupon=id]").val("");
-    $("form#deal-request [data-coupon=coupon_price]").hide();    
-    $("form#deal-request [data-coupon=original_price]").show();
-    $("form#deal-request [data-coupon=success]").hide();
-    $("form#deal-request [data-coupon=failure]").show();
+    $("form#new_event [data-coupon=id]").val("");
+    selected_option = $("form#new_event select#event_genre").find(":selected");
+    selected_option.text(selected_option.attr("data-text") + " " + selected_option.attr("data-price"));
+    selected_option.change();
+    $("form#new_event [data-coupon=success]").hide();
+    $("form#new_event [data-coupon=failure]").show();
 <% end %>
