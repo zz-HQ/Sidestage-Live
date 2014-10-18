@@ -11,24 +11,17 @@
       <div id="main" class="clearfix">
 
         <%= render 'cookies' %>
-        
-        <%= render 'header' %>
-        
+
         <%= render 'flash' %>
 
-        <%= yield :outer_wrap %>
-        
         <div class="wrap">
           <%= yield %>
         </div>
 
-        <%= render 'footer' %>
-                
       </div>
     </div>
-
-    <%= yield :olark %>
-
+    
     <%= render "google_analytics" %>
+    
   </body>
 </html>

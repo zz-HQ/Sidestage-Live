@@ -10,6 +10,16 @@ class Account::HostEventsController < Account::ResourcesController
   
   defaults resource_class: Event, instance_name: 'event', collection_name: 'events'
   
+  layout 'black'
+  
+  #
+  # Actions
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+
   def new
     build_resource
     resource.event_day = session[:host_event_day] if session[:host_event_day].present?
