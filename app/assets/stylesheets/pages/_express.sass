@@ -1,12 +1,74 @@
+body.black
+	.brand
+		+span-columns(8)
+		text-align: center
+		margin-top: 50px
+
+		img
+			width: 180px
+			+opacity(0.3)
+			pointer-events: none
+
+
 section.express-booking
-	+span-columns(4)
-	+shift(2)
-	padding-top: 50px
+	+span-columns(3 of 9)
+	+shift(3 of 9)
+	padding: 50px 0 0
+
+	&.invite-friends
+		+span-columns(4)
+		+shift(2)
+		padding-left: 0
+
+	&.index
+		+span-columns(4)
+		+shift(2)
+
+		p
+			font-size: 24px
+
+			&.light
+				font-size: 18px
+				margin-top: 10px
 
 	p
 		font-size: 18px
 		margin-bottom: 20px
-		float: left
+		+span-columns(8)
+
+		a.light
+			margin-top: 10px
+			display: block
+
+		&.confirmed
+			i.fa
+				font-size: 30px
+				top: 2px
+				position: relative
+				margin-right: 10px
+				color: #417505
+
+		&.event_url
+			text-align: center
+			border: 1px solid $border-color
+			color: $text-color-light
+			padding: 10px
+			margin-top: 30px
+
+		&.share
+			color: $text-color-light
+
+			span
+				font-size: 18px
+				float: left
+
+			a
+				float: left
+				margin-left: 15px
+				font-size: 22px
+				color: $text-color-light
+				position: relative
+				bottom: 3px
 
 	em
 		font-size: 16px
@@ -23,37 +85,110 @@ section.express-booking
 			margin-bottom: 10px
 
 	.text-with-select
+		+span-columns(8)
+		margin-bottom: 10px
+
 		p
 			margin-top: 8px
+			width: auto
 
 		.nice-select
 			margin-left: 20px
+			width: 200px
+			float: left
 
 	.nice-select
-		float: left
-		margin-right: 20px
+		height: 50px
+		margin-bottom: 8px
 
-		&:nth-child(2)
-			width: 150px
+		.select-label-value
+			font-weight: 600
+			top: 12px
+			font-size: 18px
 
-		&:nth-child(3)
-			width: 90px
+		.select-arrow
+			top: 15px
+			font-size: 22px
 
-		&:nth-child(4)
-			width: 200px
+	input
+		height: 50px
+		margin-bottom: 8px
+		font-size: 18px
 
-	input[type="text"]
-		width: 120px
-		float: left
-		height: 42px
-		margin-right: 150px
-
-		&:nth-child(3)
-			width: 220px
+	textarea
+		font-size: 18px
 
 	.btns
 		margin: 10px 0
 		+span-columns(8)
 
-	&.confirmation
-		padding-right: 160px
+		.btn
+			+big-buttons
+
+
+	form#new_event
+		+span-columns(8)
+
+		.step-1
+
+			.date
+				+span-columns(4)
+				font-weight: 600
+
+				input
+					padding: 10px 12px 9px
+
+				i.fa
+					top: 18px
+					color: $text-color
+
+			.nice-select
+				+span-columns(4)
+				+omega(2n)
+
+				&:nth-child(3)
+					+span-columns(8)
+
+	.coupon-inputs
+		a.link.coupon-show,
+		a
+			margin: 8px 0 5px
+			color: $blue
+			text-decoration: none
+
+		> div
+			input,
+			button
+				height: 50px
+
+			.input
+				+span-columns(2 of 3)
+
+				input
+					width: 100%
+
+			button
+				+span-columns(1 of 3)
+				+omega
+
+	form.edit_event
+		p
+			display: none
+
+		.form-inputs
+			input
+				+span-columns(8)
+
+				&.cc-exp,
+				&.cc-cvc
+					+span-columns(4)
+
+				&:last-child
+					+omega
+
+
+
+
+
+
+

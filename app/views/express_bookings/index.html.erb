@@ -1,16 +1,16 @@
-<section class="express-booking">
-	<p>Sidestage is a new app where you can order a professional musican to play a private performance - at your home, office, gallery, where ever.</p>
-	<p>Our musicians play for about an hour, and it costs just $99 get started now</p>
+<section class="express-booking index">
+	<p>For a fixed price, hire a musician to play a private performance at your place or event.</p>
 
 	<%= simple_form_for :event, url: sign_up_express_bookings_path do |f| %>
     	<div class="text-with-select">
-    		<p>Hire a musician for</p>
+    		<p>Book a musician for</p>
     		<%= nice_select(f.select :booking_for , options_for_select(["a dinner party", "an event", "a bar or cafe"]), include_blank: false) %>
-    		
     	</div>
 
     	<div class="btns">
-    	    <%= f.submit t(:"application.devise.facebook_signup"), class: "btn btn-inline" %>
+    	    <%= f.submit t(:"application.devise.facebook_signin"), class: "btn btn-inline" %>
     	</div>
 	<% end %>
+
+    <p class="light">Musicians play for about an hour. All acts are acoustic, so no special set up is required on your end. <br/> <br/> <%= link_to "Sign in to view pricing.", "#" %> </p>
 </section>

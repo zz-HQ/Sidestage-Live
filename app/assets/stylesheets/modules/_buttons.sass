@@ -54,7 +54,6 @@ $btn-hover-darken-percentage: 10%
 
   &.btn-white
     background-color: white
-    color: #FFF
     color: $text-color
     border: 1px solid $border-color
     font-weight: 400
@@ -62,6 +61,16 @@ $btn-hover-darken-percentage: 10%
     &:hover
       background-color: btn-white
       border-color: #CCC
+
+  &.btn-gray
+    background-color: #ccc
+    color: #FFF
+    border-color: transparent
+
+    &:hover
+      background-color: darken(#ccc, 5%)
+      border-color: transparent
+
 
   &.btn-full
     width: 100%

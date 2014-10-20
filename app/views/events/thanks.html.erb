@@ -1,5 +1,12 @@
-<p>
-    Thanks for your response! Stay up to date with Sidestage
-    happenings, and join us on Facebook.
-</p>
-<%= link_to "<i class='fa fa-facebook-square'></i>Share".html_safe, facebook_share_url(root_url), target: :_blank, style: "color:#3b5998;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=300,toolbar=1,resizable=0'); return false;" %>
+<section class="event">
+	
+	<p>Thanks for your response!</p>
+
+    <div class="btns">
+    	<%= link_to "Like us on Facebook", "https://www.facebook.com/sidestagehq", class: "btn btn-inline" %>
+    </div>
+
+    <div class="brand">
+		<img src="<%= asset_path 'sprite-2x/sidestage-logo.png' %>">
+	</div>
+</section>
