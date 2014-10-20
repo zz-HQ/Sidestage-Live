@@ -40,6 +40,8 @@ class Account::HostEventsController < Account::ResourcesController
       if resource.update_attributes(permitted_params[:event]||{}) && resource.charge_user!
         redirect_to confirmation_account_host_event_path(resource)
       end
+    else
+      redirect_to confirmation_account_host_event_path(resource) if resource.price < 1
     end
   end
   

@@ -69,7 +69,15 @@ class Event < ActiveRecord::Base
   #
   #
   #
-  #  
+  # 
+  
+  def price
+    coupon_price || BLACK_PRICE
+  end
+  
+  def price_in_dollar
+    CurrencyConverterService.convert(price, Event.black_currency, "USD").round
+  end  
   
   def user_responded?(user)
     invitation = event_invitations.where("email = ? OR attendee_id = ?", user.email, user.id).first
@@ -78,18 +86,19 @@ class Event < ActiveRecord::Base
   
 
   def charge_user!
+    return true if price < 1
     return false if balanced_token.blank?
     return true if balanced_debit_id.present?
     begin
-      price = (coupon_price || BLACK_PRICE) * 100      
-      # update_columns balanced_debit_id: "SIDESTAGE_TEST", charged_price: price      
+      cents = price_in_dollar.in_cents
+      # update_columns balanced_debit_id: "SIDESTAGE_TEST", charged_price: cents      
       # return true
       debit = Balanced::Card.fetch("/cards/#{balanced_token}").debit(
-        :amount => price,
+        :amount => cents,
         :appears_on_statement_as => 'Sidestage',
         :description => "#{user.name}"
       )
-    update_columns balanced_debit_id: debit.id, charged_price: price
+    update_columns balanced_debit_id: debit.id, charged_price: cents
     return true
     rescue Balanced::Error => e
       user.update_column(:error_log, e.inspect) 
