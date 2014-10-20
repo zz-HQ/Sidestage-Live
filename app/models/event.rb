@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
   #
   #  
 
-  validates :user_id, presence: true
+  validates :user_id, :event_at, presence: true
 
   #
   #
@@ -139,7 +139,7 @@ class Event < ActiveRecord::Base
   end  
   
   def reset_time
-    if event_time_changed?
+    if event_time_changed? && event_at.present?
       self.event_at = self.event_at.change(hour: event_time.to_i, minute: 0)
     end
   end
