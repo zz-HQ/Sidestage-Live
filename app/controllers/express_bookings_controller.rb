@@ -23,7 +23,7 @@ class ExpressBookingsController < ApplicationController
   end
   
   def sign_up
-    session[:host_event_day] = permitted_params[:event][:event_day]
+    session[:host_booking_for] = permitted_params[:event][:booking_for]
     params[:return_to] = new_account_host_event_path
     store_location
     redirect_to user_omniauth_authorize_path(:facebook)
@@ -44,7 +44,7 @@ class ExpressBookingsController < ApplicationController
   private
   
   def permitted_params
-    params.permit(event: [:event_day])
+    params.permit(event: [:booking_for])
   end
 
 

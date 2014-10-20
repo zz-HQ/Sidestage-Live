@@ -22,8 +22,8 @@ class Account::HostEventsController < Account::ResourcesController
 
   def new
     build_resource
-    resource.event_day = session[:host_event_day] if session[:host_event_day].present?
-    session[:host_event_day] = nil
+    resource.booking_for = session[:host_booking_for] if session[:host_booking_for].present?
+    session[:host_booking_for] = nil
   end
   
   def create
@@ -79,7 +79,7 @@ class Account::HostEventsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(event: [:event_day, :event_time, :genre, :postal_code, :balanced_token, :address, :phone, :friends_emails, :coupon_code, :coupon_id])
+    params.permit(event: [:booking_for, :event_day, :event_time, :genre, :postal_code, :balanced_token, :address, :phone, :friends_emails, :coupon_code, :coupon_id])
   end
 
 end

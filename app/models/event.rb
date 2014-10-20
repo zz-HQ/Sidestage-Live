@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
 
   attr_accessor :balanced_token, :friends_emails
 
-  store :additionals, accessors: []
+  store :additionals, accessors: [:booking_for]
 
   #
   #

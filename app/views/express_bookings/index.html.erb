@@ -5,7 +5,8 @@
 	<%= simple_form_for :event, url: sign_up_express_bookings_path do |f| %>
     	<div class="text-with-select">
     		<p>Hire a musician for</p>
-    		<%= nice_select(f.select :event_day , options_for_select(express_date), include_blank: false) %>
+    		<%= nice_select(f.select :booking_for , options_for_select(["a dinner party", "an event", "a bar or cafe"]), include_blank: false) %>
+    		
     	</div>
 
     	<div class="btns">
