@@ -1,10 +1,27 @@
-<%= image_tag resource.user.avatar.url(:thumb) %>
-<% if user_signed_in? %>
-    <%= resource.user.profile_name %> has invited you to a private musical performance that takes
-    place at <%= resource.address %> on <%= resource.event_day %> at <%= resource.event_time %>.
-    <%= link_to "I'm going :)", accept_event_path(resource), method: :put, class: "btn btn-inline" %>
-    <%= link_to "I can't make it :(", reject_event_path(resource), method: :put, class: "btn btn-inline" %>
-<% else %>
-    This is a private event, please sign in to view the details.
-    <%= link_to t(:"application.devise.facebook_signup"), facebook_auth_forward_path %>
-<% end %>
+<section class="event">
+	
+	<div class="profile">
+		<%= image_tag resource.user.avatar.url(:thumb) %>
+	</div>
+
+	<% if user_signed_in? %>
+	    <p><%= resource.user.profile_name %> has invited you to a private musical performance that takes
+	    place at <%= resource.address %> on <%= resource.event_day %> at <%= resource.event_time %>.</p>
+
+	    <div class="btns choice">
+	    	<%= link_to "I'm going :)", accept_event_path(resource), method: :put, class: "btn btn-inline" %>
+	    	<br/>
+	    	<%= link_to "I can't make it :(", reject_event_path(resource), method: :put, class: "btn btn-inline btn-gray" %>
+	    </div>
+	<% else %>
+	    <p>This is a private event, please sign in to view the details.</p>
+
+	    <div class="btns">
+	    	<%= link_to t(:"application.devise.facebook_signin"), facebook_auth_forward_path, class: "btn btn-inline" %>
+	    </div>
+	<% end %>
+
+	<!-- <div class="brand">
+		<img src="<%#= asset_path 'sprite-2x/sidestage-logo.png' %>">
+	</div> -->
+</section>

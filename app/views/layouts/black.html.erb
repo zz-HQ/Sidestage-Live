@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <%= render 'head' %>
-  <body>
+  <body class="black">
     <div id="fb-root"></div>
     
     <div id="wrap">
@@ -16,6 +16,10 @@
 
         <div class="wrap">
           <%= yield %>
+
+          <div class="brand">
+            <img src="<%= asset_path 'sprite-2x/sidestage-logo.png' %>">
+          </div>
         </div>
 
       </div>

@@ -9,7 +9,8 @@
 <p style="color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;">
     <b>Event info:</b>
     <br>
-    <strong>Date: <%= @event.event_day %>, <%= @event.event_time %>:</strong><br>
+    <strong>Booking for: <%= @event.booking_for %></strong><br>
+    <strong>Date: <%= l @event.event_at %></strong><br>
     <strong>Musician type:</strong><%= @event.genre %><br>
     <strong>Street address:</strong> <%= @event.address %><br>
     <strong>Event phone:</strong> <%= @event.phone %><br>

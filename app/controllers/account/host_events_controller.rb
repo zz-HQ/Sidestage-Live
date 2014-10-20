@@ -22,8 +22,8 @@ class Account::HostEventsController < Account::ResourcesController
 
   def new
     build_resource
-    resource.event_day = session[:host_event_day] if session[:host_event_day].present?
-    session[:host_event_day] = nil
+    resource.booking_for = session[:host_booking_for] if session[:host_booking_for].present?
+    session[:host_booking_for] = nil
   end
   
   def create
@@ -40,6 +40,8 @@ class Account::HostEventsController < Account::ResourcesController
       if resource.update_attributes(permitted_params[:event]||{}) && resource.charge_user!
         redirect_to confirmation_account_host_event_path(resource)
       end
+    else
+      redirect_to confirmation_account_host_event_path(resource) if resource.price < 1
     end
   end
   
@@ -77,7 +79,7 @@ class Account::HostEventsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(event: [:event_day, :event_time, :genre, :postal_code, :balanced_token, :address, :phone, :friends_emails, :coupon_code, :coupon_id])
+    params.permit(event: [:booking_for, :event_time, :event_at, :genre, :postal_code, :balanced_token, :address, :phone, :friends_emails, :coupon_code, :coupon_id])
   end
 
 end

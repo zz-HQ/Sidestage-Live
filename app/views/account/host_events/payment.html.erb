@@ -1,11 +1,13 @@
 <section class="express-booking">
-	<p>Nice... We've got a great musician there. Add your payment details to firm this up.</p>
+	<p><strong>Step 2 of 2:</strong></p>
+	<p>Confirm your booking.</p>
 
 	<%= simple_form_for resource, url: payment_account_host_event_path(resource), data: { form: "payment" } do |f| %>
 	    <%= render "account/payment_details/payment_form", f: f %>
 	    <div class="btns">
-			<input type="submit" value="Pay" class="btn btn-inline">
+			<input type="submit" value="Pay $99" class="btn btn-full">
 		</div>
 	<% end %>
-	<p class="light">Once payment is confirmed, we'll get your street deets so the musician knows where to go.</p>
+
+	<p><%= link_to "Go back", "#" , class: "light" %></p>
 </section>

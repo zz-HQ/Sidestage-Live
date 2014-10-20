@@ -1,2 +1,5 @@
 $("input#event_friends_emails").val("");
 $("[data-invite=success]").show();
+setTimeout(function() {
+	$("[data-invite=success]").fadeOut(100);
+}, 3000);

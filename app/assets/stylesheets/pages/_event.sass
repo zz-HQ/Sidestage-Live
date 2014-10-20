@@ -1,0 +1,39 @@
+section.event
+	+span-columns(6)
+	+shift(1)
+	text-align: center
+	padding-top: 80px
+
+	.profile
+		+span-columns(8)
+		margin-bottom: 40px
+
+		img
+			width: 100px
+			+border-radius(50%)
+			border: 3px solid $border-color
+
+	p
+		+span-columns(8)
+		font-size: 18px
+		margin-bottom: 30px
+
+	.btns
+		+span-columns(8)
+		
+		.btn
+			+big-buttons
+			margin-top: 10px
+
+		&.choice .btn
+			width: 200px
+
+	.brand
+		+span-columns(8)
+		text-align: center
+		margin-top: 50px
+
+		img
+			width: 180px
+			+opacity(0.3)
+			pointer-events: none
