@@ -79,7 +79,7 @@ class Account::HostEventsController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(event: [:booking_for, :event_day, :event_time, :genre, :postal_code, :balanced_token, :address, :phone, :friends_emails, :coupon_code, :coupon_id])
+    params.permit(event: [:booking_for, :event_time, :event_at, :genre, :postal_code, :balanced_token, :address, :phone, :friends_emails, :coupon_code, :coupon_id])
   end
 
 end

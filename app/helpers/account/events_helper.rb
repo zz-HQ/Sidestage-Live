@@ -5,7 +5,7 @@ module Account::EventsHelper
   end
 
   def express_time
-    ["8pm", "9pm", "10pm"]
+    [["8pm", "20"], ["9pm", "21"], ["10pm", "22"]]
   end
 
   def express_genre

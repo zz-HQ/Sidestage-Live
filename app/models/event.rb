@@ -47,7 +47,7 @@ class Event < ActiveRecord::Base
   #
   #  
   
-  before_save :assign_coupon
+  before_save :assign_coupon, :reset_time
 
   #
   #
@@ -91,8 +91,8 @@ class Event < ActiveRecord::Base
     return true if balanced_debit_id.present?
     begin
       cents = price_in_dollar.in_cents
-      # update_columns balanced_debit_id: "SIDESTAGE_TEST", charged_price: cents      
-      # return true
+      update_columns balanced_debit_id: "SIDESTAGE_TEST", charged_price: cents      
+      return true
       debit = Balanced::Card.fetch("/cards/#{balanced_token}").debit(
         :amount => cents,
         :appears_on_statement_as => 'Sidestage',
@@ -137,6 +137,11 @@ class Event < ActiveRecord::Base
       self.coupon_price = coupon.event_price
     end
   end  
-
+  
+  def reset_time
+    if event_time_changed?
+      self.event_at = self.event_at.change(hour: event_time.to_i, minute: 0)
+    end
+  end
   
 end

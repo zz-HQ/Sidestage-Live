@@ -2,8 +2,12 @@
 	<p>Thanks for signing up for Sidestage! We'll send a musician over to your next private party or event. When is it?</p>
 
 	<%= simple_form_for resource, url: account_host_events_path do |f| %>
-		<%= nice_select((f.select :event_day, options_for_select(express_date, f.object.event_day)), id: "event_day") %>
+		<div class="date">
+			<%= f.input :event_at, as: :string, input_html: { class: "date-picker" }, label: false %>
+			<i class="fa fa-calendar"></i>
+		</div>
 		<%= nice_select((f.select :event_time, options_for_select(express_time, f.object.event_time)), id: "event_time") %>
+
 		<%= nice_select((f.select :genre, options_for_select(express_genre, f.object.genre)), id: "genre") %>
         <%= render "account/deals/coupon_form", f: f, action: apply_on_event_account_coupons_path %>
 		<%= f.input :postal_code, placeholder: "Zip code", maxlength: "5", pattern: "\d*", label: false %>
