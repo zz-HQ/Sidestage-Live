@@ -10,7 +10,7 @@
     	    <span data-invite="success" style="display:none;margin-left: 15px;color:green;">Invitation sent!</span>
 	    </div>
     <% end %>
-    <p class="event_url"><%= event_url(resource, locale: nil) %></p>
+    <input type="text" value="<%= event_url(resource, locale: nil) %>" readonly="readonly" style="color:#aaa;" onclick="this.focus();this.select()" />
 
     <p class="share">
         <span>Share:</span>
