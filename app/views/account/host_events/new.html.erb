@@ -5,7 +5,7 @@
 	<%= simple_form_for resource, url: account_host_events_path do |f| %>
 		<div class="step-1">
 			<div class="date">
-				<%= f.input :event_at, as: :string, input_html: { class: "date-picker" }, label: false, placeholder: "22/10/2014" %>
+				<%= f.input :event_at, as: :string, input_html: { class: "date-picker" }, label: false, placeholder: "Choose date" %>
 				<i class="fa fa-calendar"></i>
 			</div>
 			<%= nice_select((f.select :event_time, options_for_select(express_time, f.object.event_time)), id: "event_time") %>
@@ -18,6 +18,4 @@
 		</div>
 	    <%= f.input :booking_for, as: :hidden, label: false %>
 	<% end %>
-
-	<p><%= link_to "Go back", "#" , class: "light" %></p>
 </section>

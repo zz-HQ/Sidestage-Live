@@ -12,14 +12,17 @@
 
         <%= render 'cookies' %>
 
-        <%= render 'flash' %>
+        <%#= render 'flash' %>
 
         <div class="wrap">
           <%= yield %>
 
-          <div class="brand">
-            <img src="<%= asset_path 'sprite-2x/sidestage-logo.png' %>">
-          </div>
+          <% unless controller_name == "express_bookings" && action_name = "index" %>
+            <div class="brand">
+              <img src="<%= asset_path 'sidestage_logo_light.png' %>">
+            </div>
+          <% end %>
+
         </div>
 
       </div>

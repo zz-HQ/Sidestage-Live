@@ -63,8 +63,8 @@ module ApplicationHelper
     "http://www.facebook.com/sharer/sharer.php?u=#{url}"
   end
   
-  def twitter_share_url(text, url)
-    "https://twitter.com/intent/tweet?text=#{text}&url=#{url}"
+  def twitter_share_url(text, url, via = nil)
+    "https://twitter.com/intent/tweet?text=#{text}&url=#{url}" + (via.nil? ? '' : "&via=#{via}")
   end
 
   def googleplus_share_url(url)

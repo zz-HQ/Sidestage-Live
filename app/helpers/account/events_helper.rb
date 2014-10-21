@@ -10,9 +10,9 @@ module Account::EventsHelper
 
   def express_genre
     [
-      ["Jazz musician #{black_price}", "Jazz musician", { data: { price: black_price, text: "Jazz musician"  } }],
-      ["Classical musician #{black_price}", "Classical musician", { data: { price: black_price, text: "Classical musician"  } }],
-      ["Indie singer/songwriter #{black_price}", "Indie singer/songwriter", { data: { price: black_price, text: "Indie singer/songwriter"  } }],
+      ["Jazz musician for #{black_price}", "Jazz musician", { data: { price: black_price, text: "Jazz musician for"  } }],
+      ["Classical musician for #{black_price}", "Classical musician", { data: { price: black_price, text: "Classical musician for"  } }],
+      ["Indie singer/songwriter for #{black_price}", "Indie singer/songwriter", { data: { price: black_price, text: "Indie singer/songwriter for"  } }],
     ]
   end
   

@@ -12,4 +12,8 @@
     selected_option.change();
     $("form#new_event [data-coupon=success]").hide();
     $("form#new_event [data-coupon=failure]").show();
+
+    setTimeout(function() {
+        $("form#new_event [data-coupon=success], form#new_event [data-coupon=failure]").hide();
+    }, 2000);
 <% end %>

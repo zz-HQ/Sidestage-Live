@@ -1,4 +1,6 @@
 <section class="express-booking index">
+    <img src="<%= asset_path 'sprite-2x/sidestage-logo.png' %>">
+
 	<p>For a fixed price, hire a musician to play a private performance at your place or event.</p>
 
 	<%= simple_form_for :event, url: sign_up_express_bookings_path do |f| %>
@@ -12,5 +14,5 @@
     	</div>
 	<% end %>
 
-    <p class="light">Musicians play for about an hour. All acts are acoustic, so no special set up is required on your end. <br/> <br/> <%= link_to "Sign in to view pricing.", "#" %> </p>
+    <p class="light">Musicians play for about an hour. All acts are acoustic, so no special set up is required on your end. <br/> <br/>Sign in to view pricing. </p>
 </section>

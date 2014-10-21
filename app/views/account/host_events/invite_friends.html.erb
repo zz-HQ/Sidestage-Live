@@ -1,3 +1,5 @@
+<% @social_desc = "I'm having a musician over to do a small private show RSVP to join" %>
+
 <section class="express-booking invite-friends">
 	<p><strong>Invite your friends</strong></p>
 
@@ -13,6 +15,6 @@
     <p class="share">
         <span>Share:</span>
         <%= link_to "<i class='fa fa-facebook'></i>".html_safe, facebook_share_url(event_url(resource)), target: :_blank, onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=300,toolbar=1,resizable=0'); return false;" %>
-        <%= link_to "<i class='fa fa-twitter'></i>".html_safe, twitter_share_url("I'm having a musician over to do a small private show RSVP to join ", event_url(resource)), target: :_blank %>
+        <%= link_to "<i class='fa fa-twitter'></i>".html_safe, twitter_share_url("I'm having a musician over to do a small private show RSVP to join ", event_url(resource), "sidestagehq"), target: :_blank %>
     </p>
 </section>
