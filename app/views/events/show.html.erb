@@ -6,7 +6,7 @@
 
 	<% if user_signed_in? %>
 	    <p><%= resource.user.profile_name %> has invited you to a private musical performance that takes
-	    place at <%= resource.address %> on <%= resource.event_day %> at <%= resource.event_time %>.</p>
+	    place at <%= resource.address %> on <%= l resource.event_at, format: :event_at_date %> at <%= l resource.event_at, format: :event_at_time %>.</p>
 
 	    <div class="btns choice">
 	    	<%= link_to "I'm going :)", accept_event_path(resource), method: :put, class: "btn btn-inline" %>
