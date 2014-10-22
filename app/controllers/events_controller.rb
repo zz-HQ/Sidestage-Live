@@ -7,7 +7,9 @@ class EventsController < ApplicationController
   #
   #
   # 
-  
+
+  layout "black"
+
   inherit_resources
   
   #
