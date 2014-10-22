@@ -116,8 +116,17 @@ class Event < ActiveRecord::Base
     end
   end
   
-  def notify_sidestage!
+  def notify_management
+    notify_sidestage
+    notify_host
+  end
+  
+  def notify_sidestage
     AdminMailer.delay.event_notification(self)
+  end
+
+  def notify_host
+    EventMailer.delay.confirmation_notification(self)
   end
   
   #

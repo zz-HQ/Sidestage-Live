@@ -25,7 +25,7 @@ class EventInvitation < ActiveRecord::Base
   
   belongs_to :inviter, class_name: 'User', foreign_key: :inviter_id
   belongs_to :event, counter_cache: true
-
+  belongs_to :attendee, class_name: 'User', foreign_key: :attendee_id
   
   #
   #
@@ -37,6 +37,7 @@ class EventInvitation < ActiveRecord::Base
   #  
   
   after_create :mail_invitation
+  after_save :send_acceptance_confirmation, :notify_host_about_acceptance
 
   #
   #
@@ -78,6 +79,15 @@ class EventInvitation < ActiveRecord::Base
   #  
   
   private
+  
+  def send_acceptance_confirmation
+    EmailWorker.perform_async(:event_acceptance_confirmation_mail, id) if accepted_changed? && accepted?
+  end
+  
+  def notify_host_about_acceptance
+    EmailWorker.perform_async(:host_event_acceptance_confirmation_mail, id) if accepted_changed? && accepted?
+  end
+  
   
   def mail_invitation
     EmailWorker.perform_async(:event_invitation_mail, id) if invited?

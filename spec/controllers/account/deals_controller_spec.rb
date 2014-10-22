@@ -16,7 +16,7 @@ describe Account::DealsController, :type => :controller do
 
       expect(assigns(:deal).offered?).to be true
       expect(assigns(:deal).artist_price).to be 1000
-      expect(assigns(:deal).customer_price).to be 1200
+      expect(assigns(:deal).customer_price).to be 1100
       expect(response).to redirect_to(account_conversation_path(deal.conversation))
     end
     

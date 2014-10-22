@@ -1,4 +1,4 @@
-class EventInvitationMailer < ActionMailer::Base
+class EventMailer < ActionMailer::Base
 
   helper Account::EventsHelper
 
@@ -40,34 +40,14 @@ class EventInvitationMailer < ActionMailer::Base
   
   
 
-  def invite(event_invitation)
-    @event_invitation = event_invitation
+  def confirmation_notification(event)
+    @event = event
 
-    mail(to: @event_invitation.email, subject: "Sidestage Event Invitation") do |format|
+    mail(to: @event.user.email, subject: "Sidestage Event Confirmation") do |format|
       format.text
       format.html
     end
   end
-  
-  def acceptance_confirmation(event_invitation)
-    @event_invitation = event_invitation
-
-    mail(to: @event_invitation.email, subject: "Sidestage Event Confirmation") do |format|
-      format.text
-      format.html
-    end    
-  end
-
-  def host_acceptance_confirmation(event_invitation)
-    @event_invitation = event_invitation
-
-    mail(to: @event_invitation.email, subject: "Sidestage Event Confirmation") do |format|
-      format.text
-      format.html
-    end    
-  end
-
-
 
   #
   # Protected Methods

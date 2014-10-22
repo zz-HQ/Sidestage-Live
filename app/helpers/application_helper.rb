@@ -74,5 +74,5 @@ module ApplicationHelper
   def pinterist_share_url(url, media)
     "http://pinterest.com/pin/create/link/?url=#{url}&media=#{media}"
   end
-  
+
 end

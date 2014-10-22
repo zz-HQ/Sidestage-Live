@@ -20,4 +20,8 @@ module Account::EventsHelper
     number_to_currency(price, unit: Event.black_currency.symbol, precision: 0)
   end
   
+  def event_location_time(event)
+    "#{event.address} on #{l event.event_at, format: :event_at_date} at #{l event.event_at, format: :event_at_time}" rescue "#{event.address}"
+  end
+  
 end
