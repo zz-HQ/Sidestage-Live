@@ -37,7 +37,7 @@ Airmusic::Application.routes.draw do
       end
     end
     
-    resources :express_bookings, path: :black do
+    resources :express_bookings, path: :x do
       collection do
         post :sign_up
       end
