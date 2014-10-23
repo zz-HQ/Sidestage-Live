@@ -52,7 +52,7 @@ class EventInvitationMailer < ActionMailer::Base
   def acceptance_confirmation(event_invitation)
     @event_invitation = event_invitation
 
-    mail(to: @event_invitation.email, subject: "Sidestage Event Confirmation") do |format|
+    mail(to: @event_invitation.attendee.try(:email) || @event_invitation.email, subject: "Sidestage Event Confirmation") do |format|
       format.text
       format.html
     end    
@@ -61,7 +61,7 @@ class EventInvitationMailer < ActionMailer::Base
   def host_acceptance_confirmation(event_invitation)
     @event_invitation = event_invitation
 
-    mail(to: @event_invitation.email, subject: "Sidestage Event Confirmation") do |format|
+    mail(to: @event_invitation.inviter.email, subject: "Sidestage Event Confirmation") do |format|
       format.text
       format.html
     end    
