@@ -3,7 +3,8 @@
   <div class="wrap">
     <h1 id="logo">
       <%= link_to params[:location].present? && action_name == "show" ? artists_path(location: params[:location], lng: params[:lng], lat: params[:lat]) : root_path do %>
-        <%= image_tag "sprite/sidestage-logo.png" %>
+        <%#= image_tag "sprite/sidestage-logo.png" %>
+        <img src="<%= asset_path (action_name == 'homepage' ? 'sidestage_logo_type_white.png' : 'sprite/sidestage-logo.png') %>">
       <% end %>
     </h1>
 
