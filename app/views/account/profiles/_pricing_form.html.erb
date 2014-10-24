@@ -1,11 +1,14 @@
 <div class="parts">
 
+	<%= f.label :currency %>
+	<div class="inputs profile_price">
+    	<%= nice_select((f.select :currency, Currency.all.map(&:name)), id: "profile_currency") %>
+    </div>
 	<%= f.label :price %>
 	<div class="inputs profile_price">
 		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Integer.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
-		<i class="fa fa-<%= resource.currency.downcase %>"></i>
+    	<span class="hint">Average price in your <br/> area is <%= current_currency.symbol %>200</span>
 
-		<span class="hint">Average price in your <br/> area is <%= current_currency.symbol %>200</span>
 	</div>
 	
 	<p class='light'><%= t(:"simple_form.labels.profile.surcharge_html", surcharge_base: Integer.surcharge_base) %></p>

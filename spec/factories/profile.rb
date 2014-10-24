@@ -7,6 +7,8 @@ FactoryGirl.define do
     currency "EUR"
     published true
     location "Berlin"
+    latitude "52.5167"
+    longitude "13.3833"
     youtube "www.youtube.com"
     after(:build) do |profile| 
       profile.genres = [create(:genre)]
@@ -33,7 +35,6 @@ FactoryGirl.define do
       name "unpublished"
       location "New York City"
       price 300
-      
       published false
     end
 

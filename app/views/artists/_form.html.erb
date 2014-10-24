@@ -16,8 +16,12 @@
             
 			<div class="input city">
 				<h3><%= t(:"simple_form.labels.profile.location") %></h3>
-	            <%= nice_select(f.select :location, available_locations, include_blank: false) %>				
-        		<%#= f.input :location, as: :string, label: false, input_html: { data: { source: available_locations.join("|") } } %>
+        		<%= f.input :location, as: :string, label: false %>
+        		<%= f.input :latitude, as: :hidden %>
+        		<%= f.input :longitude, as: :hidden %>
+        		<%= f.input :country_short, as: :hidden %>
+        		<%= f.input :country_long, as: :hidden %>
+        		
 			</div>
       		<div class="input">
       		    <%= f.submit class: "btn button btn-blue", value: "#{t(:"helpers.submit.profile.submit")}" %>

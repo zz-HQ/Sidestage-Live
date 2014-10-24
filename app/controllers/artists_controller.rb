@@ -37,10 +37,7 @@ class ArtistsController < ApplicationController
   #
   
   def create
-    build_resource
-    
-    redirect_to new_city_launch_path and return unless resource.location.blank? || profile_location_supported?
-    
+    build_resource    
     session[:profile] = permitted_params[:profile]
     render :new and return unless resource.valid?
     
@@ -83,7 +80,7 @@ class ArtistsController < ApplicationController
   end
 
   def permitted_params
-    params.permit(profile: [:artist_type, :name, :location, :price, :title, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
+    params.permit(profile: [:artist_type, :name, :location, :longitude, :latitude, :country_long, :country_short, :price, :title, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
   end
   
   def redirect_if_unpublished
@@ -112,10 +109,6 @@ class ArtistsController < ApplicationController
     super.tap do |profile|
       profile.user_id = -1
     end
-  end
-  
-  def profile_location_supported?
-    resource.location.downcase.in?(AVAILABLE_LOCATIONS.map(&:last).map { |l| l[:name].downcase })
   end
   
   def coerce_params

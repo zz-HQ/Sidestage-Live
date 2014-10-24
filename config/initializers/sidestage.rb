@@ -1,7 +1,7 @@
 AVAILABLE_LOCATIONS = {
-  berlin: { short: "berlin", name: "Berlin", currency: "EUR", country_long: "Germany", country_short: "DE", lat: "52.5167", lng: "13.3833" },
-  london: { short: "london", name: "London", currency: "GBP", country_long: "United Kingdom", country_short: "UK", lat: "51.5072", lng: "0.1275" },
-  new_york_city: { short: "newyork", name: "New York City", currency: "USD", country_long: "United States", country_short: "US", lat: "40.7127", lng: "-74.0059" }
+  berlin: { short: "berlin", name: "Berlin", lat: "52.5167", lng: "13.3833" },
+  london: { short: "london", name: "London", lat: "51.5072", lng: "0.1275" },
+  new_york_city: { short: "newyork", name: "New York City", lat: "40.7127", lng: "-74.0059" }
   #san_francicso: { short: "sanfrancisco", name: "San Francisco", currency: "USD", country_long: "United States", country_short: "US", lat: "37.77493", lng: "-122.4167" }
 
   # amsterdam: { name: "Amsterdam", currency: "EUR", country_long: "The Netherlands", country_short: "NL", lat: "52.3667", lng: "4.9000" },

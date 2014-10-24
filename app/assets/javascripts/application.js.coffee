@@ -44,10 +44,6 @@ App.init = ->
   App.setBalancedCardListener()
   App.initGooglePlaces()
 
-  if $("input#profile_location").length > 0
-    source = $("input#profile_location").data("source").split("|")
-    $("input#profile_location").autocomplete source: source, minLength: 1
-
 $(document).on 'change', '.submit-on-change', (e) -> 
   if($(@).val() != "")
       $(@).closest('form').trigger 'submit'

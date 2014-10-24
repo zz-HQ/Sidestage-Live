@@ -111,11 +111,9 @@ class Profile < ActiveRecord::Base
   #
   #  
   
-  before_validation :set_default_currency
+  before_validation :set_default_currency, on: :create
 
   after_validation :reverse_friendly
-  
-  before_save :geo_locate
   
   after_save :notify_admin_on_publish
 
@@ -245,26 +243,8 @@ class Profile < ActiveRecord::Base
     end
   end
   
-  def geo_locate
-    if (selected_location = location_hash).present?
-      self.country_long = selected_location[:country_long] if location_changed? || self.country_long.blank?
-      self.country_short = selected_location[:country_short]  if location_changed? || self.country_short.blank?
-      self.latitude = selected_location[:lat] if location_changed? || self.latitude.blank?
-      self.longitude = selected_location[:lng] if location_changed? || self.longitude.blank?
-    end
-  end
-  
   def set_default_currency
-    if (selected_location = location_hash).present?
-      self.currency = selected_location[:currency]
-    end
-  end
-
- def location_hash
-    AVAILABLE_LOCATIONS.values.each do |geo_location|
-      return geo_location if self.location.to_s.casecmp(geo_location[:name]) == 0
-    end
-    return nil
+    self.currency ||= Currency.dollar.name
   end
 
   #
