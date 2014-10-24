@@ -37,7 +37,7 @@ FactoryGirl.define do
       price 300
       published false
     end
-
+ 
     factory :balanced do
       name "balanced"
       routing_number "123445"

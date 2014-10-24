@@ -7,8 +7,7 @@
 </div>
 
 <div class="input city last">
-	<h3><%= t(:"simple_form.labels.profile.location") %></h3>
-	<%= nice_select(f.select :location, available_locations, include_blank: false) %>
+	<%= render "account/profiles/location_field", f: f %>
 </div>
 
 <%= render "account/profiles/submit", f: f %>
