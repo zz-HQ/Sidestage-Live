@@ -5,9 +5,9 @@
 	<%= simple_form_for resource, url: payment_account_host_event_path(resource), data: { form: "payment" } do |f| %>
 	    <%= render "account/payment_details/payment_form", f: f %>
 	    <div class="btns">
-			<input type="submit" value="Pay $99" class="btn btn-full">
+	        <%= f.submit t(:"helpers.submit.event.submit_step_2", price: number_to_currency(resource.price, unit: resource.class.black_currency.symbol)), class: "btn btn-full" %>
 		</div>
 	<% end %>
 
-	<p><%= link_to "Go back", new_account_host_event_path , class: "light" %></p>
+	<p><%= link_to "Go back", edit_account_host_event_path(resource) , class: "light" %></p>
 </section>

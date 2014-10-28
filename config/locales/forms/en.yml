@@ -142,3 +142,5 @@ en:
       match_me:
         create: Next  
         location: Get Matched
+      event:
+        submit_step_2: "Pay %{price}"

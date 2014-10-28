@@ -35,6 +35,15 @@ class Account::HostEventsController < Account::ResourcesController
     end 
   end
   
+  def update
+    update! do |success, failure| 
+       success.html{
+         flash.delete(:notice)
+         redirect_to payment_account_host_event_path(resource)
+       }
+    end 
+  end
+  
   def payment
     if request.patch?
       if resource.update_attributes(permitted_params[:event]||{}) && resource.charge_user!
