@@ -5,23 +5,16 @@
 
     <div class="content">
         <header>
-            <!--
-            <div class="results-order">
-            <%= sorty :name, class: "active" %>
-            <%= sorty :price, label: "Price" %>
-            </div>
-            <%= simple_form_for :artist, url: artists_path, method: :GET, remote: true, data: { auto_save: true } do |f| %>
+            <%= simple_form_for :filter, url: artists_path, method: :GET, remote: true, data: { auto_save: true }, html: { id: :artist_filter } do |f| %>
                 <% request.query_parameters.each do |k,v| %>
                     <% next unless [:lat, :lng, :location].include?(k.to_sym) %>
                     <%= hidden_field_tag k, v %>
                 <% end %>
-                <label>Show me</label>
-                <%= nice_select(select_tag :genre_id, "<option>Everything</option>".html_safe + options_from_collection_for_select(Genre.where(id: [1, 2,69]), :id, :name)) %>
-                <label>sorted by</label>
-                <%= nice_select(select_tag :order, options_from_collection_for_select([["Price", :price], ["Name", :name]], :last, :first))%>
+                <label><%= t(:"simple_form.labels.filter.genre_id") %></label>
+                <%= nice_select(select_tag :genre_id, options_from_collection_for_select(Genre.where(id: [1, 2,69]), :id, :name, params[:genre_id]), prompt: t(:"helpers.select.prompts.genre_filter")) %>
+                <label><%= t(:"simple_form.labels.filter.order") %></label>
+                <%= nice_select(select_tag :column, options_from_collection_for_select([[Profile.human_attribute_name(:price), :price], [Profile.human_attribute_name(:name), :name]], :last, :first,  params[:column]))%>
             <% end %>
-            -->
-
         </header>
 
         <div class="results" data-container="artists">

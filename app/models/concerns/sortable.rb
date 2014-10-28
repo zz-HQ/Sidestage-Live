@@ -11,9 +11,7 @@ module Sortable
       scope :sorty, lambda { |params|
         column = params[:column]
         order = params[:order] || valid_orders.first.to_sym
-
-        return unless column.present? && valid_columns.include?(column.to_sym) && valid_orders.include?(order)
-
+        return unless column.present? && valid_columns.include?(column.to_sym) && valid_orders.include?(order.to_s)
         order([column, order].join(' '))
       }
     end

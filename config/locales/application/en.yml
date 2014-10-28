@@ -22,6 +22,7 @@ en:
       remove: Remove
       cancel: Cancel Booking
       view_profiles: View Profiles
+      reset_filters: Reset filters
       pagination:
         view_more: View more
     social:
@@ -36,4 +37,4 @@ en:
         twitter:
           text: "Check out a @sidestagehq, a new platform for booking great musicians, bands and DJs"
     city_launches:
-      desc: "Sidestage is not available in your city yet, but that'll soon change. Get notified when Sidestage launches near you."        
+      desc: "Sidestage is not available in %{city} yet, but that'll soon change. Get notified when Sidestage launches near you."        

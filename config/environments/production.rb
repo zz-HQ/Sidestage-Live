@@ -92,6 +92,6 @@ Rails.application.configure do
     user_name: ENV['MAILGUN_SMTP_LOGIN'],
     password: ENV['MAILGUN_SMTP_PASSWORD']
   }
-  config.min_listable_artists = 6
+  config.min_listable_artists = 3
   
 end

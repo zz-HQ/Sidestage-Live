@@ -76,7 +76,7 @@ class ArtistsController < ApplicationController
   end  
   
   def resources
-    end_of_association_chain.includes(:genres).filter(params).sorty(params).radial(lat: params[:lat], lng: params[:lng], radius: 36).published
+    end_of_association_chain.joins(:genres).filter(params).sorty(params).radial(lat: params[:lat], lng: params[:lng], radius: 36).published
   end
 
   def permitted_params
@@ -88,7 +88,9 @@ class ArtistsController < ApplicationController
   end
 
   def only_available_cities
-    redirect_to new_city_launch_path if collection.count < Rails.configuration.min_listable_artists
+    unless request.xhr? 
+      redirect_to new_city_launch_path(city: params[:location]) if collection.count < Rails.configuration.min_listable_artists
+    end
   end
     
   def reject_scraper
@@ -129,6 +131,8 @@ class ArtistsController < ApplicationController
     params[:location] = location_params["location"] || location_params[:name]
     params[:lng] = location_params["lng"] || location_params[:lng]
     params[:lat] = location_params["lat"] || location_params[:lat]
+    params[:genre_id] = location_params["genre_id"] || location_params[:genre_id]
+    params[:column] = location_params["column"] || location_params[:column]
   end
 
 end
