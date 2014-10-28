@@ -32,7 +32,10 @@ en:
         facebook: Social Media
         twitter: Twitter username
       propose:
-        price: You'll make  
+        price: You'll make
+      filter:
+        genre_id: "Show me"
+        order: "sorted by"
       match_me:
         genre: "What are you looking for? (Select up to three)"  
         event: "What kind of event is it?"

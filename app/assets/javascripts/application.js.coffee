@@ -44,6 +44,12 @@ App.init = ->
   App.setBalancedCardListener()
   App.initGooglePlaces()
 
+$(document).on 'click', '[data-trigger=reset_artist_filter]', (e) ->
+  $("form#artist_filter").reset()
+  $("form#artist_filter select").trigger("change")
+  $("form#artist_filter").trigger("change")
+  return false
+
 $(document).on 'change', '.submit-on-change', (e) -> 
   if($(@).val() != "")
       $(@).closest('form').trigger 'submit'
@@ -175,3 +181,9 @@ renderTweetButtons = ->
 
 loadTwitterSDK = ->
   $.getScript("//platform.twitter.com/widgets.js")
+  
+jQuery.fn.reset = ->
+  $(this).each ->
+    @reset()
+    return
+  return

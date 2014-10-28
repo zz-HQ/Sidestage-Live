@@ -10,9 +10,9 @@ module PageableResource
   def next_resource(rotate=true)
     if resources.arel.orders.present?
       field = resources.arel.orders.first.split(" ").first
-      @next_resource ||= resources.where("#{field} > ?", resource.send(field)).first
+      @next_resource ||= resources.where("#{resource.class.table_name}.#{field} > ?", resource.send(field)).first
     else
-      @next_resource ||= resources.where("id > ?", resource.id).order("id ASC").first      
+      @next_resource ||= resources.where("#{resource.class.table_name}.id > ?", resource.id).order("id ASC").first      
     end
     @next_resource ||= resources.first if rotate == true #rotate back to first item
   end
@@ -20,9 +20,9 @@ module PageableResource
   def prev_resource
     if resources.arel.orders.present?
       field = resources.arel.orders.first.split(" ").first
-      @prev_resource ||= resources.where("#{field} < ?", resource.send(field)).last
+      @prev_resource ||= resources.where("#{resource.class.table_name}.#{field} < ?", resource.send(field)).last
     else
-      @prev_resource ||= resources.where("id < ?", resource.id).order("id DESC").first
+      @prev_resource ||= resources.where("#{resource.class.table_name}.id < ?", resource.id).order("#{resource.class.table_name}.id DESC").first
     end
   end
   

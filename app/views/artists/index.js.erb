@@ -1,1 +1,5 @@
-$("[data-container='artists']").html("<%= j(render(partial: 'artists/artist', collection: collection).strip.html_safe) %>");
+<% if collection.blank? %>
+    $("[data-container='artists']").html("<%= j(render('blank').strip.html_safe) %>")
+<% else %>
+    $("[data-container='artists']").html("<%= j(render(partial: 'artists/artist', collection: collection).strip.html_safe) %>");
+<% end %>

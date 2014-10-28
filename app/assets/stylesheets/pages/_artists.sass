@@ -4,8 +4,29 @@
     +outer-container
 
     header
-      margin-bottom: 20px
+      +span-columns(8)
+      margin: 20px 0 40px
+
+      form
+        +span-columns(6)
+        +shift(1)
+        font-size: 16px
+        text-align: center
+
+        > span
+          display: inline-block
+          position: relative
+          top: -14px
+
+        .nice-select
+          display: inline-block
+          width: 200px
+          margin: 0 20px
+
+          &:last-child
+            width: 120px
       
+
       .results-order
         text-align: right
 
@@ -24,6 +45,16 @@
   
     .results
       +span-columns(8)
+
+      > p
+        +span-columns(8)
+        margin: 80px 0
+        text-align: center
+        font-size: 18px
+        font-weight: 400
+
+        a
+          text-decoration: underline
 
       .artist
         +omega(4n)
