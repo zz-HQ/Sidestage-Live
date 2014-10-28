@@ -91,7 +91,7 @@ class Profile < ActiveRecord::Base
   
   sortable :price, :name, :location, :mobile_nr, :unread_message_counter, :email
   
-  filterable :price
+  filterable :genre_id
   
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where("published = ? OR published = ?", nil, false) }
