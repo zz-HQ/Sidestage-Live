@@ -23,6 +23,7 @@ en:
       cancel: Cancel Booking
       view_profiles: View Profiles
       reset_filters: Reset filters
+      like_us: Like us on Facebook
       pagination:
         view_more: View more
     social:
@@ -37,4 +38,16 @@ en:
         twitter:
           text: "Check out a @sidestagehq, a new platform for booking great musicians, bands and DJs"
     city_launches:
-      desc: "Sidestage is not available in %{city} yet, but that'll soon change. Get notified when Sidestage launches near you."        
+      desc: "Sidestage is not available in %{city} yet, but that'll soon change. Get notified when Sidestage launches near you."
+    express_bookings:
+      index:
+        desc: "For a fixed price, hire a musician to play a private performance at your place or event."
+        footer_hint_html: "Musicians play for about an hour. All acts are acoustic, so no special set up is required on your end. <br/> <br/>Sign in to view pricing."
+    events:
+      show:
+        private_desc: This is a private event, please sign in to view the details.
+        desc: "%{name} has invited you to a private musical performance that takes place at %{location}"
+        accept: "I'm going :)"
+        reject: "I can't make it :("
+      thanks:
+        desc: Thanks for your response!

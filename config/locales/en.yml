@@ -29,6 +29,8 @@ en:
         cvc: "CVC"
       user:
         full_name: Name
+      event:
+        booking_for_values: ["a dinner party", "an event", "a bar or cafe"]  
     errors:
       models:
         user/as_mobile_number:
