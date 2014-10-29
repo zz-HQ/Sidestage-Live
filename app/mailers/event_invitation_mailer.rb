@@ -13,7 +13,7 @@ class EventInvitationMailer < ActionMailer::Base
           :reply_to => ENV["mail_from"],
           :return_path => ENV["mail_return_path"]
   
-  layout "email/user"
+  layout "email/event_invitation"
 
   #
   # Filters
