@@ -49,6 +49,7 @@ Rails.application.configure do
   config.i18n.fallbacks = true  
   
   # SideStage Settings
+  config.action_mailer.asset_host = "http://sidestage.dev"
   config.action_mailer.default_url_options = { host: 'sidestage.dev', locale: nil }
   config.default_currency = "USD"
   config.min_listable_artists = 1
