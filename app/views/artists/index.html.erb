@@ -5,7 +5,7 @@
 
     <div class="content">
         <header>
-            <%= simple_form_for :filter, url: artists_path, method: :GET, remote: true, data: { auto_save: true }, html: { id: :artist_filter } do |f| %>
+            <%= simple_form_for :filter, url: request.path, method: :GET, remote: true, data: { auto_save: true }, html: { id: :artist_filter } do |f| %>
                 <% request.query_parameters.each do |k,v| %>
                     <% next unless [:lat, :lng, :location].include?(k.to_sym) %>
                     <%= hidden_field_tag k, v %>

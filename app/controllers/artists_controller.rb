@@ -131,8 +131,8 @@ class ArtistsController < ApplicationController
     params[:location] = location_params["location"] || location_params[:name]
     params[:lng] = location_params["lng"] || location_params[:lng]
     params[:lat] = location_params["lat"] || location_params[:lat]
-    params[:artist_type] = location_params["artist_type"] || location_params[:artist_type]
-    params[:filter_order] = location_params["filter_order"] || location_params[:filter_order]
+    params[:artist_type] ||= location_params["artist_type"] || location_params[:artist_type]
+    params[:filter_order] ||= location_params["filter_order"] || location_params[:filter_order]
   end
 
   def coerce_filter_params
