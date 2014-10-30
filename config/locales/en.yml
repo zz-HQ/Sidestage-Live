@@ -61,7 +61,7 @@ en:
       prompts:
         event_search: Where is your event?
         choose_city: Choose city
-        genre_filter: "Everything"
+        artist_type_filter: "Everything"
     confirm:
       sure: "Are you sure?"
   flash:

@@ -34,7 +34,7 @@ en:
       propose:
         price: You'll make
       filter:
-        genre_id: "Show me"
+        artist_type: "Show me"
         order: "sorted by"
       match_me:
         genre: "What are you looking for? (Select up to three)"  
