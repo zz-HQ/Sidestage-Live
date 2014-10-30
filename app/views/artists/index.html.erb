@@ -11,9 +11,10 @@
                     <%= hidden_field_tag k, v %>
                 <% end %>
                 <span><%= t(:"simple_form.labels.filter.artist_type") %></span>
+                <%=  %>
                 <%= nice_select(select_tag :artist_type, options_from_collection_for_select([[0, "Solo artists"], [1, "Bands"], [2, "DJs"]], :first, :last, params[:artist_type]), prompt: t(:"helpers.select.prompts.artist_type_filter")) %>
                 <span><%= t(:"simple_form.labels.filter.order") %></span>
-                <%= nice_select(select_tag :column, options_from_collection_for_select([[Profile.human_attribute_name(:price), :price], [Profile.human_attribute_name(:name), :name]], :last, :first,  params[:column]))%>
+                <%= nice_select(select_tag :filter_order, artist_filter_order) %>
             <% end %>
         </header>
 

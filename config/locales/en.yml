@@ -62,6 +62,12 @@ en:
         event_search: Where is your event?
         choose_city: Choose city
         artist_type_filter: "Everything"
+      filter:
+        order:
+          serendipity: Serendipity
+          price_asc: Price low to high
+          price_desc: Price high to low
+          alphabetical: Alphabetical
     confirm:
       sure: "Are you sure?"
   flash:
