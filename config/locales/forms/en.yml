@@ -16,8 +16,8 @@ en:
         mobile_confirmation_code: Enter verification code
       profile:
         artist_type: You are...
-        solo: Solo Instrument
-        band: Band or Group
+        solo: Solo artist
+        band: Band
         genre_ids: What's closest to your style?
         location: What city or town are you based?
         currency: "Default currency:"
