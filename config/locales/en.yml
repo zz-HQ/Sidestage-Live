@@ -29,6 +29,8 @@ en:
         cvc: "CVC"
       user:
         full_name: Name
+      event:
+        booking_for_values: ["a dinner party", "an event", "a bar or cafe"]  
     errors:
       models:
         user/as_mobile_number:
@@ -59,7 +61,13 @@ en:
       prompts:
         event_search: Where is your event?
         choose_city: Choose city
-        genre_filter: "Everything"
+        artist_type_filter: "Everything"
+      filter:
+        order:
+          serendipity: Serendipity
+          price_asc: Price low to high
+          price_desc: Price high to low
+          alphabetical: Alphabetical
     confirm:
       sure: "Are you sure?"
   flash:

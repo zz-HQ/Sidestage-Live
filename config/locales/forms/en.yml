@@ -34,7 +34,7 @@ en:
       propose:
         price: You'll make
       filter:
-        genre_id: "Show me"
+        artist_type: "Show me"
         order: "sorted by"
       match_me:
         genre: "What are you looking for? (Select up to three)"  
@@ -46,6 +46,8 @@ en:
         phone_number: Phone number
         comment: "Anything else you'd like the musician to know?"
         newsletter_subscribed: Send me Sidestage updates
+      event:
+        booking_for: Book a musician for
     hints:
       profile:
         name: "Your real name or Madonna. Whatever name people yell when you're on stage."
@@ -145,3 +147,5 @@ en:
       match_me:
         create: Next  
         location: Get Matched
+      event:
+        submit_step_2: "Pay %{price}"

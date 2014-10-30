@@ -11,7 +11,7 @@ module Filter
         chain = self
         params.each do |k, v|
           if valid_filter_columns.include?(k.to_sym)
-            chain = chain.where(k.to_sym => v)
+            chain = chain.where(k.to_sym => v) unless self.columns_hash[k].type == :integer && v.blank?
           elsif assocs.keys.include?(k.to_sym)
             chain = chain.where("#{assocs[k.to_sym]} = ?", v) unless v.blank?
           end

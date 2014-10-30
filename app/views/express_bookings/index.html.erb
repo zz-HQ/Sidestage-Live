@@ -1,12 +1,11 @@
 <section class="express-booking index">
-    <img src="<%= asset_path 'sprite/sidestage-logo.png' %>">
-
-	<p>For a fixed price, hire a musician to play a private performance at your place or event.</p>
+    <%= image_tag 'sprite/sidestage-logo.png' %>
+	<p><%= t(:"application.express_bookings.index.desc") %></p>
 
 	<%= simple_form_for :event, url: sign_up_express_bookings_path do |f| %>
     	<div class="text-with-select">
-    		<p>Book a musician for</p>
-    		<%= nice_select(f.select :booking_for , options_for_select(["a dinner party", "an event", "a bar or cafe"]), include_blank: false) %>
+    		<p><%= t(:"simple_form.labels.event.booking_for") %></p>
+    		<%= nice_select(f.select :booking_for , options_for_select(Event.human_attribute_name(:booking_for_values)), include_blank: false) %>
     	</div>
 
     	<div class="btns">
@@ -14,5 +13,5 @@
     	</div>
 	<% end %>
 
-    <p class="light">Musicians play for about an hour. All acts are acoustic, so no special set up is required on your end. <br/> <br/>Sign in to view pricing. </p>
+    <p class="light"><%= t(:"application.express_bookings.index.footer_hint_html") %></p>
 </section>

@@ -5,16 +5,15 @@
 	</div>
 
 	<% if user_signed_in? %>
-	    <p><%= resource.user.profile_name %> has invited you to a private musical performance that takes
-	    place at <%= event_location_time(resource) %>.</p>
+	    <p><%= t(:"application.events.show.desc", name: resource.user.profile_name, location: event_location_time(resource)) %>.</p>
 
 	    <div class="btns choice">
-	    	<%= link_to "I'm going :)", accept_event_path(resource), method: :put, class: "btn btn-inline" %>
+	    	<%= link_to t(:"application.events.show.accept"), accept_event_path(resource), method: :put, class: "btn btn-inline" %>
 	    	<br/>
-	    	<%= link_to "I can't make it :(", reject_event_path(resource), method: :put, class: "btn btn-inline btn-gray" %>
+	    	<%= link_to t(:"application.events.show.reject"), reject_event_path(resource), method: :put, class: "btn btn-inline btn-gray" %>
 	    </div>
 	<% else %>
-	    <p>This is a private event, please sign in to view the details.</p>
+	    <p><%= t(:"application.events.show.private_desc") %></p>
 
 	    <div class="btns">
 	    	<%= link_to t(:"application.devise.facebook_signin"), facebook_auth_forward_path, class: "btn btn-inline" %>

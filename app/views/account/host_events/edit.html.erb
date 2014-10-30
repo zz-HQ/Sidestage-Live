@@ -1,7 +1,7 @@
 <section class="express-booking">
 	<p><strong>Step 1 of 2:</strong></p>
 	<p>Let's book a musician.</p>	
-	<%= simple_form_for resource, url: account_host_events_path do |f| %>
+	<%= simple_form_for resource, url: account_host_event_path(resource) do |f| %>
         <%= render "form", f: f %>
 	<% end %>
 </section>

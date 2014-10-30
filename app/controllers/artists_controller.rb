@@ -11,7 +11,7 @@ class ArtistsController < ApplicationController
   #
   
   before_filter :reject_scraper, only: [:index]
-  before_filter :coerce_params, only: [:index, :show]
+  before_filter :coerce_params, :coerce_filter_params, only: [:index, :show]
   before_filter :redirect_if_unpublished, only: [:show]
   before_filter :record_query, :only_available_cities, only: [:index]
   
@@ -76,7 +76,7 @@ class ArtistsController < ApplicationController
   end  
   
   def resources
-    end_of_association_chain.joins(:genres).filter(params).sorty(params).radial(lat: params[:lat], lng: params[:lng], radius: 36).published
+    end_of_association_chain.filter(params).sorty(params).radial(lat: params[:lat], lng: params[:lng], radius: 36).published
   end
 
   def permitted_params
@@ -131,8 +131,21 @@ class ArtistsController < ApplicationController
     params[:location] = location_params["location"] || location_params[:name]
     params[:lng] = location_params["lng"] || location_params[:lng]
     params[:lat] = location_params["lat"] || location_params[:lat]
-    params[:genre_id] = location_params["genre_id"] || location_params[:genre_id]
-    params[:column] = location_params["column"] || location_params[:column]
+    params[:artist_type] = location_params["artist_type"] || location_params[:artist_type]
+    params[:filter_order] = location_params["filter_order"] || location_params[:filter_order]
+  end
+
+  def coerce_filter_params
+    case params[:filter_order]
+    when "price_asc"
+      params[:column] = :price
+      params[:order] = :asc
+    when "price_desc"
+      params[:column] = :price
+      params[:order] = :desc
+    when "alphabetical"
+      params[:column] = :name
+    end
   end
 
 end
