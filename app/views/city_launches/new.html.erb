@@ -1,12 +1,16 @@
 <div class="wrap page">
 
 	<div class="landing-page-container email-signup">
-		<img src="<%= asset_path('sidestage_brand.png') %>">
+		<%= image_tag "round_logo.png" %>
 
 		<h3><%= t(:"application.city_launches.desc", city: params[:city]) %></h3>
         
         <section id="newsletter">
         	<%= render "mailchimp_subscription", list_id: :newsletter %>
+        </section>
+
+        <section class="artist_apply">
+        	<h3><%= t(:"application.city_launches.artist_apply_html", city: params[:city]) %></h3>
         </section>
         
 	</div>

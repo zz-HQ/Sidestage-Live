@@ -17,7 +17,7 @@ de:
       profile:
         artist_type: You are...
         genre_ids: What's closest to your style?
-        location: Where are you based?
+        location: What city or town are you based?
         currency: "Default currency:"
         price: "How much do you want to make?"
         surcharge_html: "The price listed on your Sidestage profile will include our fees and taxes."

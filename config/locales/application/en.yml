@@ -39,6 +39,7 @@ en:
           text: "Check out a @sidestagehq, a new platform for booking great musicians, bands and DJs"
     city_launches:
       desc: "Sidestage is not available in %{city} yet, but that'll soon change. Get notified when Sidestage launches near you."
+      artist_apply_html: "Are you a musician in %{city}? We're now accepting musician applications. <a href='/artists/new'>Sign up now</a>."
     express_bookings:
       index:
         desc: "For a fixed price, hire a musician to play a private performance at your place or event."
