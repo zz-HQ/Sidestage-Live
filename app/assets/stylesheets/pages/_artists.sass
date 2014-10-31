@@ -20,21 +20,22 @@
 
         .nice-select
           display: inline-block
-          width: 200px
+          width: auto
           margin: 0 20px
+          padding-right: 34px
 
-          .select-label-value
-            overflow: hidden
-            height: 25px
+          .select-label
+            float: left
+            width: 100%
             text-align: left
-            word-break: break-all
-            max-width: 155px
 
-          &:last-child
-            width: 120px
+            .select-label-value,
+            .select-arrow
+              position: relative
 
-            .select-label-value
-              max-width: 76px
+            .select-arrow
+              right: -22px
+              top: 11px
 
       .results-order
         text-align: right
