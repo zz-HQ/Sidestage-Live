@@ -31,6 +31,8 @@ en:
         full_name: Name
       event:
         booking_for_values: ["a dinner party", "an event", "a bar or cafe"]  
+      message:
+        body: Message
     errors:
       models:
         user/as_mobile_number:
@@ -56,6 +58,10 @@ en:
               invalid: Please enter a valid Embed code
             user:
               avatar_blank: Don't leave blank
+        message:
+          attributes:
+            body:
+              includes_email: Sorry, but please don't include email addresses in messages.
   helpers:
     select:
       prompts:

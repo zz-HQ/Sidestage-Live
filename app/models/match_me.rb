@@ -26,7 +26,7 @@ class MatchMe
   
   with_options if: :location_step? do |mm|
     mm.validate :email, presence: true
-    mm.validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+    mm.validates :email, format: { with: Devise::EMAIL_REGEXP }
   end
 
   #
