@@ -31,6 +31,7 @@ class Message < ActiveRecord::Base
   
 
   validates :receiver_id, :sender_id, :body, presence: true
+  validate :sanitize_body, on: :create
 
   #
   # Associations
@@ -82,7 +83,7 @@ class Message < ActiveRecord::Base
   private
   
   def assign_sender
-    self.sender_id ||= current_user.id
+    self.sender_id ||= current_user.try(:id)
   end
 
   def partner_id
@@ -103,6 +104,12 @@ class Message < ActiveRecord::Base
   def notify_receiver
     unless system_message?
       UserMailer.delay.message_notification(self)
+    end
+  end
+  
+  def sanitize_body
+    if body.to_s.include?("@")
+      errors.add :body, :includes_email
     end
   end
   

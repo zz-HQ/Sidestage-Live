@@ -1,5 +1,5 @@
 <% if resource.errors.present? %>
-    alert("<%= resource.errors.full_messages.first.html_safe %>");
+    alert("<%= resource.errors.messages.collect { |k, v| "#{resource.class.human_attribute_name(k)}: #{v.first}" }.join(", ").html_safe %>");
 <% else %>
     $('#messages').prepend('<%= j render('account/conversation_messages/message', message: resource) %>');
     $('#message_body').val('').trigger('blur');
