@@ -47,7 +47,7 @@ en:
     events:
       show:
         private_desc: This is a private event, please sign in to view the details.
-        desc: "%{name} has invited you to a private musical performance that takes place at %{location}"
+        desc: "The event takes place at %{location}"
         accept: "I'm going :)"
         reject: "I can't make it :("
       thanks:
