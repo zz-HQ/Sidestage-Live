@@ -123,10 +123,10 @@ $(document).on 'click', '.toggle-about-text', ->
     $('.truncate').show()
 
 # Filter loader
-$(document).on 'change', 'form.filter select', ->
-  setTimeout ->
-    $('.results').addClass('loading')
-  , 200
+# $(document).on 'change', 'form.filter select', ->
+#   setTimeout ->
+#     $('.results-body').addClass('loading')
+#   , 20
 
 # FB LIKE BUTTON to work with turbolinks
 fb_root = null
