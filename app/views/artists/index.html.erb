@@ -18,10 +18,14 @@
             <% end %>
         </header>
 
-        <div class="results" data-container="artists">
+        <div class="results-body">
             <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
-            <%= render partial: 'artists/artist', collection: collection %>  
+
+            <div class="results" data-container="artists">
+                <%= render partial: 'artists/artist', collection: collection %>
+            </div>
         </div>
+
         <p class="center light">Looking for something special? <%= link_to "Tell us more, and we'll match you", match_mes_path %> with the perfect musician for your event.</p>
     </div>
 
