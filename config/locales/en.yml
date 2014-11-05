@@ -38,9 +38,7 @@ en:
         user/as_mobile_number:
           attributes:
             mobile_nr:
-              country_code_missing: "You did not include a country code"
-              plus_missing: "Enter a valid phone number, starting with a plus (+) sign (e.g. +49 172 888 8888)"
-              must_start_with_non_zero: "Your phone number can't have a 0 after the plus sign"
+              must_start_with_non_zero: "can't start with a 0"
               too_short: "Your phone number looks a bit short"
         user:
           attributes:

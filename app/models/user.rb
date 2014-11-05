@@ -89,6 +89,12 @@ class User < ActiveRecord::Base
   #
   #
   
+  def mobile_number
+    return nil if mobile_nr.blank?
+    return mobile_nr if mobile_nr.starts_with?("+") || mobile_nr.starts_with?("0")
+    "+#{mobile_nr_country_code}#{mobile_nr}"
+  end
+  
   def deals
     Deal.by_user(self.id)
   end

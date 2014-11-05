@@ -66,7 +66,7 @@ class Account::MobileNumbersController < AuthenticatedController
   protected
   
   def permitted_params
-    params.require(:user_as_mobile_number).permit(:mobile_nr, :mobile_confirmation_code)
+    params.require(:user_as_mobile_number).permit(:mobile_nr, :mobile_nr_country_code, :mobile_confirmation_code)
   end
     
   #

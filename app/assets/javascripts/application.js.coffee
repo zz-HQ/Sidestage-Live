@@ -85,6 +85,9 @@ $(document).on 'click', '#trigger-email-signup-form', (e) ->
   $(@).hide()
   $(".signup-with-email").show()#slideDown()
 
+$(document).on 'change', "form select[name*=mobile_nr_country_code]", (e) ->
+  $("form #country_calling_code").text("+" + $(@).val())
+
 $.ajaxSetup
   headers:
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

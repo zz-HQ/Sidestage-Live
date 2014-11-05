@@ -1,15 +1,16 @@
 <% if user.mobile_nr_confirmed? %>
     <header><%= t(:"application.mobile_numbers.show.title") %></header>
     <p class="subtitle"><%= t(:"application.mobile_numbers.show.desc") %></p> <br>
-    <p><%= user.mobile_nr %> <%= link_to t(:"helpers.submit.user_as_mobile_number.remove"), account_mobile_numbers_path, method: :delete, class: "light delete-link" %></p>
+    <p><%= user.mobile_number %> <%= link_to t(:"helpers.submit.user_as_mobile_number.remove"), account_mobile_numbers_path, method: :delete, class: "light delete-link" %></p>
     <!-- <p class="light"><%#= t(:"application.mobile_numbers.show.remove_hint") %></p> -->
 <% else %>
     <header><%= t(:"application.mobile_numbers.new.title") %></header>
-    
     <p class="subtitle"><%= t(:"application.mobile_numbers.new.desc_html") %></p>
-    
     <%= simple_form_for user, url: account_mobile_numbers_path do |f| %>
-        <%= f.input :mobile_nr, required: false, input_html: { autocomplete: "off" } %>
+        <%= f.label :mobile_nr_country_code %>
+	    <%= nice_select f.input(:mobile_nr_country_code, collection: CALLING_CODES.collect { |k,v| [v,k] }, include_blank: true, label: false) %>
+	    <span id="country_calling_code"><%= "+#{f.object.mobile_nr_country_code}" if f.object.mobile_nr_country_code.present? %></span>
+        <%= f.input :mobile_nr, required: false, label: false, input_html: { autocomplete: "off" }, placeholder: false %>
         <div class="input">
         	<%= f.submit class: "btn" %>
         </div>

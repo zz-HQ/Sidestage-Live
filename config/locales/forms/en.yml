@@ -13,6 +13,7 @@ en:
         full_name: Full name        
       user_as_mobile_number:
         mobile_nr: Mobile number (with country code)
+        mobile_nr_country_code: Choose a country
         mobile_confirmation_code: Enter verification code
       profile:
         artist_type: You are...
