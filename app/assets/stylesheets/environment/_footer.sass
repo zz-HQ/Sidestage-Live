@@ -1,11 +1,15 @@
+$red-color: #FF0423
+
+
 #main > footer
   clear: both
   position: relative
-  background-color: #fafafa
+  background-color: #f9f9f9
   overflow: hidden
-  padding: 22px 0 32px 0
-  border-top: 1px solid $border-color
+  padding: 76px 0 32px 0
+  border-top: 1px solid #EEE
   color: $text-color-light
+  font-weight: 300
 
   .left
     +span-columns(4)
@@ -13,7 +17,7 @@
 
     a
       color: inherit
-      font-size: 14px
+      font-size: 18px
 
       &:hover
         text-decoration: underline
@@ -23,6 +27,9 @@
     
     h4
       margin: 0 0 10px
+      color: $red-color
+      font-weight: 300
+      font-size: 18px
 
     ul
       margin: 0
@@ -44,32 +51,43 @@
       &.currency
         right: 5px
     
-    .select-locale,
-    .select-currency
-      display: inline-block
-      width: 120px
+    // .select-locale
+    //   display: inline-block
+    //   width: 120px
 
     .select-currency
-      width: 60px
+      width: 120px
+      height: 50px
+      display: inline-block
 
     .nice-select
       border: none
-      height: 27px
+      height: 50px
       margin: 0
+      background-color: #EEEEEE
+      text-align: left
 
       .select-label
-        position: absolute
-        display: inline-block
-
         .select-label-value
-          position: static
+          position: relative
+          top: 13px
+          left: 20px
+          font-size: 18px
 
         .select-arrow
-          right: -18px
-          top: 3px
+          right: 20px
+          top: 18px
+          color: $red-color
       
       select
         left: 0
 
   .copyright
-    margin-top: 30px
+    margin-top: 50px
+    text-align: center
+    
+    p
+      font-size: 18px
+
+
+

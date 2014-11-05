@@ -1,0 +1,50 @@
+<section class="metro">
+	<a name="staffpicks"></a>
+	<div class="wrap">
+		<h2><%= t(:"application.home.index.featured_html") %></h2>
+
+		<section class="results">
+			<%= content_tag :a, href: artist_path(@profiles[0]), class: "metro large" do %>
+				<%= render partial: "artists/metro_artist", locals: {artist: @profiles[0]} %>
+			<% end %>
+
+			<% @profiles[1..2].each do |profile| %>
+				<%= content_tag :a, href: artist_path(profile), class: "metro" do %>
+					<%= render partial: "artists/metro_artist", locals: {artist: profile} %>
+				<% end %>
+			<% end %>
+
+			<section id="newsletter" class="metro large omega">
+		        <h2><%= t(:"application.home.index.newsletter") %></h2>
+		        <a name="newsletter"></a>
+		        
+		        <%= render "mailchimp_subscription" %>
+
+		        <% if false %>
+		          <h4 class="light">Questions? Get in touch with our Customer Service team, <a class="light" href="mailto:bookings@sidestage.com">bookings@sidestage.com</a>.</h4>
+		        <% end %>
+		    </section>
+
+		    <% @profiles[3..5].each do |profile| %>
+				<%= content_tag :a, href: artist_path(profile), class: "metro" do %>
+					<%= render partial: "artists/metro_artist", locals: {artist: profile} %>
+				<% end %>
+			<% end %>
+
+
+			<!-- ______________________________ SPÄTER -->
+			<% if false %>
+			<%= content_tag :a, href: artist_path(@profiles[6]), class: "metro large" do %>
+				<%= render partial: "artists/metro_artist", locals: {artist: @profiles[6]} %>
+			<% end %>
+
+			<%= content_tag :a, href: artist_path(@profiles[7]), class: "metro" do %>
+				<%= render partial: "artists/metro_artist", locals: {artist: @profiles[7]} %>
+			<% end %>
+			<% end %>
+
+		</section>
+
+	</div>
+
+</section>

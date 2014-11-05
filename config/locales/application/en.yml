@@ -10,7 +10,7 @@ en:
       account: Account
       log_out: Log out
     buttons:
-      search: Search
+      search: Find a musician
     links:
       forgot_password: Forgot password?
       edit: Edit Profile

@@ -1,0 +1,93 @@
+section.metro
+	+span-columns(8)
+
+	.results
+		+span-columns(8)
+		+omega
+
+		.metro
+			position: relative
+			+span-columns(1 of 3)
+			height: 310px
+			overflow: hidden
+			margin-bottom: 2.98%
+
+			&.large
+				+span-columns(2 of 3)
+
+			&.omega
+				+omega
+
+			&:first-child
+				+span-columns(2 of 3)
+
+			&:nth-child(2),
+			&:nth-child(4),
+			&:nth-child(7)
+				+omega
+
+			.overlay
+				+overlay
+				background-color: rgba(255,255,255,0.8)
+				text-align: center
+				+opacity(0)
+				+transition(opacity 300ms ceaser($easeOutCirc))
+
+				.text
+					max-width: 300px
+					position: relative
+					margin: 110px auto 0
+
+					h3
+						font-size: 48px
+						color: $red
+						margin: 0 0 7px
+						font-weight: 300
+
+					p
+						font-size: 18px
+						float: left
+
+						i.fa
+							margin-right: 5px
+							color: $text-color-light
+
+						&:last-child
+							float: right
+
+			&:hover
+				.overlay
+					+opacity(1)
+
+		#newsletter
+			background-color: white
+			text-align: center
+    		
+			h2
+				margin: 80px 0 40px
+				color: $red
+
+			.subscription-form
+				width: 682px
+				margin: 0 auto
+
+				input[type="text"]
+					width: 450px
+					height: 70px
+
+				input[type="submit"]
+					width: 200px
+					font-size: 18px
+					height: 70px
+					float: right
+
+					&.btn
+						background-color: $red
+						font-weight: 300
+
+
+
+
+
+
+

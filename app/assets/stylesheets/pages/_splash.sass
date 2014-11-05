@@ -1,30 +1,21 @@
+=outer-container
+  overflow: hidden
+  max-width: 1238px
+  margin-left: auto
+  margin-right: auto
+
 body.desktop
-  
-  // #background
-  //   background: #fff image-url('splash/background.jpg') center center no-repeat
-  //   +background-size(cover)
-  //   position: fixed
-  //   width: 100%
-  //   left: 0
-  //   top: 0
-  //   height: 100%
-  //   z-index: -1
+  background-color: #FCFCFC
 
-  #logo
-    font-size: 32px
-    margin-top: 42px
-    position: absolute
-
-    &.white
-      +retina-sprite(sidestage-logo-splash, $sprite, $sprite2x)
-      text-indent: -5000px
+  .wrap
+    +outer-container
+    padding: 0 19px
 
   #splash
     color: #fff
     height: 88%
     position: relative
     width: 100%
-    // background: #fff image-url('splash/background1.jpg') center center no-repeat
 
     &.background1
       background: #fff image-url('splash/background.jpg') center center no-repeat
@@ -35,62 +26,71 @@ body.desktop
       +background-size(cover)
 
     #splash-content
-      height: 270px
-      left: 50%
-      margin: -84px 0 0 -400px
+      +outer-container
+      height: 146px
       position: absolute
-      top: 50%
-      width: 800px
+      top: 45%
+      left: 50%
+      margin: -84px 0 0 -619px
+      width: 1238px
 
     #text
       text-align: center
 
       h2
         color: #fff
-        font-size: 70px
+        font-size: 72px
         margin: 0px
+        font-weight: 600
 
       p
-        font-size: 22px
+        font-size: 24px
         font-weight: 400
         line-height: 1.4em
-        margin-top: 13px
+        margin-top: 0px
     
     .text-shadow
-      +text-shadow(0px 2px 13px rgba(#000, 1))
-      margin-bottom: 20px
+      +text-shadow(0px 2px 13px rgba(#222, 1))
     
     #animation-container
-      +perspective(1000px)
-      height: 70px
-      position: absolute
-      width: 530px
-      left: 50%
-      margin-left: -246px
-      bottom: 40px
+      // +perspective(1000px)
+      // height: 70px
+      // position: absolute
+      // width: 530px
+      // left: 50%
+      // margin-left: -246px
+      // bottom: 40px
+      +outer-container
 
-      &.home
-        width: 492px
+      // &.home
+      //   width: 492px
       
       #email-form,
       #city-form,
       #email-response
-        +backface-visibility(hidden)
-        +border-radius($border-radius)
-        +transform-style(preserve-3d)
-        +transition(transform 600ms ceaser($easeOutQuint))
-        +rgba-background(rgba(#000, 0.33))
-        height: 70px
-        padding: 10px
-        position: absolute
-        top: 0
+        // +backface-visibility(hidden)
+        // +border-radius($border-radius)
+        // +transform-style(preserve-3d)
+        // +transition(transform 600ms ceaser($easeOutQuint))
+        // +rgba-background(rgba(#000, 0.33))
+        // height: 70px
+        // padding: 10px
+        // position: absolute
+        // top: 0
 
       #email-form,
       #city-form
-        +transform(rotateX(0deg))
+        // +transform(rotateX(0deg))
+        width: 1026px
+        height: 50px
+        position: absolute
+        top: 50%
+        left: 50%
+        margin: 18px 0 0 -490px
 
         form
-          width: 470px
+          width: 100%
+          margin: 40px auto 0
 
         [type="text"],
         [type="submit"]
@@ -100,171 +100,120 @@ body.desktop
           outline: none
           padding: 16px
 
-        .nice-select
-          background-color: #fff
-          color: #999DA2
-          font-weight: 300
-          width: 342px
-          display: inline-block
-          font-size: 18px
-          height: 50px
-
-          .select-label-value
-            top: 13px
-            font-size: 16px
-
-          .select-arrow
-            top: 17px
-
         [type="text"]
-          background-color: #fff
-          width: 342px
+          background-color: rgba(255,255,255,0.9)
+          width: 754px
+          margin: 0
 
         [type="submit"]
           +transition(background-color 500ms ceaser($easeOutExpo))
           background-color: $red
           color: #fff
-          width: 120px
+          width: 240px
           float: right
+          font-weight: 300
 
           &:hover
             background-color: darken($red, 10%)
             +transition(background-color 500ms ceaser($easeOutExpo))
 
-      #email-response
-        +transform(rotateX(180deg))
-        width: 100%
+      // #email-response
+      //   +transform(rotateX(180deg))
+      //   width: 100%
 
-      #email-response-success,
-      #email-response-error
-        text-align: center
-        font-size: 18px
+      // #email-response-success,
+      // #email-response-error
+      //   text-align: center
+      //   font-size: 18px
       
-      #email-response-success
-        margin-top: -1px
+      // #email-response-success
+      //   margin-top: -1px
     
-      #email-response-error
-        margin-top: 10px
+      // #email-response-error
+      //   margin-top: 10px
 
-      &.success,
-      &.error
-        #email-form
-          +transform(rotateX(180deg))
+      // &.success,
+      // &.error
+      //   #email-form
+      //     +transform(rotateX(180deg))
 
-        #email-response
-          +transform(rotateX(360deg))
+      //   #email-response
+      //     +transform(rotateX(360deg))
 
-      &.error #email-response
-        +rgba-background(rgba(184, 42, 23, 0.8))
+      // &.error #email-response
+      //   +rgba-background(rgba(184, 42, 23, 0.8))
 
-      &.success #email-response
-        +rgba-background(rgba(56, 187, 45, 0.8))
+      // &.success #email-response
+      //   +rgba-background(rgba(56, 187, 45, 0.8))
 
-  .footer
-    text-align: center
-    padding: 10px 0
+  // .footer
+  //   text-align: center
+  //   padding: 10px 0
 
-  > section
-    background: #FFF
-    text-align: center
+  // > section
+  //   background: #FFF
+  //   text-align: center
+  //   +span-columns(8)
+
+  //   h2
+  //     font-weight: 300
+  //     font-size: 28px
+  //     margin-bottom: 50px
+
+  //   .wrap
+  //     padding: 30px 0
+  //     text-align: center
+
+  #staff-picks,
+  .inspiration,
+  .metro
     +span-columns(8)
 
     h2
       font-weight: 300
-      font-size: 28px
-      margin-bottom: 50px
-
-    .wrap
-      padding: 30px 0
+      font-size: 32px
       text-align: center
+      margin: 100px 0
+      color: #666
 
-#staff-picks
-  +span-columns(8)
+      span
+        color: $red
 
-  h2
-    font-weight: 300
-    font-size: 28px
-    text-align: center
-    margin-bottom: 50px
+  #staff-picks,
+  .inspiration
+    .artist
+      +span-columns(1 of 3)
+      height: 290px
 
-#staff-picks,
-.inspiration
-  .artist:nth-child(2)
-    +shift(1)
+      .photo
+        height: 100%
+        overflow: hidden
 
-.inspiration
-  .text
-    +overlay
-    background: rgba(0,0,0,0.3)
-    padding: 40px 30px
-    padding-left: 25px !important
-    text-align: left
-
-
-
-    h2
-      font-size: 28px
-      font-weight: 600
-      margin: 0
-
-    p
-      font-size: 22px
-
-body.phone
-  color: #000
-  margin-top: 0
-  padding-top: 0
-  text-align: center
-
-  #girl
-    height: 200px
+  .inspiration
     position: relative
-    top: -20px
-    
-    img
-      left: 0
-      max-width: 100%
+
+    .gradient
+      +gradient-overlay
+
+    .text
+      padding: 10px 30px
+      text-align: center
       position: absolute
-      top: 0
+      bottom: 35px
 
-    #logo
-      +retina-sprite(sidestage-logo-splash-iphone, $sprite, $sprite2x)
-      margin: 0 auto
-      position: relative
-      text-indent: -5000px
-      top: 100px
-      z-index: 10
+      h2
+        font-size: 36px
+        font-weight: 300
+        margin: 0
+        color: white
+
+      p
+        font-size: 24px
+
+    .artist:hover .text
+      text-decoration: none
 
 
-body.old-browser
-
-  #splash
-
-    #animation-container
-      
-      #email-form,
-      #email-response
-        position: relative
-      
-      #email-form
-        [type="submit"]
-          width: 129px
-
-      #email-response
-        background: none
-        width: 520px
-
-        #email-response-success,
-        #email-response-error
-          padding: 20px 0
-          margin-left: -10px
-          margin-top: -7px
-
-        #email-response-success
-          +rgba-background(rgba(56, 187, 45, 0.8))
-
-        #email-response-error
-          +rgba-background(rgba(184, 42, 23, 0.8))
 
 
 

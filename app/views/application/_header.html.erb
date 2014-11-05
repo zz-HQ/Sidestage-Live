@@ -1,9 +1,12 @@
 <header>
+  <% if action_name == "homepage" %>
+    <div class="gradient"></div>
+  <% end %>
 
   <div class="wrap">
     <h1 id="logo">
       <%= link_to params[:location].present? && action_name == "show" ? artists_path(location: params[:location], lng: params[:lng], lat: params[:lat], artist_type: params[:artist_type], filter_order: params[:filter_order]) : root_path do %>
-        <%= image_tag (action_name == 'homepage' ? 'sidestage_logo_type_white.png' : 'sprite/sidestage-logo.png') %>
+        <%= image_tag (action_name == 'homepage' ? 'logos/sidestage_logo_white.png' : 'logos/sidestage_logo_red.png') %>
       <% end %>
     </h1>
 
@@ -80,12 +83,15 @@
         </div>
 
       <%- else -%>
-        <%= link_to t(:"application.menu.sign_up"), new_user_registration_path %>
-        <%= link_to t(:"application.menu.sign_in"), new_user_session_path %>
-        <%= link_to t(:"application.menu.musician"), new_user_registration_path(format: :html), data: { lightbox: :html, target: "[data-container='signup-options']" }, class: "btn btn-inline" %>
+        <span>
+          <%= link_to t(:"application.menu.sign_in"), new_user_session_path %> 
+          / 
+          <%= link_to t(:"application.menu.sign_up"), new_user_registration_path %>
+        </span>
+        <%= link_to t(:"application.menu.musician"), new_user_registration_path(format: :html), data: { lightbox: :html, target: "[data-container='signup-options']" }, class: "btn btn-musician btn-inline" %>
         <div style="display:none;" data-container="signup-options">
             <div class="devise-lightbox read_more">
-                <%#= image_tag "sidestage_brand.png", alt: "logo_brand", class: "logo_brand" %>
+                <%#= image_tag "logos/sidestage_brand_sm.png", alt: "logo_brand", class: "logo_brand" %>
                 <p><strong><%= t(:"application.devise.artist_read_me.title") %></strong></p><br/>
                 <%= t(:"application.devise.artist_read_me.desc_html") %>
                 <div class="btns">

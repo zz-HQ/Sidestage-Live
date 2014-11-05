@@ -46,24 +46,17 @@
 
     <%= render 'inspiration' %>
 
-    <%= render 'staff_picks' %>
+    <%#= render 'staff_picks' %>
 
-    <section id="newsletter">
-      <div class="wrap">
-        <h2><%= t(:"application.home.index.newsletter") %></h2>
-         <a name="newsletter"></a>
-        <%= render "mailchimp_subscription" %>
+    <%= render 'metro' %>
 
-        <h4 class="light">Questions? Get in touch with our Customer Service team, <a class="light" href="mailto:bookings@sidestage.com">bookings@sidestage.com</a>.</h4>
-      </div>
-    </section>
 
     <%= render 'footer' %>
 
 
-     <%= render "olark" %>
+    <%= render "olark" %>
 
-     <%= render flash[:auto_modal] if flash[:auto_modal].present? %>
+    <%= render flash[:auto_modal] if flash[:auto_modal].present? %>
     <%= render "google_analytics" %>
   </body>
 </html>

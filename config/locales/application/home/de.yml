@@ -5,6 +5,6 @@ de:
         teaser:
           title: Life's Your Stage
           body: "Find an amazing musician to play at your private event, dinner party or wedding."
-        inspiration: "Get inspiration..."
-        featured: "Staff picks: Artists we like and recommend."
+        inspiration_html: "<span>Get inspired.</span> Discover amazing musicians you can hire:"
+        featured_html: "<span>We love independet musicians.</span> Here are some we can recommend:"
         newsletter: "Discover a new artist each week."
