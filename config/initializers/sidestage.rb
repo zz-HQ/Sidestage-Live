@@ -1,3 +1,9 @@
+AVAILABLE_LOCATIONS = {
+  berlin: { short: "berlin", name: "Berlin", lat: "52.5167", lng: "13.3833" },
+  london: { short: "london", name: "London", lat: "51.5072", lng: "0.1275" },
+  new_york_city: { short: "newyork", name: "New York City", lat: "40.7127", lng: "-74.0059" }
+}
+
 CALLING_CODES = {
   1 => "USA and Canada",
   44 => "United Kingdom",

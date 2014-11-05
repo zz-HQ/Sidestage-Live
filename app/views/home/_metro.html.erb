@@ -4,13 +4,13 @@
 		<h2><%= t(:"application.home.index.featured_html") %></h2>
 
 		<section class="results">
-			<%= content_tag :a, href: artist_path(@profiles[0]), class: "metro large" do %>
-				<%= render partial: "artists/metro_artist", locals: {artist: @profiles[0]} %>
+			<%= link_to artist_path(@profiles.first), class: "metro large" do %>
+				<%= render "artists/metro_artist", artist: @profiles.first %>
 			<% end %>
 
 			<% @profiles[1..2].each do |profile| %>
-				<%= content_tag :a, href: artist_path(profile), class: "metro" do %>
-					<%= render partial: "artists/metro_artist", locals: {artist: profile} %>
+				<%= link_to artist_path(profile), class: "metro" do %>
+					<%= render "artists/metro_artist", artist: profile %>
 				<% end %>
 			<% end %>
 
@@ -26,21 +26,21 @@
 		    </section>
 
 		    <% @profiles[3..5].each do |profile| %>
-				<%= content_tag :a, href: artist_path(profile), class: "metro" do %>
-					<%= render partial: "artists/metro_artist", locals: {artist: profile} %>
+				<%= link_to artist_path(profile), class: "metro" do %>
+					<%= render "artists/metro_artist", artist: profile %>
 				<% end %>
 			<% end %>
 
 
 			<!-- ______________________________ SPÄTER -->
 			<% if false %>
-			<%= content_tag :a, href: artist_path(@profiles[6]), class: "metro large" do %>
-				<%= render partial: "artists/metro_artist", locals: {artist: @profiles[6]} %>
-			<% end %>
+    			<%= link_to artist_path(@profiles[6]), class: "metro large" do %>
+    				<%= render "artists/metro_artist", artist: @profiles[6] %>
+    			<% end %>
 
-			<%= content_tag :a, href: artist_path(@profiles[7]), class: "metro" do %>
-				<%= render partial: "artists/metro_artist", locals: {artist: @profiles[7]} %>
-			<% end %>
+    			<%= link_to artist_path(@profiles[7]), class: "metro" do %>
+    				<%= render "artists/metro_artist", artist: @profiles[7] %>
+    			<% end %>
 			<% end %>
 
 		</section>
