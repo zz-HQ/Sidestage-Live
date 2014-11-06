@@ -7,7 +7,7 @@ $(document).on 'ready page:load page:restore', ->
     else
       $(".loader").hide()
 
-  $('#user_account').fileupload
+  $('[data-upload=auto]').fileupload
     add: (e, data) ->
       types = /(\.|\/)(gif|jpe?g|png|GIF|JPE?G|PNG)$/i
       file = data.files[0]

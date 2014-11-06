@@ -6,7 +6,7 @@
     <div class="content account">
         <header><%= t(:"application.personals.avatar.title") %><p><%= t(:"application.personals.avatar.desc") %></p></header>
 
-        <%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { id: "user_account", multipart: true } do |f| %>
+        <%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { data: { upload: :auto }, id: "user_account", multipart: true } do |f| %>
         	<label><%= t(:"simple_form.labels.user.avatar") %></label>
         	<div class="avatar-uploader">
         		<div id="avatar" class="avatar avatar-upload-button">
