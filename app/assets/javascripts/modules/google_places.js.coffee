@@ -40,7 +40,3 @@ App.initGooglePlaces = ->
     google.maps.event.addDomListener document.getElementById($(@).attr("id")), "keydown", (e) ->
       e.preventDefault()  if e.keyCode is 13
       return
-
-    $(document).on "keydown", $(@), (e) ->
-      e.preventDefault()  if e.keyCode is 13
-      return
