@@ -24,4 +24,4 @@ $(document).on 'ready page:load page:restore', ->
 
 $(document).on 'click', '.avatar-upload-button', (e) ->
   e.preventDefault()
-  $('#user_avatar').trigger 'click'
+  $('.file').trigger 'click'
