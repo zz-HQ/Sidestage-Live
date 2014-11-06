@@ -101,7 +101,6 @@ $(document).on 'keydown', '.media-type-form input', (e) ->
   if e.keyCode == 13
     $(@).closest('form').trigger 'submit'
 
-
 # MATCH ME CHECKBOX -----------
 $(document).on 'click', '.match-me-form .act', ->
   if $(@).find(':checkbox').is(':checked')
@@ -115,7 +114,6 @@ $(document).on 'click', '.match-me-form .act', ->
 $(document).on 'keyup', '#profile_about', ->
   chars = $('#profile_about').val().length
   $('.characters-counter .count').html 747 - chars
-
 
 # Profile about read more link
 $(document).on 'click', '.toggle-about-text', ->
