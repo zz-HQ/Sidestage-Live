@@ -9,8 +9,11 @@
     <%= simple_form_for user, url: account_mobile_numbers_path do |f| %>
         <%= f.label :mobile_nr_country_code %>
 	    <%= nice_select f.input(:mobile_nr_country_code, collection: CALLING_CODES.collect { |k,v| [v,k] }, include_blank: true, label: false) %>
-	    <span id="country_calling_code"><%= "+#{f.object.mobile_nr_country_code}" if f.object.mobile_nr_country_code.present? %></span>
-        <%= f.input :mobile_nr, required: false, label: false, input_html: { autocomplete: "off" }, placeholder: false %>
+
+        <div class="country_calling_code">
+            <span id="country_calling_code"><%= "+#{f.object.mobile_nr_country_code}" if f.object.mobile_nr_country_code.present? %></span>
+            <%= f.input :mobile_nr, required: false, label: false, input_html: { autocomplete: "off" }, placeholder: false %>
+        </div>
         <div class="input">
         	<%= f.submit class: "btn" %>
         </div>

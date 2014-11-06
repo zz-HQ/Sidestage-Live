@@ -82,9 +82,6 @@
 				.select-arrow
 					top: 13px
 
-			// .cc-cvc
-			// 	+span-columns(2)
-
 			.cc-exp
 				+span-columns(4)
 
@@ -122,6 +119,25 @@
 			.user_as_mobile_number_mobile_nr
 				width: 250px
 
+			.nice-select
+				width: 250px
+
+			.country_calling_code
+				position: relative
+
+				#country_calling_code
+					position: absolute
+					padding: 11px
+					font-size: 14px
+					border-right: 1px solid $border-color
+					z-index: 1
+					height: 41px
+					min-width: 47px
+					text-align: center
+
+				input
+					padding-left: 66px
+
 			form.confirm-mobile-num-form
 				+span-columns(6)
 
@@ -132,6 +148,7 @@
 					+span-columns(3)
 					+omega
 					margin-top: 29px
+					padding: 11px 28px
 
 		&.payment
 			width: 55%
