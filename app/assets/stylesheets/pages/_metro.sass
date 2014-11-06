@@ -15,6 +15,9 @@ section.metro
 			&.large
 				+span-columns(2 of 3)
 
+				.photo img
+					margin-top: -67px
+
 			&.omega
 				+omega
 
@@ -26,6 +29,9 @@ section.metro
 			&:nth-child(7)
 				+omega
 
+			.photo img
+				margin-top: -33px
+
 			.overlay
 				+overlay
 				background-color: rgba(255,255,255,0.8)
@@ -34,9 +40,10 @@ section.metro
 				+transition(opacity 300ms ceaser($easeOutCirc))
 
 				.text
-					max-width: 300px
-					position: relative
 					margin: 110px auto 0
+					float: left
+					width: 100%
+					padding: 0 20px
 
 					h3
 						font-size: 48px
@@ -44,17 +51,18 @@ section.metro
 						margin: 0 0 7px
 						font-weight: 300
 						line-height: 1.1em
+						+span-columns(8)
 
 					p
 						font-size: 18px
-						float: left
+						display: inline-block
 
 						i.fa
 							margin-right: 5px
 							color: $text-color-light
 
 						&:last-child
-							float: right
+							margin-left: 32px
 
 			&:hover
 				.overlay

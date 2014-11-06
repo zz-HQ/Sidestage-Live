@@ -3,7 +3,7 @@ en:
     artists:
       index:
         view_profile: View Profile
-        price_from: from
+        price_from: "from:"
         blank: "We're sorry, but can't find what you're looking for."
       show:
         leave_a_review: Do you know this artist? Leave a review.

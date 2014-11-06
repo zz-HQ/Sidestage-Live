@@ -3,7 +3,7 @@ de:
     artists:
       index:
         view_profile: View Profile
-        price_from: from
+        price_from: "from:"
       show:
         leave_a_review: Do you know this artist? Leave a review.
         no_reviews: This artist has no reviews yet.

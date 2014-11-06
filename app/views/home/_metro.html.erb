@@ -5,12 +5,12 @@
 
 		<section class="results">
 			<%= link_to artist_path(@profiles.first), class: "metro large" do %>
-				<%= render "artists/metro_artist", artist: @profiles.first %>
+				<%= render "artists/metro_artist", artist: @profiles.first, large: true %>
 			<% end %>
 
 			<% @profiles[1..2].each do |profile| %>
 				<%= link_to artist_path(profile), class: "metro" do %>
-					<%= render "artists/metro_artist", artist: profile %>
+					<%= render "artists/metro_artist", artist: profile, large: false %>
 				<% end %>
 			<% end %>
 
@@ -27,7 +27,7 @@
 
 		    <% @profiles[3..5].each do |profile| %>
 				<%= link_to artist_path(profile), class: "metro" do %>
-					<%= render "artists/metro_artist", artist: profile %>
+					<%= render "artists/metro_artist", artist: profile, large: false %>
 				<% end %>
 			<% end %>
 
@@ -35,11 +35,11 @@
 			<!-- ______________________________ SPÄTER -->
 			<% if false %>
     			<%= link_to artist_path(@profiles[6]), class: "metro large" do %>
-    				<%= render "artists/metro_artist", artist: @profiles[6] %>
+    				<%= render "artists/metro_artist", artist: @profiles[6], large: true %>
     			<% end %>
 
     			<%= link_to artist_path(@profiles[7]), class: "metro" do %>
-    				<%= render "artists/metro_artist", artist: @profiles[7] %>
+    				<%= render "artists/metro_artist", artist: @profiles[7], large: false %>
     			<% end %>
 			<% end %>
 

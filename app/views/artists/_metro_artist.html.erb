@@ -1,5 +1,5 @@
 <div class="photo">
-  <%= image_tag artist.user.avatar_url(:thumb) %>
+  <%= image_tag artist.user.avatar_url( large ? :big : :thumb) %>
 
   <div class="overlay">
     <div class="text">
