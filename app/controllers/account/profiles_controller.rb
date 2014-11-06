@@ -22,7 +22,17 @@ class Account::ProfilesController < Account::ResourcesController
       resource.update_attributes(permitted_params[:profile])
     end
   end
-    
+  
+  def avatar
+    unless request.get?
+      resource.update_attributes(permitted_params[:profile])
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
+  end
+      
   def description
     resource.wizard_step = :description
     if request.patch?
@@ -50,7 +60,6 @@ class Account::ProfilesController < Account::ResourcesController
     flash[:error] = resource.errors.messages[:youtube].try(:first) if resource.errors.present? 
     redirect_to :back
   end
-  
   
   def remove_soundcloud
     resource.update_attribute :soundcloud, nil

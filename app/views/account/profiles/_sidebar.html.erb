@@ -3,6 +3,7 @@
 	<h4><%= link_to t(:"application.profiles.sidebar.description_link").html_safe, description_account_profile_path, class: ('active' if action_name == 'description') %></h4>
 	<h4><%= link_to t(:"application.profiles.sidebar.pricing_link"), pricing_account_profile_path, class: ('active' if action_name == 'pricing') %></h4>
 	<h4><%= link_to t(:"application.profiles.sidebar.photos_link"), account_profile_pictures_path, class: ('active' if controller.controller_name == 'pictures') %></h4>
+	<h4><%= link_to t(:"application.profiles.sidebar.avatar_link"), avatar_account_profile_path, class: ('active' if action_name == 'avatar') %></h4>
 	<h4><%= link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path %></h4>
 	<h4><%= link_to t(:"application.personals.sidebar.phone_link"), account_mobile_numbers_path %></h4>
 </div>

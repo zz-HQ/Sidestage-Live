@@ -42,5 +42,6 @@ CALLING_CODES = {
   41 => "Switzerland",
   90 => "Turkey",
   971 => "United Arab Emirates",
-  379 => "Vatican City"
+  379 => "Vatican City",
+  372 => "Estonia"
 }

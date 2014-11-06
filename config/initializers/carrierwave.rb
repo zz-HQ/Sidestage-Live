@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
-CarrierWave.configure do |config|
 
+CarrierWave.configure do |config|
+  
   if Rails.env.production?
     config.fog_credentials = {
       :provider               => ENV['FOG_PROVIDER'],                      # required

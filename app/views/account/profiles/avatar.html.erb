@@ -1,0 +1,24 @@
+<div id="profile" class="container">
+  <aside>
+    <%= render 'sidebar' %>
+  </aside>
+
+  <div class="content account">
+    <header><%= t(:"application.profiles.avatar.title_html") %></header>
+    
+    <div id="pricing">
+		<%= simple_form_for resource, url: avatar_account_profile_path, html: { multipart: true } do |f| %>
+    		<label><%= t(:"simple_form.labels.profile.avatar") %></label>
+    		<div class="avatar-uploader">
+    			<div id="avatar" class="avatar avatar-upload-button">
+    				<%= image_tag resource.avatar.url(:thumb) %>
+    			</div>
+                <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+    		</div>	
+    		<div class="new-avatar" style="display:none;">
+    			<%= f.input :avatar, label: false, id: "avatar-file" %>
+    		</div>
+        <% end %>
+    </div>
+  </div>
+</div>      
