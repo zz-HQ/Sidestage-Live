@@ -21,6 +21,7 @@ class Account::OffersController < Account::ResourcesController
   #
   
   def create
+    sleep(1)
     create! do |success, failure|
       success.html{ 
         redirect_to account_conversation_path(resource.conversation), notice: t(:"flash.account.deals.create.notice")

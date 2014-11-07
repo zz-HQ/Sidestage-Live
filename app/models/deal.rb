@@ -34,6 +34,7 @@ class Deal < ActiveRecord::Base
   validates :artist_price, numericality: { greater_than: 24 }, allow_blank: true 
   validate :coupon_must_be_valid, on: :create
   validate :customer_must_be_chargeable, if: :should_customer_be_chargeable?
+  validate :only_one_pending_request, on: :create
 
   #
   # Callbacks
@@ -216,7 +217,11 @@ class Deal < ActiveRecord::Base
     unless coupon_id.nil?
       errors.add :coupon_code, :invalid unless coupon.present? && coupon.still_valid? && coupon.active?
     end
-  end  
+  end 
+  
+  def only_one_pending_request
+    errors.add :conversation_id, :invalid if conversation_id.present? && Deal.visible_in_conversation.where(conversation_id: conversation_id).present?
+  end
   
   #
   # Background
