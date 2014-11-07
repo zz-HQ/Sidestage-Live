@@ -57,7 +57,7 @@ class HomeController < ApplicationController
   end
 
   def homepage
-    @profiles = Profile.featured.published.limit(6)
+    @profiles = Profile.featured.published.limit(8)
     respond_to do |wants|
       wants.html
       wants.html.mobile
