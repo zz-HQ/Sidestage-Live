@@ -1,6 +1,6 @@
 <div class="wrap">
   <div class="devise">
-    <h2>Resend confirmation instructions</h2>
+    <h2><%= t(:"application.devise.confirmations.title") %></h2>
 
     <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
       <%= f.error_notification %>
@@ -11,8 +11,8 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Resend confirmation instructions", class: "btn" %>
-        <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "link" %>
+        <%= f.button :submit, t(:"application.devise.confirmations.resend"), class: "btn" %>
+        <%= link_to t(:"application.devise.confirmations.did_not_receive"), new_unlock_path(resource_name), class: "link" %>
       </div>
     <% end %>
 

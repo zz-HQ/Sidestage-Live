@@ -173,14 +173,15 @@ Airmusic::Application.routes.draw do
       end
       
     end
+
+    get 'faq', to: "pages#faq", as: "faq"
+    get 'cancellations', to: "pages#cancellations", as: "cancellations"
+    get 'privacy-policy', to: "pages#privacy", as: "privacy"
+    get 'terms-of-service', to: "pages#terms", as: "terms"
     
   end
   
-  get 'cancellations', to: "pages#cancellations", as: "cancellations"
-  get 'faq', to: "pages#faq", as: "faq"
   get 'press', to: "pages#press", as: "press"
-  get 'terms-of-service', to: "pages#terms", as: "terms"
-  get 'privacy-policy', to: "pages#privacy", as: "privacy"
   get 'jobs', to: "pages#jobs", as: "jobs"
   get 'index', to: "home#index", as: "homepage"    
   get 'home', to: "home#homepage", as: "home"    

@@ -1,2 +1,2 @@
-You have a new message from <%= @message.sender.profile_name %>. Please log into Sidestage to read it. 
+<%= t(:"mail.messages.body_desc", name: @message.sender.profile_name) %>
 <%= account_conversation_url(@message.conversation) %>
