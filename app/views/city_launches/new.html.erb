@@ -10,7 +10,7 @@
         </section>
 
         <section class="artist_apply">
-        	<h3><%= t(:"application.city_launches.artist_apply_html", city: params[:city]) %></h3>
+        	<h3><%= t(:"application.city_launches.artist_apply_html", city: params[:city].to_s.split(",").first) %></h3>
         </section>
         
 	</div>
