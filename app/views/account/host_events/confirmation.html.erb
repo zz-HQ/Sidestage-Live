@@ -3,7 +3,7 @@
 	
 	<p>Enter your contact details.</p>
 
-	<%= simple_form_for resource, url: confirmation_account_host_event_path(resource) do |f| %>
+	<%= simple_form_for resource, url: confirmation_account_host_events_path(id: resource.to_param) do |f| %>
 	    <%= f.input :address, label: false, placeholder: "Street address and any special arrival instructions" %>
 	    <%= f.input :phone, label: false, placeholder: "Mobile number" %>
 	    <div class="btns">

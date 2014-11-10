@@ -57,9 +57,9 @@ Airmusic::Application.routes.draw do
       resources :host_events do
         member do
           match 'payment', to: 'host_events#payment', via: :all, as: :payment
-          match 'confirmation', to: 'host_events#confirmation', via: :all, as: :confirmation
           match 'invite_friends', to: 'host_events#invite_friends', via: :all, as: :invite_friends
         end
+        match 'confirmation/:id', to: 'host_events#confirmation', via: :all, as: :confirmation, on: :collection
       end
       
       resource :personal do

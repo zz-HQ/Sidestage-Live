@@ -82,7 +82,7 @@
         <%= image_tag resource.user.avatar_url(:thumb), alt: resource.user.full_name %>
       </div>
       <div class="name"><%= resource.name %></div>
-      <div class="label"><%= resource.location %></div>
+      <div class="label"><%= resource.location_without_country %></div>
   
       <%# TODO: Provide Helper to render price & currency properly %>
       <div class="price"><%= artist_price(resource) %></div>
