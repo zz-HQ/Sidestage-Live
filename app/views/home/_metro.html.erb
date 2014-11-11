@@ -3,7 +3,7 @@
 	<div class="wrap">
 		<h2><%= t(:"application.home.index.featured_html") %></h2>
 
-		<section class="results">
+		<section class="results homepage">
 			<%= link_to artist_path(@profiles.first), class: "metro large" do %>
 				<%= render "artists/metro_artist", artist: @profiles.first, large: true %>
 			<% end %>
@@ -19,16 +19,16 @@
 		        <a name="newsletter"></a>
 		        
 		        <%= render "mailchimp_subscription" %>
-
-		        <% if false %>
-		          <h4 class="light">Questions? Get in touch with our Customer Service team, <a class="light" href="mailto:bookings@sidestage.com">bookings@sidestage.com</a>.</h4>
-		        <% end %>
 		    </section>
 
-		    <% @profiles[3..5].each do |profile| %>
+		    <% @profiles[3..4].each do |profile| %>
 				<%= link_to artist_path(profile), class: "metro" do %>
 					<%= render "artists/metro_artist", artist: profile, large: false %>
 				<% end %>
+			<% end %>
+
+			<%= link_to artist_path(@profiles[5]), class: "metro omega" do %>
+				<%= render "artists/metro_artist", artist: @profiles[6], large: false %>
 			<% end %>
 
 			<%= link_to artist_path(@profiles[6]), class: "metro large" do %>

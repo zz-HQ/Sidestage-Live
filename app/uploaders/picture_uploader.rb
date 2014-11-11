@@ -6,7 +6,7 @@ class PictureUploader < Uploader
   end
 
   version :medium_rect do
-    process :resize_to_fill => [230, 230]
+    process :resize_to_fill => [376, 310]
   end
 
   version :thumb do

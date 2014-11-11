@@ -31,7 +31,7 @@ App.init = ->
   $('.star-rating-editable').starRating()
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
-  $('.tabs').toggleMediaFields()
+  $('.metro').toggleMediaFields()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
@@ -53,6 +53,20 @@ $(document).on 'click', '[data-trigger=reset_artist_filter]', (e) ->
 $(document).on 'change', '.submit-on-change', (e) -> 
   if($(@).val() != "")
       $(@).closest('form').trigger 'submit'
+
+$(document).on 'scroll', ->
+  if($(window).scrollTop() > 425 )
+      $(".profile-header.fixed").fadeIn(200)
+  else
+      $(".profile-header.fixed").fadeOut(200)
+
+$(document).on 'click', '#show-all-reviews', -> 
+  $(@).hide()
+  $("[data-container=all-reviews]").show()
+
+$(document).on 'click', '#load-all-pictures', -> 
+  $(@).hide()
+  $("[data-container=rest-pictures]").show()
 
 $(document).on 'change', '[data-auto-save=true]', (e) -> 
   $(@).trigger 'submit'

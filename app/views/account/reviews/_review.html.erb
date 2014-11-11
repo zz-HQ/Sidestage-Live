@@ -4,8 +4,11 @@
   </div>
   <div class="body">
     <div class="dreieck"></div>
-    <h5>
-      <%= review.author.name.split(' ').first %> 
+    <p><%= review.body %></p>
+
+    <p>
+      -- <%= review.author.name.split(' ').first %>, <%= l review.created_at, format: :review %>
+
       <span class="star-rating">
         <%- review.rate.to_i.times do |a| -%>
           <i class="fa fa-star rating-star rating-on"></i>
@@ -14,9 +17,6 @@
           <i class="fa fa-star rating-star rating-off"></i>
         <%- end -%>
       </span>
-    </h5>
-    <p><%= review.body %></p>
-    <hr/>
-    <p><%= l review.created_at, format: :review %></p>
+    </p>
   </div>
 </div>

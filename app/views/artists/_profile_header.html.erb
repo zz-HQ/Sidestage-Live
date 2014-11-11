@@ -1,0 +1,66 @@
+<header class="profile-header <%= fixed ? 'fixed' : '' %>">
+  <div class="wrapper">
+
+    <div class="photo">
+      <%= image_tag resource.user.avatar_url(:thumb), alt: resource.user.full_name %>
+    </div>
+
+    <div class="profile-details">
+      <h2><%= resource.name %></h2>
+      <p class="title"><%= resource.title %></p>
+      <p class="label"><i class="fa fa-map-marker"></i> <%= resource.location %></p>
+      <%# TODO: Twitter, Facebook, Website Links %>
+    </div>
+
+    <div class="booking-teaser" data-container="deal">
+      <h2 class="price"><%= artist_price(resource) %></h2>
+
+      <div>
+        <% if false %>
+        <% if artist_contactable?(resource.user) %>
+          <%= simple_form_for :deal, url: double_check_account_deals_path, remote: true, html: { id: 'quick-deal-request' } do |f| %>
+              <%= f.input :profile_id, as: :hidden, input_html: { value: resource.id } %>
+              <% if false %>
+              <div class="date">
+                <%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
+                  <i class="fa fa-calendar"></i>
+              </div>
+              <% end %>
+                  
+              <% if current_user %>
+                  <% if (pending_deal = current_user.pending_deal_with_profile(resource)).present? %>
+                      <%= link_to t(:"helpers.submit.deal.submit"), "" , value: truncate("Book #{resource.name}", length: 22), class: "btn", data: { lightbox: :html, target: "[data-container='pending-deal']" } %>
+                      <div style="display:none;" data-container="pending-deal">
+                          <%= render "account/deals/customer_pending_deal", deal: pending_deal %>
+                      </div>
+                  <% else %>
+                      <%= f.submit class: "btn", value: truncate("Book #{resource.name}", length: 22) %>
+                  <% end %>
+              <% else %>
+                  <%= link_to t(:"helpers.submit.deal.submit"), new_user_registration_path, class: "btn" %>
+              <% end %>
+          <% end %>
+        <% else %>
+          <div class="btn btn-gray activated"><%= truncate("Book #{resource.name}", length: 22) %></div>
+        <% end %>
+        <% end %>
+
+        <%= link_to truncate("Book #{resource.name}", length: 22), "" , class: "btn", data: { lightbox: :html, target: "[data-container='create-deal']" } %>
+        <div style="display:none;" data-container="create-deal">
+            <%#= render "account/deals/form", resource: Deal.new %>
+        </div>
+
+        <% if false #artist_contactable?(resource.user)  %>
+          <%= link_to t(:"application.artists.show.message_artist"), link_or_signin(new_account_message_path(receiver_id: resource.user.id, format: :html)), data: { lightbox: "ajax" }, class: "btn btn-white" %>
+        <% end %>
+
+        <div class="share-links">
+          <%= render "artists/social_share_links", resource: resource %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <%#= render "account/profiles/verifications", user: resource.user %>
+</header>

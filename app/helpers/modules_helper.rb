@@ -43,5 +43,11 @@ module ModulesHelper
 
     text
   end
+
+  def home_or_profile_page?
+    if action_name == 'homepage' || action_name == 'preview' || controller_name == 'artists' && action_name == 'show'
+      true
+    end
+  end
   
 end

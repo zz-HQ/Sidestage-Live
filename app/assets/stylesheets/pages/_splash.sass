@@ -5,7 +5,7 @@
   margin-right: auto
 
 body.desktop
-  background-color: #FCFCFC
+  background-color: $bg-color
 
   .wrap
     +outer-container
@@ -16,14 +16,7 @@ body.desktop
     height: 88%
     position: relative
     width: 100%
-
-    &.background1
-      background: #fff image-url('splash/background.jpg') center center no-repeat
-      +background-size(cover)
-
-    &.background2
-      background: #fff image-url('splash/background1.jpg') center center no-repeat
-      +background-size(cover)
+    +backgrounds
 
     #splash-content
       +outer-container
@@ -101,7 +94,7 @@ body.desktop
           padding: 16px
 
         [type="text"]
-          background-color: rgba(255,255,255,0.9)
+          background-color: $bg-color-inputs
           width: 754px
           margin: 0
 

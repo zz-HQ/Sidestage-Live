@@ -7,7 +7,7 @@
   <body>
     <div id="fb-root"></div>
     
-    <div id="wrap">
+    <div id="wrap" class="<%= 'gray_bg' if home_or_profile_page? %>">
       <div id="main" class="clearfix">
 
         <%= render 'cookies' %>
@@ -18,7 +18,7 @@
 
         <%= yield :outer_wrap %>
         
-        <div class="wrap">
+        <div class="wrap <%= 'no-margin' if home_or_profile_page? %>">
           <%= yield %>
         </div>
 

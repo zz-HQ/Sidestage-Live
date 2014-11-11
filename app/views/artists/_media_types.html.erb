@@ -1,44 +1,135 @@
-<nav class="tabs" data-id="social">
-  <%- if resource.has_soundcloud? -%>
-  <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:soundcloud) %></div>
-  <%- end -%>
-  <%- if resource.has_youtube? -%>
-  <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:youtube) %></div>
-  <%- end -%>
-  <% if resource.has_pictures? %>
-  <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:photos) %></div>
-  <% end %>
-</nav>
-<div class="tabs" data-id="social">
-  <%- if resource.has_soundcloud? -%>
-  <div class="tab">
-    <%# TODO: Load Soundcloud async if possible %>
-    <%= soundcloud_widget %>
-  </div>
-  <%- end -%>
-  <% if resource.has_youtube? %>
-  <div class="tab">
-    <%# TODO: Load Youtube async if possible %>
-    <%= youtube_widget %>
-  </div>
-  <%- end -%>
+<% if resource.has_pictures? %>
 
-  <% if resource.has_pictures? %>
-  <div class="tab">
-    <div class="picture-viewer">
-      <div class="thumbs">
-        <%- resource.pictures.each do |pic| -%>
-          <div class="thumb" data-review="<%= pic.picture.url(:preview) %>" data-caption="<%= pic.caption %>">
-            <%= image_tag pic.picture.url(:thumb), alt: pic.caption || resource.name %>
-          </div>
-        <%- end -%>
-      </div>
-      <div class="picture">
-        <img>
-        <div class="gradient-overlay"></div>
-        <div class="caption"></div>        
-      </div>
+    <% unless resource.has_soundcloud? || resource.has_youtube? %>
+
+        <div id="profile_pictures" class="pictures-alone">
+            <% resource.pictures.limit(9).each do |pic| %>
+                <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+            <% end %>
+        </div>
+
+    <% else %>
+
+        <%= render "artists/artist_picture", pic: resource.pictures[0], resource: resource, klass: ("next-to-yt" if !resource.has_soundcloud? && resource.has_youtube?) %>
+
+        <% if resource.pictures.length == 1 %>
+
+            <% if resource.has_soundcloud? %>
+
+                <div class="metro large sc"><%= soundcloud_widget %></div>
+
+                <% if resource.has_youtube? %>
+                    <div class="metro very-large yt"><%= youtube_thumbnail %><%= play_button %></div>
+                <% end %>
+
+            <% else %>
+                
+                <div class="metro large yt"><%= youtube_thumbnail %><%= play_button %></div>
+
+            <% end %>
+
+        <% else %>
+
+            <% if resource.has_soundcloud? %>
+
+                <% if resource.has_youtube? %>
+                    
+                    <div class="metro large sc"><%= soundcloud_widget %></div>
+
+                    <div class="picture-with-yt">
+                        
+                        <div class="metro large yt"><%= youtube_thumbnail %><%= play_button %></div>
+
+                        <%= render "artists/artist_picture", pic: resource.pictures[1], resource: resource, klass: "next-to-yt" %>
+
+                    </div>
+
+                    <div id="profile_pictures" class="pictures-alone">
+                        <% resource.pictures[2..4].each do |pic| %>
+                            <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                        <% end %>
+
+                        <div  data-container="rest-pictures" style="display:none;">
+                            <% resource.pictures[5..-1].each do |pic| %>
+                                <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                            <% end %>
+                        </div>
+
+                        <% if load_more? %>
+                            <div id="load-all-pictures" class="button-action">
+                                <span>Load more</span>
+                            </div>
+                        <% end %>
+                    </div>
+
+                <% else %>
+
+                    <div class="metro large sc"><%= soundcloud_widget %></div>
+
+                    <div id="profile_pictures" class="pictures-alone">
+                        <% resource.pictures[1..6].each do |pic| %>
+                            <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                        <% end %>
+
+                        <div  data-container="rest-pictures" style="display:none;">
+                            <% resource.pictures[7..-1].each do |pic| %>
+                                <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                            <% end %>
+                        </div>
+
+                        <% if load_more? %>
+                            <div id="load-all-pictures" class="button-action">
+                                <span>Load more</span>
+                            </div>
+                        <% end %>
+                    </div>
+
+                <% end %>
+
+            <% else %>
+                
+                <div class="metro large yt"><%= youtube_thumbnail %><%= play_button %></div>
+
+                <div id="profile_pictures" class="pictures-alone">
+                    <% resource.pictures[1..6].each do |pic| %>
+                        <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                    <% end %>
+
+                    <div  data-container="rest-pictures" style="display:none;">
+                        <% resource.pictures[7..-1].each do |pic| %>
+                            <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                        <% end %>
+                    </div>
+
+                    <% if load_more? %>
+                        <div id="load-all-pictures" class="button-action">
+                            <span>Load more</span>
+                        </div>
+                    <% end %>
+                </div>
+
+            <% end %>
+
+        <% end %>
+
+    <% end %>
+
+<% else %>
+
+    <% if resource.has_soundcloud? %>
+        <div class="metro very-large sc"><%= soundcloud_widget %></div>
+    <% end %>
+
+    <% if resource.has_youtube? %>
+        <div class="metro very-large yt"><%= youtube_thumbnail %><%= play_button %></div>
+    <% end %>
+
+<% end %>
+
+<div style="display:none;" data-container="yt-widget">
+    <div class="devise-lightbox yt-widget">
+        <% if resource.has_youtube? %>
+            <%= youtube_widget %>
+        <% end %>
     </div>
-  </div>
-  <% end %>
 </div>

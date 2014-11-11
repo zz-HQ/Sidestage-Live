@@ -1,0 +1,203 @@
+#main > header,
+#splash > header
+  background-color: #fff
+  overflow: visible // dropdown needs it
+  padding: 22px 0
+  height: 80px
+  min-width: 574px
+  position: relative
+  border-top: 2px solid $red
+  border-bottom: 1px solid $border-color
+
+  &.fixed
+    +fixed-top
+
+  &.transparent
+    +linear-gradient(to bottom, rgba(0,0,0,0.57), rgba(0,0,0,0.18), rgba(0,0,0,0))
+    background-color: transparent
+    border-bottom: none
+    z-index: 1
+
+    #match-me a,
+    #main-nav a,
+    #main-nav .user .username,
+      color: white
+
+    #main-nav
+      span
+        color: white
+
+      a.btn.btn-musician
+        color: white
+        border-color: rgba(255,255,255,0.7)
+
+    #main-nav .user .dropdown a
+      color: $text-color
+  
+  .wrap
+    overflow: visible
+    max-width: 1238px
+    padding: 0 19px
+
+  #logo,
+  #city-switch,
+  #match-me
+    float: left
+  
+  #logo
+    margin: 0 20px 0 0
+    position: relative
+    top: -7px
+
+    a
+      text-indent: -5000px
+
+    img
+      width: 180px
+
+  #city-switch
+    width: 250px
+    position: relative
+    bottom: 4px
+
+    i.fa
+      color: $text-color-light
+      position: absolute
+      top: 12px
+      left: 11px
+      font-size: 14px
+
+    input
+      padding-left: 30px
+      margin: 0
+      background-color: rgba(255,255,255,0.95)
+
+  #match-me
+    margin: 7px 18px
+    display: block
+    text-transform: capitalize
+    font-weight: 400
+    position: relative
+
+  #main-nav
+    float: right
+    margin-top: -8px
+
+    .messages,
+    .user
+      display: inline-block
+
+    .messages
+      margin-right: 44px
+      position: relative
+      top: 11px
+
+      .icon
+        font-size: 20px
+
+      .indicator
+        +border-radius(100px)
+        background-color: #FBAB2C
+        border: 2px solid #fff
+        color: #fff
+        font-size: 11px
+        font-weight: 700
+        padding: 1px 6px 2px
+        position: absolute
+        right: 12px
+        top: 3px
+
+    .user
+      position: relative
+      top: 7px
+      
+      .navi-avatar,
+      .username,
+      .arrow
+        display: inline-block
+        position: relative
+        cursor: default
+        top: -2px
+
+      img
+        +border-radius($border-radius)
+        height: 36px
+        width: 36px
+
+      .dropdown
+        display: none
+        width: 160px
+        left: 0
+        top: 34px
+        position: absolute
+        z-index: 401
+
+        hr
+          height: 4px
+          background-color: #484D4F
+          margin: 0
+          border: none
+
+        i
+          color: #484D4F
+          font-size: 20px
+          display: block
+          text-align: center
+          position: relative
+          top: 7px
+
+        a
+          color: #484D4F
+          font-size: 14px
+          font-weight: 300
+          text-transform: none
+          display: block
+          background-color: $bg-color-inputs
+          margin: 0
+          top: 0
+          padding: 8px 0px 8px 12px
+          border-right: 1px solid #eee
+          border-left: 1px solid #eee
+
+          &:hover
+            background-color: #F1F1F1
+
+        a:last-child
+          border-bottom: 1px solid #eee
+          padding-bottom: 10px
+      
+      .username
+        margin: 0 10px
+        color: #999DA2
+        top: 3px
+
+      .arrow
+        +retina-sprite(dropdown-arrow, $sprite, $sprite2x)
+        top: 0
+
+      &:hover
+        .dropdown
+          display: block
+
+    span
+      position: relative
+      top: 3px
+      margin-right: 15px
+      color: $text-color-light
+
+      a
+        &:hover
+          text-decoration: underline
+
+    a
+      font-size: 14px
+      font-weight: 300
+      color: $text-color-light
+
+      &.btn.btn-musician
+        position: relative
+        top: 3px
+        padding: 10px 24px
+        margin-left: 10px
+        color: $red
+        border-color: #DDDDDD
