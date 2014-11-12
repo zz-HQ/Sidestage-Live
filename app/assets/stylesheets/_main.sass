@@ -102,6 +102,7 @@ hr
 .avatar-uploader
 	position: relative
 	margin-bottom: 20px
+	width: 100px
 
 	.avatar
 		width: 100px
@@ -116,9 +117,28 @@ hr
 
 	.loader
 		position: absolute
-		left: 37px
-		top: 29px
+		left: 50%
+		top: 50%
+		margin-top: -22px
+		margin-left: -14px
 		display: none
+
+	&.profile-avatar
+		width: 100%
+
+		.avatar
+			background-image: none
+			background-color: #fafafa
+			width: 100%
+			min-height: 211px
+
+			&:hover
+				+opacity(1)
+
+			img
+				width: initial
+				height: 100%
+
 
 .loader
 	z-index: 2

@@ -5,7 +5,8 @@ de:
         view_profile: View Profile
         price_from: "from:"
       show:
-        leave_a_review: Do you know this artist? Leave a review.
+        know_artist: Do you know this artist?
+        leave_a_review: Leave a review.
         no_reviews: This artist has no reviews yet.
         view_next: "View next artist"
         message_artist: Message Artist

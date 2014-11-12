@@ -1,269 +1,248 @@
+$title-color: #000
+$about-color: #444
+
+section.profile-header
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 370px
+  +backgrounds
+  background-color: #dedede
+
+  a.action
+    +actions-link
+    background: rgba($red, 0.5)
+    top: initial
+    bottom: 70px
+    +transition(background-color 200ms ease-in-out)
+
+    &:hover
+      background: rgba($red, 0.65)
+
 #artist
-  +outer-container
+  +span-columns(8)
+  margin-top: 265px
+  overflow: visible
   
   .content
-    +span-columns(5)
-    width: 620px
+    +span-columns(8)
+    +omega
+
+    header.profile-header
+      +span-columns(8)
+      +omega
+      background-color: transparent
+      +transition(height 400ms $easeOutExpo)
+
+      .photo
+        float: left
+        width: 173px
+        border: 5px solid white
+        +border-radius($border-radius)
+        position: relative
+        top: -20px
+        z-index: 1
+
+      .profile-details
+        float: left
+        margin: 20px 0 0 20px
+        max-width: 40%
+
+        h2
+          font-size: 32px
+          color: $title-color
+          margin: 0
+
+          span
+            position: relative
+            bottom: 1px
+            font-size: 16px
+            margin-top: 10px
+            text-transform: lowercase
+
+            i.fa
+              margin-right: 4px
+
+        p
+          font-size: 18px
+          color: $title-color
+          
+          &.title
+            color: $text-color-light
+
+          i.fa
+            color: $text-color-light
+            margin-right: 2px
+
+      .booking-teaser
+        float: right
+        max-width: 40%
+        margin-top: 10px
+
+        .price
+          color: $red
+          font-size: 48px
+          float: left
+          margin: 12px 0 0
+
+        > div
+          margin-left: 30px
+          float: right
+
+          .btn
+            width: 240px
+            height: 70px
+            font-weight: 300
+            padding: 21px 16px
+            font-size: 20px
+
+      &.fixed
+        +fixed-top
+        background-color: white
+        height: 95px
+        z-index: 100
+        display: none
+        +box-with-shadow
+
+        .wrapper
+          +outer-container
+          max-width: 1238px
+          padding: 0 19px
+
+        .photo
+          width: 79px
+          border: none
+          overflow: hidden
+          top: 8px
+
+        .profile-details 
+          margin-top: 8px
+
+          h2
+            font-size: 24px
+
+        .booking-teaser 
+          margin: 2px
+
+          .share-btn
+            display: none
 
     .about
-      display: block
-      width: 100%
-      margin-top: 10px
+      +span-columns(8)
+      margin: 20px 0 40px
+      font-family: "Halant", sans-serif
+      padding: 0 $padding
 
       p
         margin-bottom: 10px
-        font-size: 16px
+        font-size: 36px
+        color: $about-color
 
-      .toggle-about-text
-        color: $text-color-light
+    .media-type-form
+      width: 100%
+      height: 100%
+      padding: 100px 50px 50px
+      text-align: center
+      background-color: #FFFED1
+      border: 2px solid #fef44b
+
+      .open-input-field
         cursor: pointer
-
-    h2
-      font-size: 65px
-      margin: 0 0 10px
-      line-height: 1em
-
-    .title
-      font-size: 24px
-
-    .tab
-      > a.delete
-        position: absolute
-        right: 0
-        bottom: 5px
-        padding: 8px 20px
-        background-color: rgba(0,0,0,0.8)
-        color: white
+        z-index: 10dsf
+        font-size: 14px
+        padding: 20px 0
+        display: block
+        pointer-events: none
+        +transition(color 400ms ceaser($easeOutExpo))
 
         &:hover
-          background-color: $red
-
-      .media-type-form
-        width: 100%
-        height: 350px
-        padding: 100px 50px 50px
-        text-align: center
-        background-color: #FFFED1
-        border: 2px solid #fef44b
-
-        .open-input-field
-          cursor: pointer
-          z-index: 10dsf
-          font-size: 14px
-          padding: 20px 0
-          display: block
-          pointer-events: none
-          +transition(color 400ms ceaser($easeOutExpo))
-
-          &:hover
-            color: $text-color-light
-
-        > p
-          margin: 10px 0
           color: $text-color-light
+
+      > p
+        margin: 10px 0
+        color: $text-color-light
+        pointer-events: none
+
+        strong
           pointer-events: none
 
-          strong
-            pointer-events: none
+      a.link
+        margin: 20px 0
+        display: inline-block
 
-        a.link
-          margin: 20px 0
-          display: inline-block
+    .media-type-field
+      width: 100%
+      display: none
 
-      .media-type-field
-        width: 100%
-        // height: 350px
-        // background-color: #FFF
-        // border: 2px solid $border-color
-        display: none
-        // padding: 20px
+      label
+        font-size: 14px
+        color: $text-color-light
+        margin-left: 10px
 
-        label
-          font-size: 14px
-          color: $text-color-light
-          margin-left: 10px
+      textarea
+        font-weight: 300
+        padding: 20px
+        height: 340px
 
+      &#sc-type-field
         textarea
-          // border: none
-          font-weight: 300
-          // background-color: transparent
-          padding: 20px
-          height: 350px
-
-        .btn
-          // position: absolute
-          // bottom: 20px
-          // left: 42%
+          height: 240px
 
     .soundcloud-widget,
     .youtube-widget
       background-color: #ddd
       margin-bottom: 20px
 
-    .picture-viewer
-      .thumbs
-        overflow: hidden
-        padding: 0
-        margin-bottom: 20px
-
-        .thumb
-          position: relative
-          border: 1px solid $border-color
-          float: left
-          height: 70px
-          list-style-type: none
-          margin: 8px 8px 0 0
-          text-indent: 0
-          width: 70px
-          cursor: pointer
-          +transition(opacity 600ms ceaser($easeOutExpo))
-          +omega(8n)
-
-          .delete
-            position: absolute
-            bottom: 2px
-            right: 2px
-            color: $red
-
-          &:hover
-            +opacity(0.8)
-
-          &.add-photo-btn
-            background-color: $red
-            font-size: 44px
-            font-weight: 100
-            text-align: center
-            color: white
-            border: none
-
-            &:hover
-              background-color: lighten($red, 10%)
-
-          &#file-upload-status
-            border: none
-            text-align: center
-            font-size: 14px
-            padding-top: 5px
-            display: none
-
-            .loader
-              position: relative
-              left: 14px
-              margin-bottom: 3px
-
-        form
-          display: none
-
-      .picture
-        position: relative
-
-        .gradient-overlay
-          +gradient-overlay
-          +linear-gradient(to top, rgba(0,0,0,0.77), rgba(0,0,0,0.01), rgba(0,0,0,0))
-          background-color: transparent
-          pointer-events: none
-
-        .caption
-          bottom: 10px
-          color: #fff
-          padding-left: 14px
-          position: absolute
-          z-index: 2
-          pointer-events: none
-    
-  aside
-    float: right
-    width: 260px
-    padding-top: 10px
-    margin-top: 40px
-
-    .booking-teaser
-      +box
-      padding: 16px 29px
-      text-align: center
-      background-color: #FFF
+    .picture
       position: relative
 
-      .photo
-        padding: 13px
+      .gradient-overlay
+        +gradient-overlay
+        +linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.01), rgba(0,0,0,0))
+        background-color: transparent
+        pointer-events: none
 
-        img
-          max-width: 100%
+      .caption
+        bottom: 10px
+        color: #fff
+        padding-left: 14px
+        position: absolute
+        z-index: 2
+        pointer-events: none
 
-      .name
-        font-size: 24px
-        font-weight: 400
 
-      .label
-        margin-top: 7px
-        color: $text-color-light
-        font-size: 18px
+  .verifications
+    margin-top: 30px
+    +box
 
-        &.message-artist
-          margin: 15px 0 5px
+    header
+      text-align: center
+      border-bottom: 1px solid $border-color
+      padding: 15px
+      font-size: 18px
 
-          a
-            color: $text-color-light
-            display: block
-            font-size: 15px
-            padding: 11px 0
-            border: 1px solid $border-color
+    .body
+      padding: 25px 30px 15px
 
-            &:hover
-              color: $text-color
-
-      .price
-        color: $text-color
-        font-size: 44px
-        font-weight: 700
-
-      .date
-        margin: 20px 0 0
+      p.verification
         position: relative
+        margin: 0 0 15px 50px
+        font-size: 16px
 
-        .fa
+        i.fa
           position: absolute
-          right: 14px
-          top: 12px
-          color: $text-color-light
-          pointer-events: none
+          color: #00b5ff
+          font-size: 28px
+          left: -35px
+          top: 0
 
-      .btn
-        margin-top: 0
-        margin-bottom: 14px
-        width: 100%
-
-    .verifications
-      margin-top: 30px
-      +box
-
-      header
-        text-align: center
-        border-bottom: 1px solid $border-color
-        padding: 15px
-        font-size: 18px
-
-      .body
-        padding: 25px 30px 15px
-
-        p.verification
-          position: relative
-          margin: 0 0 15px 50px
-          font-size: 16px
-
-          i.fa
-            position: absolute
-            color: #00b5ff
-            font-size: 28px
-            left: -35px
-            top: 0
-
-          span.light
-            font-size: 14px
+        span.light
+          font-size: 14px
 
   
   .share-btn
-    margin: 0 10px 15px 0
+    margin: 0 10px 0 0
     display: inline-block
     font-size: 14px
     font-weight: 500

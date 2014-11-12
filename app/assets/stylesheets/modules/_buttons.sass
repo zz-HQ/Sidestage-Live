@@ -75,6 +75,13 @@ $btn-hover-darken-percentage: 10%
       background-color: darken(#ccc, 5%)
       border-color: transparent
 
+  &.activated
+    cursor: default
+
+    &:hover
+      background-color: #ccc
+      border-color: transparent      
+
 
   &.btn-full
     width: 100%
@@ -95,3 +102,26 @@ $btn-hover-darken-percentage: 10%
     &:hover
       background-color: darken($blue-btn, $btn-hover-darken-percentage)
       color: #fff
+
+.button-action
+  +span-columns(8)
+  text-align: center
+  margin-top: 30px
+
+  > span
+    font-size: 18px
+    font-weight: 400
+    color: $red
+    padding: 21px
+    width: 260px
+    height: 70px
+    display: inline-block
+    border: 2px solid $red
+    +border-radius(3px)
+    cursor: pointer
+
+
+
+
+
+

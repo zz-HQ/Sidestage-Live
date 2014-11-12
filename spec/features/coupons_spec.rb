@@ -16,7 +16,7 @@ feature "coupon", js: true do
         login_as(current_user)
           
         visit artist_path(gaga, locale: :en)
-        click_button "Book it"
+        click_button "Book #{gaga.name}"
             
         click_link "Coupon"
         fill_in "deal[coupon_code]", with: "C"
@@ -32,7 +32,7 @@ feature "coupon", js: true do
         login_as(current_user)
     
         visit artist_path(gaga, locale: :en)
-        click_button "Book it"
+        click_button "Book #{gaga.name}"
 
         click_link "Coupon"
         fill_in "deal[coupon_code]", with: coupon.code

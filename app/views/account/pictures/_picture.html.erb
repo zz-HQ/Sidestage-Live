@@ -3,7 +3,9 @@
 		<i class="fa fa-spinner fa-spin"></i>
 		<p>Uploading...</p>
 	</div>
-	<%= image_tag picture.picture.url(:medium_rect), alt: picture.caption || picture.imageable.name %>
+	<div class="image">
+		<%= image_tag picture.picture.url(:medium_rect), alt: picture.caption || picture.imageable.name %>
+	</div>
 	<%= simple_form_for picture, url: account_profile_picture_path(picture), remote: true, data: { :"auto-save" => true } do |f| %>
 	    <%= f.input :caption, label: false %>
 	<% end %>

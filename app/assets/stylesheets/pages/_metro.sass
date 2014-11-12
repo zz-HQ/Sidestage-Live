@@ -15,22 +15,20 @@ section.metro
 			&.large
 				+span-columns(2 of 3)
 
-				.photo img
-					margin-top: -67px
+			&.very-large
+				+span-columns(3 of 3)
+				+omega
 
 			&.omega
 				+omega
 
-			&:first-child
-				+span-columns(2 of 3)
+		&.homepage .metro
+			&:last-child,
+			&:nth-child(8)
+				margin-bottom: 0
 
-			&:nth-child(2),
-			&:nth-child(4),
-			&:nth-child(7)
+			&:nth-child(2)
 				+omega
-
-			.photo img
-				margin-top: -33px
 
 			.overlay
 				+overlay
@@ -64,9 +62,8 @@ section.metro
 						&:last-child
 							margin-left: 32px
 
-			&:hover
-				.overlay
-					+opacity(1)
+			&:hover .overlay
+				+opacity(1)
 
 		#newsletter
 			background-color: white
@@ -94,9 +91,61 @@ section.metro
 						background-color: $red
 						font-weight: 300
 
+		&.profile_page
+			.metro
+				&.very-large
+					&:first-child
+						+omega
 
+				&.sc,
+				&.yt
+					.action
+						+actions-link
+						top: initial
+						bottom: 10px
 
+				&.sc
+					+box-with-shadow
+					+omega
 
+					iframe
+						margin: 30px 50px
+						width: 86%
+
+				&.yt
+					height: 410px
+					+box-with-shadow
+					cursor: pointer
+
+					&:nth-child(2)
+						+omega
+
+					.play-btn
+						width: 110px
+						height: 110px
+						+opacity(0.75)
+						position: absolute
+						top: 50%
+						left: 50%
+						margin: -55px 0 0 -55px
+						+transform(rotate(-2deg))
+						+transition(opacity 200ms ease-in-out)
+						pointer-events: none
+
+					&:hover
+						.play-btn
+							+opacity(0.95)
+
+				&.next-to-yt
+					height: 410px
+
+					img
+						height: 410px
+						width: auto
+						margin-left: -16%
+
+			.pictures-alone .metro
+				+omega(3n)
 
 
 

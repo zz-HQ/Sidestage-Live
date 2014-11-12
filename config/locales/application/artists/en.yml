@@ -7,7 +7,8 @@ en:
         blank: "We're sorry, but can't find what you're looking for."
         looking_for_special_html: Looking for something special? <a href="%{match_me_path}">Tell us more, and we'll match you</a> with the perfect musician for your event.
       show:
-        leave_a_review: Do you know this artist? Leave a review.
+        know_artist: Do you know this artist?
+        leave_a_review: Leave a review.
         no_reviews: This artist has no reviews yet.
         view_next: "View next artist"
         message_artist: Message Artist

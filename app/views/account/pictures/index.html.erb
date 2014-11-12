@@ -7,11 +7,13 @@
     <header><%= t(:"application.profiles.pictures.index.title_html") %></header>
     
     <div id="picture-upload" class="picture-upload">
-      <%= form_tag(account_profile_pictures_path, multipart: true, id: "new_picture", method: :post) do %>
-          <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true, style: "display:none;" %>
-          
-          <span id="fileupload-button" class="btn btn-blue btn-inline">Add photos</span>
-      <% end %>
+        <%= form_tag(account_profile_pictures_path, multipart: true, id: "new_picture", method: :post) do %>
+            <div data-upload="trigger" style="display:none;">
+                <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true %>
+            </div>
+              
+            <span data-upload="button" id="fileupload-button" class="btn btn-blue btn-inline">Add photos</span>
+        <% end %>
       <div id="file-upload-status" style="display:none;"><div class="value" style=""></div></div>
     </div>
 

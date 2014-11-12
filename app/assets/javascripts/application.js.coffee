@@ -31,7 +31,7 @@ App.init = ->
   $('.star-rating-editable').starRating()
   $('#flash-messages').flash()
   $('.picture-viewer').pictureViewer()
-  $('.tabs').toggleMediaFields()
+  $('.metro').toggleMediaFields()
   $('.date-picker').datetimepicker
     timepicker: false
     format: 'j/n/Y'
@@ -54,6 +54,20 @@ $(document).on 'change', '.submit-on-change', (e) ->
   if($(@).val() != "")
       $(@).closest('form').trigger 'submit'
 
+$(document).on 'scroll', ->
+  if($(window).scrollTop() > 425 )
+      $(".profile-header.fixed").fadeIn(200)
+  else
+      $(".profile-header.fixed").fadeOut(200)
+
+$(document).on 'click', '#show-all-reviews', -> 
+  $(@).hide()
+  $("[data-container=all-reviews]").show()
+
+$(document).on 'click', '#load-all-pictures', -> 
+  $(@).hide()
+  $("[data-container=rest-pictures]").show()
+
 $(document).on 'change', '[data-auto-save=true]', (e) -> 
   $(@).trigger 'submit'
 
@@ -73,9 +87,9 @@ $(document).on 'click', '#close-vex', (e) ->
     e.preventDefault()
     $('.vex-close').trigger 'click'
 
-$(document).on 'click', '#fileupload-button', (e) ->
+$(document).on 'click', '[data-upload=button]', (e) ->
   e.preventDefault()
-  $('#file').trigger 'click'
+  $('[data-upload=trigger] input').trigger 'click'
 
 $(document).on 'click', '.close', (e) ->
     e.preventDefault()

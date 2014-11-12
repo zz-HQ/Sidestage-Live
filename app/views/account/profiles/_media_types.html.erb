@@ -1,63 +1,142 @@
-<nav class="tabs" data-id="social">
-    <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:soundcloud) %></div>
-    <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:youtube) %></div>
-    <% unless action_name == "preview" %>
-      <div class="tab-switch tab-switcher"><%= Profile.human_attribute_name(:photos) %></div>
-    <% else %>
-      <a href="<%= account_profile_pictures_path %>" class="tab-switch last"><%= Profile.human_attribute_name(:photos) %></a>
-    <% end %>
-    <span class="new-feature">New! Add captions to your photos.</span>
-</nav>
+<% if resource.has_pictures? %>
 
-<div class="tabs" data-id="social">
-  <div id="sc-tab" class="tab">
-    <% if resource.has_soundcloud? %>
-      <%= soundcloud_widget %>
-      <%= link_to t(:"application.links.remove"), remove_soundcloud_account_profile_path, method: :put, class: "delete" %>
-    <% else %>
-      <div id="sc-type" class="media-type-form">
-        <p><strong><%= t(:"application.profiles.preview.soundcloud.title") %></strong></p>
-        <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.soundcloud") %></span>
+    <%= render "artists/artist_picture", pic: resource.pictures[0], resource: resource, klass: "" %>
 
-        <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
-        <div style="display:none;" data-container="help-sc">
-          <div class="devise-lightbox">
-            <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
-            <%= image_tag 'sc-embed-help.png' %>
-          </div>
+    <div class="metro large sc">
+        <% if resource.has_soundcloud? %>
+
+            <%= soundcloud_widget %>
+            <%= link_to t(:"application.links.remove"), remove_soundcloud_account_profile_path, method: :put, class: "action" %>
+
+        <% else %>
+            
+            <div id="sc-type" class="media-type-form">
+                <p><strong><%= t(:"application.profiles.preview.soundcloud.title") %></strong></p>
+                <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.soundcloud") %></span>
+
+                <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
+                <div style="display:none;" data-container="help-sc">
+                    <div class="devise-lightbox">
+                        <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
+                        <%= image_tag 'sc-embed-help.png' %>
+                    </div>
+                </div>
+            </div>
+            <div id="sc-type-field" class="media-type-field">
+                <%= simple_form_for resource, url: soundcloud_account_profile_path do |f| %>
+                    <%= text_area :profile, :soundcloud, hint: false, placeholder: "Copy and paste the SoundCloud Embed code here.", label: false %>
+                    <%= f.submit class: "btn btn-center btn-blue", id: "sc-btn" %>
+                <% end %>
+            </div>
+
+        <% end %>
+    </div>
+
+
+    <div class="picture-with-yt">
+
+        <div class="metro large yt">
+            <% if resource.has_youtube? %> 
+                    <%= youtube_thumbnail %><%= play_button %>
+                    <%= link_to t(:"application.links.remove"), remove_youtube_account_profile_path, method: :put, class: "action" %>
+            <% else %>
+                <div id="yt-type" class="media-type-form">
+                    <p><strong><%= t(:"application.profiles.preview.youtube.title") %></strong></p>
+                    <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.youtube") %></span>
+                </div>
+                <div id="yt-type-field" class="media-type-field">
+                    <%= simple_form_for resource, url: youtube_account_profile_path do |f| %>
+                        <%= text_area :profile, :youtube, hint: false, placeholder: "Copy and paste the Youtube link here.", label: false %>
+                        <%= f.submit class: "btn btn-center btn-blue", id: "yt-btn" %>
+                    <% end %>
+                </div>
+            <% end %>
         </div>
-      </div>
-      <div id="sc-type-field" class="media-type-field">
-        <%= simple_form_for resource, url: soundcloud_account_profile_path do |f| %>
-          <%= text_area :profile, :soundcloud, hint: false, placeholder: "Copy and paste the SoundCloud Embed code here.", label: false %>
-          <%= f.submit class: "btn btn-center btn-blue", id: "sc-btn" %>
-        <% end %>
-      </div>
+
+        <%= (render "artists/artist_picture", pic: resource.pictures[1], resource: resource, klass: "next-to-yt") unless resource.pictures.length == 1 %>
+
+    </div>
+
+
+    <% unless resource.pictures.length == 1 %>
+
+        <div id="profile_pictures" class="pictures-alone">
+            <% resource.pictures[2..4].each do |pic| %>
+                <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+            <% end %>
+
+            <% if load_more? %>
+                <div  data-container="rest-pictures" style="display:none;">
+                    <% resource.pictures[5..-1].each do |pic| %>
+                        <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                    <% end %>
+                </div>
+
+                <div id="load-all-pictures" class="button-action">
+                    <span>Load more</span>
+                </div>
+            <% end %>
+        </div>
+
     <% end %>
-  </div>
 
-  <div id="yt-tab" class="tab">
-    <% if resource.has_youtube? %>
-      <%= youtube_widget %>
-      <%= link_to t(:"application.links.remove"), remove_youtube_account_profile_path, method: :put, class: "delete" %>
-    <% else %>
-      <div id="yt-type" class="media-type-form">
-        <p><strong><%= t(:"application.profiles.preview.youtube.title") %></strong></p>
-        <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.youtube") %></span>
-      </div>
-      <div id="yt-type-field" class="media-type-field">
-        <%= simple_form_for resource, url: youtube_account_profile_path do |f| %>
-          <%= text_area :profile, :youtube, hint: false, placeholder: "Copy and paste the Youtube link here.", label: false %>
-          <%= f.submit class: "btn btn-center btn-blue", id: "yt-btn" %>
+<% else %> <!-- Keine Bilder -->
+
+    <div class="metro very-large sc">
+        <% if resource.has_soundcloud? %>
+
+            <%= soundcloud_widget %>
+            <%= link_to t(:"application.links.remove"), remove_soundcloud_account_profile_path, method: :put, class: "action" %>
+
+        <% else %>
+            
+            <div id="sc-type" class="media-type-form">
+                <p><strong><%= t(:"application.profiles.preview.soundcloud.title") %></strong></p>
+                <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.soundcloud") %></span>
+
+                <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
+                <div style="display:none;" data-container="help-sc">
+                    <div class="devise-lightbox">
+                        <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
+                        <%= image_tag 'sc-embed-help.png' %>
+                    </div>
+                </div>
+            </div>
+            <div id="sc-type-field" class="media-type-field">
+                <%= simple_form_for resource, url: soundcloud_account_profile_path do |f| %>
+                    <%= text_area :profile, :soundcloud, hint: false, placeholder: "Copy and paste the SoundCloud Embed code here.", label: false %>
+                    <%= f.submit class: "btn btn-center btn-blue", id: "sc-btn" %>
+                <% end %>
+            </div>
+
         <% end %>
-      </div>
-    <% end %>
-  </div>
+    </div>
 
-  <% unless action_name == "preview" %>
-  <div id="picture-slider" class="tab">
-    <%= render partial: "account/pictures/pictures" %>
-  </div>
-  <% end %>
+    <div class="metro very-large yt">
+            <% if resource.has_youtube? %> 
+                    <%= youtube_thumbnail %><%= play_button %>
+                    <%= link_to t(:"application.links.remove"), remove_youtube_account_profile_path, method: :put, class: "action" %>
+            <% else %>
+                <div id="yt-type" class="media-type-form">
+                    <p><strong><%= t(:"application.profiles.preview.youtube.title") %></strong></p>
+                    <span class="open-input-field"><%= t(:"simple_form.placeholders.profile.youtube") %></span>
+                </div>
+                <div id="yt-type-field" class="media-type-field">
+                    <%= simple_form_for resource, url: youtube_account_profile_path do |f| %>
+                        <%= text_area :profile, :youtube, hint: false, placeholder: "Copy and paste the Youtube link here.", label: false %>
+                        <%= f.submit class: "btn btn-center btn-blue", id: "yt-btn" %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
 
-</div>
+<% end %>
+
+
+<% if resource.has_youtube? %>
+    <div style="display:none;" data-container="yt-widget">
+        <div class="devise-lightbox yt-widget">
+            <%= youtube_widget %>
+        </div>
+    </div>
+<% end %>

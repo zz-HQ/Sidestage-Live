@@ -15,21 +15,21 @@ describe Account::ProfilesController, :type => :controller do
   it "gets basics" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)    
-    get :basics, id: profile.to_param
+    get :basics
     expect(response).to render_template(:basics)
   end
 
   it "patches basics" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)    
-    put :basics, id: profile.to_param, profile: { artist_type: 'dj' }
+    put :basics, profile: { artist_type: 'dj' }
     expect(response).to render_template(:basics)
   end
 
   it "gets pricing" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)    
-    get :pricing, id: profile.to_param
+    get :pricing
     expect(response).to render_template(:pricing)
   end
 
@@ -43,21 +43,21 @@ describe Account::ProfilesController, :type => :controller do
   it "gets description" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)
-    get :description, id: profile.to_param
+    get :description
     expect(response).to render_template(:description)
   end
 
   it "patches description" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)
-    put :description, id: profile.to_param, profile: { title: profile.title + " halo" }
+    put :description, profile: { title: profile.title + " halo" }
     expect(response).to render_template(:description)
   end
 
   it "gets preview" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)
-    get :preview, id: profile.to_param
+    get :preview
     expect(response).to render_template(:preview)
   end
 
@@ -65,7 +65,7 @@ describe Account::ProfilesController, :type => :controller do
     profile = FactoryGirl.create(:profile)
     request.env["HTTP_REFERER"] = preview_account_profile_path(profile)    
     sign_in(profile.user)
-    put :youtube, id: profile.to_param, profile: { youtube: "hi" }
+    put :youtube, profile: { youtube: "hi" }
     expect(response).to redirect_to(preview_account_profile_path(profile))
   end
 
@@ -73,7 +73,7 @@ describe Account::ProfilesController, :type => :controller do
     profile = FactoryGirl.create(:profile)
     request.env["HTTP_REFERER"] = preview_account_profile_path(profile)        
     sign_in(profile.user)
-    put :soundcloud, id: profile.to_param, profile: { soundcloud: "hi" }
+    put :soundcloud, profile: { soundcloud: "hi" }
     expect(response).to redirect_to(preview_account_profile_path(profile))
   end
   
@@ -81,7 +81,7 @@ describe Account::ProfilesController, :type => :controller do
     profile = FactoryGirl.create(:profile)
     request.env["HTTP_REFERER"] = preview_account_profile_path(profile)        
     sign_in(profile.user)
-    put :remove_soundcloud, id: profile.to_param
+    put :remove_soundcloud
     expect(response).to redirect_to(preview_account_profile_path(profile))
   end
 
@@ -89,10 +89,9 @@ describe Account::ProfilesController, :type => :controller do
     profile = FactoryGirl.create(:profile)
     request.env["HTTP_REFERER"] = preview_account_profile_path(profile)            
     sign_in(profile.user)
-    put :remove_youtube, id: profile.to_param
+    put :remove_youtube
     expect(response).to redirect_to(preview_account_profile_path(profile))
   end
-
   
 end
 
