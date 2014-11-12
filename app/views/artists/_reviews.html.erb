@@ -1,12 +1,12 @@
 <div data-container="reviews" class="reviews-container">
     <header>
         <div class="line"></div>
-        <h4><%= pluralize(resource.reviews.count, Review.model_name.human).downcase %></h4>
+        <h4><%= pluralize(profile.reviews.count, Review.model_name.human).downcase %></h4>
 
         <p>
             <%= t(:"application.artists.show.know_artist") %> 
-            <% if current_user && current_user.id != resource.user_id %>
-              <%= link_to t(:"application.artists.show.leave_a_review"), new_account_profile_review_path(resource), data: { lightbox: :html, target: "[data-container='new-review']" } %>
+            <% if current_user && current_user.id != profile.user_id %>
+              <%= link_to t(:"application.artists.show.leave_a_review"), new_account_profile_review_path(profile), data: { lightbox: :html, target: "[data-container='new-review']" } %>
             <% else %>
               <%= link_to t(:"application.artists.show.leave_a_review"), new_user_registration_path %>
             <% end %>
@@ -15,8 +15,8 @@
 
     <div style="display:none;" data-container="new-review">
         <div class="devise-lightbox new-review">
-            <h3><%= t(:"application.reviews.new.title") %> <%= resource.name %></h3>
-              <%= render "account/reviews/form", parent: resource, resource: Review.new %>
+            <h3><%= t(:"application.reviews.new.title") %> <%= profile.name %></h3>
+              <%= render "account/reviews/form", parent: profile, resource: Review.new %>
         </div>
         <script>
           jQuery(document).ready(function(){
@@ -25,14 +25,14 @@
         </script>
     </div>
 
-    <% if resource.reviews.present? %>
+    <% if profile.reviews.present? %>
         <div id="reviews" class="reviews">
 
-            <%= render partial: "account/reviews/review", collection: resource.reviews[0..2] %>
+            <%= render partial: "account/reviews/review", collection: profile.reviews[0..2] %>
 
-            <% if resource.reviews.size > 3 %>
+            <% if profile.reviews.size > 3 %>
                 <div  data-container="all-reviews" style="display:none;">
-                    <%= render partial: "account/reviews/review", collection: resource.reviews[3..-1] %>            
+                    <%= render partial: "account/reviews/review", collection: profile.reviews[3..-1] %>            
                 </div>
                 
                 <div id="show-all-reviews" class="button-action">
