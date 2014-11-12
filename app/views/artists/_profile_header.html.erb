@@ -2,7 +2,7 @@
   <div class="wrapper">
 
     <div class="photo">
-        <%= image_tag resource.user.avatar_url(resource.user.avatar.profile.file.exists? ? :profile : :thumb), alt: resource.user.full_name %>
+        <%= image_tag resource.user.avatar_url(resource.user.avatar.profile.file.try(:exists?) ? :profile : :thumb), alt: resource.user.full_name %>
     </div>
 
     <div class="profile-details">
