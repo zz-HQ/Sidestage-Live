@@ -117,8 +117,10 @@ class Profile < ActiveRecord::Base
 
   after_validation :reverse_friendly
   
-  after_save :notify_admin_on_publish
-
+  after_save :notify_admin_on_publish, :send_publishing_confirmation
+  
+  after_save :welcome_artist
+  
   #
   # Associations
   # ---------------------------------------------------------------------------------------
@@ -243,6 +245,16 @@ class Profile < ActiveRecord::Base
     if published_changed? && published?
       AdminMailer.delay.profile_published(self)
     end
+  end
+  
+  def send_publishing_confirmation
+    if published_changed? && published?
+      EmailWorker.perform_async(:profile_published_confirmation, id)
+    end
+  end
+  
+  def welcome_artist
+    EmailWorker.perform_async(:welcome_artist, id)
   end
   
   def set_default_currency

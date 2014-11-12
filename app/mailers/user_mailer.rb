@@ -39,6 +39,22 @@ class UserMailer < Devise::Mailer
     end
   end
   
+  def profile_published_confirmation(profile)
+    @profile = profile
+    mail(to: @profile.user.email, from: "daniel@sidestage.com", reply_to: "daniel@sidestage.com", subject: "Your profile is published") do |format|
+      format.text
+      format.html
+    end
+  end
+  
+  def welcome_artist(profile)
+    @profile = profile
+    mail(to: @profile.user.email, from: "daniel@sidestage.com", reply_to: "daniel@sidestage.com", subject: "Thanks for signing up") do |format|
+      format.text
+      format.html
+    end
+  end
+  
   def send_sms
     @user.send_sms(t(:"view.messages.sms", partner_name: @message.sender.profile_name))
   end
