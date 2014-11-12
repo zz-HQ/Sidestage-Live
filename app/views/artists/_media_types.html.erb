@@ -49,13 +49,12 @@
                             <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
                         <% end %>
 
-                        <div  data-container="rest-pictures" style="display:none;">
-                            <% resource.pictures[5..-1].each do |pic| %>
-                                <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
-                            <% end %>
-                        </div>
-
                         <% if load_more? %>
+                            <div  data-container="rest-pictures" style="display:none;">
+                                <% resource.pictures[5..-1].each do |pic| %>
+                                    <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                                <% end %>
+                            </div>
                             <div id="load-all-pictures" class="button-action">
                                 <span>Load more</span>
                             </div>
@@ -71,13 +70,12 @@
                             <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
                         <% end %>
 
-                        <div  data-container="rest-pictures" style="display:none;">
-                            <% resource.pictures[7..-1].each do |pic| %>
-                                <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
-                            <% end %>
-                        </div>
-
                         <% if load_more? %>
+                            <div  data-container="rest-pictures" style="display:none;">
+                                <% resource.pictures[7..-1].each do |pic| %>
+                                    <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                                <% end %>
+                            </div>
                             <div id="load-all-pictures" class="button-action">
                                 <span>Load more</span>
                             </div>
@@ -95,13 +93,12 @@
                         <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
                     <% end %>
 
-                    <div  data-container="rest-pictures" style="display:none;">
-                        <% resource.pictures[7..-1].each do |pic| %>
-                            <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
-                        <% end %>
-                    </div>
-
                     <% if load_more? %>
+                        <div  data-container="rest-pictures" style="display:none;">
+                            <% resource.pictures[7..-1].each do |pic| %>
+                                <%= render "artists/artist_picture", pic: pic, resource: resource, klass: "" %>
+                            <% end %>
+                        </div>
                         <div id="load-all-pictures" class="button-action">
                             <span>Load more</span>
                         </div>

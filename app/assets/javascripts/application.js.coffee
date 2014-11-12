@@ -87,9 +87,9 @@ $(document).on 'click', '#close-vex', (e) ->
     e.preventDefault()
     $('.vex-close').trigger 'click'
 
-$(document).on 'click', '#fileupload-button', (e) ->
+$(document).on 'click', '[data-upload=button]', (e) ->
   e.preventDefault()
-  $('#file').trigger 'click'
+  $('[data-upload=trigger] input').trigger 'click'
 
 $(document).on 'click', '.close', (e) ->
     e.preventDefault()

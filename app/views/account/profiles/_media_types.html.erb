@@ -1,6 +1,6 @@
 <% if resource.has_pictures? %>
 
-    <%= render "artists/artist_picture", pic: resource.pictures[0], resource: resource, klass: ("next-to-yt" if !resource.has_soundcloud? && resource.has_youtube?) %>
+    <%= render "artists/artist_picture", pic: resource.pictures[0], resource: resource, klass: "" %>
 
     <div class="metro large sc">
         <% if resource.has_soundcloud? %>

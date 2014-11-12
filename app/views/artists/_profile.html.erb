@@ -4,7 +4,7 @@
 <% @social_desc = "Book #{resource.name} for your next party on Sidestage.com" %>
 
 
-<section class="profile-header <%= ['background1', 'background2'].sample %>" style="<%= "background-image: url(#{resource.avatar});" if resource.avatar.present? %>">
+<section class="profile-header">
   <%= link_to("edit header picture", avatar_account_profile_path, class: "action") if action_name == "preview" %>
 </section>
 
@@ -24,7 +24,7 @@
       </section>
     </section>
     
-    <%= render "reviews", profile: resource %>
+    <%= render "artists/reviews", profile: resource %>
 
 
     <% if false %>
