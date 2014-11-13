@@ -1,4 +1,4 @@
-<div class="picture metro <%= klass %>" style="background-image: url(<%= pic.picture.url(pic.picture.large.file.try(:exists?) ? :large : :preview) %>);">
+<div class="picture metro <%= klass %>" style="background-image: url(<%= pic.picture.url(:preview) %>);">
 	<%# Alte Bilder kriegen die alte große preview Version, die neuen die richtige large Version %>
 	<%#= image_tag pic.picture.url(pic.picture.large.file.try(:exists?) ? :large : :preview), alt: pic.caption || resource.name %>
 
