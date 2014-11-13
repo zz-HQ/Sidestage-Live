@@ -1,4 +1,4 @@
-<div class="photo" style="background-image: url(<%= artist.user.avatar_url( large ? :big : (artist.user.avatar.large.file.try(:exists?) ? :large : :big)) %>);">
+<div class="photo" style="background-image: url(<%= artist.user.avatar_url( large ? :big : :large) %>);">
 	<%# Alte Bilder kriegen thumb Version, die neuen die large Version %>
   	<%#= image_tag artist.user.avatar_url( large ? :big : (artist.user.avatar.large.file.try(:exists?) ? :large : :big)) %>
 

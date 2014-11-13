@@ -11,7 +11,7 @@ class UserMailer < Devise::Mailer
           :reply_to => ENV["mail_from"],
           :return_path => ENV["mail_return_path"]
   
-  layout "email/user"
+  layout "email/user", except: [:welcome_artist]
 
   #
   # Filters

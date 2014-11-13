@@ -47,10 +47,10 @@ class Account::HostEventsController < Account::ResourcesController
   def payment
     if request.patch?
       if resource.update_attributes(permitted_params[:event]||{}) && resource.charge_user!
-        redirect_to confirmation_account_host_event_path(resource)
+        redirect_to confirmation_account_host_events_path(id: resource.to_param)
       end
     else
-      redirect_to confirmation_account_host_event_path(resource) if resource.price < 1
+      redirect_to confirmation_account_host_events_path(id: resource.to_param) if resource.price < 1
     end
   end
   

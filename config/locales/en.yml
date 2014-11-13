@@ -189,3 +189,6 @@ en:
       rejected:
         subject: "Booking cancelled"
         body_html: "Your booking with %{partner_name} for %{event_date} has been cancelled."
+    messages:
+      body_desc: "You have a new message from %{name}. Please log in to Sidestage to read it."
+      log_in: "Log in to Sidestage"

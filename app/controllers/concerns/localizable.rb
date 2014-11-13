@@ -8,7 +8,7 @@ module Localizable
   def set_locale
     parsed_locale = param_locale || cookie_locale || domain_locale || accept_locale || I18n.default_locale
     I18n.locale = parsed_locale
-
+    
     if session_locale.present?
       if I18n.locale != session_locale 
         redirect_to request.params.merge(locale: session_locale)

@@ -1,3 +1,3 @@
-<p style="color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;">You have a new message from <%= @message.sender.profile_name %>. Please log in to Sidestage to read it.</p>
+<p style="color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;"><%= t(:"mail.messages.body_desc", name: @message.sender.profile_name) %></p>
 
-<a style="padding: 20px 25px 18px; background: #3e8ae5; color: #fff; font-weight: 600; margin-bottom: 30px; font-size: 16px; border-radius: 4px; display: inline-block; text-decoration: none;" href="<%= account_conversation_url(@message.conversation) %>">Log in to Sidestage</a>
+<%= link_to t(:"mail.messages.log_in"), account_conversation_url(@message.conversation), style: "padding: 20px 25px 18px; background: #3e8ae5; color: #fff; font-weight: 600; margin-bottom: 30px; font-size: 16px; border-radius: 4px; display: inline-block; text-decoration: none;" %>
