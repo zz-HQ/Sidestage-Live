@@ -1,5 +1,7 @@
-<div class="picture metro <%= klass %>">
-	<%= image_tag pic.picture.url(:medium_rect), alt: pic.caption || resource.name %>
+<div class="picture metro <%= klass %>" style="background-image: url(<%= pic.picture.url(pic.picture.large.file.try(:exists?) ? :large : :preview) %>);">
+	<%# Alte Bilder kriegen die alte große preview Version, die neuen die richtige large Version %>
+	<%#= image_tag pic.picture.url(pic.picture.large.file.try(:exists?) ? :large : :preview), alt: pic.caption || resource.name %>
+
 	<div class="gradient-overlay"></div>
 	<div class="caption"><%= pic.caption %></div>
 </div>
