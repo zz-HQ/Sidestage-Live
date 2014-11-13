@@ -136,7 +136,7 @@ en:
         submit: Save
       deal:
         create: Book it
-        submit: Book it
+        submit: 'Book %{artist_name}'
         update: Book it
         special_offer: "Make Special Offer"
       mailchimp_subscriber:

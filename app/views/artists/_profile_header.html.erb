@@ -41,7 +41,7 @@
                       <%= f.submit class: "btn", value: truncate("Book #{resource.name}", length: 21) %>
                   <% end %>
               <% else %>
-                  <%= link_to t(:"helpers.submit.deal.submit"), new_user_registration_path, class: "btn" %>
+                  <%= link_to t(:"helpers.submit.deal.submit", artist_name: truncate(resource.name, length: 21)), new_user_registration_path, class: "btn" %>
               <% end %>
           <% end %>
         <% else %>
