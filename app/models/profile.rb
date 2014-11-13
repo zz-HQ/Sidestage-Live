@@ -119,7 +119,7 @@ class Profile < ActiveRecord::Base
   
   after_save :notify_admin_on_publish, :send_publishing_confirmation
   
-  after_save :welcome_artist
+  after_create :welcome_artist
   
   #
   # Associations
