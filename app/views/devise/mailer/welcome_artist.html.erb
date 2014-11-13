@@ -1,9 +1,15 @@
-<p style="color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;">
-Hey <%= @profile.name %>,
+<p>
+Hi <%= @profile.user.name %>,
 </p>
-<p style="color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;">
-Thanks for signing up to Sidestage. If I can be helpful, let me know!
+<p>
+I'm glad to see that you have signed up to <%= link_to "Sidestage.com", root_url %>. If you need help publishing your profile or have any questions about Sidestage feel free to drop me a line. 
 </p>
-<p style="color: #4a4a4a; font-size: 18px; margin: 50px 4%; font-weight: 300; line-height: 1.45;">
-Daniel
+<p>
+Cheers!<br>
+-- 
+</p>
+<p>
+Daniel Roberts<br>
+Co-Founder/CXO, Sidestage<br>
+<%= link_to "www.Sidestage.com", root_url %>
 </p>
