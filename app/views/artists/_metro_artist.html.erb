@@ -1,11 +1,12 @@
-<div class="photo">
-  <%= image_tag artist.user.avatar_url( large ? :big : :thumb) %>
+<div class="photo" style="background-image: url(<%= artist.user.avatar_url( large ? :big : (artist.user.avatar.large.file.try(:exists?) ? :large : :big)) %>);">
+	<%# Alte Bilder kriegen thumb Version, die neuen die large Version %>
+  	<%#= image_tag artist.user.avatar_url( large ? :big : (artist.user.avatar.large.file.try(:exists?) ? :large : :big)) %>
 
-  <div class="overlay">
-    <div class="text">
-      <h3><%= artist.name %></h3>
-      <p class="location"><i class="fa fa-map-marker"></i> <%= artist.location %></p>
-      <p class="price"><i class="fa fa-money"></i> <%= t(:"application.artists.index.price_from") %> <%= artist_price(artist) %></p>
-    </div>
-  </div>
+	<div class="overlay">
+		<div class="text">
+			<h3><%= artist.name %></h3>
+			<p class="location"><i class="fa fa-map-marker"></i> <%= artist.location %></p>
+			<p class="price"><i class="fa fa-money"></i> <%= t(:"application.artists.index.price_from") %> <%= artist_price(artist) %></p>
+		</div>
+	</div>
 </div>

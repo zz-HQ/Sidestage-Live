@@ -62,6 +62,10 @@ section.metro
 						&:last-child
 							margin-left: 32px
 
+			.photo
+				height: 100%
+				+center-bg
+
 			&:hover .overlay
 				+opacity(1)
 
@@ -120,6 +124,13 @@ section.metro
 					+box-with-shadow
 					cursor: pointer
 
+					a img
+						margin-top: -75px // um den schwarzen oberen Balken wegzubekommen
+
+					&.very-large
+						a img
+							margin-top: -111px // um den schwarzen oberen Balken wegzubekommen
+
 					&:nth-child(2)
 						+omega
 
@@ -131,7 +142,6 @@ section.metro
 						top: 50%
 						left: 50%
 						margin: -55px 0 0 -55px
-						+transform(rotate(-2deg))
 						+transition(opacity 200ms ease-in-out)
 						pointer-events: none
 
