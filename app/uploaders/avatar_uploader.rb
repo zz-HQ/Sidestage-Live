@@ -9,11 +9,11 @@ class AvatarUploader < Uploader
     process :resize_to_fill => [370, 310]
   end
 
-  version :profile do
-    process :resize_to_fill => [163, 163]
+  version :thumb do
+    process :resize_to_fill => [237, 237]
   end
 
-  version :thumb do
+  version :mini do
     process :resize_to_fill => [79, 79]
   end
 

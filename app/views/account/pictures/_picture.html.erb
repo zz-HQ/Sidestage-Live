@@ -4,7 +4,7 @@
 		<p>Uploading...</p>
 	</div>
 	<div class="image">
-		<%= image_tag picture.picture.url(picture.picture.medium_preview.file.try(:exists?) ? :medium_preview : :medium_rect), alt: picture.caption || picture.imageable.name %>
+		<%= image_tag picture.picture.url(:medium), alt: picture.caption || picture.imageable.name %>
 	</div>
 	<%= simple_form_for picture, url: account_profile_picture_path(picture), remote: true, data: { :"auto-save" => true } do |f| %>
 	    <%= f.input :caption, label: false %>

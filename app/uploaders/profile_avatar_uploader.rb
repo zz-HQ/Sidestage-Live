@@ -2,7 +2,7 @@
 class ProfileAvatarUploader < Uploader
 
   version :big do
-    process :resize_to_fill => [1295, 370]
+    process :resize_to_fill => [1400, 370]
   end
 
   version :preview do
