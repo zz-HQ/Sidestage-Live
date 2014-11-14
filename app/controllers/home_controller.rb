@@ -57,16 +57,13 @@ class HomeController < ApplicationController
   end
 
   def homepage
-    @profiles = Profile.featured.published.limit(8)
+    @profiles = Profile.featured.published.includes(:user).limit(8)
     respond_to do |wants|
       wants.html
       wants.html.mobile
     end
-
-    
   end
   
-
   def create_subscriber
     @mailchimp_subscriber = MailchimpSubscriber.new(params[:mailchimp_subscriber])
     @mailchimp_subscriber.save
