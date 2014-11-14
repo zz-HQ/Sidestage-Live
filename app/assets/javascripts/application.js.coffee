@@ -138,10 +138,10 @@ $(document).on 'click', '.toggle-about-text', ->
     $('.truncate').show()
 
 # Filter loader
-# $(document).on 'change', 'form.filter select', ->
-#   setTimeout ->
-#     $('.results-body').addClass('loading')
-#   , 20
+$(document).on 'ajaxStart', ->
+  $('.results-body').addClass('loading')
+$(document).on 'ajaxComplete', ->
+  $('.results-body').removeClass('loading')
 
 # FB LIKE BUTTON to work with turbolinks
 fb_root = null
