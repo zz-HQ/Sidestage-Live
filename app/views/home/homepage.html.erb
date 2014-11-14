@@ -45,18 +45,20 @@
     </div><!-- #splash -->
 
     <%#= render 'staff_picks' %>
+    <% cache(action_suffix: :metro) do %>
 
-    <%= render 'metro' %>
+        <%= render 'metro' %>
 
-    <%= render 'inspiration' %>
+        <%= render 'inspiration' %>
 
+        <%= render 'footer' %>
 
-    <%= render 'footer' %>
+        <%= render "olark" %>
 
+        <%= render "google_analytics" %>
 
-    <%= render "olark" %>
+    <% end %>
 
     <%= render flash[:auto_modal] if flash[:auto_modal].present? %>
-    <%= render "google_analytics" %>
   </body>
 </html>
