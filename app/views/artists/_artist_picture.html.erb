@@ -1,4 +1,5 @@
-<div class="picture metro <%= klass %>" style="background-image: url(<%= pic.picture.url(:large) %>);">
+<div class="picture metro <%= klass %>">
+	<%= image_tag pic.picture.url(:large), alt: pic.caption || resource.name %>
 	<div class="gradient-overlay"></div>
 	<div class="caption"><%= pic.caption %></div>
 </div>
