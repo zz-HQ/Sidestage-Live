@@ -2,7 +2,6 @@
 	<a name="staffpicks"></a>
 	<div class="wrap">
 		<h2><%= t(:"application.home.index.featured_html") %></h2>
-
 		<section class="results homepage">
 			<%= link_to artist_path(@profiles.first), class: "metro large" do %>
 				<%= render "artists/metro_artist", artist: @profiles.first, large: true %>
