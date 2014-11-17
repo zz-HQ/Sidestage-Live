@@ -76,7 +76,7 @@ class ArtistsController < ApplicationController
   end  
   
   def resources
-    end_of_association_chain.filter(params).sorty(params).radial(lat: params[:lat], lng: params[:lng], radius: 180).published
+    end_of_association_chain.includes(:user).filter(params).sorty(params).radial(lat: params[:lat], lng: params[:lng], radius: 180).published
   end
 
   def permitted_params

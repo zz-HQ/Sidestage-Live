@@ -1,4 +1,4 @@
-<%= content_tag :a, href: artist_path(artist), class: "artist" do %>
+<%= link_to artist_path(artist), class: "artist" do %>
   <div class="photo">
     <%= image_tag artist.user.avatar_url(:thumb) %>
     <div class="text">
