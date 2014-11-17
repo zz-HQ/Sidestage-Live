@@ -13,7 +13,6 @@ gem 'gibbon' # Handles Mailchimp integration
 gem 'browser'
 gem 'balanced'
 gem 'omniauth-facebook'
-gem 'paper_trail', '~> 3.0.2'
 gem 'aasm'
 gem 'friendly_id', '~> 5.0.0'
 gem 'sinatra', '>= 1.3.0', :require => nil
@@ -26,7 +25,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 # Image Processing
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'fog'
+gem 'fog', '1.24.0'
 gem 'unf' # resolves fog errors
 
 
