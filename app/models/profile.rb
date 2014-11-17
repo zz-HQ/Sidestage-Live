@@ -68,7 +68,7 @@ class Profile < ActiveRecord::Base
     profile.validates :name, length: { maximum: 35 }
     profile.validates :title, :name, :about, presence: true
     profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
-    profile.validate :user_should_have_avatar
+    profile.validate :user_should_have_avatar, :urls_not_allowed, :email_address_not_allowed
   end
   validates :bic, :iban, presence: true, if: :payment_step?
 
@@ -251,14 +251,10 @@ class Profile < ActiveRecord::Base
     end
   end
   
-  def welcome_artist
-    EmailWorker.perform_async(:welcome_artist, id)
-  end
-  
   def set_default_currency
     self.currency ||= Currency.dollar.name
   end
-
+  
   #
   # Validation methods
   # ---------------------------------------------------------------------------------------
@@ -266,6 +262,16 @@ class Profile < ActiveRecord::Base
   #
   #
   #  
+
+  def urls_not_allowed
+    errors.add :about, :includes_url if about[URI.regexp] || about[/www\./]
+    errors.add :title, :includes_url if title[URI.regexp] || title[/www\./]
+  end
+
+  def email_address_not_allowed
+    errors.add :about, :includes_url if about[Devise::EMAIL_REGEXP_WORD]
+    errors.add :title, :includes_url if title[Devise::EMAIL_REGEXP_WORD]
+  end
 
   def should_have_avatar
     user_should_have_avatar

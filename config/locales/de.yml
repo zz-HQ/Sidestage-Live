@@ -44,6 +44,22 @@ de:
           attributes:
             customer_id:
               not_chargeable: "Payment details missing!"
+        profile:
+          attributes:
+            youtube:
+              invalid: Please enter a valid link
+            soundcloud:
+              invalid: Please enter a valid Embed code
+            user:
+              avatar_blank: Don't leave blank
+            about:
+              includes_url: Sorry but you can not include a link or email address in your profile description.
+            title:
+              includes_url: Sorry but you can not include a link or email address in your profile description.
+        message:
+          attributes:
+            body:
+              includes_email: Sorry, but please don't include email addresses in messages.
   helpers:
     select:
       prompts:

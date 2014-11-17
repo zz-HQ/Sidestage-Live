@@ -1,4 +1,5 @@
 Devise::EMAIL_REGEXP = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+Devise::EMAIL_REGEXP_WORD = /\b([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\b/i
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
