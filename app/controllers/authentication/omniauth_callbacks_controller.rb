@@ -10,6 +10,7 @@ class Authentication::OmniauthCallbacksController < Devise::OmniauthCallbacksCon
       if @user.new_fb_signup == true
         @user.subscribe_to_newsletter
         @user.notify_admin
+        flash[:facebook_conversion_code] = true
       end
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?

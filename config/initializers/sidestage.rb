@@ -7,6 +7,7 @@ AVAILABLE_LOCATIONS = {
 CALLING_CODES = {
   1 => "USA and Canada",
   44 => "United Kingdom",
+  61 => "Australia",
   43 => "Austria",
   32 => "Belgium",
   45 => "Denmark",
