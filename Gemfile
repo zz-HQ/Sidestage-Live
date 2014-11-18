@@ -3,7 +3,7 @@ ruby '2.1.0'
 
 
 # Backend
-gem 'rails', '~> 4.1.1'
+gem 'rails', '~> 4.1.5'
 gem 'devise'
 gem 'mysql2'
 gem 'inherited_resources'
