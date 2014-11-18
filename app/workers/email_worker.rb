@@ -2,7 +2,6 @@ class EmailWorker
   include Sidekiq::Worker
   
   def perform(method, id)
-    return #TODO reenable after email working back
     send(method, id)
   end
   

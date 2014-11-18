@@ -4,7 +4,6 @@ class SmsWorker
   sidekiq_options retry: 2
   
   def perform(user_id, message)
-    return #TODO re enable after email working back
     user = User.find user_id
     return if user.nil? || user.mobile_number.blank?
     client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_token
