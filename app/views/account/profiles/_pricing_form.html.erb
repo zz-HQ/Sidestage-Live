@@ -7,12 +7,12 @@
 	<%= f.label :price %>
 	<div class="inputs profile_price">
 		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Integer.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
-    	<span class="hint">Average price in your <br/> area is <%= current_currency.symbol %>200</span>
+		<% if (min_price = min_price_in_profile_location(f.object)).present? %>
+    	    <span class="hint"><%= t(:"application.profiles.pricing.hint_html", artist_type: f.object.artist_type, price: localized_price("<span data-price='min'>#{number_with_delimiter(min_price)}</span>".html_safe, current_currency)) %></span>
+    	<% end %>
 	</div>
 	
 	<p class='light'><%= t(:"simple_form.labels.profile.surcharge_html", surcharge_base: Integer.surcharge_base) %></p>
-
-	<!-- <p><%= t(:"application.profiles.pricing.hint_html") %></p> -->
 </div>
 
 <%= render "account/profiles/submit", f: f %>
