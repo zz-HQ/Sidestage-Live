@@ -63,7 +63,7 @@ en:
         message:
           attributes:
             body:
-              includes_email: Sorry, but please don't include email addresses in messages.
+              invalid: Sorry, but please don't include links or email addresses in message.
   helpers:
     select:
       prompts:

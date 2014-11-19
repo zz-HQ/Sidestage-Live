@@ -171,7 +171,6 @@ class Profile < ActiveRecord::Base
     Profile.published.where("id != ?", id).by_artist_type(artist_type).by_location(location).select("profiles.currency, profiles.price")
   end
   
-  
   def london?
     location == "London"
   end  
