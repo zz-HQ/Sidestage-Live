@@ -43,15 +43,15 @@ describe ArtistsController, :type => :controller do
   
   context "pagination" do
 
-    it "displays next artist link" do
-      gaga = FactoryGirl.create(:gaga)
-      shakira = FactoryGirl.create(:shakira)
-
-      get :show, id: gaga.to_param, column: :price, order: :asc
-
-      expect(assigns(:next_resource)).to eq(shakira)
-      expect(response.body).to match(".next-artist")
-    end
+    # it "displays next artist link" do
+    #   gaga = FactoryGirl.create(:gaga)
+    #   shakira = FactoryGirl.create(:shakira)
+    # 
+    #   get :show, id: gaga.to_param, column: :price, order: :asc
+    # 
+    #   expect(assigns(:next_resource)).to eq(shakira)
+    #   expect(response.body).to match(".next-artist")
+    # end
 
     # it "displays prev artist link" do
     #   gaga = FactoryGirl.create(:gaga)
