@@ -6,21 +6,38 @@ de:
         description_link: "Description"
         pricing_link: "Pricing"
         photos_link: "Photos"
+        avatar_link: "Header photo"
         preview_link: "Preview Profile"
       basics:
         title_html: "Your Artist Listing<p>Sidestage lets you make money by offering your music as a service to people who want to hire musicians for private events.</p>"  
+      avatar:
+        title_html: "Header photo"  
       pricing:
         title_html: "Pricing<p>Set a price for a typical performance, regardless if it’s a 30 minutes or 2 hours. You can change it later, and you always adjust your price before confirming a booking.</p>"
         desc: "What’s the minimum amount that you would like to make for a performance – regardless if it’s a 30 minutes or 2 hours? In short, this is the price that it takes to get you to an event. You can always change it later."
-        hint_html: "<strong>Please read:</strong> Booking requests are only confirmed if you accept them. Before confirming a booking, you can increase the price to cover additional costs for that related booking."
+        hint_html: "Prices for %{artist_type} in your<br> area start at %{price}"  
       description:
         title_html: "Description <p>The more descriptive your profile is, the more booking requests you will receive.</p>"
       payment:
-        title_html: "Bank details<p>We handle payments so you don't have to worry about money. <br> Enter your bank details below so you can get paid.</p>"
+        title_html: "Bank details<p>We handle payments so you don't have to worry about money. <br> Enter your bank details below so you can get paid.</p>"  
       pictures:
         index:
           avatar_title_html: "Profile picture<p>This is the picture that will show up in search listings.</p>"
           title_html: "Photos"
           empty: "You don't have any photos yet. Add photos of you and your performance to your profile."
         new:
-          title: "Upload New Pictures"
+          title: "Upload New Pictures"  
+      preview:
+        before_publishing_hint_html: "Before publishing, <a href='%{phone_verification_path}'>verify your phone number</a>."
+        soundcloud: 
+          title: Add a SoundCloud track to your profile.
+        youtube:
+          title: Add a YouTube track to your profile.
+        share_modal:
+          title: Your profile is published
+          desc_html: "<p>Your profile was published, but is being reviewed by someone at Sidestage. As part of the process, we’d like to set up a short phone interview. One of our reviewers will get in touch within the next 24 hours.</p><p>In the meantime, share your profile with your friends.</p>"
+          share_on_fb: "Share on Facebook"    
+          share_on_twitter: "Share on Twitter"
+          twitter_text: "Check%20out%20@sidestagehq,%20a%20new%20platform%20for%20booking%20great%20musicians,%20bands%20and%20DJs"
+        follow_modal:
+          title: Keep up to date with Sidestage

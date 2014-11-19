@@ -104,7 +104,9 @@ class Profile < ActiveRecord::Base
       where("#{Graticule::Distance::Spherical.to_sql(:latitude => lat, :longitude => lng, :units => :kilometers)} <= ?", radius) 
     end
   }
-  
+  scope :by_location, ->(location) { where(location: location) }
+  scope :by_artist_type, ->(artist_type) { where(artist_type: artist_type) }
+    
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------
@@ -164,6 +166,10 @@ class Profile < ActiveRecord::Base
   #
   #
   #
+  
+  def contestant_prices
+    Profile.published.where("id != ?", id).by_artist_type(artist_type).by_location(location).select("profiles.currency, profiles.price")
+  end
   
   def london?
     location == "London"

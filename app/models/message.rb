@@ -31,7 +31,7 @@ class Message < ActiveRecord::Base
   
 
   validates :receiver_id, :sender_id, :body, presence: true
-  validate :sanitize_body, on: :create
+  validate :emails_not_allowed, :urls_not_allowed, on: :create
 
   #
   # Associations
@@ -107,10 +107,12 @@ class Message < ActiveRecord::Base
     end
   end
   
-  def sanitize_body
-    if body.to_s.include?("@")
-      errors.add :body, :includes_email
-    end
+  def emails_not_allowed
+    errors.add :body, :invalid if body.to_s.include?("@")
   end
   
+  def urls_not_allowed
+    errors.add :body, :invalid if body[URI.regexp] || body[/www\./]
+  end
+
 end
