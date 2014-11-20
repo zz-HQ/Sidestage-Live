@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: sidestage
+  api_key: '813126252693855'
+  api_secret: OHY5dm20w0oiRXTW_GXzwATiOTA
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: sidestage
+  api_key: '813126252693855'
+  api_secret: OHY5dm20w0oiRXTW_GXzwATiOTA
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: sidestage
+  api_key: '813126252693855'
+  api_secret: OHY5dm20w0oiRXTW_GXzwATiOTA
+  enhance_image_tag: true
+  static_image_support: false

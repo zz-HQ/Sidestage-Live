@@ -24,6 +24,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 
 # Image Processing
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'mini_magick'
 gem 'fog', '1.24.0'
 gem 'unf' # resolves fog errors
@@ -42,7 +43,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'neat'
 gem 'asset_sync'
-gem 'jquery-fileupload-rails'
+#gem 'jquery-fileupload-rails'
 gem 'kaminari'
 
 group :production do
