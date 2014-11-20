@@ -15,7 +15,9 @@ class Profile < ActiveRecord::Base
   acts_as_taggable
   
   mount_uploader :avatar, ProfileAvatarUploader
-  
+
+  paginates_per 24
+
   #
   # Attributes
   # ---------------------------------------------------------------------------------------

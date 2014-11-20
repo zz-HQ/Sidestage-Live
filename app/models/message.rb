@@ -31,7 +31,7 @@ class Message < ActiveRecord::Base
   
 
   validates :receiver_id, :sender_id, :body, presence: true
-  validate :emails_not_allowed, :urls_not_allowed, on: :create
+  validate :emails_not_allowed, :urls_not_allowed, on: :create, unless: :system_message?
 
   #
   # Associations

@@ -42,8 +42,8 @@ class DealMailer < ActionMailer::Base
     @user = deal.artist
     @deal = deal
 
-    setup_notification_body(partner: deal.customer, deal: deal)
-    mail(setup(@user, partner: deal.customer, deal: deal)) do |format|
+    setup_notification_body(deal.customer, deal)
+    mail(setup(@user, deal.customer, deal)) do |format|
       format.text
       format.html
     end

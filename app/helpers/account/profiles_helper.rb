@@ -38,7 +38,7 @@ module Account::ProfilesHelper
 
   def youtube_thumbnail
     link_to "#", data: { lightbox: :html, target: "[data-container='yt-widget']" } do
-        image_tag "http://img.youtube.com/vi/#{youtube_id}/hqdefault.jpg"
+        image_tag "https://img.youtube.com/vi/#{youtube_id}/hqdefault.jpg"
     end
   end
 

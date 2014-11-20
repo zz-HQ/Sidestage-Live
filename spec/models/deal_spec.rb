@@ -59,7 +59,7 @@ describe Deal, :type => :model do
     
     it "Request sends sms to artist" do
       deal = FactoryGirl.create(:requested_deal)
-      open_last_text_message_for deal.artist.mobile_nr
+      open_last_text_message_for(deal.artist.mobile_nr)
       expect(current_text_message.body).to include("You have a new booking request")      
     end
 

@@ -23,6 +23,9 @@
             <div class="results" data-container="artists">
                 <%= render partial: 'artists/artist', collection: collection %>
             </div>
+            <div data-container="pagination">
+                <%= render "pagination_info" %>
+            </div>
         </div>
 
         <p class="center light"><%= t(:"application.artists.index.looking_for_special_html", match_me_path: match_mes_path) %></p>

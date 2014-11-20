@@ -7,6 +7,9 @@ en:
       message:
         one: Message
         other: Messages 
+      profile:
+        one: Artist
+        other: Artists
     attributes:
       profile:
         cancellation_policy:
@@ -78,6 +81,14 @@ en:
           alphabetical: Alphabetical
     confirm:
       sure: "Are you sure?"
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"      
   flash:
     account:
       messages:
@@ -137,6 +148,14 @@ en:
         credit_card: "Your credit card information is now star dust."
         notice: "%{resource_name} deleted."
         alert: "%{resource_name} could not be deleted."
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"    
+
   view:
     messages:
       sms: "You have a new Sidestage message from %{partner_name}. Please log in to Sidestage to view it."
