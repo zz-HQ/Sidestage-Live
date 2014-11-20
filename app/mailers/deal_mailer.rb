@@ -53,8 +53,8 @@ class DealMailer < ActionMailer::Base
     @user = deal.customer
     @deal = deal
 
-    setup_notification_body(partner: deal.artist, deal: deal)    
-    mail(setup(@user, partner: deal.artist, deal: deal)) do |format|
+    setup_notification_body(deal.artist, deal)    
+    mail(setup(@user, deal.artist,deal)) do |format|
       format.text
       format.html
     end
@@ -70,7 +70,7 @@ class DealMailer < ActionMailer::Base
 
   protected
   
-  def setup(user, partner:, deal:)
+  def setup(user, partner, deal)
     { to: user.email, subject: subject(partner, deal) }
   end
     
@@ -78,7 +78,7 @@ class DealMailer < ActionMailer::Base
     I18n.t :"mail.deals.#{deal.state}.subject", partner_name: partner.profile_name
   end 
   
-  def setup_notification_body(partner:, deal:)
+  def setup_notification_body(partner, deal)
     @notification_body ||= t("mail.deals.#{deal.state}.body_html",
       partner_name: partner.profile_name,
       deal_path: account_conversation_url(deal.conversation),
