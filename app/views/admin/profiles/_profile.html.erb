@@ -41,8 +41,8 @@
     </td>
     <td><%= link_to "backdoor", backdoor_admin_user_path(profile.user), class: "badge" %></td>
     <td class="text-right">
-        <%= link_to_bool profile.published?, target: toggle_admin_profile_path(profile), true_text: "Unpublish", false_text: "Publish" %>
-        <%= link_to_bool profile.admin_disabled?, target: toggle_admin_disabled_admin_profile_path(profile), true_text: "Enable", false_text: "Disable" %>        
+        <%= link_to_bool profile.published?, toggle_admin_profile_path(profile),"Unpublish", "Publish" %>
+        <%= link_to_bool profile.admin_disabled?, toggle_admin_disabled_admin_profile_path(profile), "Enable", "Disable" %>        
         <%= link_to admin_user_path(profile.user), method: :delete, data: { confirm: "Are you sure?" }, title: "Delete", class: "btn btn-danger" do %>
             <span class="glyphicon glyphicon-remove"></span>
         <% end %>    

@@ -99,7 +99,7 @@ class Profile < ActiveRecord::Base
   scope :unpublished, -> { where("published = ? OR published = ?", nil, false) }
   scope :featured, -> { where(featured: true) }
   scope :latest, -> { order("profiles.id DESC") }
-  scope :radial, ->(lat:, lng:, radius:) {
+  scope :radial, ->(lat, lng, radius) {
     unless lat.blank? || lng.blank? || radius.blank?
       where("#{Graticule::Distance::Spherical.to_sql(:latitude => lat, :longitude => lng, :units => :kilometers)} <= ?", radius) 
     end

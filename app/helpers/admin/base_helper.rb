@@ -8,7 +8,7 @@ module Admin::BaseHelper
     bool ? "Yes" : "No"
   end
   
-  def link_to_bool(truth, target:, true_text:, false_text:)
+  def link_to_bool(truth, target=nil, true_text=nil, false_text=nil)
     link_to truth ? true_text : false_text, target, method: :put, class: "btn btn-primary #{truth ? 'btn-danger' : 'btn-success'}"
   end
   

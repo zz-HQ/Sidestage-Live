@@ -275,16 +275,16 @@ class Deal < ActiveRecord::Base
   
   def notify_partner_via_sms
     if state.to_sym.in?(SMS_NOTIFY_BOTH_PARTIES_STATES)
-      send_sms_to_partner(from: customer, to: artist)
-      send_sms_to_partner(from: artist, to: customer)
+      send_sms_to_partner(customer, artist)
+      send_sms_to_partner(artist, customer)
     elsif is_customer?(current_user)
-      send_sms_to_partner(from: customer, to: artist)
+      send_sms_to_partner(customer, artist)
     else
-      send_sms_to_partner(from: artist, to: customer)
+      send_sms_to_partner(artist, customer)
     end
   end
   
-  def send_sms_to_partner(from:, to:)
+  def send_sms_to_partner(from, to)
     notification_body = I18n.t("mail.deals.#{state}.body_html", partner_name: from.profile_name,  deal_path: "", event_date: I18n.l(start_at.to_date, format: :event_date))
     to.send(:send_sms, ActionController::Base.helpers.strip_tags(notification_body))
   end
