@@ -6,5 +6,6 @@
 
     <div class="content mobile-numbers">
         <%= render "account/mobile_numbers/verification", user: User::AsMobileNumber.find(current_user.id) %>
+        <p class="skip"><%= link_to t(:"application.links.skip"), preview_account_profile_path, class: "link" %></p>
     </div>
 </div>
