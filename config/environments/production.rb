@@ -55,7 +55,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = "https://assets%d.sidestage.com"
+  config.action_controller.asset_host = "https://sidestage.s3.amazonaws.com"
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   # SideStage Settings
-  config.action_mailer.asset_host = "https://www.sidestage.com"
+  config.action_mailer.asset_host = "https://sidestage.s3.amazonaws.com"
   config.default_currency = "USD"
   config.action_mailer.default_url_options = { :host => 'https://www.sidestage.com', locale: nil }
   config.action_mailer.delivery_method = :smtp
