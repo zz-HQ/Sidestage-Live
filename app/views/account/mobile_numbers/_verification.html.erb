@@ -15,7 +15,7 @@
             <%= f.input :mobile_nr, required: false, label: false, input_html: { autocomplete: "off" }, placeholder: false %>
         </div>
         <div class="input">
-        	<%= f.submit class: "btn", style: "display: inline;margin-right:10px" %><%= link_to t(:"application.links.skip"), preview_account_profile_path if controller_name == "profile_completion" %>
+        	<%= f.submit class: "btn" %>
         </div>
     <% end %>
     <%= simple_form_for user, url: confirm_account_mobile_numbers_path, html: { class: "confirm-mobile-num-form"} do |f| %>
