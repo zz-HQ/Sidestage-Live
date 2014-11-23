@@ -14,7 +14,7 @@
             <%= text_field_tag :location, params[:location], id: :event_place, data: { google: :event_place }, placeholder: t(:"simple_form.placeholders.location_search.location") %>
             <%= hidden_field_tag :lng, params[:lng] %>
             <%= hidden_field_tag :lat, params[:lat] %>
-            <% request.query_parameters.except(:lat, :lng, :location).each do |k,v| %>
+            <% request.query_parameters.except(:lat, :lng, :location, :page).each do |k,v| %>
                 <%= hidden_field_tag k, v %>
             <% end %>
         </form>    
