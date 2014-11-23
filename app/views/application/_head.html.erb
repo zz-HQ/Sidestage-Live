@@ -6,13 +6,10 @@
     <meta name="keywords" content="Sidestage">
     <meta name="viewport" content="width=1238">
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600,400|Halant:300' rel='stylesheet' type='text/css'>
-    
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->    
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <!-- FontAwesome -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- for Facebook -->
     <meta property="og:title" content="Sidestage" />
     <meta property="og:type" content="website" />
@@ -33,15 +30,10 @@
     <%= csrf_meta_tags %>
 
     <!-- Google CDN -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en"></script>
     <!-- END Google CDN -->
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
-    <%= render "balanced_head" %>
 
     <%= yield :html_head %>
     

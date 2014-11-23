@@ -10,8 +10,9 @@
 # Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 # about supported directives.
 #
+#= require jquery-1.11.1.min
+#= require jquery-1.11.1-ui.min
 #= require jquery_ujs
-# require turbolinks
 #= require boilerplate
 #= require jquery.datetimepicker
 #= require vex/vex.combined.min

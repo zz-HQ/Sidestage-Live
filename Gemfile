@@ -42,6 +42,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'neat'
 gem 'asset_sync'
+
 gem 'jquery-fileupload-rails'
 gem 'kaminari'
 
