@@ -272,8 +272,8 @@ class Profile < ActiveRecord::Base
   #  
 
   def urls_not_allowed
-    errors.add :about, :includes_url if about[URI.regexp] || about[/www\./]
-    errors.add :title, :includes_url if title[URI.regexp] || title[/www\./]
+    errors.add :about, :includes_url if URI::extract(about, ["http", "https", "ftp"]).present? || about[/www\./]
+    errors.add :title, :includes_url if URI::extract(title, ["http", "https", "ftp"]).present? || title[/www\./]
   end
 
   def email_address_not_allowed

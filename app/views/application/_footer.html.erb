@@ -38,7 +38,6 @@
       		<%= form_tag change_locale_path do |f| %>
         		<%= nice_select(select_tag( 'lang',
                                         options_from_collection_for_select(available_locales, :first, :last, I18n.locale),
-                                        include_blank: false,
                                         class: "submit-on-change")
                             ) %>  
   		    <% end %>
@@ -51,7 +50,6 @@
 		    <%= form_tag change_currency_path do |f| %>
 	        <%= nice_select(select_tag( 'currency',
                                       options_for_select(Currency.all.map(&:name), @current_currency.name),
-                                      include_blank: false,
                                       class: "submit-on-change")
                          ) %>
 		    <% end %>

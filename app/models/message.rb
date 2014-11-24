@@ -112,7 +112,7 @@ class Message < ActiveRecord::Base
   end
   
   def urls_not_allowed
-    errors.add :body, :invalid if body[URI.regexp] || body[/www\./]
+    errors.add :body, :invalid if URI::extract(body, ["http", "https", "ftp"]).present? || body[/www\./]
   end
 
 end
