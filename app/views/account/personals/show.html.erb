@@ -1,35 +1,26 @@
 <div id="personals" class="container">
   <%= render "sidebar" %>
-
-  <div class="content account">
+  <div class="content account" data-container="dropzone">
     <header><%= t(:"application.personals.show.title") %></header>
-		
-		<%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { data: { upload: :auto }, id: "user_account", multipart: true } do |f| %>
+		<%= simple_form_for resource, url: upload_avatar_account_personal_path, remote: true, html: { id: "user_account", multipart: true } do |f| %>
     		<label><%= t(:"simple_form.labels.user.avatar") %></label>
-    		<%= image_tag current_user.avatar.url(:thumb) %>
-    		<%= f.cl_image_upload(:image_id, sidestage: true) %>            
-
-            
-    		<% if false %>
-    		<input class="cloudinary-fileupload" data-cloudinary-field="user[image_id]" data-form-data="{&quot;timestamp&quot;:1416692946,&quot;callback&quot;:&quot;http://sidestage.dev/cloudinary_cors.html&quot;,&quot;signature&quot;:&quot;ca713c5e515fe93acd17d65945bd9ff7146dce03&quot;,&quot;api_key&quot;:&quot;813126252693855&quot;}" data-url="https://api.cloudinary.com/v1_1/sidestage/auto/upload" name="file" type="file"></input>
-
+    		<%#= f.cl_image_upload(:image_id) %>            
     		<div class="avatar-uploader">
-    			<div id="avatar" class="avatar avatar-upload-button">
+    			<div id="avatar" data-target="#cloudinary-direct" class="avatar avatar-upload-button">
     				<%= image_tag current_user.avatar.url(:thumb) %>
     			</div>
                 <div class="hint">
                     Clear frontal face photos are an important way for our community to learn about each other. Please upload a photo that clearly shows your face. <br/>
-
-                    <a href="" class="link avatar-upload-button">Upload a picture</a>
+                    <a href="" class="link avatar-upload-button" data-target="#cloudinary-direct">Upload a picture</a>
                 </div>
                 <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
     		</div>
 
     		<div class="new-avatar" style="display:none;">
-    			<%= f.input :avatar, label: false, id: "avatar-file" %>
+    			<%#= f.input :avatar, label: false, id: "avatar-file" %>
+    			<%= f.cl_image_upload(:avatar, unique_filename: false, use_filename: true,  html: { id: "cloudinary-direct" }) %>
     		</div>
-    		<% end %>
-		<% end %>
+    	<% end %>
 
         <%= simple_form_for resource, url: account_personal_path, html: { id: "", multipart: true } do |f| %>
             <%= render "user_form", f: f %>
@@ -37,6 +28,6 @@
 
         <p class="light">
             <%= t(:"application.personals.show.delete_hint_html") %>
-        </p>    
+        </p>        
   </div>
 </div>
