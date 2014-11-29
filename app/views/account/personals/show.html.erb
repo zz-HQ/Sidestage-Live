@@ -18,7 +18,7 @@
 
     		<div class="new-avatar" style="display:none;">
     			<%#= f.input :avatar, label: false, id: "avatar-file" %>
-    			<%= f.cl_image_upload(:avatar, unique_filename: false, use_filename: true,  html: { id: "cloudinary-direct" }) %>
+    			<%= f.cl_image_upload(:avatar, unique_filename: false, public_id: "users/avatar/#{resource.id}",  html: { id: "cloudinary-direct" }) %>
     		</div>
     	<% end %>
 
