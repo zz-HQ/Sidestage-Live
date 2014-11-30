@@ -80,7 +80,6 @@ class Profile < ActiveRecord::Base
   with_options on: :publishing do |profile|
     profile.validates :genre_ids, :price, :title, :name, :about, presence: true
     profile.validates :admin_disabled?, inclusion: [false]
-    profile.validate :mobile_nr_must_be_confirmed
     profile.validate :should_have_at_least_one_media_type
     profile.validate :should_have_avatar
   end
@@ -288,10 +287,6 @@ class Profile < ActiveRecord::Base
   def user_should_have_avatar
     errors.add :user, :avatar_blank if user.avatar.blank?
   end  
-  
-  def mobile_nr_must_be_confirmed
-    errors.add :published, :blank unless mobile_nr_confirmed?
-  end
   
   def should_have_soundcloud
     errors.add :soundcloud, :invalid unless !!soundcloud_id_from_iframe(soundcloud)

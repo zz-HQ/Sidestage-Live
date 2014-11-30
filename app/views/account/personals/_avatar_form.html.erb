@@ -1,0 +1,16 @@
+<label><%= t(:"simple_form.labels.user.avatar") %></label>
+<div class="avatar-uploader">
+	<div id="avatar" class="avatar avatar-upload-button">
+		<%= image_tag current_user.avatar.url(:thumb) %>
+	</div>
+    <div class="hint">
+        <%= t(:"application.personals.show.avatar_hint") %> <br/>
+
+        <a href="" class="link avatar-upload-button"><%= t(:"application.links.upload_picture") %></a>
+    </div>
+    <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+
+<div class="new-avatar" style="display:none;">
+	<%= f.input :avatar, label: false, id: "avatar-file" %>
+</div>

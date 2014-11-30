@@ -18,6 +18,7 @@ en:
         toggle_true: Unpublish
         toggle_false: Publish
       skip: Skip
+      upload_picture: Upload a picture
       continue: Continue
       remove: Remove
       cancel: Cancel Booking

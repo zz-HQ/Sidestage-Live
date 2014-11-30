@@ -11,7 +11,7 @@ class UserMailer < Devise::Mailer
           :reply_to => ENV["mail_from"],
           :return_path => ENV["mail_return_path"]
   
-  layout "email/user", except: [:welcome_artist]
+  layout "email/user"
 
   #
   # Filters
@@ -42,14 +42,6 @@ class UserMailer < Devise::Mailer
   def profile_published_confirmation(profile)
     @profile = profile
     mail(to: @profile.user.email, from: "daniel@sidestage.com", reply_to: "daniel@sidestage.com", subject: "Your profile is published") do |format|
-      format.text
-      format.html
-    end
-  end
-  
-  def welcome_artist(profile)
-    @profile = profile
-    mail(to: @profile.user.email, from: "daniel@sidestage.com", reply_to: "daniel@sidestage.com", subject: "Thanks for signing up") do |format|
       format.text
       format.html
     end

@@ -28,7 +28,6 @@ en:
         new:
           title: "Upload New Pictures"  
       preview:
-        before_publishing_hint_html: "Before publishing, <a href='%{phone_verification_path}'>verify your phone number</a>."
         soundcloud: 
           title: Add a SoundCloud track to your profile.
         youtube:

@@ -9,6 +9,7 @@ en:
         bank_link: "Bank details"
       show:
         title: Account
+        avatar_hint: Clear frontal face photos are an important way for our community to learn about each other. Please upload a photo that clearly shows your face.
         delete_hint_html: "To delete your account, please send us an email, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"
       avatar:
         title: Profile picture
