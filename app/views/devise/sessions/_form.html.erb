@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-actions login-signup-actions">
                     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-                    <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: "Sending..." }%>
+                    <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: t(:"helpers.submit.disable_with") }%>
                     <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name), class: "link" %>
                 </div>
             <% end %>

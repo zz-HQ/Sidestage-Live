@@ -8,7 +8,7 @@
 	<div class="inputs profile_price">
 		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Integer.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
 		<% if (min_price = min_price_in_profile_location(f.object)).present? %>
-    	    <span class="hint"><%= t(:"application.profiles.pricing.hint_html", artist_type: f.object.artist_type, price: localized_price("<span data-price='min'>#{number_with_delimiter(min_price)}</span>".html_safe, current_currency)) %></span>
+    	    <span class="hint"><%= t(:"application.profiles.pricing.hint_html", artist_type: Profile::ARTIST_TYPES_HUMAN[f.object.artist_type.to_sym], price: localized_price("<span data-price='min'>#{number_with_delimiter(min_price)}</span>".html_safe, current_currency)) %></span>
     	<% end %>
 	</div>
 	

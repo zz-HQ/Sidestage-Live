@@ -119,6 +119,7 @@ en:
       submit: Send
       save_continue: Save and Continue
       save_finish: Save and Finish
+      disable_with: Sending...
       message:
         create: Send
         disable_with: Sending...

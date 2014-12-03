@@ -39,8 +39,11 @@ class Profile < ActiveRecord::Base
   }
   
   WIZARD_STEPS = [:pricing, :description, :payment, :soundcloud, :youtube]
+  ARTIST_TYPES_HUMAN = {solo: "solo musicians", band: "bands", dj: "DJs" }
   
   enum artist_type: { solo: 0, band: 1, dj: 2 }
+  
+  
   
   store :additionals, accessors: [ :admin_disabled_at, :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
   
