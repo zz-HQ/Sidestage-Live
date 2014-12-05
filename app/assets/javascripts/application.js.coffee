@@ -61,6 +61,12 @@ $(document).on 'scroll', ->
   else
       $(".profile-header.fixed").fadeOut(200)
 
+$(document).on "click", ".review-label a", (e) ->
+  e.preventDefault()
+  $('html,body').animate({
+      scrollTop: $('#reviews-section').offset().top - 94},
+  'slow')
+
 $(document).on 'click', '#show-all-reviews', -> 
   $(@).hide()
   $("[data-container=all-reviews]").show()
