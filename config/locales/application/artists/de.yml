@@ -4,6 +4,8 @@ de:
       index:
         view_profile: View Profile
         price_from: "from:"
+        blank: "We're sorry, but can't find what you're looking for."
+        looking_for_special_html: Looking for something special? <a href="%{match_me_path}">Tell us more, and we'll match you</a> with the perfect musician for your event.
       show:
         know_artist: Do you know this artist?
         leave_a_review: Leave a review.

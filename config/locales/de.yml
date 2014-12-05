@@ -7,6 +7,9 @@ de:
       message:
         one: Message
         other: Messages 
+      profile:
+        one: Artist
+        other: Artists
     attributes:
       profile:
         cancellation_policy:
@@ -25,16 +28,20 @@ de:
         price_for_customer: Total cost
       credit_card:
         number: Card number
-        expiration: Expiration
-        cvc: CVC
+        expiration: Expiration  
+        cvc: "CVC"
+      user:
+        full_name: Name
+      event:
+        booking_for_values: ["a dinner party", "an event", "a bar or cafe"]  
+      message:
+        body: Message
     errors:
       models:
         user/as_mobile_number:
           attributes:
             mobile_nr:
-              country_code_missing: "You did not include a country code"
-              plus_missing: "Does not begin with plus sign"
-              must_start_with_non_zero: "No 0 after the plus sign"
+              must_start_with_non_zero: "can't start with a 0"
               too_short: "Your phone number looks a bit short"
         user:
           attributes:
@@ -65,6 +72,13 @@ de:
       prompts:
         event_search: Where is your event?
         choose_city: Choose city
+        artist_type_filter: "Everything"
+      filter:
+        order:
+          serendipity: Serendipity
+          price_asc: Price low to high
+          price_desc: Price high to low
+          alphabetical: Alphabetical
     confirm:
       sure: "Are you sure?"
     page_entries_info:
@@ -75,12 +89,26 @@ de:
           other: "Displaying <b>all %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"      
-      
   flash:
     account:
       messages:
         create:
           notice: "Your message has been sent."
+      deals:
+        create:
+          notice: "Your booking request has been sent."
+        decline:
+          notice: "Booking request declined."
+        cancel:
+          notice: "Booking request cancelled."  
+        reject:
+          notice: "Booking request cancelled."  
+        confirm:
+          notice: "Booking confirmed. You'll get an email from us, too."
+        accept:
+          notice: "Booking request accepted. You'll get an email from us, too."
+        offer:
+          notice: "Price for this booking was changed. We need the customer to confirm it."  
       conversations:
           archived: "Conversation was moved to Archive."
       mobile_numbers:
@@ -88,12 +116,31 @@ de:
           notice: "Verification code sent. Please check your mobile, and enter the code in the box below."
         confirm:
           notice: "Your phone number has been verified."  
+        completion_confirm:
+          notice: "Your phone number is verified. Now complete your profile and publish when ready."  
+      profiles:
+        toggle:
+          alert: 'Before you publish your profile there are a few things you need to complete. <a href="%{edit_profile_path}">Edit your profile now</a>'
+      users:
+        update:
+          email:
+            notice: "We need to verify your new email address. Check your inbox for a confirmation link."
+          bank_details:
+            notice: "Your bank details have been successfully added."  
+        complete:
+          success: "You’re in! You’ll need to add a <a href='%{payment_path}'>payment method</a> before you can book an artist."
+          alert: "Please add a profile picture before continuing. It helps us build trust in our community."
+        complete_payment:
+          notice: "Awesome, you're set. When you get a chance, <a href='%{mobile_nr_path}'>verify your phone, too</a>"
+        skip_payment:
+          notice: "You're set, but you'll have to <a href='%{payment_path}'>add a credit card</a> before making a booking."  
+    mailchimps:
+      create:
+        notice: "Thanks! To complete the sign up process, check your inbox and click the confirmation email link."
     actions:
       create:
         notice: "%{resource_name} successfully created."
       update:
-        deal:
-          confirmed: "Booking request accepted. You'll get an email from us, too."
         notice: "%{resource_name} successfully updated."
         password:
           notice: Your password was successfully changed.
@@ -112,6 +159,7 @@ de:
   view:
     messages:
       sms: "You have a new Sidestage message from %{partner_name}. Please log in to Sidestage to view it."
+      credit_on_the_way: "You've been paid! Money should hit your bank account in 1-2 business days. Thanks for working with Sidestage."
       system_messages:
         deals:
           requested: &requested 
@@ -121,9 +169,10 @@ de:
           offered: 
             you: "A booking request has been sent to %{partner_name} for %{event_date}."
             partner: "You have a new booking request from %{partner_name}."
-          cancelled:
+          cancelled: &cancelled
             you: "You have declined the booking request from %{partner_name} for %{event_date}."
             partner: "%{partner_name} has cancelled your booking request for %{event_date}."
+          reverted: *cancelled
           declined:
             you: "You have declined the booking request from %{partner_name} for %{event_date}."
             partner: "%{partner_name} has cancelled your booking request for %{event_date}."
@@ -140,25 +189,29 @@ de:
     deals:
       requested:
         subject: "New booking request"
-        body: "You have a new booking request from %{partner_name}. Please log in to Sidestage to review it."
+        body_html: "You have a new booking request from %{partner_name}. Please <a href='%{deal_path}'>log in to Sidestage</a> to review it."
       proposed:
         subject: "New booking request"
-        body: "You have a new booking request from %{partner_name}. Please log in to Sidestage to review it."
+        body_html: "You have a new booking request from %{partner_name}. Please <a href='%{deal_path}'>log in to Sidestage</a> to review it."
       offered:
-        subject: "Price change"
-        body: "You have a new message from %{partner_name}."
-      cancelled:
+        subject: "Special Offer From %{partner_name}."
+        body_html: "%{partner_name} sent you a special offer. <a href='%{deal_path}'>Log in to Sidestage</a> to view it."
+      cancelled: &cancelled
         subject: "Booking Cancelled"
-        body: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
+        body_html: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
+      reverted: *cancelled
       declined:
         subject: "Booking request cancelled"
-        body: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
+        body_html: "Your booking request with %{partner_name} for %{event_date} has been cancelled."
       accepted:
         subject: "Booking accepted"
-        body: "Your booking with %{partner_name} is confirmed for %{event_date}."
+        body_html: "Your booking with %{partner_name} is confirmed for %{event_date}."
       confirmed:
         subject: "Booking confirmed"
-        body: "Your booking with %{partner_name} is confirmed for %{event_date}."
+        body_html: "Your booking with %{partner_name} is confirmed for %{event_date}."
       rejected:
         subject: "Booking cancelled"
-        body: "Your booking with %{partner_name} for %{event_date} has been cancelled."
+        body_html: "Your booking with %{partner_name} for %{event_date} has been cancelled."
+    messages:
+      body_desc: "You have a new message from %{name}. Please log in to Sidestage to read it."
+      log_in: "Log in to Sidestage"

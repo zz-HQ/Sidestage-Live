@@ -4,7 +4,7 @@ de:
       sign_up: Sign up
       sign_in: Log in
       musician: "I'm a musician"
-      create_profile: Create Artist Profile
+      invite_friends: Invite Friends
       my_bookings: Bookings
       your_profile: Edit Profile
       account: Account
@@ -14,8 +14,42 @@ de:
     links:
       forgot_password: Forgot password?
       edit: Edit Profile
-      unpublish: Unpublish
-      publish: Publish
+      publish: 
+        toggle_true: Unpublish
+        toggle_false: Publish
       skip: Skip
+      upload_picture: Upload a picture
       continue: Continue
       remove: Remove
+      cancel: Cancel Booking
+      view_profiles: View Profiles
+      reset_filters: Reset filters
+      like_us: Like us on Facebook
+      pagination:
+        view_more: View more
+    social:
+      share:
+        facebook:
+          customer:
+            title: Invite Your Friends to Sidestage
+            desc: Good stuff will happen. :)
+          artist:
+            title: Share Your Profile
+            desc: "The more people you share your profile with, the more booking requests you’ll get. Share with friends on Facebook and Twitter."
+        twitter:
+          text: "Check out a @sidestagehq, a new platform for booking great musicians, bands and DJs"
+    city_launches:
+      desc: "Sidestage is not available in %{city} yet, but that'll soon change. Get notified when Sidestage launches near you."
+      artist_apply_html: "Are you a musician in %{city}? We're now accepting musician applications. <a href='/artists/new'>Sign up now</a>."
+    express_bookings:
+      index:
+        desc: "For a fixed price, hire a musician to play a private performance at your place or event."
+        footer_hint_html: "Musicians play for about an hour. All acts are acoustic, so no special set up is required on your end. <br/> <br/>Sign in to view pricing."
+    events:
+      show:
+        private_desc: This is a private event, please sign in to view the details.
+        desc: "The event takes place at %{location}"
+        accept: "I'm going :)"
+        reject: "I can't make it :("
+      thanks:
+        desc: Thanks for your response!
