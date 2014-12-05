@@ -1,1 +1,11 @@
 de:
+  application:
+    match_me:
+      index:
+        title: Get matched with an amazing musician for your event.
+      location:
+        title: When and Where?
+        desc:  A musician will only see your phone number once a booking is confirmed.
+      thanks:
+        title: Your info has been sent to us.
+        desc: "We'll get back to you shortly with a few ideas. Be sure to stay up to date by joining our community online."

@@ -1,16 +1,32 @@
 de:
   application:
     devise:
-      session_title: Log in
-      registration_title: Sign up
-      are_you_new: "Are you new?"
       facebook_login: "Log in with Facebook"
-      facebook_hint: "We'll post nothing without your permission!"
-      or: or
-      login_error: Login incorrect
+      facebook_signin: "Sign in with Facebook"
+      facebook_signup: "Sign up with Facebook"
       sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
-      have_an_account: Have an account?
-      
+      signup_options:
+        customer: I Want To Book an Artist
+        artist: "I'm a Musician, Band or DJ"
+      artist_read_me:
+        title: Become a Sidestage Artist
+        desc_html: "<p>Sidestage helps musicians (DJs, we're talking about you, too) get hired to play private parties, home concerts, weddings, company events and more.</p><br/><p>By joining Sidestage, you're not just opening yourself up to more possibilities as independent artists, you're joining a global community of people who love independent music.</p>"
+        apply: Apply now
+      confirmations:
+        title: "Resend confirmation instructions"
+        did_not_receive: "Didn't receive unlock instructions?"  
+      passwords:
+        new:
+          title: "Reset Password"
+          submit: "Send reset link"
+        edit:
+          title: "Change your password" 
+          submit: "Change my password"
+      mailer:
+        confirmation_instructions:
+          update_desc: "To confirm your updated email address, please click the link below."
+          desc_html: "Hey %{name}, thanks for joining Sidestage. <br/> To finishing signing up, we need to make sure we got your email right."
+          confirm: "Confirm Your Email"            
   devise:
     confirmations:
       confirmed: "Your account is confirmed. Now complete your profile."
@@ -59,6 +75,7 @@ de:
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
+      invalid_signup: Make sure you've provided your name, email and password before signing up.
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"

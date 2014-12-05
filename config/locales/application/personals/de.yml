@@ -6,27 +6,33 @@ de:
         password_link: "Password"
         phone_link: "Phone"
         payment_link: "Credit Card"
-        bank_account_link: "Bank Account"
+        bank_link: "Bank details"
       show:
-        title: Account details
+        title: Account
+        avatar_hint: Clear frontal face photos are an important way for our community to learn about each other. Please upload a photo that clearly shows your face.
+        delete_hint_html: "To delete your account, please send us an email, <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"
+      avatar:
+        title: Profile picture
+        desc: Please add a profile picture. It helps us build trust in our community.  
       password:
-        title: Password  
+        title: Change Your Password  
       payment_details:
         title: Credit Card
+        credit_card_form_title: "Please enter your credit card information:"
+        skip: Do this later
         new:
-          title: You have no credit card on file. Add one below.
-          security_hint_html: "<p>Your credit card details are handled securely. <br> We use Stripe to process payments.</p><p>For questions, contact <br><a href='mailto:support@sidestage.com'>support@sidestage.com</a> </p>"
+          title: Sidestage handles payments, so you don't have to worry about it. Please add a credit card to your account.
         show:
-          title: "One credit card on file:"
-          card_count_hint_html: You can currently only store one credit card. <br> More payment methods are coming.
+          title: "The credit card below has been added to your account."
+          card_hint_html: "For questions concerning your credit card, please contact <a href='mailto:support@sidestage.com'>support@sidestage.com</a>"
           remove: Remove
           remove_hint_html: "<h2>Wait!</h2> <br><p>Before you remove your credit card, you need to cancel all your booking requests.</p>"           
     mobile_numbers:
       new:
-        title: Verify your phone number
-        desc_html: "<p>To get notifications delivered to your phone, please verify your phone number below. We won’t share your phone number with other users on the site without your persmission.</p><p><i>Enter your phone number with country code (e.g +49 172 444 4444).</i></p>"
+        title: Phone Number
+        desc_html: "Verify your phone number to get notified of important messages. We do not share your phone number with your Sidestage members."
         save_hint: We’ll send you a text message with a verifiaction code. Enter the code in the box below.
       show:
         title: Your mobile number
-        desc: The mobile phone number below has been verified
+        desc: SMS notifications will be delivered to your phone from Sidestage. Carrier charges may apply.
         remove_hint: "To add a new number, remove the old one first."

@@ -9,13 +9,16 @@ de:
       user:
         remember_me: Remember me
         newsletter_subscribed: Send me Sidestage updates
-        avatar: Add profile picture
+        avatar: Profile picture
         full_name: Full name        
       user_as_mobile_number:
         mobile_nr: Mobile number (with country code)
+        mobile_nr_country_code: Choose a country
         mobile_confirmation_code: Enter verification code
       profile:
         artist_type: You are...
+        solo: Solo artist
+        band: Band
         genre_ids: What's closest to your style?
         location: What city or town are you based?
         currency: "Default currency:"
@@ -27,16 +30,29 @@ de:
         youtube: Youtube video
         soundcloud: SoundCloud Track/Playlist Embed Code
         avatar: Select Profile picture
-      deal:
-        new_price: New price
-        old_price: Old price
+        facebook: Social Media
+        twitter: Twitter username
+      propose:
+        price: You'll make
+      filter:
+        artist_type: "Show me"
+        order: "sorted by"
+      match_me:
+        genre: "What are you looking for? (Select up to three)"  
+        event: "What kind of event is it?"
+        total_visitors: "How many people are coming? (Leave blank if you don't know.)"
+        max_budget: "What's your max budget?"
+        event_date: "Event date (you can change it later)"
+        zip_code: Post code
+        phone_number: Phone number
+        comment: "Anything else you'd like the musician to know?"
+        newsletter_subscribed: Send me Sidestage updates
+      event:
+        booking_for: Book a musician for
     hints:
       profile:
         name: "Your real name or Madonna. Whatever name people yell when you're on stage."
         title: "Make sure it's catchy and unique."
-        about: "Your chance to tell everyone a bit more about you. How you got into music, what drives you. Anything that may be helpful for someone to know who may be hiring you."
-        youtube: "Post your best stuff, this is your chance to show people how you perform."
-        soundcloud: "Be sure you copy the embed code, not the track or playlist URL."    
     placeholders:
       user:
         email: Email
@@ -56,19 +72,54 @@ de:
           body: Write your message here...
       deal:
         start_at: Event date
+        body: "Add a message to the artist, such as special requests or the location of the event."
       credit_card:
         number: Card number
+        expiry: MM / YYYY
         exp_month: Exp month
         exp_year: Exp year
-        cvc: CVC
+        cvc: CVC       
       profile:
-        youtube: Paste YouTube link here
-        soundcloud: "<iframe>…"
+        youtube: Click here to paste Youtube URL
+        soundcloud: Click here to paste SoundCloud 'Embed' code
+        payout_name: Name on account
+        payout_street: Street address
+        payout_street_2: Address line 2 (optional)
+        payout_city: City
+        payout_state: State
+        payout_postal_code: Zip code
+        sort_code: Sort code
+        routing_number: Routing number
+        account_number: Account Number
+        payout_address: "Address associated with bank account"
+        twitter: username
+        facebook: Facebook page
+        about: "Please don't include website links, email addresses or phone numbers in this area."
+        location: "Enter a city or town"
+      mailchimp_subscriber:
+        email: Email Address
+      match_me:
+        event: "e.g. Wedding, birthday party"
+        total_visitors: 100
+        max_budget: $600
+        event_date: "Aug 30, 2014"
+        zip_code: 90046
+        phone_number: (323) 545-8175
+        name: Name
+        email: who@where.com
+        comment: "The more detail you provide about your event, the better we can match you."
+      location_search:
+        location: "Where's your event?"
+      picture:
+        caption: "What are the highlights of this photo?"    
   helpers:
     submit:
       create: 'Create %{model}'
       update: 'Update %{model}'
       submit: Send
+      save_continue: Save and Continue
+      save_finish: Save and Finish
+      disable_with: Sending...
       message:
         create: Send
         disable_with: Sending...
@@ -77,7 +128,7 @@ de:
         sign_in: "Log in"
         sign_up: "Sign up with email"
         update: Save
-        update_password: Update password
+        update_password: Update Password
       user_as_mobile_number:
         update: Send Verification Text  
         confirm: Confirm
@@ -87,10 +138,17 @@ de:
       deal:
         create: Book it
         submit: 'Book it'
-        submit_proposal: Send request
-        update_price: Send updated price
+        update: Book it
+        special_offer: "Make Special Offer"
+      mailchimp_subscriber:
+        submit: Subscribe
       profile:
         submit: Continue
-        create: Continue
-        update: Continue
+        create: Save
+        update: Save
         submit_avatar: Upload
+      match_me:
+        create: Next  
+        location: Get Matched
+      event:
+        submit_step_2: "Pay %{price}"
