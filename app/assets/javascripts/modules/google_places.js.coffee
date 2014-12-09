@@ -4,7 +4,7 @@ App = window.App
 App.initGooglePlaces = ->  
   $("[data-google='event_place']").each ->
     inputField = $(@)
-    options =  types: ["(regions)"]
+    options =  types: ["(cities)"]
   
     autoCompMap = new google.maps.places.Autocomplete(document.getElementById($(@).attr("id")), options)
   
@@ -22,7 +22,7 @@ App.initGooglePlaces = ->
   
   $("form input#profile_location").each ->
     inputField = $(@)
-    options =  types: ["(regions)"]
+    options =  types: ["(cities)"]
     
     artistMap = new google.maps.places.Autocomplete(document.getElementById($(@).attr("id")), options)
     

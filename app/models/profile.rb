@@ -68,7 +68,9 @@ class Profile < ActiveRecord::Base
   validates :user_id, :genre_ids, :location, :currency, presence: true
   validates :price, presence: true, if: :pricing_step?
   validates :price, numericality: { greater_than: 24 }, allow_blank: true
-  
+
+  validate :validate_location
+
   with_options if: :description_step? do |profile|
     profile.validates :name, length: { maximum: 35 }
     profile.validates :title, :name, :about, presence: true
@@ -172,7 +174,7 @@ class Profile < ActiveRecord::Base
   #
   
   def contestant_prices
-    Profile.published.where("id != ?", id).by_artist_type(artist_type).by_location(location).select("profiles.currency, profiles.price")
+    Profile.published.where("id != ?", id).by_artist_type(artist_type).radial(latitude, longitude, 180).select("profiles.currency, profiles.price")
   end
   
   def london?
@@ -307,6 +309,10 @@ class Profile < ActiveRecord::Base
     unless has_youtube? || !!soundcloud_id_from_iframe(soundcloud) || has_pictures?
       should_have_youtube || should_have_soundcloud || should_have_picture
     end
+  end
+  
+  def validate_location
+    errors.add :location, :select_suggestion if location_changed? && !latitude_changed? && !longitude_changed?
   end
   
 end

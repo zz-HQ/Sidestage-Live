@@ -53,6 +53,8 @@ en:
               not_chargeable: "Payment details missing!"
         profile:
           attributes:
+            location:
+              select_suggestion: Please select one of suggested locations
             youtube:
               invalid: Please enter a valid link
             soundcloud:
