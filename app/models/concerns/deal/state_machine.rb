@@ -31,18 +31,30 @@ module Deal::StateMachine
       
       event :cancel do
         transitions from: [:requested, :offered, :confirmed, :accepted, :proposed], to: :cancelled, guards: [:current_user_is_customer?]
+        after do
+          notify_admin
+        end
       end
       
       event :revert do
         transitions from: [:confirmed, :accepted], to: :reverted, guards: [:current_user_is_customer?]
+        after do
+          notify_admin
+        end
       end
 
       event :reject do
         transitions from: [:confirmed, :accepted], to: :rejected, guards: [:current_user_is_artist?]
+        after do
+          notify_admin
+        end
       end
 
       event :decline do
         transitions from: [:requested, :offered, :proposed], to: :declined, guards: [:current_user_is_artist?]
+        after do
+          notify_admin
+        end
       end
       
       event :accept do
