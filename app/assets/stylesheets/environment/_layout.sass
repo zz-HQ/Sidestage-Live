@@ -45,7 +45,7 @@ body > #wrap
 /* Bereich nicht für IE-mac Ende */
 // -------- CLEARFIX ENDE
 
-
+$sidebar-bg-color: #f4f4f4
 .container 
   +outer-container
 
@@ -58,18 +58,12 @@ body > #wrap
       font-weight: 300
       margin: 10px 0 0
 
-  aside
+  aside.menu
     .sidebar
-      margin-top: 5px
-
       h4
         margin: 0 0 20px
         font-weight: 500
         font-size: 16px
-
-        p
-          font-weight: 400
-          font-size: 15px
 
         a
           color: $text-color-light
@@ -79,3 +73,5 @@ body > #wrap
 
           &.active
             color: $text-color
+
+

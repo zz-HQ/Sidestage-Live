@@ -33,6 +33,7 @@ do ($ = jQuery, window, document) ->
       # e.g., @$element and @settings
       @$wrappers = @$element.find('.radio')
       @$radios = @$element.find(':radio')
+      @$select = @$element.find('select')
       @$radios.on 'change', (e) => @render()
       @$wrappers.on 'click', @didClickSelect
 
@@ -48,6 +49,7 @@ do ($ = jQuery, window, document) ->
     render: ->
       @$wrappers.removeClass 'active'
       @$radios.filter(':checked').closest('.radio').addClass 'active'
+      @$select.find('option[selected]').closest('.nice-select').addClass 'active'
       
 
 

@@ -1,5 +1,268 @@
-#profile
+.edit-profile
+	+span-columns(8)
+	max-width: 100%
+
+	aside.menu
+		+span-columns(2 of 10)
+		min-height: 1px
+		border-right: 1px solid $border-color
+		
+		header
+			+bigger-font
+			font-weight: 300
+
+		.sidebar h4
+			margin: 0
+			position: relative
+
+			a
+				display: block
+				margin: 0
+				padding: 15px
+				color: $text-color-light
+
+				&:hover
+					background-color: $sidebar-bg-color
+
+				&.active
+					background-color: $sidebar-bg-color
+
+			img
+				position: absolute
+				width: 16px
+				right: 15px
+				top: 21px
+				pointer-events: none
+
+		.publish-btn
+			.missing
+				width: 94%
+				margin: 40px auto 0
+				text-align: center
+				background-color: #DEDEDE
+				font-size: 14px
+				font-weight: 400
+				padding: 20px
+
+			.btn
+				width: 94%
+				margin: 40px auto 0
+
+			.third
+				margin-top: 40px
+				float: left
+				width: 94%
+				padding-left: 40px
+
+				.published-circle
+					width: 14px
+					height: 14px
+					background-color: #34b989
+					float: left
+					margin: 14px 22px 0 0
+					+border-radius(50%)
+
+				.nice-select
+					width: 100px
+					float: left
+
 	.content
-		&.pricing,
-		&.description
-			width: 46%
+		padding-left: 15px
+		+span-columns(6 of 10)
+		padding-right: 20px
+		border-right: 1px solid $border-color
+
+		p.desc
+			font-size: 16px
+			font-weight: 300
+			margin-bottom: 12px
+
+		.left-side
+			+span-columns(3)
+
+		.right-side
+			+span-columns(5)
+			+omega
+
+	aside.hints
+		+span-columns(2 of 10)
+		+omega
+		padding-left: 15px
+
+		p
+			font-size: 16px
+
+
+// PRICING ----------------------
+// ------------------------------
+#pricing
+	h4
+		margin-top: 40px
+	
+	.inputs
+		+outer-container
+
+	.input
+		+span-columns(5 of 7)
+
+	.nice-select
+		+span-columns(5 of 8)
+		margin-bottom: 20px
+
+		&.from-nice-select
+			margin-top: 0
+
+
+// DESCRIPTION ------------------
+// ------------------------------
+#description
+	.avatar-uploader
+		width: 165px
+		margin-top: 30px
+
+	.inputs
+		position: relative
+		margin-bottom: 26px
+
+		.input
+			textarea
+				height: 200px
+
+		p.characters-counter
+			position: absolute
+			bottom: -10px
+			right: 0
+			font-weight: 400
+			display: inline-block
+
+	.profile_social_media
+		margin-top: 30px
+
+		.inputs
+			position: relative
+			+span-columns(8)
+
+			.input
+				input
+					padding-left: 25px
+
+			> span
+				position: absolute
+				top: 37px
+				left: 10px
+
+
+// PRICING ---------------
+// -----------------------
+#pricing
+
+	p
+		margin-bottom: 5px
+	
+	.parts
+		width: 68%
+
+	.complete-pricing
+
+		.parts
+			+outer-container
+			margin-bottom: 20px
+			width: 54%
+
+			.headline
+				+span-columns(1 of 4)
+
+				h4
+					margin: 20px 0 10px
+
+			.inputs
+				+span-columns(3 of 4)
+				float: right
+				+omega
+
+	.profile_price
+		position: relative
+
+		.nice-select
+			width: 96px
+
+		.input
+			width: 96px
+
+			input
+				padding-left: 20px
+
+		.hint
+			width: 67%
+			margin-top: 1px
+			font-size: 13px
+			color: $text-color-light
+			position: absolute
+
+		.surcharged_price
+			padding: 13px 31px 13px 13px
+			background-color: #e3e3e3
+			border: 1px solid #D8D8D8
+			display: inline-block
+			margin-bottom: 20px
+			width: 100px
+			height: 50px
+			color: $text-color-light
+
+	.profile_currency .nice-select
+		width: 100px
+
+	.profile_cancellation_policy .nice-select
+		width: 400px
+
+	.profile_availability 
+
+		.nice-select
+			width: 250px
+
+		.hint
+			width: 50%
+
+	.input,
+	.nice-select
+		display: inline-block
+
+// PAYMENT ---------------
+// -----------------------
+#payment
+	+span-columns(5 of 8)
+
+	.btn
+		float: left
+
+	.skip
+		color: $text-color-light
+		font-size: 16px
+		position: relative
+		top: 20px
+		left: 17px
+
+	.footnote
+		margin-top: 100px
+		font-size: 16px
+
+// MUSIC -----------------
+// -----------------------
+#music
+	.inputs
+		margin-bottom: 30px
+
+		.link
+			font-size: 14px
+
+		input
+			margin-bottom: 4px
+
+
+// MUSIC ---------------
+// -----------------------
+#location
+	.right-side
+		padding: 0 40px
+
+

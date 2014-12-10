@@ -1,1 +1,4 @@
+if($("#pictures > .picture").length == 0) {
+	$("#new_picture").append("<span data-upload='button' id='fileupload-button' class='btn btn-blue btn-inline'>Add photos</span>")
+}
 $('#pictures').append('<%= j render 'picture', picture: resource %>').find("#no-pictures").remove();

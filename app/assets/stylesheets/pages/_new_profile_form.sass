@@ -1,17 +1,18 @@
 .new-profile-form
-	.input
+	.part
 		+span-columns(8)
+		margin-bottom: 30px
 
 		h3
 			font-size: 14px
 			font-weight: 400
-			margin: 30px 0 10px
+			margin: 0 0 10px
 
 		.act
 			+span-columns(1 of 4)
 			text-align: center
 
-		&.genre
+		&.genres
 			.nice-select
 				margin: 0
 
@@ -20,6 +21,7 @@
 					border: 1px solid $border-color
 
 				.select-label-value
+					top: 11px
 					width: 70%
 					white-space: nowrap
 					overflow: hidden
@@ -61,170 +63,3 @@
 			&:hover
 				.label
 					color: inherit
-
-
-
-#description,
-#pricing
-	
-	h4
-		margin-top: 40px
-	
-	.inputs
-		+outer-container
-
-	.input
-		+span-columns(5 of 7)
-
-	.nice-select
-		+span-columns(5 of 8)
-		margin-bottom: 20px
-
-	// .hint
-	// 	+span-columns(3 of 8)
-	// 	color: $text-color-light
-		//margin-top: 25px
-
-		&.from-nice-select
-			margin-top: 0
-
-// DESCRIPTION ------------------
-// ------------------------------
-#description
-	.profile_name,
-	.profile_facebook,
-	.profile_twitter
-		.input
-			width: 350px
-
-	.profile_about
-		position: relative
-
-		.input
-			width: 450px
-
-			textarea
-				height: 200px
-				margin-bottom: 28px
-
-		p.characters-counter
-			position: absolute
-			bottom: 3px
-			right: 0
-			font-weight: 400
-			display: inline-block
-
-	.profile_social_media
-		margin-top: 30px
-
-		.inputs
-			position: relative
-			+span-columns(8)
-
-			.input
-				input
-					padding-left: 25px
-
-			> span
-				position: absolute
-				top: 37px
-				left: 10px
-
-
-// PRICING ---------------
-// -----------------------
-#pricing
-
-	p
-		margin-bottom: 5px
-	
-	.parts
-		width: 68%
-
-	.complete-pricing
-
-		.parts
-			+outer-container
-			margin-bottom: 20px
-			width: 54%
-
-			.headline
-				+span-columns(1 of 4)
-
-				h4
-					margin: 20px 0 10px
-
-			.inputs
-				+span-columns(3 of 4)
-				float: right
-				+omega
-
-	.profile_price
-		position: relative
-
-		.nice-select
-			width: 96px
-
-		.input
-			width: 96px
-
-			input
-				padding-left: 20px
-
-		// i.fa
-		// 	position: absolute
-		// 	top: 12px
-		// 	left: 10px
-		// 	font-size: 14px
-
-		.hint
-			width: 67%
-			margin-top: 1px
-			font-size: 13px
-			color: $text-color-light
-			position: absolute
-
-		.surcharged_price
-			padding: 13px 31px 13px 13px
-			background-color: #e3e3e3
-			border: 1px solid #D8D8D8
-			display: inline-block
-			margin-bottom: 20px
-			width: 100px
-			height: 50px
-			color: $text-color-light
-
-	.profile_currency .nice-select
-		width: 100px
-
-	.profile_cancellation_policy .nice-select
-		width: 400px
-
-	.profile_availability 
-
-		.nice-select
-			width: 250px
-
-		.hint
-			width: 50%
-
-	.input,
-	.nice-select
-		display: inline-block
-
-#payment
-	+span-columns(5 of 8)
-
-	.btn
-		float: left
-
-	.skip
-		color: $text-color-light
-		font-size: 16px
-		position: relative
-		top: 20px
-		left: 17px
-
-	.footnote
-		margin-top: 100px
-		font-size: 16px

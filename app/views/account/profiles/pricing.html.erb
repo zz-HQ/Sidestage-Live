@@ -1,15 +1,24 @@
-<div id="profile" class="container">
-  <aside>
-    <%= render 'sidebar' %>
-  </aside>
+<div id="profile" class="container edit-profile">
+  <%= render 'sidebar' %>
 
-  <div class="content pricing">
+  <div class="content">
     <header><%= t(:"application.profiles.pricing.title_html") %></header>
     
-    <div id="pricing">
+    <div class="left-side">
+      <p><%= t(:"application.profiles.pricing.desc") %></p>
+      <br/><br/><br/>
+      <p class="light"><%= t(:"application.profiles.pricing.hint_html", artist_type: "DJs", price: "$50") %></p>
+    </div>
+
+    <div id="pricing" class="right-side">
       <%= simple_form_for resource, url: pricing_account_profile_path do |f| %>
         <%= render "pricing_form", f: f %>
       <% end %>
     </div>
   </div>
-</div>      
+  
+  <aside class="hints">
+    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+    <%= t(:"application.profiles.pricing.tips_hints_html") %>
+  </aside>
+</div>

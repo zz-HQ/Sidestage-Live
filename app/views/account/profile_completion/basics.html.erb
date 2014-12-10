@@ -1,8 +1,7 @@
-<div id="profile" class="container">
-
-    <aside>
-        <div class="sidebar"></div>
-    </aside>
+<div id="profile" class="container edit-profile">
+  <aside class="menu">
+      <div class="sidebar"></div>
+  </aside>
 
   <div class="content">
     <header><%= t(:"application.profiles.basics.title_html") %></header>
@@ -12,4 +11,9 @@
       <% end %>
     </div>
   </div>
+
+  <aside class="hints">
+    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+    <%= t(:"application.profiles.basics.tips_hints_html") %>
+  </aside>
 </div>      

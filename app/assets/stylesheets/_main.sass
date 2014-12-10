@@ -104,13 +104,12 @@ hr
 .avatar-uploader
 	position: relative
 	margin-bottom: 20px
-	width: 100px
 
 	.avatar
-		width: 100px
-		height: 100px
+		width: 165px
+		height: 165px
 		background: image-url("fallback/user/thumb_avatar.jpg") no-repeat center
-		background-size: 120px
+		background-size: 165px
 		cursor: pointer
 		+transition(opacity 300ms ceaser($easeOutCirc))
 
@@ -132,14 +131,13 @@ hr
 			background-image: none
 			background-color: #fafafa
 			width: 100%
-			min-height: 211px
+			height: auto
 
 			&:hover
 				+opacity(1)
 
 			img
-				width: initial
-				height: 100%
+				width: 100%
 
 
 .loader

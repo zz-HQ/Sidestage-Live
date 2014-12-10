@@ -1,16 +1,16 @@
-#profile,
 #personals
-	+outer-container
+	+span-columns(8)
+	max-width: 100%
 
-	aside
-		+span-columns(2)
+	aside.menu
+		+span-columns(2 of 10)
 
 		header
 			+bigger-font
 			font-weight: 300
 
 	.content
-		+span-columns(6)
+		+span-columns(8 of 10)
 
 
 #personals
@@ -24,15 +24,10 @@
 				+span-columns(5)
 
 		.avatar-uploader
-			position: relative
-			margin-bottom: 20px
-
 			.avatar
 				width: 100px
 				height: 100px
-				background: url(fallback/user/thumb_avatar.jpg) no-repeat center
 				background-size: 100px
-				cursor: pointer
 
 		form
 			+span-columns(8)

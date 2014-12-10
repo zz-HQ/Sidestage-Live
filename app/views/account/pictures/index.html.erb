@@ -1,7 +1,5 @@
-<div id="edit-pictures" class="container">
-  <aside>
-    <%= render 'account/profiles/sidebar', resource: current_user.profile %>
-  </aside>
+<div id="edit-pictures" class="container edit-profile">
+  <%= render 'account/profiles/sidebar', resource: current_user.profile %>
 
   <div class="content">
     <header><%= t(:"application.profiles.pictures.index.title_html") %></header>
@@ -11,8 +9,10 @@
             <div data-upload="trigger" style="display:none;">
                 <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true %>
             </div>
-              
-            <span data-upload="button" id="fileupload-button" class="btn btn-blue btn-inline">Add photos</span>
+            
+            <% if collection.present? %>
+              <span data-upload="button" id="fileupload-button" class="btn btn-blue btn-inline">Add photos</span>
+            <% end %>
         <% end %>
       <div id="file-upload-status" style="display:none;"><div class="value" style=""></div></div>
     </div>
@@ -21,14 +21,12 @@
         <% if collection.present? %>
           <%= render collection %>
         <% else %>
-          <p id="no-pictures" class="light"><%= t(:"application.profiles.pictures.index.empty") %></p>
+          <%= render "no_pictures" %>
         <% end %>
     </div>
-
-    <aside class="hint">
-      <p><strong>Add photos:</strong></p> <br/>
-      <p>Users browse photos to quickly get a feel for you and your musical act. Be sure to put your best photo first.</p>
-    </aside>
-
   </div>
+
+  <aside class="hints">
+    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+  </aside>
 </div>

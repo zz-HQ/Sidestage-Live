@@ -1,11 +1,12 @@
-<div id="profile" class="container">
-
-    <aside>
-        <div class="sidebar"></div>
-    </aside>
+<div id="profile" class="container edit-profile">
+  <aside class="menu">
+      <div class="sidebar"></div>
+  </aside>
 
   <div class="content description">
     <header><%= t(:"application.profiles.description.title_html") %></header>
+    <p class="desc"><%= t(:"application.profiles.description.desc") %></p>
+    
     <div id="description" class="">
       <%= simple_form_for resource.user, url: upload_avatar_account_personal_path, html: { data: { upload: :auto }, id: "user_account", multipart: true } do |f| %>
         <label>
@@ -37,5 +38,8 @@
     </div>
   </div>
 
+  <aside class="hints">
+    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+    <%= t(:"application.profiles.description.tips_hints_html") %>
+  </aside>
 </div>
-    

@@ -1,17 +1,17 @@
 <div class="inputs profile_name">
-	<%= f.input :name, hint: false %>
-	<div class="hint"><%#= t(:"simple_form.hints.profile.name") %></div>
+	<%= f.input :name, hint: false, maxlength: '35' %>
+	<p class="characters-counter"><span class="count"><%= 35 - f.object.name.to_s.length %></span> characters left</p>
 </div>
 <div class="inputs profile_title">
-	<%= f.input :title, as: :string, hint: false %>
-	<div class="hint"><%#= t(:"simple_form.hints.profile.title") %></div>
+	<%= f.input :title, as: :string, hint: false, maxlength: '100' %>
+	<p class="characters-counter"><span class="count"><%= 100 - f.object.title.to_s.length %></span> characters left</p>
 </div>
 <div class="inputs profile_about">
 	<%= f.input :about, hint: false, maxlength: '750' %>
 	<p class="characters-counter"><span class="count"><%= 750 - f.object.about.to_s.length %></span> characters left</p>
-	<div class="hint"><%#= t(:"simple_form.hints.profile.about") %></div>
 </div>
-<!-- TODO: Website input -->
+
+<% if false %>
 <div class="inputs profile_social_media">
 	<%= f.input :facebook %>
 
@@ -20,5 +20,6 @@
 		<span>@</span>
 	</div>
 </div>
+<% end %>
 
 <%= render "account/profiles/submit", f: f %>

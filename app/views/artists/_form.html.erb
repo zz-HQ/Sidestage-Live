@@ -8,13 +8,15 @@
 				<p><%= t(:"application.artists.new.desc") %></p>
 			</header>
 			
-			<div class="input big">
+			<div class="part big">
                 <%= render "/account/profiles/artist_type", f: f %>
 			</div>
 
-			<%= render "/account/profiles/genres", f: f %>
+			<div class="part genres">
+				<%= render "/account/profiles/genres", f: f %>
+			</div>
             
-			<div class="input city">
+			<div class="part city">
         		<%= render "account/profiles/location_field", f: f %>
 			</div>
 			

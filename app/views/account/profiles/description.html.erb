@@ -1,39 +1,93 @@
-<div id="profile" class="container">
-  <aside>
-    <%= render 'sidebar' %>
-  </aside>
+<div id="profile" class="container edit-profile">
+  <%= render 'sidebar' %>
 
-  <div class="content description">
+  <div class="content">
     <header><%= t(:"application.profiles.description.title_html") %></header>
-    <div id="description" class="">
-      <%= simple_form_for resource.user, url: upload_avatar_account_personal_path, html: { data: { upload: :auto }, multipart: true } do |f| %>
-        <label><%= t(:"simple_form.labels.user.avatar") %></label>
-        <% if resource.errors["user"].present? %>
-            <span class="error"><%= resource.errors["user"].join(" ") %></span>
-        <% end %>        
-        <div class="avatar-uploader">
-          <div id="avatar" class="avatar avatar-upload-button">
-            <%= render 'avatar' %>
+    <p class="desc"><%= t(:"application.profiles.description.desc") %></p>
+
+    <div id="description">
+
+      <div class="left-side">
+        <%= simple_form_for resource.user, url: upload_avatar_account_personal_path, html: { data: { upload: :auto }, multipart: true } do |f| %>
+          <% if resource.errors["user"].present? %>
+              <span class="error"><%= resource.errors["user"].join(" ") %></span>
+          <% end %>        
+          <div class="avatar-uploader">
+            <div id="avatar" class="avatar avatar-upload-button">
+              <%= image_tag current_user.avatar.url(:thumb), class: "avatar", alt: current_user.full_name %>
+            </div>
+            
+            <a href="#" class="btn avatar-upload-button"><%= t(:"simple_form.labels.profile.avatar") %></a>
+            <p><%= t(:"application.profiles.description.hint") %></p>
+
+            <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
           </div>
-          <div class="hint">
-              Clear frontal face photos are an important way for our community to learn about each other. Please upload a photo that clearly shows your face. <br/>
 
-              <a href="" class="link avatar-upload-button">Upload a picture</a>
+          <div class="new-avatar" style="display:none;">
+            <%= f.input :avatar, label: false, id: "avatar-file" %>
           </div>
-          <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
-        </div>
+        <% end %>
+      </div>
 
-        <div class="new-avatar" style="display:none;">
-          <%= f.input :avatar, label: false, id: "avatar-file" %>
-        </div>
-      <% end %>
-
-      <%= simple_form_for resource, url: description_account_profile_path do |f| %>
-        <%= render "description_form", f: f %>
-      <% end %>
+      <div class="right-side">
+        <%= simple_form_for resource, url: description_account_profile_path do |f| %>
+          <%= render "description_form", f: f %>
+        <% end %>
+      </div>
     </div>
   </div>
-
+  
+  <aside class="hints">
+    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+    <%= t(:"application.profiles.description.tips_hints_html") %>
+  </aside>
 </div>
+
+
+
+<!-- HIER DER CODE FÜR 'YOUR MUSIC' SECTION MIT SOUNDCLOUD/YOUTUBE -->
+
+<% if false %>
+
+<div id="profile" class="container edit-profile">
+  <%= render 'sidebar' %>
+
+  <div class="content">
+    <header><%= t(:"application.profiles.music.title_html") %></header>
+
+    <div class="left-side">
+      <p class="desc"><%= t(:"application.profiles.music.desc") %></p>
+    </div>
+
+    <div id="music" class="right-side">
+      <%= simple_form_for resource, url: description_account_profile_path do |f| %>
+          <div class="inputs">
+            <%= f.input :soundcloud %>
+
+            <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
+            <div style="display:none;" data-container="help-sc">
+                <div class="devise-lightbox">
+                    <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
+                    <%= image_tag 'sc-embed-help.png' %>
+                </div>
+            </div>
+          </div>
+
+          <div class="inputs">
+            <%= f.input :youtube %>
+            <p class="light"><%= t(:"application.profiles.music.youtube_hint") %></p>
+          </div>
+
+          <%= render "submit", f: f %>
+      <% end %>
+    </div>
     
-    
+  </div>
+
+  <aside class="hints">
+    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+    <%= t(:"application.profiles.music.tips_hints_html") %>
+  </aside>
+</div>
+
+<% end %>

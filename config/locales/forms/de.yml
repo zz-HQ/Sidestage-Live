@@ -25,11 +25,11 @@ de:
         price: "How much do you want to make?"
         surcharge_html: "The price listed on your Sidestage profile will include our fees and taxes."
         name: Stage name
-        title: Headline sentence to describe your act
+        title: Headline sentence
         about: Write a short bio, telling us about you and your music
-        youtube: Youtube video
-        soundcloud: SoundCloud Track/Playlist Embed Code
-        avatar: Select Profile picture
+        youtube: Youtube
+        soundcloud: SoundCloud Profile
+        avatar: Upload picture
         facebook: Social Media
         twitter: Twitter username
       propose:
@@ -80,8 +80,8 @@ de:
         exp_year: Exp year
         cvc: CVC       
       profile:
-        youtube: Click here to paste Youtube URL
-        soundcloud: Click here to paste SoundCloud 'Embed' code
+        youtube: Add a Youtube link
+        soundcloud: Add SoundCloud Embed code
         payout_name: Name on account
         payout_street: Street address
         payout_street_2: Address line 2 (optional)

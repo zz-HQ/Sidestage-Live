@@ -131,10 +131,20 @@ $(document).on 'click', '.match-me-form .act', ->
     $(@).find(':checkbox').prop('checked', true)
     $(@).addClass('active')
 
+
 # Characters counter
+$(document).on 'keyup', '#profile_name', ->
+  chars = $('#profile_name').val().length
+  $('.profile_name .characters-counter .count').html 35 - chars
+
+$(document).on 'keyup', '#profile_title', ->
+  chars = $('#profile_title').val().length
+  $('.profile_title .characters-counter .count').html 100 - chars
+
 $(document).on 'keyup', '#profile_about', ->
   chars = $('#profile_about').val().length
-  $('.characters-counter .count').html 747 - chars
+  $('.profile_about .characters-counter .count').html 748 - chars
+
 
 # Profile about read more link
 $(document).on 'click', '.toggle-about-text', ->

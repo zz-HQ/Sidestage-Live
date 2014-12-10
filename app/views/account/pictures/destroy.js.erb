@@ -1,7 +1,6 @@
 $("#<%= dom_id(resource) %>").remove();
 
-// function show_p () {
-// 	if $("#pictures > div").length == 0 {
-// 		$("#pictures").html("<p id='no-pictures' class='light'><%= t(:"application.profiles.pictures.index.empty") %></p>");
-// 	}
-// }
+if($("#pictures > div").length == 0) {
+	$("#fileupload-button").remove();
+	$("#pictures").html("<%= j render 'no_pictures' %>");
+}
