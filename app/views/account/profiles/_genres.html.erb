@@ -2,7 +2,8 @@
     
 	<h3><%= t(:"simple_form.labels.profile.genre_ids") %></h3>
 
-	<% genre_rest = Genre.all[3, Genre.count+1]; genre_one = Genre.all[0]; genre_two = Genre.all[1]; genre_three = Genre.all[2]	%>
+	<% genre_one = Genre.find(1); genre_two = Genre.find(21); genre_three = Genre.find(151) %>
+	<% genre_rest = Genre.where("id NOT IN (?)", [genre_one.id, genre_two.id, genre_three.id]) %>
 
 	<div class="styled-radios">
 		<div class="act radio">
