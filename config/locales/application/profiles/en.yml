@@ -11,6 +11,7 @@ en:
         preview_link: "Preview Profile"
         audio_video_link: "Audio & Video"
         tips_hints: Tips and hints
+        completion_hint: "Complete %{count} steps to publish your Profile"
       basics:
         title_html: "Your Artist Listing"
         tips_hints_html: "<p>Your artist type will help users find you in artists listings.</p>"
@@ -18,7 +19,6 @@ en:
         title_html: "Location"
         desc: "Where are you based?"
         hint: "Select one of the suggested locations"
-        label: Type the name of your town or city
         tips_hints_html: "Users will find your profile if it is within 100 miles (160km) of their search area."
       avatar:
         title_html: "Header photo"
@@ -28,7 +28,6 @@ en:
       pricing:
         title_html: "Pricing"
         desc: "What is your minimum price for a typical performance."
-        hint_html: "Prices for %{artist_type} in your<br> area start at %{price}"
         tips_hints_html: "<p>Price yourself competitively for more bookings. <br/><br/><br/> Before a booking is confirmed, you can adjust your price, based on travel, performance length and setup details.</p>"
       description:
         title_html: "Description"

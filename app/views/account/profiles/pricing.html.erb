@@ -7,7 +7,11 @@
     <div class="left-side">
       <p><%= t(:"application.profiles.pricing.desc") %></p>
       <br/><br/><br/>
-      <p class="light"><%= t(:"application.profiles.pricing.hint_html", artist_type: "DJs", price: "$50") %></p>
+      <p class="light">
+      	<% if (min_price = min_price_in_profile_location(resource)).present? %>
+      	    <span class="hint"><%= t(:"application.profiles.pricing.hint_html", artist_type: Profile::ARTIST_TYPES_HUMAN[resource.artist_type.to_sym], price: localized_price("<span data-price='min'>#{number_with_delimiter(min_price)}</span>".html_safe, current_currency)) %></span>
+      	<% end %>
+      </p>
     </div>
 
     <div id="pricing" class="right-side">

@@ -2,39 +2,40 @@
 	<div class="sidebar">
 		<h4>
 			<%= link_to t(:"application.profiles.sidebar.settings_link").html_safe, basics_account_profile_path, class: ('active' if action_name == 'basics') %>
-			<%= image_tag "icons/check_icon.png" %>
+			<%= profile_wizard_progress_icon(:style) %>
 		</h4>
 		<h4>
-			<%= link_to t(:"application.profiles.sidebar.location_link").html_safe, "#", class: ('active' if action_name == 'location') %>
-			<%= image_tag "icons/check_icon.png" %>
+			<%= link_to t(:"application.profiles.sidebar.location_link").html_safe, location_account_profile_path, class: ('active' if action_name == 'location') %>
+			<%= profile_wizard_progress_icon(:location) %>
 		</h4>
 		<h4>
 			<%= link_to t(:"application.profiles.sidebar.pricing_link"), pricing_account_profile_path, class: ('active' if action_name == 'pricing') %>
-			<%= image_tag "icons/check_icon.png" %>
+			<%= profile_wizard_progress_icon(:pricing) %>
 		</h4>
 		<h4>
 			<%= link_to t(:"application.profiles.sidebar.description_link").html_safe, description_account_profile_path, class: ('active' if action_name == 'description') %>
-			<%= image_tag "icons/check_icon.png" %>
+			<%= profile_wizard_progress_icon(:description) %>
 		</h4>
 		<h4>
 			<%= link_to t(:"application.profiles.sidebar.avatar_link"), avatar_account_profile_path, class: ('active' if action_name == 'avatar') %>
-			<%= image_tag "icons/check_icon.png" %>
+			<%= profile_wizard_progress_icon(:avatar) %>
 		</h4>
 		<h4>
 			<%= link_to t(:"application.profiles.sidebar.photos_link"), account_profile_pictures_path, class: ('active' if controller.controller_name == 'pictures') %>
-			<%= image_tag "icons/check_icon.png" %>
+			<%= profile_wizard_progress_icon(:pictures) %>
 		</h4>
 		<h4>
-			<%= link_to t(:"application.profiles.sidebar.audio_video_link"), "#", class: ('active' if controller.controller_name == 'audio_video') %>
-			<%= image_tag "icons/check_icon.png" %>
+			<%= link_to t(:"application.profiles.sidebar.audio_video_link"), music_account_profile_path, class: ('active' if controller.controller_name == 'music') %>
+			<%= profile_wizard_progress_icon(:music) %>
 		</h4>
 
 		<div class="publish-btn">
+		    <% if @profile.wizard_complete? %>
+		        <%= link_to t(:"application.links.publish.toggle_#{resource.published?}"), toggle_account_profile_path, method: :put, class: "btn btn-publish" %>
+		    <% else %>
+		        <div class="missing"><%= t(:"application.profiles.sidebar.completion_hint", count: @profile.remaining_wizard_steps_count) %></div>
+		    <% end %>
 			<% if false %>
-				<div class="missing">Complete 7 steps to publish your Profile</div>
-			<% elsif false %>
-				<%= link_to t(:"application.links.publish.toggle_#{resource.published?}"), toggle_account_profile_path, method: :put, class: "btn btn-publish" %>
-			<% else %>
 				<div class="third">
 					<div class="published-circle"></div>
 					<%= nice_select(select_tag :artist) %>

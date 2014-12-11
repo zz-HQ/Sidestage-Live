@@ -1,0 +1,40 @@
+<div id="profile" class="container edit-profile">
+  <%= render 'sidebar' %>
+
+  <div class="content">
+    <header><%= t(:"application.profiles.music.title_html") %></header>
+    
+    <div class="left-side">
+      <p><%= t(:"application.profiles.music.desc") %></p>
+      <br/><br/><br/>
+      <p class="light"></p>
+    </div>
+
+    <div id="music" class="right-side">
+        <%= simple_form_for resource, url: soundcloud_account_profile_path do |f| %>
+            <%= f.label :soundcloud %>
+            <%= text_area :profile, :soundcloud, hint: false, placeholder: "Copy and paste the SoundCloud Embed code here." %>
+            <%= f.submit class: "btn btn-center btn-blue", id: "sc-btn" %>
+        <% end %>
+        <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
+        <div style="display:none;" data-container="help-sc">
+            <div class="devise-lightbox">
+                <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
+                <%= image_tag 'sc-embed-help.png' %>
+            </div>
+        </div>
+        
+        <%= simple_form_for resource, url: youtube_account_profile_path do |f| %>
+            <%= f.label :youtube %>
+            <%= text_area :profile, :youtube, hint: false, placeholder: "Copy and paste the Youtube link here." %>
+            <%= f.submit class: "btn btn-center btn-blue", id: "yt-btn" %>
+        <% end %>        
+        
+    </div>
+  </div>
+  
+  <aside class="hints">
+    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+    <%= t(:"application.profiles.music.tips_hints_html") %>
+  </aside>
+</div>

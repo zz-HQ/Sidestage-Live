@@ -10,7 +10,7 @@ class Profile < ActiveRecord::Base
   
   extend FriendlyId
   
-  include Profile::Presentable, Sortable, Filter, Payoutable
+  include Profile::Presentable, Profile::Wizardable, Sortable, Filter, Payoutable
   
   acts_as_taggable
   
@@ -38,7 +38,6 @@ class Profile < ActiveRecord::Base
     world: 'activerecord.attributes.profile.availability.world'
   }
   
-  WIZARD_STEPS = [:pricing, :description, :payment, :soundcloud, :youtube]
   ARTIST_TYPES_HUMAN = {solo: "solo musicians", band: "bands", dj: "DJs" }
   
   enum artist_type: { solo: 0, band: 1, dj: 2 }

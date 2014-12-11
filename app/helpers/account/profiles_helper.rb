@@ -74,4 +74,8 @@ module Account::ProfilesHelper
     count > maxCount
   end
   
+  def profile_wizard_progress_icon(step)
+    image_tag "icons/check_icon.png", style: "display: #{current_user.profile.step_done?(step.to_sym) ? nil : "none;" }"
+  end
+  
 end

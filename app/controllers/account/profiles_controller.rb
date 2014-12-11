@@ -23,6 +23,13 @@ class Account::ProfilesController < Account::ResourcesController
     end
   end
   
+  def location
+    resource.wizard_step = :location
+    if request.patch?
+      resource.update_attributes(permitted_params[:profile])
+    end
+  end
+  
   def avatar
     unless request.get?
       resource.update_attributes(permitted_params[:profile])

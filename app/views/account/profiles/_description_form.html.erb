@@ -11,7 +11,6 @@
 	<p class="characters-counter"><span class="count"><%= 750 - f.object.about.to_s.length %></span> characters left</p>
 </div>
 
-<% if false %>
 <div class="inputs profile_social_media">
 	<%= f.input :facebook %>
 
@@ -20,6 +19,5 @@
 		<span>@</span>
 	</div>
 </div>
-<% end %>
 
 <%= render "account/profiles/submit", f: f %>
