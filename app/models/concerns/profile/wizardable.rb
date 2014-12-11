@@ -3,6 +3,13 @@ module Profile::Wizardable
   
   included do
     WIZARD_STEPS = [:style, :location, :pricing, :description, :avatar, :pictures, :music]
+
+    WIZARD_STEPS.each do |step|
+      define_method "#{step}_step?" do
+        wizard_step == step
+      end
+    end
+
   end
   
   def step_done?(step)

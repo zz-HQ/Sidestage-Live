@@ -57,7 +57,8 @@
                     </div>    
                 </div>    
                 <%= link_to t(:"application.menu.your_profile"), basics_account_profile_path %>
-            <% else %>    
+            <% else %>
+                <%= link_to t(:"application.menu.musician"), basics_account_profile_path  %>
                 <%= link_to t(:"application.menu.invite_friends"), "#", data: { lightbox: :html, target: "[data-container='customer-invite-friend']" } %>
                 <div style="display:none;" data-container="customer-invite-friend">
                     <div class="devise-lightbox center">

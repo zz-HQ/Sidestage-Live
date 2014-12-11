@@ -17,8 +17,9 @@ class Account::ProfilesController < Account::ResourcesController
   #
   
   def basics
+    build_resource if current_user.profile.nil?
     resource.wizard_step = :basics
-    if request.patch?
+    unless request.get?
       resource.update_attributes(permitted_params[:profile])
     end
   end

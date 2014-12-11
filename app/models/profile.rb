@@ -64,10 +64,11 @@ class Profile < ActiveRecord::Base
   #
   #  
 
-  validates :user_id, :genre_ids, :location, :currency, presence: true
+  validates :user_id, :genre_ids, presence: true
   validates :price, presence: true, if: :pricing_step?
   validates :price, numericality: { greater_than: 24 }, allow_blank: true
 
+  validates :location, presence: true, if: :location_step?
   validate :validate_location
 
   with_options if: :description_step? do |profile|
@@ -76,10 +77,10 @@ class Profile < ActiveRecord::Base
     profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
     profile.validate :user_should_have_avatar, :urls_not_allowed, :email_address_not_allowed
   end
-  validates :bic, :iban, presence: true, if: :payment_step?
+  #validates :bic, :iban, presence: true, if: :payment_step?
 
-  validate :should_have_youtube, if: :youtube_step?
-  validate :should_have_soundcloud, if: :soundcloud_step?
+  # validate :should_have_youtube, if: :youtube_step?
+  # validate :should_have_soundcloud, if: :soundcloud_step?
 
   with_options on: :publishing do |profile|
     profile.validates :genre_ids, :price, :title, :name, :about, presence: true
@@ -237,12 +238,6 @@ class Profile < ActiveRecord::Base
   
   private
   
-  WIZARD_STEPS.each do |step|
-    define_method "#{step}_step?" do
-      wizard_step == step
-    end
-  end  
-  
   def reverse_friendly
     if description_step? && errors.present?
       errors.add friendly_id_config.base, errors[friendly_id_config.slug_column.to_sym] if errors.include?(friendly_id_config.slug_column.to_sym)
@@ -289,7 +284,7 @@ class Profile < ActiveRecord::Base
   end
   
   def user_should_have_avatar
-    errors.add :user, :avatar_blank if user.avatar.blank?
+    errors.add :user, :avatar_blank unless user[:avatar].present?
   end  
   
   def should_have_soundcloud
