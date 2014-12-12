@@ -2,11 +2,27 @@ module Profile::Wizardable
   extend ActiveSupport::Concern
   
   included do
-    WIZARD_STEPS = [:style, :location, :pricing, :description, :avatar, :pictures, :music]
+    WIZARD_STEPS = [:style, :geo, :pricing, :description, :avatar, :pictures, :music]
 
+    WIZARD_SUB_STEPS = [:title, :about, :name]
+
+    attr_accessor :wizard_step, :wizard_sub_step
+    
     WIZARD_STEPS.each do |step|
       define_method "#{step}_step?" do
         wizard_step == step
+      end
+    end
+
+    WIZARD_SUB_STEPS.each do |step|
+      define_method "#{step}_sub_step?" do
+        wizard_sub_step == step
+      end
+    end
+
+    WIZARD_STEPS.each do |step|
+      define_method "#{step}_step_done?" do
+        wizard_state.to_s.include?(step.to_s)
       end
     end
 
@@ -26,34 +42,6 @@ module Profile::Wizardable
 
   def remaining_wizard_steps_count
     remaining_wizard_steps.size
-  end
-  
-  def style_step_done?
-    persisted?
-  end
-  
-  def location_step_done?
-    location.present? && latitude.present? && longitude.present?
-  end
-  
-  def pricing_step_done?
-    price.present? && currency.present?
-  end
-  
-  def description_step_done?
-    name.present? && title.present? && about.present?
-  end
-  
-  def avatar_step_done?
-    avatar.present?
-  end
-  
-  def pictures_step_done?
-    pictures.present?
-  end
-  
-  def music_step_done?
-    has_youtube? && has_soundcloud?
   end
   
 end

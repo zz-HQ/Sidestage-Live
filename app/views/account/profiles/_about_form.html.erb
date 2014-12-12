@@ -1,0 +1,6 @@
+<%= simple_form_for resource, url: description_account_profile_path, html: { id: :about_form }, remote: true, data: { auto_save: true } do |f| %>
+    <div class="inputs profile_about">
+    	<%= f.input :about, hint: false, maxlength: '750' %>
+    	<p class="characters-counter"><span class="count"><%= 750 - f.object.about.to_s.length %></span> characters left</p>
+    </div>
+<% end %>

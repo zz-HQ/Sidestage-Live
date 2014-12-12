@@ -25,18 +25,6 @@ class Profile < ActiveRecord::Base
   #
   #
   #
-
-  CANCELLATION_POLICY = {
-    flexible: 'activerecord.attributes.profile.cancellation_policy.flexible',
-    moderate: 'activerecord.attributes.profile.cancellation_policy.moderate',
-    strict: 'activerecord.attributes.profile.cancellation_policy.strict'
-  }
-
-  AVAILABILITY = {
-    city: 'activerecord.attributes.profile.availability.city',
-    state: 'activerecord.attributes.profile.availability.state',
-    world: 'activerecord.attributes.profile.availability.world'
-  }
   
   ARTIST_TYPES_HUMAN = {solo: "solo musicians", band: "bands", dj: "DJs" }
   
@@ -45,8 +33,6 @@ class Profile < ActiveRecord::Base
   
   
   store :additionals, accessors: [ :admin_disabled_at, :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
-  
-  attr_accessor :wizard_step
   
   friendly_id :name do |config|
     config.use [:slugged, :finders]
@@ -68,16 +54,26 @@ class Profile < ActiveRecord::Base
   validates :price, presence: true, if: :pricing_step?
   validates :price, numericality: { greater_than: 24 }, allow_blank: true
 
-  validates :location, presence: true, if: :location_step?
+  validates :location, presence: true, if: :geo_step?
   validate :validate_location
 
-  with_options if: :description_step? do |profile|
+  with_options if: :name_sub_step? do |profile|
     profile.validates :name, length: { maximum: 35 }
-    profile.validates :title, :name, :about, presence: true
+    profile.validates :name, presence: true
     profile.validates :slug, uniqueness: { case_sensitive: false }, allow_blank: true
-    profile.validate :user_should_have_avatar, :urls_not_allowed, :email_address_not_allowed
   end
-  #validates :bic, :iban, presence: true, if: :payment_step?
+  
+  
+  with_options if: :about_sub_step? do |profile|
+    profile.validates :about, presence: true
+    profile.validate :urls_not_allowed_in_about, :email_address_not_allowed_in_about
+  end  
+  
+  with_options if: :title_sub_step? do |profile|
+    profile.validates :title, presence: true
+    profile.validate :urls_not_allowed_in_title, :email_address_not_allowed_in_title
+  end
+
 
   # validate :should_have_youtube, if: :youtube_step?
   # validate :should_have_soundcloud, if: :soundcloud_step?
@@ -101,8 +97,8 @@ class Profile < ActiveRecord::Base
   
   filterable :artist_type
   
-  scope :published, -> { where(published: true) }
-  scope :unpublished, -> { where("published = ? OR published = ?", nil, false) }
+  scope :published, -> { where("published_at IS NOT NULL") }
+  scope :unpublished, -> { where("published_at IS NULL") }
   scope :featured, -> { where(featured: true) }
   scope :latest, -> { order("profiles.id DESC") }
   scope :radial, ->(lat, lng, radius) {
@@ -125,7 +121,10 @@ class Profile < ActiveRecord::Base
 
   after_validation :reverse_friendly
   
+  before_save :assign_step
+  
   after_save :notify_admin_on_publish, :send_publishing_confirmation
+  
   
   #
   # Associations
@@ -228,6 +227,10 @@ class Profile < ActiveRecord::Base
     !!soundcloud_id_from_iframe(soundcloud)
   end
   
+  def published?
+    published_at.present?
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -246,13 +249,13 @@ class Profile < ActiveRecord::Base
   end
   
   def notify_admin_on_publish
-    if published_changed? && published?
+    if published_at_changed? && published?
       AdminMailer.delay.profile_published(self)
     end
   end
   
   def send_publishing_confirmation
-    if published_changed? && published?
+    if published_at_changed? && published?
       EmailWorker.perform_async(:profile_published_confirmation, id)
     end
   end
@@ -269,14 +272,20 @@ class Profile < ActiveRecord::Base
   #
   #  
 
-  def urls_not_allowed
-    errors.add :about, :includes_url if URI::extract(about, ["http", "https", "ftp"]).present? || about[/www\./]
-    errors.add :title, :includes_url if URI::extract(title, ["http", "https", "ftp"]).present? || title[/www\./]
+  def urls_not_allowed_in_about
+    errors.add :about, :includes_url if URI::extract(about.to_s, ["http", "https", "ftp"]).present? || about.to_s[/www\./]
   end
 
-  def email_address_not_allowed
-    errors.add :about, :includes_url if about[Devise::EMAIL_REGEXP_WORD]
-    errors.add :title, :includes_url if title[Devise::EMAIL_REGEXP_WORD]
+  def email_address_not_allowed_in_about
+    errors.add :about, :includes_url if about.to_s[Devise::EMAIL_REGEXP_WORD]
+  end
+
+  def urls_not_allowed_in_title
+    errors.add :title, :includes_url if URI::extract(title.to_s, ["http", "https", "ftp"]).present? || title.to_s[/www\./]
+  end
+
+  def email_address_not_allowed_in_title
+    errors.add :title, :includes_url if title.to_s[Devise::EMAIL_REGEXP_WORD]
   end
 
   def should_have_avatar
@@ -307,6 +316,12 @@ class Profile < ActiveRecord::Base
   
   def validate_location
     errors.add :location, :select_suggestion if location_changed? && !latitude_changed? && !longitude_changed?
+  end
+  
+  def assign_step
+    unless errors.present? || wizard_state.to_s.include?(wizard_step.to_s)
+      self.wizard_state = wizard_state.to_s.split(",").push(wizard_step).join(",") 
+    end
   end
   
 end

@@ -1,28 +1,26 @@
-<div id="profile" class="container edit-profile">
-  <%= render 'sidebar' %>
+<div id="profile" class="container edit-profile" data-container="profile_form">
+    <%= render 'sidebar' %>
 
-  <div class="content">
-    <header><%= t(:"application.profiles.pricing.title_html") %></header>
-    
-    <div class="left-side">
-      <p><%= t(:"application.profiles.pricing.desc") %></p>
-      <br/><br/><br/>
-      <p class="light">
-      	<% if (min_price = min_price_in_profile_location(resource)).present? %>
-      	    <span class="hint"><%= t(:"application.profiles.pricing.hint_html", artist_type: Profile::ARTIST_TYPES_HUMAN[resource.artist_type.to_sym], price: localized_price("<span data-price='min'>#{number_with_delimiter(min_price)}</span>".html_safe, current_currency)) %></span>
-      	<% end %>
-      </p>
+    <div class="content">
+        <header><%= t(:"application.profiles.pricing.title_html") %></header>
+
+        <div class="left-side">
+            <p><%= t(:"application.profiles.pricing.desc") %></p>
+            <br/><br/><br/>
+            <p class="light">
+                <% if (min_price = min_price_in_profile_location(resource)).present? %>
+                    <span class="hint"><%= t(:"application.profiles.pricing.hint_html", artist_type: Profile::ARTIST_TYPES_HUMAN[resource.artist_type.to_sym], price: localized_price("<span data-price='min'>#{number_with_delimiter(min_price)}</span>".html_safe, current_currency)) %></span>
+                <% end %>
+            </p>
+        </div>
+
+        <div id="pricing" class="right-side">
+            <%= render "pricing_form" %>
+        </div>
     </div>
 
-    <div id="pricing" class="right-side">
-      <%= simple_form_for resource, url: pricing_account_profile_path do |f| %>
-        <%= render "pricing_form", f: f %>
-      <% end %>
-    </div>
-  </div>
-  
-  <aside class="hints">
-    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
-    <%= t(:"application.profiles.pricing.tips_hints_html") %>
-  </aside>
+    <aside class="hints">
+        <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+        <%= t(:"application.profiles.pricing.tips_hints_html") %>
+    </aside>
 </div>

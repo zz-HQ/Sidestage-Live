@@ -1,15 +1,15 @@
-<div class="parts">
+<%= simple_form_for resource, url: pricing_account_profile_path, html: { id: :pricing_form }, remote: true, data: { auto_save: true } do |f| %>
+    <div class="parts">
 
-	<%= f.label :currency %>
-	<div class="inputs profile_price">
-    	<%= nice_select((f.select :currency, Currency.all.map(&:name)), id: "profile_currency") %>
-    </div>
-	<%= f.label :price %>
-	<div class="inputs profile_price">
-		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Integer.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
-	</div>
+    	<%= f.label :currency %>
+    	<div class="inputs profile_price">
+        	<%= nice_select((f.select :currency, Currency.all.map(&:name)), id: "profile_currency") %>
+        </div>
+    	<%= f.label :price %>
+    	<div class="inputs profile_price">
+    		<%= f.input :price, as: :string, label: false, input_html: { data: { surcharge: Integer.surcharge_base, surcharged_label: "[data-container='surcharged-price']" }, maxlength: '5' } %>
+    	</div>
 	
-	<p class='light'><%= t(:"simple_form.labels.profile.surcharge_html", surcharge_base: Integer.surcharge_base) %></p>
-</div>
-
-<%= render "account/profiles/submit", f: f %>
+    	<p class='light'><%= t(:"simple_form.labels.profile.surcharge_html", surcharge_base: Integer.surcharge_base) %></p>
+    </div>
+<% end %>

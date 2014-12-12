@@ -8,6 +8,19 @@ class Account::ProfilesController < Account::ResourcesController
   #
   # 
   
+  respond_to :js, :html
+  
+  
+  #
+  # Filters
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  # 
+  
+  before_filter :ensure_resource_exists, except: [:style]
+
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -16,44 +29,24 @@ class Account::ProfilesController < Account::ResourcesController
   #
   #
   
-  def basics
+  def style
     build_resource if current_user.profile.nil?
-    resource.wizard_step = :basics
+    resource.wizard_step = :style
     unless request.get?
       resource.update_attributes(permitted_params[:profile])
     end
   end
   
-  def location
-    resource.wizard_step = :location
-    if request.patch?
-      resource.update_attributes(permitted_params[:profile])
-    end
-  end
-  
-  def avatar
-    unless request.get?
-      resource.update_attributes(permitted_params[:profile])
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.js
+  Profile::WIZARD_STEPS.reject{ |s| s.in?([:style]) }.each do |step|
+    define_method step do
+      resource.wizard_step = step
+      if request.patch?
+        resource.wizard_sub_step = permitted_params[:profile].keys.first.to_sym
+        resource.update_attributes(permitted_params[:profile])
       end
     end
   end
-      
-  def description
-    resource.wizard_step = :description
-    if request.patch?
-      resource.update_attributes(permitted_params[:profile])
-    end
-  end
-
-  def pricing
-    resource.wizard_step = :pricing      
-    if request.patch?
-      resource.update_attributes(permitted_params[:profile])
-    end    
-  end 
+  
   
   def soundcloud
     resource.wizard_step = :soundcloud
@@ -101,7 +94,7 @@ class Account::ProfilesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(profile: [:avatar, :artist_type, :currency, :location, :latitude, :longitude, :country_short, :country_long, :title, :name, :price, :about, :youtube, :facebook, :twitter, :soundcloud, :availability, :travel_costs, :bic, :iban, genre_ids: []])
+    params.permit(profile: [:avatar, :artist_type, :currency, :location, :latitude, :longitude, :country_short, :country_long, :title, :name, :price, :about, :youtube, :facebook, :twitter, :soundcloud, genre_ids: []])
   end 
   
   #
@@ -115,7 +108,11 @@ class Account::ProfilesController < Account::ResourcesController
   private
   
   def resource
-    get_resource_ivar || set_resource_ivar(current_user.profile)
+    get_resource_ivar || set_resource_ivar(begin_of_association_chain.profile)
   end  
+  
+  def ensure_resource_exists
+    redirect_to action: :style if current_user.profile.nil?
+  end
   
 end

@@ -1,15 +1,15 @@
 <div id="profile" class="container edit-profile">
-  <%= render 'sidebar' %>
-  <div class="content">
-    <header><%= t(:"application.profiles.basics.title_html") %></header>
-    <div class="new-profile-form main-content">
-      <%= simple_form_for resource, url: basics_account_profile_path do |f| %>
-        <%= render "basics_form", f: f %>
-      <% end %>
+    <%= render 'sidebar' %>
+    <div class="content">
+        <header><%= t(:"application.profiles.basics.title_html") %></header>
+        <div class="new-profile-form main-content">
+            <%= simple_form_for resource, url: basics_account_profile_path, remote: true, data: { auto_save: true } do |f| %>
+                <%= render "basics_form", f: f %>
+            <% end %>
+        </div>
     </div>
-  </div>
-  <aside class="hints">
-    <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
-    <%= t(:"application.profiles.basics.tips_hints_html") %>
-  </aside>
+    <aside class="hints">
+        <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
+        <%= t(:"application.profiles.basics.tips_hints_html") %>
+    </aside>
 </div>

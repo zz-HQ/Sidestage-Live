@@ -1,0 +1,4 @@
+<%= simple_form_for resource, url: geo_account_profile_path, html: { id: :geo_form }, remote: true, data: { geo: :submit } do |f| %>
+    <label><%= t(:"simple_form.labels.profile.location") %></label>
+    <%= render "location_field", f: f %>
+<% end %>

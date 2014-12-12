@@ -1,12 +1,12 @@
-<aside class="menu">
+<aside class="menu" id="wizard_steps">
 	<div class="sidebar">
 		<h4>
 			<%= link_to t(:"application.profiles.sidebar.settings_link").html_safe, basics_account_profile_path, class: ('active' if action_name == 'basics') %>
 			<%= profile_wizard_progress_icon(:style) %>
 		</h4>
 		<h4>
-			<%= link_to t(:"application.profiles.sidebar.location_link").html_safe, location_account_profile_path, class: ('active' if action_name == 'location') %>
-			<%= profile_wizard_progress_icon(:location) %>
+			<%= link_to t(:"application.profiles.sidebar.location_link").html_safe, geo_account_profile_path, class: ('active' if action_name == 'location') %>
+			<%= profile_wizard_progress_icon(:geo) %>
 		</h4>
 		<h4>
 			<%= link_to t(:"application.profiles.sidebar.pricing_link"), pricing_account_profile_path, class: ('active' if action_name == 'pricing') %>

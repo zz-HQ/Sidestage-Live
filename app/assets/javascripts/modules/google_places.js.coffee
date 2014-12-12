@@ -31,12 +31,12 @@ App.initGooglePlaces = ->
       longitude = artistMap.getPlace().geometry.location.lng()
       country_short = artistMap.getPlace().address_components[artistMap.getPlace().address_components.length-1].short_name
       country_long = artistMap.getPlace().address_components[artistMap.getPlace().address_components.length-1].long_name
-            
-      inputField.closest("form").find("input[name='profile[latitude]']").val(latitude)
-      inputField.closest("form").find("input[name='profile[longitude]']").val(longitude)
-      inputField.closest("form").find("input[name='profile[country_short]']").val(country_short)
-      inputField.closest("form").find("input[name='profile[country_long]']").val(country_long)
-
+      form = inputField.closest("form")      
+      form.find("input[name='profile[latitude]']").val(latitude)
+      form.find("input[name='profile[longitude]']").val(longitude)
+      form.find("input[name='profile[country_short]']").val(country_short)
+      form.find("input[name='profile[country_long]']").val(country_long)
+      inputField.closest("form[data-geo='submit']").trigger 'submit'
     google.maps.event.addDomListener document.getElementById($(@).attr("id")), "keydown", (e) ->
       e.preventDefault()  if e.keyCode is 13
       return

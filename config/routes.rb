@@ -99,7 +99,7 @@ Airmusic::Application.routes.draw do
           match 'avatar', to: 'profiles#avatar', via: :all          
           match 'description', to: 'profiles#description', via: :all
           match 'basics', to: 'profiles#basics', via: :all
-          match 'location', to: 'profiles#location', via: :all          
+          match 'geo', to: 'profiles#geo', via: :all          
           match 'pricing', to: 'profiles#pricing', via: :all
           match 'payment', to: 'profiles#payment', via: :all
         end

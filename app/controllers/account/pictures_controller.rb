@@ -11,6 +11,16 @@ class Account::PicturesController < Account::ResourcesController
   respond_to :html, :js
 
   #
+  # Filters
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  # 
+  
+  before_filter :ensure_parent_exists
+
+  #
   # Actions
   # ---------------------------------------------------------------------------------------
   #
@@ -51,5 +61,9 @@ class Account::PicturesController < Account::ResourcesController
     current_user.profile
   end
   
+  
+  def ensure_parent_exists
+    redirect_to basics_account_profile_path if begin_of_association_chain.nil?
+  end
   
 end
