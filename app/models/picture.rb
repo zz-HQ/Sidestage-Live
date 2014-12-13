@@ -8,8 +8,6 @@ class Picture < ActiveRecord::Base
   #
   #
   
-  validates :imageable, :presence => true
-  
   #
   # Associations
   # ---------------------------------------------------------------------------------------
@@ -19,10 +17,6 @@ class Picture < ActiveRecord::Base
   #  
   
   belongs_to :imageable, :polymorphic => true
-  
-
-
-
 
   mount_uploader :picture, PictureUploader
 
@@ -36,5 +30,20 @@ class Picture < ActiveRecord::Base
   
   scope :latest, -> { order("pictures.id DESC") }
 
+  #
+  # Callbacks
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  # 
+  
+  #
+  # Private
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  # 
 
 end

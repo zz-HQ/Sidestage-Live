@@ -98,7 +98,7 @@ Airmusic::Application.routes.draw do
           get :music
           match 'avatar', to: 'profiles#avatar', via: :all          
           match 'description', to: 'profiles#description', via: :all
-          match 'basics', to: 'profiles#basics', via: :all
+          match 'style', to: 'profiles#style', via: :all
           match 'geo', to: 'profiles#geo', via: :all          
           match 'pricing', to: 'profiles#pricing', via: :all
           match 'payment', to: 'profiles#payment', via: :all

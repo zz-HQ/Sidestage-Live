@@ -7,7 +7,7 @@ class Account::PicturesController < Account::ResourcesController
   #
   #
   #
-
+  
   respond_to :html, :js
 
   #
@@ -29,7 +29,7 @@ class Account::PicturesController < Account::ResourcesController
   #
   
   def create
-    set_resource_ivar(current_user.profile.pictures.create! picture: params[:file])
+    set_resource_ivar(begin_of_association_chain.pictures.create! picture: params[:file])
   end
   
 
@@ -57,13 +57,13 @@ class Account::PicturesController < Account::ResourcesController
   
   private
   
+  
   def begin_of_association_chain
-    current_user.profile
+    @profile ||= current_user.profile
   end
   
-  
   def ensure_parent_exists
-    redirect_to basics_account_profile_path if begin_of_association_chain.nil?
+    redirect_to style_account_profile_path if begin_of_association_chain.nil?
   end
   
 end

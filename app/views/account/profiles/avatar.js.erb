@@ -1,1 +1,2 @@
 $('#avatar').html('<%= image_tag resource.avatar.url(:preview), class: "avatar", alt: resource.name %>');
+$("#wizard_steps").replaceWith("<%= j(render("sidebar")) %>")

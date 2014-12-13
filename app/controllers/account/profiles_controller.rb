@@ -46,8 +46,7 @@ class Account::ProfilesController < Account::ResourcesController
       end
     end
   end
-  
-  
+    
   def soundcloud
     resource.wizard_step = :soundcloud
     resource.update_attributes(permitted_params[:profile])
@@ -78,7 +77,7 @@ class Account::ProfilesController < Account::ResourcesController
       flash[:auto_modal]  = "account/profiles/share_modal"
       redirect_to artist_path(resource)
     else
-      flash[:error] = t(:"flash.account.profiles.toggle.alert", edit_profile_path: basics_account_profile_path) if resource.errors.present?
+      flash[:error] = t(:"flash.account.profiles.toggle.alert", edit_profile_path: style_account_profile_path) if resource.errors.present?
       redirect_to preview_account_profile_path
     end
   end

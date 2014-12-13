@@ -137,7 +137,7 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   
   has_many :reviews, dependent: :delete_all
-  has_many :pictures, as: :imageable
+  has_many :pictures, as: :imageable, after_add: :assign_pictures_step!
   accepts_nested_attributes_for :pictures, allow_destroy: true, reject_if: :all_blank
   
   has_and_belongs_to_many :genres  
@@ -317,11 +317,5 @@ class Profile < ActiveRecord::Base
   def validate_location
     errors.add :location, :select_suggestion if location_changed? && !latitude_changed? && !longitude_changed?
   end
-  
-  def assign_step
-    unless errors.present? || wizard_state.to_s.include?(wizard_step.to_s)
-      self.wizard_state = wizard_state.to_s.split(",").push(wizard_step).join(",") 
-    end
-  end
-  
+    
 end

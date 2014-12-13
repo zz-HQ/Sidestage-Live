@@ -3,7 +3,7 @@
     <div class="content">
         <header><%= t(:"application.profiles.basics.title_html") %></header>
         <div class="new-profile-form main-content">
-            <%= simple_form_for resource, url: basics_account_profile_path, remote: true, data: { auto_save: true } do |f| %>
+            <%= simple_form_for resource, url: style_account_profile_path, remote: true, data: { auto_save: true } do |f| %>
                 <%= render "basics_form", f: f %>
             <% end %>
         </div>

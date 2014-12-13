@@ -1,1 +1,4 @@
-$("#<%= resource.wizard_sub_step.to_s %>_form").replaceWith("<%= j(render("account/profiles/#{resource.wizard_sub_step}_form")) %>")
+<% if Profile::WIZARD_SUB_STEPS.include?(resource.wizard_sub_step) %>
+    $("#<%= resource.wizard_sub_step.to_s %>_form").replaceWith("<%= j(render("account/profiles/#{resource.wizard_sub_step}_form")) %>")
+    $("#wizard_steps").replaceWith("<%= j(render("sidebar")) %>")
+<% end %>

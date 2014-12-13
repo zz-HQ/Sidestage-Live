@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20141212123900) do
 
   create_table "conversations", force: true do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
+    t.integer  "sender_id",                         null: false
+    t.integer  "receiver_id",                       null: false
     t.text     "body"
     t.datetime "last_message_at"
     t.datetime "created_at"
@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(version: 20141212123900) do
 
   create_table "deals", force: true do |t|
     t.integer  "conversation_id"
-    t.integer  "profile_id"
-    t.integer  "artist_id"
-    t.integer  "customer_id"
-    t.integer  "artist_price"
+    t.integer  "profile_id",                          null: false
+    t.integer  "artist_id",                           null: false
+    t.integer  "customer_id",                         null: false
+    t.integer  "artist_price",                        null: false
     t.datetime "start_at"
     t.text     "body"
     t.datetime "created_at"
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 20141212123900) do
     t.string   "email"
     t.string   "token"
     t.integer  "coupon_id"
-    t.string   "coupon_price"
-    t.string   "coupon_currency"
+    t.integer  "coupon_price"
+    t.string   "coupon_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -142,20 +142,9 @@ ActiveRecord::Schema.define(version: 20141212123900) do
     t.integer  "event_invitations_count"
     t.datetime "event_at"
     t.integer  "coupon_id"
-    t.integer  "coupon_price"
     t.string   "coupon_code"
+    t.integer  "coupon_price"
   end
-
-  create_table "genre_translations", force: true do |t|
-    t.integer  "genre_id",   null: false
-    t.string   "locale",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
-
-  add_index "genre_translations", ["genre_id"], name: "index_genre_translations_on_genre_id", using: :btree
-  add_index "genre_translations", ["locale"], name: "index_genre_translations_on_locale", using: :btree
 
   create_table "genres", force: true do |t|
     t.string   "name"
@@ -171,11 +160,11 @@ ActiveRecord::Schema.define(version: 20141212123900) do
   add_index "genres_profiles", ["genre_id", "profile_id"], name: "index_genres_profiles_on_genre_id_and_profile_id", using: :btree
 
   create_table "messages", force: true do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
+    t.integer  "sender_id",       null: false
+    t.integer  "receiver_id",     null: false
     t.text     "body"
     t.datetime "read_at"
-    t.integer  "conversation_id"
+    t.integer  "conversation_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "system_message"
@@ -279,12 +268,12 @@ ActiveRecord::Schema.define(version: 20141212123900) do
     t.string   "mobile_nr"
     t.string   "avatar"
     t.string   "city"
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                       default: "",    null: false
+    t.string   "encrypted_password",          default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",               default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -293,7 +282,7 @@ ActiveRecord::Schema.define(version: 20141212123900) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,     null: false
+    t.integer  "failed_attempts",             default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
@@ -303,16 +292,18 @@ ActiveRecord::Schema.define(version: 20141212123900) do
     t.string   "balanced_customer_id"
     t.string   "role"
     t.text     "about"
-    t.boolean  "newsletter_subscribed",  default: false
+    t.boolean  "newsletter_subscribed",       default: false
     t.string   "balanced_card_id"
     t.text     "error_log"
     t.string   "provider"
     t.string   "uid"
     t.datetime "mobile_nr_confirmed_at"
-    t.boolean  "verified",               default: false
+    t.boolean  "verified",                    default: false
     t.string   "otp_secret_key"
     t.string   "mobile_nr_country_code"
     t.string   "full_name"
+    t.string   "stripe_conenct_user_id"
+    t.string   "stripe_connect_access_token"
     t.string   "birthday"
   end
 

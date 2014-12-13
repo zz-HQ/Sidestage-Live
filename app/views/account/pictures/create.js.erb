@@ -2,3 +2,6 @@ if($("#pictures > .picture").length == 0) {
 	$("#new_picture").append("<span data-upload='button' id='fileupload-button' class='btn btn-blue btn-inline'>Add photos</span>")
 }
 $('#pictures').append('<%= j render 'picture', picture: resource %>').find("#no-pictures").remove();
+<% if @profile.present? %>
+    $("#wizard_steps").replaceWith("<%= j(render("account/profiles/sidebar")) %>")
+<% end %>
