@@ -1,0 +1,3 @@
+<%= simple_form_for resource, url: music_account_profile_path, html: { id: :youtube_form }, remote: true, data: { auto_save: true } do |f| %>
+    <%= f.input :youtube, as: :text, hint: false, placeholder: "Copy and paste the Youtube link here." %>
+<% end %>        

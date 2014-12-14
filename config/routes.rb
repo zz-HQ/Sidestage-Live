@@ -79,28 +79,18 @@ Airmusic::Application.routes.draw do
       resource :dashboard, controller: :dashboard do
         match '', to: 'dashboard#index', via: :get
       end
-      resource :profile_completion do
-        collection do
-          match 'phone', to: 'profile_completion#phone', via: :get
-          match 'basics', to: 'profile_completion#basics', via: :all          
-          match 'pricing', to: 'profile_completion#pricing', via: :all            
-          match 'description', to: 'profile_completion#description', via: :all                    
-        end
-      end
       resource :profile do
         member do
           get :preview
           put :toggle
-          patch :soundcloud
-          patch :youtube
           put :remove_soundcloud
           put :remove_youtube
-          get :music
+          match 'style', to: 'profiles#style', via: :all
+          match 'geo', to: 'profiles#geo', via: :all    
+          match 'pricing', to: 'profiles#pricing', via: :all
           match 'avatar', to: 'profiles#avatar', via: :all          
           match 'description', to: 'profiles#description', via: :all
-          match 'style', to: 'profiles#style', via: :all
-          match 'geo', to: 'profiles#geo', via: :all          
-          match 'pricing', to: 'profiles#pricing', via: :all
+          match 'music', to: 'profiles#music', via: :all
           match 'payment', to: 'profiles#payment', via: :all
         end
         resources :pictures

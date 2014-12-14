@@ -6,7 +6,7 @@ class Authentication::OmniauthCallbacksController < Devise::OmniauthCallbacksCon
     if @user.persisted?
       had_profile = @user.profile.present?
       assign_potential_profile(@user)
-      store_location_for(:user, description_account_profile_completion_path) if !had_profile && @user.profile.present?
+      store_location_for(:user, pricing_account_profile_path) if !had_profile && @user.profile.present?
       if @user.new_fb_signup == true
         @user.subscribe_to_newsletter
         @user.notify_admin

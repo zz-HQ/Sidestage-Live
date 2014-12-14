@@ -1,0 +1,4 @@
+<% if @profile.step_persisted?(@profile.wizard_step) %>
+    $("#<%= profile_wizard_progress_icon_id(@profile.wizard_step) %>").show();
+<% end %>
+$("#sidebar_footer").html("<%= j(render("account/profiles/sidebar_footer")) %>");

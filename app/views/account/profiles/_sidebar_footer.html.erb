@@ -1,0 +1,26 @@
+<div class="publish-btn">
+    <% if @profile.wizard_complete? %>
+        <%= link_to t(:"application.links.publish.toggle_#{@profile.published?}"), toggle_account_profile_path, method: :put, class: "btn btn-publish" %>
+    <% else %>
+        <div class="missing"><%= t(:"application.profiles.sidebar.completion_hint", count: @profile.remaining_wizard_steps_count) %></div>
+    <% end %>
+	<% if false %>
+		<div class="third">
+			<div class="published-circle"></div>
+			<%= nice_select(select_tag :artist) %>
+		</div>
+	<% end %>
+</div>
+
+
+<% if false %>
+<h4>
+	<%= link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path %>
+	<%= image_tag "icons/check_icon.png" %>
+</h4>
+
+<h4>
+	<%= link_to t(:"application.personals.sidebar.phone_link"), account_mobile_numbers_path %>
+	<%= image_tag "icons/check_icon.png" %>
+</h4>
+<% end %>

@@ -11,11 +11,7 @@
     </div>
 
     <div id="music" class="right-side">
-        <%= simple_form_for resource, url: soundcloud_account_profile_path do |f| %>
-            <%= f.label :soundcloud %>
-            <%= text_area :profile, :soundcloud, hint: false, placeholder: "Copy and paste the SoundCloud Embed code here." %>
-            <%= f.submit class: "btn btn-center btn-blue", id: "sc-btn" %>
-        <% end %>
+        <%= render "soundcloud_form" %>
         <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
         <div style="display:none;" data-container="help-sc">
             <div class="devise-lightbox">
@@ -23,13 +19,7 @@
                 <%= image_tag 'sc-embed-help.png' %>
             </div>
         </div>
-        
-        <%= simple_form_for resource, url: youtube_account_profile_path do |f| %>
-            <%= f.label :youtube %>
-            <%= text_area :profile, :youtube, hint: false, placeholder: "Copy and paste the Youtube link here." %>
-            <%= f.submit class: "btn btn-center btn-blue", id: "yt-btn" %>
-        <% end %>        
-        
+        <%= render "youtube_form" %>
     </div>
   </div>
   

@@ -1,2 +1,2 @@
-$("[data-container='profile_form']").replaceWith("<%= j(render(template: "account/profiles/pricing", formats: :html)) %>")
-$("#wizard_steps").replaceWith("<%= j(render("sidebar")) %>")
+$("form#pricing_form").replaceWith("<%= j(render("pricing_form")) %>")
+<%= render "update" %>

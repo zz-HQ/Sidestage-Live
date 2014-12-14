@@ -4,7 +4,7 @@ module Profile::Wizardable
   included do
     WIZARD_STEPS = [:style, :geo, :pricing, :description, :avatar, :pictures, :music]
 
-    WIZARD_SUB_STEPS = [:title, :about, :name]
+    WIZARD_SUB_STEPS = [:title, :about, :name, :soundcloud, :youtube]
 
     attr_accessor :wizard_step, :wizard_sub_step
     
@@ -29,8 +29,8 @@ module Profile::Wizardable
     end
 
     WIZARD_STEPS.each do |step|
-      unless method_defined?("#{step}_step_done?")
-        define_method "#{step}_step_done?" do
+      unless method_defined?("#{step}_step_persisted?")
+        define_method "#{step}_step_persisted?" do
           wizard_state.to_s.include?(step.to_s)
         end
       end
@@ -38,8 +38,8 @@ module Profile::Wizardable
 
   end
   
-  def step_done?(step)
-    send("#{step}_step_done?")
+  def step_persisted?(step)
+    send("#{step}_step_persisted?")
   end
 
   def step_valid?(step)
@@ -47,11 +47,11 @@ module Profile::Wizardable
   end
   
   def wizard_complete?
-    WIZARD_STEPS.map { |s| step_done?(s) }.all?
+    WIZARD_STEPS.map { |s| step_persisted?(s) }.all?
   end
   
   def remaining_wizard_steps
-    WIZARD_STEPS.reject { |s| step_done?(s) }
+    WIZARD_STEPS.reject { |s| step_persisted?(s) }
   end
 
   def remaining_wizard_steps_count
@@ -59,7 +59,7 @@ module Profile::Wizardable
   end
   
   def description_step_done?
-    wizard_state.to_s.include?('description') || (errors.blank? && title.present? && name.present? && about.present?)
+    errors.blank? && title.present? && name.present? && about.present?
   end
 
   def description_step_valid?
@@ -73,13 +73,13 @@ module Profile::Wizardable
   private
   
   def assign_step
-    if wizard_step.present? && step_valid?(wizard_step) && !step_done?(wizard_step)
+    if wizard_step.present? && step_valid?(wizard_step) && !step_persisted?(wizard_step)
       self.wizard_state = concatenated_steps(wizard_step)
     end
   end
   
   def assign_pictures_step!(picture)
-    unless step_done?(:pictures)
+    unless step_persisted?(:pictures)
       self.wizard_step = :pictures
       save validation: false
     end

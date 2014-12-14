@@ -75,7 +75,11 @@ module Account::ProfilesHelper
   end
   
   def profile_wizard_progress_icon(step)
-    image_tag "icons/check_icon.png", style: "display: #{@profile.step_done?(step) ? nil : "none;" }"
+    image_tag "icons/check_icon.png", id: profile_wizard_progress_icon_id(step), style: "display: #{@profile.step_persisted?(step) ? nil : "none;" }"
+  end
+  
+  def profile_wizard_progress_icon_id(step)
+    "profile_wizard_progress_icon_#{step}"
   end
 
 end

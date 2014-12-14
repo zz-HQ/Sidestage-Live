@@ -26,7 +26,7 @@ class Profile < ActiveRecord::Base
   #
   #
   
-  ARTIST_TYPES_HUMAN = {solo: "solo musicians", band: "bands", dj: "DJs" }
+  ARTIST_TYPES_HUMAN = { solo: "solo musicians", band: "bands", dj: "DJs" }
   
   enum artist_type: { solo: 0, band: 1, dj: 2 }
   
@@ -75,8 +75,8 @@ class Profile < ActiveRecord::Base
   end
 
 
-  # validate :should_have_youtube, if: :youtube_step?
-  # validate :should_have_soundcloud, if: :soundcloud_step?
+  validate :should_have_youtube, if: :youtube_sub_step?
+  validate :should_have_soundcloud, if: :soundcloud_sub_step?
 
   with_options on: :publishing do |profile|
     profile.validates :genre_ids, :price, :title, :name, :about, presence: true
@@ -181,7 +181,7 @@ class Profile < ActiveRecord::Base
   end  
   
   def toggle!
-    update_attribute :published, !published if published? || valid?(:publishing)
+    update_attribute :published_at, (published? ? nil : Time.now) if published? || valid?(:publishing)
   end
   
   def toggle_admin_disabled!

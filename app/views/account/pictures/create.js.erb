@@ -3,5 +3,5 @@ if($("#pictures > .picture").length == 0) {
 }
 $('#pictures').append('<%= j render 'picture', picture: resource %>').find("#no-pictures").remove();
 <% if @profile.present? %>
-    $("#wizard_steps").replaceWith("<%= j(render("account/profiles/sidebar")) %>")
+    <%= render "account/profiles/update" %>
 <% end %>
