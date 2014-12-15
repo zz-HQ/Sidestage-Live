@@ -25,11 +25,11 @@
 			<%= profile_wizard_progress_icon(:pictures) %>
 		</h4>
 		<h4>
-			<%= link_to t(:"application.profiles.sidebar.audio_video_link"), music_account_profile_path, class: ('active' if controller.controller_name == 'music') %>
+			<%= link_to t(:"application.profiles.sidebar.audio_video_link"), music_account_profile_path, class: ('active' if action_name == 'music') %>
 			<%= profile_wizard_progress_icon(:music) %>
 		</h4>
-        <div id="sidebar_footer">
-            <%= render "account/profiles/sidebar_footer" %>
+    <div id="sidebar_footer">
+      <%= render "account/profiles/sidebar_footer" %>
 		</div>
 	</div>
 </aside>

@@ -5,9 +5,9 @@
         <div class="missing"><%= t(:"application.profiles.sidebar.completion_hint", count: @profile.remaining_wizard_steps_count) %></div>
     <% end %>
 
+    <% if @profile.published? %>
+	    <%= link_to t(:"application.profiles.sidebar.view_link"), artist_path(@profile), class: "link" %>
+	<% else %>
+	    <%= link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path, class: "link" %>
+	<% end %>
 </div>
-<% if @profile.published? %>
-    <%= link_to t(:"application.profiles.sidebar.view_link"), artist_path(@profile) %>
-<% else %>
-    <%= link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path %>
-<% end %>
