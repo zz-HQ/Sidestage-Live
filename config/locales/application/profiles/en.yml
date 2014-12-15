@@ -9,6 +9,7 @@ en:
         photos_link: "Profile Photos"
         avatar_link: "Header Image"
         preview_link: "Preview Profile"
+        view_link: "View Profile"
         audio_video_link: "Audio & Video"
         tips_hints: Tips and hints
         completion_hint: "Complete %{count} steps to publish your Profile"
@@ -24,7 +25,7 @@ en:
         title_html: "Header photo"
         desc: Visualy standout
         hint_html: "Most artists upload a logo, album artwork or <br/> something they think is cool."
-        tips_hints_html: "<p>Your artist type will help users find you in artists listings.</p>"
+        tips_hints_html: "For best effect, upload a header image that is at least 1400px wide"
       pricing:
         title_html: "Pricing"
         desc: "What is your minimum price for a typical performance."
@@ -46,6 +47,7 @@ en:
           avatar_title_html: "Profile picture<p>This is the picture that will show up in search listings.</p>"
           title_html: "Photos"
           empty_html: "<p><strong>Add a photo or four!</strong> <br/> <br/> Customers love to see promotional pictures <br/> of you or photos from previous events <br/> you've played.</p>"
+          tips_hints_html: Profiles with two or more photos convey who you are as an artists and are more likely to get bookings
         new:
           title: "Upload New Pictures"
       preview:

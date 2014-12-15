@@ -69,6 +69,8 @@ class User < ActiveRecord::Base
   
   before_save :set_default_currency, :add_credit_card
   
+  after_save :update_profile_wizard_step, on: :update
+  
   after_destroy :delete_balanced_customer
 
   #
@@ -88,6 +90,10 @@ class User < ActiveRecord::Base
   #
   #
   #
+  
+  def has_avatar?
+    self[:avatar].present?
+  end
   
   def mobile_number
     return nil if mobile_nr.blank?
@@ -195,6 +201,12 @@ class User < ActiveRecord::Base
   def delete_balanced_customer
     BalancedWorker.perform_async(:delete_card, balanced_card_id)
     BalancedWorker.perform_async(:delete_customer, balanced_customer_id)
+  end
+  
+  def update_profile_wizard_step
+    if profile.present?
+      profile.assign_description_step!
+    end
   end
   
 end

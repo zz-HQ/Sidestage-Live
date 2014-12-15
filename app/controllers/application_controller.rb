@@ -81,7 +81,7 @@ class ApplicationController < ActionController::Base
   
   def assign_potential_profile(user)
     if session[:profile].present?
-      profile = Profile.new(session[:profile]) 
+      profile = Profile::AsSignup.new(session[:profile])
       user.profiles << profile
       session[:profile] = nil
     end

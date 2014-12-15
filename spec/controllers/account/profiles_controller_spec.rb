@@ -12,17 +12,17 @@ describe Account::ProfilesController, :type => :controller do
     FactoryGirl.create(:genre_country)
   end
   
-  it "gets basics" do
+  it "gets style" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)    
-    get :basics
-    expect(response).to render_template(:basics)
+    get :style
+    expect(response).to render_template(:style)
   end
 
-  it "patches basics" do
+  it "patches style" do
     profile = FactoryGirl.create(:profile)
     sign_in(profile.user)    
-    put :basics, profile: { artist_type: 'dj' }
+    put :style, profile: { artist_type: 'dj' }
     expect(response).to render_template(:basics)
   end
 
@@ -65,16 +65,16 @@ describe Account::ProfilesController, :type => :controller do
     profile = FactoryGirl.create(:profile)
     request.env["HTTP_REFERER"] = preview_account_profile_path(profile)    
     sign_in(profile.user)
-    put :youtube, profile: { youtube: "hi" }
-    expect(response).to redirect_to(preview_account_profile_path(profile))
+    put :music, profile: { youtube: "hi" }
+    expect(response).to render_template(:music)
   end
 
   it "patches soundcloud" do
     profile = FactoryGirl.create(:profile)
     request.env["HTTP_REFERER"] = preview_account_profile_path(profile)        
     sign_in(profile.user)
-    put :soundcloud, profile: { soundcloud: "hi" }
-    expect(response).to redirect_to(preview_account_profile_path(profile))
+    put :music, profile: { soundcloud: "hi" }
+    expect(response).to render_template(:music)
   end
   
   it "removes soundcloud" do

@@ -42,8 +42,8 @@ Airmusic::Application.routes.draw do
         post :sign_up
       end
     end
-    resources :artists, :only => [:new, :create, :index, :show]
-    
+    resources :artists, only: [:index, :show]
+    resources :profiles, only: [:new, :create]
     namespace :account do
 
       concern :paginatable do

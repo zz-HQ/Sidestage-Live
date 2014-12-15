@@ -293,7 +293,7 @@ class Profile < ActiveRecord::Base
   end
   
   def user_should_have_avatar
-    errors.add :user, :avatar_blank unless user[:avatar].present?
+    errors.add :user, :avatar_blank unless user.has_avatar?
   end  
   
   def should_have_soundcloud

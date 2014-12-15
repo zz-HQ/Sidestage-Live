@@ -25,7 +25,7 @@ class ArtistsController < ApplicationController
   
   inherit_resources
   defaults :resource_class => Profile, :instance_name => 'profile'
-  actions :index, :show, :new, :create
+  actions :index, :show
   respond_to :html, :js
   
   #
@@ -35,19 +35,6 @@ class ArtistsController < ApplicationController
   #
   #
   #
-  
-  def create
-    build_resource    
-    session[:profile] = permitted_params[:profile]
-    render :new and return unless resource.valid?
-    
-    respond_to do |format|
-      format.html{ redirect_to new_user_registration_path }
-      format.js{
-        redirect_to new_city_launch_path
-      }
-    end
-  end 
     
   #
   # Protected
@@ -78,10 +65,6 @@ class ArtistsController < ApplicationController
   def resources
     end_of_association_chain.includes(:user).filter(params).sorty(params).radial(params[:lat], params[:lng], 180).published.page(params[:page] || 1)
   end
-
-  def permitted_params
-    params.permit(profile: [:artist_type, :name, :location, :longitude, :latitude, :country_long, :country_short, :price, :title, :about, :city, :youtube, :style, :soundcloud, genre_ids: []])
-  end
   
   def redirect_if_unpublished
     redirect_to artists_path unless resource.published?
@@ -104,12 +87,6 @@ class ArtistsController < ApplicationController
       search_query.query = params
       search_query.counter = search_query.counter.to_i + 1
       search_query.save
-    end
-  end
-  
-  def build_resource
-    super.tap do |profile|
-      profile.user_id = -1
     end
   end
   

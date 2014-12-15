@@ -1,5 +1,5 @@
-<%= f.input :location, as: :string, label: false, placeholder: t(:"simple_form.placeholders.profile.location") %>
-<%= f.input :latitude, as: :hidden %>
-<%= f.input :longitude, as: :hidden %>
-<%= f.input :country_short, as: :hidden %>
-<%= f.input :country_long, as: :hidden %>
+<%= f.input :location, as: :string, label: false, input_html: { data: { name: :location } }, placeholder: t(:"simple_form.placeholders.profile.location") %>
+<%= f.input :latitude, as: :hidden, input_html: { data: { name: :latitude } } %>
+<%= f.input :longitude, as: :hidden, input_html: { data: { name: :longitude } } %>
+<%= f.input :country_short, as: :hidden, input_html: { data: { name: :country_short } } %>
+<%= f.input :country_long, as: :hidden, input_html: { data: { name: :country_long } } %>

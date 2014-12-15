@@ -1,0 +1,30 @@
+<div id="new-profile" class="new-profile-form">
+
+	<!-- # resource.errors.full_messages.inspect -->
+	<%= simple_form_for resource, url: profiles_path, html: { id: "profile-form" } do |f| %>
+
+		<header>
+			<h2><%= t(:"application.artists.new.title") %></h2>
+			<p><%= t(:"application.artists.new.desc") %></p>
+		</header>
+		
+		<div class="part big">
+            <%= render "/account/profiles/artist_type", f: f %>
+		</div>
+
+		<div class="part genres">
+			<%= render "/account/profiles/genres", f: f %>
+		</div>
+        
+		<div class="part city">
+		    <h3><%= t(:"simple_form.labels.profile.location") %></h3>
+    		<%= render "account/profiles/location_field", f: f %>
+		</div>
+		
+  		<div class="input">
+  		    <%= f.submit class: "btn button btn-blue", value: "#{t(:"helpers.submit.profile.submit")}" %>
+  		</div>
+
+	<% end %>
+
+</div>

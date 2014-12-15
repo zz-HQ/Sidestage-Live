@@ -5,7 +5,7 @@ FactoryGirl.define do
     title "TL"
     about "about"
     currency "EUR"
-    published true
+    published_at Time.now
     location "Berlin"
     latitude "52.5167"
     longitude "13.3833"
@@ -35,7 +35,7 @@ FactoryGirl.define do
       name "unpublished"
       location "New York City"
       price 300
-      published false
+      published_at nil
     end
  
     factory :balanced do

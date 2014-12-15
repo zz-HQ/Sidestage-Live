@@ -8,24 +8,24 @@
 	<div class="styled-radios">
 		<div class="act radio">
 			<div class="label">
-				<%= radio_button_tag 'profile[genre_ids][]', genre_one.id, f.object.genres.include?(genre_one), checked: f.object.new_record? || f.object.genres.include?(genre_one) %>
+				<%= radio_button_tag "#{f.object_name}[genre_ids][]", genre_one.id, f.object.genres.include?(genre_one), checked: f.object.new_record? || f.object.genres.include?(genre_one) %>
 				<%= genre_one.name %>
 			</div>
 		</div>
 		<div class="act radio active">
 			<div class="label">
-				<%= radio_button_tag 'profile[genre_ids][]', genre_two.id, f.object.genres.include?(genre_two) %>
+				<%= radio_button_tag "#{f.object_name}[genre_ids][]", genre_two.id, f.object.genres.include?(genre_two) %>
 				<%= genre_two.name %>
 			</div>
 		</div>
 		<div class="act radio">
 			<div class="label">
-				<%= radio_button_tag 'profile[genre_ids][]', genre_three.id, f.object.genres.include?(genre_three) %>
+				<%= radio_button_tag "#{f.object_name}[genre_ids][]", genre_three.id, f.object.genres.include?(genre_three) %>
 				<%= genre_three.name %>
 			</div>
 		</div>
 		<div class="act radio">
-				<%= nice_select(select_tag 'profile[genre_ids][]', options_for_select(genre_rest.collect { |g| [g.name, g.id] }, (genre_rest & f.object.genres).first.try(:id)), prompt: "Other")  %>
+				<%= nice_select(select_tag "#{f.object_name}[genre_ids][]", options_for_select(genre_rest.collect { |g| [g.name, g.id] }, (genre_rest & f.object.genres).first.try(:id)), prompt: "Other")  %>
 		</div>
 	</div>
 

@@ -63,13 +63,20 @@ module Profile::Wizardable
   end
 
   def description_step_valid?
-    errors.blank? && title.present? && name.present? && about.present?
+    errors.blank? && user.has_avatar? && title.present? && name.present? && about.present?
   end
   
   def concatenated_steps(step)
     wizard_state.to_s.split(",").push(step).join(",")
   end
   
+  def assign_description_step!
+    unless step_persisted?(:description)
+      self.wizard_step = :description
+      save validation: false
+    end
+  end
+
   private
   
   def assign_step
