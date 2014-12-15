@@ -12,7 +12,7 @@ class ArtistsController < ApplicationController
   
   before_filter :reject_scraper, only: [:index]
   before_filter :coerce_params, :coerce_filter_params, only: [:index, :show]
-  before_filter :redirect_if_unpublished, only: [:show]
+  before_filter :redirect_if_unpublished, :store_visitor_location, only: [:show]
   before_filter :record_query, :only_available_cities, only: [:index]
   
   #
@@ -124,6 +124,10 @@ class ArtistsController < ApplicationController
       params[:column] = :name
     end
   end
-
+  
+  def store_visitor_location
+    sidestage_store_location_for(:visitor_location)
+  end
+  
 end
 

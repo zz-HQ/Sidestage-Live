@@ -2,4 +2,5 @@
     <strong>Booking <%= @deal.state %>:</strong><br>
     <strong>Artist:</strong> <%= link_to  @deal.profile.name, artist_url(@deal.profile.id) %><br>
     <strong>Customer:</strong> <%= @deal.customer.name %>
-</p>    
+    <strong>Booking Date:</strong> <%= l @deal.created_at, format: :event_date %>
+</p>

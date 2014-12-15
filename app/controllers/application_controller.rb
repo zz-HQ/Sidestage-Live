@@ -118,4 +118,12 @@ class ApplicationController < ActionController::Base
     return "application"
   end
   
+  def sidestage_store_location_for(key)
+    session["#{key}_return_to"] = request.path
+  end
+  
+  def sidestage_get_stored_location_for(key)
+    session.delete("#{key}_return_to")
+  end
+  
 end
