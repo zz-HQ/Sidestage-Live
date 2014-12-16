@@ -12,7 +12,7 @@ en:
         view_link: "View Profile"
         audio_video_link: "Audio & Video"
         tips_hints: Tips and hints
-        completion_hint: "Complete %{count} steps to publish your Profile"
+        completion_hint_html: "Complete <span class='missing-steps'><span id='missing-steps-counter'>%{count}</span> steps</span> to publish your Profile"
       basics:
         title_html: "Your Artist Listing"
         tips_hints_html: "<p>Your artist type will help users find you in artists listings.</p>"

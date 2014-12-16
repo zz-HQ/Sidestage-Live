@@ -36,15 +36,17 @@
 
 		.publish-btn
 			text-align: center
+			border-top: 1px solid $border-color
+			padding-top: 20px
+			margin-top: 35px
 
 			.missing
-				width: 94%
-				margin: 40px auto 0
-				text-align: center
-				background-color: #DEDEDE
-				font-size: 14px
+				padding: 0 10px
+				font-size: 16px
 				font-weight: 400
-				padding: 20px
+
+				.missing-steps
+					color: $red
 
 			.btn
 				width: 94%
@@ -92,6 +94,18 @@
 			+span-columns(5)
 			+omega
 
+		input,
+		textarea
+			margin-bottom: 5px
+
+		.field_with_errors
+			position: relative
+
+			.error
+				top: 0px
+				left: 2px
+				display: block
+
 	aside.hints
 		+span-columns(2 of 10)
 		+omega
@@ -137,11 +151,10 @@
 				height: 200px
 
 		p.characters-counter
-			position: absolute
-			bottom: -10px
-			right: 0
+			position: relative
 			font-weight: 400
-			display: inline-block
+			width: 100%
+			text-align: right
 
 	.profile_social_media
 		margin-top: 30px
@@ -150,7 +163,7 @@
 			position: relative
 			+span-columns(8)
 
-			.input
+			&.twitter-field
 				input
 					padding-left: 25px
 
@@ -188,16 +201,18 @@
 				float: right
 				+omega
 
-	.profile_price
+	.inputs
 		position: relative
+		margin-bottom: 10px
 
 		.nice-select
 			width: 96px
 
 		.input
-			width: 96px
+			width: 100%
 
 			input
+				width: 100px
 				padding-left: 20px
 
 		.hint

@@ -110,11 +110,21 @@ hr
 		height: 165px
 		background: image-url("fallback/user/thumb_avatar.jpg") no-repeat center
 		background-size: 165px
-		cursor: pointer
 		+transition(opacity 300ms ceaser($easeOutCirc))
+
+		&.avatar-upload-button
+			cursor: pointer
 
 		&:hover
 			+opacity(0.85)
+
+	.actions
+		+opacity(0)
+		+actions-link
+
+	&:hover
+		.actions
+			+opacity(1)
 
 	.loader
 		position: absolute
