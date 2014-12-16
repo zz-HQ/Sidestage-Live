@@ -57,6 +57,13 @@ class Account::ProfilesController < Account::ResourcesController
     redirect_to :back
   end
   
+  def destroy_avatar
+    resource.remove_avatar = true
+    resource.save
+    redirect_to :back
+  end
+  
+    
   def toggle
     resource.toggle!
     if resource.published?

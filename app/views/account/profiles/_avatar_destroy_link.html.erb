@@ -1,0 +1,1 @@
+<%= link_to "<i class='fa fa-trash-o'></i>".html_safe, destroy_avatar_account_profile_path, method: :delete, remove: true, data: { confirm: t(:"helpers.confirm.sure") }, class: "delete actions" if resource.has_avatar? %>

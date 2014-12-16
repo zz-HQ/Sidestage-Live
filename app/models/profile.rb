@@ -231,6 +231,10 @@ class Profile < ActiveRecord::Base
     published_at.present?
   end
   
+  def has_avatar?
+    self[:avatar].present?
+  end
+  
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -297,11 +301,11 @@ class Profile < ActiveRecord::Base
   end  
   
   def should_have_soundcloud
-    errors.add :soundcloud, :invalid unless !!soundcloud_id_from_iframe(soundcloud)
+    errors.add :soundcloud, :invalid unless soundcloud.blank? || !!soundcloud_id_from_iframe(soundcloud)
   end
   
   def should_have_youtube
-    errors.add :youtube, :invalid unless has_youtube?
+    errors.add :youtube, :invalid unless youtube.blank? || has_youtube?
   end
   
   def should_have_picture

@@ -1,2 +1,3 @@
 $('#avatar').html('<%= image_tag resource.avatar.url(:preview), class: "avatar", alt: resource.name %>');
+$("#avatar_destroy").html("<%= j(render("avatar_destroy_link")) %>");
 <%= render "update" %>

@@ -85,6 +85,7 @@ Airmusic::Application.routes.draw do
           put :toggle
           put :remove_soundcloud
           put :remove_youtube
+          delete :destroy_avatar
           match 'style', to: 'profiles#style', via: :all
           match 'geo', to: 'profiles#geo', via: :all    
           match 'pricing', to: 'profiles#pricing', via: :all
