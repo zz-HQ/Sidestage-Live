@@ -92,6 +92,17 @@
 			+span-columns(5)
 			+omega
 
+		input,
+		textarea
+			margin-bottom: 5px
+
+		.field_with_errors
+			position: relative
+
+			.error
+				top: 0px
+				left: 2px
+
 	aside.hints
 		+span-columns(2 of 10)
 		+omega
@@ -137,11 +148,10 @@
 				height: 200px
 
 		p.characters-counter
-			position: absolute
-			bottom: -10px
-			right: 0
+			position: relative
 			font-weight: 400
-			display: inline-block
+			width: 100%
+			text-align: right
 
 	.profile_social_media
 		margin-top: 30px
@@ -150,7 +160,7 @@
 			position: relative
 			+span-columns(8)
 
-			.input
+			&.twitter-field
 				input
 					padding-left: 25px
 
@@ -190,6 +200,7 @@
 
 	.profile_price
 		position: relative
+		margin-bottom: 10px
 
 		.nice-select
 			width: 96px
