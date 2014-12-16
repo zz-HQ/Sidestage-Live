@@ -7,10 +7,13 @@
     
     <div>
     		<div class="avatar-uploader profile-avatar">
-      			<div id="avatar" class="avatar avatar-upload-button">
+      			<div id="avatar" class="avatar">
       				  <%= image_tag resource.avatar.url(:preview) if resource.avatar.present? %>
       			</div>
+            
             <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+
+            <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, avatar_account_profile_path, method: :delete, data: {remote: true, confirm: "#{t(:"helpers.confirm.sure")}"}, class: "delete actions" %>
         </div>
         <p class="left light"><%= t(:"application.profiles.avatar.hint_html") %></p>
 
