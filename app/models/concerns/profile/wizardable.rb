@@ -39,7 +39,7 @@ module Profile::Wizardable
   end
   
   def step_persisted?(step)
-    send("#{step}_step_persisted?")
+    step.present? && send("#{step}_step_persisted?")
   end
 
   def step_valid?(step)
