@@ -121,8 +121,6 @@ class Profile < ActiveRecord::Base
 
   after_validation :reverse_friendly
   
-  before_save :assign_step
-  
   after_save :notify_admin_on_publish, :send_publishing_confirmation
   
   

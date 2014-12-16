@@ -7,7 +7,11 @@ module Profile::Wizardable
     WIZARD_SUB_STEPS = [:title, :about, :name, :soundcloud, :youtube]
 
     attr_accessor :wizard_step, :wizard_sub_step
-    
+
+  
+    before_save :assign_step
+  
+      
     WIZARD_STEPS.each do |step|
       define_method "#{step}_step?" do
         wizard_step == step
@@ -90,6 +94,13 @@ module Profile::Wizardable
       self.wizard_step = :pictures
       save validation: false
     end
+  end
+
+  def unassign_pictures_step!(picture)
+    Rails.logger.info "##########################"
+    Rails.logger.info pictures.blank?
+    Rails.logger.info "##########################"
+    update_column :wizard_state, (wizard_state.to_s.split(",") - [:pictures]).join(",") if pictures.blank?
   end
   
 end

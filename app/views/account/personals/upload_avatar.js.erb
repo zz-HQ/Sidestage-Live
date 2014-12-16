@@ -1,22 +1,5 @@
 $('#avatar').html('<%= j render 'avatar', user: resource %>');
 $('.navi-avatar').html('<%= j render 'application/avatar' %>');
-
-// var flashMessage;
-
-// flashMessage = function(name, msg) {
-//   $('#flash-messages').html("<div class=\"flash flash-" + name + "\"><div class=\"wrap\"><div class=\"flash-message\">" + msg + "</div></div></div>");
-//   return $('#flash-messages').delay(100).animate({
-//     height: '60px'
-//   }, {
-//     duration: 150,
-//     complete: function() {
-//       return $(this).delay(3000).animate({
-//         height: 0
-//       }, {
-//         duration: 200
-//       });
-//     }
-//   });
-// };
-
-// flashMessage('notice', 'Successfully uploaded a profile picture!');
+<% if resource.profile.present? && resource.profile.description_step_persisted? %>
+    $("#<%= profile_wizard_progress_icon_id(:description) %>").show();
+<% end %>
