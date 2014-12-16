@@ -2,7 +2,7 @@
     <% if @profile.wizard_complete? %>
         <%= link_to t(:"application.links.publish.toggle_#{@profile.published?}"), toggle_account_profile_path, method: :put, class: "btn btn-publish" %>
     <% else %>
-        <div class="missing"><%= t(:"application.profiles.sidebar.completion_hint", count: @profile.remaining_wizard_steps_count) %></div>
+        <div class="missing"><%= t(:"application.profiles.sidebar.completion_hint_html", count: @profile.remaining_wizard_steps_count) %></div>
     <% end %>
 
     <% if @profile.published? %>
