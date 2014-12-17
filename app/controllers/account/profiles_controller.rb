@@ -59,6 +59,7 @@ class Account::ProfilesController < Account::ResourcesController
   
   def destroy_avatar
     resource.remove_avatar = true
+    resource.wizard_step = :avatar
     resource.save
     redirect_to :back
   end

@@ -32,6 +32,11 @@ class Account::PicturesController < Account::ResourcesController
     set_resource_ivar(begin_of_association_chain.pictures.create! picture: params[:file])
   end
   
+  def destroy
+    #needed to properly unset profile pictures step
+    begin_of_association_chain.pictures.destroy(resource)
+  end
+  
 
   #
   # Protected

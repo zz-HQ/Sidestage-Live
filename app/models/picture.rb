@@ -36,7 +36,7 @@ class Picture < ActiveRecord::Base
   #
   #
   #
-  # 
+  #
   
   #
   # Private

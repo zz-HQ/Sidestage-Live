@@ -10,8 +10,7 @@ module Profile::Wizardable
 
   
     before_save :assign_step
-  
-      
+    
     WIZARD_STEPS.each do |step|
       define_method "#{step}_step?" do
         wizard_step == step
@@ -65,9 +64,21 @@ module Profile::Wizardable
   def description_step_done?
     errors.blank? && title.present? && name.present? && about.present?
   end
-
+  
   def description_step_valid?
     errors.blank? && user.has_avatar? && title.present? && name.present? && about.present?
+  end
+
+  def avatar_step_valid?
+    errors.blank? && !remove_avatar
+  end
+
+  def pictures_step_valid?
+    errors.blank? && pictures.present?
+  end
+
+  def music_step_valid?
+    errors.blank? && (has_youtube? || has_soundcloud?)
   end
   
   def concatenated_steps(step)
@@ -84,8 +95,12 @@ module Profile::Wizardable
   private
   
   def assign_step
-    if wizard_step.present? && step_valid?(wizard_step) && !step_persisted?(wizard_step)
-      self.wizard_state = concatenated_steps(wizard_step)
+    if wizard_step.present? 
+      if step_valid?(wizard_step)
+        self.wizard_state = concatenated_steps(wizard_step) unless step_persisted?(wizard_step)
+      else
+        self.wizard_state = wizard_state.to_s.gsub(wizard_step.to_s, "").split(",").compact.join(",")
+      end
     end
   end
   
@@ -97,10 +112,11 @@ module Profile::Wizardable
   end
 
   def unassign_pictures_step!(picture)
-    Rails.logger.info "##########################"
-    Rails.logger.info pictures.blank?
-    Rails.logger.info "##########################"
-    update_column :wizard_state, (wizard_state.to_s.split(",") - [:pictures]).join(",") if pictures.blank?
+    if step_persisted?(:pictures)
+      self.wizard_step = :pictures
+      save validation: false
+    end
   end
   
+
 end
