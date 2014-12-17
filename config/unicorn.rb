@@ -1,7 +1,14 @@
+run_sidekiq_in_this_thread = ["sidestaging.herokuapp.com"].include?(ENV['APP_HOST']) #staging
+
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 30
 preload_app true
 listen ENV['PORT'], :backlog => Integer(ENV['UNICORN_BACKLOG'] || 200)
+
+#staging
+if run_sidekiq_in_this_thread
+  @sidekiq_pid = nil
+end
 
 # config/unicorn.rb
 before_fork do |server, worker|
@@ -9,6 +16,13 @@ before_fork do |server, worker|
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.connection.disconnect!
   end
+  
+  #staging
+  if run_sidekiq_in_this_thread
+    @resque_pid ||= spawn("bundle exec sidekiq -c 2")
+    Rails.logger.info('Spawned sidekiq #{@request_pid}')
+  end  
+  
 end
 
 after_fork do |server, worker|
