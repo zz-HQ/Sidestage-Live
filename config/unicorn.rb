@@ -19,8 +19,8 @@ before_fork do |server, worker|
   
   #staging
   if run_sidekiq_in_this_thread
-    @resque_pid ||= spawn("bundle exec sidekiq -c 2")
-    Rails.logger.info('Spawned sidekiq #{@request_pid}')
+    @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2")
+    Rails.logger.info('Spawned sidekiq #{@sidekiq_pid}')
   end  
   
 end
