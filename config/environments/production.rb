@@ -78,9 +78,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   # SideStage Settings
-  config.action_mailer.asset_host = "https://sidestage.s3.amazonaws.com"
+  config.action_mailer.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
   config.default_currency = "USD"
-  config.action_mailer.default_url_options = { :host => 'https://www.sidestage.com', locale: nil }
+  config.action_mailer.default_url_options = { :host => "https://#{ENV['APP_HOST']}", locale: nil }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
