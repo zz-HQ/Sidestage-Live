@@ -78,6 +78,12 @@ $(document).on 'click', '#load-all-pictures', ->
 $(document).on 'change', '[data-auto-save=true]', (e) -> 
   $(@).trigger 'submit'
 
+$(document).on 'ajaxSuccess', -> 
+  $("#saved-note").fadeIn 500
+  setTimeout ->
+    $("#saved-note").fadeOut 1000
+  , 1000
+
 $(document).on 'change', 'select[data-linked=true]', (e) -> 
   window.location.replace($(@).val())
 

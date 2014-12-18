@@ -120,6 +120,7 @@ en:
       save_continue: Save and Continue
       save_finish: Save and Finish
       disable_with: Sending...
+      saved: Saved!
       message:
         create: Send
         disable_with: Sending...
