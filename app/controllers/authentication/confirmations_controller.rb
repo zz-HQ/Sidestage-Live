@@ -21,7 +21,7 @@ class Authentication::ConfirmationsController < Devise::ConfirmationsController
 
   def after_confirmation_path_for(resource_name, resource)
     sign_in(resource_name, resource)
-    resource.artist? ? pricing_account_profile_path : (sidestage_get_stored_location_for(:visitor_location) || complete_account_personal_path)
+    after_registration_path_for(resource)
   end
     
 end

@@ -33,15 +33,17 @@ class Authentication::RegistrationsController < Devise::RegistrationsController
   #
   
   protected 
-
+  
   def after_sign_up_path_for(resource)
+    flash[:signup] = flash[:notice]
+    flash.delete(:notice)
     assign_potential_profile(resource)
-    home_path
+    after_registration_path_for(resource)
   end
   
   def after_inactive_sign_up_path_for(resource)
     assign_potential_profile(resource)
-    home_path
+    after_registration_path_for(resource)
   end
   
   def configure_permitted_parameters

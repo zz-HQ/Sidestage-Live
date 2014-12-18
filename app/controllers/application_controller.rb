@@ -75,6 +75,10 @@ class ApplicationController < ActionController::Base
     home_path
   end 
   
+  def after_registration_path_for(resource)
+    resource.artist? ? pricing_account_profile_path : (sidestage_get_stored_location_for(:visitor_location) || complete_account_personal_path)
+  end
+  
   def store_location
     store_location_for(:user, params[:return_to]) if params[:return_to].present?
   end

@@ -1,0 +1,5 @@
+<%= render flash[:auto_modal] if flash[:auto_modal].present? %>
+
+<% if flash[:signup] %>
+    <%= render "signup_flash_modal" %>
+<% end %>
