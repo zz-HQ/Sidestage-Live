@@ -1,7 +1,10 @@
 <div data-lightbox="auto"  style="display:none;">
     <div class="devise-lightbox center">
         <p><strong><%= t(:"application.profiles.preview.publish_modal.title") %></strong></p>
-        <p><%= t(:"application.profiles.preview.publish_modal.desc_html", email: current_user.email) %></p>
+        <%= t(:"application.profiles.preview.publish_modal.desc_html", email: current_user.email) %>
+        <% if current_user.has_avatar? %>
+           <p><%= image_tag current_user.avatar.thumb.url %></p>
+        <% end %>
         <div class="btns">
             <%= link_to t(:"application.profiles.preview.publish_modal.resend_verification_email"), resend_confirmation_account_personal_path, method: :put, class: "btn btn-facebook btn-inline" unless current_user.confirmed? %>
             <%= link_to t(:"application.profiles.preview.publish_modal.change_email"), account_personal_path, class: "link" %>
