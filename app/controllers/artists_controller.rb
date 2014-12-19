@@ -1,6 +1,4 @@
 class ArtistsController < ApplicationController
-  
-  include PageableResource
 
   #
   # Filters
