@@ -21,6 +21,12 @@ class Account::PersonalsController < Account::ResourcesController
   #
   #
   #
+  
+  def resend_confirmation
+    current_user.resend_confirmation_instructions
+    flash[:notice] = t(:"flash.account.users.update.resend_confirmation")
+    redirect_to :back
+  end
 
   def update
     resource.update_attributes(permitted_params[:user])

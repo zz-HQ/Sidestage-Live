@@ -30,8 +30,6 @@ class Profile < ActiveRecord::Base
   
   enum artist_type: { solo: 0, band: 1, dj: 2 }
   
-  
-  
   store :additionals, accessors: [ :admin_disabled_at, :youtube, :soundcloud, :twitter, :facebook, :cancellation_policy, :availability ]
   
   friendly_id :name do |config|
@@ -79,10 +77,9 @@ class Profile < ActiveRecord::Base
   validate :should_have_soundcloud, if: :soundcloud_sub_step?
 
   with_options on: :publishing do |profile|
-    profile.validates :genre_ids, :price, :title, :name, :about, presence: true
+    profile.validates :wizard_complete?, inclusion: [true]
     profile.validates :admin_disabled?, inclusion: [false]
-    profile.validate :should_have_at_least_one_media_type
-    profile.validate :should_have_avatar
+    profile.validates :user_confirmed?, inclusion: [true]
   end
   
   #
@@ -149,7 +146,8 @@ class Profile < ActiveRecord::Base
   #  
   
   delegate :mobile_nr_confirmed?, to: :user, prefix: false
-
+  delegate :confirmed?, to: :user, prefix: true
+  
   #
   # Class Methods
   # ---------------------------------------------------------------------------------------
@@ -289,14 +287,6 @@ class Profile < ActiveRecord::Base
   def email_address_not_allowed_in_title
     errors.add :title, :includes_url if title.to_s[Devise::EMAIL_REGEXP_WORD]
   end
-
-  def should_have_avatar
-    user_should_have_avatar
-  end
-  
-  def user_should_have_avatar
-    errors.add :user, :avatar_blank unless user.has_avatar?
-  end  
   
   def should_have_soundcloud
     errors.add :soundcloud, :invalid unless soundcloud.blank? || !!soundcloud_id_from_iframe(soundcloud)
@@ -310,12 +300,6 @@ class Profile < ActiveRecord::Base
     errors.add :pictures, :blank unless has_pictures?
   end
 
-  def should_have_at_least_one_media_type
-    unless has_youtube? || !!soundcloud_id_from_iframe(soundcloud) || has_pictures?
-      should_have_youtube || should_have_soundcloud || should_have_picture
-    end
-  end
-  
   def validate_location
     errors.add :location, :select_suggestion if location_changed? && !latitude_changed? && !longitude_changed?
   end

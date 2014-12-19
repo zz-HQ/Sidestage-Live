@@ -71,8 +71,10 @@ class Account::ProfilesController < Account::ResourcesController
       flash[:auto_modal]  = "account/profiles/share_modal"
       redirect_to artist_path(resource)
     else
-      flash[:error] = t(:"flash.account.profiles.toggle.alert", edit_profile_path: style_account_profile_path) if resource.errors.present?
-      redirect_to preview_account_profile_path
+      if resource.errors.present?
+        flash[:auto_modal]  = "account/profiles/publish_error_modal"
+      end  
+      redirect_to :back
     end
   end
 

@@ -63,3 +63,7 @@ en:
           twitter_text: "Check%20out%20@sidestagehq,%20a%20new%20platform%20for%20booking%20great%20musicians,%20bands%20and%20DJs"
         follow_modal:
           title: Keep up to date with Sidestage
+        publish_modal:
+          title: One last step...
+          desc_html: "<p>Before your profile is published, we need to verify your email address: %{email}</p><p>Check your inbox to verify your account.<br>(You may need to check your spam folder.)</p>"
+          

@@ -69,6 +69,7 @@ Airmusic::Application.routes.draw do
           get :skip_payment
           delete :remove_card
           delete :remove_bank_account
+          put :resend_confirmation
           match 'bank_details', to: 'personals#bank_details', via: :all  
           match 'payment_details', to: 'personals#payment_details', via: :all
           match 'password', to: 'personals#password', via: :all
