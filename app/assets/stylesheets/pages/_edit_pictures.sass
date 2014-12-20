@@ -31,11 +31,22 @@
 
 			.picture
 				+span-columns(1 of 3)
-				+omega(3n)
+				// +omega(3n) // sonst funzt sortable nicht
 				margin-bottom: 18px
 				position: relative
 				width: 205px
-				min-height: 294px
+				min-height: 279px
+				cursor: move
+
+				&:nth-child(3n+1)
+					clear: none
+
+				&.ui-sortable-placeholder
+					border: 1px dashed $border-color
+					visibility: visible !important
+
+				textarea
+					margin-bottom: 0
 				
 				.loading
 					position: absolute

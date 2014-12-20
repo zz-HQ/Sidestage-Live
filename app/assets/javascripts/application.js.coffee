@@ -18,6 +18,7 @@
 #= require vex/vex.combined.min
 #= require jquery-fileupload/basic
 #= require jquery-fileupload/vendor/tmpl
+#= require jquery-ui/sortable
 #= require_tree ./modules
 #= require_tree ./pages
 #= require_tree .
@@ -44,6 +45,25 @@ App.init = ->
   $("input.cc-exp").payment  "formatCardExpiry"
   App.setBalancedCardListener()
   App.initGooglePlaces()
+  $("#pictures").sortable
+    itemSelector: '.picture'
+    containerSelector: '#pictures'
+    onDrop: ($item, container, _super, event) ->
+      url = $('#expose-properties').attr('data-sort-url')
+
+      ids = []
+      $('.expose_property').each ->
+        ids.push $(@).data('id')
+      
+      # $.ajax
+      #   url: url
+      #   type: 'post'
+      #   dataType: 'script'
+      #   data: 
+      #     ids: ids
+        
+
+      _super($item)
 
 $(document).on 'click', '[data-trigger=reset_artist_filter]', (e) ->
   $("form#artist_filter").reset()

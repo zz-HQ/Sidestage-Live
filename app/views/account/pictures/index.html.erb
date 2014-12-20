@@ -17,13 +17,13 @@
       <div id="file-upload-status" style="display:none;"><div class="value" style=""></div></div>
     </div>
 
-    <div id="pictures" class="pictures">
+    <ul id="pictures" class="pictures" data-sort-url="url/zum/sortieren/kommt/hier/rein">
         <% if collection.present? %>
           <%= render collection %>
         <% else %>
           <%= render "no_pictures" %>
         <% end %>
-    </div>
+    </ul>
   </div>
 
   <aside class="hints">

@@ -1,6 +1,6 @@
 $("#<%= dom_id(resource) %>").remove();
 
-if($("#pictures > div").length == 0) {
+if($("#pictures > li").length == 0) {
 	$("#fileupload-button").remove();
 	$("#pictures").html("<%= j render 'no_pictures' %>");
 }

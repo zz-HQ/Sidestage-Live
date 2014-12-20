@@ -1,4 +1,4 @@
-<%= content_tag :div, id: dom_id(picture), class: "picture" do %>
+<%= content_tag :li, id: dom_id(picture), class: "picture", data: {id: picture.id.to_s, position: picture.position} do %>
 	<div class="loading">
 		<i class="fa fa-spinner fa-spin"></i>
 		<p>Uploading...</p>
