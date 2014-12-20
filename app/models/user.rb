@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   
   attr_accessor :balanced_token, :wizard_step
   
+  store :additionals, accessors: [:fb_first_name, :fb_last_name, :fb_gender, :fb_locale, :fb_timezone, :fb_link]
+  
   #
   # Validations
   # ---------------------------------------------------------------------------------------

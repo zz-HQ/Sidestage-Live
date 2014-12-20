@@ -17,6 +17,7 @@ class Picture < ActiveRecord::Base
   #  
   
   belongs_to :imageable, :polymorphic => true
+  acts_as_list scope: :imageable
 
   mount_uploader :picture, PictureUploader
 
@@ -29,7 +30,7 @@ class Picture < ActiveRecord::Base
   #  
   
   scope :latest, -> { order("pictures.id DESC") }
-
+  
   #
   # Callbacks
   # ---------------------------------------------------------------------------------------

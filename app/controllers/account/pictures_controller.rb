@@ -49,7 +49,7 @@ class Account::PicturesController < Account::ResourcesController
   protected
   
   def permitted_params
-    params.permit(picture: [:file, :caption])
+    params.permit(picture: [:file, :caption, :position])
   end
 
   #

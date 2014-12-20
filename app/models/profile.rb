@@ -132,7 +132,7 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   
   has_many :reviews, dependent: :delete_all
-  has_many :pictures, as: :imageable, after_add: :assign_pictures_step!, after_remove: :unassign_pictures_step!
+  has_many :pictures, -> { order("position ASC") }, as: :imageable, after_add: :assign_pictures_step!, after_remove: :unassign_pictures_step!
   accepts_nested_attributes_for :pictures, allow_destroy: true, reject_if: :all_blank
   
   has_and_belongs_to_many :genres  
