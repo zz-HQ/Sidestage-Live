@@ -7,6 +7,8 @@ class Picture < ActiveRecord::Base
   #
   #
   #
+
+  validates :picture, presence: true
   
   #
   # Associations
@@ -20,7 +22,7 @@ class Picture < ActiveRecord::Base
   acts_as_list scope: :imageable
 
   mount_uploader :picture, PictureUploader
-
+  
   #
   # Scopes
   # ---------------------------------------------------------------------------------------

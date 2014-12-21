@@ -95,7 +95,9 @@ Airmusic::Application.routes.draw do
           match 'music', to: 'profiles#music', via: :all
           match 'payment', to: 'profiles#payment', via: :all
         end
-        resources :pictures
+        resources :pictures do
+          post :sort, on: :member
+        end
       end
       
       resources :profiles, only: [] do

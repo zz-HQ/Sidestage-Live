@@ -15,7 +15,7 @@ describe Profile, :type => :model do
   end
   
   it "toggles publish" do
-    profile = FactoryGirl.create(:unpublished)
+    profile = FactoryGirl.create(:unpublished, wizard_state: Profile::WIZARD_STEPS.join(","))
     expect(profile.published?).to be false
 
     profile.toggle!

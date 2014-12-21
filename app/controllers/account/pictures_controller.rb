@@ -37,6 +37,10 @@ class Account::PicturesController < Account::ResourcesController
     begin_of_association_chain.pictures.destroy(resource)
   end
   
+  def sort
+    resource.update_attribute :position, params[:position].to_i
+    render inline: ""
+  end
 
   #
   # Protected
