@@ -1,5 +1,15 @@
 class User < ActiveRecord::Base
-
+  
+  include Elasticsearch::Model
+  # mappings do
+  #   indexes :email
+  #   indexes :full_name
+  # end
+  
+  def as_indexed_json(options={})
+    as_json(only: [:id, :email, :full_name])
+  end  
+    
   include BalancedPayment, TwoFactor, Authentication, Measurement, Sortable
 
   #

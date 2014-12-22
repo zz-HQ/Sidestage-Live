@@ -4,3 +4,5 @@ mail_return_path: "info@sidestage.com"
 
 FB_APP_ID: "672299749555073"
 FB_APP_SECRET: 191140c02c1e19e47f272020dca95a30
+
+BONSAI_URL: "localhost:9200"
