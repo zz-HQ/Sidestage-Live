@@ -19,6 +19,8 @@ class Message < ActiveRecord::Base
   #
   #
   
+  PHONE_REGEX = /(?:[\(\)-\/\s]*\d){5,}/ #(?:\+|0|1)(?:[\(\)-\/\s]{,3}\d){5,}
+  
   attr_accessor :current_user
   
   #
@@ -31,7 +33,7 @@ class Message < ActiveRecord::Base
   
 
   validates :receiver_id, :sender_id, :body, presence: true
-  validate :emails_not_allowed, :urls_not_allowed, on: :create, unless: :system_message?
+  validate :emails_not_allowed, :urls_not_allowed, :phone_numbers_not_allowed, on: :create, unless: :system_message?
 
   #
   # Associations
@@ -112,7 +114,11 @@ class Message < ActiveRecord::Base
   end
   
   def urls_not_allowed
-    errors.add :body, :invalid if URI::extract(body, ["http", "https", "ftp"]).present? || body[/www\./]
+    errors.add :body, :invalid if URI::extract(body.to_s, ["http", "https", "ftp"]).present? || body.to_s[/www\./]
+  end
+  
+  def phone_numbers_not_allowed
+    errors.add :body, :invalid if body.to_s[PHONE_REGEX]
   end
 
 end

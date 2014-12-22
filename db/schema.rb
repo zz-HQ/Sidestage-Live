@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015130404) do
+ActiveRecord::Schema.define(version: 20141212123900) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id"
@@ -209,7 +209,6 @@ ActiveRecord::Schema.define(version: 20141015130404) do
     t.datetime "updated_at"
     t.integer  "artist_type",                                        default: 0
     t.string   "location"
-    t.boolean  "published",                                          default: false
     t.string   "currency"
     t.text     "additionals"
     t.string   "avatar"
@@ -221,6 +220,8 @@ ActiveRecord::Schema.define(version: 20141015130404) do
     t.string   "country_long"
     t.string   "country_short"
     t.string   "balanced_bank_account_id"
+    t.string   "wizard_state"
+    t.boolean  "published"
   end
 
   add_index "profiles", ["featured"], name: "index_profiles_on_featured", using: :btree
