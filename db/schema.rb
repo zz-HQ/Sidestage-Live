@@ -220,7 +220,6 @@ ActiveRecord::Schema.define(version: 20141212123900) do
     t.string   "country_long"
     t.string   "country_short"
     t.string   "balanced_bank_account_id"
-    t.string   "wizard_state"
     t.boolean  "published"
   end
 
