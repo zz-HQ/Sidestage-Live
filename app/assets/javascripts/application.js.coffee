@@ -18,6 +18,8 @@
 #= require vex/vex.combined.min
 #= require jquery-fileupload/basic
 #= require jquery-fileupload/vendor/tmpl
+#= require jquery.Jcrop
+#= require jquery.SimpleCropper
 #= require_tree ./modules
 #= require_tree ./pages
 #= require_tree .
@@ -52,6 +54,8 @@ App.init = ->
         data: "position=" + ui.item.index(), 
         dataType: 'script'
 
+  $('.cropme').simpleCropper()
+  
 $(document).on 'click', '[data-trigger=reset_artist_filter]', (e) ->
   $("form#artist_filter").reset()
   $("form#artist_filter select").trigger("change")

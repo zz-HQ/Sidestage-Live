@@ -18,13 +18,12 @@
             <div id="avatar" class="avatar avatar-upload-button">
               <%= image_tag current_user.avatar.url(:thumb), class: "avatar", alt: current_user.full_name %>
             </div>
-            
             <a href="#" class="btn avatar-upload-button"><%= t(:"simple_form.labels.profile.avatar") %></a>
             <p><%= t(:"application.profiles.description.hint") %></p>
 
             <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
           </div>
-
+          <div class="cropme" style="width:150px;height:100px">sdf sdf</div>
           <div class="new-avatar" style="display:none;">
             <%= f.input :avatar, label: false, id: "avatar-file" %>
           </div>
