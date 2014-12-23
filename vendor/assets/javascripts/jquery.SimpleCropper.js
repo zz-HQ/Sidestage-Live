@@ -48,6 +48,7 @@
         $('#modal').hide();
         jcrop_api.destroy();
         reset();
+        
       });
 
       //cancel listener
@@ -74,12 +75,10 @@
 
     function imageUpload(dropbox) {
       var file = $("#fileInput").get(0).files[0];
-      //var file = document.getElementById('fileInput').files[0];
       var imageType = /image.*/;
 
       if (file.type.match(imageType)) {
         var reader = new FileReader();
-
         reader.onload = function(e) {
           // Clear the current image.
           $('#photo').remove();
@@ -88,6 +87,7 @@
           current_image = new Image();
           current_image.src = reader.result;
           current_image.id = "photo";
+          current_image.name = file.name;
           current_image.style['maxWidth'] = image_dimension_x + 'px';
           current_image.style['maxHeight'] = image_dimension_y + 'px';
           current_image.onload = function() {
@@ -206,6 +206,7 @@
       file_display_area.html('');
       file_display_area.append(imageFoo);
 
+//      $("#user_avatar").val(dataUrl);
     }
 
     $(window).resize(function() {

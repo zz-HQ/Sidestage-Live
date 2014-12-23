@@ -104,6 +104,9 @@ class Account::PersonalsController < Account::ResourcesController
   end
 
   def upload_avatar
+    if permitted_params[:user][:avatar].try(:original_filename) == 'blob'
+      permitted_params[:user][:avatar].original_filename << '.png'
+    end    
     if resource.update_attributes(permitted_params[:user])
     end
     respond_to do |wants|

@@ -54,7 +54,7 @@ App.init = ->
         data: "position=" + ui.item.index(), 
         dataType: 'script'
 
-  $('.cropme').simpleCropper()
+  $('[data-crop=true]').simpleCropper()
   
 $(document).on 'click', '[data-trigger=reset_artist_filter]', (e) ->
   $("form#artist_filter").reset()
