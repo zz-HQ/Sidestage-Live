@@ -138,7 +138,10 @@ Airmusic::Application.routes.draw do
     resources :city_launches
     
     namespace :admin do
+      
       root to: "dashboard#index"
+      get :global_search, to: 'dashboard#global_search', as: :global_search
+      
       resources :profiles do
         member do
           put :toggle_admin_disabled          

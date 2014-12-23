@@ -3,25 +3,33 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <%= render 'head' %>
-  <body style="padding-top:60px;">
-    <div id="wrap">
-      <div id="main" class="clearfix">
+    <%= render 'head' %>
+    <body style="padding-top:60px;">
+        <div id="wrap">
+            <div id="main" class="clearfix">
 
-        <%= yield :outer_wrap %>
-        
-        <div class="container">
-          <%= render 'nav' %>
-          <%= render 'flash' %>          
-          <%= yield %>
+                <%= yield :outer_wrap %>
+
+                <div class="container">
+                    <%= render 'nav' %>
+                    
+                    <%= form_tag admin_global_search_path, method: :GET, class: "navbar-form navbar-right" do |f| %>
+                        <div class="form-group">
+                            <input type="search" name="q" class="form-control" placeholder="Search">
+                        </div>
+                    <% end %>
+                    <div class="clearfix"></div>
+
+                    <%= render 'flash' %>          
+                    <%= yield %>
+                </div>
+
+            </div>
         </div>
-        
-      </div>
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-    <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  </body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+        <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </body>
 </html>

@@ -1,16 +1,6 @@
 class User < ActiveRecord::Base
-  
-  include Elasticsearch::Model
-  # mappings do
-  #   indexes :email
-  #   indexes :full_name
-  # end
-  
-  def as_indexed_json(options={})
-    as_json(only: [:id, :email, :full_name])
-  end  
-    
-  include BalancedPayment, TwoFactor, Authentication, Measurement, Sortable
+
+  include Searchable, BalancedPayment, TwoFactor, Authentication, Measurement, Sortable
 
   #
   # Plugins
@@ -33,6 +23,10 @@ class User < ActiveRecord::Base
   attr_accessor :balanced_token, :wizard_step
   
   store :additionals, accessors: [:fb_first_name, :fb_last_name, :fb_gender, :fb_locale, :fb_timezone, :fb_link]
+  
+  AS_SEARCHABLE_JSON = [:id, :email, :full_name, :mobile_nr, :unread_message_counter, :currency]
+  AS_SEARCHABLE_METHODS = []
+  AS_SEARCHABLE_INCLUDES = {}
   
   #
   # Validations
@@ -174,7 +168,6 @@ class User < ActiveRecord::Base
   def notify_admin
     AdminMailer.delay.lead_notification(self)
   end
-  
   
   #
   # Private
