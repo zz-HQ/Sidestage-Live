@@ -39,11 +39,11 @@ module Elasticsearch::Model
     end
   end
 
-  def search(query_or_payload, models=[], options={})
+  def multi_model_search(models, query_or_payload, options={})
     models = MultipleModels.new(models)
     search = Searching::SearchRequest.new(models, query_or_payload, options)
     Response::Response.new(models, search)
   end
 
-  module_function :search
+  module_function :multi_model_search
 end

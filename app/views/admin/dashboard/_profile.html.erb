@@ -1,0 +1,7 @@
+<%= link_to artist_path(profile), class: "media-left" do %>
+    <%= image_tag profile.user.avatar.mini %>
+<% end %>
+<div class="media-body">
+    <h4 class="media-heading">Profile: <%= link_to profile.name, artist_path(profile), target: :_blank %></h4>
+    <p><%= profile.about.to_s.truncate(100) %></p>
+</div>

@@ -1,13 +1,27 @@
 .modal-body
-	max-height: 450px
+    max-height: 450px
 
 .modal-body-scrolling
-	overflow: scroll
+    overflow: scroll
 
 .modal-footer
-	//display: none
+    //display: none
 
 .conversation-messages
-	td:first-child
-		min-width: 150px
-		color: #999
+    td:first-child
+        min-width: 150px
+        color: #999
+
+.ui-autocomplete
+    max-height: 500px
+    overflow-y: auto    
+/* prevent horizontal scrollbar */
+    overflow-x: hidden
+    
+    .thumb
+        width: 25px
+
+/* IE 6 doesn't support max-height we use height instead, but this forces the menu to always be this tall */
+* html .ui-autocomplete
+    height: 500px
+    

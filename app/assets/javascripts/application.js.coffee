@@ -20,7 +20,17 @@
 #= require jquery-fileupload/vendor/tmpl
 #= require_tree ./modules
 #= require_tree ./pages
-#= require_tree .
+#= require turbolinks
+
+#= require avatar_uploader
+#= require jquery.payment
+#= require lightbox
+#= require picture_uploader
+#= require splash
+ 
+
+
+
 
 window.App = {} if window.App == undefined
 App = window.App

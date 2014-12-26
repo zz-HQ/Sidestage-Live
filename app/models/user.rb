@@ -24,10 +24,6 @@ class User < ActiveRecord::Base
   
   store :additionals, accessors: [:fb_first_name, :fb_last_name, :fb_gender, :fb_locale, :fb_timezone, :fb_link]
   
-  AS_SEARCHABLE_JSON = [:id, :email, :full_name, :mobile_nr, :unread_message_counter, :currency]
-  AS_SEARCHABLE_METHODS = []
-  AS_SEARCHABLE_INCLUDES = {}
-  
   #
   # Validations
   # ---------------------------------------------------------------------------------------
@@ -99,6 +95,10 @@ class User < ActiveRecord::Base
   
   def has_avatar?
     self[:avatar].present?
+  end
+  
+  def avatar_mini_url
+    avatar.mini.url
   end
   
   def mobile_number

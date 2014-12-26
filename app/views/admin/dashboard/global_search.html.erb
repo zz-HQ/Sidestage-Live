@@ -1,0 +1,10 @@
+<% if @elastic.results.total > 0 %>
+    <h4>Found total: <%= @elastic.results.total %></h4>
+    <ul class="media-list">
+        <% @elastic.results.map { |r| r['_type'].classify.constantize.find(r['_id']) }.each do |hit| %>
+            <li class="media">
+                <%= render hit.class.name.underscore, hit.class.name.underscore.to_sym => hit %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>

@@ -10,7 +10,7 @@ class Profile < ActiveRecord::Base
   
   extend FriendlyId
   
-  include Searchable, Profile::Presentable, Profile::Wizardable, Sortable, Filter, Payoutable
+  include Profile::Presentable, Profile::Wizardable, Sortable, Filter, Payoutable
   
   acts_as_taggable
   
@@ -27,9 +27,6 @@ class Profile < ActiveRecord::Base
   #
   
   ARTIST_TYPES_HUMAN = { solo: "solo musicians", band: "bands", dj: "DJs" }
-  AS_SEARCHABLE_JSON = [:user_id, :name, :title, :about, :location]
-  AS_SEARCHABLE_METHODS = [:published?]
-  AS_SEARCHABLE_INCLUDES = { user: { only: [:full_name, :email]} }
   
   enum artist_type: { solo: 0, band: 1, dj: 2 }
   
