@@ -1,8 +1,8 @@
 $("#<%= dom_id(resource) %>").remove();
 
-if($("#pictures > li").length == 0) {
+if($("[data-container=pictures] > li").length == 0) {
 	$("#fileupload-button").remove();
-	$("#pictures").html("<%= j render 'no_pictures' %>");
+	$("[data-container=pictures]").html("<%= j render 'no_pictures' %>");
 }
 
 <% if @profile.present? %>
