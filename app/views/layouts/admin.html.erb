@@ -13,9 +13,9 @@
                 <div class="container">
                     <%= render 'nav' %>
                     
-                    <%= form_tag admin_global_search_path, method: :GET, id: "global_search", class: "navbar-form navbar-right" do |f| %>
+                    <%= form_tag admin_global_search_path, method: :GET, class: "navbar-form navbar-right" do |f| %>
                         <div class="form-group">
-                            <input type="search" name="q" class="form-control" placeholder="Search">
+                            <input type="search" name="term" class="form-control" placeholder="Search">
                         </div>
                     <% end %>
                     <div class="clearfix"></div>

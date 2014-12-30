@@ -1,10 +1,9 @@
-<% if @elastic.results.total > 0 %>
+<% if @elastic.present? && @elastic.results.total > 0 %>
     <h4>Found total: <%= @elastic.results.total %></h4>
-    <ul class="media-list">
+    <table class="table table-striped table-hover">
         <% @elastic.results.map { |r| r['_type'].classify.constantize.find(r['_id']) }.each do |hit| %>
-            <li class="media">
-                <%= render hit.class.name.underscore, hit.class.name.underscore.to_sym => hit %>
-            </li>
+            <% hit = hit.profile if hit.is_a?(User) && hit.artist? %>
+            <%= render "admin/#{hit.class.name.underscore.pluralize}/#{hit.class.name.underscore}", hit.class.name.underscore.to_sym => hit %>
         <% end %>
-    </ul>
+    </table>
 <% end %>
