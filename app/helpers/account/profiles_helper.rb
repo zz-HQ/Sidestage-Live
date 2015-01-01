@@ -24,7 +24,7 @@ module Account::ProfilesHelper
     else
         iframe_src = "http#{ "s" unless browser.safari? }://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/#{track_id}&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=true&visual=true"
     end
-    content_tag :iframe, nil, width: "100%", height: "250", scrolling: "no", frameborder: "no", src: iframe_src
+    content_tag :iframe, nil, width: "100%", height: "250", scrolling: "no", frameborder: "no", src: iframe_src, class: "sc"
   end
 
   def youtube_id
@@ -33,7 +33,7 @@ module Account::ProfilesHelper
 
   def youtube_widget
     youtube_src = "//www.youtube.com/embed/#{youtube_id}?rel=0&autoplay=0"
-    content_tag :iframe, nil, width: "100%", height: "675", scrolling: "no", frameborder: "no", src: youtube_src
+    content_tag :iframe, nil, width: "100%", height: "675", scrolling: "no", frameborder: "no", src: youtube_src, class: "yt"
   end
 
   def youtube_thumbnail

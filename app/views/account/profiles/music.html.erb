@@ -9,7 +9,8 @@
     </div>
 
     <div id="music" class="right-side">
-      <div class="inputs">
+      <div id="sc-input" class="inputs">
+        <% if resource.soundcloud.blank? %>
         <%= render "soundcloud_form" %>
         <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
         <div style="display:none;" data-container="help-sc">
@@ -18,10 +19,17 @@
                 <%= image_tag 'sc-embed-help.png' %>
             </div>
         </div>
+        <% else %>
+          <%= render "soundcloud_widget" %>
+        <% end %>
       </div>
       
-      <div class="inputs">
-        <%= render "youtube_form" %>
+      <div id="yt-input" class="inputs">
+        <% if resource.youtube.blank? %>
+          <%= render "youtube_form" %>
+        <% else %>
+          <%= render "youtube_widget" %>
+        <% end %>
       </div>
     </div>
   </div>
