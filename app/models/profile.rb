@@ -212,7 +212,7 @@ class Profile < ActiveRecord::Base
   end
 
   def has_youtube?
-    youtube.present? && youtube =~ /\A(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})\z/
+    youtube.present? && youtube =~ /\A(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/.+\z/
   end
 
   def has_pictures?
