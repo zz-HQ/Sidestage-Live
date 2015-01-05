@@ -1,7 +1,10 @@
-<a href="#" class="media-left">
-    <%= image_tag user.avatar.mini %>
-</a>
-<div class="media-body">
-    <h4 class="media-heading">User: <%= user.full_name %></h4>
-    <p><%= user.email %></p>
-</div>
+<tr>
+    <td>
+        <%= link_to admin_user_path(user) do %>
+            <%= image_tag user.avatar.mini %>
+        <% end %>
+    </td>
+    <td><%= link_to user.full_name, admin_user_path(user) %></td>
+    <td><%= user.email %></td>
+    <td><%= user.mobile_nr %></td>
+</tr>

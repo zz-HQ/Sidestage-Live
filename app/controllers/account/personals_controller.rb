@@ -38,7 +38,7 @@ class Account::PersonalsController < Account::ResourcesController
   
   def complete
     if request.patch?
-      if resource.avatar.present?
+      if resource.has_avatar?
         #redirect_to complete_payment_account_personal_path
         flash[:auto_modal]  = "/account/personals/follow_modal"
         redirect_to root_path, notice: t(:"flash.account.users.complete.success", payment_path: payment_details_account_personal_path)

@@ -10,7 +10,7 @@
 		</div>    
 	    <% if deal.is_artist?(current_user) %>
 	        <%= t(:"application.deals.show.you_will_earn") %>: <%= localized_price(deal.artist_price, deal.currency) %><br/>
-	        <span class="hint">Total booking: <%= localized_price(deal.customer_price, deal.currency) %></span>
+	        <p class="hint">Total booking: <%= localized_price(deal.customer_price, deal.currency) %></p>
 	    <% else %>
 	        <%= localized_price(deal.customer_price, deal.currency) %>
 	    <% end %>
