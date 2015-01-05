@@ -68,7 +68,7 @@ en:
         message:
           attributes:
             body:
-              invalid: Sorry, but please don't include links or email addresses in message.
+              invalid: "Sorry, but please don't include phone numbers, links or email addresses in message."
   helpers:
     select:
       prompts:

@@ -18,7 +18,6 @@ config/database.yml
 .ruby-version
 public/assets
 public/uploads
-
+elasticsearch
 /config/database.yml
 dump.rdb
-elasticsearch
