@@ -3,6 +3,19 @@
 		<%= image_tag deal.negotiator_for(current_user).avatar.url(:thumb), class: "avatar" %>
 	</div>
 	<div class="negotiator"><%= deal.negotiator_for(current_user).profile_name %></div>
+
+	<div class="infos">
+		<div class="date">
+		    Booking amount
+		</div>    
+	    <% if deal.is_artist?(current_user) %>
+	        <%= t(:"application.deals.show.you_will_earn") %>: <%= localized_price(deal.artist_price, deal.currency) %><br/>
+	        <span class="hint">Artist'll pay: <%= localized_price(deal.customer_price, deal.currency) %></span>
+	    <% else %>
+	        <%= localized_price(deal.customer_price, deal.currency) %>
+	    <% end %>
+	</div>
+
 	<div class="infos">
 		<div class="date"><%= l deal.start_at, format: :event_date %></div>
 		<%= link_to t(:"application.account.bookings.index.view_conversation"), account_conversation_path(deal.conversation_id), class: 'link' %>
