@@ -1,4 +1,4 @@
-en:
+de:
   application:
     profiles:
       sidebar:
@@ -23,7 +23,7 @@ en:
         title_html: "Header photo"
         desc: Visualy standout
         hint_html: "Most artists upload a logo, album artwork or <br/> something they think is cool."
-        tips_hints_html: "<p>Your artist type will help users find you in artists listings.</p>"
+        tips_hints_html: "Upload a photo that is at least 1400px wide"
       pricing:
         title_html: "Pricing"
         desc: "What is your minimum price for a typical performance."
