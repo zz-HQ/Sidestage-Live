@@ -98,8 +98,8 @@ $(document).on 'change', '[data-auto-save=true]', (e) ->
 $(document).on 'ajaxSuccess', -> 
   $("#saved-note").fadeIn 500
   setTimeout ->
-    $("#saved-note").fadeOut 1000
-  , 1000
+    $("#saved-note").fadeOut 6000
+  , 6000
 
 $(document).on 'change', 'select[data-linked=true]', (e) -> 
   window.location.replace($(@).val())
