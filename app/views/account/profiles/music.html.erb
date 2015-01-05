@@ -1,37 +1,37 @@
 <div id="profile" class="container edit-profile">
-  <%= render 'sidebar' %>
+    <%= render 'sidebar' %>
 
-  <div class="content">
-    <header><%= t(:"application.profiles.music.title_html") %></header>
-    
-    <div class="left-side">
-      <p><%= t(:"application.profiles.music.desc") %></p>
-    </div>
+    <div class="content">
+        <header><%= t(:"application.profiles.music.title_html") %></header>
 
-    <div id="music" class="right-side">
-      <div id="sc-input" class="inputs">
-        <% if resource.soundcloud.blank? %>
-        <%= render "soundcloud_form" %>
-        <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
-        <div style="display:none;" data-container="help-sc">
-            <div class="devise-lightbox">
-                <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
-                <%= image_tag 'sc-embed-help.png' %>
+        <div class="left-side">
+            <p><%= t(:"application.profiles.music.desc") %></p>
+        </div>
+
+        <div id="music" class="right-side">
+            <div id="sc-input" class="inputs" data-container="soundcloud">
+                <% if resource.has_soundcloud? %>
+                    <%= render "soundcloud_widget" %>
+                <% else %>
+                    <%= render "soundcloud_form" %>
+                    <%= link_to "What's this?", "#", class: "link", id: "show-hint", data: { lightbox: :html, target: "[data-container='help-sc']" } %>
+                    <div style="display:none;" data-container="help-sc">
+                        <div class="devise-lightbox">
+                            <h2>How to copy and paste SoundCloud Embed code into your Sidestage profile</h2>
+                            <%= image_tag 'sc-embed-help.png' %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+
+            <div id="yt-input" class="inputs" data-container="youtube">
+                <% if resource.has_youtube? %>
+                    <%= render "youtube_widget" %>
+                <% else %>
+                    <%= render "youtube_form" %>
+                <% end %>
             </div>
         </div>
-        <% else %>
-          <%= render "soundcloud_widget" %>
-        <% end %>
-      </div>
-      
-      <div id="yt-input" class="inputs">
-        <% if resource.youtube.blank? %>
-          <%= render "youtube_form" %>
-        <% else %>
-          <%= render "youtube_widget" %>
-        <% end %>
-      </div>
-    </div>
   </div>
   
   <aside class="hints">
