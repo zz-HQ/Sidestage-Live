@@ -1,0 +1,14 @@
+<% sender = conversation.sender; receiver = conversation.receiver %>
+
+<tr>
+    <td>
+        <%= link_to sender.name, "#", data: { toggle: "modal", target: "#user_detail_#{sender.id}" }  %>
+        <%= render "admin/users/modal_user_info", user: sender %>
+    </td>
+    <td>
+        <%= link_to receiver.name, "#", data: { toggle: "modal", target: "#user_detail_#{receiver.id}" }  %>
+        <%= render "admin/users/modal_user_info", user: receiver %>
+    </td>
+    <td><%= link_to "View", admin_conversation_messages_path(conversation), remote: true %></td>
+    <td><%= l(conversation.last_message_at, format: :conversation) %></td>
+</tr>

@@ -45,142 +45,170 @@
         <th>Message</th>
         <th>Last message</th>
     </thead>
-    <% Conversation.having_no_deals.ordered_by_last_message.includes([:sender, :receiver]).each do |conversation| %>
+    <%= render partial: "admin/conversations/conversation", collection: Conversation.having_no_deals.ordered_by_last_message.includes([:sender, :receiver]).limit(15) %>
+    <tfoot>
         <tr>
-            <td><%= conversation.sender.name %></td>
-            <td><%= conversation.receiver.name %></td>
-            <td><%= link_to "View", admin_conversation_messages_path(conversation), remote: true %></td>
-            <td><%= l(conversation.updated_at, format: :conversation) %></td>
+            <td colspan="4"><%= link_to "view all", admin_conversations_path %></td>
         </tr>
-    <% end %>
+    </foot>
 </table>
 
 
 <h2>Pending Booking Requests</h2>
-<table class="table table-striped table-condensed table-hover">
-    <thead>
-        <th>Customer</th>
-        <th>Artist</th>
-        <th>Message</th>
-        <th>Artist price</th>
-        <th>Last message</th>
-    </thead>
-    <% Deal.pending.latest.includes([:customer, :artist, :conversation, :profile]).each do |deal| %>
-        <tr>
-            <td><%= deal.customer.name %></td>
-            <td><%= deal.profile.name %></td>
-            <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
-            <td><%= localized_price deal.artist_price, deal.currency %></td>
-            <td><%= l(deal.conversation.updated_at, format: :conversation) %></td>
-        </tr>
-    <% end %>
-</table>
+<% if (pending_bookings = Deal.pending.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <th>Customer</th>
+            <th>Artist</th>
+            <th>Message</th>
+            <th>Artist price</th>
+            <th>Last message</th>
+        </thead>
+        <% pending_bookings.each do |deal| %>
+            <tr>
+                <td><%= deal.customer.name %></td>
+                <td><%= deal.profile.name %></td>
+                <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
+                <td><%= localized_price deal.artist_price, deal.currency %></td>
+                <td><%= l(deal.conversation.updated_at, format: :conversation) %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>No data available</p>
+<% end %>
 
 <h2>Confirmed Bookings</h2>
-<table class="table table-striped table-condensed table-hover">
-    <thead>
-        <th>Customer</th>
-        <th>Artist</th>
-        <th>Message</th>
-        <th>Customer Price</th>
-        <th>Artist payment</th>
-        <th>Event Date</th>
-        <th>Bank Details</th>
-        <th>Status</th>
-    </thead>
-    <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.dealed.not_paid_out.latest.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
-</table>
+<% if (confirmed_bookings = Deal.dealed.not_paid_out.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <th>Customer</th>
+            <th>Artist</th>
+            <th>Message</th>
+            <th>Customer Price</th>
+            <th>Artist payment</th>
+            <th>Event Date</th>
+            <th>Bank Details</th>
+            <th>Status</th>
+        </thead>
+        <%= render partial: "/admin/deals/confirmed_booking", collection: confirmed_bookings, as: :deal %>
+    </table>
+<% else %>
+    <p>No data available</p>
+<% end %>
 
 <h2>Confirmed Bookings (that haven't yet happened)</h2>
-<table class="table table-striped table-condensed table-hover">
-    <thead>
-        <th>Customer</th>
-        <th>Artist</th>
-        <th>Message</th>
-        <th>Cust Price</th>
-        <th>Artist payment</th>
-        <th>Event Date</th>
-        <th>Bank Details</th>
-        <th>Status</th>
-    </thead>
-    <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.dealed.not_paid_out.latest.upcoming.future.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
-</table>
+<% if (confirmed_future_bookings = Deal.dealed.not_paid_out.latest.upcoming.future.includes([:customer, :artist, :conversation, :profile])).present? %>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <th>Customer</th>
+            <th>Artist</th>
+            <th>Message</th>
+            <th>Cust Price</th>
+            <th>Artist payment</th>
+            <th>Event Date</th>
+            <th>Bank Details</th>
+            <th>Status</th>
+        </thead>
+        <%= render partial: "/admin/deals/confirmed_booking", collection: confirmed_future_bookings, as: :deal %>
+    </table>
+<% else %>
+    <p>No data available</p>
+<% end %>
+
 
 <h2>Past Booking</h2>
-<table class="table table-striped table-condensed table-hover">
-    <thead>
-        <th>Customer</th>
-        <th>Artist</th>
-        <th>Message</th>
-        <th>Customer Price</th>
-        <th>Artist payment</th>
-        <th>Event Date</th>
-    </thead>
-    <% Deal.past.latest.includes([:customer, :artist, :conversation, :profile]).each do |deal| %>
-        <tr>
-            <td><%= deal.customer.name %></td>
-            <td><%= deal.profile.name %></td>
-            <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
-            <td><%= localized_price (deal.charged_price / 100), deal.currency if deal.charged_price.present? %></td>
-            <td><%= localized_price deal.artist_price, deal.currency %></td>
-            <td><%= l(deal.start_at, format: :conversation) %></td>
-        </tr>
-    <% end %>
-</table>
+<% if (confirmed_past_bookings = Deal.past.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <th>Customer</th>
+            <th>Artist</th>
+            <th>Message</th>
+            <th>Customer Price</th>
+            <th>Artist payment</th>
+            <th>Event Date</th>
+        </thead>
+        <% confirmed_past_bookings.each do |deal| %>
+            <tr>
+                <td><%= deal.customer.name %></td>
+                <td><%= deal.profile.name %></td>
+                <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
+                <td><%= localized_price (deal.charged_price / 100), deal.currency if deal.charged_price.present? %></td>
+                <td><%= localized_price deal.artist_price, deal.currency %></td>
+                <td><%= l(deal.start_at, format: :conversation) %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>No data available</p>
+<% end %>
 
 <h2>Declined Booking</h2>
-<table class="table table-striped table-condensed table-hover">
-    <thead>
-        <th>Customer</th>
-        <th>Artist</th>
-        <th>Message</th>
-        <th>Artist price</th>
-        <th>Date declined</th>
-    </thead>
-    <% Deal.undealed.latest.includes([:customer, :artist, :conversation, :profile]).each do |deal| %>
-        <tr>
-            <td><%= deal.customer.name %></td>
-            <td><%= deal.profile.name %></td>
-            <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
-            <td><%= localized_price deal.artist_price, deal.currency %></td>
-            <td><%= l(deal.updated_at, format: :conversation) %></td>
-        </tr>
-    <% end %>
-</table>
+<% if (declined_bookings = Deal.undealed.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <th>Customer</th>
+            <th>Artist</th>
+            <th>Message</th>
+            <th>Artist price</th>
+            <th>Date declined</th>
+        </thead>
+        <% declined_bookings.each do |deal| %>
+            <tr>
+                <td><%= deal.customer.name %></td>
+                <td><%= deal.profile.name %></td>
+                <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
+                <td><%= localized_price deal.artist_price, deal.currency %></td>
+                <td><%= l(deal.updated_at, format: :conversation) %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>No data available</p>
+<% end %>    
 
 <h2>Declined Booking Requests</h2>
-<table class="table table-striped table-condensed table-hover">
-    <thead>
-        <th>Customer</th>
-        <th>Artist</th>
-        <th>Message</th>
-        <th>Artist price</th>
-        <th>Date declined</th>
-    </thead>
-    <% Deal.declined.latest.includes([:customer, :artist, :conversation, :profile]).each do |deal| %>
-        <tr>
-            <td><%= deal.customer.name %></td>
-            <td><%= deal.profile.name %></td>
-            <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
-            <td><%= localized_price deal.artist_price, deal.currency %></td>
-            <td><%= l(deal.updated_at, format: :conversation) %></td>
-        </tr>
-    <% end %>
-</table>
+<% if (declined_requests = Deal.declined.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <th>Customer</th>
+            <th>Artist</th>
+            <th>Message</th>
+            <th>Artist price</th>
+            <th>Date declined</th>
+        </thead>
+        <% declined_requests.each do |deal| %>
+            <tr>
+                <td><%= deal.customer.name %></td>
+                <td><%= deal.profile.name %></td>
+                <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
+                <td><%= localized_price deal.artist_price, deal.currency %></td>
+                <td><%= l(deal.updated_at, format: :conversation) %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>No data available</p>
+<% end %>
 
-<h2>Payed out Bookings</h2>
-<table class="table table-striped table-condensed table-hover">
-    <thead>
-        <th>Customer</th>
-        <th>Artist</th>
-        <th>Message</th>
-        <th>Cust Price</th>
-        <th>Artist payment</th>
-        <th>Event Date</th>
-        <th>Bank Details</th>
-        <th></th>
-    </thead>
-    <tbody id="paid_out_bookings">
-        <%= render partial: "/admin/deals/confirmed_booking", collection: Deal.paid_out.latest.includes([:customer, :artist, :conversation, :profile]), as: :deal %>
-    </tbody>
-</table>
+<h2>Paid out Bookings</h2>
+<% if (paid_out_bookings = Deal.paid_out.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <th>Customer</th>
+            <th>Artist</th>
+            <th>Message</th>
+            <th>Cust Price</th>
+            <th>Artist payment</th>
+            <th>Event Date</th>
+            <th>Bank Details</th>
+            <th></th>
+        </thead>
+        <tbody id="paid_out_bookings">
+            <%= render partial: "/admin/deals/confirmed_booking", collection: paid_out_bookings, as: :deal %>
+        </tbody>
+    </table>
+<% else %>
+    <p>No data available</p>
+<% end %>

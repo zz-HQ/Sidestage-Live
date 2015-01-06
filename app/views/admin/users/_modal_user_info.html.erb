@@ -1,0 +1,36 @@
+<%= content_tag :div, class: "modal", id: "user_detail_#{user.id}" do %>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><%= user.full_name %></h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Name: <%= user.full_name %><br>
+                    Phone: <%= user.mobile_nr %><br>
+                    Email: <%= user.email %><br>
+                </p>
+                <p>
+                    <% if user.artist? %>
+                      <% if user.profile.facebook.present? %>
+                          <%= link_to "Facebook profile", url_for(user.profile.facebook) %><br>
+                      <% end %>
+                      <% if user.profile.twitter.present? %>
+                          Twitter:<%= user.profile.twitter %><br>
+                      <% end %>
+                    <% end %>
+                </p>
+                <p>
+                    Signup date: <%= l(user.created_at, format: :short)  %>
+                </p>
+                <p>
+                    <%= link_to "View Profile", artist_path(user) if user.artist? %>
+                </p>
+                <p>
+                    <%= link_to "View Detail", admin_user_path(user) %>
+                </p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+<% end %>

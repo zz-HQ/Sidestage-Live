@@ -29,6 +29,7 @@ en:
       pricing:
         title_html: "Pricing"
         desc: "What is your minimum price for a typical performance."
+        hint_html: "Prices for %{artist_type} in your<br> area start at %{price}"
         tips_hints_html: "<p>Price yourself competitively for more bookings. <br/><br/><br/> Before a booking is confirmed, you can adjust your price, based on travel, performance length and setup details.</p>"
       description:
         title_html: "Description"
