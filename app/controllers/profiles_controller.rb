@@ -41,9 +41,7 @@ class ProfilesController < ApplicationController
     
     respond_to do |format|
       format.html{ redirect_to new_user_registration_path }
-      format.js{
-        redirect_to new_city_launch_path
-      }
+      format.js{}
     end
   end  
   
