@@ -4,7 +4,8 @@ de:
       facebook_login: "Log in with Facebook"
       facebook_signin: "Sign in with Facebook"
       facebook_signup: "Sign up with Facebook"
-      sign_up_foot_note_html: 'By signing up, you agree to our <br> <a href="%{terms_path}">terms</a> and <a href="%{privacy_path}">privacy policy</a>.'
+      or: "or"
+      sign_up_foot_note_html: "By signing up, you agree to Sidestage's <br> <a href='%{terms_path}'>terms</a> and <a href='%{privacy_path}'>privacy policy</a>."
       signup_options:
         customer: I Want To Book an Artist
         artist: "I'm a Musician, Band or DJ"

@@ -3,7 +3,15 @@
 
     <%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f| %>
         <div class="form-actions login-signup-actions">
-            <%= link_to t(:"application.devise.facebook_signup"), user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
+            <%= link_to "<i class='fa fa-facebook'></i> #{t(:"application.devise.facebook_signup")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
+
+            <div class="separator">
+                <span><%= t(:"application.devise.or") %></span>
+            </div>
+
+            <%= content_tag :span, id: "trigger-email-signup-form", class: "trigger-email-signup-form", style: "display:#{resource.errors.present? ? 'none;' : ''}" do %>
+                <span class="btn">Sign up with email</span>
+            <% end %>
         </div>
 
         <% if resource.errors.present? %>
@@ -12,12 +20,9 @@
             </div>
         <% end %>
 
-        <!-- NEWSLETTER SUBSCRIPTION -->
-        <%= f.check_box :newsletter_subscribed, default: true, checked: true, class: "hidden" %><%#= t(:"simple_form.labels.user.newsletter_subscribed") %>
+        <%= f.check_box :newsletter_subscribed, default: true, checked: true, class: "hidden" %>
+        <%#= t(:"simple_form.labels.user.newsletter_subscribed") %>
 
-        <%= content_tag :span, id: "trigger-email-signup-form", class: "trigger-email-signup-form", style: "display:#{resource.errors.present? ? 'none;' : ''}" do %>
-            Sign up with email
-        <% end %>
         <%= content_tag :section, class: "signup-with-email", style: "display:#{resource.errors.blank? ? 'none;' : ''}" do %>
             <div class="form-inputs">
                 <%= f.input :full_name, required: true, error: false, autofocus: true, label: false %>
@@ -29,13 +34,13 @@
             </div>
         <% end %>    
 
-        <div class="footnote">
+        <div class="footnote light">
             <%= t(:"application.devise.sign_up_foot_note_html", terms_path: terms_path, privacy_path: privacy_path) %>
         </div>
     <% end %>
 
     <div class="bottom-link">
-        <%= link_to "Already a Sidestage member? Log in", new_user_session_path %>
+        <%= link_to "Already a Sidestage member? Log in", new_user_session_path, class: "link" %>
     </div>
 
 </div>

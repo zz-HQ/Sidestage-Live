@@ -82,9 +82,9 @@
 
       <%- else -%>
         <span>
-          <%= link_to t(:"application.menu.sign_in"), new_user_session_path %> 
+          <%= link_to t(:"application.menu.sign_in"), new_user_session_path, data: { lightbox: :ajax } %> 
           / 
-          <%= link_to t(:"application.menu.sign_up"), new_user_registration_path %>
+          <%= link_to t(:"application.menu.sign_up"), new_user_registration_path, data: { lightbox: :ajax } %>
         </span>
         <%= link_to t(:"application.menu.musician"), new_user_registration_path(format: :html), data: { lightbox: :html, target: "[data-container='signup-options']" }, class: "btn btn-musician btn-inline" %>
         <div style="display:none;" data-container="signup-options">
