@@ -2,29 +2,29 @@
   <div class="wrapper">
 
     <div class="photo">
-        <%= image_tag resource.user.avatar_url(:thumb), alt: resource.name %>
+        <%= image_tag @profile.user.avatar_url(:thumb), alt: @profile.name %>
     </div>
 
     <div class="profile-details">
       <h2>
-        <%= resource.name %>
-        <% if artist_contactable?(resource.user)  %>
-          <span class="message"><%= link_to "<i class='fa fa-envelope-o'></i>#{t(:"application.artists.show.message_artist")}".html_safe, link_or_signin(new_account_message_path(receiver_id: resource.user.id, format: :html)), data: { lightbox: "ajax" } %></span>
+        <%= @profile.name %>
+        <% if artist_contactable?(@profile.user)  %>
+          <span class="message"><%= link_to "<i class='fa fa-envelope-o'></i>#{t(:"application.artists.show.message_artist")}".html_safe, link_or_signin(new_account_message_path(receiver_id: @profile.user.id, format: :html)), data: { lightbox: "ajax" } %></span>
         <% end %>
       </h2>
-      <p class="title"><%= resource.title %></p>
-      <p class="label"><i class="fa fa-map-marker"></i> <%= resource.location %></p>
-      <p class="review-label"><%= link_to(pluralize(profile.reviews.count, Review.model_name.human), "#reviews-section") %></p>
+      <p class="title"><%= @profile.title %></p>
+      <p class="label"><i class="fa fa-map-marker"></i> <%= @profile.location %></p>
+      <p class="review-label"><%= link_to(pluralize(@profile.reviews.count, Review.model_name.human), "#reviews-section") %></p>
       <%# TODO: Twitter, Facebook, Website Links %>
     </div>
 
     <div class="booking-teaser" data-container="deal">
-      <h2 class="price"><%= artist_price(resource) %></h2>
+      <h2 class="price"><%= artist_price(@profile) %></h2>
 
       <div>
-        <% if artist_contactable?(resource.user) %>
+        <% if artist_contactable?(@profile.user) %>
           <%= simple_form_for :deal, url: double_check_account_deals_path, remote: true, html: { id: 'quick-deal-request' } do |f| %>
-              <%= f.input :profile_id, as: :hidden, input_html: { value: resource.id } %>
+              <%= f.input :profile_id, as: :hidden, input_html: { value: @profile.id } %>
               <% if false %>
               <div class="date">
                 <%= f.input :start_at, as: :string, input_html: { class: "date-picker" }, label: false %>
@@ -33,29 +33,29 @@
               <% end %>
                   
               <% if current_user %>
-                  <% if (pending_deal = current_user.pending_deal_with_profile(resource)).present? %>
-                      <%= link_to t(:"helpers.submit.deal.submit"), "" , value: truncate("Book #{resource.name}", length: 22), class: "btn", data: { lightbox: :html, target: "[data-container='pending-deal']" } %>
+                  <% if (pending_deal = current_user.pending_deal_with_profile(@profile)).present? %>
+                      <%= link_to t(:"helpers.submit.deal.submit"), "" , value: truncate("Book #{@profile.name}", length: 22), class: "btn", data: { lightbox: :html, target: "[data-container='pending-deal']" } %>
                       <div style="display:none;" data-container="pending-deal">
                           <%= render "account/deals/customer_pending_deal", deal: pending_deal %>
                       </div>
                   <% else %>
-                      <%= f.submit class: "btn", value: truncate("Book #{resource.name}", length: 21) %>
+                      <%= f.submit class: "btn", value: truncate("Book #{@profile.name}", length: 21) %>
                   <% end %>
               <% else %>
-                  <%= link_to t(:"helpers.submit.deal.submit", artist_name: truncate(resource.name, length: 21)), new_user_registration_path, class: "btn" %>
+                  <%= link_to t(:"helpers.submit.deal.submit", artist_name: truncate(@profile.name, length: 21)), new_user_registration_path, class: "btn" %>
               <% end %>
           <% end %>
         <% else %>
-          <div class="btn btn-gray activated"><%= truncate("Book #{resource.name}", length: 21) %></div>
+          <div class="btn btn-gray activated"><%= truncate("Book #{@profile.name}", length: 21) %></div>
         <% end %>
 
         <div class="share-links">
-          <%= render "artists/social_share_links", resource: resource %>
+          <%= render "artists/social_share_links" %>
         </div>
       </div>
 
     </div>
   </div>
 
-  <%#= render "account/profiles/verifications", user: resource.user %>
+  <%#= render "account/profiles/verifications", user: @profile.user %>
 </header>

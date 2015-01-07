@@ -1,41 +1,30 @@
-<% @meta_title = "#{resource.name} - Event entertainment and live music" %>
-<% @meta_desc = "Book #{resource.name} for your next party on Sidestage.com" %>
-<% @social_img = resource.user.avatar_url(:thumb) %>
-<% @social_desc = "Book #{resource.name} for your next party on Sidestage.com" %>
+<% @meta_title = "#{@profile.name} - Event entertainment and live music" %>
+<% @meta_desc = "Book #{@profile.name} for your next party on Sidestage.com" %>
+<% @social_img = @profile.user.avatar_url(:thumb) %>
+<% @social_desc = "Book #{@profile.name} for your next party on Sidestage.com" %>
 
 
-<section class="profile-header" style="<%= "background-image: url(#{resource.avatar.url(:big)});" if resource.avatar.present? %>">
-  <%= link_to("edit header picture", avatar_account_profile_path, class: "action") if action_name == "preview" %>
+<section class="profile-header" style="<%= "background-image: url(#{@profile.avatar.url(:big)});" if @profile.avatar.present? %>">
+    <%= link_to("edit header picture", avatar_account_profile_path, class: "action") if action_name == "preview" %>
 </section>
 
 <div id="artist">
-  <div class="content">
+    <div class="content">
 
-    <%= render "artists/profile_header", profile: resource, header_class: "fixed" %>
-    <%= render "artists/profile_header", profile: resource, header_class: nil %>
+        <%= render "artists/profile_header",  header_class: "fixed" %>
+        <%= render "artists/profile_header",  header_class: nil %>
 
-    <div class="about">
-      <%= simple_format resource.about %>
+        <div class="about">
+            <%= simple_format @profile.about %>
+        </div>
+
+        <section class="metro">
+            <section class="results profile_page">
+                <%= render 'artists/media_types' %>
+            </section>
+        </section>
+
+        <%= render "artists/reviews", profile: @profile %>
+
     </div>
-
-    <section class="metro">
-      <section class="results profile_page">
-        <%= render 'media_types' %>
-      </section>
-    </section>
-    
-    <%= render "artists/reviews", profile: resource %>
-
-
-    <% if false %>
-      <% if defined?(next_resource) && next_resource(true).present? %>
-          <div class="next-artist right">
-            <%= link_to artist_path(next_resource) do %>
-                <%= t(:"application.artists.show.view_next") %> <i class='fa fa-angle-right'></i>
-            <% end %>
-          </div>
-      <% end %>
-    <% end %>
-
-  </div>
 </div>

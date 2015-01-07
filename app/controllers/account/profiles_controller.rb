@@ -7,9 +7,8 @@ class Account::ProfilesController < Account::ResourcesController
   #
   #
   # 
-  
+
   respond_to :js, :html
-  
   
   #
   # Filters
@@ -76,6 +75,10 @@ class Account::ProfilesController < Account::ResourcesController
       end  
       redirect_to :back
     end
+  end
+  
+  def preview
+    resource
   end
 
   #

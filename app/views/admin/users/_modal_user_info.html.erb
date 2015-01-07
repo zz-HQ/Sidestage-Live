@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <p>
-                    Name: <%= user.full_name %><br>
+                    Name: <%= user.full_name %> <%= link_to "Detail", admin_user_path(user), style: "text-decoration: underline" %><br>
                     Phone: <%= user.mobile_nr %><br>
                     Email: <%= user.email %><br>
                 </p>
@@ -25,10 +25,7 @@
                     Signup date: <%= l(user.created_at, format: :short)  %>
                 </p>
                 <p>
-                    <%= link_to "View Profile", artist_path(user) if user.artist? %>
-                </p>
-                <p>
-                    <%= link_to "View Detail", admin_user_path(user) %>
+                    <%= link_to "View Profile", artist_path(user.profile), target: :_blank if user.artist? %>
                 </p>
             </div>
         </div><!-- /.modal-content -->

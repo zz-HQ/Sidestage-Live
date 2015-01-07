@@ -81,6 +81,7 @@ class Deal < ActiveRecord::Base
   scope :pending, -> { where(state: Deal::PENDING_STATES) }
   scope :dealed, -> { where(state: Deal::CONFIRMED_STATES) }
   scope :upcoming, -> { order("deals.start_at ASC") }
+  scope :ordered_by_start_at, -> { order("deals.start_at DESC") }
   scope :past, -> { where("DATE(deals.start_at) < ?", Time.now) }
   scope :future, -> { where("deals.start_at > ?", Time.now) }
   scope :latest, -> { order("deals.id DESC") }

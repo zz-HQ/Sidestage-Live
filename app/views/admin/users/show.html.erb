@@ -1,1 +1,28 @@
 <h1><%= resource.full_name %></h1>
+<div class="well well-lg">
+    <%= image_tag resource.avatar.mini.url if resource.has_avatar? %><br/>
+    <%= mail_to resource.email %><br/>
+    Phone: <%= resource.mobile_nr %><br/>
+    Signup date: <%= l resource.created_at %><br/>
+    Account confirmed: <%= l resource.confirmed_at if resource.confirmed_at.present? %><br/>
+    Total unread messages: <span class="badge"><%= resource.unread_message_counter %></span>
+</div>
+<% if resource.anything_captured_from_facebook? %>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Facebook</h3>
+        </div>
+        <div class="panel-body">
+            fb_first_name: <%= resource.fb_first_name %><br/>
+            fb_last_name: <%= resource.fb_last_name %><br/>
+            fb_gender: <%= resource.fb_gender %><br/>
+            fb_locale: <%= resource.fb_last_name %><br/>
+            fb_timezone: <%= resource.fb_timezone %><br/>
+            fb_link: <%= resource.fb_link %>
+        </div>
+    </div>
+<% end %>
+<% if resource.artist? %>
+    <% @profile = resource.profile %>
+    <%= render partial: "artists/profile" %>
+<% end %>    

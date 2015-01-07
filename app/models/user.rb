@@ -151,6 +151,10 @@ class User < ActiveRecord::Base
     balanced_customer_id.present? && balanced_card_id.present?
   end
   
+  def anything_captured_from_facebook?
+    fb_first_name.present? || fb_last_name.present? || fb_gender.present? || fb_locale.present? || fb_timezone.present? || fb_link.present?
+  end
+  
   def make_paymentable_by_token(token)
     self.balanced_token = token
     add_credit_card

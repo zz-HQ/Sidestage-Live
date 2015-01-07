@@ -1,14 +1,14 @@
 <div class="share-btn like-btn">
-  <%= link_to "<i class='fa fa-facebook-square'></i>Share".html_safe, facebook_share_url(artist_url(resource)), target: :_blank, style: "color:#3b5998;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=300,toolbar=1,resizable=0'); return false;" %>
+  <%= link_to "<i class='fa fa-facebook-square'></i>Share".html_safe, facebook_share_url(artist_url(@profile)), target: :_blank, style: "color:#3b5998;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=300,toolbar=1,resizable=0'); return false;" %>
 </div>
 
 <div class="share-btn tweet-btn">
-  <%= link_to "<i class='fa fa-twitter'></i>Tweet".html_safe, twitter_share_url("Check out #{resource.name} on Sidestage via @sidestagehq#{resource.twitter.present? ? " @#{resource.twitter}" : ''}", artist_url(resource)), target: :_blank, style: "color:#4099ff;" %>
+  <%= link_to "<i class='fa fa-twitter'></i>Tweet".html_safe, twitter_share_url("Check out #{@profile.name} on Sidestage via @sidestagehq#{@profile.twitter.present? ? " @#{@profile.twitter}" : ''}", artist_url(@profile)), target: :_blank, style: "color:#4099ff;" %>
 </div>
 <div class="share-btn gplus-btn">
-  <%= link_to "<i class='fa fa-google-plus'></i>1".html_safe, googleplus_share_url(artist_url(resource)), target: :_blank, style: "color:#d34836;font-weight:300;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=429,toolbar=1,resizable=0'); return false;" %>
-  <img itemprop="image" src="<%= resource.user.avatar_url(:thumb) %>" style="display:none;" />
+  <%= link_to "<i class='fa fa-google-plus'></i>1".html_safe, googleplus_share_url(artist_url(@profile)), target: :_blank, style: "color:#d34836;font-weight:300;", onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=429,toolbar=1,resizable=0'); return false;" %>
+  <img itemprop="image" src="<%= @profile.user.avatar_url(:thumb) %>" style="display:none;" />
 </div>
 <div class="share-btn pin-btn">
-  <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(resource), resource.user.avatar_url(:thumb)), target: :_blank, style: "color:#cb2027;display:none;", onclick: "window.open(this.href, 'mywin', 'left=350,top=200,width=750,height=316,toolbar=1,resizable=0'); return false;" %>
+  <%= link_to "<i class='fa fa-pinterest'></i>Pin it".html_safe, pinterist_share_url(artist_url(@profile), @profile.user.avatar_url(:thumb)), target: :_blank, style: "color:#cb2027;display:none;", onclick: "window.open(this.href, 'mywin', 'left=350,top=200,width=750,height=316,toolbar=1,resizable=0'); return false;" %>
 </div>

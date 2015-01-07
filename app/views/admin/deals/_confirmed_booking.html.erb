@@ -1,6 +1,9 @@
 <%= content_tag :tr, id: "#{deal.state}_#{dom_id(deal)}" do %>
-    <td><%= deal.customer.name %></td>
-    <td><%= deal.profile.name %></td>
+    <td><%= link_to deal.customer.name, admin_user_path(deal.customer) %></td>
+    <td>
+        <%= link_to deal.profile.name, "#", data: { toggle: "modal", target: "#user_detail_#{deal.artist_id}" }  %>
+        <%= render "admin/users/modal_user_info", user: deal.artist %>
+    </td>
     <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
     <td><%= localized_price (deal.charged_price / 100), deal.currency if deal.charged_price.present? %></td>
     <td><%= localized_price deal.artist_price, deal.currency %></td>

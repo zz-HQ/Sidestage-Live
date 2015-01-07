@@ -55,7 +55,7 @@
 
 
 <h2>Pending Booking Requests</h2>
-<% if (pending_bookings = Deal.pending.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+<% if (pending_bookings = Deal.pending.ordered_by_start_at.includes([:customer, :artist, :conversation, :profile])).present? %>
     <table class="table table-striped table-condensed table-hover">
         <thead>
             <th>Customer</th>
@@ -66,8 +66,11 @@
         </thead>
         <% pending_bookings.each do |deal| %>
             <tr>
-                <td><%= deal.customer.name %></td>
-                <td><%= deal.profile.name %></td>
+                <td><%= link_to deal.customer.name, admin_user_path(deal.customer) %></td>
+                <td>
+                    <%= link_to deal.profile.name, "#", data: { toggle: "modal", target: "#user_detail_#{deal.artist_id}" }  %>
+                    <%= render "admin/users/modal_user_info", user: deal.artist %>
+                </td>
                 <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
                 <td><%= localized_price deal.artist_price, deal.currency %></td>
                 <td><%= l(deal.conversation.updated_at, format: :conversation) %></td>
@@ -79,7 +82,7 @@
 <% end %>
 
 <h2>Confirmed Bookings</h2>
-<% if (confirmed_bookings = Deal.dealed.not_paid_out.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+<% if (confirmed_bookings = Deal.dealed.not_paid_out.ordered_by_start_at.includes([:customer, :artist, :conversation, :profile])).present? %>
     <table class="table table-striped table-condensed table-hover">
         <thead>
             <th>Customer</th>
@@ -98,7 +101,7 @@
 <% end %>
 
 <h2>Confirmed Bookings (that haven't yet happened)</h2>
-<% if (confirmed_future_bookings = Deal.dealed.not_paid_out.latest.upcoming.future.includes([:customer, :artist, :conversation, :profile])).present? %>
+<% if (confirmed_future_bookings = Deal.dealed.not_paid_out.ordered_by_start_at.upcoming.future.includes([:customer, :artist, :conversation, :profile])).present? %>
     <table class="table table-striped table-condensed table-hover">
         <thead>
             <th>Customer</th>
@@ -118,7 +121,7 @@
 
 
 <h2>Past Booking</h2>
-<% if (confirmed_past_bookings = Deal.past.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+<% if (confirmed_past_bookings = Deal.past.ordered_by_start_at.includes([:customer, :artist, :conversation, :profile])).present? %>
     <table class="table table-striped table-condensed table-hover">
         <thead>
             <th>Customer</th>
@@ -130,8 +133,11 @@
         </thead>
         <% confirmed_past_bookings.each do |deal| %>
             <tr>
-                <td><%= deal.customer.name %></td>
-                <td><%= deal.profile.name %></td>
+                <td><%= link_to deal.customer.name, admin_user_path(deal.customer) %></td>
+                <td>
+                    <%= link_to deal.profile.name, "#", data: { toggle: "modal", target: "#user_detail_#{deal.artist_id}" }  %>
+                    <%= render "admin/users/modal_user_info", user: deal.artist %>
+                </td>
                 <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
                 <td><%= localized_price (deal.charged_price / 100), deal.currency if deal.charged_price.present? %></td>
                 <td><%= localized_price deal.artist_price, deal.currency %></td>
@@ -156,8 +162,11 @@
         </thead>
         <% declined_bookings.each do |deal| %>
             <tr>
-                <td><%= deal.customer.name %></td>
-                <td><%= deal.profile.name %></td>
+                <td><%= link_to deal.customer.name, admin_user_path(deal.customer) %></td>
+                <td>
+                    <%= link_to deal.profile.name, "#", data: { toggle: "modal", target: "#user_detail_#{deal.artist_id}" }  %>
+                    <%= render "admin/users/modal_user_info", user: deal.artist %>
+                </td>
                 <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
                 <td><%= localized_price deal.artist_price, deal.currency %></td>
                 <td><%= l(deal.updated_at, format: :conversation) %></td>
@@ -169,7 +178,7 @@
 <% end %>    
 
 <h2>Declined Booking Requests</h2>
-<% if (declined_requests = Deal.declined.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+<% if (declined_requests = Deal.declined.ordered_by_start_at.includes([:customer, :artist, :conversation, :profile])).present? %>
     <table class="table table-striped table-condensed table-hover">
         <thead>
             <th>Customer</th>
@@ -180,8 +189,11 @@
         </thead>
         <% declined_requests.each do |deal| %>
             <tr>
-                <td><%= deal.customer.name %></td>
-                <td><%= deal.profile.name %></td>
+                <td><%= link_to deal.customer.name, admin_user_path(deal.customer) %></td>
+                <td>
+                    <%= link_to deal.profile.name, "#", data: { toggle: "modal", target: "#user_detail_#{deal.artist_id}" }  %>
+                    <%= render "admin/users/modal_user_info", user: deal.artist %>
+                </td>
                 <td><%= link_to "View", admin_conversation_messages_path(deal.conversation), remote: true %></td>
                 <td><%= localized_price deal.artist_price, deal.currency %></td>
                 <td><%= l(deal.updated_at, format: :conversation) %></td>
@@ -193,7 +205,7 @@
 <% end %>
 
 <h2>Paid out Bookings</h2>
-<% if (paid_out_bookings = Deal.paid_out.latest.includes([:customer, :artist, :conversation, :profile])).present? %>
+<% if (paid_out_bookings = Deal.paid_out.ordered_by_start_at.includes([:customer, :artist, :conversation, :profile])).present? %>
     <table class="table table-striped table-condensed table-hover">
         <thead>
             <th>Customer</th>
