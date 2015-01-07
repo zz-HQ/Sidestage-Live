@@ -1,31 +1,29 @@
-<div class="wrap">
-    <div class="devise">
+<div class="devise">
 
-        <%= image_tag "logos/sidestage_brand_sm.png", alt: "Logo Brand", class: "logo_brand" %>
+    <%= image_tag "logos/sidestage_brand_sm.png", alt: "Logo Brand", class: "logo_brand" %>
 
-        <%= simple_form_for resource, as: resource_name, url: session_path(resource_name), id: "new-session"  do |f| %>
-            <div class="form-actions login-signup-actions">
-                <%= link_to "<i class='fa fa-facebook'></i> #{t(:"application.devise.facebook_login")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
+    <%= simple_form_for resource, as: resource_name, url: session_path(resource_name), id: "new-session"  do |f| %>
+        <div class="form-actions login-signup-actions">
+            <%= link_to "<i class='fa fa-facebook'></i> #{t(:"application.devise.facebook_login")}".html_safe, user_omniauth_authorize_path(:facebook), class: "btn btn-facebook" %>
 
-                <div class="separator">
-                    <span><%= t(:"application.devise.or") %></span>
-                </div>
+            <div class="separator">
+                <span><%= t(:"application.devise.or") %></span>
             </div>
-
-            <%= content_tag :section, class: "signup-with-email" do %>
-                <div class="form-inputs">
-                    <%= f.input :email, required: false, autofocus: true, label: false %>
-                    <%= f.input :password, required: false, label: false %>
-                </div>
-                <div class="form-actions login-signup-actions">
-                    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-                    <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: t(:"helpers.submit.disable_with") }%>
-                </div>
-            <% end %>
-        <% end %>
-
-        <div class="bottom-link">
-            <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name), class: "link" %>
         </div>
+
+        <%= content_tag :section, class: "signup-with-email" do %>
+            <div class="form-inputs">
+                <%= f.input :email, required: false, autofocus: true, label: false %>
+                <%= f.input :password, required: false, label: false %>
+            </div>
+            <div class="form-actions login-signup-actions">
+                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                <%= f.button :submit, value: t(:"helpers.submit.user.sign_in"), class: "btn", data: { disable_with: t(:"helpers.submit.disable_with") }%>
+            </div>
+        <% end %>
+    <% end %>
+
+    <div class="bottom-link">
+        <%= link_to t(:"application.links.forgot_password"), new_password_path(resource_name), class: "link" %>
     </div>
 </div>
