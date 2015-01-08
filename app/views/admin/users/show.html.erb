@@ -1,11 +1,11 @@
 <h1><%= resource.full_name %></h1>
 <div class="well well-lg">
-    <%= image_tag resource.avatar.mini.url if resource.has_avatar? %><br/>
+    <%= image_tag resource.avatar.mini.url if resource.has_avatar? %><br/><br/>
     <%= mail_to resource.email %><br/>
-    Phone: <%= resource.mobile_nr %><br/>
-    Signup date: <%= l resource.created_at %><br/>
-    Account confirmed: <%= l resource.confirmed_at if resource.confirmed_at.present? %><br/>
-    Total unread messages: <span class="badge"><%= resource.unread_message_counter %></span>
+    <strong>Phone:</strong> <%= resource.mobile_nr %><br/>
+    <strong>Account created:</strong> <%= l resource.created_at %><br/>
+    <strong>Account confirmed:</strong> <%= l resource.confirmed_at if resource.confirmed_at.present? %><br/><br/>
+    <strong>Total unread messages:</strong> <span class="badge"><%= resource.unread_message_counter %></span>
 </div>
 <% if resource.anything_captured_from_facebook? %>
     <div class="panel panel-default">
@@ -24,5 +24,34 @@
 <% end %>
 <% if resource.artist? %>
     <% @profile = resource.profile %>
-    <%= render partial: "artists/profile" %>
-<% end %>    
+    <%#= render partial: "artists/profile" %>
+    <table class="table table-striped table-hover">
+        <thead>
+            <th>City</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Photos</th>
+            <th>Header</th>
+            <th>Reviews</th>
+            <th>Bookings</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= @profile.location %></td>
+                <td><%= @profile.price %></td>
+                <td><%= @profile.about %></td>
+                <td><%= @profile.pictures.size %></td>
+                <td><%= @profile.avatar.blank? ? "No" : "Yes" %></td>
+                <td><%= @profile.reviews.size %></td>
+                <td><%= @profile.user.bookings.size %></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <% unless @profile.soundcloud.blank? %>
+        <div class="pull-left" style="250px;width:480px;"><%= soundcloud_widget %></div>
+    <% end %>
+    <% unless @profile.youtube.blank? %>
+        <div class="pull-right" style="height:250px;width:480px;"><%= youtube_widget_res %></div>
+    <% end %>
+<% end %>

@@ -36,6 +36,11 @@ module Account::ProfilesHelper
     content_tag :iframe, nil, width: "100%", height: "675", scrolling: "no", frameborder: "no", src: youtube_src, class: "yt"
   end
 
+  def youtube_widget_res
+    youtube_src = "//www.youtube.com/embed/#{youtube_id}?rel=0&autoplay=0"
+    content_tag :iframe, nil, width: "100%", height: "100%", scrolling: "no", frameborder: "no", src: youtube_src, class: "yt"
+  end
+
   def youtube_thumbnail
     link_to "#", data: { lightbox: :html, target: "[data-container='yt-widget']" } do
         image_tag "https://img.youtube.com/vi/#{youtube_id}/hqdefault.jpg"
