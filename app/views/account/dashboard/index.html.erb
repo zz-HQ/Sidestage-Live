@@ -1,52 +1,84 @@
 <div id="dashboard" class="container">
     
-    <!-- Start Bar -->
-    <%= link_to "Dashboard", account_dashboard_path %>
-    <%= link_to "Inbox", account_conversations_path %>
-    <%= link_to t(:"application.menu.your_profile"), style_account_profile_path if current_user.artist? %>
-    <%= link_to t(:"application.menu.my_bookings"), account_bookings_path %>
-    <%= link_to t(:"application.menu.account"), account_personal_path %>
-    <!-- End Bar -->
-	
-	<!-- start alerts -->
-	<% unless current_user.confirmed? %>
-		<h3>Alerts</h3>
-	    <%= t(:"application.alerts.confirm_html", password_reset_path: resend_confirmation_account_personal_path) %>
-	<% end %>
-	<!-- end alerts -->
-	
-    <!-- Sidebar photo -->
-    <%= image_tag current_user.avatar.thumb.url %><br>
-    <%= current_user.profile_name %><br>
-    <% if current_user.artist? %>
-	    <%= link_to t(:"application.menu.your_profile"), style_account_profile_path %><br>
-	    <%= link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path, target: :_blank %>
-	<% end %>
-    <!-- End Sidebar photo -->
-    	
+    <nav class="navi-bar">
+        <div class="full-w">
+            <div class="row">
+                <%= link_to "Dashboard", account_dashboard_path, class: "active" %>
+                <%= link_to "Inbox", account_conversations_path %>
+                <%= link_to t(:"application.menu.your_profile"), style_account_profile_path if current_user.artist? %>
+                <%= link_to t(:"application.menu.my_bookings"), account_bookings_path %>
+                <%= link_to t(:"application.menu.account"), account_personal_path %>
+            </div>
+        </div>
+    </nav>
+
+    <aside>
+        <section class="box profile">
+            <%= image_tag current_user.avatar.thumb.url %>
+            <div class="body">
+                <h1><%= current_user.profile_name %></h1>
+                <% if current_user.artist? %>
+                    <%= link_to t(:"application.menu.your_profile"), style_account_profile_path, class: "link" %>
+                    <%= link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path, target: :_blank, class: "link" %>
+                <% end %>
+            </div>
+        </section>
+
+        <div class="links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><%= link_to "Your Bookings", account_bookings_path %></li>
+                <li><%= link_to "Account", account_personal_path %></li>
+                <li><%= link_to "Sidestage FAQ", faq_path %></li>
+            </ul>
+        </div>
+
+        <div class="links">
+            <%= render partial: "application/community_links" %>
+        </div>
+    </aside>
+
 	<div class="content">
+
+        <!-- start alerts -->
+        <% unless current_user.confirmed? %>
+            <section class="box">
+                <header><h3>Alerts</h3></header>
+                <div class="body">
+                   <%= t(:"application.alerts.confirm_html", password_reset_path: resend_confirmation_account_personal_path) %>
+                </div>
+            </section>
+        <% end %>
+        <!-- end alerts -->
 	    
         <!-- Start Messages -->
-        <%= Message.model_name.human(count: 2) %>
-        <% current_user.unarchived_conversations.limit(5).each do |conversation| %>
-            <%= content_tag :div, class: [:messages, conversation.messages.last.try(:read?) ? :read : :unread] do %>
-            	<%= link_to(account_conversation_path(conversation)) do %>
-            		<div class="photo">
-            			<%= image_tag conversation.negotiator_for(current_user).avatar.thumb.url, class: "avatar" %>
-            		</div>
-            		<div class="body">
-            			<%= simple_format(strip_tags(system_message_body(conversation)).truncate(75)) %>
-            			<%= conversation.negotiator_for(current_user).profile_name %> -- <span><%= l conversation.last_message_at, format: :conversation %></span>
-            		</div>
-            	<% end %>
+        <section class="box">
+            <header><h3><%= Message.model_name.human(count: 2) %></h3></header>
 
-            	<div class="archive">
-            	    <%= "Unread" unless conversation.messages.last.try(:read?) %>
-            		<%= link_to "Archive", archive_account_conversation_path(conversation), method: :put unless conversation.archived_by?(current_user) %>
-            	</div>
-            <% end %>
-        <% end %>
-        <%= link_to t(:"application.links.view_all_messages"), account_conversations_path %>
+            <div id="messages" class="body messages-list">
+                <% current_user.unarchived_conversations.limit(5).each do |conversation| %>
+                    <%= content_tag :div, class: :messages do %>
+                    	<%= link_to(account_conversation_path(conversation), class: [conversation.messages.last.try(:read?) ? :read : :unread]) do %>
+                    		<div class="ava">
+                    			<%= image_tag conversation.negotiator_for(current_user).avatar.thumb.url, class: "avatar" %>
+                    		</div>
+                    		<div class="body">
+                    			<%= simple_format(strip_tags(system_message_body(conversation)).truncate(75)) %>
+                    			<p class="bottom"><%= conversation.negotiator_for(current_user).profile_name %> –– <span><%= l conversation.last_message_at, format: :conversation %></span></p>
+                    		</div>
+                    	<% end %>
+
+                    	<div class="actions">
+                    	    <%= "<p>Unread</p>".html_safe unless conversation.messages.last.try(:read?) %>
+                    		<%= link_to "Archive", archive_account_conversation_path(conversation), method: :put unless conversation.archived_by?(current_user) %>
+                    	</div>
+                    <% end %>
+                <% end %>
+            </div>
+            <footer>
+                <%= link_to t(:"application.links.view_all_messages"), account_conversations_path %>
+            </footer>
+        </section>
         <!-- End Messages -->
         
 	</div>

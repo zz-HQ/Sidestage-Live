@@ -1,0 +1,172 @@
+.navi-bar
+	+fill-parent
+	height: 34px
+	margin-bottom: 20px
+
+	.full-w
+		position: absolute
+		left: 0
+		width: 100%
+		background-color: #444
+
+		.row
+			+outer-container
+			padding: 0 19px
+
+			$color: #CCC
+			$active: #EFEFEF
+			a
+				color: $color
+				padding: 6px 0
+				float: left
+				display: block
+				font-weight: 400
+				font-size: 14px
+				margin-left: 15px
+				border-bottom: 3px solid transparent
+				+transition( 400ms ceaser($easeOutExpo))
+
+				&:first-child
+					margin-left: 50px
+
+				&.active,
+				&:hover
+					color: $active
+					border-color: $color
+
+#dashboard
+	padding: 0
+	+fill-parent
+
+	$color: #888
+
+	.box
+		border: $border
+		+border-radius($border-radius)
+		+span-columns(8)
+		margin-bottom: 30px
+
+		header
+			border-bottom: $border
+			+fill-parent
+			margin: 0
+
+			h3
+				padding: 16px 22px
+				font-size: 16px
+				color: $color
+				margin: 0
+
+		footer
+			+span-columns(8)
+			text-align: center
+
+			a
+				display: block
+				color: $text-color-light
+				padding: 10px
+
+	aside
+		+span-columns(2 of 11)
+
+		.profile	
+			text-align: center
+
+			.body
+				padding: 15px
+
+				h1
+					font-size: 30px
+					margin: 0 0 20px
+
+				a
+					display: block
+					color: $red
+					margin-bottom: 5px
+					text-decoration: none
+					font-size: 14px
+					font-weight: 400
+
+		.links
+			margin: 20px 0
+			padding-left: 20px
+
+			h4
+				+footer-headline-style
+
+			a
+				+footer-link-style
+
+	.content
+		+span-columns(8 of 11)
+		padding-left: 30px
+
+
+.messages-list
+	+span-columns(8)
+
+	.messages
+		+span-columns(8)
+		border-bottom: $border
+
+		> *
+			float: left
+			padding: 16px
+
+		> a
+			border-left: 4px solid transparent
+			display: block
+			width: 80%
+
+			&.unread
+				border-left-color: $red
+
+				.ava img
+					+opacity(1)
+
+				.body p
+					color: #555
+
+					&.bottom
+						color: #AAA
+
+			.ava
+				width: 50px
+				float: left
+				margin-right: 20px
+
+				img
+					+border-radius(50%)
+					+opacity(0.7)
+
+			.body
+				float: left
+
+				p
+					color: #AAA
+					line-height: 1.9
+
+					&.bottom
+						font-size: 12px
+						color: #BBB
+
+		.actions
+			width: 20%
+			text-align: center
+			font-size: 12px
+			font-weight: 400
+			line-height: 1.9
+
+			> p
+				color: $flash_green
+				font-size: 12px
+				font-weight: 600
+
+			a:first-child
+				line-height: 4
+
+
+
+
+
+

@@ -16,24 +16,13 @@ $red-color: #FF0423
     position: relative
 
     a
-      color: inherit
-      font-size: 18px
-
-      &:hover
-        text-decoration: underline
+      +footer-link-style
 
     > div
       +span-columns(1 of 3)
     
     h4
-      margin: 0 0 10px
-      color: $red-color
-      font-weight: 300
-      font-size: 18px
-
-    ul
-      margin: 0
-      padding: 0
+      +footer-headline-style
 
   .right
     +span-columns(4)

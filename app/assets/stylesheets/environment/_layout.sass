@@ -2,7 +2,7 @@
   +outer-container
 
 #main > .wrap
-  padding: 25px 19px 50px
+  padding: 0 19px 50px
   min-width: 1238px
   min-height: 600px
   margin-top: 80px
@@ -26,6 +26,7 @@ body > #wrap
 ul
   margin: 0
   padding: 0
+  list-style: none
 
 
 // -------- CLEARFIX
@@ -51,7 +52,8 @@ ul
 
 $sidebar-bg-color: #f4f4f4
 .container 
-  +outer-container
+  +fill-parent
+  padding-top: 25px
 
   header
     +bigger-font
