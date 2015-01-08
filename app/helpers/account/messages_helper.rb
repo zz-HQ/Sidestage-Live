@@ -18,7 +18,7 @@ module Account::MessagesHelper
   end
   
   def system_message_body(message)
-    json = JSON.parse(message.body)
+    json = JSON.parse(message.body) rescue {}
     case json["source"]
     when "Deal"
       deal_system_message_body(message)

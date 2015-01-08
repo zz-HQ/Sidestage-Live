@@ -73,6 +73,18 @@ class Message < ActiveRecord::Base
   before_create :attach_to_conversation
   
   after_create :update_conversation_order, :update_receiver_counter, :notify_receiver
+
+  #
+  # Instance Methods
+  # ---------------------------------------------------------------------------------------
+  #
+  #
+  #
+  #
+  
+  def read?
+    read_at.present?
+  end
   
   #
   # Private

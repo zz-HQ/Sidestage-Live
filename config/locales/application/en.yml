@@ -25,8 +25,11 @@ en:
       view_profiles: View Profiles
       reset_filters: Reset filters
       like_us: Like us on Facebook
+      view_all_messages: View all Messages
       pagination:
         view_more: View more
+    alerts:
+      confirm_html: "Confirm your email address by clicking the link we emailed you. If you cant find the email, check your spam folder or <a data-method='put' href='%{password_reset_path}'>request a new confirmation email</a>."    
     social:
       share:
         facebook:
