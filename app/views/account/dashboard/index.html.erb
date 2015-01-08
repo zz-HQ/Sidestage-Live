@@ -44,8 +44,13 @@
         <% unless current_user.confirmed? %>
             <section class="box">
                 <header><h3>Alerts</h3></header>
-                <div class="body">
-                   <%= t(:"application.alerts.confirm_html", password_reset_path: resend_confirmation_account_personal_path) %>
+                <div id="alerts" class="list body">
+                    <div class="item">
+                        <p><%= t(:"application.alerts.confirm_html", password_reset_path: resend_confirmation_account_personal_path) %></p>
+                        <div class="actions">
+                            <span class="close">&#xd7;</span>
+                        </div>
+                    </div>
                 </div>
             </section>
         <% end %>
@@ -55,9 +60,9 @@
         <section class="box">
             <header><h3><%= Message.model_name.human(count: 2) %></h3></header>
 
-            <div id="messages" class="body messages-list">
+            <div id="messages" class="body list">
                 <% current_user.unarchived_conversations.limit(5).each do |conversation| %>
-                    <%= content_tag :div, class: :messages do %>
+                    <%= content_tag :div, class: [:messages, :item] do %>
                     	<%= link_to(account_conversation_path(conversation), class: [conversation.messages.last.try(:read?) ? :read : :unread]) do %>
                     		<div class="ava">
                     			<%= image_tag conversation.negotiator_for(current_user).avatar.thumb.url, class: "avatar" %>
