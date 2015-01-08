@@ -28,13 +28,6 @@
     <nav id="main-nav">
 
       <%- if user_signed_in? -%>
-        
-        <a href="<%= account_conversations_path %>" class="messages">
-          <div class="icon"><i class="fa fa-envelope-o"></i></div>
-          <% if current_user.unread_message_counter.to_i > 0 %>
-            <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>
-          <% end %>
-        </a>
 
         <div class="user">
           <div class="navi-avatar">
@@ -79,6 +72,13 @@
           <div class="username"><%= current_user.name %></div>
           <div class="arrow"></div>
         </div>
+
+        <a href="<%= account_conversations_path %>" class="messages">
+          <div class="icon"><i class="fa fa-envelope-o"></i></div>
+          <% if current_user.unread_message_counter.to_i > 0 %>
+            <div class="indicator"><%= current_user.unread_message_counter.to_i %></div>
+          <% end %>
+        </a>
 
       <%- else -%>
         <span>
