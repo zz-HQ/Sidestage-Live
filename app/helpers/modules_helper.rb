@@ -35,12 +35,9 @@ module ModulesHelper
   end
 
   def read_more(text, length = 300)
-    if !text.blank? && text.size > length
+    if text.to_s.size > length
       text = "#{truncate(strip_tags(text), length: length)}"
-    else
-      text = text
     end
-
     text
   end
 
