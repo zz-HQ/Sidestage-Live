@@ -63,7 +63,7 @@
             <div id="messages" class="body list">
                 <% current_user.unarchived_conversations.limit(5).each do |conversation| %>
                     <%= content_tag :div, class: [:messages, :item] do %>
-                    	<%= link_to(account_conversation_path(conversation), class: [conversation.messages.last.try(:read?) ? :read : :unread]) do %>
+                    	<%= link_to(account_conversation_path(conversation), class: [conversation.messages.unread.by_receiver(current_user.id).exists? ? :unread : :read]) do %>
                     		<div class="ava">
                     			<%= image_tag conversation.negotiator_for(current_user).avatar.thumb.url, class: "avatar" %>
                     		</div>
@@ -74,7 +74,7 @@
                     	<% end %>
 
                     	<div class="actions">
-                    	    <%= "<p>Unread</p>".html_safe unless conversation.messages.last.try(:read?) %>
+                    	    <%= "<p>Unread</p>".html_safe if conversation.messages.unread.by_receiver(current_user.id).exists?  %>
                     		<%= link_to "Archive", archive_account_conversation_path(conversation), method: :put unless conversation.archived_by?(current_user) %>
                     	</div>
                     <% end %>
