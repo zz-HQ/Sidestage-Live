@@ -1,11 +1,69 @@
 <h1><%= resource.full_name %></h1>
-<div class="well well-lg">
-    <%= image_tag resource.avatar.mini.url if resource.has_avatar? %><br/><br/>
-    <%= mail_to resource.email %><br/>
-    <strong>Phone:</strong> <%= resource.mobile_nr %><br/>
-    <strong>Account created:</strong> <%= l resource.created_at %><br/>
-    <strong>Account confirmed:</strong> <%= l resource.confirmed_at if resource.confirmed_at.present? %><br/><br/>
-    <strong>Total unread messages:</strong> <span class="badge"><%= resource.unread_message_counter %></span>
+<div class="well well-lg col-md-12">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="col-md-4">
+                <%= image_tag resource.avatar.mini.url if resource.has_avatar? %>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="btn btn-success" style="margin-bottom:10px;">Publish</a>
+                <a href="#" class="btn btn-success">Disable</a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="btn btn-danger">Feature?</a>
+            </div>
+        </div>
+
+        <div class="pull-right">
+            Delete Profile
+            <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top:20px;">
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <%= mail_to resource.email %><br/>
+                <strong>Phone:</strong> <%= resource.mobile_nr %> <span class="badge"><%= resource.mobile_nr_confirmed_at if resource.mobile_nr_confirmed_at.present? %></span><br/><br/>
+
+                <strong>Account created:</strong> <%= l resource.created_at %><br/>
+                <strong>Account confirmed:</strong> <%= l resource.confirmed_at if resource.confirmed_at.present? %><br/><br/>
+                <strong>Total unread messages:</strong> <span class="badge"><%= resource.unread_message_counter %></span>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <p>
+                <span>Rock</span>,
+                <span>Guitar</span>,
+                <span>X</span>
+            </p>
+            <a href="#">Edit tags</a>
+
+            <p style="margin-top: 20px;"><strong>Payout Ready</strong></p>
+            <p>
+                <label class="label label-success" style="margin-right: 20px;">Yes</label>
+                <a href="#">Details</a>
+            </p>
+
+            <p style="margin-top: 20px;">
+                <a href="#" style="margin-right: 20px;">Facebook</a>
+                <a href="#">Twitter</a>
+            </p>
+        </div>
+
+        <div class="col-md-6">
+            <% if resource.artist? %>
+                <% @profile = resource.profile %>
+                <% unless @profile.soundcloud.blank? %>
+                    <div class="col-md-6" style="height:150px;"><%= soundcloud_widget_res %></div>
+                <% end %>
+                <% unless @profile.youtube.blank? %>
+                    <div class="col-md-6" style="height:150px;"><%= youtube_widget_res %></div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
 </div>
 <% if resource.anything_captured_from_facebook? %>
     <div class="panel panel-default">
@@ -47,11 +105,4 @@
             </tr>
         </tbody>
     </table>
-
-    <% unless @profile.soundcloud.blank? %>
-        <div class="pull-left" style="250px;width:480px;"><%= soundcloud_widget %></div>
-    <% end %>
-    <% unless @profile.youtube.blank? %>
-        <div class="pull-right" style="height:250px;width:480px;"><%= youtube_widget_res %></div>
-    <% end %>
 <% end %>

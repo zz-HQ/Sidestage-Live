@@ -12,8 +12,8 @@ module Account::ProfilesHelper
     end
     prices.min
   end
-  
-  def soundcloud_widget(iframe = nil)
+
+  def soundcloud
     iframe = @profile.soundcloud if iframe.blank?
     track_id = @profile.soundcloud_id_from_iframe(iframe)
     return nil if track_id.blank?
@@ -24,7 +24,16 @@ module Account::ProfilesHelper
     else
         iframe_src = "http#{ "s" unless browser.safari? }://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/#{track_id}&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=true&visual=true"
     end
+  end
+  
+  def soundcloud_widget(iframe = nil)
+    iframe_src = soundcloud
     content_tag :iframe, nil, width: "100%", height: "250", scrolling: "no", frameborder: "no", src: iframe_src, class: "sc"
+  end
+
+  def soundcloud_widget_res(iframe = nil)
+    iframe_src = soundcloud
+    content_tag :iframe, nil, width: "100%", height: "100%", scrolling: "no", frameborder: "no", src: iframe_src, class: "sc"
   end
 
   def youtube_id
