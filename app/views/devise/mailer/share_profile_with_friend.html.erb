@@ -1,0 +1,22 @@
+<div style="float: left; width: 100%; text-align: center; margin-bottom: 30px;">
+	<img src="<%= @profile.avatar.url(:preview) %>" style="border-radius:50px; border: 3px solid #DDD;">
+	<%= @profile.name %>
+</div>
+
+<div style="float: left; width: 100%; text-align: center; margin-bottom: 30px;">
+	<img src="<%= @profile.user.avatar.url(:thumb) %>" width="100" style="border-radius:50px; border: 3px solid #DDD;">
+</div>
+
+<div style="float: left; width: 100%; text-align: center; margin-bottom: 30px;">
+	Book <%= @profile.name %> on Sidestage!
+</div>
+
+<% if @coupon.present? %>
+    <div style="float: left; width: 100%; text-align: center; margin-bottom: 30px;">
+    	Get <%= number_to_currency(@coupon.amount, unit: @currency.symbol, precision: 0) %> off when booking by using code <%= @coupon.code %>
+    </div>
+<% end %>
+
+<div style="float: left; width: 100%; text-align: center; margin-bottom: 30px;">
+	<%= link_to "Check out #{@profile.name}", artist_url(@profile), style: "padding: 20px 22px 18px; background: #D0021B; color: #fff; font-weight: 600; margin-bottom: 30px; font-size: 18px; border-radius: 4px; display: inline-block; text-decoration: none;" %>
+</div>

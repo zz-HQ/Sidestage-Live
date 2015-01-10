@@ -27,6 +27,7 @@ class Coupon < ActiveRecord::Base
   scope :latest, -> { order("coupons.id DESC") }
   scope :active, -> { where("active IS ? OR active = ?", nil, true) }
   scope :valid, -> { where("expires_at IS ? OR expires_at > ?", nil, Time.now) }
+  scope :by_code, ->(code) { where(code: code) }
   
   #
   # Instance Methods

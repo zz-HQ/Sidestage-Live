@@ -41,7 +41,7 @@
 	<div class="content">
 
         <!-- start alerts -->
-        <% unless false#current_user.confirmed? %>
+        <% unless current_user.confirmed? %>
             <section class="box">
                 <header><h3>Alerts</h3></header>
                 <div id="alerts" class="list body">
@@ -55,30 +55,31 @@
             </section>
         <% end %>
         <!-- end alerts -->
-
-        <section class="box">
-            <div class="body share-to-friends">
-                <h3>Share your profile!</h3>
-                <p>Let people know they can book you on Sidestage.</p>
-                <div class="form">
-                    <form>
-                        <input type="text" placeholder="Add friends' email addresses" />
-                        <input type="submit" value="Send" class="btn" />
-                    </form>
-                    <div class="share">
-                        <%= link_to "<i class='fa fa-facebook'></i> Facebook".html_safe, "http://www.facebook.com/sharer/sharer.php?u=#{artist_url(current_user.profile)}", class: "btn btn-facebook btn-inline" %>
-
-                        <span>Share:</span>
-                        <%= link_to "<i class='fa fa-twitter'></i>".html_safe, "https://twitter.com/intent/tweet?text=You%20can%20now%20book%20me%20on%20Sidestage&url=#{artist_url(current_user.profile)}&via=sidestagehq", class: "light" %>
+        <% if current_user.artist? %>
+            <section class="box">
+                <div class="body share-to-friends">
+                    <h3><%= t(:"application.dashboard.share.title") %></h3>
+                    <p><%= t(:"application.dashboard.share.desc") %></p>
+                    <div class="form">
+                        <div id="form_success_message" style="display:none;"><%= t(:"application.dashboard.share.form_success_message") %></div>
+                        <%= simple_form_for :friends, url: account_share_profiles_path, remote: true, html: { id: :share_profile_with_friends } do |f| %>
+                            <%= f.input :emails, as: :string, required: false, wrapper: false, label: false %>
+                            <%= f.submit class: "btn" %>
+                        <% end %>
+                        <div class="share">
+                            <%= link_to "<i class='fa fa-facebook'></i> Facebook".html_safe, facebook_share_url(artist_url(current_user.profile)), class: "btn btn-facebook btn-inline" %>
+                            <span>Share:</span>
+                            <%= link_to "<i class='fa fa-twitter'></i>".html_safe, twitter_share_url(t(:"application.dashboard.invite.twitter"), artist_url(current_user.profile)), class: "light" %>
+                        </div>
                     </div>
+                    <p><%= t(:"application.dashboard.share.email_field_hint") %></p>
                 </div>
-                <p>Separate multiple emails with commas.</p>
-            </div>
-        </section>
+            </section>
+        <% end %>
 	    
         <!-- Start Messages -->
         <section class="box">
-            <header><h3><%= Message.model_name.human(count: 2) %></h3></header>
+            <header><h3><%= Message.model_name.human(count: 2) %> (<%= current_user.unread_message_counter %> new)</h3></header>
 
             <div id="messages" class="body list">
                 <% current_user.unarchived_conversations.limit(5).each do |conversation| %>

@@ -111,7 +111,9 @@ en:
       location_search:
         location: "Where's your event?"
       picture:
-        caption: "What are the highlights of this photo?"    
+        caption: "What are the highlights of this photo?"
+      friends:
+        emails: "Add friends' email addresses"
   helpers:
     submit:
       create: 'Create %{model}'

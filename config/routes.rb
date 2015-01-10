@@ -49,7 +49,9 @@ Airmusic::Application.routes.draw do
       concern :paginatable do
         get '(page/:page)', :action => :index, :on => :collection, :as => ''
       end
-
+      
+      resources :share_profiles
+      
       resource :mobile_numbers, only: [:show, :destroy, :update] do
         patch :confirm
       end

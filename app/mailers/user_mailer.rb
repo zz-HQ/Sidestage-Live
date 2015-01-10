@@ -47,6 +47,16 @@ class UserMailer < Devise::Mailer
     end
   end
   
+  def share_profile_with_friend(profile, friends_email)
+    @profile = profile
+    @coupon = @profile.share_with_friend_coupon
+    @currency = Currency.by_name(@coupon.currency)
+    mail(to: friends_email, from: "invite@sidestage.com", subject: "#{@profile.name} is now on Sidestage") do |format|
+      format.text
+      format.html
+    end
+  end
+  
   def send_sms
     @user.send_sms(t(:"view.messages.sms", partner_name: @message.sender.profile_name))
   end

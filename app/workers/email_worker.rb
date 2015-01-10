@@ -1,8 +1,8 @@
 class EmailWorker
   include Sidekiq::Worker
   
-  def perform(method, id)
-    send(method, id)
+  def perform(method, id, optional=nil)
+    optional.nil? ? send(method, id) : send(method, id, optional)
   end
   
   def event_invitation_mail(event_invitation_id)
@@ -26,6 +26,11 @@ class EmailWorker
   def profile_published_confirmation(profile_id)
     profile = Profile.where(id: profile_id).first
     UserMailer.profile_published_confirmation(profile).deliver
+  end
+  
+  def share_profile_with_friend(id, email)
+    profile = Profile.find(id)
+    UserMailer.share_profile_with_friend(profile, email).deliver
   end
 
 end
