@@ -34,17 +34,17 @@
 					color: $active
 					border-color: $color
 
+$color-light: #777
 #dashboard
 	padding: 0
 	+fill-parent
-
-	$color: #888
 
 	.box
 		border: $border
 		+border-radius($border-radius)
 		+span-columns(8)
 		margin-bottom: 30px
+		color: $color-light
 
 		header
 			border-bottom: $border
@@ -54,7 +54,7 @@
 			h3
 				padding: 16px 22px
 				font-size: 16px
-				color: $color
+				color: $color-light
 				margin: 0
 
 		footer
@@ -101,6 +101,60 @@
 	.content
 		+span-columns(8 of 11)
 		padding-left: 30px
+
+.box .share-to-friends
+	float: left
+	padding: 15px 20px
+
+	> *
+		float: left
+		+fill-parent
+
+	h3
+		font-size: 24px
+		margin: 0 0 5px
+
+	p
+		margin: 0
+
+	.form
+		margin-top: 20px
+
+		form
+			+span-columns(5)
+
+			input
+				float: left
+				margin: 0
+
+				&[type="text"]
+					width: 75%
+					+border-top-right-radius(0)
+					+border-bottom-right-radius(0)
+					border-right: 0
+
+				&[type="submit"]
+					padding: 11px
+					+border-top-left-radius(0)
+					+border-bottom-left-radius(0)
+					width: 25%
+
+		.share
+			+span-columns(3)
+			+omega
+			font-size: 14px
+
+			.btn-facebook
+				padding-left: 50px
+				padding-right: 50px
+				margin-right: 20px
+
+			a
+				display: inline-block
+
+				&.light
+					color: $color-light
+
 
 
 .list

@@ -41,7 +41,7 @@
 	<div class="content">
 
         <!-- start alerts -->
-        <% unless current_user.confirmed? %>
+        <% unless false#current_user.confirmed? %>
             <section class="box">
                 <header><h3>Alerts</h3></header>
                 <div id="alerts" class="list body">
@@ -55,6 +55,26 @@
             </section>
         <% end %>
         <!-- end alerts -->
+
+        <section class="box">
+            <div class="body share-to-friends">
+                <h3>Share your profile!</h3>
+                <p>Let people know they can book you on Sidestage.</p>
+                <div class="form">
+                    <form>
+                        <input type="text" placeholder="Add friends' email addresses" />
+                        <input type="submit" value="Send" class="btn" />
+                    </form>
+                    <div class="share">
+                        <%= link_to "<i class='fa fa-facebook'></i> Facebook".html_safe, "http://www.facebook.com/sharer/sharer.php?u=#{artist_url(current_user.profile)}", class: "btn btn-facebook btn-inline" %>
+
+                        <span>Share:</span>
+                        <%= link_to "<i class='fa fa-twitter'></i>".html_safe, "https://twitter.com/intent/tweet?text=You%20can%20now%20book%20me%20on%20Sidestage&url=#{artist_url(current_user.profile)}&via=sidestagehq", class: "light" %>
+                    </div>
+                </div>
+                <p>Separate multiple emails with commas.</p>
+            </div>
+        </section>
 	    
         <!-- Start Messages -->
         <section class="box">
