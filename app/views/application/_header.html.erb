@@ -37,7 +37,7 @@
           <div class="dropdown">
             <i class="fa fa-caret-up"></i>
             <hr>
-            <%= link_to "Dashboard", account_dashboard_path unless Rails.env.production? %>
+            <%= link_to "Dashboard", account_dashboard_path %>
             <% if current_user.profile.present? && current_user.profile.persisted? %>
                 <%= link_to t(:"application.menu.invite_friends"), "#", data: { lightbox: :html, target: "[data-container='artist-invite-friend']" } %>
                 <div style="display:none;" data-container="artist-invite-friend">
