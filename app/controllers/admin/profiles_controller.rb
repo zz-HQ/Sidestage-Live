@@ -17,6 +17,11 @@ class Admin::ProfilesController < Admin::ResourcesController
     resource.toggle_admin_disabled!
     redirect_to :back
   end
+
+  def toggle_featured
+    resource.toggle_featured!
+    redirect_to :back
+  end
   
   def tags
     resource.tag_list = permitted_params[:profile][:tag_list]

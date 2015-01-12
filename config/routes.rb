@@ -146,7 +146,8 @@ Airmusic::Application.routes.draw do
       
       resources :profiles do
         member do
-          put :toggle_admin_disabled          
+          put :toggle_admin_disabled
+          put :toggle_featured
           put :toggle
           put :tags
         end

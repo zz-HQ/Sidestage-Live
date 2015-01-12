@@ -184,6 +184,10 @@ class Profile < ActiveRecord::Base
     self.admin_disabled_at = admin_disabled_at.present? ? nil : Time.now
     save!
   end
+
+  def toggle_featured!
+    update_attribute :featured, !featured?
+  end
   
   def admin_disabled?
     self.admin_disabled_at.present?

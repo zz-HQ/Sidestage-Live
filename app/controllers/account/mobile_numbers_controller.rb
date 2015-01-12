@@ -34,7 +34,11 @@ class Account::MobileNumbersController < AuthenticatedController
       resource.send_otp_code
       flash.now[:notice] = t(:"flash.account.mobile_numbers.create.notice")
     end
-    render :show
+    respond_to do |format|
+      format.html{ render :show }
+      format.js{}
+    end
+    
   end
   
   def confirm

@@ -81,12 +81,12 @@
 	    <% unless current_user.mobile_nr_confirmed? %>
             <section class="box">
                 <div class="body share-to-friends">
-                    <h3><%= t(:"application.ashboard.phone.title") %></h3>
+                    <h3><%= t(:"application.dashboard.phone.title") %></h3>
                     <p><%= t(:"application.dashboard.phone.desc") %></p>
 	                <div class="form">
-	                    
+	                    <%= render "mobile_verification_form", user: User::AsMobileNumber.find(current_user.id) %>
 	                </div>
-	            </dov>
+	            </div>
 	        </section>
 	    <% end %>
 

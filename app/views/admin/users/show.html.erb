@@ -1,5 +1,5 @@
 <% @profile = resource.profile %>
-<h1><%= resource.full_name %></h1>
+<h1><%= resource.full_name %> <%= link_to "backdoor", backdoor_admin_user_path(resource), class: "badge" %></span></h1>
 <div class="well well-lg col-md-12">
     <div class="col-md-12">
         <div class="col-md-4">
@@ -8,13 +8,13 @@
             </div>
             <% if @profile.present? %>
                 <div class="col-md-4">
-                    <%= link_to "Publish", toggle_admin_profile_path(@profile), class: "btn btn-success", style: "margin-bottom:10px;" unless @profile.published? %>
-                    <%= link_to "Unpublish", toggle_admin_profile_path(@profile), class: "btn btn-success", style: "margin-bottom:10px;" if @profile.published? %>
-                    <%= link_to "Disable", toggle_admin_disabled_admin_profile_path(@profile), class: "btn btn-success" unless @profile.admin_disabled? %>
-                    <%= link_to "Enable", toggle_admin_disabled_admin_profile_path(@profile), class: "btn btn-success" if @profile.admin_disabled? %>
+                    <%= link_to "Publish", toggle_admin_profile_path(@profile), method: :put, class: "btn btn-success", style: "margin-bottom:10px;" unless @profile.published? %>
+                    <%= link_to "Unpublish", toggle_admin_profile_path(@profile), method: :put, class: "btn btn-success", style: "margin-bottom:10px;" if @profile.published? %>
+                    <%= link_to "Disable", toggle_admin_disabled_admin_profile_path(@profile), method: :put, class: "btn btn-success" unless @profile.admin_disabled? %>
+                    <%= link_to "Enable", toggle_admin_disabled_admin_profile_path(@profile), method: :put, class: "btn btn-success" if @profile.admin_disabled? %>
                 </div>
                 <div class="col-md-4">
-                    <a href="#" class="btn btn-danger">Feature?</a>
+                    <%= link_to @profile.featured? ? "Unfeature?" : "Feature?", toggle_featured_admin_profile_path(@profile), method: :put, class: "btn btn-danger" %>
                 </div>
             <% end %>
         </div>
@@ -39,36 +39,36 @@
             </div>
         </div>
 
-        <div class="col-md-2">
-            <p>
-                <span>Rock</span>,
-                <span>Guitar</span>,
-                <span>X</span>
-            </p>
-            <a href="#">Edit tags</a>
+        <% if @profile.present? %>
+            <div class="col-md-2">
+                <p>
+                    <%= @profile.genres.map(&:name).join(", ") %>
+                </p>
+                <a href="#">Edit tags</a>
 
-            <p style="margin-top: 20px;"><strong>Payout Ready</strong></p>
-            <p>
-                <label class="label label-success" style="margin-right: 20px;">Yes</label>
-                <a href="#">Details</a>
-            </p>
+                <p style="margin-top: 20px;"><strong>Payout Ready</strong></p>
+                <p>
+                    <label style="margin-right: 20px;"><%= bool_label(resource.paymentable?) %></label>
+                    <%= link_to "Details", "#", data: { toggle: "modal", target: "#bank_details_#{dom_id(@profile)}" } %>
+                    <%= render "modal_profile_bank_details", profile: @profile, id: "bank_details_#{dom_id(@profile)}" %>                    
+                </p>
 
-            <p style="margin-top: 20px;">
-                <a href="#" style="margin-right: 20px;">Facebook</a>
-                <a href="#">Twitter</a>
-            </p>
-        </div>
+                <p style="margin-top: 20px;">
+                    <%= link_to "Facebook", @profile.facebook, style: "margin-right: 20px;" if @profile.facebook.present? %>
+                    <%= link_to "Twitter", @profile.twitter if @profile.twitter.present? %>
+                </p>
+            </div>
 
-        <div class="col-md-6">
-            <% if @profile.present? %>
+            <div class="col-md-6">
                 <% unless @profile.soundcloud.blank? %>
                     <div class="col-md-6" style="height:150px;"><%= soundcloud_widget_res %></div>
                 <% end %>
                 <% unless @profile.youtube.blank? %>
                     <div class="col-md-6" style="height:150px;"><%= youtube_widget_res %></div>
                 <% end %>
-            <% end %>
-        </div>
+            </div>
+        <% end %>
+        
     </div>
 </div>
 <% if resource.anything_captured_from_facebook? %>

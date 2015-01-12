@@ -1,0 +1,19 @@
+<div class="modal" id="<%= id %>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title"><%= profile.name %> Bank details</h4>
+            </div>
+            <div class="modal-body">
+                IBAN: <%= profile.iban %><br>
+                BIC/SWIFT: <%= profile.bic %><br>
+                Legal name: <%= profile.payout_name %><br>
+                Routing Number: <%= profile.routing_number %><br>
+                Account Number: <%= profile.account_number %><br>
+                Address: <%= profile.bankee_address %><br>
+                <%= profile.payout_address %>
+            </div>
+        </div>
+    </div>
+</div>

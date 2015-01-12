@@ -47,4 +47,12 @@ module ModulesHelper
     end
   end
   
+  def country_code_select(form)
+    nice_select form.input(:mobile_nr_country_code, collection: CALLING_CODES.collect { |k,v| [v,k] }, include_blank: false, label: false)
+  end
+  
+  def country_code_field(form)
+    form.object.mobile_nr_country_code.present? ? "+#{form.object.mobile_nr_country_code}" : "+1"
+  end
+  
 end
