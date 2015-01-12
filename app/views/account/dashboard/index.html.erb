@@ -55,7 +55,7 @@
             </section>
         <% end %>
         <!-- end alerts -->
-        <% if current_user.artist? %>
+        <% if current_user.artist? && current_user.profile.published? %>
             <section class="box">
                 <div class="body share-to-friends">
                     <h3><%= t(:"application.dashboard.share.title") %></h3>
@@ -77,6 +77,19 @@
             </section>
         <% end %>
 	    
+	    
+	    <% unless current_user.mobile_nr_confirmed? %>
+            <section class="box">
+                <div class="body share-to-friends">
+                    <h3><%= t(:"application.ashboard.phone.title") %></h3>
+                    <p><%= t(:"application.dashboard.phone.desc") %></p>
+	                <div class="form">
+	                    
+	                </div>
+	            </dov>
+	        </section>
+	    <% end %>
+
         <!-- Start Messages -->
         <section class="box">
             <header><h3><%= Message.model_name.human(count: 2) %> (<%= current_user.unread_message_counter %> new)</h3></header>
