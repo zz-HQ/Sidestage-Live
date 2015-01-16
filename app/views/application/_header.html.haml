@@ -1,0 +1,74 @@
+%header{:class => home_or_profile_page? ? 'transparent' : 'fixed'}
+  .wrap
+    %h1#logo
+      = link_to params[:location].present? && action_name == "show" ? artists_path(location: params[:location], lng: params[:lng], lat: params[:lat], artist_type: params[:artist_type], filter_order: params[:filter_order]) : root_path do
+        = image_tag (home_or_profile_page? ? 'logos/sidestage_logo_white.png' : 'logos/sidestage_logo_red.png')
+
+    - unless controller.controller_name == "home"
+      #city-switch
+        %form{:action => artists_path, :method => "GET"}
+          %i.fa.fa-search
+          = text_field_tag :location, params[:location], id: :event_place, data: { google: :event_place }, placeholder: t(:"simple_form.placeholders.location_search.location")
+          = hidden_field_tag :lng, params[:lng]
+          = hidden_field_tag :lat, params[:lat]
+          - request.query_parameters.except(:lat, :lng, :location, :page).each do |k,v|
+            = hidden_field_tag k, v
+
+    %section#match-me
+      = link_to "Match me", match_mes_path
+
+    %nav#main-nav
+      - if user_signed_in?
+        .user
+          .navi-avatar
+            = render "avatar"
+          .dropdown
+            %i.fa.fa-caret-up
+            %hr/
+            = link_to "Dashboard", account_dashboard_path
+            - if current_user.profile.present? && current_user.profile.persisted?
+              = link_to t(:"application.menu.invite_friends"), "#", data: { lightbox: :html, target: "[data-container='artist-invite-friend']" }
+              %div{"data-container" => "artist-invite-friend", :style => "display:none;"}
+                .devise-lightbox.center
+                  %p
+                    %strong= t(:"application.social.share.facebook.artist.title")
+                  %p= t(:"application.social.share.facebook.artist.desc")
+                  .btns
+                    = link_to t(:"application.profiles.preview.share_modal.share_on_fb"), facebook_share_url(artist_url(current_user.profile)), target: :_blank, class: "btn btn-facebook btn-inline"
+                    = link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.profiles.preview.share_modal.twitter_text"), "https://www.sidestage.com/"), target: :_blank, class: "link"
+              = link_to t(:"application.menu.your_profile"), style_account_profile_path
+            - else
+              = link_to t(:"application.menu.musician"), style_account_profile_path
+              = link_to t(:"application.menu.invite_friends"), "#", data: { lightbox: :html, target: "[data-container='customer-invite-friend']" }
+              %div{"data-container" => "customer-invite-friend", :style => "display:none;"}
+                .devise-lightbox.center
+                  %p
+                    %strong= t(:"application.social.share.facebook.customer.title")
+                  %p= t(:"application.social.share.facebook.customer.desc")
+                  .btns
+                    = link_to t(:"application.profiles.preview.share_modal.share_on_fb"), facebook_share_url("https://www.sidestage.com/"), target: :_blank, class: "btn btn-facebook btn-inline"
+                    = link_to t(:"application.profiles.preview.share_modal.share_on_twitter"), twitter_share_url(t(:"application.social.share.twitter.text"), "https://www.sidestage.com/"), target: :_blank, class: "link"
+            = link_to t(:"application.menu.my_bookings"), account_bookings_path
+            = link_to t(:"application.menu.account"), account_personal_path
+            = link_to t(:"application.menu.log_out"), destroy_user_session_path, method: :delete
+          .username= current_user.name
+          .arrow
+        %a.messages{:href => account_conversations_path}
+          .icon
+            %i.fa.fa-envelope-o
+          - if current_user.unread_message_counter.to_i > 0
+            .indicator= current_user.unread_message_counter.to_i
+      - else
+        %span
+          = link_to t(:"application.menu.sign_in"), new_user_session_path(format: :html), data: { lightbox: :ajax }
+          \/
+          \#{link_to t(:"application.menu.sign_up"), new_user_registration_path(format: :html), data: { lightbox: :ajax }}
+        = link_to t(:"application.menu.musician"), new_user_registration_path(format: :html), data: { lightbox: :html, target: "[data-container='signup-options']" }, class: "btn btn-musician btn-inline"
+        %div{"data-container" => "signup-options", :style => "display:none;"}
+          .devise-lightbox.read_more
+            %p
+              %strong= t(:"application.devise.artist_read_me.title")
+            %br/
+            = t(:"application.devise.artist_read_me.desc_html")
+            .btns
+              = link_to t(:"application.devise.artist_read_me.apply"), new_profile_path, class: "btn btn-blue btn-inline"
