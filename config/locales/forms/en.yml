@@ -139,9 +139,9 @@ en:
       credit_card:
         submit: Save
       deal:
-        create: Book it
-        submit: 'Book it'
-        update: Book it
+        create: Request Booking
+        submit: 'Request Booking'
+        update: Request Booking
         special_offer: "Make Special Offer"
       mailchimp_subscriber:
         submit: Subscribe
