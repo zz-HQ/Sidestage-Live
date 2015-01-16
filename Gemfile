@@ -34,6 +34,7 @@ gem 'unf' # resolves fog errors
 
 
 # Frontend
+gem 'haml-rails'
 gem 'simple_form', '3.0.3'
 gem 'turbolinks'
 gem 'compass-rails', '~> 1.1.7'
