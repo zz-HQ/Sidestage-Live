@@ -1,0 +1,8 @@
+%nav.navi-bar
+  .full-w
+    .row
+      = link_to "Dashboard", account_dashboard_path, class: page == :dashboard ? 'active' : ''
+      = link_to "Inbox", account_conversations_path, class: page == :inbox ? 'active' : ''
+      = link_to t(:"application.menu.your_profile"), style_account_profile_path, class: page == :profile ? 'active' : '' if current_user.artist?
+      = link_to t(:"application.menu.my_bookings"), account_bookings_path, class: page == :bookings ? 'active' : ''
+      = link_to t(:"application.menu.account"), account_personal_path, class: page == :account ? 'active' : ''

@@ -1,0 +1,81 @@
+#dashboard.navigated.container
+  = render partial: 'account/shared/navigation', locals: {page: :dashboard}
+
+  %aside
+    %section.box.profile
+      = image_tag current_user.avatar.thumb.url
+      .body
+        %h1= current_user.profile_name
+        - if current_user.artist?
+          = link_to t(:"application.menu.your_profile"), style_account_profile_path, class: "link"
+          = link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path, target: :_blank, class: "link"
+    .links
+      %h4 Quick Links
+      %ul
+        %li= link_to "Your Bookings", account_bookings_path
+        %li= link_to "Account", account_personal_path
+        %li= link_to "Sidestage FAQ", faq_path
+    .links
+      = render partial: "application/community_links"
+
+  .content
+    / start alerts
+    - unless current_user.confirmed?
+      %section.box
+        %header
+          %h3 Alerts
+        #alerts.list.body
+          .item
+            %p= t(:"application.alerts.confirm_html", password_reset_path: resend_confirmation_account_personal_path)
+            .actions
+              / <span class="close">&amp;#xd7;</span>
+    / end alerts
+
+    - if current_user.artist? && current_user.profile.published?
+      %section.box
+        .body.share-to-friends
+          %h3= t(:"application.dashboard.share.title")
+          %p= t(:"application.dashboard.share.desc")
+          .form
+            #form_success_message{:style => "display:none;"}= t(:"application.dashboard.share.form_success_message")
+            = simple_form_for :friends, url: account_share_profiles_path, remote: true, html: { id: :share_profile_with_friends } do |f|
+              = f.input :emails, as: :string, required: false, wrapper: false, label: false
+              = f.submit class: "btn"
+            .share
+              = link_to "<i class='fa fa-facebook'></i> Facebook".html_safe, facebook_share_url(artist_url(current_user.profile)), class: "btn btn-facebook btn-inline", target: :_blank, onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=300,toolbar=1,resizable=0'); return false;"
+              %span Share:
+              = link_to "<i class='fa fa-twitter'></i>".html_safe, twitter_share_url(t(:"application.dashboard.invite.twitter"), artist_url(current_user.profile)), class: "light"
+          %p= t(:"application.dashboard.share.email_field_hint")
+
+    - unless current_user.mobile_nr_confirmed?
+      %section.box
+        .body.share-to-friends
+          %h3= t(:"application.dashboard.phone.title")
+          %p= t(:"application.dashboard.phone.desc")
+          .form
+            = render "mobile_verification_form", user: User::AsMobileNumber.find(current_user.id)
+
+    / Start Messages
+    %section.box
+      %header
+        %h3
+          = Message.model_name.human(count: 2)
+          (#{current_user.unread_message_counter} new)
+      #messages.body.list
+        - current_user.unarchived_conversations.limit(5).each do |conversation|
+          = content_tag :div, class: [:messages, :item] do
+            = link_to(account_conversation_path(conversation), class: [conversation.messages.unread.by_receiver(current_user.id).exists? ? :unread : :read]) do
+              .ava
+                = image_tag conversation.negotiator_for(current_user).avatar.thumb.url, class: "avatar"
+              .body
+                = simple_format(strip_tags(system_message_body(conversation)).truncate(75))
+                %p.bottom
+                  = conversation.negotiator_for(current_user).profile_name
+                  ––
+                  %span= l conversation.last_message_at, format: :conversation
+            .actions
+              = "<p>Unread</p>".html_safe if conversation.messages.unread.by_receiver(current_user.id).exists?
+              = link_to "Archive", archive_account_conversation_path(conversation), method: :put unless conversation.archived_by?(current_user)
+      %footer
+        = link_to t(:"application.links.view_all_messages"), account_conversations_path
+    / End Messages

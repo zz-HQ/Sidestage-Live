@@ -1,9 +1,10 @@
-<div id="personals" class="container">
+<div id="personals" class="navigated container">
+  <%= render partial: 'account/shared/navigation', locals: {page: :account} %>
   <%= render "sidebar" %>
 
   <div class="content account">
     <header><%= t(:"application.personals.show.title") %></header>
-		
+
 		<%= simple_form_for resource, url: upload_avatar_account_personal_path, html: { data: { upload: :auto }, id: "user_account", multipart: true } do |f| %>
             <%= render "avatar_form", f: f %>
 		<% end %>
@@ -14,6 +15,6 @@
 
         <p class="light">
             <%= t(:"application.personals.show.delete_hint_html") %>
-        </p>    
+        </p>
   </div>
 </div>

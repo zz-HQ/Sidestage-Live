@@ -1,4 +1,5 @@
-<div id="profile" class="container edit-profile">
+<div id="profile" class="navigated container edit-profile">
+    <%= render partial: 'account/shared/navigation', locals: {page: :profile} %>
     <%= render 'sidebar' %>
 
     <div class="content">
@@ -33,7 +34,7 @@
             </div>
         </div>
   </div>
-  
+
   <aside class="hints">
     <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
     <%= t(:"application.profiles.music.tips_hints_html") %>

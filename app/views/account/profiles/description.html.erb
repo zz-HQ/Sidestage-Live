@@ -1,9 +1,10 @@
-<div id="profile" class="container edit-profile" data-container="profile_form">
+<div id="profile" class="navigated container edit-profile" data-container="profile_form">
+  <%= render partial: 'account/shared/navigation', locals: {page: :profile} %>
   <%= render 'sidebar' %>
 
   <div class="content">
     <span id="saved-note" class="saved"><%= t(:"helpers.submit.saved") %></span>
-    
+
     <header><%= t(:"application.profiles.description.title_html") %></header>
     <p class="desc"><%= t(:"application.profiles.description.desc") %></p>
 
@@ -13,12 +14,12 @@
         <%= simple_form_for resource.user, url: upload_avatar_account_personal_path, html: { data: { upload: :auto }, multipart: true } do |f| %>
           <% if resource.errors["user"].present? %>
               <span class="error"><%= resource.errors["user"].join(" ") %></span>
-          <% end %>        
+          <% end %>
           <div class="avatar-uploader">
             <div id="avatar" class="avatar avatar-upload-button">
               <%= image_tag current_user.avatar.url(:thumb), class: "avatar", alt: current_user.full_name %>
             </div>
-            
+
             <a href="#" class="btn avatar-upload-button"><%= t(:"simple_form.labels.profile.avatar") %></a>
             <p><%= t(:"application.profiles.description.hint") %></p>
 
@@ -39,7 +40,7 @@
       </div>
     </div>
   </div>
-  
+
   <aside class="hints">
     <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
     <%= t(:"application.profiles.description.tips_hints_html") %>

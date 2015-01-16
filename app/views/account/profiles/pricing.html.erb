@@ -1,9 +1,10 @@
-<div id="profile" class="container edit-profile" data-container="profile_form">
+<div id="profile" class="navigated container edit-profile" data-container="profile_form">
+    <%= render partial: 'account/shared/navigation', locals: {page: :profile} %>
     <%= render 'sidebar' %>
 
     <div class="content">
         <span id="saved-note" class="saved"><%= t(:"helpers.submit.saved") %></span>
-        
+
         <header><%= t(:"application.profiles.pricing.title_html") %></header>
 
         <div class="left-side">

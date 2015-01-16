@@ -1,15 +1,16 @@
-<div id="edit-pictures" class="container edit-profile">
+<div id="edit-pictures" class="navigated container edit-profile">
+  <%= render partial: 'account/shared/navigation', locals: {page: :profile} %>
   <%= render 'account/profiles/sidebar', resource: current_user.profile %>
 
   <div class="content">
     <header><%= t(:"application.profiles.pictures.index.title_html") %></header>
-    
+
     <div id="picture-upload" class="picture-upload">
         <%= form_tag(account_profile_pictures_path, multipart: true, id: "new_picture", method: :post) do %>
             <div data-upload="trigger" style="display:none;">
                 <%= file_field_tag 'file', accept: 'image/png,image/gif,image/jpeg', multiple: true %>
             </div>
-            
+
             <% if collection.present? %>
               <span data-upload="button" id="fileupload-button" class="btn btn-blue btn-inline">Add photos</span>
             <% end %>

@@ -1,12 +1,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= raw(@meta_title || "Sidestage") %></title>
+    <% sidestage = Rails.env.production? ? 'sidestage' : Rails.env %>
+    <title><%= raw(@meta_title || sidestage) %></title>
     <meta name="description" content="<%= raw(@meta_desc || "Find musicians, bands and DJs for your next party, event or wedding.") %>">
     <meta name="keywords" content="Sidestage">
     <meta name="viewport" content="width=1238">
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->    
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,7 +27,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <%= raw("<link rel='image_src' type='image/jpeg' href='#{ @social_img || image_url("sidestage_brand.png")}'/>") %>
-    
+
     <%= csrf_meta_tags %>
 
     <!-- Google CDN -->
@@ -36,7 +37,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
     <%= yield :html_head %>
-    
+
     <script type="text/javascript">
     (function(d){
         var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
@@ -46,6 +47,6 @@
         f.parentNode.insertBefore(p, f);
     }(document));
     </script>
-    
+
     <%= render "facebook_conversion_code" %>
 </head>

@@ -1,4 +1,5 @@
-<div id="bookings" class="container">
+<div id="bookings" class="navigated container">
+  <%= render partial: 'account/shared/navigation', locals: {page: :bookings} %>
 	<div class="content">
 		<header><%= t(:"application.account.bookings.index.title") %></header>
 		<% if collection.present? %>

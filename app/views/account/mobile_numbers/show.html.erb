@@ -1,12 +1,13 @@
-<div id="personals" class="container">
-   
-   <% if @coming_from_profile_completion.present? %>
-   	    <aside><div class="sidebar"></div></aside>
-   <% else %>
-		<%= render "account/personals/sidebar" %>
+<div id="personals" class="navigated container">
+
+  <% if @coming_from_profile_completion.present? %>
+    <aside><div class="sidebar"></div></aside>
+  <% else %>
+    <%= render partial: 'account/shared/navigation', locals: {page: :account} %>
+	  <%= render "account/personals/sidebar" %>
 	<% end %>
 
-    <div class="content mobile-numbers">
-        <%= render "verification", user: resource %>
-    </div>
+  <div class="content mobile-numbers">
+    <%= render "verification", user: resource %>
+  </div>
 </div>

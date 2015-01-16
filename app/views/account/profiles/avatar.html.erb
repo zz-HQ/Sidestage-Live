@@ -1,16 +1,17 @@
-<div id="profile" class="container edit-profile">
+<div id="profile" class="navigated container edit-profile">
+  <%= render partial: 'account/shared/navigation', locals: {page: :profile} %>
   <%= render 'sidebar' %>
 
     <div class="content account">
         <header><%= t(:"application.profiles.avatar.title_html") %></header>
         <p class="desc"><%= t(:"application.profiles.avatar.desc") %></p>
-    
+
         <div>
     		<div class="avatar-uploader profile-avatar">
       			<div id="avatar" class="avatar">
       			    <%= image_tag resource.avatar.url(:preview) if resource.has_avatar? %>
       			</div>
-        
+
             <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
             <div id="avatar_destroy">
                 <%= render "avatar_destroy_link" %>
@@ -23,7 +24,7 @@
                 <div data-upload="trigger" style="display:none;">
                     <%= f.input :avatar, label: false, accept: 'image/png,image/gif,image/jpeg', multiple: true %>
                 </div>
-            
+
                 <span data-upload="button" class="btn btn-blue right btn-inline"><%= t(:"simple_form.labels.profile.avatar") %></span>
             <% end %>
         </div>
@@ -32,6 +33,6 @@
 
     <aside class="hints">
         <header><%= t(:"application.profiles.sidebar.tips_hints") %></header>
-        <%= t(:"application.profiles.avatar.tips_hints_html") %>    
+        <%= t(:"application.profiles.avatar.tips_hints_html") %>
     </aside>
 </div>

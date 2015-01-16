@@ -1,21 +1,22 @@
-<div id="personals" class="container">
+<div id="personals" class="navigated container">
+    <%= render partial: 'account/shared/navigation', locals: {page: :account} %>
     <%= render "sidebar" %>
 
     <div class="content bank">
         <header><%= t(:"application.profiles.payment.title_html") %></header>
-        
+
         <% if resource.profile.balanced_payoutable? %>
             <div class="credit-card-info">
                 <p><%= Profile.human_attribute_name(:routing_number) %>: *******<%= resource.profile.routing_number[-2, 2] %></p>
                 <p><%= Profile.human_attribute_name(:account_number) %>: *******<%= resource.profile.account_number[-2, 2] %></p>
             </div>
-        
+
             <div class="buttons">
                 <%= link_to t(:"application.personals.payment_details.show.remove"), remove_bank_account_account_personal_path, method: :delete, class: "link", data: { confirm: t(:"helpers.confirm.sure") } %>
             </div>
 
         <% else %>
-        
+
             <%= simple_form_for resource.profile, url: bank_details_account_personal_path, data: { form: resource.profile.usa? ? "bank_account" : nil } do |f| %>
                 <div class="payment-status" style="display:none;"><%= t(:"application.deals.new.verification_message") %></div>
                 <div class="payment-errors" style="display:none;"></div>
@@ -47,8 +48,8 @@
                     <%= f.submit class: "btn", value: t(:"helpers.submit.credit_card.submit") %>
                 </div>
             <% end %>
-        
+
         <% end %>
-        
+
     </div>
 </div>

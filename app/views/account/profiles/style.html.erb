@@ -1,4 +1,5 @@
-<div id="profile" class="container edit-profile">
+<div id="profile" class="navigated container edit-profile">
+    <%= render partial: 'account/shared/navigation', locals: {page: :profile} %>
     <%= render 'sidebar' %>
     <div class="content">
         <header><%= t(:"application.profiles.basics.title_html") %></header>
