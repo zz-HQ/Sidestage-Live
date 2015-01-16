@@ -10,7 +10,7 @@ de:
         remember_me: Remember me
         newsletter_subscribed: Send me Sidestage updates
         avatar: Profile picture
-        full_name: Full name        
+        full_name: Full name
       user_as_mobile_number:
         mobile_nr: Mobile number (with country code)
         mobile_nr_country_code: Choose a country
@@ -38,7 +38,7 @@ de:
         artist_type: "Show me"
         order: "sorted by"
       match_me:
-        genre: "What are you looking for? (Select up to three)"  
+        genre: "What are you looking for? (Select up to three)"
         event: "What kind of event is it?"
         total_visitors: "How many people are coming? (Leave blank if you don't know.)"
         max_budget: "What's your max budget?"
@@ -65,7 +65,7 @@ de:
       user_as_mobile_number:
         mobile_nr: e.g +49 172 222 2222
       review:
-        body: Your review  
+        body: Your review
       message:
         body: Type your message here. Be sure to include as much detail as possible about your event.
         reply:
@@ -78,7 +78,7 @@ de:
         expiry: MM / YYYY
         exp_month: Exp month
         exp_year: Exp year
-        cvc: CVC       
+        cvc: CVC
       profile:
         youtube: Add a Youtube link
         soundcloud: Add SoundCloud Embed code
@@ -111,7 +111,7 @@ de:
       location_search:
         location: "Where's your event?"
       picture:
-        caption: "What are the highlights of this photo?"    
+        caption: "What are the highlights of this photo?"
   helpers:
     submit:
       create: 'Create %{model}'
@@ -131,7 +131,7 @@ de:
         update: Save
         update_password: Update Password
       user_as_mobile_number:
-        update: Send Verification Text  
+        update: Send Verification Text
         confirm: Confirm
         remove: Remove
       credit_card:
@@ -149,7 +149,7 @@ de:
         update: Save
         submit_avatar: Upload
       match_me:
-        create: Next  
+        create: Next
         location: Get Matched
       event:
         submit_step_2: "Pay %{price}"
