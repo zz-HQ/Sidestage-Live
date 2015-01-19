@@ -34,16 +34,20 @@
           color: $active
           border-color: $color
 
+body #wrap
+  background-color: $bg-color
+
 $color-light: #777
 #dashboard
   +fill-parent
 
   .box
     border: $border
-    +border-radius($border-radius)
+    +border-radius(6px)
     +span-columns(8)
     margin-bottom: 30px
     color: $color-light
+    background-color: #fff
 
     header
       border-bottom: $border
@@ -132,7 +136,6 @@ $color-light: #777
         margin: 0
 
         &[type="text"]
-          width: 75%
           +border-top-right-radius(0)
           +border-bottom-right-radius(0)
           border-right: 0
@@ -141,7 +144,6 @@ $color-light: #777
           padding: 11px
           +border-top-left-radius(0)
           +border-bottom-left-radius(0)
-          width: 25%
 
     .share
       +span-columns(3)
