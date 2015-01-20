@@ -20,10 +20,9 @@
         </div>
 
         <div class="pull-right">
-            <% if @profile.present? %>
-                Delete Profile
-                <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-            <% end %>
+          <%= link_to admin_user_path(resource), method: :delete, data: { confirm: "Are you sure?" }, title: "Delete", class: "btn btn-danger" do %>
+              Delete user
+          <% end %>
         </div>
     </div>
 
@@ -50,7 +49,7 @@
                 <p>
                     <label style="margin-right: 20px;"><%= bool_label(resource.paymentable?) %></label>
                     <%= link_to "Details", "#", data: { toggle: "modal", target: "#bank_details_#{dom_id(@profile)}" } %>
-                    <%= render "modal_profile_bank_details", profile: @profile, id: "bank_details_#{dom_id(@profile)}" %>                    
+                    <%= render "modal_profile_bank_details", profile: @profile, id: "bank_details_#{dom_id(@profile)}" %>
                 </p>
 
                 <p style="margin-top: 20px;">
@@ -68,7 +67,7 @@
                 <% end %>
             </div>
         <% end %>
-        
+
     </div>
 </div>
 <% if resource.anything_captured_from_facebook? %>
