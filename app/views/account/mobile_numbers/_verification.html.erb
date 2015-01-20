@@ -6,23 +6,5 @@
 <% else %>
     <header><%= t(:"application.mobile_numbers.new.title") %></header>
     <p class="subtitle"><%= t(:"application.mobile_numbers.new.desc_html") %></p>
-    <%= simple_form_for user, url: account_mobile_numbers_path do |f| %>
-        <%= f.label :mobile_nr_country_code %>
-	    <%= country_code_select(f) %>
-        <div class="country_calling_code">
-            <span id="country_calling_code"><%= country_code_field(f) %></span>
-            <%= f.input :mobile_nr, required: false, label: false, input_html: { autocomplete: "off" }, placeholder: false %>
-        </div>
-        <div class="input">
-        	<%= f.submit class: "btn" %>
-        </div>
-    <% end %>
-    <%= simple_form_for user, url: confirm_account_mobile_numbers_path, html: { class: "confirm-mobile-num-form"} do |f| %>
-        <%= f.input :mobile_confirmation_code, input_html: { autocomplete: "off" }, maxlength: "6" %>
-        <% if user.mobile_nr.nil? %>
-            <span class="btn btn-blue disabled">Confirm</span>
-        <% else %>
-            <%= f.submit value: t(:"helpers.submit.user_as_mobile_number.confirm"), class: "btn" %>
-        <% end %>
-    <% end %>
+    <%= render "account/shared/mobile_verification_form", user: User::AsMobileNumber.find(user.id) %>
 <% end %>
