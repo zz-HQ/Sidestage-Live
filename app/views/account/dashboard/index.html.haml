@@ -63,7 +63,7 @@
       %header
         %h3
           = Message.model_name.human(count: 2)
-          (#{current_user.unread_message_counter} new)
+          (#{current_user.unread_message_counter || 0} new)
       #messages.body.list
         - current_user.unarchived_conversations.limit(5).each do |conversation|
           = content_tag :div, class: [:messages, :item] do
