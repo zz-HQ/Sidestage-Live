@@ -7,8 +7,11 @@
       .body
         %h1= current_user.profile_name
         - if current_user.artist?
-          = link_to t(:"application.menu.your_profile"), style_account_profile_path, class: "link"
-          = link_to t(:"application.profiles.sidebar.preview_link"), preview_account_profile_path, target: :_blank, class: "link"
+          - if current_user.profile.published?
+            = link_to t(:"application.profiles.sidebar.view_link"), artist_path(current_user.profile), target: :_blank, class: "link"
+            = link_to t(:"application.profiles.sidebar.edit_link"), style_account_profile_path, class: "link"
+          - else
+            = link_to t(:"application.profiles.sidebar.build_link"), style_account_profile_path, class: "link"
     .links
       %h4 Quick Links
       %ul
