@@ -56,7 +56,7 @@
           %h3= t(:"application.dashboard.phone.title")
           %p= t(:"application.dashboard.phone.desc")
           .form
-            = render "mobile_verification_form", user: User::AsMobileNumber.find(current_user.id)
+            = render "account/shared/mobile_verification_form", user: User::AsMobileNumber.find(current_user.id)
 
     / Start Messages
     %section.box
