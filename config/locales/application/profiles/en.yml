@@ -10,6 +10,8 @@ en:
         avatar_link: "Header Image"
         preview_link: "Preview Profile"
         view_link: "View Profile"
+        edit_link: "Edit Your Profile"
+        build_link: "Build Your Profile"
         audio_video_link: "Audio & Video"
         tips_hints: Tips and hints
         completion_hint_html: "Complete <span class='missing-steps'><span id='missing-steps-counter'>%{count}</span> steps</span> to publish your Profile"
@@ -42,7 +44,7 @@ en:
         youtube_hint: "Single video, no playlist links"
         tips_hints_html: "SoundCloud Embed lets you post a single track, playlist or your whole profile."
       payment:
-        title_html: "Bank details<p>We handle payments so you don't have to worry about money. <br> Enter your bank details below so you can get paid.</p>"  
+        title_html: "Bank details<p>We handle payments so you don't have to worry about money. <br> Enter your bank details below so you can get paid.</p>"
       pictures:
         index:
           avatar_title_html: "Profile picture<p>This is the picture that will show up in search listings.</p>"
@@ -52,14 +54,14 @@ en:
         new:
           title: "Upload New Pictures"
       preview:
-        soundcloud: 
+        soundcloud:
           title: Add a SoundCloud track to your profile.
         youtube:
           title: Add a YouTube track to your profile.
         share_modal:
           title: Your profile is published
           desc_html: "<p>Your profile was published, but is being reviewed by someone at Sidestage. As part of the process, we’d like to set up a short phone interview. One of our reviewers will get in touch within the next 24 hours.</p><p>In the meantime, share your profile with your friends.</p>"
-          share_on_fb: "Share on Facebook"    
+          share_on_fb: "Share on Facebook"
           share_on_twitter: "Share on Twitter"
           twitter_text: "Check%20out%20@sidestagehq,%20a%20new%20platform%20for%20booking%20great%20musicians,%20bands%20and%20DJs"
         follow_modal:
@@ -67,4 +69,3 @@ en:
         publish_modal:
           title: One last step...
           desc_html: "<p>Before your profile is published, we need to verify your email address: %{email}</p><p>Check your inbox to verify your account.<br>(You may need to check your spam folder.)</p>"
-          
