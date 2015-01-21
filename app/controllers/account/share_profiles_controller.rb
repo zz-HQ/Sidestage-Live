@@ -25,7 +25,7 @@ class Account::ShareProfilesController < AuthenticatedController
   #
   #
   #
-  
+
   def create
     current_user.profile.friends_emails = permitted_params[:emails]
     current_user.profile.share_with_friends!
@@ -37,7 +37,7 @@ class Account::ShareProfilesController < AuthenticatedController
       format.js{}
     end
   end
-  
+
   #
   # Protected
   # ---------------------------------------------------------------------------------------
@@ -45,9 +45,9 @@ class Account::ShareProfilesController < AuthenticatedController
   #
   #
   #
-  
+
   protected
-  
+
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -55,11 +55,11 @@ class Account::ShareProfilesController < AuthenticatedController
   #
   #
   #
-  
+
   private
-  
+
   def permitted_params
     params.require(:friends).permit(:emails)
   end
-    
+
 end
