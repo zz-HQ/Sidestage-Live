@@ -50,10 +50,9 @@ class UserMailer < Devise::Mailer
   def share_profile_with_friend(profile, friends_email)
     @profile = profile
     @coupon = @profile.share_with_friend_coupon
-    @currency = Currency.by_name(@coupon.currency) if @coupon.present?
     mail(to: friends_email, from: "invite@sidestage.com", subject: "#{@profile.name} is now on Sidestage") do |format|
       format.text
-      format.html
+      format.html{render layout: nil}
     end
   end
   

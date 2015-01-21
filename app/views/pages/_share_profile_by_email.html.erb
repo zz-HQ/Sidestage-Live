@@ -419,7 +419,7 @@
                                   <tr>
                                     <td class="mcnImageContent" style=
                                     "padding-right: 0px;padding-left: 0px;padding-top: 0;padding-bottom: 0;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign=
-                                    "top"><img alt="" src="<%= asset_url('logos/sidestage_logo_black.png') %>" style=
+                                    "top"><img alt="" src="<%= asset_url('sprite/sidestage-logo.png') %>" style=
                                     "max-width: 150px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage" align="middle"
                                     width="150" /></td>
                                   </tr>
@@ -526,10 +526,13 @@
                                   <tr>
                                     <td valign="top" class="mcnTextContent" style=
                                     "padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                    <div style="text-align: center;">
-                                        <span style="color: #141823;font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif;font-size: 14px;line-height: 17.9200000762939px;">Book <%= @profile.name %> on Sidestage!<br />
-                                        <br />
-                                        <strong>Get $25 off when booking&nbsp;using code:&nbsp;</strong></span>DNBGH15US
+                                      <div style="text-align: center;">
+                                        <span style="color: #141823;font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif;font-size: 14px;line-height: 17.9200000762939px;">Book <%= @profile.name %> on Sidestage!<br /><br /></span>
+                                        <% if @coupon.present? %>
+                                        <span style="color: #141823;font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif;font-size: 14px;line-height: 17.9200000762939px;">
+                                        <strong>Get <%= humanized_money_with_symbol(@coupon.to_money) %> off when booking using code: </strong>
+                                        </span><%= @coupon.code %>
+                                        <% end %>
                                       </div>
                                     </td>
                                   </tr>
