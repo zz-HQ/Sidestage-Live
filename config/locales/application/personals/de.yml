@@ -34,5 +34,6 @@ de:
         save_hint: We’ll send you a text message with a verifiaction code. Enter the code in the box below.
       show:
         title: Your mobile number
+        failure: That confirmation code is not valid. Please try again.
         desc: SMS notifications will be delivered to your phone from Sidestage. Carrier charges may apply.
         remove_hint: "To add a new number, remove the old one first."

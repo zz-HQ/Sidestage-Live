@@ -51,7 +51,7 @@
           %p= t(:"application.dashboard.share.email_field_hint")
 
     - unless current_user.mobile_nr_confirmed?
-      %section.box
+      %section#mobile_phone_confirmation.box
         .body.share-to-friends
           %h3= t(:"application.dashboard.phone.title")
           %p= t(:"application.dashboard.phone.desc")

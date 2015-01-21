@@ -42,7 +42,7 @@ en:
           attributes:
             mobile_nr:
               must_start_with_non_zero: "can't start with a 0"
-              too_short: "Your phone number looks a bit short"
+              too_short: "looks a bit short"
         user:
           attributes:
             mobile_confirmation_code:

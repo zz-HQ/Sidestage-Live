@@ -33,17 +33,19 @@ class Account::MobileNumbersController < AuthenticatedController
     if resource.update_attributes(permitted_params)
       resource.send_otp_code
       flash.now[:notice] = t(:"flash.account.mobile_numbers.create.notice")
+    else
+      @errors = resource.errors.messages[:mobile_nr]
     end
     respond_to do |format|
       format.html{ render :show }
-      format.js{}
+      format.js{ render @errors ? :invalid_update : :update}
     end
-    
   end
-  
+
   def confirm
     resource.update_attributes(permitted_params)
     if resource.mobile_nr_confirmed?
+      @mobile_nubmer_confirmed = true
       flash.now[:notice] = t(:"flash.account.mobile_numbers.confirm.notice")
       if @coming_from_profile_completion.present?
         session[:coming_from_profile_completion] = nil
@@ -51,9 +53,13 @@ class Account::MobileNumbersController < AuthenticatedController
         return
       end
     end
-    render :show
+
+    respond_to do |format|
+      format.html{ render :show }
+      format.js{ render @mobile_nubmer_confirmed ? :confirm : :invalid_confirmation}
+    end
   end
-  
+
   def destroy
     resource.reset_mobile_nr!
     redirect_to account_mobile_numbers_path

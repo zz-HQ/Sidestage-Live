@@ -8,9 +8,21 @@
   <div class="input">
   	<%= f.submit class: "btn btn-blue" %>
   </div>
+  <div id="mobile_nr_errors" style="clear: both; margin-top: 20px; color: red;"></div>
 <% end %>
 
-<%= simple_form_for user, url: confirm_account_mobile_numbers_path, html: { id: :mobile_verification_code_form, style: "display:none;", class: "confirm-mobile-num-form"} do |f| %>
+<%= simple_form_for user, url: confirm_account_mobile_numbers_path, remote: true, html: { id: :mobile_verification_code_form, style: "display:none;", class: "confirm-mobile-num-form"} do |f| %>
   <%= f.input :mobile_confirmation_code, input_html: { autocomplete: "off", style: "width: 250px; float: left; margin-right: 10px" }, maxlength: "6" %>
   <%= f.submit value: t(:"helpers.submit.user_as_mobile_number.confirm"), class: "btn btn-blue", style: "float left;" %>
 <% end %>
+
+<div class-"clearfix"></div>
+
+<div id="confirmation_failed" style="display:none; margin-top: 20px; color: red;">
+  <p class="subtitle"><%= t(:"application.mobile_numbers.show.failure") %></p>
+</div>
+
+<div id="confirmation_succeeded" style="display:none;">
+  <p class="subtitle"><%= t(:"application.mobile_numbers.show.desc") %></p>
+</div>
+
