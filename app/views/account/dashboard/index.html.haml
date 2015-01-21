@@ -47,7 +47,7 @@
             .share
               = link_to "<i class='fa fa-facebook'></i> Facebook".html_safe, facebook_share_url(artist_url(current_user.profile)), class: "btn btn-facebook btn-inline", target: :_blank, onclick: "window.open(this.href, 'mywin', 'left=400,top=200,width=514,height=300,toolbar=1,resizable=0'); return false;"
               %span Share:
-              = link_to "<i class='fa fa-twitter'></i>".html_safe, twitter_share_url(t(:"application.dashboard.invite.twitter"), artist_url(current_user.profile)), class: "light"
+              = link_to "<i class='fa fa-twitter'></i>".html_safe, twitter_share_url(%Q|Check out #{current_user.profile.name} on Sidestage via @sidestagehq#{current_user.profile.twitter.present? ? " @#{current_user.profile.twitter}" : ''}|, artist_url(current_user.profile)), class: "light"
           %p= t(:"application.dashboard.share.email_field_hint")
 
     - unless current_user.mobile_nr_confirmed?
