@@ -6,7 +6,7 @@ de:
         other: Reviews
       message:
         one: Message
-        other: Messages 
+        other: Messages
       profile:
         one: Artist
         other: Artists
@@ -28,12 +28,12 @@ de:
         price_for_customer: Total cost
       credit_card:
         number: Card number
-        expiration: Expiration  
+        expiration: Expiration
         cvc: "CVC"
       user:
         full_name: Name
       event:
-        booking_for_values: ["a dinner party", "an event", "a bar or cafe"]  
+        booking_for_values: ["a dinner party", "an event", "a bar or cafe"]
       message:
         body: Message
     errors:
@@ -88,7 +88,7 @@ de:
           one: "Displaying <b>1</b> %{entry_name}"
           other: "Displaying <b>all %{count}</b> %{entry_name}"
       more_pages:
-        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"      
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
   flash:
     account:
       messages:
@@ -100,24 +100,24 @@ de:
         decline:
           notice: "Booking request declined."
         cancel:
-          notice: "Booking request cancelled."  
+          notice: "Booking request cancelled."
         reject:
-          notice: "Booking request cancelled."  
+          notice: "Booking request cancelled."
         confirm:
           notice: "Booking confirmed. You'll get an email from us, too."
         accept:
           notice: "Booking request accepted. You'll get an email from us, too."
         offer:
-          notice: "Price for this booking was changed. We need the customer to confirm it."  
+          notice: "Price for this booking was changed. We need the customer to confirm it."
       conversations:
           archived: "Conversation was moved to Archive."
       mobile_numbers:
-        create: 
+        create:
           notice: "Verification code sent. Please check your mobile, and enter the code in the box below."
         confirm:
-          notice: "Your phone number has been verified."  
+          notice: "Your phone number has been verified."
         completion_confirm:
-          notice: "Your phone number is verified. Now complete your profile and publish when ready."  
+          notice: "Your phone number is verified. Now complete your profile and publish when ready."
       profiles:
         toggle:
           alert: 'Before you publish your profile there are a few things you need to complete. <a href="%{edit_profile_path}">Edit your profile now</a>'
@@ -126,14 +126,14 @@ de:
           email:
             notice: "We need to verify your new email address. Check your inbox for a confirmation link."
           bank_details:
-            notice: "Your bank details have been successfully added."  
+            notice: "Your bank details have been successfully added."
         complete:
           success: "You’re in! You’ll need to add a <a href='%{payment_path}'>payment method</a> before you can book an artist."
           alert: "Please add a profile picture before continuing. It helps us build trust in our community."
         complete_payment:
           notice: "Awesome, you're set. When you get a chance, <a href='%{mobile_nr_path}'>verify your phone, too</a>"
         skip_payment:
-          notice: "You're set, but you'll have to <a href='%{payment_path}'>add a credit card</a> before making a booking."  
+          notice: "You're set, but you'll have to <a href='%{payment_path}'>add a credit card</a> before making a booking."
     mailchimps:
       create:
         notice: "Thanks! To complete the sign up process, check your inbox and click the confirmation email link."
@@ -154,7 +154,7 @@ de:
       last: "Last &raquo;"
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
-      truncate: "&hellip;"    
+      truncate: "&hellip;"
 
   view:
     messages:
@@ -162,11 +162,11 @@ de:
       credit_on_the_way: "You've been paid! Money should hit your bank account in 1-2 business days. Thanks for working with Sidestage."
       system_messages:
         deals:
-          requested: &requested 
+          requested: &requested
             you: "A booking request has been sent to %{partner_name}."
             partner: "You have a new booking request from %{partner_name}."
           proposed: *requested
-          offered: 
+          offered:
             you: "A booking request has been sent to %{partner_name} for %{event_date}."
             partner: "You have a new booking request from %{partner_name}."
           cancelled: &cancelled
