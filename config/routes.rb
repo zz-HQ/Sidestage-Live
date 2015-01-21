@@ -176,7 +176,7 @@ Airmusic::Application.routes.draw do
 
     end
 
-    get 'share_profile/:name', to: "pages#share_profile_by_email", as: "share"
+    get 'share_profile/:slug', to: "pages#share_profile_by_email", as: "share"
     get 'faq', to: "pages#faq", as: "faq"
     get 'cancellations', to: "pages#cancellations", as: "cancellations"
     get 'privacy-policy', to: "pages#privacy", as: "privacy"
