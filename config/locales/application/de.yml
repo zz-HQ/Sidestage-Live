@@ -14,7 +14,7 @@ de:
     links:
       forgot_password: Forgot password?
       edit: Edit Profile
-      publish: 
+      publish:
         toggle_true: Unpublish
         toggle_false: Publish
       skip: Skip
@@ -53,3 +53,13 @@ de:
         reject: "I can't make it :("
       thanks:
         desc: Thanks for your response!
+    dashboard:
+      share:
+        title: Share your profile!
+        desc: Let people know they can book you on Sidestage.
+        twitter: You can now book me on Sidestage
+        email_field_hint: Separate multiple emails with commas.
+        form_success_message: Profile shared
+      phone:
+        title: My phone number
+        desc: To build a solid community, we are asking that all members validate their phone numbers.

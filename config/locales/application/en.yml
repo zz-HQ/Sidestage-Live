@@ -14,7 +14,7 @@ en:
     links:
       forgot_password: Forgot password?
       edit: Edit Profile
-      publish: 
+      publish:
         toggle_true: Unpublish
         toggle_false: Publish
       skip: Skip
@@ -29,7 +29,7 @@ en:
       pagination:
         view_more: View more
     alerts:
-      confirm_html: "Confirm your email address by clicking the link we emailed you. If you cant find the email, check your spam folder or <a data-method='put' href='%{password_reset_path}'>request a new confirmation email</a>."    
+      confirm_html: "Confirm your email address by clicking the link we emailed you. If you cant find the email, check your spam folder or <a data-method='put' href='%{password_reset_path}'>request a new confirmation email</a>."
     social:
       share:
         facebook:
@@ -64,5 +64,5 @@ en:
         email_field_hint: Separate multiple emails with commas.
         form_success_message: Profile shared
       phone:
-        title: My Phone number
-        desc: To build a solid community, we are imposing that all members validate their phone numbers.  
+        title: My phone number
+        desc: To build a solid community, we are asking that all members validate their phone numbers.

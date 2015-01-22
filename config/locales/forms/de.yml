@@ -14,7 +14,7 @@ de:
       user_as_mobile_number:
         mobile_nr: Mobile number (with country code)
         mobile_nr_country_code: Choose a country
-        mobile_confirmation_code: "Verification code sent. Please check your mobile, and enter the code in the box below."
+        mobile_confirmation_code: "An SMS with a verification code has been sent to: "
       profile:
         artist_type: You are...
         solo: Solo artist
