@@ -1,3 +1,4 @@
+$('label[for="user_as_mobile_number_mobile_confirmation_code"]').html('<%= t(:"simple_form.labels.user_as_mobile_number.mobile_confirmation_code") + "+#{current_user.mobile_nr_country_code} #{current_user.mobile_nr}" %>');
 $("#mobile_nr_errors").html('')
 $("#mobile_nr_form").slideUp();
-$("#mobile_verification_code_form").slideDown();
+$("#confirm_mobile_number").slideDown();

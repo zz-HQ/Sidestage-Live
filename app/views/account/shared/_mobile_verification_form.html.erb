@@ -1,28 +1,41 @@
 <%= simple_form_for user, url: account_mobile_numbers_path, remote: true, html: { id: :mobile_nr_form } do |f| %>
+  <p><%= t(:"application.dashboard.phone.desc") %></p>
+  <br />
   <%= f.label :mobile_nr_country_code %>
   <%= country_code_select(f) %>
   <div class="country_calling_code">
     <span id="country_calling_code"><%= country_code_field(f) %></span>
     <%= f.input :mobile_nr, required: false, label: false, input_html: { autocomplete: "off" }, placeholder: false %>
   </div>
-  <div class="input">
+  <div class="input" id="send_sms_code">
   	<%= f.submit class: "btn btn-blue" %>
   </div>
-  <div id="mobile_nr_errors" style="clear: both; margin-top: 20px; color: red;"></div>
+  <div id="mobile_nr_errors"></div>
 <% end %>
 
-<%= simple_form_for user, url: confirm_account_mobile_numbers_path, remote: true, html: { id: :mobile_verification_code_form, style: "display:none;", class: "confirm-mobile-num-form"} do |f| %>
-  <%= f.input :mobile_confirmation_code, input_html: { autocomplete: "off", style: "width: 250px; float: left; margin-right: 10px" }, maxlength: "6" %>
-  <%= f.submit value: t(:"helpers.submit.user_as_mobile_number.confirm"), class: "btn btn-blue", style: "float left;" %>
-<% end %>
+<div id="confirm_mobile_number" style="display:none;">
+  <div id="confirm_mobile_number_form_wrapper">
+  <%= simple_form_for user, url: confirm_account_mobile_numbers_path, remote: true, html: { id: :mobile_verification_code_form, class: "confirm-mobile-num-form"} do |f| %>
+    <%= f.input :mobile_confirmation_code, input_html: { autocomplete: "off", placeholder: "verification code" }, maxlength: "6" %>
+    <%= f.submit value: t(:"helpers.submit.user_as_mobile_number.confirm"), class: "btn btn-blue" %>
+  <% end %>
+  </div>
 
-<div class-"clearfix"></div>
+  <div class="mobile_number_links">
+    <%= link_to 'Change phone number', 'javascript:;', onclick: "$('#confirmation_failed').hide(); $('#confirm_mobile_number').slideUp(); $('#mobile_nr_form').slideDown();" %>
+    <br />
+    <%= link_to 'Resend SMS code', 'javascript:;', onclick: "$('#mobile_nr_form').submit();" %>
+  </div>
 
-<div id="confirmation_failed" style="display:none; margin-top: 20px; color: red;">
+  <div style="clear:both;">
+  </div>
+</div>
+
+<div id="confirmation_failed" style="display:none;">
   <p class="subtitle"><%= t(:"application.mobile_numbers.show.failure") %></p>
 </div>
 
 <div id="confirmation_succeeded" style="display:none;">
-  <p class="subtitle"><%= t(:"application.mobile_numbers.show.desc") %></p>
+  <p><%= t(:"flash.account.mobile_numbers.confirm.notice") %></p>
 </div>
 

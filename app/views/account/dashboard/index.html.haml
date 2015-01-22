@@ -54,7 +54,6 @@
       %section#mobile_phone_confirmation.box
         .body.share-to-friends
           %h3= t(:"application.dashboard.phone.title")
-          %p= t(:"application.dashboard.phone.desc")
           .form
             = render "account/shared/mobile_verification_form", user: User::AsMobileNumber.find(current_user.id)
 
