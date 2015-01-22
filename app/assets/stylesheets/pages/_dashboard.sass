@@ -1,3 +1,12 @@
+$color-success: #65AD51
+
+.success
+  color: $color-success
+
+#email_field_hint, #form_success_message
+  width: inherit
+  font-size: 14px
+
 .navi-bar
   +fill-parent
   height: 34px
@@ -199,7 +208,7 @@ $color-light: #777
   color: red
 
 #confirmation_succeeded
-  color: #65AD51
+  color: $color-success
 
 .list
   +span-columns(8)
