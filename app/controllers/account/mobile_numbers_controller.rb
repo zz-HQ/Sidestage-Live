@@ -37,6 +37,7 @@ class Account::MobileNumbersController < AuthenticatedController
       @errors = resource.errors.messages[:mobile_nr]
     end
     respond_to do |format|
+      current_user.reload
       format.html{ render :show }
       format.js{ render @errors ? :invalid_update : :update}
     end
