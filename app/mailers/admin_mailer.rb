@@ -10,7 +10,7 @@ class AdminMailer < ActionMailer::Base
   default :from => ENV["mail_from"],
           :reply_to => ENV["mail_from"],
           :return_path => ENV["mail_return_path"],
-          :to => ["schuyler@sidestage.com", "daniel@sidestage.com", "julia@sidestage.com"]
+          :to => ["schuyler@sidestage.com", "daniel@sidestage.com", "david@sidestage.com"]
   #
   # Helpers
   # ---------------------------------------------------------------------------------------
@@ -20,7 +20,7 @@ class AdminMailer < ActionMailer::Base
   #
 
   helper :application
-  
+
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -34,28 +34,28 @@ class AdminMailer < ActionMailer::Base
       format.html
     end
   end
-  
+
   def profile_published(profile)
     @profile = profile
     mail(subject: "Sidestage: #{profile.name} published profile") do |format|
       format.html
     end
   end
-  
+
   def booking_notification(deal)
     @deal = deal
     mail(subject: "Sidestage: Booking #{@deal.state}") do |format|
       format.html
     end
   end
-  
+
   def more_cities(city_launch)
     @city_launch = city_launch
     mail(subject: "Sidestage: More cities signup") do |format|
       format.html
     end
   end
-  
+
   def match_me(match_me)
     @match_me = match_me
     from = @match_me.name.present? ? "#{@match_me.name} <#{@match_me.email}>" : ENV["mail_from"]
@@ -63,21 +63,21 @@ class AdminMailer < ActionMailer::Base
       format.html
     end
   end
-  
+
   def event_notification(event)
     @event = event
     mail(reply_to: @event.user.email, from: "#{@event.user.name} <#{@event.user.email}>", to: "bookings@sidestage.com", subject: "Sidestage: New Event") do |format|
       format.html
     end
   end
-  
+
   def review_notification(review)
     @review = review
     mail(subject: "Sidestage: New Review") do |format|
       format.html
     end
   end
-  
+
   #
   # Protected Methods
   # ---------------------------------------------------------------------------------------
@@ -86,5 +86,5 @@ class AdminMailer < ActionMailer::Base
   #
 
   protected
-  
+
 end
