@@ -1,6 +1,6 @@
 <%= simple_form_for user, url: account_mobile_numbers_path, remote: true, html: { id: :mobile_nr_form } do |f| %>
   <p><%= t(:"application.dashboard.phone.desc") %></p>
-  <br />
+  <div id="mobile_nr_errors">&nbsp;</div>
   <%= f.label :mobile_nr_country_code %>
   <%= country_code_select(f) %>
   <div class="country_calling_code">
@@ -10,7 +10,6 @@
   <div class="input" id="send_sms_code">
   	<%= f.submit class: "btn btn-blue" %>
   </div>
-  <div id="mobile_nr_errors"></div>
 <% end %>
 
 <div id="confirm_mobile_number" style="display:none;">
