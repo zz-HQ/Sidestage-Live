@@ -10,7 +10,7 @@ de:
       account: Account
       log_out: Log out
     buttons:
-      search: Find a musician
+      search: Search
     links:
       forgot_password: Forgot password?
       edit: Edit Profile
@@ -25,6 +25,7 @@ de:
       view_profiles: View Profiles
       reset_filters: Reset filters
       like_us: Like us on Facebook
+      view_all_messages: View all Messages
       pagination:
         view_more: View more
     social:
