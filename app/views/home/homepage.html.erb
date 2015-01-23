@@ -10,7 +10,7 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    
+
 
     <div id="splash" class="<%= ['background1', 'background2'].sample %>">
       <%= render 'header' %>
@@ -19,14 +19,14 @@
 
 
       <div id="splash-content">
-        
+
         <div id="text">
           <h2 class="text-shadow"><%= t(:"application.home.index.teaser.title") %></h2>
           <p class="text-shadow">
             <%= t(:"application.home.index.teaser.body") %>
           </p>
         </div>
-        
+
       </div><!-- #splash-content -->
 
       <div id="animation-container" class="home">
@@ -37,7 +37,7 @@
                 <%= hidden_field_tag :lng, params[:lng] %>
                 <%= hidden_field_tag :lat, params[:lat] %>
                 <%= f.submit :submit, value: t(:"application.buttons.search"), name: nil, class: 'city-btn' %>
-            <% end %>    
+            <% end %>
         </div>
 
       </div><!-- #animation-container -->
@@ -45,10 +45,6 @@
     </div><!-- #splash -->
 
     <% cache(action_suffix: :metro) do %>
-
-        <%= render 'metro' %>
-
-        <%= render 'inspiration' %>
 
         <%= render 'footer' %>
 

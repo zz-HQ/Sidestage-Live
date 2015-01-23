@@ -18,10 +18,10 @@ class HomeController < ApplicationController
   #
   #
   #
-  
+
   skip_before_filter :load_currency, only: [:change_currency]
-  
-  
+
+
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ class HomeController < ApplicationController
   #
   #
   #
-  
+
   def change_currency
     currency = Currency.where(name: params[:currency].upcase).first
     if currency.present?
@@ -57,13 +57,13 @@ class HomeController < ApplicationController
   end
 
   def homepage
-    @profiles = Profile.featured.published.includes(:user).limit(8)
+    # @profiles = Profile.featured.published.includes(:user).limit(8)
     respond_to do |wants|
       wants.html
       wants.html.mobile
     end
   end
-  
+
   def create_subscriber
     @mailchimp_subscriber = MailchimpSubscriber.new(params[:mailchimp_subscriber])
     @mailchimp_subscriber.save
