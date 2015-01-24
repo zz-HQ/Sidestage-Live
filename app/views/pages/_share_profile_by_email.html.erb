@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><title>email Title</title></head>
-<body style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;"><table width="100%" border="0" cellspacing="10" cellpadding="0"><tr><td  align="center" valign="top" style="text-align:center;"><table border="0" cellspacing="0" cellpadding="10" style="text-align: left; margin-left: auto; margin-right: auto;" width="600"><tr><td  align="center" valign="top" style="text-align:center;">
+<body style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: #eee;"><table width="100%" border="0" cellspacing="10" cellpadding="0"><tr><td  align="center" valign="top" style="text-align:center;"><table border="0" cellspacing="0" cellpadding="10" style="text-align: left; margin-left: auto; margin-right: auto;" width="540"><tr><td  align="center" valign="top" style="text-align:center; background-color: #fff;">
 <!-- email contents go here -->
 <br />
 <img alt="" src="<%= asset_url('sprite/sidestage-logo.png') %>" style="max-width: 150px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" align="middle" width="150" />
@@ -8,7 +8,7 @@
 <br /><br />
 <img align="center" alt="" width="436" src="<%= @profile.avatar.url(:preview) %>" style="padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" />
 <br /><br />
-<h1 style="text-align: center; margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;color: #606060 !important;"><%= @profile.name %></h1>
+<h1 style="text-align: center; margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;"><%= @profile.name %></h1>
 <br />
 <img align="center" alt="" src="<%= @profile.user.avatar.url(:thumb) %>" width="100" style= "max-width: 100px; padding-bottom: 0; display: inline !important; vertical-align: bottom; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius:50px;" />
 <br /><br />
@@ -20,8 +20,9 @@
 <a title="Check out <%= @profile.name %>" href="<%= artist_url(@profile) %>" target="_blank" style="font-size:16px;letter-spacing:normal;color:#FFF;background:#D84747;cursor:pointer;display:inline-block;font-family:Arial,HelveticaNeue,Helvetica,sans-serif;font-weight:bold;margin-top:10px;padding:8px14px;padding:9px;border-radius:4px;text-decoration:none;word-wrap:break-word;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">Check out <%= @profile.name %></a>
 <p style="font-size:18px;font-family: Helvetica;font-weight:bold;">now on Sidestage</p>
 <br /><br /><br /><br />
-<p style="font-family: Helvetica;font-size: 14px;">Want more Sidestage artist recommendations like these? Follow us!</p>
-<table style="background-color: #FAFAFA;border: 1px solid #EEEEEE;border-collapse: collapse;" border="0" cellpadding="0" cellspacing="0" width="600"><tbody><tr><td style="padding:9px;text-align:center;" align="center" valign="top"><a href="https://www.facebook.com/sidestageHQ" target="_blank"><img src="<%= asset_url('logos/dark-facebook-96.png') %>" alt="Facebook" style="width: 48px;max-width: 48px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="48" /></a>
-<a href="https://twitter.com/sidestagehq" target="_blank"><img src="<%= asset_url('logos/dark-twitter-96.png') %>" alt="Twitter" style="width: 48px;max-width: 48px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="48" /></a></td></tr></tbody></table>
+<p style="font-family: Helvetica;font-size: 14px; color: #444">Want more Sidestage artist recommendations like these? Follow us!</p>
+<hr style="width: 100%; height: 2px; background-color: #ccc; border-width: 0px" />
+<a href="https://www.facebook.com/sidestageHQ" target="_blank"><img src="<%= asset_url('logos/dark-facebook-96.png') %>" alt="Facebook" style="width: 48px;max-width: 48px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="48" /></a>
+<a href="https://twitter.com/sidestagehq" target="_blank"><img src="<%= asset_url('logos/dark-twitter-96.png') %>" alt="Twitter" style="width: 48px;max-width: 48px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="48" /></a>
 <!-- email contents end here -->
 </td></tr></table></td></tr></table></body></html>
