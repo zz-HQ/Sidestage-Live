@@ -6,11 +6,11 @@
 <img alt="sidestage" src="<%= asset_url('sprite/sidestage-logo.png') %>" style="max-width: 150px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" align="middle" width="150" />
 <p style="font-family: Helvetica;font-size: 14px;font-style: normal;line-height: 100%; margin: 10px 0 0 0">presents</p>
 <br /><br />
-<img align="center" alt="<%= @profile.avatar.name %>" width="436" src="<%= @profile.avatar.url(:preview) %>" style="padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" />
+<img align="center" alt="<%= @profile.name %>" width="436" src="<%= @profile.avatar.url(:preview) %>" style="padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" />
 <br /><br />
 <h1 style="text-align: center; margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;color: #000 !important;"><%= @profile.name %></h1>
 <br />
-<img align="center" alt="<%= @profile.avatar.name %>" src="<%= @profile.user.avatar.url(:thumb) %>" width="100" style= "max-width: 100px; padding-bottom: 0; display: inline !important; vertical-align: bottom; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius:50px;" />
+<img align="center" alt="<%= @profile.name %>" src="<%= @profile.user.avatar.url(:thumb) %>" width="100" style= "max-width: 100px; padding-bottom: 0; display: inline !important; vertical-align: bottom; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius:50px;" />
 <br /><br />
 <% if @coupon.present? %>
 <p style="color: #141823; font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif; font-size: 14px; line-height: 18px;font-weight:bold;">Get <%= humanized_money_with_symbol(@coupon.to_money) %> off when booking using code: <%= @coupon.code %></p>
