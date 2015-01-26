@@ -3,14 +3,14 @@
 <body style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;"><table width="100%" border="0" cellspacing="10" cellpadding="0"><tr><td  align="center" valign="top" style="text-align:center;"><table border="0" cellspacing="0" cellpadding="10" style="text-align: left; margin-left: auto; margin-right: auto;" width="600"><tr><td  align="center" valign="top" style="text-align:center;">
 <!-- email contents go here -->
 <br />
-<img alt="" src="<%= asset_url('sprite/sidestage-logo.png') %>" style="max-width: 150px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" align="middle" width="150" />
+<img alt="sidestage" src="<%= asset_url('sprite/sidestage-logo.png') %>" style="max-width: 150px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" align="middle" width="150" />
 <p style="font-family: Helvetica;font-size: 14px;font-style: normal;line-height: 100%; margin: 10px 0 0 0">presents</p>
 <br /><br />
-<img align="center" alt="" width="436" src="<%= @profile.avatar.url(:preview) %>" style="padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" />
+<img align="center" alt="<%= @profile.avatar.name %>" width="436" src="<%= @profile.avatar.url(:preview) %>" style="padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" />
 <br /><br />
-<h1 style="text-align: center; margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;"><%= @profile.name %></h1>
+<h1 style="text-align: center; margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;color: #000 !important;"><%= @profile.name %></h1>
 <br />
-<img align="center" alt="" src="<%= @profile.user.avatar.url(:thumb) %>" width="100" style= "max-width: 100px; padding-bottom: 0; display: inline !important; vertical-align: bottom; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius:50px;" />
+<img align="center" alt="<%= @profile.avatar.name %>" src="<%= @profile.user.avatar.url(:thumb) %>" width="100" style= "max-width: 100px; padding-bottom: 0; display: inline !important; vertical-align: bottom; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius:50px;" />
 <br /><br />
 <% if @coupon.present? %>
 <p style="color: #141823; font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif; font-size: 14px; line-height: 18px;font-weight:bold;">Get <%= humanized_money_with_symbol(@coupon.to_money) %> off when booking using code: <%= @coupon.code %></p>
