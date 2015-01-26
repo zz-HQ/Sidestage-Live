@@ -10,8 +10,8 @@
 <br />
 <h1 style="text-align: center; margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;color: #000 !important;"><%= @profile.name %></h1>
 <br />
-<p style="font-size:18px;font-family: Helvetica;font-weight:bold;">Now on Sidestage</p>
 <% if @coupon.present? %>
+<p style="font-size:18px;font-family: Helvetica;font-weight:bold;">Now on Sidestage</p>
 <p style="color: #141823; font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif; font-size: 14px; line-height: 18px;font-weight:bold;">Get <%= humanized_money_with_symbol(@coupon.to_money) %> off when booking using code: <%= @coupon.code %></p>
 <% else %>
 <p style="color: #141823; font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif; font-size: 14px; line-height: 18px;">Book <%= @profile.name %> on Sidestage!<br /><br /></p>
