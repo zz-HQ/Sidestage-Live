@@ -49,4 +49,7 @@
     </script>
 
     <%= render "facebook_conversion_code" %>
+    <% if Rails.env.production? %>
+      <script src="//cdn.optimizely.com/js/2431000026.js"></script>
+    <% end %>
 </head>
