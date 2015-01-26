@@ -5,20 +5,18 @@
 <br />
 <img alt="sidestage" src="<%= asset_url('sprite/sidestage-logo.png') %>" style="max-width: 150px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" align="middle" width="150" />
 <p style="font-family: Helvetica;font-size: 14px;font-style: normal;line-height: 100%; margin: 10px 0 0 0">presents</p>
-<br /><br />
-<a href="<%= artist_url(@profile) %>" target="_blank"><img align="center" alt="<%= @profile.name %>" width="436" src="<%= @profile.avatar.url(:preview) %>" style="padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" /></a>
-<br /><br />
-<h1 style="text-align: center; margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;color: #000 !important;"><%= @profile.name %></h1>
 <br />
 <img align="center" alt="<%= @profile.name %>" src="<%= @profile.user.avatar.url(:thumb) %>" width="100" style= "max-width: 100px; padding-bottom: 0; display: inline !important; vertical-align: bottom; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius:50px;" />
-<br /><br />
+<br />
+<h1 style="text-align: center; margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;color: #000 !important;"><%= @profile.name %></h1>
+<br />
+<p style="font-size:18px;font-family: Helvetica;font-weight:bold;">Now on Sidestage</p>
 <% if @coupon.present? %>
 <p style="color: #141823; font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif; font-size: 14px; line-height: 18px;font-weight:bold;">Get <%= humanized_money_with_symbol(@coupon.to_money) %> off when booking using code: <%= @coupon.code %></p>
 <% else %>
 <p style="color: #141823; font-family: helvetica,arial,lucida grande,tahoma,verdana,arial,sans-serif; font-size: 14px; line-height: 18px;">Book <%= @profile.name %> on Sidestage!<br /><br /></p>
 <% end %>
 <a title="Check out <%= @profile.name %>" href="<%= artist_url(@profile) %>" target="_blank" style="font-size:16px;letter-spacing:normal;color:#FFF;background:#D84747;cursor:pointer;display:inline-block;font-family:Arial,HelveticaNeue,Helvetica,sans-serif;font-weight:bold;margin-top:10px;padding:8px14px;padding:9px;border-radius:4px;text-decoration:none;word-wrap:break-word;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">Check out <%= @profile.name %></a>
-<p style="font-size:18px;font-family: Helvetica;font-weight:bold;">now on Sidestage</p>
 <br /><br /><br /><br />
 <p style="font-family: Helvetica;font-size: 14px; color: #444">Want more Sidestage artist recommendations like these? Follow us!</p>
 <hr style="width: 100%; height: 2px; background-color: #ccc; border-width: 0px" />
