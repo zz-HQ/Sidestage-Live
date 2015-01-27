@@ -1,5 +1,5 @@
 module Account::ProfilesHelper
-  
+
   def min_price_in_profile_location(profile)
     prices = []
     return prices.min if profile.location.blank?
@@ -7,10 +7,10 @@ module Account::ProfilesHelper
       if contestant_profile.currency == profile.currency
         prices << contestant_profile.price
       else
-        prices << price_in_current_currency(contestant_profile.price, contestant_profile.currency).round
+        prices << price_in_current_currency(contestant_profile.price, contestant_profile.currency).try(:round)
       end
     end
-    prices.min
+    prices.compact.min
   end
 
   def soundcloud
@@ -25,7 +25,7 @@ module Account::ProfilesHelper
         iframe_src = "http#{ "s" unless browser.safari? }://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/#{track_id}&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=true&visual=true"
     end
   end
-  
+
   def soundcloud_widget(iframe = nil)
     iframe_src = soundcloud
     content_tag :iframe, nil, width: "100%", height: "250", scrolling: "no", frameborder: "no", src: iframe_src, class: "sc"
@@ -87,11 +87,11 @@ module Account::ProfilesHelper
 
     count > maxCount
   end
-  
+
   def profile_wizard_progress_icon(step)
     image_tag "icons/check_icon.png", id: profile_wizard_progress_icon_id(step), style: "display: #{@profile.step_persisted?(step) ? nil : "none;" }"
   end
-  
+
   def profile_wizard_progress_icon_id(step)
     "profile_wizard_progress_icon_#{step}"
   end
