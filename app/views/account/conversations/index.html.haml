@@ -1,0 +1,19 @@
+#conversations.navigated.container
+  = render partial: 'account/shared/navigation', locals: {page: :inbox}
+
+  %section.box
+    %header
+      %h3{style: "float: left"}
+        = Message.model_name.human(count: 2)
+        (#{current_user.unread_message_counter || 0} new)
+      %div{style: "float: right; margin: 9px 10px 0 0"}
+        = nice_select((select_tag 'messages', options_for_select(messages_filter, request.path), data: { linked: true }), small: true)
+      %div.clearfix
+
+    #messages.body.list
+      = render collection
+
+    - unless collection.present?
+      %footer.none
+        %p
+          = t(:"application.conversations.index.empty")

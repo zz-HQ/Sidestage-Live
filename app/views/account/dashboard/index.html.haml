@@ -66,19 +66,7 @@
           (#{current_user.unread_message_counter || 0} new)
       #messages.body.list
         - current_user.unarchived_conversations.limit(5).each do |conversation|
-          = content_tag :div, class: [:messages, :item] do
-            = link_to(account_conversation_path(conversation), class: [conversation.messages.unread.by_receiver(current_user.id).exists? ? :unread : :read]) do
-              .ava
-                = image_tag conversation.negotiator_for(current_user).avatar.thumb.url, class: "avatar"
-              .body
-                = simple_format(strip_tags(system_message_body(conversation)).truncate(75))
-                %p.bottom
-                  = conversation.negotiator_for(current_user).profile_name
-                  ––
-                  %span= l conversation.last_message_at, format: :conversation
-            .actions
-              = "<p>Unread</p>".html_safe if conversation.messages.unread.by_receiver(current_user.id).exists?
-              = link_to "Archive", archive_account_conversation_path(conversation), method: :put unless conversation.archived_by?(current_user)
+          = render partial: 'account/conversations/conversation', locals: {conversation: conversation}
       %footer
         = link_to t(:"application.links.view_all_messages"), account_conversations_path
     / End Messages
