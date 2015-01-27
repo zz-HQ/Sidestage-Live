@@ -3,7 +3,7 @@ de:
     account:
       bookings:
         index:
-          title: Bookings
+          title: Manage Bookings
           view_conversation: "View conversation history"
           nevermind: Nevermind
           cancellation_prompt: "Are you sure you want to cancel this booking?"

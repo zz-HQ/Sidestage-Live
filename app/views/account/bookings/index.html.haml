@@ -1,0 +1,12 @@
+#bookings.navigated.container
+  = render partial: 'account/shared/navigation', locals: {page: :bookings}
+  %section.box
+    %header
+      %h3
+        = t(:"application.account.bookings.index.title")
+    - if collection.present?
+      .bookings
+        = render partial: "deal", collection: collection
+    - else
+      %p
+        = t(:"application.account.bookings.index.empty")

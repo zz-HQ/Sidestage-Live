@@ -126,7 +126,11 @@ class Deal < ActiveRecord::Base
   def paid_out?
     super || balanced_paid_out?
   end
-  
+
+  def past?
+    start_at < Time.now
+  end
+
   def price_for_customer
     coupon_price.present? ? coupon_price : customer_price
   end
