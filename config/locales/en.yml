@@ -128,7 +128,7 @@ en:
           bank_details:
             notice: "Your bank details have been successfully added."
         complete:
-          success: "You’re in! You’ll need to add a <a href='%{payment_path}'>payment method</a> before you can book an artist."
+          success: "All set! Where is your next event?"
           alert: "Please add a profile picture before continuing. It helps us build trust in our community."
         complete_payment:
           notice: "Awesome, you're set. When you get a chance, <a href='%{mobile_nr_path}'>verify your phone, too</a>"
