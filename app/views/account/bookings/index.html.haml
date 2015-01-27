@@ -8,5 +8,6 @@
       .bookings
         = render partial: "deal", collection: collection
     - else
-      %p
-        = t(:"application.account.bookings.index.empty")
+      %footer.none
+        %p
+          = t(:"application.account.bookings.index.empty")
