@@ -1,0 +1,11 @@
+- if f.object.is_a?(Event) || !current_user.paymentable?
+  .payment-inputs
+    - unless controller_name == "personals"
+      %p= t(:"application.personals.payment_details.credit_card_form_title")
+    .payment-status{:style => "display:none;"}= t(:"application.deals.new.verification_message")
+    .payment-errors{:style => "display:none;"}
+    .form-inputs
+      = f.input :balanced_token, as: :hidden
+      = text_field_tag nil, nil, id: "credit_card_number", placeholder: "#{t(:"simple_form.placeholders.credit_card.number")}", label: false, class: "cc-num"
+      = text_field_tag nil, nil, id: "credit_card_exp", placeholder: "#{t(:"simple_form.placeholders.credit_card.expiry")}", label: false, class: "cc-exp"
+      = text_field_tag nil, nil, id: "credit_card_cvc", placeholder: "#{t(:"simple_form.placeholders.credit_card.cvc")}", label: false, class: "cc-cvc", pattern: "[0-9]*"

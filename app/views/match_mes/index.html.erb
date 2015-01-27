@@ -37,14 +37,14 @@
     						<div class="label">I'm not sure</div>
     					</div>
     				</div>
-    			</div>			
-
-    			<div class="input number">
-    			    <%= f.input :total_visitors, pattern: "\d*", maxlength: "5" %>
     			</div>
 
     			<div class="input number">
-    			    <%= f.input :max_budget, pattern: "\d*", min: "10", maxlength: "5" %>
+    			    <%= f.input :total_visitors, pattern: "[0-9]*", maxlength: "5" %>
+    			</div>
+
+    			<div class="input number">
+    			    <%= f.input :max_budget, pattern: "[0-9]*", min: "10", maxlength: "5" %>
     			</div>
 
 			    <%= f.submit class: "btn btn-blue btn-inline" %>

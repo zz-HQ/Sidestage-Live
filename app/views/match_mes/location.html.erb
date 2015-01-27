@@ -8,8 +8,8 @@
 	    <%= simple_form_for resource, url: location_match_mes_path do |f| %>
 	        <%= f.input :genre, as: :hidden %>
 	        <%= f.input :event, as: :hidden %>
-	        <%= f.input :total_visitors, as: :hidden %>	
-            <%= f.input :max_budget, as: :hidden %>	
+	        <%= f.input :total_visitors, as: :hidden %>
+            <%= f.input :max_budget, as: :hidden %>
 		    <div class="form-inputs">
 
     			<div class="input event-date">
@@ -19,13 +19,13 @@
     		            <i class="fa fa-calendar"></i>
     		        </div>
     		    </div>
-    		    
+
     	        <div class="input zip">
-    	            <%= f.input :zip_code, maxlength: "5", pattern: "\d*" %>
+    	            <%= f.input :zip_code %>
     			</div>
 
     			<div class="input phone">
-    			    <%= f.input :phone_number, pattern: "\d*" %>
+    			    <%= f.input :phone_number, as: :tel %>
     			</div>
 
     			<div class="input name">
@@ -43,9 +43,9 @@
     			<div class="input boolean">
     			    <%= f.input :newsletter_subscribed, as: :boolean %>
     			</div>
-    			
+
 			    <%= f.submit t(:"helpers.submit.match_me.location"), class: "btn btn-blue btn-inline" %>
-	        
+
 	        </div>
         <% end %>
     </div>

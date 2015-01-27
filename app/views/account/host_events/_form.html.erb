@@ -7,7 +7,7 @@
 	<%= nice_select((f.select :genre, options_for_select(express_genre, f.object.genre)), id: "genre") %>
 </div>
 <%= render "account/deals/coupon_form", f: f, action: apply_on_event_account_coupons_path %>
-<%#= f.input :postal_code, placeholder: "Zip code", maxlength: "5", pattern: "\d*", label: false %>
+<%#= f.input :postal_code, placeholder: "Zip code", maxlength: "5", pattern: "[0-9]*", label: false %>
 <div class="btns">
 	<input type="submit" value="Go to last step" class="btn btn-inline">
 </div>
