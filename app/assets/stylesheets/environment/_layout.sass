@@ -65,19 +65,34 @@ $sidebar-bg-color: #f4f4f4
       margin: 10px 0 0
 
   aside.menu
-    .sidebar
-      h4
-        margin: 0 0 20px
-        font-weight: 500
-        font-size: 16px
+    +span-columns(2 of 10)
+    min-height: 1px
+    border-right: 1px solid $border-color
 
-        a
-          color: $text-color-light
+    header
+      +bigger-font
+      font-weight: 300
 
-          &:hover
-            color: $text-color
+    .sidebar h4
+      margin: 0
+      position: relative
 
-          &.active
-            color: $text-color
+      a
+        display: block
+        margin: 0
+        padding: 15px
+        color: $text-color-light
 
+        &:hover
+          background-color: $sidebar-bg-color
 
+        &.active
+          color: #222
+          background-color: $sidebar-bg-color
+
+      img
+        position: absolute
+        width: 16px
+        right: 15px
+        top: 21px
+        pointer-events: none

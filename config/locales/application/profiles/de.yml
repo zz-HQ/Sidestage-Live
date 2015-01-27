@@ -44,7 +44,7 @@ de:
         youtube_hint: "Single video, no playlist links"
         tips_hints_html: "SoundCloud Embed lets you post a single track, playlist or your whole profile."
       payment:
-        title_html: "Bank details<p>We handle payments so you don't have to worry about money. <br> Enter your bank details below so you can get paid.</p>"
+        title_html: "How do we pay you?<p>We handle payments so you don't have to worry about money. <br> Enter your bank details below so you can get paid.</p>"
       pictures:
         index:
           avatar_title_html: "Profile picture<p>This is the picture that will show up in search listings.</p>"

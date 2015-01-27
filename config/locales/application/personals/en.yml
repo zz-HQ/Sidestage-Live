@@ -5,8 +5,8 @@ en:
         account_link: "Account"
         password_link: "Password"
         phone_link: "Phone"
-        payment_link: "Credit Card"
-        bank_link: "Bank details"
+        payment_link: "Payment Methods"
+        bank_link: "How do we pay you?"
       show:
         title: Account
         avatar_hint: Clear frontal face photos are an important way for our community to learn about each other. Please upload a photo that clearly shows your face.
@@ -17,7 +17,7 @@ en:
       password:
         title: Change Your Password
       payment_details:
-        title: Credit Card
+        title: Payment Methods
         credit_card_form_title: "Please enter your credit card information:"
         skip: Do this later
         new:
