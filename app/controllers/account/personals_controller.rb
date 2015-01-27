@@ -1,5 +1,5 @@
 class Account::PersonalsController < Account::ResourcesController
-  
+
   #
   # Settings
   # ---------------------------------------------------------------------------------------
@@ -7,13 +7,13 @@ class Account::PersonalsController < Account::ResourcesController
   #
   #
   #
-  
+
 
   defaults :resource_class => User, :singleton => true, :instance_name => 'user'
-  
+
   actions :show, :update
-  
-  
+
+
   #
   # Actions
   # ---------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ class Account::PersonalsController < Account::ResourcesController
   #
   #
   #
-  
+
   def resend_confirmation
     current_user.resend_confirmation_instructions
     flash[:notice] = t(:"flash.account.users.update.resend_confirmation")
@@ -34,8 +34,8 @@ class Account::PersonalsController < Account::ResourcesController
       flash.now[:notice] = t(:"flash.account.users.update.email.notice")
     end
     render :show
-  end  
-  
+  end
+
   def complete
     if request.patch?
       if resource.has_avatar?
@@ -43,9 +43,9 @@ class Account::PersonalsController < Account::ResourcesController
       else
         flash.now[:error] = t(:"flash.account.users.complete.alert")
       end
-    end    
+    end
   end
-  
+
   def complete_payment
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
@@ -53,11 +53,11 @@ class Account::PersonalsController < Account::ResourcesController
       end
     end
   end
-  
+
   def skip_payment
     redirect_to root_path, notice: t(:"flash.account.users.skip_payment.notice", payment_path: complete_payment_account_personal_path)
   end
-  
+
   def password
     if request.patch?
       if resource.update_with_password(permitted_params[:user])
@@ -67,7 +67,7 @@ class Account::PersonalsController < Account::ResourcesController
       end
     end
   end
-  
+
   def payment_details
     if request.patch?
       if resource.update_attributes(permitted_params[:user])
@@ -80,14 +80,14 @@ class Account::PersonalsController < Account::ResourcesController
     if resource.errors.present?
       flash.now[:error] = resource.errors.full_messages.first
     end
-    @credit_card ||= current_user.credit_card    
+    @credit_card ||= current_user.credit_card
   end
 
   def remove_card
     current_user.destroy_balanced_card
     redirect_to payment_details_account_personal_path
   end
-  
+
   def bank_details
     if request.patch?
       if resource.profile.update_attributes(permitted_params[:profile])
@@ -95,7 +95,7 @@ class Account::PersonalsController < Account::ResourcesController
       end
     end
   end
-  
+
   def remove_bank_account
     current_user.profile.destroy_balanced_bank_account!
     redirect_to bank_details_account_personal_path
@@ -108,14 +108,14 @@ class Account::PersonalsController < Account::ResourcesController
       wants.html {redirect_to :back}
       wants.js
     end
-    
+
   end
-  
+
   def destroy_avatar
     resource.remove_avatar = true
     resource.save
   end
-  
+
   #
   # Protected
   # ---------------------------------------------------------------------------------------
@@ -123,9 +123,9 @@ class Account::PersonalsController < Account::ResourcesController
   #
   #
   #
-  
+
   protected
-  
+
   def permitted_params
     params.permit user: [
         :email, :full_name, :mobile_nr, :about, :password, :password_confirmation, :current_password, :balanced_token, :avatar
@@ -133,7 +133,7 @@ class Account::PersonalsController < Account::ResourcesController
       credit_card: [ :name, :exp_month, :exp_year ],
       profile: [:balanced_token, :iban, :bic, :routing_number, :account_number, :payout_name, :payout_address, :payout_state, :payout_city, :payout_postal_code, :payout_street, :payout_street_2, :payout_country]
   end
-  
+
   #
   # Private
   # ---------------------------------------------------------------------------------------
@@ -141,11 +141,11 @@ class Account::PersonalsController < Account::ResourcesController
   #
   #
   #
-  
+
   private
-  
+
   def resource
     get_resource_ivar || set_resource_ivar(current_user)
   end
-  
+
 end
